@@ -31,19 +31,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cmcdo\\.nuget\\packages\\": {}
+    "C:\\Users\\OMISTAJA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
-      "projectName": "RealmOne",
-      "projectPath": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
-      "packagesPath": "C:\\Users\\cmcdo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\obj\\",
+      "projectUniqueName": "C:\\Users\\OMISTAJA\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\-Realm-of-R-lyeh-.csproj",
+      "projectName": "-Realm-of-R-lyeh-",
+      "projectPath": "C:\\Users\\OMISTAJA\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\-Realm-of-R-lyeh-.csproj",
+      "packagesPath": "C:\\Users\\OMISTAJA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\OMISTAJA\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\cmcdo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\OMISTAJA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -90,7 +90,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

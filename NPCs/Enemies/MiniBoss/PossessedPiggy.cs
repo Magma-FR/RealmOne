@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using R.Projectiles.Piggy;
 using RealmOne.BossBars;
 using RealmOne.Common.Systems;
 using RealmOne.Items.Misc.EnemyDrops;
@@ -109,6 +108,7 @@ namespace RealmOne.NPCs.Enemies.MiniBoss
 
         public override void AI()
         {
+
             NPC.spriteDirection = NPC.direction;
 
             NPC.TargetClosest(true);
@@ -304,9 +304,7 @@ namespace RealmOne.NPCs.Enemies.MiniBoss
                 CombatText.NewText(new Rectangle((int)NPC.position.X + 30, (int)NPC.position.Y - 20, NPC.width, NPC.height), new Color(234, 129, 178, 190), "You got lucky that time!", false, false);
         }
         public override void OnSpawn(IEntitySource source)
-        {
-            coinScatter = 300;
-
+        { 
             Player player = Main.player[NPC.target];
 
             SoundEngine.PlaySound(SoundID.Item59);
