@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj": {}
+    "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj": {
+    "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
+        "projectUniqueName": "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
         "projectName": "RealmOne",
-        "projectPath": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
-        "packagesPath": "C:\\Users\\cmcdo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\obj\\",
+        "projectPath": "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
+        "packagesPath": "C:\\Users\\OMISTAJA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\cmcdo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\OMISTAJA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
