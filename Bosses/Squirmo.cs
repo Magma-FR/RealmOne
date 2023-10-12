@@ -21,7 +21,7 @@ namespace RealmOne.Bosses
     {
 
         public ref float RemainingShields => ref NPC.localAI[2];
-
+        
         public int MinionMaxHealthTotal
         {
             get => (int)NPC.ai[1];
