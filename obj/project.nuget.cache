@@ -1,18 +1,10 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "yFDYSaZgdxt4ls7LOi7qay7VawCJqSyFRjKoR2dr4nM5fC4YQZ0x+OunTv7dPh7DUf2NC3ekAvlowWcfIGRmeQ==",
+  "dgSpecHash": "Ti1HKyT0++d0FehmBwFX/5b04+yNmTZuGb1LkQT3HLzA6Rt8MGLjgo1HIVkNLhMcImwaVJENAmGYM19qxOGWtw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
+  "projectFilePath": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\USER\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
-=======
-  "dgSpecHash": "rV+2f74pFJJbGCJB61JJ2bhhJ+hpTWCHSPGljT+cIV8UF44t7FwtmMRco6xFCspu3ufoNUg7yJv6O7j9O+zfJQ==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\-Realm-of-R-lyeh-.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\OMISTAJA\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
->>>>>>> 7e768d677e82175439fa1ba6acc4f197d9773523
+    "C:\\Users\\cmcdo\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
   ],
   "logs": []
 }

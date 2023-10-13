@@ -20,6 +20,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
                      Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(9, 9));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 
         }
         public override void SetDefaults()

@@ -780,7 +780,9 @@ Mods: {
 				// DisplayName: Piggy Pursuer
 				/* Tooltip:
 					'''
-					Swing a delicate but sharp porcelain sword
+					It gets damaged per each hit, making it lose some of its porcelain
+					In return, it gets faster
+					If damaged enough, it will shatter into lots of porcelain
 					'And I Huff and I puff and I blow your house down!!'
 					''' */
 			}
@@ -2322,6 +2324,8 @@ Mods: {
 			// PiggyPursuerHeld.DisplayName: Piggy Pursuer Held
 			// HoppingPiggy.DisplayName: Hopping Piggy
 			// StickyPorcelain.DisplayName: Sticky Porcelain
+			// BloodToothProj.DisplayName: Blood Tooth Proj
+			// CrimClubSwing.DisplayName: Crim Club Swing
 		}
 
 		NPCs: {

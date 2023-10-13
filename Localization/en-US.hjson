@@ -2324,6 +2324,8 @@ Mods: {
 			PiggyPursuerHeld.DisplayName: Piggy Pursuer Held
 			HoppingPiggy.DisplayName: Hopping Piggy
 			StickyPorcelain.DisplayName: Sticky Porcelain
+			BloodToothProj.DisplayName: Blood Tooth Proj
+			CrimClubSwing.DisplayName: Crim Club Swing
 		}
 
 		NPCs: {

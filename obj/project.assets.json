@@ -31,34 +31,19 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\USER\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\OMISTAJA\\.nuget\\packages\\": {}
->>>>>>> 7e768d677e82175439fa1ba6acc4f197d9773523
+    "C:\\Users\\cmcdo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\USER\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
+      "projectUniqueName": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
       "projectName": "RealmOne",
-      "projectPath": "C:\\Users\\USER\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\obj\\",
+      "projectPath": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\RealmOne.csproj",
+      "packagesPath": "C:\\Users\\cmcdo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\cmcdo\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\-Realm-of-R-lyeh-.csproj",
-      "projectName": "-Realm-of-R-lyeh-",
-      "projectPath": "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\-Realm-of-R-lyeh-.csproj",
-      "packagesPath": "C:\\Users\\OMISTAJA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OMISTAJA\\.openjfx\\OneDrive\\Tiedostot\\My Games\\Terraria\\tModLoader\\ModSources\\RealmOne\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\OMISTAJA\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 7e768d677e82175439fa1ba6acc4f197d9773523
+        "C:\\Users\\cmcdo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -105,11 +90,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
->>>>>>> 7e768d677e82175439fa1ba6acc4f197d9773523
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

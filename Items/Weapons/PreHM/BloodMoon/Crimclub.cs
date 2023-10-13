@@ -12,6 +12,7 @@ using Terraria.GameContent.Creative;
 using Terraria.Audio;
 using RealmOne.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core;
 
 namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 {
@@ -39,7 +40,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.channel = true;
 
             Item.shootSpeed = 1f;
-            Item.shoot = ModContent.ProjectileType<CrimclubSwing>();
+            Item.shoot = ModContent.ProjectileType<CrimClubSwing>();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -50,7 +51,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 
     public class CrimClubSwing : ModProjectile
     {
-        public override string Texture => "Items/Weapons/PreHM/BloodMoon/CrimclubSwing";
+        public override string Texture => "RealmOne/Items/Weapons/PreHM/BloodMoon/Crimclub";
         public override void SetDefaults()
         {
             Projectile.width = 30;
@@ -101,10 +102,15 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            for (int k = 0; k <= 100; k++)
+                Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustID.t_Flesh, new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 150f, Scale: 0.2f) ;
             if (Main.rand.NextBool(2))
             {
                 Vector2 vel = new(Main.rand.NextFloat(-5, 5), -10);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<BloodToothProj>(), Projectile.damage / 2, 0);
+                for (int i = 0; i < 3; i++)
+                {
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<BloodToothProj>(), Projectile.damage / 2, 0);
+                }
             }
         }
     }
@@ -114,11 +120,11 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
     }
     public class BloodToothProj : ModProjectile
     {
-        public override string Texture => "Items/Weapons/PreHM/BloodMoon/BloodToothProj";
+        public override string Texture => "RealmOne/Items/Weapons/PreHM/BloodMoon/BloodToothProj";
         public override void SetDefaults()
         {
-            Projectile.width = 10;
-            Projectile.height = 10;
+            Projectile.width = 12;
+            Projectile.height = 12;
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Melee;
