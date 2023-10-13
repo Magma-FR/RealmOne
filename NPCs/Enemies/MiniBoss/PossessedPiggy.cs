@@ -73,29 +73,8 @@ namespace RealmOne.NPCs.Enemies.MiniBoss
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
-            NPCDebuffImmunityData dd = new NPCDebuffImmunityData
-            {
-                SpecificallyImmuneTo = new int[] {
-                    BuffID.Poisoned,
+            NPCID.Sets.ImmuneToAllBuffs[Type] = true;
 
-                    BuffID.Confused,
-
-                    BuffID.Venom,
-
-                    BuffID.OnFire,
-
-                    BuffID.Venom,
-
-                    BuffID.Bleeding,
-
-                    BuffID.Frozen,
-
-                    BuffID.Ichor,
-
-                    BuffID.ShadowFlame
-                }
-            };
-            NPCID.Sets.DebuffImmunitySets.Add(Type, dd);
         }
 
         public override void SetDefaults()

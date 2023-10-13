@@ -70,15 +70,7 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 
             }
 
-            for (int i = 0; i < 50; i++)
-            {
-                Vector2 speed = Utils.RandomVector2(Main.rand, -10f, 1f);
-                var d = Dust.NewDustPerfect(Main.LocalPlayer.Center, DustID.Torch, speed * 10, Scale: 2.5f);
-
-
-
-                d.noGravity = true;
-            }
+           
 
             SoundEngine.PlaySound(rorAudio.blunderbussShot);
 

@@ -39,19 +39,11 @@ namespace RealmOne.Bosses
             NPCID.Sets.MPAllowedEnemies[Type] = true;
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-            var debuffData = new NPCDebuffImmunityData
-            {
-                SpecificallyImmuneTo = new int[] {
-                    BuffID.Poisoned,
-                    BuffID.Slow,
-                    BuffID.OnFire3,
-                    BuffID.Slimed,
-                    BuffID.Confused // Most NPCs have this
-				}
-            };
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Venom] = true;
 
-            NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
 
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.OnFire] = true;
 
             var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {

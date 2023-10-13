@@ -33,7 +33,7 @@ namespace RealmOne.Projectiles.Piggy
             Projectile.tileCollide = true;
             Projectile.timeLeft = 300;
             Projectile.aiStyle = 2;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 2;
             Projectile.extraUpdates = 1;
         }
 

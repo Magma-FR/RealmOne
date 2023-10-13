@@ -27,19 +27,19 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 
         public override void SetDefaults()
         {
-            Item.damage = 15;
+            Item.damage = 13;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 32;
             Item.height = 32;
-            Item.useTime = 40;
-            Item.useAnimation = 40;
+            Item.useTime = 42;
+            Item.useAnimation = 42;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2f;
             Item.value = 30000;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item64;
             Item.autoReuse = true;
-            Item.useAmmo = AmmoID.Bullet;
+            Item.useAmmo = ItemID.Cactus;
             Item.noMelee = true;
             Item.shootSpeed = 36f;
             Item.shoot = ModContent.ProjectileType<BloodBlowerProj>();
@@ -59,7 +59,6 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
                 Main.projectile[p].friendly = true;
                 Main.projectile[p].hostile = false;
 
-                Lighting.AddLight(player.position, 0.3f, 0.18f, 0.0f);
 
                 float numberProjectiles = 2;
                 float rotation = MathHelper.ToRadians(5);

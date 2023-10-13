@@ -23,8 +23,8 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.width = 48;
             Item.height = 66;
             Item.crit = 45;
-            Item.damage = 34;
-            Item.knockBack = 10f;
+            Item.damage = 32;
+            Item.knockBack = 6f;
 
             Item.useAnimation = 46;
             Item.useTime = 46;
@@ -91,6 +91,10 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
                 i = keypoints.Count - 1;
         }
         bool upswing = false;
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
@@ -102,13 +106,20 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            for (int k = 0; k <= 100; k++)
-                Dust.NewDustPerfect(Projectile.oldPosition + new Vector2(Projectile.width / 2, Projectile.height / 2), DustID.t_Flesh, new Vector2(0, 1).RotatedByRandom(1) * Main.rand.NextFloat(-1, 1) * Projectile.ai[0] / 150f, Scale: 0.2f) ;
+            for (int i = 0; i < 50; i++)
+            {
+                Vector2 speed = Utils.RandomVector2(Main.rand, -1f, 1f);
+                var d = Dust.NewDustPerfect(Projectile.position, DustID.t_Flesh, speed * 5, Scale: 1f);
+
+                d.noGravity = true;
+            }
             if (Main.rand.NextBool(2))
             {
                 Vector2 vel = new(Main.rand.NextFloat(-5, 5), -10);
+              
                 for (int i = 0; i < 3; i++)
                 {
+                   
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<BloodToothProj>(), Projectile.damage / 2, 0);
                 }
             }
@@ -131,6 +142,10 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Projectile.timeLeft = 360;
             Projectile.penetrate = -1;
             Projectile.tileCollide = true;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
         public override void AI()
         {

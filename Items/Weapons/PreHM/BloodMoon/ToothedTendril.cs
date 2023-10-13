@@ -25,9 +25,9 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         }
         public override void SetDefaults()
         {
-            Item.DefaultToWhip(ModContent.ProjectileType<ToothedTendrilProj>(), 17, 3, 4);
-            Item.useTime = 35;
-            Item.useAnimation = 35;
+            Item.DefaultToWhip(ModContent.ProjectileType<ToothedTendrilProj>(), 16, 3, 4);
+            Item.useTime = 38;
+            Item.useAnimation = 38;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.channel = true;
@@ -51,8 +51,8 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         {
             Projectile.DefaultToWhip();
 
-            Projectile.WhipSettings.Segments = 15;
-            Projectile.WhipSettings.RangeMultiplier = 1.5f;
+            Projectile.WhipSettings.Segments = 18;
+            Projectile.WhipSettings.RangeMultiplier = 1f;
         }
 
         public override void AI()

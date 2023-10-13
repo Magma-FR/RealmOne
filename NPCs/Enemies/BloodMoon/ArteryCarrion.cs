@@ -133,7 +133,10 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			Projectile.aiStyle = ProjAIStyleID.ThrownProjectile;
 
 		}
-       
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AI()
         {
 			if (Main.rand.NextBool(3))
