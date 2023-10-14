@@ -1,6 +1,10 @@
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using tModPorter;
+using RealmOne.Common.Core;
+using Terraria.GameContent.Bestiary;
 
 namespace RealmOne
 {
@@ -22,17 +26,32 @@ namespace RealmOne
         }
 
 
-       
+
+    }
+    internal class BloodMoonOSTSwitch : ModSceneEffect
+    {
+
+
+
+        public override int Music => MusicLoader.GetMusicSlot(Mod,"Assets/Music/MORTICIDE");
+        public override SceneEffectPriority Priority => SceneEffectPriority.BossLow;
+        public override bool IsSceneEffectActive(Player player)
+        {
+            return Main.bloodMoon;
+        }
     }
 }
 
-            /*   public override void PostSetupContent()
+    
+     
+
+           /*   public override void PostSetupContent()
                {
                    ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist);
                    if (bossChecklist != null)
                    {
                        bossChecklist.Call(new object[11]
-                       {
+                       {s
 
                                  "AddBoss",
                                  this,

@@ -57,7 +57,7 @@ namespace RealmOne.Projectiles.Piggy
                 int npcTarget = targetPorce;
                 Projectile.Center = Main.npc[npcTarget].Center - Projectile.velocity;
                 Projectile.gfxOffY = Main.npc[npcTarget].gfxOffY;
-                Main.npc[npcTarget].HitEffect(0, 1.0);
+                Main.npc[npcTarget].HitEffect(0, 0);
             }
         }
 
@@ -147,7 +147,7 @@ namespace RealmOne.Projectiles.Piggy
 
         public override void Kill(int timeLeft)
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 9; i++)
             {
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
                 Dust dust1 = Dust.NewDustPerfect(Projectile.Center, DustID.PinkCrystalShard, speed * 8, Scale: 1f);

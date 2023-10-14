@@ -4,7 +4,9 @@ using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Opens;
 using RealmOne.Items.Placeables.Furniture.Paintings;
 using RealmOne.Items.Tools.Pick;
+using RealmOne.Items.Weapons.PreHM.BloodMoon;
 using RealmOne.Items.Weapons.PreHM.Throwing;
+using RealmOne.NPCs.Enemies.BloodMoon;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -68,6 +70,16 @@ namespace RealmOne.Common.Global.GlobalNPCList
         }
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
+            // 4  is the chance, so 4 chance of dropping it. And 1-2 is the amount you will probably get
+            //Blood Moon Drops
+            if (npc.type == NPCID.BloodZombie)
+
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Crimclub>(), 45, 1, 1));
+
+            if (npc.type == ModContent.NPCType<ArteryCarrion>())
+
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BloodBlower>(), 45, 1, 1));
+
             //Evil Biome drops
 
             if (npc.type == NPCID.EaterofSouls)
@@ -117,7 +129,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
             //Hell Drops
             if (npc.type == NPCID.Demon)
 
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2)); // 4 and 1 is the chance, so 1 out of 4 chance of dropping it. And 2 is the amount you will probably get
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2)); 
 
             if (npc.type == NPCID.Hellbat)
 

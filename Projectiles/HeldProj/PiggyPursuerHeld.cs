@@ -117,7 +117,7 @@ namespace RealmOne.Projectiles.HeldProj
                 {
                     player.GetModPlayer<RealmModPlayer>().PigSwings = 0;
                     Vector2 r = (player.Center - Main.MouseWorld).SafeNormalize(Vector2.UnitX);
-                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, r * -8f, ModContent.ProjectileType<StickyPorcelain>(), 10, 0f, Main.myPlayer);
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, r * -8f, ModContent.ProjectileType<StickyPorcelain>(), 0, 0f, Main.myPlayer);
                 }
             }
 

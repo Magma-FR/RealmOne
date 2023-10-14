@@ -2558,5 +2558,16 @@ Mods: {
 				TownNPCDialogueName: Abandoned Farm
 			}
 		}
+
+		Configs: {
+			ConfigMusic: {
+				DisplayName: Music Config
+
+				BloodMoonMusic: {
+					Label: "{$Mods.RealmOne.BloodMoonAlt}"
+					Tooltip: Adds a unique track for Blood Moons
+				}
+			}
+		}
 	}
 }
