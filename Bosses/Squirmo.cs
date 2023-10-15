@@ -21,7 +21,7 @@ namespace RealmOne.Bosses
     {
 
         public ref float RemainingShields => ref NPC.localAI[2];
-        
+
         public int MinionMaxHealthTotal
         {
             get => (int)NPC.ai[1];
@@ -31,6 +31,7 @@ namespace RealmOne.Bosses
         public override int BodyType => ModContent.NPCType<SquirmoBody>();
 
         public override int TailType => ModContent.NPCType<SquirmoTail>();
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Squirmo");
@@ -40,20 +41,15 @@ namespace RealmOne.Bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
             NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
-            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Venom] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
 
-
-            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.OnFire] = true;
-
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
-                CustomTexturePath = "RealmOne/NPCs/Enemies/ArtyWorm",
-                Position = new Vector2(40f, 28f),
-                PortraitPositionXOverride = 0f,
-                PortraitPositionYOverride = 12f,
-                PortraitScale = 1.5f,
+                CustomTexturePath = "RealmOne/Assets/Textures/SquirmoTexture",
+                PortraitScale = 0.8f, // Portrait refers to the full picture when clicking on the icon in the bestiary
+                PortraitPositionYOverride = 0f,
             };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
         }
 
         public override void SetDefaults()
