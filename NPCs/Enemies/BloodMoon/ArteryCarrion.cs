@@ -72,7 +72,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			var entitySource = NPC.GetSource_FromThis();
 			if (Vector2.Distance(TargetLocation, NPC.Center) <= 130)
 			{
-                if (Timer % 60 == 0)
+                if (Timer % 120 == 0)
                 {
 					var projectile = Projectile.NewProjectile(entitySource, NPC.Center, new Vector2(0f, 2f), ModContent.ProjectileType<ArteryCarrionProjectile>(), 10, 0f);
 				}

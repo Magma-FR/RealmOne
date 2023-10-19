@@ -74,7 +74,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
             //Blood Moon Drops
             if (npc.type == NPCID.BloodZombie)
 
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Crimclub>(), 42, 1, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Crimclub>(), 40, 1, 1));
 
          
 

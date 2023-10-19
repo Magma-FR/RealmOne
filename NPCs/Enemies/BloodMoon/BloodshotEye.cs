@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ModLoader.Utilities;
 
-namespace RealmOne.NPCs.Enemies.Bloodmoon
+namespace RealmOne.NPCs.Enemies.BloodMoon
 {
 	public class BloodshotEye : ModNPC
 	{
@@ -178,4 +178,3 @@ namespace RealmOne.NPCs.Enemies.Bloodmoon
         }
 	}
 }
-*/

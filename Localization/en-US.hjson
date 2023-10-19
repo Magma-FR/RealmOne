@@ -2326,6 +2326,7 @@ Mods: {
 			StickyPorcelain.DisplayName: Sticky Porcelain
 			BloodToothProj.DisplayName: Blood Tooth Proj
 			CrimClubSwing.DisplayName: Crim Club Swing
+			BloodshotEyeProjectile.DisplayName: Bloodshot Eye Projectile
 		}
 
 		NPCs: {
@@ -2502,6 +2503,7 @@ Mods: {
 			ToothSerpentBody.DisplayName: Tooth Serpent Body
 			ToothSerpentHead.DisplayName: Tooth Serpent Head
 			ToothSerpentTail.DisplayName: Tooth Serpent Tail
+			BloodshotEye.DisplayName: Bloodshot Eye
 		}
 
 		Dialogue: {

@@ -32,21 +32,77 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                 return 0;
             }
         }
+        private int timer = 0;
+        private bool circlingPlayer = false;
+
         public override int BodyType => NPCType<ToothSerpentBody>();
 
         public override int TailType => NPCType<ToothSerpentTail>();
 
+        float offset;
+
         public override void AI()
         {
-     
-            if (++NPC.ai[2] % 160 == 0)
+            NPC.ai[2]++;
+            if (NPC.ai[2] == 300)
+                offset = Main.rand.NextFloat(1.5f, 3);
+
+        
+
+            Player player = Main.player[NPC.target];
+            if (player.dead)
             {
-                int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity, ModContent.ProjectileType<BloodToothProj>(), 15, 0, Main.myPlayer, 0, 0);
-                Main.projectile[p].scale = 1f;
-                Main.projectile[p].friendly = false;
-                Main.projectile[p].hostile = true;
+                NPC.velocity.Y -= 0.2f;
+                NPC.EncourageDespawn(10);
+                return;
             }
-        }
+            if (!player.active || player.dead)
+            {
+                NPC.TargetClosest(false);
+                NPC.velocity = Vector2.Zero;
+                return;
+            }
+
+            if (timer == 0)
+            {
+                circlingPlayer = true;
+                NPC.velocity = Vector2.Zero;
+            }
+            if (timer >= 200) 
+            {
+                circlingPlayer = false;
+                timer = -200;
+            }
+
+            if (timer < 0)
+            {
+                timer++;
+                if (timer >= 0)
+                    timer = 0;
+                return;
+            }
+
+            if (circlingPlayer)
+            {
+                Vector2 pos = player.Center + new Vector2(300, 0).RotatedBy(MathHelper.ToRadians(NPC.ai[2] * offset));
+
+                float distance = 120f;
+                Vector2 targetPosition = player.Center + new Vector2(distance, 0f).RotatedBy(timer * 0.05f);
+                NPC.rotation = NPC.velocity.ToRotation() + MathHelper.PiOver2;
+                Vector2 direction = targetPosition - NPC.Center;
+                direction.Normalize();
+                NPC.velocity = direction * 7f;
+                if (NPC.ai[2] % 10 == 0 && NPC.ai[2] > 340)
+                {
+                    int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity, ModContent.ProjectileType<BloodToothProj>(), 15, 0, Main.myPlayer, 0, 0);
+                    Main.projectile[p].scale = 1f;
+                    Main.projectile[p].friendly = false;
+                    Main.projectile[p].hostile = true;
+                }
+            }
+        
+            timer++;
+       }
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -67,7 +123,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         {
 
             NPC.CloneDefaults(NPCID.DiggerHead);
-            NPC.damage = 18;
+            NPC.damage = 14;
+            NPC.defense = 1;
             NPC.netAlways = true;
             NPC.netUpdate = true;
             NPC.aiStyle = -1;
@@ -75,36 +132,40 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ToothedTendril>(), 4, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ToothedTendril>(), 40, 1, 1));
 
         }
 
         public override void Init()
         {
-            MinSegmentLength = 9;
-            MaxSegmentLength = 9;
-            MoveSpeed = 8f;
-            Acceleration = 6;
+            MinSegmentLength = 8;
+            MaxSegmentLength = 8;
+            MoveSpeed = 6f;
+            Acceleration = 0.5f;
             CanFly = true;
 
             CommonWormInit(this);
         }
         internal static void CommonWormInit(Worm worm)
         {
-            worm.MoveSpeed = 8f;
-            worm.Acceleration = 0.07f;
+            worm.MoveSpeed = 6f;
+            worm.Acceleration = 0.06f;
         }
         private int attackCounter;
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(attackCounter);
+            writer.Write(offset);
+
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
+            offset = reader.ReadSingle();
+
         }
 
-   
+
     }
     public class ToothSerpentBody : WormBody
     {
@@ -142,6 +203,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         {
 
             NPC.CloneDefaults(NPCID.DiggerBody);
+            NPC.damage = 8;
+            NPC.defense = 2;
             NPC.aiStyle = -1;
             NPC.netAlways = true;
             NPC.netUpdate = true;
@@ -170,6 +233,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         {
 
             NPC.CloneDefaults(NPCID.DiggerTail);
+            NPC.damage = 12;
+            NPC.defense = 2;
             NPC.aiStyle = -1;
             NPC.netAlways = true;
             NPC.netUpdate = true;

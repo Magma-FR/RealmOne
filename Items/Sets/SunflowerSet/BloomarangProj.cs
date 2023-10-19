@@ -34,10 +34,11 @@ namespace RealmOne.Items.Sets.SunflowerSet
         {
             Projectile.rotation += 0.15f;
             {
-                int dust2 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Sunflower, Projectile.velocity.X * 0.6f, Projectile.velocity.Y * 0.6f);
+            /*    int dust2 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Sunflower, Projectile.velocity.X * 0.6f, Projectile.velocity.Y * 0.6f);
                 Main.dust[dust2].velocity *= 0.05f;
                 Main.dust[dust2].scale = .5f;
                 Main.dust[dust2].noGravity = true;
+            */
             }
         }
         public override bool PreDraw(ref Color lightColor)

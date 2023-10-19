@@ -13,11 +13,13 @@ using Terraria.Audio;
 using RealmOne.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 {
     public class Crimclub : ModItem
     {
+     
         public override void SetDefaults()
         {
             Item.width = 48;
@@ -52,6 +54,11 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
     public class CrimClubSwing : ModProjectile
     {
         public override string Texture => "RealmOne/Items/Weapons/PreHM/BloodMoon/Crimclub";
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 30;
@@ -132,6 +139,11 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
     public class BloodToothProj : ModProjectile
     {
         public override string Texture => "RealmOne/Items/Weapons/PreHM/BloodMoon/BloodToothProj";
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -147,12 +159,33 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         {
             return Color.White;
         }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D texture = Request<Texture2D>("RealmOne/Assets/Effects/GlowLight").Value;
+            for (int k = 0; k < Projectile.oldPos.Length; k++)
+            {
+                var offset = new Vector2(Projectile.width / 2f, Projectile.height / 2f);
+                var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
+                Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + offset;
+                float sizec = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 1.4f);
+                Color color = new Color(255, 70, 129) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.oldRot[k], frame.Size() / 2f, sizec, SpriteEffects.None, 0);
+            }
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+
+            return true;
+        }
         public override void AI()
         {
             Projectile.velocity += new Vector2(0, 0.5f);
-            if (Projectile.velocity.Y >= 16)
+            if (Projectile.velocity.Y >= 13)
             {
-                Projectile.velocity.Y = 16;
+                Projectile.velocity.Y = 13;
             }
             Projectile.rotation = Projectile.velocity.ToRotation();
         }
