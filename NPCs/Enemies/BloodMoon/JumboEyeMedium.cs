@@ -56,15 +56,15 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             AnimationType = NPCID.DemonEye;
 
         }
-
-   /*     public override void FindFrame(int frameHeight)
-        {
-            NPC.frameCounter += 0.25f;
-            NPC.frameCounter %= Main.npcFrameCount[NPC.type];
-            int frame = (int)NPC.frameCounter;
-            NPC.frame.Y = frame * frameHeight;
-        }
-   */
+   
+        /*     public override void FindFrame(int frameHeight)
+             {
+                 NPC.frameCounter += 0.25f;
+                 NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+                 int frame = (int)NPC.frameCounter;
+                 NPC.frame.Y = frame * frameHeight;
+             }
+        */
         public override bool CheckDead()
         {
             for (int i = 0; i < Main.rand.Next(1, 1); i++)

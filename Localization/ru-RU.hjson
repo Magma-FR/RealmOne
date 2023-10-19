@@ -2499,6 +2499,9 @@ Mods: {
 			}
 
 			// ArteryCarrion.DisplayName: Artery Carrion
+			// ToothSerpentBody.DisplayName: Tooth Serpent Body
+			// ToothSerpentHead.DisplayName: Tooth Serpent Head
+			// ToothSerpentTail.DisplayName: Tooth Serpent Tail
 		}
 
 		Dialogue: {

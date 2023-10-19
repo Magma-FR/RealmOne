@@ -1,4 +1,5 @@
-﻿using RealmOne.Common.Systems.GenPasses;
+﻿using RealmOne.Common.Core;
+using RealmOne.Common.Systems.GenPasses;
 using RealmOne.Items.Accessories;
 using RealmOne.Items.Food;
 using RealmOne.Items.Misc;
@@ -114,7 +115,28 @@ namespace RealmOne.Common.Systems
 
     public class WorldSystem : ModSystem
     {
+        private void Pumpkin(GenerationProgress progress, GameConfiguration configuration)
+        {
+            progress.Message = "Take a fucking seat mate";
+            for (int k = 60; k < Main.maxTilesX - 60; k++)
+            {
+                if (k > Main.maxTilesX / 3 && k < Main.maxTilesX / 3 * 2) 
+                {
+                    if (WorldGen.genRand.NextBool(16)) 
+                    {
+                        for (int y = 12; y < Main.worldSurface; y++)
+                        {
+                            if (Main.tile[k, y].TileType == TileID.Grass && Main.tile[k + 1, y].TileType == TileID.Grass)
+                            {
+                                int type = TileID.Jackolanterns;
 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+                    
     /*    public class Test : GenPass
         {
             public Test(string name, double loadWeight) : base(name, loadWeight)
