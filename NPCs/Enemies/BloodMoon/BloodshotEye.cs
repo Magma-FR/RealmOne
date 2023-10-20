@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ModLoader.Utilities;
+using RealmOne.Items.Weapons.PreHM.BloodMoon;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
@@ -53,7 +54,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			}
 
 			var entitySource = NPC.GetSource_FromThis();
-			if (Vector2.Distance(player.Center, NPC.Center) <= 350)
+			if (Vector2.Distance(player.Center, NPC.Center) <= 250)
 			{
 				
 				
@@ -65,11 +66,22 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 {
 					Attacking = false;
                 }
-				if (Timer == 60)
+				if(Timer== 60)
 				{
-					var projectile = Projectile.NewProjectile(entitySource, NPC.Center, player.Center - NPC.Center, ModContent.ProjectileType<BloodshotEyeProjectile>(), 10, 0f);
+					Lighting.AddLight(NPC.position, r: 1f, 0.2f, 0.6f);
 				}
-				if (Timer == 120)
+                Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
+
+                if (Timer == 80)
+				{
+					if (Main.netMode != NetmodeID.MultiplayerClient)
+					{
+						SoundEngine.PlaySound(SoundID.NPCHit19, NPC.position);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (6 * NPC.spriteDirection), NPC.Center.Y - 8, direction.X, direction.Y, ProjectileID.BloodShot, 9, 1, Main.myPlayer, 0, 0);
+					}
+
+                }
+                if (Timer == 120)
 				{
 					Timer = 0;
 				}

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -46,22 +47,25 @@ namespace RealmOne.NPCs.Critters
         {
             return SpawnCondition.OverworldNight.Chance * 0.16f;
         }
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.NPCGlowmask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>(Texture + "_Glow").Value, screenPos);
 
-       /* public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        {
-            Main.spriteBatch.Draw(
-                Mod.Assets.Request<Texture2D>("NPCs/Critters/ImpactBunny_Glow").Value,
-                NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY),
-                NPC.frame,
-                Color.White,
-                NPC.rotation,
-                NPC.frame.Size() / 2,
-                NPC.scale,
-                SpriteEffects.None,
-                0
-            );
 
-        }*/
+        /* public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+         {
+             Main.spriteBatch.Draw(
+                 Mod.Assets.Request<Texture2D>("NPCs/Critters/ImpactBunny_Glow").Value,
+                 NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY),
+                 NPC.frame,
+                 Color.White,
+                 NPC.rotation,
+                 NPC.frame.Size() / 2,
+                 NPC.scale,
+                 SpriteEffects.None,
+                 0
+             );
+
+         }*/
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {

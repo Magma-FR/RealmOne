@@ -18,6 +18,7 @@ using Terraria.GameContent.ItemDropRules;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 {
+
     public class ToothSerpentHead: WormHead
     {
 
@@ -47,7 +48,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
             if (NPC.ai[2] == 300)
                 offset = Main.rand.NextFloat(1.5f, 3);
 
-        
+
 
             Player player = Main.player[NPC.target];
             if (player.dead)
@@ -68,7 +69,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                 circlingPlayer = true;
                 NPC.velocity = Vector2.Zero;
             }
-            if (timer >= 200) 
+            if (timer >= 200)
             {
                 circlingPlayer = false;
                 timer = -200;
@@ -92,7 +93,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                 Vector2 direction = targetPosition - NPC.Center;
                 direction.Normalize();
                 NPC.velocity = direction * 7f;
-                if (NPC.ai[2] % 10 == 0 && NPC.ai[2] > 340)
+                if (NPC.ai[2] % 10 == 0 && NPC.ai[2] > 100)
                 {
                     int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity, ModContent.ProjectileType<BloodToothProj>(), 15, 0, Main.myPlayer, 0, 0);
                     Main.projectile[p].scale = 1f;
@@ -100,9 +101,9 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                     Main.projectile[p].hostile = true;
                 }
             }
-        
+
             timer++;
-       }
+        }
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
