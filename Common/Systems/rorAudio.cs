@@ -131,6 +131,9 @@ public class rorAudio : ModSystem
 
     public static readonly SoundStyle PorcelainDamaged;
 
+    public static readonly SoundStyle GoreGun;
+
+
     static rorAudio()
     {
 
@@ -196,6 +199,8 @@ public class rorAudio : ModSystem
         MagpieCalling = new SoundStyle("RealmOne/Assets/Soundss/MagpieCalling", (SoundType)0);
         BulbShatter = new SoundStyle("RealmOne/Assets/Soundss/BulbShatter", (SoundType)0);
         PorcelainDamaged = new SoundStyle("RealmOne/Assets/Soundss/porcelainbreak", (SoundType)0);
+        GoreGun= new SoundStyle("RealmOne/Assets/Soundss/GoreGun", (SoundType)0);
+
 
     }
 }

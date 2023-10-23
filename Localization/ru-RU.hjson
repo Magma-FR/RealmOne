@@ -2057,6 +2057,11 @@ Mods: {
 				// DisplayName: Cactus Fruit
 				// Tooltip: ""
 			}
+
+			FleshToothSMG: {
+				// DisplayName: Flesh Tooth S M G
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {

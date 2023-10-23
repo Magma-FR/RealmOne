@@ -21,9 +21,9 @@ namespace RealmOne.NPCs.Critters
 
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Bunny];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            { // Influences how the NPC looks in the Bestiary
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                Velocity = 1f
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
@@ -47,7 +47,7 @@ namespace RealmOne.NPCs.Critters
         {
             return SpawnCondition.OverworldNight.Chance * 0.16f;
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.NPCGlowmask(spriteBatch, NPC, Mod.Assets.Request<Texture2D>(Texture + "_Glow").Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Critters/ImpactBunny_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
 
         /* public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
