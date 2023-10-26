@@ -90,7 +90,7 @@ namespace RealmOne.Tiles.Banners
                         break;
 
                     case 4:
-                        Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<Eye1>()] = true;
+                        Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<ImpactDrone>()] = true;
                         Main.SceneMetrics.hasBanner = true;
                         break;
 

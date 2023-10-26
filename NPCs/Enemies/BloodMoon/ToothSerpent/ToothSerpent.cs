@@ -21,7 +21,11 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
     public class ToothSerpentHead: WormHead
     {
-
+        public override void SetStaticDefaults()
+        {
+           
+          
+        }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (Main.bloodMoon) 

@@ -26,7 +26,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             // DisplayName.SetDefault("Eye1");
             Main.npcFrameCount[NPC.type] = 7;
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Hide = true,
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction

@@ -22,7 +22,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             // DisplayName.SetDefault("Zombie Farmer");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };

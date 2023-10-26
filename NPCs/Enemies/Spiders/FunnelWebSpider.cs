@@ -15,8 +15,7 @@ namespace RealmOne.NPCs.Enemies.Spiders
         {
             DisplayName.SetDefault("Funnel Web Spider");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.EyeballFlyingFish];
-
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -47,7 +46,7 @@ namespace RealmOne.NPCs.Enemies.Spiders
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDay.Chance * 0.124f;
+            return SpawnCondition.OverworldDay.Chance * 0.12f;
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

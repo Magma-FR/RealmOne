@@ -22,13 +22,10 @@ namespace RealmOne.NPCs.Enemies.Forest
             Main.npcFrameCount[NPC.type] = 5;
 
 
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            {
-                Velocity = 1f
-            };
+          
+
             glow = ModContent.Request<Texture2D>(Texture + "_Glow");
 
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
 
 

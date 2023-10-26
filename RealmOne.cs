@@ -5,6 +5,21 @@ using Terraria.ModLoader;
 using tModPorter;
 using RealmOne.Common.Core;
 using Terraria.GameContent.Bestiary;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using Microsoft.Xna.Framework;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.ModLoader;
+using Terraria.ID;
+using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using System.Reflection;
+using Terraria.DataStructures;
+using System.Collections.Generic;
+using RealmOne.Common;
 
 namespace RealmOne
 {
@@ -15,6 +30,25 @@ namespace RealmOne
         public static float ModTime { get; internal set; }
         public static object MessageType { get; internal set; }
 
+        public override void Unload()
+        {
+            
+        }
+        public override void Load()
+        {
+            // Your other initialization code
+
+            // Add a new instance of your sky system
+       
+
+             /*   if (!Main.dedServ)
+                {
+                Terraria.Graphics.Effects.Filters.Scene["RealmOne:BloodSky"] = new Filter(new ScreenShaderData("BloodSky").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryHigh);
+                SkyManager.Instance["RealmOne:BloodSky"] = new BloodSky();
+             }
+              */  
+            
+        }
         internal static object GetLegacySoundSlot(object custom, string v)
         {
             throw new NotImplementedException();

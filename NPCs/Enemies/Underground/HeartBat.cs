@@ -20,9 +20,9 @@ namespace RealmOne.NPCs.Enemies.Underground
             Main.npcFrameCount[NPC.type] = 5;
             //     Main.npcCatchable[NPC.type] = true;
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            {
-                Velocity = 1f
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            { // Influences how the NPC looks in the Bestiary
+                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
             glow = ModContent.Request<Texture2D>(Texture + "_Glow");
 

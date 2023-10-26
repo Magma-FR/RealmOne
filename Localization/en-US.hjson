@@ -2509,6 +2509,7 @@ Mods: {
 			ToothSerpentHead.DisplayName: Tooth Serpent Head
 			ToothSerpentTail.DisplayName: Tooth Serpent Tail
 			BloodshotEye.DisplayName: Bloodshot Eye
+			ImpactDrone.DisplayName: Impact Drone
 		}
 
 		Dialogue: {

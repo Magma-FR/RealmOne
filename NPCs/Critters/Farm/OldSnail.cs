@@ -24,7 +24,7 @@ namespace RealmOne.NPCs.Critters.Farm
 
             Main.npcCatchable[NPC.type] = true;
             Main.npcFrameCount[NPC.type] = 7;
-
+        
             NPCID.Sets.CountsAsCritter[Type] = true;
         }
 

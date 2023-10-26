@@ -43,14 +43,14 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Mega Squirm");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.DiggerHead];
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 CustomTexturePath = "RealmOne/NPCs/Enemies/Forest/MegaSquirm1", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
                 Position = new Vector2(40f, 28f),
                 PortraitPositionXOverride = 0f,
                 PortraitPositionYOverride = 12f
             };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
         }
 
         public override void SetDefaults()

@@ -25,11 +25,11 @@ namespace RealmOne.NPCs.TownNPC
             Main.npcFrameCount[Type] = 1;
 
             // Hide this NPC from the bestiary.
-            NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0)
-            {
-                Hide = true
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            { // Influences how the NPC looks in the Bestiary
+                Hide = true,
             };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
 
         public override void SetDefaults()
