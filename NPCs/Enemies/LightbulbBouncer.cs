@@ -67,8 +67,6 @@ namespace RealmOne.NPCs.Enemies
 
         public override void AI()
         {
-
-            // Leave a dust trail behind the enemy
             Vector2 center = NPC.Center;
             for (int j = 0; j < 60; j++)
             {

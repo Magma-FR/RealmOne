@@ -1,5 +1,6 @@
 using RealmOne.Buffs;
 using RealmOne.Items.Misc;
+using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -39,7 +40,7 @@ namespace RealmOne.Items.Potions
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Mushroom, 2);
-            recipe.AddIngredient(ModContent.ItemType<Lightbulb>(), 2);
+            recipe.AddIngredient(ModContent.ItemType<LiteBulb>(), 2);
             recipe.AddIngredient(ItemID.BottledWater, 1);
             recipe.AddTile(TileID.Bottles);
             recipe.Register();
