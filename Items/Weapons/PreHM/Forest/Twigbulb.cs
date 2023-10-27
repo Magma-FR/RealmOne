@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Misc;
+using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Projectiles.Magic;
 using RealmOne.RealmPlayer;
 using ReLogic.Content;
@@ -91,7 +92,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
         {
             CreateRecipe(1)
             .AddIngredient(ItemID.Glass, 15)
-            .AddIngredient(ModContent.ItemType<Lightbulb>(), 6)
+            .AddIngredient(ModContent.ItemType<LiteBulb>(), 6)
 
             .AddRecipeGroup("Wood", 16)
             .AddTile(TileID.WorkBenches)

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using RealmOne.Items.Misc;
+using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Projectiles.Bullet;
 using Terraria;
 using Terraria.DataStructures;
@@ -59,10 +60,10 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(Mod, "BrassIngot", 4);
+            recipe.AddIngredient(Mod, "BrassIngot", 6);
             recipe.AddIngredient(ItemID.Glass, 15);
 
-            recipe.AddIngredient(ModContent.ItemType<Lightbulb>(), 8);
+            recipe.AddIngredient(ModContent.ItemType<LiteBulb>(), 8);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }

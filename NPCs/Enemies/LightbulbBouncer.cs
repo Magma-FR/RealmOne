@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Misc;
+using RealmOne.Items.Misc.EnemyDrops;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -118,7 +119,7 @@ namespace RealmOne.NPCs.Enemies
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Lightbulb>(), 1, 1, 3));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LiteBulb>(), 1, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ItemID.Glass, 1, 1, 5));
 
         }
