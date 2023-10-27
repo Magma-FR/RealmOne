@@ -20,7 +20,6 @@ namespace RealmOne.NPCs.Enemies.Impact
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 4;
-           
         }
 
 		public override void SetDefaults()
@@ -32,7 +31,7 @@ namespace RealmOne.NPCs.Enemies.Impact
 			NPC.lifeMax = 58;
 			NPC.HitSound = SoundID.NPCHit4;
 			NPC.DeathSound = SoundID.NPCDeath44;
-			NPC.value = 60f;
+			NPC.value = Item.buyPrice(0,0,2,15);
 			NPC.knockBackResist = 0.5f; 
 			
 			NPC.noGravity = true;
