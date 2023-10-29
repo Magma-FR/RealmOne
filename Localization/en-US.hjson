@@ -73,18 +73,6 @@ Mods: {
 					'''
 			}
 
-			SpaceStarfish: {
-				DisplayName: Space Starfish
-				Tooltip:
-					'''
-					<right> to receive Lustrea's recommendations
-					Below are the Weapons you get from it!(You also get other necessities!)
-					[i:RealmOne/ShatteredGemBlade][i:RealmOne/DualWieldCrossbows]
-					[i:RealmOne/Twigbulb][i:RealmOne/EmptyLocket]
-
-					'''
-			}
-
 			EntropyMedallion: {
 				DisplayName: Entropy Medallion
 				Tooltip: ""
@@ -102,19 +90,6 @@ Mods: {
 			SquirmoLorePageOne: {
 				DisplayName: Squirmo Lorescroll
 				Tooltip: Open up a scroll to reveal the secrets of the soil
-			}
-
-			TheCalender: {
-				DisplayName: The Calender
-				Tooltip:
-					'''
-					A handy booklet of information
-					Shows a handy interface of the current date and month
-					Shows a small sticky note on the side of the interface that shows side quests
-					Side Quests are simple quests that reward you for completing it
-					Shows the time, date and shows when a certain NPC is selling items at a sale
-					TEST ITEM!! DOES NOT WORK
-					'''
 			}
 
 			LovecraftPaper: {
@@ -225,15 +200,6 @@ Mods: {
 					A classic bottle of fine moonglow and skybreeze liquid
 					Using the cologne provides you with a distinct aroma
 					Gives the player cheaper shop prices, increased defense by 3+, reduced enemy aggression and 8% increased movement speed
-					'''
-			}
-
-			TheRedAxe: {
-				DisplayName: The Red Axe
-				Tooltip:
-					'''
-					A weapon, a tool? Who matters, all we know is that it's red and full of magic!
-					Vanquish those annoying pests while you chop down some lumber ;)
 					'''
 			}
 
@@ -2004,13 +1970,17 @@ Mods: {
 			}
 
 			BloodHook: {
-				Tooltip: ""
+				Tooltip: Latches onto enemies while still being to hook onto walls
 				DisplayName: Blood Hook
 			}
 
 			Crimclub: {
 				DisplayName: Crimclub
-				Tooltip: ""
+				Tooltip:
+					'''
+					Swing a deadly and spiky club that knockback enemies heavily
+					Has a 50% chance of a bloody tooth to shoot out of the club, dealing high damage to enemies.
+					'''
 			}
 
 			BloodBlower: {
@@ -2025,22 +1995,38 @@ Mods: {
 
 			BarrensludgeJelly: {
 				DisplayName: Barrensludge Jelly
-				Tooltip: Sludgy!
+				Tooltip:
+					'''
+					Minor Improvements to all stats
+					Sludgy!
+					'''
 			}
 
 			BarrensludgeLime: {
 				DisplayName: Barrensludge Lime
-				Tooltip: Sour!
+				Tooltip:
+					'''
+					Minor Improvements to all stats
+					Sour!
+					'''
 			}
 
 			EyeballSoup: {
 				DisplayName: Eyeball Soup
-				Tooltip: Stares at you while you slurp it down!
+				Tooltip:
+					'''
+					Medium Improvements to all stats
+					Stares at you while you slurp it down!
+					'''
 			}
 
 			JellyfishPlatter: {
 				DisplayName: Jellyfish Platter
-				Tooltip: Slimy, electric but also very nutritious
+				Tooltip:
+					'''
+					Minor Improvements to all stats
+					Slimy, electric but also very nutritious
+					'''
 			}
 
 			ToothedTendril: {
@@ -2050,22 +2036,57 @@ Mods: {
 
 			SuperWheat: {
 				DisplayName: Super Wheat
-				Tooltip: ""
+				Tooltip: Smells like beer
 			}
 
 			CactusFruit: {
 				DisplayName: Cactus Fruit
-				Tooltip: ""
+				Tooltip:
+					'''
+					Minor Improvements to all stats
+					'Bit prickly and poisonous'
+					'''
 			}
 
 			FleshToothSMG: {
 				DisplayName: Flesh Tooth S M G
-				Tooltip: ""
+				Tooltip:
+					'''
+					Shoots a burst of bloody teeth in 3 rounds
+					Very Inaccurate 
+					'''
 			}
 
 			LiteBulb: {
 				DisplayName: Lite Bulb
 				Tooltip: ""
+			}
+
+			ToothBody: {
+				DisplayName: Goretooth Teethplate
+				Tooltip:
+					'''
+					1+ Increased Minion
+					4% increased Summon Damage
+					'''
+			}
+
+			ToothHead: {
+				DisplayName: Goretooth Eyemask
+				Tooltip:
+					'''
+					5% Increased Summon Damage
+					1+ Max Minion
+					'''
+			}
+
+			ToothLegs: {
+				DisplayName: Goretooth Teethfeet
+				Tooltip:
+					'''
+					8% increased movement speed
+					8% increased Whip Attack Speed
+					'''
 			}
 		}
 

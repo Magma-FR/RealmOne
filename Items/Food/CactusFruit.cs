@@ -38,7 +38,7 @@ namespace RealmOne.Items.Food
         }
         public override bool CanUseItem(Player player)
         {
-            player.AddBuff(BuffID.Poisoned, 3500);
+            player.AddBuff(BuffID.Poisoned, 400);
             return true;
         }
 
