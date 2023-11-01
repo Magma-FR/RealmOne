@@ -27,7 +27,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 
         public override void SetDefaults()
         {
-            Item.damage = 13;
+            Item.damage = 18;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 32;
             Item.height = 32;

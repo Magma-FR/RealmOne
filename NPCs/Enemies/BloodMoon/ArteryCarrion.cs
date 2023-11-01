@@ -9,6 +9,7 @@ using Terraria.ModLoader.Utilities;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria.GameContent.ItemDropRules;
 using RealmOne.Items.Weapons.PreHM.BloodMoon;
+using RealmOne.Items.Food;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
@@ -102,7 +103,9 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshToothSMG>(), 28));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshToothSMG>(), 18));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
+
 
         }
         private int AnimFrameCount;

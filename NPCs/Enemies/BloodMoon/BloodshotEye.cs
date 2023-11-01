@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ModLoader.Utilities;
 using RealmOne.Items.Weapons.PreHM.BloodMoon;
+using RealmOne.Items.Food;
+using Terraria.GameContent.ItemDropRules;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
@@ -29,7 +31,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			NPC.height = 9;
 			NPC.damage = 10;
 			NPC.defense = 3;
-			NPC.lifeMax = 50;
+			NPC.lifeMax = 45;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath2;
 			NPC.value = 60f;
@@ -102,7 +104,11 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			FindFrame(20);
 		}
 
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
 
+        }
         public override void HitEffect(NPC.HitInfo hit) // when the npc is hit, do smth (better than checking when hit by proj or melee)
         {
             for (int i = 0; i < 10; i++)

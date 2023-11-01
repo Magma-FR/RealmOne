@@ -1,4 +1,5 @@
 ﻿using RealmOne.Items.Accessories;
+using RealmOne.Items.Food;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Opens;
@@ -74,9 +75,16 @@ namespace RealmOne.Common.Global.GlobalNPCList
             //Blood Moon Drops
             if (npc.type == NPCID.BloodZombie)
 
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Crimclub>(), 40, 1, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Crimclub>(), 20));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
 
-         
+
+
+            if (npc.type == NPCID.Drippler)
+
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 4, 1, 2));
+
+
 
             //Evil Biome drops
 

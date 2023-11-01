@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Items.Food;
 using RealmOne.Items.Placeables.BannerItems;
 using RealmOne.NPCs.Enemies.Corruption;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
@@ -57,7 +59,11 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon  ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
-        
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
+
+        }
 
         public override bool CheckDead()
         {

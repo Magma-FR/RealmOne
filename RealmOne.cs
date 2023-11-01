@@ -41,12 +41,12 @@ namespace RealmOne
             // Add a new instance of your sky system
        
 
-             /*   if (!Main.dedServ)
+               if (!Main.dedServ)
                 {
-                Terraria.Graphics.Effects.Filters.Scene["RealmOne:BloodSky"] = new Filter(new ScreenShaderData("BloodSky").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryHigh);
+                Terraria.Graphics.Effects.Filters.Scene["RealmOne:BloodSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0f), EffectPriority.VeryHigh);
                 SkyManager.Instance["RealmOne:BloodSky"] = new BloodSky();
              }
-              */  
+              
             
         }
         internal static object GetLegacySoundSlot(object custom, string v)
@@ -59,7 +59,7 @@ namespace RealmOne
             throw new NotImplementedException();
         }
 
-
+        
 
     }
     internal class BloodMoonOSTSwitch : ModSceneEffect

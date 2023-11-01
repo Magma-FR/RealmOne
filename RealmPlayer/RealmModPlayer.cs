@@ -20,6 +20,7 @@ using Terraria.GameContent;
 
 namespace RealmOne.RealmPlayer
 {
+
     public static class Zones
     {
         public static bool ZoneFarmy(this Player player)
@@ -337,6 +338,11 @@ namespace RealmOne.RealmPlayer
 
 
 
+
+        }
+        public override void PostUpdateMiscEffects()
+        {
+            Player.ManageSpecialBiomeVisuals("RealmOne:BloodSky", Main.bloodMoon);
 
         }
         public override bool CanConsumeAmmo(Item weapon, Item ammo)
