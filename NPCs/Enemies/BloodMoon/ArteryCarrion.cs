@@ -10,6 +10,7 @@ using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria.GameContent.ItemDropRules;
 using RealmOne.Items.Weapons.PreHM.BloodMoon;
 using RealmOne.Items.Food;
+using Terraria.GameContent.Bestiary;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
@@ -100,7 +101,18 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                   BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
 
+                new FlavorTextBestiaryInfoElement("This more aggressive breed of Dripplers vomit out bouncing blood clots that damage the player"),
+
+
+            });
+        }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshToothSMG>(), 18));

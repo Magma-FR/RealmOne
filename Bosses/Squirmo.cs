@@ -45,8 +45,8 @@ namespace RealmOne.Bosses
 
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
-                CustomTexturePath = "RealmOne/Assets/Textures/SquirmoTexture",
-                PortraitScale = 0.8f, // Portrait refers to the full picture when clicking on the icon in the bestiary
+                CustomTexturePath = "RealmOne/Assets/Textures/NewSquirmo",
+                PortraitScale = 1f, // Portrait refers to the full picture when clicking on the icon in the bestiary
                 PortraitPositionYOverride = 0f,
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
@@ -93,7 +93,8 @@ namespace RealmOne.Bosses
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-
+                           BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
 
                 new FlavorTextBestiaryInfoElement("The dreaded controller and ruler of all creepy crawlies of the soil. Attacks anything that touches a grain of dirt, without any care of destruction"),
 

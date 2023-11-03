@@ -23,8 +23,27 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
     {
         public override void SetStaticDefaults()
         {
-           
-          
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            { // Influences how the NPC looks in the Bestiary
+                CustomTexturePath = "RealmOne/NPCs/Enemies/BloodMoon/ToothSerpent/ToothSerpent", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
+                Position = new Vector2(40f, 28f),
+                PortraitPositionXOverride = 0f,
+                PortraitPositionYOverride = 12f
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
+
+        }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                   BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
+
+                new FlavorTextBestiaryInfoElement("A flesh-hungry serpent, the Tooth Serpent slithers around in the sky, launching bloodteeth at the player. If it gets close enough to a Terrarian, it starts to circle around the player, getting it trapped and ready for its next meal."),
+
+
+            });
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -177,7 +196,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         public override void SetStaticDefaults()
         {
 
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Hide = true // Hides this NPC from the Bestiary, useful for multi-part NPCs whom you only want one entry.
             };

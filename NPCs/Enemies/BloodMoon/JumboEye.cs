@@ -27,11 +27,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             // DisplayName.SetDefault("Eye1");
             Main.npcFrameCount[NPC.type] = 7;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
-            { // Influences how the NPC looks in the Bestiary
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
-            };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
         }
 
@@ -99,14 +94,11 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
-            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				// Sets the spawning conditions of this NPC that is listed in the bestiary.
                    BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
 
-				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("Mistaken by the seer of the land, this oversized eyeball is full of other eyeballs!"),
 
 			

@@ -73,17 +73,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
         {
             // 4  is the chance, so 4 chance of dropping it. And 1-2 is the amount you will probably get
             //Blood Moon Drops
-            if (npc.type == NPCID.BloodZombie)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Crimclub>(), 20));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
-
-
-
-            if (npc.type == NPCID.Drippler)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 4, 1, 2));
-
+           
 
 
             //Evil Biome drops
@@ -134,58 +124,70 @@ namespace RealmOne.Common.Global.GlobalNPCList
 
             //Hell Drops
             if (npc.type == NPCID.Demon)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2)); 
-
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
+            }
             if (npc.type == NPCID.Hellbat)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
-
+            }
             if (npc.type == NPCID.LavaSlime)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
-
+            }
             if (npc.type == NPCID.FireImp)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
-
+            }
             if (npc.type == NPCID.BoneSerpentHead)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.VoodooDemon)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.Demon)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
-
+            }
             //Goblin Army
             if (npc.type == NPCID.GoblinArcher)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinPeon)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinScout)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
+            }
 
             if (npc.type == NPCID.GoblinThief)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinWarrior)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinSorcerer)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
+            }
 
             if (npc.type == NPCID.GoblinSummoner)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 5));
 
-            if (npc.type == NPCID.ServantofCthulhu)
+            }
 
+            if (npc.type == NPCID.ServantofCthulhu)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshyCornea>(), 3, 1, 2));
+            }
 
             if (npc.type == NPCID.EyeofCthulhu)
             {
@@ -200,20 +202,26 @@ namespace RealmOne.Common.Global.GlobalNPCList
             }
 
             if (npc.type == NPCID.KingSlime)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RoyalRawhide>(), 2, 1, 1));
+            }
 
             if (npc.type == NPCID.SkeletronHead)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DungeonPendant>(), 2, 1, 1));
 
-            if (npc.type == NPCID.Vampire)
+            }
 
+            if (npc.type == NPCID.Vampire)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1 
+            }
 
             if (npc.type == NPCID.VampireBat)
+            {
 
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1 
+            }
 
 
 

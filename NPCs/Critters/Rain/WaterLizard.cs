@@ -19,7 +19,11 @@ namespace RealmOne.NPCs.Critters.Rain
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.GoldfishWalker];
             Main.npcCatchable[NPC.type] = true;
 
-           
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                Velocity = 1f
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             NPCID.Sets.CountsAsCritter[Type] = true;
 
         }

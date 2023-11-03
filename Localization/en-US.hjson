@@ -2088,6 +2088,11 @@ Mods: {
 					8% increased Whip Attack Speed
 					'''
 			}
+
+			SanguineSlugItem: {
+				DisplayName: Sanguine Slug Item
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2536,6 +2541,7 @@ Mods: {
 			ToothSerpentTail.DisplayName: Tooth Serpent Tail
 			BloodshotEye.DisplayName: Bloodshot Eye
 			ImpactDrone.DisplayName: Impact Drone
+			SanguineSlug.DisplayName: Sanguine Slug
 		}
 
 		Dialogue: {
@@ -2606,5 +2612,7 @@ Mods: {
 				}
 			}
 		}
+
+		Emotes.SmugBubble.Command: smugbubble
 	}
 }

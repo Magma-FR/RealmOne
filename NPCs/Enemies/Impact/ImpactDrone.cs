@@ -12,6 +12,7 @@ using RealmOne.Projectiles.Bullet;
 using RealmOne.Items.Misc.EnemyDrops;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using Terraria.GameContent.Bestiary;
 
 namespace RealmOne.NPCs.Enemies.Impact
 {
@@ -19,10 +20,25 @@ namespace RealmOne.NPCs.Enemies.Impact
     {
         public override void SetStaticDefaults()
         {
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            { // Influences how the NPC looks in the Bestiary
+                Velocity = 0.8f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             Main.npcFrameCount[Type] = 4;
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                   BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 
-		public override void SetDefaults()
+                new FlavorTextBestiaryInfoElement("Programmed to zoom and cause doom, unfortunately this reckless and hyperactive drone has its CPU coded to be a complete trigger happy drone."),
+
+
+            });
+        }
+        public override void SetDefaults()
 		{
 			NPC.width = 28;
 			NPC.height = 20;
@@ -94,6 +110,7 @@ namespace RealmOne.NPCs.Enemies.Impact
 				
 			FindFrame(44);
 		}
+       
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

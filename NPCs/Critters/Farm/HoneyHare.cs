@@ -20,6 +20,11 @@ namespace RealmOne.NPCs.Critters.Farm
             DisplayName.SetDefault("Honey Hare");
 
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.GoldBunny];
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                Velocity = 1f
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
             NPCID.Sets.CountsAsCritter[Type] = true;
             Main.npcCatchable[NPC.type] = true;

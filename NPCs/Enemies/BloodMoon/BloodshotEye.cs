@@ -9,6 +9,7 @@ using Terraria.ModLoader.Utilities;
 using RealmOne.Items.Weapons.PreHM.BloodMoon;
 using RealmOne.Items.Food;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.Bestiary;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
@@ -17,12 +18,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 		public override void SetStaticDefaults()
 		{
 			Main.npcFrameCount[Type] = 9;
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
-            { // Influences how the NPC looks in the Bestiary
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
-            };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
-
+        
         }
 
 		public override void SetDefaults()
@@ -111,12 +107,23 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         }
         public override void HitEffect(NPC.HitInfo hit) // when the npc is hit, do smth (better than checking when hit by proj or melee)
         {
-            for (int i = 0; i < 10; i++)
+            for (int k = 0; k < 18; k++)
             {
-                Dust.NewDust(NPC.Center, NPC.width, NPC.height, DustID.Blood, Main.rand.Next(-1, 1), Main.rand.Next(-1, 1));
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                   BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
 
+                new FlavorTextBestiaryInfoElement("Small but deadly, the bloodshot eye lights up and blinks a powerful blood shot that is aimed at the player"),
+
+
+            });
+        }
         private int AnimFrameCount;
 		private int AnimTimer;
 		public override void FindFrame(int frameHeight)

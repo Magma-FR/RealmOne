@@ -2,6 +2,7 @@
 using RealmOne.Items.Food;
 using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
+using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,11 +15,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
-            { // Influences how the NPC looks in the Bestiary
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
-            };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
+           
 
         }
 
@@ -83,6 +80,19 @@ namespace RealmOne.NPCs.Enemies.Corruption
 
 
 
+        }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                   BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheCorruption,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
+                                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+
+
+                new FlavorTextBestiaryInfoElement("A tumbling and hungry entity of the corruption, it rolls around, attempting to penetrate anything with its sharp teeth."),
+
+
+            });
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
