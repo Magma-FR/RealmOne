@@ -113,10 +113,10 @@ namespace RealmOne.NPCs.TownNPC
         public override List<string> SetNPCNameList()
         {
             return new List<string>() {
-                "Big Dick Motherfucker",
-                "Cuckaroo",
-                "Cum Squirter",
-                "Dr. Retard"
+                "Charlie Sickle",
+                "Lil Reed",
+                "Hopper",
+                "Wheetie"
             };
         }
     
