@@ -71,7 +71,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 }
 				if(Timer== 60)
 				{
-					Lighting.AddLight(NPC.position, r: 1f, 0.2f, 0.6f);
+					Lighting.AddLight(NPC.position, r: 1.5f, 0.2f, 0.6f);
 				}
                 Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 

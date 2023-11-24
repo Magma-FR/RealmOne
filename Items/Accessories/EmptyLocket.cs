@@ -30,6 +30,7 @@ namespace RealmOne.Items.Accessories
             Item.rare = ItemRarityID.Purple;
             Item.accessory = true;
             Item.defense += 1;
+            
 
         }
         public override bool CanRightClick()

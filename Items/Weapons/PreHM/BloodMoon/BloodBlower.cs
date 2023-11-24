@@ -27,12 +27,12 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 
         public override void SetDefaults()
         {
-            Item.damage = 18;
+            Item.damage = 20;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 32;
             Item.height = 32;
-            Item.useTime = 42;
-            Item.useAnimation = 42;
+            Item.useTime = 40;
+            Item.useAnimation = 40;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2f;
             Item.value = 30000;

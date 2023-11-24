@@ -52,7 +52,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
           
 
         }
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon  ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon  ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {

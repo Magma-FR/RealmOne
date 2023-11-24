@@ -36,6 +36,7 @@
 		<PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Assets\Textures\Emoticons\" />
 	  <Folder Include="Items\Tools\Other\" />
 	  <Folder Include="Items\Weapons\PreHM\Crimson\" />
 	  <Folder Include="Items\Weapons\PreHM\Forest\Wattles\" />

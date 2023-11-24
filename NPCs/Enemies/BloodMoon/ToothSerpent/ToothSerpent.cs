@@ -49,7 +49,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         {
             if (Main.bloodMoon) 
             {
-                return .15f;
+                return .07f;
             }
             else
             {
@@ -246,7 +246,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         public override void SetStaticDefaults()
         {
 
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Hide = true // Hides this NPC from the Bestiary, useful for multi-part NPCs whom you only want one entry.
             };

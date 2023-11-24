@@ -81,20 +81,19 @@ namespace RealmOne.Items.Others
 
         public override void UpdateInventory(Player player)
         {
-            // Decrease the cooldown timer
             if (cooldownTimer > 0)
             {
                 cooldownTimer--;
             }
         }
 
-        public int spreadMax = 22; //Maximal Projectile Spread
-        public int spreadMin = -20; //Minimum Projectile Spread
+        public int spreadMax = 22; 
+        public int spreadMin = -20; 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position,
            Vector2 velocity, int type,
            int damage, float knockback)
         {
-            int numberProjectiles = 1; // shoots *(Inserted Value)* of projectiles
+            int numberProjectiles = 1; 
             for (int index = 0; index < numberProjectiles; ++index)
             {
                 Vector2 vector2_1 = new Vector2((float)(player.position.X + player.width * 0.5 +

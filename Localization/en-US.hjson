@@ -2093,6 +2093,11 @@ Mods: {
 				DisplayName: Sanguine Slug Item
 				Tooltip: ""
 			}
+
+			EyeJellyItem: {
+				DisplayName: Eye Jelly Item
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2542,6 +2547,7 @@ Mods: {
 			BloodshotEye.DisplayName: Bloodshot Eye
 			ImpactDrone.DisplayName: Impact Drone
 			SanguineSlug.DisplayName: Sanguine Slug
+			EyeJelly.DisplayName: Eye Jelly
 		}
 
 		Dialogue: {
@@ -2613,6 +2619,9 @@ Mods: {
 			}
 		}
 
-		Emotes.SmugBubble.Command: smugbubble
+		Emotes: {
+			SmugBubble.Command: smugbubble
+			LuvyaBubble.Command: luvyabubble
+		}
 	}
 }

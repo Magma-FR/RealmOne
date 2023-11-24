@@ -15,9 +15,7 @@ namespace RealmOne.Items.Misc.EnemyDrops
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Impact Tech"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("'The pieces of purged symbiones'"
-                + "\n'Xeonically Produced!'");
+            
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
 
@@ -52,6 +50,10 @@ namespace RealmOne.Items.Misc.EnemyDrops
                 SpriteEffects.None,
                 0f
             );
+        }
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(Item.Center, Color.Cyan.ToVector3() * 0.55f * Main.essScale); // Makes this item glow when thrown out of inventory.
         }
         public override bool PreDrawInInventory(SpriteBatch sB, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {

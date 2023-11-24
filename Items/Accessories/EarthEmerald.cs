@@ -40,6 +40,7 @@ namespace RealmOne.Items.Accessories
             {
                 player.GetAttackSpeed(DamageClass.Generic) += 0.5f;
                 player.nightVision = true;
+                
             }
 
             else

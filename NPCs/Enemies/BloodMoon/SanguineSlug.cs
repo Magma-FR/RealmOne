@@ -70,8 +70,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             }
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
-            Main.bloodMoon && spawnInfo.Player.ZoneOverworldHeight ? .080f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) =>  Main.bloodMoon && spawnInfo.Player.ZoneOverworldHeight ? 0.085f : 0f;
         public override void AI() => NPC.spriteDirection = NPC.direction;
 
 
