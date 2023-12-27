@@ -20,6 +20,9 @@
 	  <AdditionalFiles Remove="Localization\en-US.hjson" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="Assets\Effects\CircleGradient.png" />
+	  <None Remove="Assets\Effects\GlowTrail.png" />
+	  <None Remove="Assets\Effects\Trail_1.png" />
 	  <None Remove="Biomes\Farm\FarmSapling.png" />
 	  <None Remove="Items\Weapons\Fighter\placeholder.txt" />
 	  <None Remove="Items\Weapons\PreHM\BloodMoon\BloodBlower_Glow.png" />

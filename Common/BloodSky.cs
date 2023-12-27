@@ -52,17 +52,23 @@ namespace RealmOne.Common
         }
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
-            if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
+            
+            if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f && Main.bloodMoon == true)
             {
                 Texture2D Tex = ModContent.Request<Texture2D>("RealmOne/Assets/Effects/gradation").Value;
                 Texture2D Tex2 = ModContent.Request<Texture2D>("RealmOne/Assets/Effects/gradation2").Value;
 
-                Main.NewText("KYS");
+              
                 spriteBatch.Draw(Tex, new Rectangle(0, 0 - (int)screenPosition.Y, screenWidth, 3000), null, Color.Red * Intensity * 0.65f, 0, Vector2.Zero, SpriteEffects.None, 0);
                 for (int i = 0; i < 2; i++)
                     spriteBatch.Draw(Tex2, new Rectangle(0, -30, screenWidth, screenHeight), null, Color.Red * Intensity * 0.9f, 0, Vector2.Zero, SpriteEffects.None, 0);
+            }
+            else
+            {
+
             }
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);

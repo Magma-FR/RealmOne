@@ -2098,6 +2098,21 @@ Mods: {
 				// DisplayName: Eye Jelly Item
 				// Tooltip: ""
 			}
+
+			GoreshankShotgun: {
+				// DisplayName: Goreshank Shotgun
+				// Tooltip: ""
+			}
+
+			ImpactFlashlight: {
+				// DisplayName: Impact Flashlight
+				// Tooltip: ""
+			}
+
+			JellyfishInfestedShark: {
+				// DisplayName: Jellyfish Infested Shark
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2368,6 +2383,14 @@ Mods: {
 			// BloodToothProj.DisplayName: Blood Tooth Proj
 			// CrimClubSwing.DisplayName: Crim Club Swing
 			// BloodshotEyeProjectile.DisplayName: Bloodshot Eye Projectile
+			// SwiftShot.DisplayName: Swift Shot
+			// GoreshankShot.DisplayName: Goreshank Shot
+			// GoreshankShotgunS.DisplayName: Goreshank Shotgun S
+			// ImpactFlashLights.DisplayName: Impact Flash Lights
+			// BlueJ.DisplayName: Blue J
+			// GreenBoom.DisplayName: Green Boom
+			// GreenJ.DisplayName: Green J
+			// PinkJ.DisplayName: Pink J
 		}
 
 		NPCs: {

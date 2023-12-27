@@ -40,7 +40,7 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.autoReuse = true;
             Item.shootSpeed = 87f;
             Item.shoot = ModContent.ProjectileType<VintageBulletProjectile>();
-            Item.noMelee = true; // The projectile will do the damage and not the item
+            Item.noMelee = false; // The projectile will do the damage and not the item
             Item.value = Item.buyPrice(gold: 8, silver: 3);
             //   Item.noUseGraphic = true;
             // Item.channel = true;
