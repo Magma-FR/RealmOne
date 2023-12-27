@@ -14,6 +14,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 {
     public class ImpactFlashlight : ModItem
     {
+
+        private float AimResponsiveness = 0.67f;
+        private bool timerUp = false;
         public override void SetStaticDefaults()
         {
             
@@ -34,7 +37,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.autoReuse = true;
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 1f;
             Item.shoot = ModContent.ProjectileType<ImpactFlashLights>();
         }
         public override void AddRecipes()
@@ -111,20 +114,63 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
     public class ImpactFlashLights: ModProjectile
     {
+
+        private float AimResponsiveness = 0.67f;
+        private bool timerUp = false;
         public override string Texture => "RealmOne/Items/Weapons/PreHM/Impact/ImpactFlashLights";
 
         public override void SetDefaults()
         {
-            Projectile.width = 14;
-            Projectile.height = 0;
+            Projectile.width = 10;
+            Projectile.height = 5;
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Magic;
         }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            // SpriteEffects helps to flip texture horizontally and vertically
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (Projectile.spriteDirection == -1)
+                spriteEffects = SpriteEffects.FlipHorizontally;
 
-     
+            // Getting texture of projectile
+            var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+
+            // Calculating frameHeight and current Y pos dependence of frame
+            // If texture without animation frameHeight is always texture.Height and startY is always 0
+            int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+
+            // Get this frame on texture
+            var sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+
+            // Alternatively, you can skip defining frameHeight and startY and use this:
+            // Rectangle sourceRectangle = texture.Frame(1, Main.projFrames[Projectile.type], frameY: Projectile.frame);
+
+            Vector2 origin = sourceRectangle.Size() / 2f;
+
+            // If image isn't centered or symmetrical you can specify origin of the sprite
+            // (0,0) for the upper-left corner
+            float offsetX = 10f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+
+            // If sprite is vertical
+            // float offsetY = 20f;
+            // origin.Y = (float)(Projectile.spriteDirection == 1 ? sourceRectangle.Height - offsetY : offsetY);
+
+            // Applying lighting and draw current frame
+            Color drawColor = Projectile.GetAlpha(lightColor);
+            Main.EntitySpriteDraw(texture,
+                Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+                sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+
+            // It's important to return false, otherwise we also draw the original texture.
+            return false;
+        }
+
         public override void AI()
         {
             Player Player = Main.player[Projectile.owner];
@@ -140,7 +186,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     if (Projectile.ai[1] <= 5)
                     {
                         if (Projectile.ai[1] == 3f)
-                            Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, 20f).RotatedBy(Projectile.rotation), Vector2.Zero, ModContent.ProjectileType<ConeFlash>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
+                            Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, 10f).RotatedBy(Projectile.rotation), Vector2.Zero, ModContent.ProjectileType<BlueFlash>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
 
              
                     }
@@ -151,7 +197,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     }
                 }
             }
+
             else
+
             {
                 if (Projectile.ai[0] % 5 == 0)
                 if (!Player.channel || Player.noItems || Player.CCed) Projectile.Kill();
@@ -166,6 +214,67 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Player.itemAnimation = 2;
             Player.itemTime = 2;
             Player.heldProj = Projectile.whoAmI;
+                        Player player = Main.player[Projectile.owner];
+
+            bool stillInUse = player.channel && !player.noItems && !player.CCed;
+            if (Projectile.owner == Main.myPlayer)
+            {
+                UpdatePlayerVisuals(player, player.Center);
+
+                UpdateAim(player.Center, player.HeldItem.shootSpeed);
+
+            }
+
+        }
+        private void UpdateAim(Vector2 source, float speed)
+        {
+            Player player = Main.player[Projectile.owner];
+            // Get the player's current aiming direction as a normalized vector.
+            var aim = Vector2.Normalize(Main.MouseWorld - source);
+            if (aim.HasNaNs())
+            {
+                aim = -Vector2.UnitY;
+            }
+
+            Vector2 DirAndVel = new(Projectile.velocity.X * player.direction, Projectile.velocity.Y * player.direction);
+            Projectile.rotation = DirAndVel.ToRotation();
+            // Change a portion of the Prism's current velocity so that it points to the mouse. This gives smooth movement over time.
+            aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, AimResponsiveness));
+            aim *= speed;
+
+            if (aim != Projectile.velocity)
+            {
+                Projectile.netUpdate = true;
+                Projectile.netImportant = true;
+                Projectile.netUpdate = true;
+            }
+
+
+            Projectile.velocity = aim;
+        }
+
+        private void UpdatePlayerVisuals(Player player, Vector2 playerhandpos)
+        {
+            Projectile.netImportant = true;
+            Projectile.netUpdate = true;
+            Projectile.Center = playerhandpos;
+            Projectile.spriteDirection = Projectile.direction;
+
+            // Constantly resetting player.itemTime and player.itemAnimation prevents the player from switching items or doing anything else.
+            player.ChangeDir(Projectile.direction);
+            player.heldProj = Projectile.whoAmI;
+            player.itemTime = 2;
+            player.itemAnimation = 2;
+
+            // If you do not multiply by projectile.direction, the player's hand will point the wrong direction while facing left.
+            //player.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
+            float piover2 = MathHelper.PiOver2;
+            if (player.direction == 1)
+            {
+                piover2 -= MathHelper.Pi;
+            }
+
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + piover2);
         }
     }
 }
