@@ -70,7 +70,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
 
             return true;
         }
-        public override void Kill(int timeleft)
+        public override void OnKill(int timeleft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("SunflowerGore4").Type, 1f);
             for (int i = 0; i < 10; i++)

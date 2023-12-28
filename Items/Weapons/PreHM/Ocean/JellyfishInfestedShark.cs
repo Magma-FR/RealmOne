@@ -141,7 +141,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
 
             Projectile.Kill();
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<JellySpark>(), Projectile.damage, Projectile.knockBack, Projectile.owner);

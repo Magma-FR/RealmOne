@@ -2113,6 +2113,11 @@ Mods: {
 				// DisplayName: Jellyfish Infested Shark
 				// Tooltip: ""
 			}
+
+			FireflyJar: {
+				// Tooltip: ""
+				// DisplayName: Firefly Jar
+			}
 		}
 
 		Buffs: {
@@ -2392,6 +2397,8 @@ Mods: {
 			// GreenJ.DisplayName: Green J
 			// PinkJ.DisplayName: Pink J
 			// BlueFlash.DisplayName: Blue Flash
+			// FireflyProj.DisplayName: Firefly Proj
+			// FireflyJarProj.DisplayName: Firefly Jar Proj
 		}
 
 		NPCs: {

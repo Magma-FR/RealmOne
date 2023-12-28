@@ -78,7 +78,7 @@ namespace RealmOne.Projectiles.Throwing
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
             return true;
         }
-        public override void Kill(int timeleft)
+        public override void OnKill(int timeleft)
 
         {
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<JellySpark>(), Projectile.damage, Projectile.knockBack, Projectile.owner);

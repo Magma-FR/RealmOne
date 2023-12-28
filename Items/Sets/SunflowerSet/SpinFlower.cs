@@ -32,7 +32,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Projectile.tileCollide = false;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.MaxMana, Projectile.position);
             for (int i = 0; i < 8; i++)

@@ -56,7 +56,7 @@ namespace RealmOne.Projectiles.Magic
         {
             NumOfImages = 1;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(rorAudio.BulbShatter, Projectile.position);
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Starbang>(), Projectile.damage, Projectile.knockBack, Projectile.owner);

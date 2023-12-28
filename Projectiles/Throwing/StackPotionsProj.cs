@@ -49,7 +49,7 @@ namespace RealmOne.Projectiles.Throwing
             Dust.NewDust(Projectile.Center + Projectile.velocity, Projectile.width, Projectile.height, DustID.PinkTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.8f);
         }
 
-        public override void Kill(int timeleft)
+        public override void OnKill(int timeleft)
 
         {
 
