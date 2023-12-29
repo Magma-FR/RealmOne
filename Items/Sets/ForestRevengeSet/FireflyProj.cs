@@ -38,7 +38,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Vector2 center = Projectile.Center;
             for (int j = 0; j < 5; j++)
             {
-                int dust1 = Dust.NewDust(center, 0, 0, DustID.Torch, 0f, 0f, 100, default, 1f);
+                int dust1 = Dust.NewDust(center, 0, 0, DustID.DesertTorch, 0f, 0f, 100, default, 1f);
                 Main.dust[dust1].noGravity = true;
                 Main.dust[dust1].velocity = Vector2.Zero;
                 Main.dust[dust1].noLight = false;
@@ -64,7 +64,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
                 var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
                 Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + offset;
                 float sizec = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 1.2f);
-                Color color = new Color(244, 204, 39) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Color color = new Color(247, 115, 24) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
                 Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.oldRot[k], frame.Size() / 2f, sizec, SpriteEffects.None, 0);
             }
             Main.spriteBatch.End();
@@ -77,8 +77,8 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("FireflyGore").Type, 1f);
             for (int i = 0; i < 10; i++)
             {
-                Vector2 speed = Main.rand.NextVector2CircularEdge(0.5f, 0.5f);
-                var d = Dust.NewDustPerfect(Projectile.Center, DustID.Torch, speed * 4, Scale: 1f);
+                Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
+                var d = Dust.NewDustPerfect(Projectile.Center, DustID.DesertTorch, speed * 4, Scale: 1f);
                 ;
                 d.noGravity = true;
             }

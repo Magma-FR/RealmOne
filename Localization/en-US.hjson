@@ -2118,6 +2118,11 @@ Mods: {
 				Tooltip: ""
 				DisplayName: Firefly Jar
 			}
+
+			CartonBeer: {
+				DisplayName: Carton Beer
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2399,6 +2404,7 @@ Mods: {
 			BlueFlash.DisplayName: Blue Flash
 			FireflyProj.DisplayName: Firefly Proj
 			FireflyJarProj.DisplayName: Firefly Jar Proj
+			CartonBeerProj.DisplayName: Carton Beer Proj
 		}
 
 		NPCs: {

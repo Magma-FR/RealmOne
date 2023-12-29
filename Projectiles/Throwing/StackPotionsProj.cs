@@ -41,7 +41,7 @@ namespace RealmOne.Projectiles.Throwing
             }
 
             Lighting.AddLight(Projectile.position, r: 0.8f, g: 0.8f, b: 0.8f);
-            ;
+            
             Lighting.Brightness(1, 1);
 
             Dust.NewDust(Projectile.Right + Projectile.velocity, Projectile.width, Projectile.height, DustID.GreenTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.8f);

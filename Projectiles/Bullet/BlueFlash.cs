@@ -15,7 +15,6 @@ namespace RealmOne.Projectiles.Bullet
         }
         private Vector2 flashoffset = Vector2.Zero;
 
-        public override string Texture => Helper.Empty;
 
 
         private Player Owner => Main.player[Projectile.owner];
@@ -24,16 +23,19 @@ namespace RealmOne.Projectiles.Bullet
 
         public override void SetDefaults()
         {
-            Projectile.width = 2;
-            Projectile.damage = 0;
-            Projectile.height = 2;
-            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.width = 100;
+            Projectile.damage = 25;
+            Projectile.height = 80;
             Projectile.timeLeft = 4;
-            Projectile.friendly = false;
+
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.DamageType = DamageClass.Magic;
             Projectile.aiStyle = 0;
             Projectile.alpha = 255;
             Projectile.netImportant = true;
             Projectile.netUpdate = true;
+            Projectile.tileCollide = false;
 
         }
 

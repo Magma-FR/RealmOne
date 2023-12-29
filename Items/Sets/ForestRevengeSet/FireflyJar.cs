@@ -63,8 +63,8 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
                 float distance = 0.3f + Main.rand.NextFloat() * 0.5f;
                 var velocity = new Vector2(0f, -Main.rand.NextFloat() * 0.3f - 1.5f);
 
-                var dust = Dust.NewDustPerfect(center + direction * distance, DustID.Torch, velocity);
-                dust.scale = 0.5f;
+                var dust = Dust.NewDustPerfect(center + direction * distance, DustID.DesertTorch, velocity);
+                dust.scale = 1f;
                 dust.fadeIn = 0.4f;
                 dust.noGravity = true;
                 dust.noLight = false;
@@ -107,7 +107,6 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Lighting.Brightness(1, 1);
 
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Smoke, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
 
 
 
@@ -125,7 +124,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
        
         public override void OnKill(int timeleft)
      {
-            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Starbang>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileID.SolarWhipSwordExplosion, Damage: 0, Projectile.knockBack, Projectile.owner);
 
             for (int i = 0; i < 17; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 50, default, 2f);
