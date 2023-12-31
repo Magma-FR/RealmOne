@@ -28,8 +28,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
 		public override void SetDefaults()
 		{
-			NPC.width = 16;
-			NPC.height = 21;
+			NPC.width = 32;
+			NPC.height = 38;
 			NPC.damage = 14;
 			NPC.defense = 3;
 			NPC.lifeMax = 80;

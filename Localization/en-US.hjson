@@ -1553,11 +1553,6 @@ Mods: {
 				Tooltip: "'Shoots a massive lightbulb that release a large aura of light'"
 			}
 
-			Lightbulb: {
-				DisplayName: Lightbulb
-				Tooltip: ""
-			}
-
 			MagmaBody: {
 				DisplayName: Magma Body
 				Tooltip: Hot cape fr
@@ -2058,7 +2053,7 @@ Mods: {
 			}
 
 			LiteBulb: {
-				DisplayName: Lite Bulb
+				DisplayName: Lightbulb
 				Tooltip: ""
 			}
 
@@ -2101,27 +2096,42 @@ Mods: {
 
 			GoreshankShotgun: {
 				DisplayName: Goreshank Shotgun
-				Tooltip: ""
+				Tooltip:
+					'''
+					Rapid fire goreblast bullets that gives you and the enemy the bleeding debuff
+					'Full of rust and sharp edges'
+					'''
 			}
 
 			ImpactFlashlight: {
 				DisplayName: Impact Flashlight
-				Tooltip: ""
+				Tooltip: Hold and release to flash a large electric cone shaped light
 			}
 
 			JellyfishInfestedShark: {
 				DisplayName: Jellyfish Infested Shark
-				Tooltip: ""
+				Tooltip:
+					'''
+					Shoots a variety of Jellyfish
+					Blue explodes into an area of effect electric spark
+					Pink bounces around dealing high damage and high knockback
+					Green spins in a spot and explodes into a toxic cloud
+					'''
 			}
 
 			FireflyJar: {
-				Tooltip: ""
+				Tooltip: Throws a jar filled with aggressive Fireflies
 				DisplayName: Firefly Jar
 			}
 
 			CartonBeer: {
 				DisplayName: Carton Beer
-				Tooltip: ""
+				Tooltip:
+					'''
+					'Fosters. Good call.'
+					Throws a pint of beer that smashes on impact
+					Right click to chug the beer, giving the Tipsy Buff
+					'''
 			}
 		}
 
@@ -2585,6 +2595,7 @@ Mods: {
 			ImpactDrone.DisplayName: Impact Drone
 			SanguineSlug.DisplayName: Sanguine Slug
 			EyeJelly.DisplayName: Eye Jelly
+			ImpactHoverdroid.DisplayName: Impact Hoverdroid
 		}
 
 		Dialogue: {
