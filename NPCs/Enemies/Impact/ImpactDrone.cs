@@ -13,6 +13,7 @@ using RealmOne.Items.Misc.EnemyDrops;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent;
 
 namespace RealmOne.NPCs.Enemies.Impact
 {
@@ -60,6 +61,13 @@ namespace RealmOne.NPCs.Enemies.Impact
         public override void OnSpawn(IEntitySource source)
         {
 			Timer = 0;
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
+            spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+            return false;
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Impact/ImpactDrone_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
