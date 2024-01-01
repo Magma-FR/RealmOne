@@ -28,7 +28,6 @@ namespace RealmOne.Projectiles.HeldProj
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.knockBack = 4;
             Projectile.ownerHitCheck = true;//so it cant attack through walls
-            Projectile.scale = 0.8f;
             Projectile.netImportant = true;
             Projectile.netUpdate = true;
         }
@@ -99,6 +98,13 @@ namespace RealmOne.Projectiles.HeldProj
 
             player.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
 
+            float piover2 = MathHelper.PiOver2;
+            if (player.direction == 1)
+            {
+                piover2 -= MathHelper.Pi;
+            }
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + piover2);
+
         }
         private void UpdateAim(Vector2 source, float speed)
         {
@@ -140,7 +146,7 @@ namespace RealmOne.Projectiles.HeldProj
             // (0,0) is upper-left corner
 
             //recoil
-            float offsetX = 30f;
+            float offsetX = 20f;
             if (recoilFX == true)
             {
                 Main.instance.LoadProjectile(Projectile.type);

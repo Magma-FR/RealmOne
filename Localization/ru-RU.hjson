@@ -2133,6 +2133,11 @@ Mods: {
 					Right click to chug the beer, giving the Tipsy Buff
 					''' */
 			}
+
+			GildedGladius: {
+				// DisplayName: Gilded Gladius
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2415,6 +2420,8 @@ Mods: {
 			// FireflyProj.DisplayName: Firefly Proj
 			// FireflyJarProj.DisplayName: Firefly Jar Proj
 			// CartonBeerProj.DisplayName: Carton Beer Proj
+			// GildedGladiusProj.DisplayName: Gilded Gladius Proj
+			// GildedGladiusThrown.DisplayName: Gilded Gladius Thrown
 		}
 
 		NPCs: {

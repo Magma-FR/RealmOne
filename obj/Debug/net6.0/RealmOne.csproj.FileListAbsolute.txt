@@ -722,3 +722,12 @@ C:\Users\ADMIN\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\De
 C:\Users\ADMIN\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\refint\RealmOne.dll
 C:\Users\ADMIN\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.pdb
 C:\Users\ADMIN\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\ref\RealmOne.dll
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.csproj.AssemblyReference.cache
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.AssemblyInfoInputs.cache
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.AssemblyInfo.cs
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.csproj.CoreCompileInputs.cache
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.sourcelink.json
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.dll
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\refint\RealmOne.dll
+C:\Users\cmcdo\Documents\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\RealmOne.pdb

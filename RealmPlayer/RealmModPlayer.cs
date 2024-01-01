@@ -494,13 +494,13 @@ namespace RealmOne.RealmPlayer
 
             if (Main.netMode != NetmodeID.Server)
             {
-                Main.NewText(Language.GetTextValue("Another day, Another Disappointment"), 100, 30, 250);
+                Main.NewText(Language.GetTextValue("Another day, Another Disappointment"), 180, 30, 250);
 
             }
 
             if (Main.netMode != NetmodeID.Server)
             {
-                Main.NewText(Language.GetTextValue($"[i:{ItemID.Book}]Go and join the discord server for the mod!! [c/0000FF:discord.gg/vsBJ8PrmCh] [i:{ItemID.Book}]"), 128, 232, 55);
+                Main.NewText(Language.GetTextValue($"[i:{ItemID.FallenStar}] Go and join the discord server for the mod!! [c/0000FF:discord.gg/vsBJ8PrmCh] [i:{ItemID.FallenStar}]"), 128, 200, 55);
 
             }
         }
@@ -539,10 +539,9 @@ namespace RealmOne.RealmPlayer
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
 
-            return (IEnumerable<Item>)(object)new Item[3]
+            return (IEnumerable<Item>)(object)new Item[2]
             {
                 new Item(ModContent.ItemType<Suitcase>(), 1, 0),
-                new Item(ModContent.ItemType<BreadLoaf>(), 1, 0),
                 new Item(ModContent.ItemType<LovecraftPaper>(), 1, 0),
 
 

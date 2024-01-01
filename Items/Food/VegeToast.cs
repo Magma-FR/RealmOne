@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using RealmOne.Tiles;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -57,9 +58,9 @@ namespace RealmOne.Items.Food
         }
         public override void AddRecipes()
         {
-            CreateRecipe(3)
-            .AddIngredient(Mod, "BreadLoaf", 1)
-            .AddTile(TileID.Furnaces)
+            CreateRecipe(2)
+            .AddIngredient(Mod, "Wheat", 8)
+            .AddTile(ModContent.TileType<StoneOvenTilee>())
             .Register();
 
         }

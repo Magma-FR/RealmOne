@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -30,6 +31,10 @@ namespace RealmOne.Projectiles.Throwing
 
             Projectile.penetrate = 4;
             AIType = ProjectileID.ThrowingKnife;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
         public override void Kill(int timeleft)
         {
