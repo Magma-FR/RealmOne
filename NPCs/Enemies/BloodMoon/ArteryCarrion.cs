@@ -40,6 +40,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			NPC.HitSound = SoundID.NPCHit19;
 			NPC.DeathSound = SoundID.NPCDeath2;
 			NPC.noGravity = true;
+                NPC.aiStyle = -1;
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
@@ -52,8 +53,10 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         }
         public override void AI()
         {
+            NPC.TargetClosest();
 
-			if (Main.rand.NextBool(3))
+
+            if (Main.rand.NextBool(3))
 			{
 				Dust.NewDust(NPC.position + NPC.velocity, NPC.width, NPC.height, DustID.Blood, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f);
 			}
@@ -83,7 +86,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
 			} 
 				
-			FindFrame(44);
 		}
         public override void HitEffect(NPC.HitInfo hit)
         {
@@ -120,20 +122,14 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
 
         }
-        private int AnimFrameCount;
-		private int AnimTimer;
+      
 		public override void FindFrame(int frameHeight)
 		{
-			AnimTimer++;
-			
-			if(AnimTimer%10==0)
-				AnimFrameCount++;
-			if (AnimFrameCount == 8)
-			{
-				AnimFrameCount = 1;
-			}
-			NPC.frame.Y = NPC.frame.Height * AnimFrameCount;
-		}
+            NPC.frameCounter += 0.14f;
+            NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+            int frame = (int)NPC.frameCounter;
+            NPC.frame.Y = frame * frameHeight;
+        }
 	}
 
 	public class ArteryCarrionProjectile :ModProjectile

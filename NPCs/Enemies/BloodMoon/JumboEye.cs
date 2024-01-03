@@ -35,7 +35,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             NPC.width = 90;
             NPC.height = 56;
             NPC.damage = 13;
-            NPC.defense = 1;
+            NPC.defense = 0;
             NPC.lifeMax = 200;
             NPC.npcSlots = 2;
             NPC.knockBackResist = 0.3f;
@@ -52,7 +52,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
           
 
         }
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon  ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon  ? SpawnCondition.OverworldNightMonster.Chance * 0.10f : 0f;
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
@@ -64,8 +64,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         {
             for (int i = 0; i < Main.rand.Next(1, 1); i++)
             {
-             NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Left, ModContent.NPCType<JumboEyeMedium>(), ai3: 1).scale = 0.65f;
-                NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Right, ModContent.NPCType<JumboEyeMedium>(), ai3: 1).scale = 0.65f;
+             NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Left, ModContent.NPCType<JumboEyeMedium>(), ai3: 1).scale = 0.64f;
+                NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Right, ModContent.NPCType<JumboEyeMedium>(), ai3: 1).scale = 0.64f;
 
             }
             return true;

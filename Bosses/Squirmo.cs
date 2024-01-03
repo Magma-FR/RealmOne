@@ -63,7 +63,7 @@ namespace RealmOne.Bosses
             NPC.DeathSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SquirmoMudBubblePop");
             NPC.BossBar = ModContent.GetInstance<SquirmoBar>();
             NPC.dontTakeDamageFromHostiles = true;
-            NPC.scale = 2f;
+            NPC.scale = 1f;
             NPC.noTileCollide = true;
             NPC.SpawnWithHigherTime(30);
             NPC.knockBackResist = 0f;
@@ -111,8 +111,8 @@ namespace RealmOne.Bosses
             if (NPC.life <= 0)
             {
 
-                int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
-                int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
+                /*int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
+               int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
                 IEntitySource entitySource = NPC.GetSource_Death();
 
                 for (int i = 0; i < 1; i++)
@@ -120,7 +120,7 @@ namespace RealmOne.Bosses
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreBody);
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
                 }
-
+                */
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
             }
 
@@ -192,15 +192,15 @@ namespace RealmOne.Bosses
         {
             // Set the segment variance
             // If you want the segment length to be constant, set these two properties to the same value
-            MinSegmentLength = 12;
-            MaxSegmentLength = 12;
+            MinSegmentLength = 18;
+            MaxSegmentLength = 18;
 
             CommonWormInit(this);
         }
         internal static void CommonWormInit(Worm worm)
         {
             // These two properties handle the movement of the worm
-            worm.MoveSpeed = 14f;
+            worm.MoveSpeed = 16f;
             worm.Acceleration = 0.2f;
         }
         private int attackCounter;
@@ -246,11 +246,11 @@ namespace RealmOne.Bosses
                     Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(8));
 
-                    int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 2, ModContent.ProjectileType<GlobGunProjectileHostile>(), 16, 1, Main.myPlayer);
-                    Main.projectile[projectile].timeLeft = 60;
-                    attackCounter = 250;
+                //    int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 2, ModContent.ProjectileType<GlobGunProjectileHostile>(), 16, 1, Main.myPlayer);
+                   // Main.projectile[projectile].timeLeft = 60;
+                   // attackCounter = 250;
                     NPC.netUpdate = true;
-                    Main.projectile[projectile].velocity *= 6f;
+                   // Main.projectile[projectile].velocity *= 6f;
 
                 }
             }
@@ -264,7 +264,7 @@ namespace RealmOne.Bosses
         {
             DisplayName.SetDefault("Squirmo Body");
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Hide = true
             };
@@ -278,8 +278,7 @@ namespace RealmOne.Bosses
             NPC.HitSound = SoundID.NPCHit9;
             NPC.damage = 20;
             NPC.defense = 2;
-            NPC.scale = 2f;
-
+            NPC.scale = 1f;
             NPC.DeathSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SquirmoMudBubblePop");
         }
         public override void HitEffect(NPC.HitInfo hit)
@@ -291,7 +290,7 @@ namespace RealmOne.Bosses
 
             if (NPC.life <= 0)
             {
-
+/*
                 int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
                 int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
 
@@ -303,7 +302,7 @@ namespace RealmOne.Bosses
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
 
                 }
-
+*/
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
             }
 
@@ -329,7 +328,7 @@ namespace RealmOne.Bosses
         {
             DisplayName.SetDefault("Squirmo Tail");
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Hide = true
             };
@@ -343,7 +342,7 @@ namespace RealmOne.Bosses
             NPC.HitSound = SoundID.NPCHit9;
             NPC.damage = 17;
             NPC.defense = 2;
-            NPC.scale = 2f;
+            NPC.scale = 1f;
 
             NPC.DeathSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SquirmoMudBubblePop");
         }
@@ -356,7 +355,7 @@ namespace RealmOne.Bosses
 
             if (NPC.life <= 0)
             {
-
+/*
                 int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
                 int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
                 IEntitySource entitySource = NPC.GetSource_Death();
@@ -366,7 +365,7 @@ namespace RealmOne.Bosses
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreBody);
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
                 }
-
+*/
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
             }
 

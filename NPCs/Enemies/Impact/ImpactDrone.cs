@@ -73,7 +73,7 @@ namespace RealmOne.NPCs.Enemies.Impact
 
         public override void AI()
         {
-
+            NPC.TargetClosest();
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.2f, b: 1.1f);
 
             Vector2 center = NPC.Center;
@@ -116,7 +116,6 @@ namespace RealmOne.NPCs.Enemies.Impact
 
 			} 
 				
-			FindFrame(44);
 		}
        
         public override void HitEffect(NPC.HitInfo hit)
@@ -144,20 +143,14 @@ namespace RealmOne.NPCs.Enemies.Impact
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ImpactTech>(), 2, 2, 3));
 
         }
-        private int AnimFrameCount;
-		private int AnimTimer;
+     
 		public override void FindFrame(int frameHeight)
 		{
-			AnimTimer++;
-			
-			if(AnimTimer%10==0)
-				AnimFrameCount++;
-			if (AnimFrameCount == 4)
-			{
-				AnimFrameCount = 1;
-			}
-			NPC.frame.Y = NPC.frame.Height * AnimFrameCount;
-		}
+            NPC.frameCounter += 0.14f;
+            NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+            int frame = (int)NPC.frameCounter;
+            NPC.frame.Y = frame * frameHeight;
+        }
 	}
 
 

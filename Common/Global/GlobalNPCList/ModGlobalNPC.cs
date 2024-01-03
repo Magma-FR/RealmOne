@@ -5,6 +5,7 @@ using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Opens;
 using RealmOne.Items.Placeables.Furniture.Paintings;
 using RealmOne.Items.Tools.Pick;
+using RealmOne.Items.Weapons.Magic;
 using RealmOne.Items.Weapons.PreHM.BloodMoon;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using RealmOne.NPCs.Enemies.BloodMoon;
@@ -57,7 +58,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 if (Main.netMode != NetmodeID.Server)
                     Main.NewText(Language.GetTextValue("The seer of the land has been slayed, but you're still being watched."), 178, 30, 250);
 
-      //      if (npc.type == NPCID.EaterofWorldsHead)
+      //      if (npc.type == NPCID.EaterofWorldsHead)x
       //          if (Main.netMode != NetmodeID.Server)
       //              Main.NewText(Language.GetTextValue("The vile, slithering worm of infection has been slaughtered, decreasing the spread of power of the corruption"), 200, 50, 230);
 
@@ -184,6 +185,11 @@ namespace RealmOne.Common.Global.GlobalNPCList
 
             }
 
+            if (npc.type == NPCID.GoblinSorcerer)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MagicGobBag>(), 50, 1, 1));
+
+            }
             if (npc.type == NPCID.ServantofCthulhu)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshyCornea>(), 3, 1, 2));

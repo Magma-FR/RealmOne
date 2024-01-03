@@ -75,6 +75,7 @@ namespace RealmOne.NPCs.Enemies.Impact
 
         public override void AI()
         {
+            NPC.TargetClosest();
 
             Lighting.AddLight(NPC.position, r: 0f, g: 0.1f, b: 1.1f);
 
@@ -122,19 +123,19 @@ namespace RealmOne.NPCs.Enemies.Impact
             Vector2 targetDirection = player.Center - NPC.Bottom;
             targetDirection.Normalize();
             // Check if not currently firing, and if enough time has passed to fire again
-            if (!isFiring && timeSinceLastFire > 30f * fireRate) // Assuming 60 frames per second
+            if (!isFiring && timeSinceLastFire > 10f * fireRate) // Assuming 60 frames per second
             {
                 // Start firing
                 isFiring = true;
                 SoundEngine.PlaySound(SoundID.Item157, NPC.position);
                 // Calculate bullet velocity based on the direction towards the player
-                Vector2 bulletVelocity = targetDirection * 18f;
+                Vector2 bulletVelocity = targetDirection * 30f;
 
                 for (int i = 0; i < 12; i++) // Change 10 to the number of bullets you want to fire
                 {
                     // Spawn bullets
-                  var p=   Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom.X + (10 * NPC.spriteDirection), NPC.Bottom.Y - 8, targetDirection.X, targetDirection.Y, ProjectileID.PulseBolt, 9, 1, Main.myPlayer, 0, 0);
-                    Main.projectile[p].timeLeft = 400;
+                  var p=   Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom.X + (10 * NPC.spriteDirection), NPC.Bottom.Y - 8, targetDirection.X, targetDirection.Y, ProjectileID.PulseBolt, 7, 1, Main.myPlayer, 0, 0);
+                    Main.projectile[p].timeLeft = 800;
                     Main.projectile[p].scale = 0.6f;
                     Main.projectile[p].friendly = false;
                     Main.projectile[p].hostile = true;
@@ -152,7 +153,6 @@ namespace RealmOne.NPCs.Enemies.Impact
 
             // Update time since last fire
             timeSinceLastFire++;
-            FindFrame(44);
 
             //WIP AI CODE
         }
@@ -180,19 +180,13 @@ namespace RealmOne.NPCs.Enemies.Impact
 
         }
 
-        private int AnimFrameCount;
-        private int AnimTimer;
+     
         public override void FindFrame(int frameHeight)
         {
-            AnimTimer++;
-
-            if (AnimTimer % 10 == 0)
-                AnimFrameCount++;
-            if (AnimFrameCount == 3)
-            {
-                AnimFrameCount = 1;
-            }
-            NPC.frame.Y = NPC.frame.Height * AnimFrameCount;
+            NPC.frameCounter += 0.14f;
+            NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+            int frame = (int)NPC.frameCounter;
+            NPC.frame.Y = frame * frameHeight;
         }
     }
 

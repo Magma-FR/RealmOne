@@ -148,7 +148,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
             NPC.CloneDefaults(NPCID.DiggerHead);
             NPC.damage = 14;
-            NPC.defense = 1;
+            NPC.defense = 0;
             NPC.netAlways = true;
             NPC.netUpdate = true;
             NPC.aiStyle = -1;
@@ -228,7 +228,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
             NPC.CloneDefaults(NPCID.DiggerBody);
             NPC.damage = 8;
-            NPC.defense = 2;
+            NPC.defense = 1;
             NPC.aiStyle = -1;
             NPC.netAlways = true;
             NPC.netUpdate = true;
@@ -258,7 +258,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
             NPC.CloneDefaults(NPCID.DiggerTail);
             NPC.damage = 12;
-            NPC.defense = 2;
+            NPC.defense = 1;
             NPC.aiStyle = -1;
             NPC.netAlways = true;
             NPC.netUpdate = true;
