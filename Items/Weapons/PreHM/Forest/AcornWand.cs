@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.Magic;
+using RealmOne.Tiles;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -44,8 +45,8 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             Item.shoot = ModContent.ProjectileType<BouncingAcorn>();
         }
-        public int spreadMax = 22; //Maximal Projectile Spread
-        public int spreadMin = -20; //Minimum Projectile Spread
+        public int spreadMax = 22; 
+        public int spreadMin = -20; 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
 
@@ -98,10 +99,15 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             return false;
         }
-        public override bool OnPickup(Player player)
+       
+        public override void AddRecipes()
         {
-            SoundEngine.PlaySound(SoundID.MaxMana);
-            return true;
+            CreateRecipe(1)
+            .AddIngredient(ItemID.Wood, 12)
+            .AddIngredient(ItemID.Acorn, 6)
+            .AddTile(TileID.WorkBenches)
+            .Register();
+
         }
         public override Vector2? HoldoutOffset()
         {

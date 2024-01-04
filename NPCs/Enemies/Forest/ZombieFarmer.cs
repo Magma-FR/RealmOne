@@ -80,7 +80,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Carrot>(), 3, 1, 2));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Wheat>(), 2, 5, 8));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirmoSummon>(), 60, 1, 1));
+           // npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirmoSummon>(), 60, 1, 1));
 
         }
 

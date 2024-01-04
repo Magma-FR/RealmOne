@@ -1,4 +1,5 @@
-using Microsoft.Xna.Framework;
+
+/*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.HeldProj;
 using System;
 using System.Collections.Generic;
@@ -66,7 +67,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             return true;
         }
 
-        /*   public override void AddRecipes()
+           public override void AddRecipes()
            {
                CreateRecipe(1)
                .AddIngredient(ItemID.Worm, 3)
@@ -76,7 +77,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
                .AddTile(TileID.Anvils)
                .Register();
            }
-        */
+        
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -96,4 +97,4 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             return true;
         }
     }
-}
+}*/

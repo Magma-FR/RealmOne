@@ -55,15 +55,7 @@ namespace RealmOne.Common.Systems
                     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemType<Goreberry>(), Main.rand.Next(1, 2));
                 }
                
-                if (type == TileID.Seaweed && Main.rand.NextBool(2))
-                {
-                    Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemType<FreshSeaweed>(), Main.rand.Next(1, 4));
-                }
-
-                if (type == TileID.Coral && Main.rand.NextBool(6))
-                {
-                    Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemType<FreshSeaweed>(), Main.rand.Next(1, 4));
-                }
+            
                 if (type == 12 && Main.rand.NextBool(7))
                 {
                     NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16, NPCType<HeartBat>(), 1);

@@ -1,4 +1,5 @@
-using Microsoft.Xna.Framework;
+
+/*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.Magic;
 using Terraria;
 using Terraria.Audio;
@@ -78,7 +79,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
 
             return false;
         }
-        /*public override void AddRecipes()
+        public override void AddRecipes()
         {
             CreateRecipe(1)
             .AddIngredient(ItemID.MudBlock, 14)
@@ -87,6 +88,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             .AddTile(TileID.WorkBenches)
             .Register();
 
-        }*/
+        }
     }
 }
+*/

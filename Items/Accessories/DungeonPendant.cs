@@ -1,4 +1,4 @@
-using RealmOne.Buffs;
+/*using RealmOne.Buffs;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -55,4 +55,4 @@ namespace RealmOne.Items.Accessories
             balls.Register();
         }
     }
-}
+}*/

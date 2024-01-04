@@ -37,8 +37,7 @@ namespace RealmOne.Projectiles.Throwing
         public override void AI()
         {
             Projectile.rotation += 0.04f * Projectile.velocity.X;
-            Projectile.velocity.Y += 0.1f;
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Smoke, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.4f);
+            Projectile.velocity.Y += 0.09f;
 
             int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default, 1f);
             Main.dust[dustIndex].scale = 0.1f + Main.rand.Next(5) * 0.1f;
@@ -66,7 +65,7 @@ namespace RealmOne.Projectiles.Throwing
             return !target.friendly;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 4, 0, ProjectileID.SeedlerNut, Projectile.damage, Projectile.knockBack, Projectile.owner);
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, -4, 0, ProjectileID.SeedlerNut, Projectile.damage, Projectile.knockBack, Projectile.owner);

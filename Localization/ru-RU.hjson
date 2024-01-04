@@ -2138,6 +2138,11 @@ Mods: {
 				// DisplayName: Gilded Gladius
 				// Tooltip: ""
 			}
+
+			ForestTea: {
+				// DisplayName: Forest Tea
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2223,7 +2228,7 @@ Mods: {
 
 			BreatheBuff: {
 				// Description: GET THAT SHI DOWN IN YOUR MOUTH! NOTHIN BETTER THAN GOOD OLD BUNNINGS SNAG
-				// DisplayName: Breathe Buff
+				// DisplayName: Oxygen Elixir
 			}
 
 			AltElectrified: {

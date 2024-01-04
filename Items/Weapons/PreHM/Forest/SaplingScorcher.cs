@@ -33,7 +33,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 0f;
             Item.value = 30000;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item34;
             Item.autoReuse = true;
             Item.useAmmo = ItemID.Wood;

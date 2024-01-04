@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*
+using Microsoft.Xna.Framework;
 using RealmOne.BossBars;
 using RealmOne.Common.Systems;
 using RealmOne.Items.BossBags;
@@ -76,7 +77,7 @@ namespace RealmOne.Bosses
                 Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/InfestedSoil");
             }
         }
-        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
         {
             NPC.lifeMax = (int)(3000 * bossAdjustment);
             NPC.damage = 40;
@@ -120,7 +121,7 @@ namespace RealmOne.Bosses
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreBody);
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
                 }
-                */
+                
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
             }
 
@@ -290,7 +291,7 @@ namespace RealmOne.Bosses
 
             if (NPC.life <= 0)
             {
-/*
+
                 int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
                 int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
 
@@ -302,7 +303,7 @@ namespace RealmOne.Bosses
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
 
                 }
-*/
+
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
             }
 
@@ -355,7 +356,7 @@ namespace RealmOne.Bosses
 
             if (NPC.life <= 0)
             {
-/*
+
                 int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
                 int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
                 IEntitySource entitySource = NPC.GetSource_Death();
@@ -365,7 +366,7 @@ namespace RealmOne.Bosses
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreBody);
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
                 }
-*/
+
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
             }
 
@@ -385,4 +386,4 @@ namespace RealmOne.Bosses
         }
     }
 }
-
+*/

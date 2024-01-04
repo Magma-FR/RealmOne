@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using RealmOne.Buffs;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
@@ -36,6 +37,10 @@ namespace RealmOne.Items.Potions
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/LightbulbShine");
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

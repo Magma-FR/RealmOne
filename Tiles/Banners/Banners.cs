@@ -80,7 +80,7 @@ namespace RealmOne.Tiles.Banners
                         break;
 
                     case 2:
-                        Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<ImpactTurret>()] = true;
+                //        Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<ImpactTurret>()] = true;
                         Main.SceneMetrics.hasBanner = true;
                         break;
 

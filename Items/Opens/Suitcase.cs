@@ -26,8 +26,8 @@ namespace RealmOne.Items.Opens
 
                 + "\nBelow are the Weapons you get from it!(You also get other necessities!)"
 
-             + $"\n[i:{ModContent.ItemType<DualWieldCrossbows>()}][i:{ModContent.ItemType<HPChainShot>()}]"
-                          + $"\n[i:{ModContent.ItemType<ShatteredGemBlade>()}][i:{ModContent.ItemType<EmptyLocket>()}]");
+             + $"\n[i:{ModContent.ItemType<DualWieldCrossbows>()}]"
+                          + $"\n[i:{ModContent.ItemType<GildedGladius>()}][i:{ModContent.ItemType<EmptyLocket>()}]");
 
         }
 
@@ -80,11 +80,12 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.Bomb, 1, 15, 15));
             itemLoot.Add(ItemDropRule.Common(ItemID.SpelunkerPotion, 1, 5, 5));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DualWieldCrossbows>(), 1, 1, 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmptyLocket>(), 1, 1, 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.SalmonAvoSushi>(), 1, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GildedGladius>(), 1, 1, 1));
 
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.TunaAndAvacado>(), 1, 1, 1));
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmptyLocket>(), 1, 1, 1));
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.ForestTea>(), 1, 1, 1));
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GildedGladius>(), 1, 1, 1));
+
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<RustedBullets>(), 1, 50, 50));
 
 

@@ -32,11 +32,11 @@ namespace RealmOne.Items.Food
             Item.useTime = 17;
             Item.useAnimation = 17;
             Item.maxStack = 99;
-            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.value = Item.buyPrice(0, 0, 3, 25);
             Item.rare = ItemRarityID.Orange;
             Item.consumable = true;
-            Item.UseSound = SoundID.Item2;
+            Item.UseSound = SoundID.Item3;
 
         }
         public override bool CanUseItem(Player player)

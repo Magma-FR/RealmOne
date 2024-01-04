@@ -22,6 +22,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
         public override void ModifyShop(NPCShop shop)
         {
             if (shop.NpcType == NPCID.Merchant)
+            
             {
                 // Adding an item to a vanilla NPC is easy:
                 // This item sells for the normal price.
@@ -124,7 +125,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
 
 
             //Hell Drops
-            if (npc.type == NPCID.Demon)
+       /*     if (npc.type == NPCID.Demon)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
             }
@@ -152,6 +153,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
             }
+       */
             //Goblin Army
             if (npc.type == NPCID.GoblinArcher)
             {
@@ -202,22 +204,13 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshyCornea>(), 1, 1, 10));
             }
 
-            if (npc.type == NPCID.WallofFlesh)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 2, 1, 12));
-            }
-
+          
             if (npc.type == NPCID.KingSlime)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RoyalRawhide>(), 2, 1, 1));
             }
 
-            if (npc.type == NPCID.SkeletronHead)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DungeonPendant>(), 2, 1, 1));
-
-            }
-
+         
             if (npc.type == NPCID.Vampire)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1 

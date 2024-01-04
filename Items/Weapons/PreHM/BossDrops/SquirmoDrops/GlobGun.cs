@@ -1,4 +1,5 @@
-using Microsoft.Xna.Framework;
+
+/*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.Bullet;
 using Terraria;
 using Terraria.Audio;
@@ -65,7 +66,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
               .AddTile(TileID.Anvils)
               .Register();
         }
-   */
+   
 
         public override Vector2? HoldoutOffset()
         {
@@ -74,3 +75,4 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
         }
     }
 }
+*/

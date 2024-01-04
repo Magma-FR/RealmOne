@@ -1,7 +1,6 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.PaperUI;
-using RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
@@ -124,6 +123,7 @@ namespace RealmOne.Items.BossBags
     }
 
 }
+*/
 
 
 

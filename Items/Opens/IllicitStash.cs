@@ -89,9 +89,7 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.Campfire, 10, 1, 1));
 
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrassNuggets>(), 6, 8, 10));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.SalmonAvoSushi>(), 6, 1, 3));
-
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.TunaAndAvacado>(), 6, 1, 3));
+          
 
         }
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

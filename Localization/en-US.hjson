@@ -150,10 +150,10 @@ Mods: {
 			}
 
 			BreathePotion: {
-				DisplayName: Breathe Potion
+				DisplayName: Oxygen Elixir
 				Tooltip:
 					'''
-					Your lungs will thank you after 'drinking liquid air
+					Your lungs will thank you.
 					Immune to suffocation due to lack of air in space
 					Increases jump speed and acceleration by 10%
 					These stats increase by +10% when in space
@@ -1245,7 +1245,7 @@ Mods: {
 					When hit by an enemy, they take 20 damage and get inflicted by 'Splinted'
 					When an enemy is inflicted by Splinted, the enemy rapidly loses life for a very short duration
 					'''
-				DisplayName: Tattered Bark Shield
+				DisplayName: Spiked Bark Shield
 			}
 
 			StoneHilt: {
@@ -2138,6 +2138,11 @@ Mods: {
 				DisplayName: Gilded Gladius
 				Tooltip: ""
 			}
+
+			ForestTea: {
+				DisplayName: Forest Tea
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2223,7 +2228,7 @@ Mods: {
 
 			BreatheBuff: {
 				Description: GET THAT SHI DOWN IN YOUR MOUTH! NOTHIN BETTER THAN GOOD OLD BUNNINGS SNAG
-				DisplayName: Breathe Buff
+				DisplayName: Breathe!!
 			}
 
 			AltElectrified: {

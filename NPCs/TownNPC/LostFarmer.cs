@@ -198,11 +198,11 @@ namespace RealmOne.NPCs.TownNPC
                                   .Add(new Item(ItemID.Sunflower) { shopCustomPrice = Item.buyPrice(silver: 30) })
 
                  .Add(new Item(ModContent.ItemType<FarmKey>()) { shopCustomPrice = Item.buyPrice(gold: 3) })
-                                  .Add(new Item(ModContent.ItemType<SuperWheat>()) { shopCustomPrice = Item.buyPrice(gold: 1) })
+                                  .Add(new Item(ModContent.ItemType<SuperWheat>()) { shopCustomPrice = Item.buyPrice(gold: 1) });
 
 
 
-                .Add<SquirmoSummon>(Condition.TimeNight);
+               // .Add<SquirmoSummon>(Condition.TimeNight);
 
 
 

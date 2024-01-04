@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -32,4 +32,4 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Lighting.AddLight(Item.Center, Color.Orange.ToVector3() * 0.65f * Main.essScale);
         }
     }
-}
+}*/

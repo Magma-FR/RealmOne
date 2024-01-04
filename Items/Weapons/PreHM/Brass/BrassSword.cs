@@ -30,7 +30,7 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 2f;
             Item.value = 10000;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.useTurn = true;
             Item.crit = 2;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_MetalSwing");

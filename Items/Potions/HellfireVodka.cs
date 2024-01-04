@@ -1,4 +1,4 @@
-using RealmOne.Buffs;
+/*using RealmOne.Buffs;
 using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
 using Terraria.Audio;
@@ -46,3 +46,4 @@ namespace RealmOne.Items.Potions
         }
     }
 }
+*/

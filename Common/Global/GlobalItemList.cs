@@ -880,13 +880,7 @@ namespace RealmOne.Common.Global
             obj6.AddIngredient(ItemID.Bone, 10);
             obj6.AddTile(TileID.Hellforge);
             obj6.Register();
-            Recipe obj7 = Recipe.Create(ItemID.Marrow);
-            obj7.AddIngredient(Mod, "MossMarrow", 1);
-            obj7.AddIngredient(ItemID.SoulofNight, 8);
-            obj7.AddIngredient(ItemID.Bone, 10);
-            obj7.AddTile(TileID.Hellforge);
-            obj7.Register();
-
+          
         }
 
 

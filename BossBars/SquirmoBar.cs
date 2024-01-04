@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Bosses;
 using ReLogic.Content;
@@ -25,7 +26,7 @@ namespace RealmOne.BossBars
             return null;
         }
 
-        public override bool? ModifyInfo(ref BigProgressBarInfo info, ref float life, ref float lifeMax, ref float shield, ref float shieldMax)/* tModPorter Note: life and shield current and max values are now separate to allow for hp/shield number text draw */
+        public override bool? ModifyInfo(ref BigProgressBarInfo info, ref float life, ref float lifeMax, ref float shield, ref float shieldMax)
         {
 
             NPC npc = Main.npc[info.npcIndexToAimAt];
@@ -48,3 +49,4 @@ namespace RealmOne.BossBars
         }
     }
 }
+*/

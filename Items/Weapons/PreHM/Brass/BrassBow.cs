@@ -27,7 +27,7 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Item.useTime = 9;
             Item.useAnimation = 9;
             Item.value = Item.buyPrice(copper: 80, silver: 5);
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.WoodenArrowFriendly;

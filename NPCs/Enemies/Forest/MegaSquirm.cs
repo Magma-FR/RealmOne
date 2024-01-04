@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*using Microsoft.Xna.Framework;
 using RealmOne.Bosses;
 using RealmOne.Items.BossSummons;
 using RealmOne.Items.Food.FarmFood;
@@ -31,10 +31,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public bool HasPosition => PositionIndex > -1;
 
-        /*  public static new int BodyType1()
-          {
-              return ModContent.NPCType<SquirmoHead>();
-          }*/
+      
         public override int BodyType => ModContent.NPCType<MegaSquirmBody>();
 
         public override int TailType => ModContent.NPCType<MegaSquirmTail>();
@@ -152,46 +149,10 @@ namespace RealmOne.NPCs.Enemies.Forest
         public override void AI()
         {
 
-            /*   if (Despawn())
-               {
-                   return;
-               }
-
-               FadeIn();
-            */
-
           
             
         }
-        /*   private bool Despawn()
-           {
-               if (Main.netMode != NetmodeID.MultiplayerClient &&
-                   (!HasPosition || !HasParent || !Main.npc[ParentIndex].active || Main.npc[ParentIndex].type != BodyType1()))
-               {
-                   // * Not spawned by the boss body (didn't assign a position and parent) or
-                   // * Parent isn't active or
-                   // * Parent isn't the body
-                   // => invalid, kill itself without dropping any items
-                   NPC.active = false;
-                   NPC.life = 0;
-                   NetMessage.SendData(MessageID.SyncNPC, number: NPC.whoAmI);
-                   return true;
-               }
-               return false;
-           }*/
-
-        /*  private void FadeIn()
-          {
-              // Fade in (we have NPC.alpha = 255 in SetDefaults which means it spawns transparent)
-              if (NPC.alpha > 0)
-              {
-                  NPC.alpha -= 10;
-                  if (NPC.alpha < 0)
-                  {
-                      NPC.alpha = 0;
-                  }
-              }
-          }*/
+       
 
     }
 
@@ -273,3 +234,4 @@ namespace RealmOne.NPCs.Enemies.Forest
     }
 }
 
+*/
