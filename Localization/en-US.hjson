@@ -2608,6 +2608,7 @@ Mods: {
 			SanguineSlug.DisplayName: Sanguine Slug
 			EyeJelly.DisplayName: Eye Jelly
 			ImpactHoverdroid.DisplayName: Impact Hoverdroid
+			ButcherRat.DisplayName: Butcher Rat
 		}
 
 		Dialogue: {

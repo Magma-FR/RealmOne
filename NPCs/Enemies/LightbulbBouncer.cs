@@ -61,9 +61,15 @@ namespace RealmOne.NPCs.Enemies
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.16f;
+            if (Main.dayTime && Main.bloodMoon ==false)
+            {
+                return 0.9f;
+            }
+            else
+            {
+                return 0;
+            }
         }
-        private int dustTimer;
 
         public override void AI()
         {
