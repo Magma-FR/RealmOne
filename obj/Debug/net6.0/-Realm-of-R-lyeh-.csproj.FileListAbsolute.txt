@@ -1,5 +1,0 @@
-C:\Users\OMISTAJA\.openjfx\OneDrive\Tiedostot\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\-Realm-of-R-lyeh-.csproj.AssemblyReference.cache
-C:\Users\OMISTAJA\.openjfx\OneDrive\Tiedostot\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\-Realm-of-R-lyeh-.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\OMISTAJA\.openjfx\OneDrive\Tiedostot\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\-Realm-of-R-lyeh-.AssemblyInfoInputs.cache
-C:\Users\OMISTAJA\.openjfx\OneDrive\Tiedostot\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\-Realm-of-R-lyeh-.AssemblyInfo.cs
-C:\Users\OMISTAJA\.openjfx\OneDrive\Tiedostot\My Games\Terraria\tModLoader\ModSources\RealmOne\obj\Debug\net6.0\-Realm-of-R-lyeh-.csproj.CoreCompileInputs.cache
