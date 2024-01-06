@@ -6,6 +6,8 @@ namespace RealmOne.Common.Systems
     public class DownedBossSystem : ModSystem
     {
         public static bool downedPiggy;
+        public static bool downedRat;
+
 
         public static bool downedSquirmo;
         public static bool downedOutcropOutcast;
@@ -13,6 +15,7 @@ namespace RealmOne.Common.Systems
         public override void OnWorldLoad()
         {
             downedPiggy = false;
+            downedRat = false;
 
             downedSquirmo = false;
             downedOutcropOutcast = false;
@@ -21,6 +24,7 @@ namespace RealmOne.Common.Systems
         public override void OnWorldUnload()
         {
             downedPiggy = false;
+            downedRat = false;
 
             downedSquirmo = false;
             downedOutcropOutcast = false;
@@ -32,6 +36,10 @@ namespace RealmOne.Common.Systems
             if (downedPiggy)
             {
                 tag.Set("downedPiggy", true);
+            }
+            if (downedRat)
+            {
+                tag.Set("downedRat", true);
             }
 
             if (downedSquirmo)
@@ -48,6 +56,7 @@ namespace RealmOne.Common.Systems
         public override void LoadWorldData(TagCompound tag)
         {
             downedPiggy = tag.ContainsKey("downedPiggy");
+            downedRat= tag.ContainsKey("downedRat");
 
             downedSquirmo = tag.ContainsKey("downedSquirmo");
             downedOutcropOutcast = tag.ContainsKey("downedOutcropOutcast");

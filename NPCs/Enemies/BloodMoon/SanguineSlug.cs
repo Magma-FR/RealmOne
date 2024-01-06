@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using RealmOne.Items.ItemCritter;
 using Terraria.GameContent.Bestiary;
+using RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
@@ -68,6 +69,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 for (int k = 0; k < 12; k++)
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 1.75f * hit.HitDirection, -1.75f, 0, new Color(), 0.6f);
             }
+            NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<BloodRat>(), ai3: 1).scale = 1f;
+
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) =>  Main.bloodMoon && spawnInfo.Player.ZoneOverworldHeight ? 0.17f : 0f;

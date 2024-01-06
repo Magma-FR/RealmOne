@@ -133,6 +133,9 @@ public class rorAudio : ModSystem
 
     public static readonly SoundStyle GoreGun;
 
+    public static readonly SoundStyle squeak;
+
+
 
     static rorAudio()
     {
@@ -200,6 +203,7 @@ public class rorAudio : ModSystem
         BulbShatter = new SoundStyle("RealmOne/Assets/Soundss/BulbShatter", (SoundType)0);
         PorcelainDamaged = new SoundStyle("RealmOne/Assets/Soundss/porcelainbreak", (SoundType)0);
         GoreGun= new SoundStyle("RealmOne/Assets/Soundss/GoreGun", (SoundType)0);
+        squeak = new SoundStyle("RealmOne/Assets/Soundss/squeak", (SoundType)0);
 
 
     }

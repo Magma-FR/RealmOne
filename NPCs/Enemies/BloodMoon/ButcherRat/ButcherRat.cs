@@ -14,6 +14,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+using RealmOne.NPCs.Enemies.Corruption;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
 {
@@ -40,16 +41,16 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
 
         public override void SetDefaults()
         {
-            NPC.width = 140;
-            NPC.height = 150;
-            NPC.damage = 20;
+            NPC.width = 110;
+            NPC.height = 100;
+            NPC.damage = 30;
             NPC.defense = 2;
-            NPC.lifeMax = 950;
+            NPC.lifeMax = 1000;
             NPC.knockBackResist = 0f;
             NPC.value = Item.buyPrice(0, 2, 50, 50);
             NPC.aiStyle = -1;
-            NPC.HitSound = SoundID.NPCHit4;
-            NPC.DeathSound = SoundID.Item59;
+            NPC.HitSound = SoundID.NPCHit19;
+            NPC.DeathSound = SoundID.NPCDeath2;
             NPC.netAlways = true;
             NPC.netUpdate = true;
 
@@ -61,24 +62,65 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
 
             if (Main.masterMode == true)
             {
-                dmg = 40;
+                dmg = 50;
             }
             else if (Main.expertMode == true)
             {
-                dmg = 30;
+                dmg = 40;
             }
             else
             {
-                dmg = 20;
+                dmg = 30;
             }
         }
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+        {
+            int buffType = BuffID.Bleeding;
+            int timeToAdd = 20 * 60;
+            target.AddBuff(buffType, timeToAdd);
+
+        }
+        public override void OnKill()
+        {
+            if (Main.netMode != NetmodeID.Server)
+            {
+                Main.NewText(Language.GetTextValue($"[i:{ItemID.BloodyMachete}]The dreaded frenzying rodent has been slaughtered, the curse has awoken the neverending plague of rats[i:{ItemID.ButchersChainsaw}]"), 249, 45, 99);
+
+            }
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedRat, -1);
+
+
+            var rat = NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<BloodRat>(), ai3: 1);
+
+
+            rat.scale = 3f;
+            rat.life = rat.lifeMax;
+
+
+        }
+        private int spawnTimer = 0;
+        private bool spawnedEnemy = false;
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-            if (Main.rand.Next(100) < 45 && lilrat == 0)
-            {
-                lilrat = 60;
-                NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<JumboEyeMedium>(), ai3: 1).scale = 1f;
-            }
+          
+                // Spawn the additional enemy every 200 health
+                if (NPC.life <= 1200 && NPC.lifeMax - NPC.life >= 200 && !spawnedEnemy)
+                {
+                // Spawn the additional enemy every 200 health
+                NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<BloodRat>(), ai3: 1).scale = 1F;
+                spawnedEnemy = true; // Set the flag to true to indicate that an enemy has been spawned
+                }
+
+                // Reset the flag if the health is not within the specified range
+                if (NPC.life > 1200 || NPC.lifeMax - NPC.life < 200)
+                {
+                    spawnedEnemy = false;
+                }
+            
+
+          
+         
 
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
@@ -97,7 +139,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
             }
             for (int k = 0; k < 25; k++)
             {
-                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 3.2f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
     }

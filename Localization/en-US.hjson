@@ -2609,6 +2609,7 @@ Mods: {
 			EyeJelly.DisplayName: Eye Jelly
 			ImpactHoverdroid.DisplayName: Impact Hoverdroid
 			ButcherRat.DisplayName: Butcher Rat
+			BloodRat.DisplayName: Blood Rat
 		}
 
 		Dialogue: {
