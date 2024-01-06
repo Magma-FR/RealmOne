@@ -1,50 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="..\tModLoader.targets" />
+
 	<PropertyGroup>
 		<AssemblyName>RealmOne</AssemblyName>
 		<TargetFramework>net6.0</TargetFramework>
 		<PlatformTarget>AnyCPU</PlatformTarget>
-		<LangVersion>latest</LangVersion>
+		<LangVersion>10</LangVersion>
 	</PropertyGroup>
-	<ItemGroup>
-		<AdditionalFiles Remove="Items\Fighter\**" />
-		<Compile Remove="Items\Fighter\**" />
-		<Compile Remove="Items\Tiles\**" />
-		<EmbeddedResource Remove="Items\Fighter\**" />
-		<EmbeddedResource Remove="Items\Tiles\**" />
-		<None Remove="Items\Fighter\**" />
-		<None Remove="Items\Tiles\**" />
-	</ItemGroup>
-	<ItemGroup>
-	  <AdditionalFiles Remove="Localization\en-US.hjson" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Assets\Effects\CircleGradient.png" />
-	  <None Remove="Assets\Effects\GlowTrail.png" />
-	  <None Remove="Assets\Effects\Trail_1.png" />
-	  <None Remove="Biomes\Farm\FarmSapling.png" />
-	  <None Remove="Items\Weapons\Fighter\placeholder.txt" />
-	  <None Remove="Items\Weapons\PreHM\BloodMoon\BloodBlower_Glow.png" />
-	  <None Remove="NPCs\Enemies\BloodMoon\JumboEyeMedium.png" />
-	  <None Remove="Projectiles\Piggy\CopperCoin.png" />
-	  <None Remove="Projectiles\Piggy\Fire.png" />
-	  <None Remove="Projectiles\Piggy\GoldCoin.png" />
-	  <None Remove="Projectiles\Piggy\HugeGoldCoin.png" />
-	  <None Remove="Projectiles\Piggy\PlatinumCoin.png" />
-	  <None Remove="Projectiles\Piggy\SilverCoin.png" />
-	  <None Remove="Tiles\FarmPylonTile_CrystalHighlight.png" />
-	</ItemGroup>
+
+    <PropertyGroup>
+        <DotNetPath Condition=" '$(OS)' == 'Windows_NT' ">dotnet.exe</DotNetPath>
+        <DotNetPath Condition=" '$(OS)' == 'Unix' ">dotnet</DotNetPath>
+        <DotNetPath Condition=" '$(DotNetPath)' == '' ">dotnet</DotNetPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    </PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Assets\Textures\Emoticons\" />
-	  <Folder Include="Items\Tools\Other\" />
-	  <Folder Include="Items\Weapons\PreHM\Crimson\" />
-	  <Folder Include="Items\Weapons\PreHM\Forest\Wattles\" />
-	  <Folder Include="lib\" />
-	</ItemGroup>
+
 	<ItemGroup>
 	  <Reference Include="StructureHelper">
 	    <HintPath>lib\StructureHelper.dll</HintPath>
