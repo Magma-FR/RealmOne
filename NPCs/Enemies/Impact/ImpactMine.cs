@@ -3,7 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
 using RealmOne.Items.Food;
 using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Projectiles.Magic;
 using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -11,7 +14,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 
-namespace RealmOne.NPCs.Enemies.Corruption
+namespace RealmOne.NPCs.Enemies.Impact
 {
     public class ImpactMine : ModNPC
     {
@@ -48,9 +51,13 @@ namespace RealmOne.NPCs.Enemies.Corruption
 
         public override void AI()
         {
-            NPC.rotation += NPC.velocity.X / 5;
+            NPC.rotation += NPC.velocity.X / 2;
             Player player = Main.player[NPC.target];
             Vector2 center = NPC.Center;
+            if (NPC.Distance(player.Center) < 55f)
+            {
+                Explode();
+            }
             for (int j = 0; j < 60; j++)
             {
                 int dust1 = Dust.NewDust(center, 0, 0, DustID.Electric, 0f, 0f, 100, default, 0.5f);
@@ -59,6 +66,32 @@ namespace RealmOne.NPCs.Enemies.Corruption
                 Main.dust[dust1].noLight = false;
 
             }
+        }
+        private void Explode()
+        {
+            SoundEngine.PlaySound(SoundID.NPCDeath44, NPC .position);
+
+            NPC.active = false;
+            for (int i = 0; i < 25; i++)
+            {
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 0.5f, 0f, 100, default, 2f);
+            }
+
+           
+            Player player = Main.player[NPC.target];
+          var p =  Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), Vector2.Zero, ProjectileID.ClusterGrenadeI, 35, 2, Main.myPlayer);
+            Main.projectile[p].timeLeft = 10;
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore1").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore2").Type, 1f);
+
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore3").Type, 1f);
+
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Top, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.Bottom, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
+
+
+            
+
         }
         public override void HitEffect(NPC.HitInfo hit)
         {

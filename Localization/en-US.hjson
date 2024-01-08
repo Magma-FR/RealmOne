@@ -2427,6 +2427,7 @@ Mods: {
 			CartonBeerProj.DisplayName: Carton Beer Proj
 			GildedGladiusProj.DisplayName: Gilded Gladius Proj
 			GildedGladiusThrown.DisplayName: Gilded Gladius Thrown
+			ButcherRatMachete.DisplayName: Butcher Rat Machete
 		}
 
 		NPCs: {
@@ -2611,6 +2612,7 @@ Mods: {
 			ButcherRat.DisplayName: Butcher Rat
 			BloodRat.DisplayName: Blood Rat
 			WhisperingShroud.DisplayName: Whispering Shroud
+			ImpactMine.DisplayName: Impact Mine
 		}
 
 		Dialogue: {

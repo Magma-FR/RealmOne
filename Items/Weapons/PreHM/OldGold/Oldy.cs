@@ -94,17 +94,8 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 position += muzzleOffset;
             Gore.NewGore(source, player.Center + muzzleOffset * 1, new Vector2(player.direction * -1, -0.5f) * 2, Mod.Find<ModGore>("TommyGunPellets").Type, 1f);
 
-            for (int i = 0; i < 10; i++)
-            {
-                Vector2 speed = Utils.RandomVector2(Main.rand, -10f, 1f);
-                var d = Dust.NewDustPerfect(Main.LocalPlayer.Center, 228, speed * 10, Scale: 2f);
-                ;
-
-                d.noGravity = true;
-
-           //     Projectile.NewProjectile(player.GetSource_ItemUse(Item), position + muzzleOffset, Vector2.Zero, ModContent.ProjectileType<ConeFlash>(), 0, 0, player.whoAmI);
-
-            }
+           
+            
 
             return true;
         }
