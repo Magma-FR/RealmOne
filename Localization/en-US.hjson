@@ -1,2690 +1,2688 @@
-Mods: {
-	RealmOne: {
-		GameTips: {
-			ExampleTip0: The Archeologist is a wise but lost man, find him in snowbanks!
-			ExampleTip1: Cthulhu in Ohio
-			ExampleTip2: The soil feels moist and dire. Defeat Squirmo, the sludgy scavenger of the soil!
-			DisabledExampleTip: Ambabatakum.
+Mods.RealmOne: {
+	GameTips: {
+		ExampleTip0: The Archeologist is a wise but lost man, find him in snowbanks!
+		ExampleTip1: Cthulhu in Ohio
+		ExampleTip2: The soil feels moist and dire. Defeat Squirmo, the sludgy scavenger of the soil!
+		DisabledExampleTip: Ambabatakum.
+	}
+	
+	Items: {
+		StunSeed: {
+			DisplayName: Stun Seed Cannon
+			Tooltip:
+				'''
+				Features a large assortment of nuts that stun enemies!
+				"This is the product of absolute tomfoolery!"
+				'''
 		}
-
-		Items: {
-			StunSeed: {
-				DisplayName: Stun Seed Cannon
-				Tooltip:
-					'''
-					Features a large assortment of nuts that stun enemies!
-					"This is the product of absolute tomfoolery!"
-					'''
-			}
-
-			PiggyPorcelain: {
-				DisplayName: Piggy Porcelain
-				Tooltip: Sharp, pink porcelain, dropped from the ones that carry allat gold
-			}
-
-			PlanetaryShard: {
-				DisplayName: Planetary Shard
-				Tooltip: "'The prismatic colors on this shard were embedded from the birth of a planet'"
-			}
-
-			ScavengerSteel: {
-				DisplayName: Scavenger Steel
-				Tooltip: "'An artificial ingot, constructed from the mysteries under the caverns'"
-			}
-
-			WaterDriplets: {
-				DisplayName: Water Driplets
-				Tooltip: "'Crystal clear water, its unknown if you should drink this water'"
-			}
-
-			Wheat: {
-				DisplayName: Wheat
-				Tooltip: "'Hand picked from the fields, ready to be baked'"
-			}
-
-			WoodenGunBarrel: {
-				DisplayName: Wooden Gun Barrel
-				Tooltip:
-					'''
-					Crafts wooden based guns with a single barrel
-					'The barrel is polished and thick, incapable for it to be set on fire'
-					'Common use of it is typically used for weaker but reliable guns'
-					'''
-			}
-
-			IllicitStash: {
-				DisplayName: Illicit Stash
-				Tooltip:
-					'''
-					"<right> to open up a bag of risky items"
-					Guaranteed chance of getting something, but something you're not looking for
-					'You get what you get and don't get upset'
-					'''
-			}
-
-			MinersPouch: {
-				DisplayName: Miners Pouch
-				Tooltip:
-					'''
-					<right> for a little pouchful of mining necessities
-					Below is the list of items you can get in the bag
-					[i:12][i:11][i:699][i:701][i:14][i:700][i:13][i:702]
-					[i:166][i:167][i:8][i:2322][i:296]
-					'''
-			}
-
-			EntropyMedallion: {
-				DisplayName: Entropy Medallion
-				Tooltip: ""
-			}
-
-			HeavenMagnet: {
-				DisplayName: Heaven Magnet
-				Tooltip:
-					'''
-					Magnet in random loot from the heavens!!
-					Has a cooldown of 5 minutes
-					'''
-			}
-
-			SquirmoLorePageOne: {
-				DisplayName: Squirmo Lorescroll
-				Tooltip: Open up a scroll to reveal the secrets of the soil
-			}
-
-			LovecraftPaper: {
-				DisplayName: The World We Live In
-				Tooltip: Open a scroll of Lovecraft's Ancient Scripts.
-			}
-
-			EvoGrassItem: {
-				DisplayName: Evo Grass
-				Tooltip: Walk on evolution
-			}
-
-			GrassPylonItem: {
-				DisplayName: Grass Pylon
-				Tooltip: This crystal was conjured centuries ago by the protectors of the land
-			}
-
-			PhotosynthesisItem: {
-				DisplayName: Photosynthesis Pillar
-				Tooltip:
-					'''
-					Only a reckless individual will summon nature's ritual
-					Summons The Outcrop Outcast
-					'''
-			}
-
-			SquirmoRelicItem: {
-				DisplayName: Squirmo Relic
-				Tooltip: Reward for giving relief to the soil!
-			}
-
-			StoneOvenItem: {
-				DisplayName: Stone Oven
-				Tooltip:
-					'''
-					Capable of cooking wheat based foods
-					Always cooked to perfection!
-					'''
-			}
-
-			TatteredBarrelItem: {
-				DisplayName: Tattered Barrel
-				Tooltip: ""
-			}
-
-			ProtonTorchItem: {
-				DisplayName: Proton Torch
-				Tooltip: Creates electrical sparks when swung and placed
-			}
-
-			BarrenBrew: {
-				DisplayName: Barren Brew
-				Tooltip:
-					'''
-					An environmentally friendly type of drink, not sure if you should drink it though
-					Gain Tangled Buff
-					'''
-			}
-
-			BreathePotion: {
-				DisplayName: Oxygen Elixir
-				Tooltip:
-					'''
-					Your lungs will thank you.
-					Immune to suffocation due to lack of air in space
-					Increases jump speed and acceleration by 10%
-					These stats increase by +10% when in space
-					'''
-			}
-
-			Cigarette1: {
-				DisplayName: Cigarette
-				Tooltip:
-					'''
-					When you light a cigarette...
-					Your life burns with it.
-					You gain 20% increased damage and weapon speed but no life regen nor pickup hearts
-					'''
-			}
-
-			HellfireVodka: {
-				DisplayName: Hellfire Vodka
-				Tooltip:
-					'''
-					15% running speed, movement speed and acceleration
-					All weapons inflict OnFire
-					10% increased damage and knockback
-					-5 Defense
-					You are on fire!!!
-					'''
-			}
-
-			LightbulbPotion: {
-				DisplayName: Lightbulb Potion
-				Tooltip:
-					'''
-					An ultra bright fluid that consists of large groups of luminosity minerals
-					It's safe to drink, however it feels overly warm
-					Gives the player a bright aura that provides warmth and reduces enemy aggression
-					The aura gets brighter when underground
-					'''
-			}
-
-			TraditionalCologne: {
-				DisplayName: Traditional Cologne
-				Tooltip:
-					'''
-					A classic bottle of fine moonglow and skybreeze liquid
-					Using the cologne provides you with a distinct aroma
-					Gives the player cheaper shop prices, increased defense by 3+, reduced enemy aggression and 8% increased movement speed
-					'''
-			}
-
-			PompeiisPull: {
-				DisplayName: Pompeiis Pull
-				Tooltip: Grapple to Italy's Doomsday, and back...
-			}
-
-			CloudDiggingClaw: {
-				DisplayName: Cloud Digging Claw
-				Tooltip:
-					'''
-					'Hand Crafted from the soft fluffy clouds of the sky'
-					'Light as the clouds'
-					'''
-			}
-
-			EyePick: {
-				DisplayName: Eye Pick
-				Tooltip:
-					'''
-					'It stares at you while you dig, weird.'
-					Capable of mining Old Gold! [i:RealmOne/OldGoldOre]
-					'''
-			}
-
-			ImpactPickaxe: {
-				DisplayName: Impact Pickaxe
-				Tooltip: Electrocutes enemies on hit
-			}
-
-			OldGoldPick: {
-				DisplayName: Old Gold Pick
-				Tooltip:
-					'''
-					Dig with divinity!!
-					Sells measily well!
-					'''
-			}
-
-			BattleboatBomb: {
-				DisplayName: Battleboat Bomb
-				Tooltip:
-					'''
-					Without a Cannon what's the use of this explosive!?
-					It has an extremely fast detonation time, so its either you die or you die
-					Self Explode yourself, dealing huge damage to enemies and you
-					Would this classify as Euthanism?
-					'''
-			}
-
-			BotanicLogLauncher: {
-				DisplayName: Botanic Log Launcher
-				Tooltip:
-					'''
-					Hold out a heavy and floral cannon that shoots oversized bouncing flower logs!
-					Theres a family of worms living in it!
-					Must reload the launcher after each shot
-					'''
-			}
-
-			CastawayRum: {
-				DisplayName: Castaway Rum
-				Tooltip:
-					'''
-					A washed up old bottle of strong pineapple, vanilla, coffee beans and paprika
-					The bottle explodes into explosive and sharp pieces of glass
-					Right click to drink the rum, granting the Salty Swig buff, an exclusive buff to Drink-Related Items
-					Salty Swig buff grants 8% increased weapon speed and movement speed but you have -5 defence
-					'Surprised there's no fish or sand in the bottle!'
-					'''
-			}
-
-			CopperFragGrenade: {
-				DisplayName: Copper Frag Grenade
-				Tooltip:
-					'''
-					A commonly used hand thrown explosive, wrapped around in thick copper plating
-					Best used combat situations. It's not something you want to juggle with
-					With Frag Grenades, let the grenade cook by throwing it on the floor, just not on enemy impact, making the grenade penetrate and explode in a larger radius
-					'''
-			}
-
-			ScavengerSawblade: {
-				DisplayName: Scavenger Sawblade
-				Tooltip:
-					'''
-					Throws a unstable and explosive sawblade
-					Right click to detonate the sawblade into unstable sparks of electricity
-					   Recommended to hold the sawblade in the middle not the blades!
-					I'm not even sure how this is safe
-					'''
-			}
-
-			TinFragGrenade: {
-				DisplayName: Tin Frag Grenade
-				Tooltip:
-					'''
-					A commonly used hand thrown explosive, wrapped around in thick tin plating
-					Best used combat situations. It's not something you want to juggle with
-					With Frag Grenades, let the grenade cook by throwing it on the floor, just not on enemy impact, making the grenade penetrate and explode in a larger radius
-					'''
-			}
-
-			Type24StickNade: {
-				DisplayName: Type24 Stick Nade
-				Tooltip:
-					'''
-					Type 24 hand held stick grenade, used in long and precautious situations.
-					Best used in long distance relationships
-					Best use of the Stick Grenade is to throw it high in the air, then catch it and let it blow up in your face :)
-					'''
-			}
-
-			CrashLandChainGun: {
-				DisplayName: Crash Land Chain Gun
-				Tooltip:
-					'''
-					Shoots rapid fire Meteors!
-					'Not to be mistaken from the Meteor Staff!'
-					40% chance to not consume Fallen Stars
-					Uses Fallen Stars
-					[i:75]
-					'''
-			}
-
-			NebulaniNox: {
-				DisplayName: Nebulani Nox
-				Tooltip:
-					'''
-					Nebulous!!
-					Shoot a powerful shock of shadowbeam and Nebula Powers
-					Uses mana and ammo but shoots a extra Nebula Arcanum if used with bullets
-					'''
-			}
-
-			PridefulMoraleStaff: {
-				DisplayName: Prideful Morale Staff
-				Tooltip: Shoots 3 morality projectiles
-			}
-
-			TheDreamer: {
-				DisplayName: The Dreamer
-				Tooltip: Shoots a purple swift fireball that explodes into rift particles
-			}
-
-			CoconutHarp: {
-				DisplayName: Coconut Harp
-				Tooltip:
-					'''
-					Plucks out thick palm tree strings to conjure a vibey and tropical note
-					Randomly shoots out Coconuts that deal heavy knockback
-					'How the landlubbers kept 'emslves entertained'
-					'''
-			}
-
-			CorneaScepter: {
-				DisplayName: Cornea Scepter
-				Tooltip: Shoots reckless demon eyes out of the staff
-			}
-
-			MagicGobBag: {
-				Tooltip: Conjures a rift that sucks in nearby enemies.
-				DisplayName: Sorcerer's Spirit Candle
-			}
-
-			WaterQuarry: {
-				DisplayName: Water Quarry
-				Tooltip:
-					'''
-					Hold out a mystical and beautiful water scepter
-					Shoots out a reckless and powerful swishing ball of water
-					The water swish explodes in a large radius
-					'''
-			}
-
-			HeatedXiphoss: {
-				DisplayName: Heated Xiphoss
-				Tooltip:
-					'''
-					Smelted and structured at extreme heat'
-					A training sword from the gods
-					The xiphos upgrades in power the more you hit hit enemies
-					5 hits of enemies makes the sword increase in the sword's speed
-					10 hits of enemies makes the sword increase its damage by 20%	
-					15 hits of enemies makes the sword reach it's final stage and inflicts Sharp Heat debuff
-					These effects reset on the 16th swing
-					'''
-			}
-
-			ScarecrowsCut: {
-				DisplayName: Scarecrows Cut
-				Tooltip:
-					'''
-					'Always sharp'
-					Swings a sharp cleaver that pierces
-					'Why did the scarecrow win an award? Because he was outstanding in his field'
-					'''
-			}
-
-			ShatteredGemBlade: {
-				DisplayName: Shattered Gem Blade
-				Tooltip:
-					'''
-					'A snapped, legendary blade, destined with full potential!'
-					Swings a snapped, gem incrusted blade
-					Has a chance to swing out a powerful overhead swing that covers a larger swing area
-					'''
-			}
-
-			UnstableWireBlade: {
-				DisplayName: Unstable Wire Blade
-				Tooltip:
-					'''
-					A metallic and a wire-infested sword, capable of transfering viruses
-					'The strength of conduction of this sword can magnetise raw lightning from the skies'
-					'''
-			}
-
-			FoliageFury: {
-				DisplayName: Foliage Fury
-				Tooltip:
-					'''
-					Shoots rapid fire leaves in an inaccurate spread
-					Does not use ammo
-					'''
-			}
-
-			Overgrowth: {
-				DisplayName: Overgrowth
-				Tooltip:
-					'''
-					Conjure a large swarm of foliage to damage enemies
-					This is what happens when you dont take care of your backyard'
-					'This branch is so old, Jesus used it in his science experiment in Year 9'
-					'''
-			}
-
-			DoubleSidedSquirm: {
-				DisplayName: Double Sided Squirm
-				Tooltip: Yes. Spin an actual Squirm! LOL
-			}
-
-			GlobGun: {
-				DisplayName: Glob Gun
-				Tooltip:
-					'''
-					A bit too squelchy for my liking
-					Shoots a forced and sludgy explosive mud glob
-					Stick the glob on a tile and let it charge up its power, dealing 2x the aoe and penetrate up to 3 enemies
-					Uses Mud Blocks [i:176]
-					'''
-			}
-
-			SquirmStaff: {
-				Tooltip: Summons worms from beneath the ground to chase after enemies
-				DisplayName: Squirm Staff
-			}
-
-			SquirYo: {
-				DisplayName: Squir Yo
-				Tooltip: Shoots out worms the more the yoyo hits an enemy
-			}
-
-			BrassBow: {
-				DisplayName: Brass Bow
-				Tooltip: Has a 20% chance of shooting a copper coin
-			}
-
-			BrassCandlewick: {
-				Tooltip: Hold an antique and powerful candle that shoots out burning wax in a diversed and wide spread
-				DisplayName: Brass Candlewick
-			}
-
-			BrassSword: {
-				DisplayName: Brass Sword
-				Tooltip: Has a chance to shrink in size and significantly increase its usetime
-			}
-
-			StackPotions: {
-				DisplayName: Stack Potions
-				Tooltip:
-					'''
-					Throws a bundle of different potions
-					When the bundle is smashed, it has a chance of dropping a random potion on drop
-					Right Click to Drink a random potion
-					'''
-			}
-
-			CombusterCrossbow: {
-				DisplayName: Combuster Crossbow
-				Tooltip:
-					'''
-					Hold out a burning and powerful crossbow that shoots flaming bolts
-					The crossbow shoots out 2 crossbolts, having to let go of the button and reload
-					'''
-			}
-
-			DualWieldCrossbows: {
-				DisplayName: Dual Wield Crossbows
-				Tooltip:
-					'''
-					Wield a Dualshot crossbow!
-					The crossbow shoots out 2 crossbolts, having to let go of the button and reload
-					Double Trouble!
-					'''
-			}
-
-			CactusThrust: {
-				Tooltip: Thrusts a spiky spear that has a chace to thrust out a bunch of sticky prickly pears that stick onto enemies
-				DisplayName: Cactus Thrust
-			}
-
-			DesertWhisper: {
-				DisplayName: Desert Whisper
-				Tooltip:
-					'''
-					Shoots 2 fast moving cactus darts in a tight spread
-					Right click to summon rope snakes you can climb on
-					Uses Cactus
-					[i:276]
-					'''
-			}
-
-			SandTwister: {
-				DisplayName: The Resplendent
-				Tooltip:
-					'''
-					The string is made out of premium horsehair!
-					Summons sandstorms near the cursor
-
-					'''
-			}
-
-			AcornBlunderbuss: {
-				DisplayName: Blunderbush
-				Tooltip:
-					'''
-					A bushy and heavy blunderbuss!
-					Shoots outs explosive acorns that explode into acorn shrapnel
-					Uses Crushed Acorns as ammo [i:RealmOne/CrushedAcorns]
-					'''
-			}
-
-			KnopperWhopper: {
-				DisplayName: Knopper Whopper
-				Tooltip:
-					'''
-					Swing a reproductive and bio-reactive Knopper Gall that poisons enemies
-					Due to Knopper Galls being chemically distorted, bees live in the knopper
-					'Plenty of unwanted insects thrive off this plant'
-					'''
-			}
-
-			MossMarrow: {
-				DisplayName: Moss Marrow
-				Tooltip:
-					'''
-					'From all the degradation, it still looks viable'
-					Converts Wooden Arrows to Bone Arrows [i:3033]
-					'''
-			}
-
-			RotteredElbowbone: {
-				DisplayName: Rottered Elbowbone
-				Tooltip:
-					'''
-					The bone is so old that bacteria and vines have become poisonous overtime
-					Right Click to release a bouncing cross-bone from the bone
-					Inflicts Tangled
-					'''
-			}
-
-			RustedCenturionSword: {
-				DisplayName: Rusted Centurion Sword
-				Tooltip:
-					'''
-					A common weapon used from the Centurions
-					The sword is still sharp but very rusty, causing the sword to deal 2+ armour penetration to enemies.
-					'''
-			}
-
-			SaplingScorcher: {
-				DisplayName: Sapling Scorcher
-				Tooltip:
-					'''
-					Spits out fumes of fire
-					Burns up lumber to create combustion, when hot enough, it shoots it all out
-					20% chance of an explosive acorn to shoot out the flamethrower
-					25% chance to not consume wood
-					Uses Wood [i:9]
-					'''
-			}
-
-			Twigbulb: {
-				Tooltip:
-					'''
-					Casts a bright, dangly lightbulb at the mouse position.
-					Lights a large area
-					'''
-				DisplayName: Twigbulb
-			}
-
-			Vinepoint: {
-				Tooltip: Throughout the centuries, the cartilage is now nothing but bacteria
-				DisplayName: Vinespore Spinebone
-			}
-
-			AcornGrenade: {
-				DisplayName: Acorn Grenade
-				Tooltip:
-					'''
-					Throws an explosive grenade thats filled with exploding acorns
-					The acorns split into acorn shrapnel
-					'''
-			}
-
-			IgnitionPoker: {
-				DisplayName: Ignition Poker
-				Tooltip:
-					'''
-					'An extremely bright and hot scimitar of the underworld'
-					Strike and Slice foes at rapid speeds
-					Every hit causes hellsparks to fly out of the sword, damaging enemies
-					You gain 4+ defence while holding this weapon
-					You gain 6+ defence, 10% increased movement speed, immunity to lava and fire while holding this in hell
-					You gain an inferno ring around you
-					'''
-			}
-
-			Phlogiston: {
-				DisplayName: Phlogiston
-				Tooltip:
-					'''
-					Get a fresh breeze of FYAARRR
-					Shoots rapid fire explosive fire bullets followed with a barrage of flames and exploding fireballs
-					Uses Gel [i:23]
-					'''
-			}
-
-			TorchedTextbook: {
-				Tooltip: Conjure a wisp of hell born spells. Mixture of homing lashes, hellbats and firebeams
-				DisplayName: Torched Textbook
-			}
-
-			GushingFrostMinnow: {
-				DisplayName: Scoutfrost Minnow
-				Tooltip: "'A rare fish of the snow that has been frozen over time, filled with icy water'"
-			}
-
-			SnowflakeScepter: {
-				DisplayName: Snowflake Scepter
-				Tooltip: Conjure snowflakes from the sky and from the staff!
-			}
-
-			ImpactBoomerang: {
-				DisplayName: Impact Boomerang
-				Tooltip:
-					'''
-					Throws a electric and dark boomerang that homes onto enemies
-					If the boomerang hits a tile, it will summon an electrical current
-					This electrical current will go the opposite way of the boomerang
-					'''
-			}
-
-			ImpactInterceptor: {
-				DisplayName: Impact Interceptor
-				Tooltip:
-					'''
-					Releases an electric pulse sonar that damages enemies in a large area
-					Goes through walls		
-					'No WI-FI password required!'
-					'''
-			}
-
-			ImpactPiercer: {
-				DisplayName: Impact Piercer
-				Tooltip:
-					'''
-					A weak plasma diverged bow that shoots pulse arrows that pierce multiple enemies
-					Midway through the shooting the bow, the bow will short circuit and shoot 2 arrows
-					The first of the 2 circuit arrows is a arrow that has a 100% crit chance
-					The last circuit arrow is a slow use arrow that deals 7x the damage
-					'Xeonically Charged!!'
-					'''
-			}
-
-			ImpactPulsa: {
-				DisplayName: Impact Pulsa
-				Tooltip:
-					'''
-					'A weak, plasma diverged rifle'
-					Midway through firing the gun, the gun will short circuit burst out pulse bullets
-					'Xeonically Charged!!'
-					'''
-			}
-
-			InkPistol: {
-				DisplayName: Ink Pistol
-				Tooltip:
-					'''
-					Filled to the brim with eidolic ink
-					Shoots out splats of eidolic ink that slide on the ground and inflict Shadowflame
-					20% chance to not consume Eidolic Ink
-					Uses Eidolic Ink [i:RealmOne/EidolicInk]
-					'''
-			}
-
-			InkSpear: {
-				Tooltip:
-					'''
-					Thrusts out an inky and sloppy spear
-					Shoots out ink globs that slide to the floor
-					'''
-				DisplayName: Ink Spear
-			}
-
-			SpaceMiniGun: {
-				DisplayName: Space Mini Gun
-				Tooltip:
-					'''
-					Shoots rapid fire space lasers
-					Space Gun's big brother
-					Uses Mana [i:109]
-					'''
-			}
-
-			OldGoldGuillotines: {
-				DisplayName: Old Gold Guillotines
-				Tooltip: Slice and dice your foes with these ancient and sharp chains
-			}
-
-			Oldy: {
-				DisplayName: Antiquity Revolver
-				Tooltip: "'A precise and antique revolver crafted from the ancient bars of Old Gold"
-			}
-
-			PagesOfPristinity: {
-				Tooltip: Conjure theurgy and divine sandnadoes from the sand-collected pages
-				DisplayName: Pages Of Pristinity
-			}
-
-			PiggyPursuer: {
-				DisplayName: Piggy Pursuer
-				Tooltip:
-					'''
-					It gets damaged per each hit, making it lose some of its porcelain
-					In return, it gets faster
-					If damaged enough, it will shatter into lots of porcelain
-					'And I Huff and I puff and I blow your house down!!'
-					'''
-			}
-
-			WithDraw: {
-				DisplayName: WithDraw
-				Tooltip:
-					'''
-					Shoots a very small spread of gold coins at a fast rate
-					20% chance  to not consume arrows
-					Converts Wooden Arrows to Gold Coins [i:73]
-					'''
-			}
-
-			PalmWoodPoker: {
-				DisplayName: Palm Wood Poker
-				Tooltip: Carved from the wood of the beachside
-			}
-
-			RichMahoganyPoker: {
-				DisplayName: Rich Mahogany Poker
-				Tooltip: Harnessed from the moist tree tops of the Jungle
-			}
-
-			StonePoker: {
-				DisplayName: Stone Poker
-				Tooltip: A more strong and sturdy poker
-			}
-
-			VerdantPoker: {
-				DisplayName: Verdant Poker
-				Tooltip: A reactive and environmentally friendly poker
-			}
-
-			WoodenPoker: {
-				DisplayName: Wooden Poker
-				Tooltip: May cause splinters
-			}
-
-			CrimcrushBlunderbuss: {
-				DisplayName: Crimcrush Blunderbuss
-				Tooltip:
-					'''
-					'The blunderbuss of the bonded flesh'
-					Shoots a flesh glob bullet that lightly heals the player
-					'''
-			}
-
-			DustStormBlunderbuss: {
-				DisplayName: Duststorm Blunderbuss
-				Tooltip:
-					'''
-					A blunderbuss crafted with the natural mixture of the desert
-					Shoots a duststorm bullet
-					'''
-			}
-
-			EbonfrostBlunderbuss: {
-				DisplayName: Ebonfrost Blunderbuss
-				Tooltip:
-					'''
-					'Chilled and Corrupted'
-					Shoots a icy corrupted bullet
-					'''
-			}
-
-			HPChainShot: {
-				DisplayName: Lovecraft's Chain Shotgun
-				Tooltip:
-					'''
-					Right click to shoot out a chain that splits out of the gun
-					The gun extends into the chain!
-					[c/ACAD4D:'I used this to protect myself from my own creations, preposterous activity!]
-					Uses Rusted Bullets [i:RealmOne/RustedBullets]
-
-					'''
-			}
-
-			JungleTechShotgun: {
-				DisplayName: Jungle Tech Shotgun
-				Tooltip:
-					'''
-					Charge up a bio-infused shotgun to shot out a spread of bullets
-					'Snazzy!'
-					'''
-			}
-
-			MahoganyBlunderbuss: {
-				DisplayName: Mahogany Blunderbuss
-				Tooltip:
-					'''
-					'You're most likely going to be poisoned when using this'
-					Shoots a poisonous petal
-					'''
-			}
-
-			PumpShotgun: {
-				DisplayName: Pump Shotgun
-				Tooltip:
-					'''
-					A classic, brawny and reliable pump action shotgun
-					Shoots a spry and powerful round of 12 gauge Buckshot shells
-					The bottom rear 'handguard' must be 'slid' back and forward to load the rounds back into the gun to fire again
-					'''
-			}
-
-			VintageBlunderbuss: {
-				DisplayName: Vintage Blunderbuss
-				Tooltip:
-					'''
-					An antique, sturdy and heavy blunderbuss
-					'There's a sheet of parchment inside the barrel of the gun!'
-					'It says: Hold the blunderbuss by the bottom and make sure your hand is not near the barrel as when shot it will recoil your entire body...'
-					'The blunderbuss has been made with reckless care but still shoots out great power.'
-					'''
-			}
-
-			StoneTippedSpear: {
-				Tooltip: ""
-				DisplayName: Stone Tipped Spear
-			}
-
-			WoodenTippedSpear: {
-				Tooltip: ""
-				DisplayName: Wooden Tipped Spear
-			}
-
-			Glitterbook: {
-				DisplayName: Glitterbook
-				Tooltip:
-					'''
-					Starstriking Fury!!
-					Shoots out fast stars in a random position behind the player
-					'''
-			}
-
-			EleJelly: {
-				DisplayName: Ele Jelly
-				Tooltip:
-					'''
-					Throws an electrical jellyfish that explodes into an electric explosion
-					'Has a cool electric trail!'
-					'''
-			}
-
-			PreFlamedGel: {
-				DisplayName: Flammable Jelly
-				Tooltip: Throws slippery and flammable chunks of gel
-			}
-
-			TundraThrowingKnife: {
-				DisplayName: Tundra Throwing Knife
-				Tooltip: ""
-			}
-
-			vampdag: {
-				DisplayName: Vampire Daggers
-				Tooltip:
-					'''
-					A cheaper but weaker version of the Vampire Knives
-					Heals the player on hit
-					'''
-			}
-
-			CrackshotWheelgun: {
-				DisplayName: Crackshot Wheelgun
-				Tooltip:
-					'''
-					Right click to throw out a Wagon Wheel that rolls on the ground
-					Left click to shoot out a fast bullet, shoot the bullet at the wheel to explode into fire shrapnel
-					'''
-			}
-
-			TommyGun: {
-				DisplayName: Tommy Gun
-				Tooltip:
-					'''
-					Fires .45 caliber medium bullets at a circulated rate
-					'The magazine is a circular drum that can hold up to 50-100 rounds.
-					Uses Bullets [i:97]
-					'''
-			}
-
-			ExtensionCord: {
-				DisplayName: Extension Cord
-				Tooltip:
-					'''
-					An unstable and live wire, containing many volts
-					Hold to charge the whip, fully charging the whip increases the whips length by 40% and inflicts Electricity
-					Has a multihit feature where the end of the whip increases in damage the amount of enemies you hit in a single row
-					'''
-			}
-
-			TwinklingTwig: {
-				DisplayName: Twinkling Twig
-				Tooltip: Summons an Enchanted Nightcrawler to wriggle and starstruck your enemies!!
-			}
-
-			SkullMask: {
-				DisplayName: Skull Mask
-				Tooltip:
-					'''
-					'Bro thinks he's bro :skull:'
-					Sold by the Clothier
-					To my skull emoji enthuasists!!
-					'''
-			}
-
-			Parchment: {
-				Tooltip:
-					'''
-					'Parchment paper is made from cellulose fibers prepared from trees or plants such as cotton or flax.'
-					'Paper can be made which mimics the thickness and smooth surface of parchment.'
-					'Animal-free Parchment is used'
-					'''
-				DisplayName: Parchment
-			}
-
-			OldGoldBar: {
-				Tooltip: "'An aged but pristine ingot crafted from the ancient gold of the underground'"
-				DisplayName: Old Gold Bar
-			}
-
-			LightbulbLiquid: {
-				Tooltip: "'Liquid when light gets into its spatial property'"
-				DisplayName: Lightbulb Liquid
-			}
-
-			LeadGunBarrel: {
-				Tooltip:
-					'''
-					Crafts metal based guns with a single barrel
-					'The barrel is sturdy, secure but quite heavy'
-					Common use of it is typically used for traditional guns with strong or medium firepower
-					'''
-				DisplayName: Lead Gun Barrel
-			}
-
-			IronGunBarrel: {
-				Tooltip:
-					'''
-					Crafts metal based guns with a single barrel
-					'The barrel is sturdy, secure but quite heavy'
-					Common use of it is typically used for traditional guns with strong or medium firepower
-					'''
-				DisplayName: Iron Gun Barrel
-			}
-
-			ImpactTech: {
-				Tooltip:
-					'''
-					The pieces of purged symbiones
-					'Xeonically Charged!!'
-					'''
-				DisplayName: Impact Tech
-			}
-
-			GoopyGrass: {
-				Tooltip:
-					'''
-					'Carries millions of bacteria and nutrients'
-					#GreenThumbs
-					'''
-				DisplayName: Goopy Grass
-			}
-
-			GizmoScrap: {
-				Tooltip:
-					'''
-					A mixture of small chips, wires and other junk
-					Dropped from the sneakiest of goblins
-					'''
-				DisplayName: Gizmo Microchips
-			}
-
-			FreshSeaweed: {
-				Tooltip:
-					'''
-					Way too salty for my liking
-					'Can be dried and wrapped up in sushi!'
-					'''
-				DisplayName: Fresh Seaweed
-			}
-
-			FragrantMoonMushroom: {
-				Tooltip: ""
-				DisplayName: Fragrant Moon Mushroom
-			}
-
-			FleshyCornea: {
-				Tooltip: "'Dropped from the seers of Terraria'"
-				DisplayName: Fleshy Cornea
-			}
-
-			EnchantedStarglitter: {
-				Tooltip: "'Paraphernalia of a shooting star!'"
-				DisplayName: Enchanted Starglitter
-			}
-
-			EidolicInk: {
-				DisplayName: Eidolic Ink
-				Tooltip: ""
-			}
-
-			EdibleLeechHeart: {
-				Tooltip: ""
-				DisplayName: Edible Leech Heart
-			}
-
-			DrownedDeathpearl: {
-				Tooltip: ""
-				DisplayName: Drowned Deathpearl
-			}
-
-			Crimcore: {
-				Tooltip: A bloody, dark and cold stone, dropped from the enemies that have surpassed and crumbled in the flesh
-				DisplayName: Crimcore
-			}
-
-			BreadLoaf: {
-				Tooltip: "[c/BBA95E:'Freshly baked from the rustic and antique stone baker ovens']"
-				DisplayName: Bread Loaf
-			}
-
-			BrassNuggets: {
-				Tooltip: A durable and inexpensive chunk of common brass
-				DisplayName: Brass Nuggets
-			}
-
-			BrassIngot: {
-				Tooltip:
-					'''
-					Crafts antique and durable stationary and weaponry
-					'Brass is most widely used in applications that are decorative and mechanical.'
-					'Due to its unique properties, which include corrosion resistance to rusting.''
-					'Common uses for brass include applications that require low friction.'
-					'''
-				DisplayName: Brass Ingot
-			}
-
-			WaterLizardCritter: {
-				DisplayName: Water Lizard
-				Tooltip: ""
-			}
-
-			GiantDragonflyItem: {
-				DisplayName: Giant Dragonfly
-				Tooltip: ""
-			}
-
-			MagpieItem: {
-				DisplayName: Magpie
-				Tooltip: ""
-			}
-
-			ThornyDevilItem: {
-				DisplayName: Thorny Devil
-				Tooltip: ""
-			}
-
-			AquaSwishSnailItem: {
-				DisplayName: AquaSwish Snail
-				Tooltip: ""
-			}
-
-			AquaSwishFishItem: {
-				DisplayName: AquaSwish Fish
-				Tooltip: ""
-			}
-
-			VegeToast: {
-				Tooltip: "'How do people not like VEGEMITE!!!'"
-				DisplayName: Vege Toast
-			}
-
-			TunaAndAvacado: {
-				Tooltip:
-					'''
-					'A simple roll of sushi with beautiful Japanese Red Fin Tuna and creamy slices of avacado'
-					Increases Charm Duration by 6+ seconds
-					'''
-				DisplayName: Tuna And Avacado
-			}
-
-			TreeSapJuice: {
-				Tooltip:
-					'''
-					Enemies are less likely to target you
-					5% increased move and running speed 
-					10% if you are in the forest
-
-					'''
-				DisplayName: Tree Sap Juice
-			}
-
-			ToastedNutBar: {
-				Tooltip: Extreme trace of nuts!
-				DisplayName: Toasted Nut Bar
-			}
-
-			SalmonAvoSushi: {
-				Tooltip:
-					'''
-					'A tasty blend of the most carefully caught salmon in the ocean and fresh creamy slices of avocado'
-					Increases Charm Duration by 8+ seconds
-
-					'''
-				DisplayName: Salmon Avo Sushi
-			}
-
-			JamToast: {
-				Tooltip: "'What I used to wake up to in the morning as a kid'"
-				DisplayName: Jam Toast
-			}
-
-			ProtonPole: {
-				Tooltip:
-					'''
-					Throws an electric bobber.
-					On right click you can explode the bobber into slow moving electric sparks
-					'Somewhat vulnerable to water!'
-					'''
-				DisplayName: Proton Pole
-			}
-
-			SquirmoSummon: {
-				Tooltip:
-					'''
-					'Awaken the sludgy scavenger of the soil'
-					'The soil will adhere relief!'
-					Summons Squirmo
-					'''
-				DisplayName: Worm Infested Carrot
-			}
-
-			MoneyVase: {
-				Tooltip:
-					'''
-					'Why you takin allat money for kid?'
-					'Your bank account finna be empty after using this dawg'
-					Summons The Possessed Piggy Bank
-					'''
-				DisplayName: Money Vase
-			}
-
-			SquirmoBossBag: {
-				Tooltip:
-					'''
-					{$CommonItemTooltip.RightClickToOpen}
-					It's a struggle to get the goodies out of this muddy bag!'
-					'''
-				DisplayName: Squirmo Boss Bag
-			}
-
-			OutcropBossBag: {
-				Tooltip:
-					'''
-					{$CommonItemTooltip.RightClickToOpen}
-					Open a bag of pure evolution
-					'''
-				DisplayName: Outcrop Boss Bag
-			}
-
-			CrushedAcorns: {
-				Tooltip: Clusters of acorns, quite explosive
-				DisplayName: Crushed Acorns
-			}
-
-			VerdantBindis: {
-				Tooltip:
-					'''
-					2+ Base Damage on all weapons
-					You are poisoned when equipping this, I mean cmon you're carrying around Poisonous Bindis!?
-					'''
-				DisplayName: Verdant Bindis
-			}
-
-			TheOutcastsOverseer: {
-				Tooltip:
-					'''
-					'A physical form of the dirt titan's purpose'
-					6% increased critical chance
-					Crits have a chance to increase your crit chance
-					The effect increases your crit chance by %4+
-					Stacking the effect does not work
-					'''
-				DisplayName: The Outcasts Overseer
-			}
-
-			TatteredBarkShield: {
-				Tooltip:
-					'''
-					'Nothing but skin penetrating wooden splinters on this shield'
-					When hit by an enemy, they take 20 damage and get inflicted by 'Splinted'
-					When an enemy is inflicted by Splinted, the enemy rapidly loses life for a very short duration
-					'''
-				DisplayName: Spiked Bark Shield
-			}
-
-			StoneHilt: {
-				Tooltip:
-					'''
-					'Smoothened stone, tied around the sword handle'
-					'I'm positive this is what the vikings did when they invigorated their swords'
-					7% increased melee speed and knockback
-					This also affects all tools!
-					'''
-				DisplayName: Stone Hilt
-			}
-
-			StaticStone: {
-				Tooltip:
-					'''
-					Increases the effectiveness of the Electrified buff
-					Full immunity to the Electrified debuff
-					Buffs E-Weapons
-					'''
-				DisplayName: Static Stone
-			}
-
-			SquirmScarf: {
-				Tooltip: Reduces damage taken by 8%
-				DisplayName: Squirm Scarf
-			}
-
-			RustyAmmoStock: {
-				Tooltip:
-					'''
-					25% chance to not consume ammo
-					Due to rust, you are bleeding
-					10 second affect after unequipped
-					'''
-				DisplayName: Rusty Ammo Stock
-			}
-
-			RoyalRawhide: {
-				Tooltip:
-					'''
-					5% increased acceleration and movement speed
-					When you are hit by an enemy you are granted a slime dash buff
-					The buff cannot be stacked, as soon as your hit, the buff will last for 5 seconds
-					This dash has a 6 second cooldown
-					'''
-				DisplayName: Royal Rawhide
-			}
-
-			MidnightHunterOptics: {
-				Tooltip:
-					'''
-					'A necessity when hunting at night'
-					Hunter and Nightowl affects
-					+6% increased crit
-					'''
-				DisplayName: Midnight Hunter Optics
-			}
-
-			LivebornLeaf: {
-				Tooltip:
-					'''
-					'Bacteria infected leaf, radiating with nature's power'
-					10% increased summon damage
-					'''
-				DisplayName: Liveborn Leaf
-			}
-
-			GreenNecklace: {
-				Tooltip:
-					'''
-					'Wrap Evolution around your neck'
-					'Worn from the dying soldiers of the past'
-					All weapons and equipment inflict 'Tangled'
-					You gain Thorns, Swiftness and Titan while equipping this
-					When in the Renaissance Biome, all enemies and bosses instantly get inflicted with the 'Withering Evolution' debuff, which obliterates the enemy if their health is 40%
-					Does not work on bosses.
-					'''
-				DisplayName: Renaissance Cross
-			}
-
-			FlinxBeanie: {
-				Tooltip:
-					'''
-					Immune to Chilled and Frozen
-					'My goly gosh its so soft!'
-					'''
-				DisplayName: Flinx Beanie
-			}
-
-			EmptyLocket: {
-				Tooltip:
-					'''
-					'The internal chaos from the locket was too much for the gods to bespoke...
-					So they abandoned it to a new rival that can withstand the essence'
-					Gives the player a void-like glow
-					Right click the locket to sacrifice it for a reckless challenge
-					'''
-				DisplayName: Empty Locket of The Lords
-			}
-
-			EarthEmerald: {
-				Tooltip:
-					'''
-					'If the Earth was shrunk into a gem'
-					25% increased tool and weapon speed
-					Spelunker, Night Owl, Shine buffs
-					These stats are better in the day
-					'''
-				DisplayName: Earth Emerald
-			}
-
-			DungeonPendant: {
-				Tooltip:
-					'''
-					'An ancient and powerful dungeon charm'
-					Immunity to spikes
-					Dungeon enemies do 30% less damage to you
-					10% increased damage and 10+ defense while in the dungeon
-					'''
-				DisplayName: Dungeon Pendant
-			}
-
-			BoneBag: {
-				Tooltip:
-					'''
-					Used from the Clothier a long time when he was still trapped in the dungeon
-					'Ya bonehead!'
-					Skeletons and dungeon enemies drop more loot and bones
-					Shows the location of treasure and enemies in the dungeon
-					'''
-				DisplayName: Bone Bag
-			}
-
-			BarkShield: {
-				Tooltip:
-					'''
-					'Carved from the bark of the trees'
-					10% increased axe and pickaxe speed when in the forest
-					'''
-				DisplayName: Bark Shield
-			}
-
-			AntiVenomVial: {
-				Tooltip:
-					'''
-					Full immunity to Venom
-					'This anti-venom works for other critters too!'
-					'''
-				DisplayName: Anti Venom Vial
-			}
-
-			TreeHuggerLegs: {
-				Tooltip:
-					'''
-					5% increased movement speed and acceleration
-					'Trousers of the tree tops!'
-					'''
-				DisplayName: Tree Hugger Trousers
-			}
-
-			TreeHuggerHead: {
-				Tooltip:
-					'''
-					5% increased damage
-					'Helmet of the tree tops!'
-					'''
-				DisplayName: Tree Hugger Helmet
-			}
-
-			TreeHuggerBody: {
-				Tooltip:
-					'''
-					5% increased knockback on all weapons
-					'Chestplate of the tree tops!'
-					'''
-				DisplayName: Tree Hugger Chestplate
-			}
-
-			PiggyLegs: {
-				Tooltip:
-					'''
-					10% increased movement speed and acceleration
-					Hold down to fall faster
-					'Kicking something will probably shatter the grieves'
-					'''
-				DisplayName: Piggy Patroller Grieves
-			}
-
-			PiggyHead: {
-				Tooltip:
-					'''
-					7% increased damage, 10% increased attack speed, 3% decreased acceleration
-					'This is so uncomfortable, but it does the job'
-					'''
-				DisplayName: Piggy Patroller Mask
-			}
-
-			PiggyBody: {
-				Tooltip:
-					'''
-					8% increased damage reduction, +20 max health, 5% decreased movement speed
-					'Carrying a heavy bodyplate of porcelain'
-					'''
-				DisplayName: Piggy Patroller Bodyplate
-			}
-
-			BrassLegs: {
-				Tooltip: 7% increased movement speed
-				DisplayName: Brass Greaves
-			}
-
-			BrassHead: {
-				Tooltip: 6% increased melee damage
-				DisplayName: Brass Knightmask
-			}
-
-			BrassBody: {
-				Tooltip:
-					'''
-					8% knockback and weapon speed
-					'A knight in rusty armour!'
-					'''
-				DisplayName: Brass Chestplate
-			}
-
-			FlorenceMarble: {
-				DisplayName: Florence Marble
-				Tooltip: ""
-			}
-
-			OldGoldOre: {
-				DisplayName: Old Gold Ore
-				Tooltip: ""
-			}
-
-			VintageBeer: {
-				DisplayName: Limetwist Beer
-				Tooltip:
-					'''
-					A slightly sour but frothy rum
-					Gives the Limetwist Rum Buff
-					Ignores 3 points of enemy defence, increasing endurance by 10% but decreased weapon speed by 15%
-					Ingredients: 
-					'''
-			}
-
-			VintageWine: {
-				DisplayName: Spicegrass Wine
-				Tooltip:
-					'''
-					A bitter and almost spicy wine.
-					Gives the Spicegrass Wine Buff
-					Increases acceleration and running speed by 8% but -2 defence
-					Ingredients:
-					'''
-			}
-
-			Peni: {
-				DisplayName: Penacillin
-				Tooltip:
-					'''
-					[c/00FF00:~Sub Accessory~]
-					+10HP
-					Immunity to poison, venom, bleeding
-					When you are hit you regen health twice as fast
-					-------------------------
-					You can consume the penacillin, making the buffs 2x as strong
-					Therefore: 20+HP
-					'''
-			}
-
-			AquaBlossomBody: {
-				DisplayName: Aqua Blossom Cuirass
-				Tooltip:
-					'''
-					6% increases magic damage
-					20+ Max Mana
-					'Wet armour? No thanks.
-					'''
-			}
-
-			AquaBlossomHead: {
-				DisplayName: Aqua Blossom Lilyhat
-				Tooltip: 6% increased magic crit chance
-			}
-
-			AquaBlossomLegs: {
-				DisplayName: Aqua Blossom Flippers
-				Tooltip: 6% increased movement speed and jump speed
-			}
-
-			RustedBullets: {
-				Tooltip: Rusty, but effective
-				DisplayName: Rusted Bullets
-			}
-
-			WoodenTrainWhip: {
-				DisplayName: Wooden Train Whip
-				Tooltip: ""
-			}
-
-			LightbulbCannon: {
-				DisplayName: Lightbulb Cannon
-				Tooltip: "'Shoots a massive lightbulb that release a large aura of light'"
-			}
-
-			MagmaBody: {
-				DisplayName: Magma Body
-				Tooltip: Hot cape fr
-			}
-
-			MagmaHead: {
-				DisplayName: Magma Head
-				Tooltip: You feel like an idiot wearing this
-			}
-
-			MagmaLegs: {
-				DisplayName: Magma Legs
-				Tooltip: Sloppy
-			}
-
-			AcornSprinterB: {
-				DisplayName: Acorn Sprinter Banner
-				Tooltip: ""
-			}
-
-			AcornStiltB: {
-				DisplayName: Acorn Stilt Walker Banner
-				Tooltip: ""
-			}
-
-			HuntsmanSpiderItem: {
-				DisplayName: Caught Huntsman Spider
-				Tooltip: ""
-			}
-
-			RedbackSpiderItem: {
-				DisplayName: Caught Redback Spider
-				Tooltip: ""
-			}
-
-			FunnelWebSpiderItem: {
-				DisplayName: Caught FunnelWeb Spider
-				Tooltip: ""
-			}
-
-			NewtonCradleItem: {
-				Tooltip: ""
-				DisplayName: Newton's Cradle
-			}
-
-			Wattle: {
-				Tooltip: ""
-				DisplayName: Wattle
-			}
-
-			PoisonPrickles: {
-				Tooltip: Throws a bunch of prickles that has a boost of speed when it penetrates an enemy
-				DisplayName: Poison Prickles
-			}
-
-			SuperSnowballCannon: {
-				Tooltip:
-					'''
-					Go Crazy, Go Stupid!
-					Snowball Cannon but if it was good.
-					'''
-				DisplayName: Super Snowball Cannon
-			}
-
-			RainforestBow: {
-				Tooltip:
-					'''
-					Shoots out jungle arrows
-					Has a chance to shoot out a dangerous jungle arrow that creates nettles on impact
-					With a chance of a jungle spore to shoot out, exploding on contact.
-					'''
-				DisplayName: Rainforest Bow
-			}
-
-			AcornWand: {
-				Tooltip: Conjures Bouncing Acorns that bounce 3 times
-				DisplayName: Acorn Wand
-			}
-
-			IchorGlobScepter: {
-				Tooltip: ""
-				DisplayName: Ichor Glob Scepter
-			}
-
-			PlatWarAxe: {
-				Tooltip: ""
-				DisplayName: Platinum War Axe
-			}
-
-			GoldWarAxe: {
-				Tooltip: ""
-				DisplayName: Golden War Axe
-			}
-
-			MusicNotePNT: {
-				Tooltip: "'B.Eduardos'"
-				DisplayName: Quavers
-			}
-
-			AddictionPNT: {
-				Tooltip: "'J.Salaki'"
-				DisplayName: Addiction
-			}
-
-			ScathedFlesh: {
-				Tooltip: Scarred, bloody flesh off a hungry vertabrae of the crimson
-				DisplayName: Scathed Flesh
-			}
-
-			InfectedViscus: {
-				Tooltip: The corrupted, vile body parts of a corruption entity
-				DisplayName: Infected Viscus
-			}
-
-			HellishMembrane: {
-				Tooltip: The souls of underworld monstrosities
-				DisplayName: Hellish Membrane
-			}
-
-			BUNNINGSSNAG: {
-				Tooltip: NOTHING BETTER THAN A GOOD OL BUNNINGS SNAG
-				DisplayName: BUNNINGS SNAG
-			}
-
-			CursedBerries: {
-				DisplayName: Cursed Berries
-				Tooltip: "'Sour, but too sour, it makes enemy spawn increased!'"
-			}
-
-			SunflowerPetal: {
-				DisplayName: Sunflower Petal
-				Tooltip: ""
-			}
-
-			VulgarShot: {
-				DisplayName: Vulgar Shot
-				Tooltip:
-					'''
-					'Absolutely Vile!'
-					Charges up Vile Eyes from the bow
-					Releasing the button shoots all Vile Eyes at once
-					'''
-			}
-
-			SquirmoTrophyItem: {
-				DisplayName: Squirmo Trophy
-				Tooltip: ""
-			}
-
-			SquirmoMask: {
-				DisplayName: Squirmo Mask
-				Tooltip: ""
-			}
-
-			ImpactTurretB: {
-				DisplayName: Impact Turret Banner
-				Tooltip: ""
-			}
-
-			EeyeB: {
-				DisplayName: E-Eye Banner
-				Tooltip: ""
-			}
-
-			EslimeB: {
-				DisplayName: E-Slime Banner
-				Tooltip: ""
-			}
-
-			Aquablossom: {
-				DisplayName: Aquablossom
-				Tooltip: Has a taint glow to it!
-			}
-
-			RegenMush: {
-				DisplayName: Mushroom of Regen
-				Tooltip:
-					'''
-					3+ Health Regen
-					'Don't eat it!!!'
-					'''
-			}
-
-			ChickenCoopItem: {
-				DisplayName: Chicken Coop
-				Tooltip: Cluck Cluck Cluck!!
-			}
-
-			TractorTileItem: {
-				DisplayName: Tractor
-				Tooltip: ""
-			}
-
-			TatteredWood: {
-				DisplayName: Tattered Wood
-				Tooltip: Guaranteed Splinters!
-			}
-
-			FarmKey: {
-				DisplayName: Ancient Farm Key
-				Tooltip: Unlocks an Ancient and Tattered Chest
-			}
-
-			FarmChest: {
-				DisplayName: Farm Chest
-				Tooltip: ""
-			}
-
-			FarmAcorn: {
-				DisplayName: Farm Acorn
-				Tooltip: ""
-			}
-
-			FarmSoilItem: {
-				DisplayName: Farm Soil
-				Tooltip: ""
-			}
-
-			Carrot: {
-				DisplayName: Carrot
-				Tooltip: "'Crunchy and great for your eyesight!'"
-			}
-
-			FloralDelight: {
-				DisplayName: Floral Delight
-				Tooltip:
-					'''
-					Sweet, eadable flowers, filled with nutrients and goodness!
-					Gives the Heartreach buff"
-					You can wear this on your head as well!
-					'''
-			}
-
-			PumpkinSoup: {
-				DisplayName: Pumpkin Soup
-				Tooltip:
-					'''
-					Delicious, gourmet and it warms up your tummy
-					Gives Medium Improvements to all stats
-					'''
-			}
-
-			FarmPylonItem: {
-				DisplayName: Farm Pylon
-				Tooltip: ""
-			}
-
-			OldSnailItem: {
-				DisplayName: Grandfather Snail
-				Tooltip: ""
-			}
-
-			DepthsPNT: {
-				DisplayName: The Depths
-				Tooltip: "[c/880808:By Zero and The Possum]"
-			}
-
-			NothingPNT: {
-				DisplayName: Nothingness
-				Tooltip: "[c/880808:By Zero and The Possum]"
-			}
-
-			BerrybackItem: {
-				DisplayName: Berryback
-				Tooltip: ""
-			}
-
-			RoosterItem: {
-				DisplayName: Rooster
-				Tooltip: CLUCK CLUCK CLUCK
-			}
-
-			SquirmItem: {
-				DisplayName: Squirm
-				Tooltip: ""
-			}
-
-			Suitcase: {
-				DisplayName: Lovecraft's Rift Suitcase
-				Tooltip:
-					'''
-					Your Journey Begins!!
-					Right Click to crack open H.P Lovecraft's Rift Essentials
-					Below are the Weapons you get from it!(You also get other necessities!)
-					[i:RealmOne/ShatteredGemBlade][i:RealmOne/DualWieldCrossbows]
-					[i:RealmOne/Twigbulb][i:RealmOne/EmptyLocket]
-
-					'''
-			}
-
-			WattlePot: {
-				DisplayName: Wattle Pot
-				Tooltip: Gives the Happy Buff!
-			}
-
-			TatteredBody: {
-				DisplayName: Tattered Breastplates
-				Tooltip: ""
-			}
-
-			TatteredLegs: {
-				DisplayName: Tattered Trousers
-				Tooltip: ""
-			}
-
-			TatteredMask: {
-				DisplayName: Tattered Mask
-				Tooltip: ""
-			}
-
-			SunHat: {
-				DisplayName: Lost Farmer's Straw Hat
-				Tooltip: Sunflower Effect when worn in the day!
-			}
-
-			TatteredAxe: {
-				DisplayName: Tattered Axe
-				Tooltip: ""
-			}
-
-			TatteredBow: {
-				DisplayName: Tattered Bow
-				Tooltip: ""
-			}
-
-			TatteredHammer: {
-				DisplayName: Tattered Hammer
-				Tooltip: ""
-			}
-
-			TatteredPick: {
-				DisplayName: Tattered Pick
-				Tooltip: ""
-			}
-
-			TatteredSword: {
-				DisplayName: Tattered Sword
-				Tooltip: ""
-			}
-
-			Goreberry: {
-				DisplayName: Goreberry
-				Tooltip: Dangerously sweet, increases your heart rate'
-			}
-
-			ChillrendBody: {
-				DisplayName: Chillrend Body
-				Tooltip:
-					'''
-					6% increases ranged damage
-					6% increased ranged speed
-					'''
-			}
-
-			ChillrendHead: {
-				DisplayName: Chillrend Helmet
-				Tooltip:
-					'''
-					6% increased ranged damage
-					6%increased ranged attack speed
-					'''
-			}
-
-			ChillrendLegs: {
-				DisplayName: Chillrend Legs
-				Tooltip:
-					'''
-					6% increased movement speed
-					You leave a trail of ice!
-					'''
-			}
-
-			FarmTorchItem: {
-				DisplayName: Farm Torch
-				Tooltip: ""
-			}
-
-			HoneyHareItem: {
-				DisplayName: Honey Hare
-				Tooltip: ""
-			}
-
-			CoindropWand: {
-				DisplayName: Coindrop Wand
-				Tooltip: ""
-			}
-
-			SquirmoMusicBox: {
-				DisplayName: Squirmo Music Box
-				Tooltip: ""
-			}
-
-			FarmMusicItem: {
-				DisplayName: Farm Music Box
-				Tooltip: ""
-			}
-
-			Bloomarang: {
-				DisplayName: Bloomarang
-				Tooltip: Throws out 6 bloomerangs that shoot out in a circle
-			}
-
-			SunflowerStaff: {
-				DisplayName: Sunflower Scepter
-				Tooltip:
-					'''
-					Conjures a glowing and growing sunflower on the cursor's position
-					Explodes into fast moving sunflower petals and catch in the wind.
-					'''
-			}
-
-			BloodHook: {
-				Tooltip: Latches onto enemies while still being to hook onto walls
-				DisplayName: Blood Hook
-			}
-
-			Crimclub: {
-				DisplayName: Crimclub
-				Tooltip:
-					'''
-					Swing a deadly and spiky club that knockback enemies heavily
-					Has a 50% chance of a bloody tooth to shoot out of the club, dealing high damage to enemies.
-					'''
-			}
-
-			BloodBlower: {
-				DisplayName: Blood Blower
-				Tooltip: Shoots 2 Flesh Darts and a Bloodshot that penetrate enemies
-			}
-
-			TatteredJavlin: {
-				DisplayName: Tattered Javlin
-				Tooltip: ""
-			}
-
-			BarrensludgeJelly: {
-				DisplayName: Barrensludge Jelly
-				Tooltip:
-					'''
-					Minor Improvements to all stats
-					Sludgy!
-					'''
-			}
-
-			BarrensludgeLime: {
-				DisplayName: Barrensludge Lime
-				Tooltip:
-					'''
-					Minor Improvements to all stats
-					Sour!
-					'''
-			}
-
-			EyeballSoup: {
-				DisplayName: Eyeball Soup
-				Tooltip:
-					'''
-					Medium Improvements to all stats
-					Stares at you while you slurp it down!
-					'''
-			}
-
-			JellyfishPlatter: {
-				DisplayName: Jellyfish Platter
-				Tooltip:
-					'''
-					Minor Improvements to all stats
-					Slimy, electric but also very nutritious
-					'''
-			}
-
-			ToothedTendril: {
-				DisplayName: Toothed Tendril
-				Tooltip: ""
-			}
-
-			SuperWheat: {
-				DisplayName: Super Wheat
-				Tooltip: Smells like beer
-			}
-
-			CactusFruit: {
-				DisplayName: Cactus Fruit
-				Tooltip:
-					'''
-					Minor Improvements to all stats
-					'Bit prickly and poisonous'
-					'''
-			}
-
-			FleshToothSMG: {
-				DisplayName: Flesh Tooth S M G
-				Tooltip:
-					'''
-					Shoots a burst of bloody teeth in 3 rounds
-					Very Inaccurate 
-					'''
-			}
-
-			LiteBulb: {
-				DisplayName: Lightbulb
-				Tooltip: ""
-			}
-
-			ToothBody: {
-				DisplayName: Goretooth Teethplate
-				Tooltip:
-					'''
-					1+ Increased Minion
-					4% increased Summon Damage
-					'''
-			}
-
-			ToothHead: {
-				DisplayName: Goretooth Eyemask
-				Tooltip:
-					'''
-					5% Increased Summon Damage
-					1+ Max Minion
-					'''
-			}
-
-			ToothLegs: {
-				DisplayName: Goretooth Teethfeet
-				Tooltip:
-					'''
-					8% increased movement speed
-					8% increased Whip Attack Speed
-					'''
-			}
-
-			SanguineSlugItem: {
-				DisplayName: Sanguine Slug Item
-				Tooltip: ""
-			}
-
-			EyeJellyItem: {
-				DisplayName: Eye Jelly Item
-				Tooltip: ""
-			}
-
-			GoreshankShotgun: {
-				DisplayName: Goreshank Shotgun
-				Tooltip:
-					'''
-					Rapid fire goreblast bullets that gives you and the enemy the bleeding debuff
-					'Full of rust and sharp edges'
-					'''
-			}
-
-			ImpactFlashlight: {
-				DisplayName: Impact Flashlight
-				Tooltip: Hold and release to flash a large electric cone shaped light
-			}
-
-			JellyfishInfestedShark: {
-				DisplayName: Jellyfish Infested Shark
-				Tooltip:
-					'''
-					Shoots a variety of Jellyfish
-					Blue explodes into an area of effect electric spark
-					Pink bounces around dealing high damage and high knockback
-					Green spins in a spot and explodes into a toxic cloud
-					'''
-			}
-
-			FireflyJar: {
-				Tooltip: Throws a jar filled with aggressive Fireflies
-				DisplayName: Firefly Jar
-			}
-
-			CartonBeer: {
-				DisplayName: Carton Beer
-				Tooltip:
-					'''
-					'Fosters. Good call.'
-					Throws a pint of beer that smashes on impact
-					Right click to chug the beer, giving the Tipsy Buff
-					'''
-			}
-
-			GildedGladius: {
-				DisplayName: Gilded Gladius
-				Tooltip: ""
-			}
-
-			ForestTea: {
-				DisplayName: Forest Tea
-				Tooltip: ""
-			}
+	
+		PiggyPorcelain: {
+			DisplayName: Piggy Porcelain
+			Tooltip: Sharp, pink porcelain, dropped from the ones that carry allat gold
 		}
-
-		Buffs: {
-			MagnetBuff: {
-				DisplayName: Magnet Buff
-				Description: Gift from the heavens!
-			}
-
-			TreeSapBuff: {
-				Description: The power of rust!!
-				DisplayName: Tree Sap
-			}
-
-			TraditionalCologneBuff: {
-				Description: You smell like exotic moonglow and cold skybreeze!
-				DisplayName: Traditional Cologne Buff
-			}
-
-			ToastedNutBarBuff: {
-				Description: 5% increased endurance and increase to all stats
-				DisplayName: Toasted Nut Bar Buff
-			}
-
-			TangledBuff: {
-				Description: Wrath of the vines grows in you, Greatly slows enemies and inflict poison
-				DisplayName: Tangled Buff
-			}
-
-			SaltySwig: {
-				Description: Strong flavour of absolute rum, pineapple, vanilla and spices, washed up!
-				DisplayName: Salty Swig
-			}
-
-			OverseerBuff: {
-				Description: Increases crit chance by 4%+
-				DisplayName: Overseer Buff
-			}
-
-			OpticBuff: {
-				Description: DisplayName: Optic Buff
-				DisplayName: Optic Buff
-			}
-
-			LightbulbBuff: {
-				Description: You are a lightbulb!
-				DisplayName: Lightbulb Buff
-			}
-
-			HellfireVodkaBuff: {
-				Description: Prefered choice of alcohol from the one and only evil Satan
-				DisplayName: Hellfire Vodka Buff
-			}
-
-			HazardBuff: {
-				Description: You are vulnerable to damage from explosives!!!
-				DisplayName: Hazard Buff
-			}
-
-			DungeonPendantBuff: {
-				Description: The charm empowers when you step foot into the dungeon!
-				DisplayName: Dungeon Pendant Buff
-			}
-
-			Splintered: {
-				Description: Ouch!!
-				DisplayName: Splintered
-			}
-
-			SharpHeat: {
-				Description: Burns the enemy with sharp heat, burns faster if their health is under 4
-				DisplayName: Sharp Heat
-			}
-
-			CigaretteBuff: {
-				Description: You're really feeling it right now
-				DisplayName: Cigarette Buff
-			}
-
-			BUNNINGSBUFF: {
-				Description: GET THAT SHI DOWN IN YOUR MOUTH! NOTHIN BETTER THAN GOOD OLD BUNNINGS SNAG
-				DisplayName: B U N N I N G S B U F F
-			}
-
-			BreatheBuff: {
-				Description: GET THAT SHI DOWN IN YOUR MOUTH! NOTHIN BETTER THAN GOOD OLD BUNNINGS SNAG
-				DisplayName: Breathe!!
-			}
-
-			AltElectrified: {
-				DisplayName: Alt Electrified
-				Description: ZAP!!
-			}
-
-			BrassMight: {
-				Description: You feel like a Brass Knight!
-				DisplayName: Brass Might
-			}
-
-			WineBuff: {
-				Description: Bitter and spicy.
-				DisplayName: Wine
-			}
-
-			BeerBuff: {
-				Description: Sour and tangy.
-				DisplayName: Beer
-			}
-
-			PiggyDebuff: {
-				DisplayName: Sealed Piggy Bank
-				Description: A healing piggy bank wont be dropping soon
-			}
-
-			PorcelainOvertime: {
-				DisplayName: Porcelain Overtime
-				Description: Mods.RealmOne.Buffs.PorcelainOvertime.Description
-			}
-
-			PursuerNo: {
-				DisplayName: Broken Piggy Pursuer
-				Description: Your Piggy Pursuer is recovering from the shatter
-			}
+	
+		PlanetaryShard: {
+			DisplayName: Planetary Shard
+			Tooltip: "'The prismatic colors on this shard were embedded from the birth of a planet'"
 		}
-
-		Projectiles: {
-			PompeiisPullProjectile.DisplayName: Pompeiis Pull Projectile
-			OldGoldHookProjectile.DisplayName: Old Gold Hook Projectile
-			OldChainHook.DisplayName: Old Chain Hook
-			WagonWheel.DisplayName: Wagon Wheel
-			CrossBowBolt.DisplayName: Cross Bow Bolt
-			HellBolt.DisplayName: Hell Bolt
-			CrimBulletProjectile.DisplayName: Crim Bullet Projectile
-			FlamerProj.DisplayName: Flamer Proj
-			FlowerBulletProjectile.DisplayName: Flower Bullet Projectile
-			GlobGunProjectile.DisplayName: Glob Gun Projectile
-			GlowTest.DisplayName: Glow Test
-			GreenLeaf.DisplayName: Green Leaf
-			Heller.DisplayName: Heller
-			IceBulletProjectile.DisplayName: Ice Bullet Projectile
-			PeaSilencerProj.DisplayName: Pea Silencer Proj
-			PinkLeaf.DisplayName: Pink Leaf
-			PulsaShot.DisplayName: Pulsa Shot
-			SandBulletProjectile.DisplayName: Sand Bullet Projectile
-			TommyGunBarrelFlash.DisplayName: Tommy Gun Barrel Flash
-			VintageBulletProjectile.DisplayName: Vintage Bullet Projectile
-			Wheel.DisplayName: Wheel
-			BattleboatBombProj.DisplayName: Battleboat Bomb Proj
-			C4Proj.DisplayName: C4 Proj
-			C5Proj.DisplayName: C5 Proj
-			CastawayRumProj.DisplayName: Castaway Rum Proj
-			CopperFragGrenadeProj.DisplayName: Copper Frag Grenade Proj
-			FlowerLog.DisplayName: Flower Log
-			FlowerLogProj.DisplayName: Flower Log Proj
-			ScavengerProjectile.DisplayName: Scavenger Projectile
-			TinFragGrenadeProj.DisplayName: Tin Frag Grenade Proj
-			Type24StickNadeProj.DisplayName: Type24 Stick Nade Proj
-			WormBall.DisplayName: Worm Ball
-			KnopperBall.DisplayName: Knopper Ball
-			SandTwisterProj.DisplayName: Sand Twister Proj
-			SquirYoProjectile.DisplayName: Squir Yo Projectile
-			StoneTippedSpearProj.DisplayName: Stone Tipped Spear Proj
-			VinepointProj.DisplayName: Vinepoint Proj
-			WoodenTippedSpearProj.DisplayName: Wooden Tipped Spear Proj
-			CoconutProj.DisplayName: Coconut Proj
-			DesertHands.DisplayName: Desert Hands
-			DreamerShot.DisplayName: Dreamer Shot
-			eyebig.DisplayName: eyebig
-			eyesmol.DisplayName: eyesmol
-			FlamePumpkinProj.DisplayName: Flame Pumpkin Proj
-			GobPortal.DisplayName: Gob Portal
-			GrassNote.DisplayName: Grass Note
-			LightBulbRing1.DisplayName: Light Bulb Ring1
-			OldGoldNado.DisplayName: Old Gold Nado
-			PulseProj.DisplayName: Pulse Proj
-			ShrubbyLeaf.DisplayName: Shrubby Leaf
-			Snowy.DisplayName: Snowy
-			SquirmStaffProjectile.DisplayName: Squirm Staff Projectile
-			Stary.DisplayName: Stary
-			IdolProj.DisplayName: Idol Proj
-			InkGlob.DisplayName: Ink Glob
-			LootBalloon.DisplayName: Loot Balloon
-			MiniSand.DisplayName: Mini Sand
-			SteppingStonesProj.DisplayName: Stepping Stones Proj
-			ColdHuntBoomerangProj.DisplayName: Cold Hunt Boomerang Proj
-			IgnitionPokerProjectile.DisplayName: Ignition Poker Projectile
-			PalmWoodPokerProjectile.DisplayName: Palm Wood Poker Projectile
-			RichMahoganyPokerProjectile.DisplayName: Rich Mahogany Poker Projectile
-			StonePokerProjectile.DisplayName: Stone Poker Projectile
-			VerdantPokerProjectile.DisplayName: Verdant Poker Projectile
-			WoodenPokerProjectile.DisplayName: Wooden Poker Projectile
-			ScarecrowsCutProjectile.DisplayName: Scarecrows Cut Projectile
-			ShatteredGemBladeProj1.DisplayName: Shattered Gem Blade Proj1
-			ShatteredGemBladeProj2.DisplayName: Shattered Gem Blade Proj2
-			UnstableWireBladeProj.DisplayName: Unstable Wire Blade Proj
-			AcornNadeProj.DisplayName: Acorn Nade Proj
-			BoneSpine.DisplayName: Bone Spine
-			EleJellyProj.DisplayName: Ele Jelly Proj
-			MoneyVaseProj.DisplayName: Money Vase Proj
-			PirateWheelProjectile.DisplayName: Pirate Wheel Projectile
-			StackPotionsProj.DisplayName: Stack Potions Proj
-			TundraThrowingKnifeProjectile.DisplayName: Tundra Throwing Knife Projectile
-			vampdagProjectile.DisplayName: vampdag Projectile
-			ProtonBobber.DisplayName: Proton Bobber
-			GlobGunProjectileHostile.DisplayName: Glob Gun Projectile Hostile
-			DoubleSidedSquirmProj.DisplayName: Double Sided Squirm Proj
-			StormStrikerSpinnerProj.DisplayName: Storm Striker Spinner Proj
-			BotanicLogLauncherH.DisplayName: Botanic Log Launcher H
-			CactusThrustProj.DisplayName: Cactus Thrust Proj
-			CombusterCrossbowProj.DisplayName: Combuster Crossbow Proj
-			InkSpearProj.DisplayName: Ink Spear Proj
-			JungleTechHeld.DisplayName: Jungle Tech Held
-			WaterQuarryHeld.DisplayName: Water Quarry Held
-			WoodenCrossProj.DisplayName: Wooden Cross Proj
-			CactiSticky.DisplayName: Cacti Sticky
-			ExtensionCordProjectile.DisplayName: Extension Cord Projectile
-			WoodenTrainProjectile.DisplayName: Wooden Train Projectile
-			JellySpark.DisplayName: Jelly Spark
-			LightbulbBullet.DisplayName: Lightbulb Bullet
-			IchorGlobSmall.DisplayName: Ichor Glob Small
-			IchorGlob.DisplayName: Ichor Glob
-			BouncingAcorn.DisplayName: Bouncing Acorn
-			PoisonPricklesProj.DisplayName: Poison Prickles Proj
-			WattleArrowBase.DisplayName: Wattle Arrow Base
-			WattleArrow.DisplayName: Wattle Arrow
-			StunSeedA.DisplayName: Stun Seed A
-			StunSeedBA.DisplayName: Stun Seed B A
-			StunSeedBP.DisplayName: Stun Seed B P
-			StunSeedBW.DisplayName: Stun Seed B W
-			StunSeedP.DisplayName: Stun Seed P
-			StunSeedW.DisplayName: Stun Seed W
-			VileArrow.DisplayName: Vile Arrow
-			CorruptEye.DisplayName: Corrupt Eye
-			VulgarShotHeld.DisplayName: Vulgar Shot Held
-			ConeFlash.DisplayName: Cone Flash
-			OldGoldBullet.DisplayName: Old Gold Bullet
-			LilGold.DisplayName: Lil Gold
-			StarFlash.DisplayName: Star Flash
-			Porcelain.DisplayName: Porcelain
-			Shockwave.DisplayName: Shockwave
-			CopperCoin.DisplayName: Copper Coin
-			Fire.DisplayName: Fire
-			GoldCoin.DisplayName: Gold Coin
-			HugeGoldCoin.DisplayName: Huge Gold Coin
-			PlatinumCoin.DisplayName: Platinum Coin
-			SilverCoin.DisplayName: Silver Coin
-			CopperCoinFriendly.DisplayName: Copper Coin Friendly
-			FireFriendly.DisplayName: Fire Friendly
-			GoldCoinFriendly.DisplayName: Gold Coin Friendly
-			PiggyBankFalling.DisplayName: Piggy Bank Falling
-			PlatinumCoinFriendly.DisplayName: Platinum Coin Friendly
-			PorcelainFriendly.DisplayName: Porcelain Friendly
-			ShockwaveFriendly.DisplayName: Shockwave Friendly
-			SilverCoinFriendly.DisplayName: Silver Coin Friendly
-			BloomarangProj.DisplayName: Bloomarang Proj
-			SpinFlower.DisplayName: Spin Flower
-			SunPetal.DisplayName: Sun Petal
-			BloodHookProj.DisplayName: Blood Hook Proj
-			CrimclubSwing.DisplayName: Crimclub Swing
-			BloodBlowerProj.DisplayName: Blood Blower Proj
-			TatteredJavlinProj.DisplayName: Tattered Javlin Proj
-			ImpactSonarShot.DisplayName: Impact Sonar Shot
-			Starbang.DisplayName: Starbang
-			ToothedTendrilProj.DisplayName: Toothed Tendril Proj
-			ArteryCarrionProjectile.DisplayName: Artery Carrion Projectile
-			PiggyPursuerHeld.DisplayName: Piggy Pursuer Held
-			HoppingPiggy.DisplayName: Hopping Piggy
-			StickyPorcelain.DisplayName: Sticky Porcelain
-			BloodToothProj.DisplayName: Blood Tooth Proj
-			CrimClubSwing.DisplayName: Crim Club Swing
-			BloodshotEyeProjectile.DisplayName: Bloodshot Eye Projectile
-			SwiftShot.DisplayName: Swift Shot
-			GoreshankShot.DisplayName: Goreshank Shot
-			GoreshankShotgunS.DisplayName: Goreshank Shotgun S
-			ImpactFlashLights.DisplayName: Impact Flash Lights
-			BlueJ.DisplayName: Blue J
-			GreenBoom.DisplayName: Green Boom
-			GreenJ.DisplayName: Green J
-			PinkJ.DisplayName: Pink J
-			BlueFlash.DisplayName: Blue Flash
-			FireflyProj.DisplayName: Firefly Proj
-			FireflyJarProj.DisplayName: Firefly Jar Proj
-			CartonBeerProj.DisplayName: Carton Beer Proj
-			GildedGladiusProj.DisplayName: Gilded Gladius Proj
-			GildedGladiusThrown.DisplayName: Gilded Gladius Thrown
+	
+		ScavengerSteel: {
+			DisplayName: Scavenger Steel
+			Tooltip: "'An artificial ingot, constructed from the mysteries under the caverns'"
 		}
-
-		NPCs: {
-			AquaSwishFish.DisplayName: AquaSwish Fish
-			MagpieNPC.DisplayName: Magpie
-			ThornyDevil.DisplayName: Thorny Devil
-			AquaSwishSnail.DisplayName: AquaSwish Snail
-			GiantDragonfly.DisplayName: Giant Dragonfly
-			ImpactBunny.DisplayName: Impact Bunny
-			Squirm.DisplayName: Squirm
-			WaterLizard.DisplayName: Water Lizard
-			EleJellyNPC.DisplayName: Ele-Jelly
-			AcornSprinter.DisplayName: Acorn Sprinter
-			AcornStiltWalker.DisplayName: Acorn Stilt Walker
-			BarrenBarkSlime1.DisplayName: Barrensludge Slime
-			BarrenBarkSlime2.DisplayName: Large Barrensludge Slime
-			HeartBat.DisplayName: Heart Bat
-			MegaSquirmBody.DisplayName: Mega Squirm Body
-			MegaSquirmHead.DisplayName: Mega Squirm Head
-			MegaSquirmTail.DisplayName: Mega Squirm Tail
-
-			MossyMarauder: {
-				DisplayName: Mossy Marauder
-
-				BossChecklistIntegration: {
-					EntryName: The Outcrop Outcast
-					SpawnInfo:
-						'''
-						To this day, the dirt titan is a remarkable standpoint of the growth of Terraria, from its hard life and from its happiest life, it will always be a symbol of the land. The name that is given to it now is called The Outcrop Outcast, for many reasons. The dirt effigy still remains on this day and is untouched even for the irresponsible. Would you rather defeat the past or lose the future?
-
-						'''
-					DespawnMessage: ""
-				}
-			}
-
-			RustedCenturion.DisplayName: Rusted Centurion
-			GlitterdustSlime.DisplayName: Glitterdust Slime
-			Eslime.DisplayName: E-Slime
-			ImpactTurret.DisplayName: Impact Turret
-			Inkling.DisplayName: Inkling Promenade
-			LightbulbBouncer.DisplayName: Lightbulb Bouncer
-
-			PossessedPiggy: {
-				DisplayName: Possessed Piggy
-
-				BossChecklistIntegration: {
-					EntryName: Possessed Piggy Bank
-					SpawnInfo: A rare scavenger of the land, looking for any Terrarian to stumble across it, stealing all its loot!!
-					DespawnMessage: ""
-				}
-			}
-
-			NecroDude.DisplayName: Necromonical Envoy
-			FunnelWebSpider.DisplayName: Funnel Web Spider
-			HuntsmanSpider.DisplayName: Huntsman Spider
-			RedbackSpider.DisplayName: Redback Spider
-			SquirmoTail.DisplayName: Squirmo
-
-			SquirmoHead: {
-				DisplayName: Squirmo
-
-				BossChecklistIntegration: {
-					SpawnInfo: Even from the past dread of worm adaptation, they havent really caused global damage. But for Squirmo, ever seeking revenge on human inhabitants is still a current warning for people.  Adhere the relief of the soil by defeating Squirmo!!
-					DespawnMessage: ""
-					EntryName: Squirmo
-				}
-			}
-
-			SquirmoBody.DisplayName: Squirmo
-			ZombieFarmer.DisplayName: Zombie Farmer
-			Espider1.DisplayName: E-Spider
-			Eye1.DisplayName: E-Eye
-			TumblingVulgar.DisplayName: Tumbling Vulgar
-			EbonScreecher.DisplayName: Ebon Screecher
-			EbonScreecherBAD.DisplayName: Aggressive Ebon Screecher
-			GlitterLeaper.DisplayName: Glitter Leaper
-			MangoBat.DisplayName: Mango Bat
-			RainsplurgeSlime.DisplayName: Rainsplurge Slime
-			OldSnail.DisplayName: Grandfather Slime
-
-			ArcheologistNPC: {
-				DisplayName: Archeologist NPC
-
-				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LoveBiome: I love {BiomeName}.
-					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					HateBiome: I hate {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-
-			BoundArcheologist: {
-				DisplayName: Bound Archeologist
-
-				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LoveBiome: I love {BiomeName}.
-					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					HateBiome: I hate {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-
-			HoneyHare.DisplayName: Honey Hare
-			Berryback.DisplayName: Berryback
-			Rooster.DisplayName: Rooster
-			HaySlime.DisplayName: Hay Slime
-
-			LostFarmer: {
-				DisplayName: Lost Farmer
-
-				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LoveBiome: I love {BiomeName}.
-					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-
-			LostFarmerTied.DisplayName: Tangled Lost Farmer
-			JumboEye.DisplayName: Jumbo Eye
-			JumboEyeMedium.DisplayName: Jumbo Eye Medium
-
-			FarmerSlime: {
-				DisplayName: Farmer Slime
-
-				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-
-			ArteryCarrion.DisplayName: Artery Carrion
-			ToothSerpentBody.DisplayName: Tooth Serpent Body
-			ToothSerpentHead.DisplayName: Tooth Serpent Head
-			ToothSerpentTail.DisplayName: Tooth Serpent Tail
-			BloodshotEye.DisplayName: Bloodshot Eye
-			ImpactDrone.DisplayName: Impact Drone
-			SanguineSlug.DisplayName: Sanguine Slug
-			EyeJelly.DisplayName: Eye Jelly
-			ImpactHoverdroid.DisplayName: Impact Hoverdroid
-			ButcherRat.DisplayName: Butcher Rat
-			BloodRat.DisplayName: Blood Rat
-			WhisperingShroud.DisplayName: Whispering Shroud
+	
+		WaterDriplets: {
+			DisplayName: Water Driplets
+			Tooltip: "'Crystal clear water, its unknown if you should drink this water'"
 		}
-
-		Dialogue: {
-			LostFarmer: {
-				LostTalk: I can't thank you enough, kind friend, you spared an old mans life!
-				StandardDialogue1: Do you have any spare seeds?
-				StandardDialogue2: What's your favorite type of soil? Mine is slightly soft with slight dampness.
-				StandardDialogue3: Wanna hear the backstory of the farm, well its kinda of dark, literally.
-				CommonDialogue: Howdy partner, whats on the agenda for you today?
-				RareDialogue: It was his fault, everything you see is cursed.
-				TalkALot: I'm getting kinda old man, I have to go.
+	
+		Wheat: {
+			DisplayName: Wheat
+			Tooltip: "'Hand picked from the fields, ready to be baked'"
+		}
+	
+		WoodenGunBarrel: {
+			DisplayName: Wooden Gun Barrel
+			Tooltip:
+				'''
+				Crafts wooden based guns with a single barrel
+				'The barrel is polished and thick, incapable for it to be set on fire'
+				'Common use of it is typically used for weaker but reliable guns'
+				'''
+		}
+	
+		IllicitStash: {
+			DisplayName: Illicit Stash
+			Tooltip:
+				'''
+				"<right> to open up a bag of risky items"
+				Guaranteed chance of getting something, but something you're not looking for
+				'You get what you get and don't get upset'
+				'''
+		}
+	
+		MinersPouch: {
+			DisplayName: Miners Pouch
+			Tooltip:
+				'''
+				<right> for a little pouchful of mining necessities
+				Below is the list of items you can get in the bag
+				[i:12][i:11][i:699][i:701][i:14][i:700][i:13][i:702]
+				[i:166][i:167][i:8][i:2322][i:296]
+				'''
+		}
+	
+		EntropyMedallion: {
+			DisplayName: Entropy Medallion
+			Tooltip: ""
+		}
+	
+		HeavenMagnet: {
+			DisplayName: Heaven Magnet
+			Tooltip:
+				'''
+				Magnet in random loot from the heavens!!
+				Has a cooldown of 5 minutes
+				'''
+		}
+	
+		SquirmoLorePageOne: {
+			DisplayName: Squirmo Lorescroll
+			Tooltip: Open up a scroll to reveal the secrets of the soil
+		}
+	
+		LovecraftPaper: {
+			DisplayName: The World We Live In
+			Tooltip: Open a scroll of Lovecraft's Ancient Scripts.
+		}
+	
+		EvoGrassItem: {
+			DisplayName: Evo Grass
+			Tooltip: Walk on evolution
+		}
+	
+		GrassPylonItem: {
+			DisplayName: Grass Pylon
+			Tooltip: This crystal was conjured centuries ago by the protectors of the land
+		}
+	
+		PhotosynthesisItem: {
+			DisplayName: Photosynthesis Pillar
+			Tooltip:
+				'''
+				Only a reckless individual will summon nature's ritual
+				Summons The Outcrop Outcast
+				'''
+		}
+	
+		SquirmoRelicItem: {
+			DisplayName: Squirmo Relic
+			Tooltip: Reward for giving relief to the soil!
+		}
+	
+		StoneOvenItem: {
+			DisplayName: Stone Oven
+			Tooltip:
+				'''
+				Capable of cooking wheat based foods
+				Always cooked to perfection!
+				'''
+		}
+	
+		TatteredBarrelItem: {
+			DisplayName: Tattered Barrel
+			Tooltip: ""
+		}
+	
+		ProtonTorchItem: {
+			DisplayName: Proton Torch
+			Tooltip: Creates electrical sparks when swung and placed
+		}
+	
+		BarrenBrew: {
+			DisplayName: Barren Brew
+			Tooltip:
+				'''
+				An environmentally friendly type of drink, not sure if you should drink it though
+				Gain Tangled Buff
+				'''
+		}
+	
+		BreathePotion: {
+			DisplayName: Oxygen Elixir
+			Tooltip:
+				'''
+				Your lungs will thank you.
+				Immune to suffocation due to lack of air in space
+				Increases jump speed and acceleration by 10%
+				These stats increase by +10% when in space
+				'''
+		}
+	
+		Cigarette1: {
+			DisplayName: Cigarette
+			Tooltip:
+				'''
+				When you light a cigarette...
+				Your life burns with it.
+				You gain 20% increased damage and weapon speed but no life regen nor pickup hearts
+				'''
+		}
+	
+		HellfireVodka: {
+			DisplayName: Hellfire Vodka
+			Tooltip:
+				'''
+				15% running speed, movement speed and acceleration
+				All weapons inflict OnFire
+				10% increased damage and knockback
+				-5 Defense
+				You are on fire!!!
+				'''
+		}
+	
+		LightbulbPotion: {
+			DisplayName: Lightbulb Potion
+			Tooltip:
+				'''
+				An ultra bright fluid that consists of large groups of luminosity minerals
+				It's safe to drink, however it feels overly warm
+				Gives the player a bright aura that provides warmth and reduces enemy aggression
+				The aura gets brighter when underground
+				'''
+		}
+	
+		TraditionalCologne: {
+			DisplayName: Traditional Cologne
+			Tooltip:
+				'''
+				A classic bottle of fine moonglow and skybreeze liquid
+				Using the cologne provides you with a distinct aroma
+				Gives the player cheaper shop prices, increased defense by 3+, reduced enemy aggression and 8% increased movement speed
+				'''
+		}
+	
+		PompeiisPull: {
+			DisplayName: Pompeiis Pull
+			Tooltip: Grapple to Italy's Doomsday, and back...
+		}
+	
+		CloudDiggingClaw: {
+			DisplayName: Cloud Digging Claw
+			Tooltip:
+				'''
+				'Hand Crafted from the soft fluffy clouds of the sky'
+				'Light as the clouds'
+				'''
+		}
+	
+		EyePick: {
+			DisplayName: Eye Pick
+			Tooltip:
+				'''
+				'It stares at you while you dig, weird.'
+				Capable of mining Old Gold! [i:RealmOne/OldGoldOre]
+				'''
+		}
+	
+		ImpactPickaxe: {
+			DisplayName: Impact Pickaxe
+			Tooltip: Electrocutes enemies on hit
+		}
+	
+		OldGoldPick: {
+			DisplayName: Old Gold Pick
+			Tooltip:
+				'''
+				Dig with divinity!!
+				Sells measily well!
+				'''
+		}
+	
+		BattleboatBomb: {
+			DisplayName: Battleboat Bomb
+			Tooltip:
+				'''
+				Without a Cannon what's the use of this explosive!?
+				It has an extremely fast detonation time, so its either you die or you die
+				Self Explode yourself, dealing huge damage to enemies and you
+				Would this classify as Euthanism?
+				'''
+		}
+	
+		BotanicLogLauncher: {
+			DisplayName: Botanic Log Launcher
+			Tooltip:
+				'''
+				Hold out a heavy and floral cannon that shoots oversized bouncing flower logs!
+				Theres a family of worms living in it!
+				Must reload the launcher after each shot
+				'''
+		}
+	
+		CastawayRum: {
+			DisplayName: Castaway Rum
+			Tooltip:
+				'''
+				A washed up old bottle of strong pineapple, vanilla, coffee beans and paprika
+				The bottle explodes into explosive and sharp pieces of glass
+				Right click to drink the rum, granting the Salty Swig buff, an exclusive buff to Drink-Related Items
+				Salty Swig buff grants 8% increased weapon speed and movement speed but you have -5 defence
+				'Surprised there's no fish or sand in the bottle!'
+				'''
+		}
+	
+		CopperFragGrenade: {
+			DisplayName: Copper Frag Grenade
+			Tooltip:
+				'''
+				A commonly used hand thrown explosive, wrapped around in thick copper plating
+				Best used combat situations. It's not something you want to juggle with
+				With Frag Grenades, let the grenade cook by throwing it on the floor, just not on enemy impact, making the grenade penetrate and explode in a larger radius
+				'''
+		}
+	
+		ScavengerSawblade: {
+			DisplayName: Scavenger Sawblade
+			Tooltip:
+				'''
+				Throws a unstable and explosive sawblade
+				Right click to detonate the sawblade into unstable sparks of electricity
+				   Recommended to hold the sawblade in the middle not the blades!
+				I'm not even sure how this is safe
+				'''
+		}
+	
+		TinFragGrenade: {
+			DisplayName: Tin Frag Grenade
+			Tooltip:
+				'''
+				A commonly used hand thrown explosive, wrapped around in thick tin plating
+				Best used combat situations. It's not something you want to juggle with
+				With Frag Grenades, let the grenade cook by throwing it on the floor, just not on enemy impact, making the grenade penetrate and explode in a larger radius
+				'''
+		}
+	
+		Type24StickNade: {
+			DisplayName: Type24 Stick Nade
+			Tooltip:
+				'''
+				Type 24 hand held stick grenade, used in long and precautious situations.
+				Best used in long distance relationships
+				Best use of the Stick Grenade is to throw it high in the air, then catch it and let it blow up in your face :)
+				'''
+		}
+	
+		CrashLandChainGun: {
+			DisplayName: Crash Land Chain Gun
+			Tooltip:
+				'''
+				Shoots rapid fire Meteors!
+				'Not to be mistaken from the Meteor Staff!'
+				40% chance to not consume Fallen Stars
+				Uses Fallen Stars
+				[i:75]
+				'''
+		}
+	
+		NebulaniNox: {
+			DisplayName: Nebulani Nox
+			Tooltip:
+				'''
+				Nebulous!!
+				Shoot a powerful shock of shadowbeam and Nebula Powers
+				Uses mana and ammo but shoots a extra Nebula Arcanum if used with bullets
+				'''
+		}
+	
+		PridefulMoraleStaff: {
+			DisplayName: Prideful Morale Staff
+			Tooltip: Shoots 3 morality projectiles
+		}
+	
+		TheDreamer: {
+			DisplayName: The Dreamer
+			Tooltip: Shoots a purple swift fireball that explodes into rift particles
+		}
+	
+		CoconutHarp: {
+			DisplayName: Coconut Harp
+			Tooltip:
+				'''
+				Plucks out thick palm tree strings to conjure a vibey and tropical note
+				Randomly shoots out Coconuts that deal heavy knockback
+				'How the landlubbers kept 'emslves entertained'
+				'''
+		}
+	
+		CorneaScepter: {
+			DisplayName: Cornea Scepter
+			Tooltip: Shoots reckless demon eyes out of the staff
+		}
+	
+		MagicGobBag: {
+			Tooltip: Conjures a rift that sucks in nearby enemies.
+			DisplayName: Sorcerer's Spirit Candle
+		}
+	
+		WaterQuarry: {
+			DisplayName: Water Quarry
+			Tooltip:
+				'''
+				Hold out a mystical and beautiful water scepter
+				Shoots out a reckless and powerful swishing ball of water
+				The water swish explodes in a large radius
+				'''
+		}
+	
+		HeatedXiphoss: {
+			DisplayName: Heated Xiphoss
+			Tooltip:
+				'''
+				Smelted and structured at extreme heat'
+				A training sword from the gods
+				The xiphos upgrades in power the more you hit hit enemies
+				5 hits of enemies makes the sword increase in the sword's speed
+				10 hits of enemies makes the sword increase its damage by 20%	
+				15 hits of enemies makes the sword reach it's final stage and inflicts Sharp Heat debuff
+				These effects reset on the 16th swing
+				'''
+		}
+	
+		ScarecrowsCut: {
+			DisplayName: Scarecrows Cut
+			Tooltip:
+				'''
+				'Always sharp'
+				Swings a sharp cleaver that pierces
+				'Why did the scarecrow win an award? Because he was outstanding in his field'
+				'''
+		}
+	
+		ShatteredGemBlade: {
+			DisplayName: Shattered Gem Blade
+			Tooltip:
+				'''
+				'A snapped, legendary blade, destined with full potential!'
+				Swings a snapped, gem incrusted blade
+				Has a chance to swing out a powerful overhead swing that covers a larger swing area
+				'''
+		}
+	
+		UnstableWireBlade: {
+			DisplayName: Unstable Wire Blade
+			Tooltip:
+				'''
+				A metallic and a wire-infested sword, capable of transfering viruses
+				'The strength of conduction of this sword can magnetise raw lightning from the skies'
+				'''
+		}
+	
+		FoliageFury: {
+			DisplayName: Foliage Fury
+			Tooltip:
+				'''
+				Shoots rapid fire leaves in an inaccurate spread
+				Does not use ammo
+				'''
+		}
+	
+		Overgrowth: {
+			DisplayName: Overgrowth
+			Tooltip:
+				'''
+				Conjure a large swarm of foliage to damage enemies
+				This is what happens when you dont take care of your backyard'
+				'This branch is so old, Jesus used it in his science experiment in Year 9'
+				'''
+		}
+	
+		DoubleSidedSquirm: {
+			DisplayName: Double Sided Squirm
+			Tooltip: Yes. Spin an actual Squirm! LOL
+		}
+	
+		GlobGun: {
+			DisplayName: Glob Gun
+			Tooltip:
+				'''
+				A bit too squelchy for my liking
+				Shoots a forced and sludgy explosive mud glob
+				Stick the glob on a tile and let it charge up its power, dealing 2x the aoe and penetrate up to 3 enemies
+				Uses Mud Blocks [i:176]
+				'''
+		}
+	
+		SquirmStaff: {
+			Tooltip: Summons worms from beneath the ground to chase after enemies
+			DisplayName: Squirm Staff
+		}
+	
+		SquirYo: {
+			DisplayName: Squir Yo
+			Tooltip: Shoots out worms the more the yoyo hits an enemy
+		}
+	
+		BrassBow: {
+			DisplayName: Brass Bow
+			Tooltip: Has a 20% chance of shooting a copper coin
+		}
+	
+		BrassCandlewick: {
+			Tooltip: Hold an antique and powerful candle that shoots out burning wax in a diversed and wide spread
+			DisplayName: Brass Candlewick
+		}
+	
+		BrassSword: {
+			DisplayName: Brass Sword
+			Tooltip: Has a chance to shrink in size and significantly increase its usetime
+		}
+	
+		StackPotions: {
+			DisplayName: Stack Potions
+			Tooltip:
+				'''
+				Throws a bundle of different potions
+				When the bundle is smashed, it has a chance of dropping a random potion on drop
+				Right Click to Drink a random potion
+				'''
+		}
+	
+		CombusterCrossbow: {
+			DisplayName: Combuster Crossbow
+			Tooltip:
+				'''
+				Hold out a burning and powerful crossbow that shoots flaming bolts
+				The crossbow shoots out 2 crossbolts, having to let go of the button and reload
+				'''
+		}
+	
+		DualWieldCrossbows: {
+			DisplayName: Dual Wield Crossbows
+			Tooltip:
+				'''
+				Wield a Dualshot crossbow!
+				The crossbow shoots out 2 crossbolts, having to let go of the button and reload
+				Double Trouble!
+				'''
+		}
+	
+		CactusThrust: {
+			Tooltip: Thrusts a spiky spear that has a chace to thrust out a bunch of sticky prickly pears that stick onto enemies
+			DisplayName: Cactus Thrust
+		}
+	
+		DesertWhisper: {
+			DisplayName: Desert Whisper
+			Tooltip:
+				'''
+				Shoots 2 fast moving cactus darts in a tight spread
+				Right click to summon rope snakes you can climb on
+				Uses Cactus
+				[i:276]
+				'''
+		}
+	
+		SandTwister: {
+			DisplayName: The Resplendent
+			Tooltip:
+				'''
+				The string is made out of premium horsehair!
+				Summons sandstorms near the cursor
+	
+				'''
+		}
+	
+		AcornBlunderbuss: {
+			DisplayName: Blunderbush
+			Tooltip:
+				'''
+				A bushy and heavy blunderbuss!
+				Shoots outs explosive acorns that explode into acorn shrapnel
+				Uses Crushed Acorns as ammo [i:RealmOne/CrushedAcorns]
+				'''
+		}
+	
+		KnopperWhopper: {
+			DisplayName: Knopper Whopper
+			Tooltip:
+				'''
+				Swing a reproductive and bio-reactive Knopper Gall that poisons enemies
+				Due to Knopper Galls being chemically distorted, bees live in the knopper
+				'Plenty of unwanted insects thrive off this plant'
+				'''
+		}
+	
+		MossMarrow: {
+			DisplayName: Moss Marrow
+			Tooltip:
+				'''
+				'From all the degradation, it still looks viable'
+				Converts Wooden Arrows to Bone Arrows [i:3033]
+				'''
+		}
+	
+		RotteredElbowbone: {
+			DisplayName: Rottered Elbowbone
+			Tooltip:
+				'''
+				The bone is so old that bacteria and vines have become poisonous overtime
+				Right Click to release a bouncing cross-bone from the bone
+				Inflicts Tangled
+				'''
+		}
+	
+		RustedCenturionSword: {
+			DisplayName: Rusted Centurion Sword
+			Tooltip:
+				'''
+				A common weapon used from the Centurions
+				The sword is still sharp but very rusty, causing the sword to deal 2+ armour penetration to enemies.
+				'''
+		}
+	
+		SaplingScorcher: {
+			DisplayName: Sapling Scorcher
+			Tooltip:
+				'''
+				Spits out fumes of fire
+				Burns up lumber to create combustion, when hot enough, it shoots it all out
+				20% chance of an explosive acorn to shoot out the flamethrower
+				25% chance to not consume wood
+				Uses Wood [i:9]
+				'''
+		}
+	
+		Twigbulb: {
+			Tooltip:
+				'''
+				Casts a bright, dangly lightbulb at the mouse position.
+				Lights a large area
+				'''
+			DisplayName: Twigbulb
+		}
+	
+		Vinepoint: {
+			Tooltip: Throughout the centuries, the cartilage is now nothing but bacteria
+			DisplayName: Vinespore Spinebone
+		}
+	
+		AcornGrenade: {
+			DisplayName: Acorn Grenade
+			Tooltip:
+				'''
+				Throws an explosive grenade thats filled with exploding acorns
+				The acorns split into acorn shrapnel
+				'''
+		}
+	
+		IgnitionPoker: {
+			DisplayName: Ignition Poker
+			Tooltip:
+				'''
+				'An extremely bright and hot scimitar of the underworld'
+				Strike and Slice foes at rapid speeds
+				Every hit causes hellsparks to fly out of the sword, damaging enemies
+				You gain 4+ defence while holding this weapon
+				You gain 6+ defence, 10% increased movement speed, immunity to lava and fire while holding this in hell
+				You gain an inferno ring around you
+				'''
+		}
+	
+		Phlogiston: {
+			DisplayName: Phlogiston
+			Tooltip:
+				'''
+				Get a fresh breeze of FYAARRR
+				Shoots rapid fire explosive fire bullets followed with a barrage of flames and exploding fireballs
+				Uses Gel [i:23]
+				'''
+		}
+	
+		TorchedTextbook: {
+			Tooltip: Conjure a wisp of hell born spells. Mixture of homing lashes, hellbats and firebeams
+			DisplayName: Torched Textbook
+		}
+	
+		GushingFrostMinnow: {
+			DisplayName: Scoutfrost Minnow
+			Tooltip: "'A rare fish of the snow that has been frozen over time, filled with icy water'"
+		}
+	
+		SnowflakeScepter: {
+			DisplayName: Snowflake Scepter
+			Tooltip: Conjure snowflakes from the sky and from the staff!
+		}
+	
+		ImpactBoomerang: {
+			DisplayName: Impact Boomerang
+			Tooltip:
+				'''
+				Throws a electric and dark boomerang that homes onto enemies
+				If the boomerang hits a tile, it will summon an electrical current
+				This electrical current will go the opposite way of the boomerang
+				'''
+		}
+	
+		ImpactInterceptor: {
+			DisplayName: Impact Interceptor
+			Tooltip:
+				'''
+				Releases an electric pulse sonar that damages enemies in a large area
+				Goes through walls		
+				'No WI-FI password required!'
+				'''
+		}
+	
+		ImpactPiercer: {
+			DisplayName: Impact Piercer
+			Tooltip:
+				'''
+				A weak plasma diverged bow that shoots pulse arrows that pierce multiple enemies
+				Midway through the shooting the bow, the bow will short circuit and shoot 2 arrows
+				The first of the 2 circuit arrows is a arrow that has a 100% crit chance
+				The last circuit arrow is a slow use arrow that deals 7x the damage
+				'Xeonically Charged!!'
+				'''
+		}
+	
+		ImpactPulsa: {
+			DisplayName: Impact Pulsa
+			Tooltip:
+				'''
+				'A weak, plasma diverged rifle'
+				Midway through firing the gun, the gun will short circuit burst out pulse bullets
+				'Xeonically Charged!!'
+				'''
+		}
+	
+		InkPistol: {
+			DisplayName: Ink Pistol
+			Tooltip:
+				'''
+				Filled to the brim with eidolic ink
+				Shoots out splats of eidolic ink that slide on the ground and inflict Shadowflame
+				20% chance to not consume Eidolic Ink
+				Uses Eidolic Ink [i:RealmOne/EidolicInk]
+				'''
+		}
+	
+		InkSpear: {
+			Tooltip:
+				'''
+				Thrusts out an inky and sloppy spear
+				Shoots out ink globs that slide to the floor
+				'''
+			DisplayName: Ink Spear
+		}
+	
+		SpaceMiniGun: {
+			DisplayName: Space Mini Gun
+			Tooltip:
+				'''
+				Shoots rapid fire space lasers
+				Space Gun's big brother
+				Uses Mana [i:109]
+				'''
+		}
+	
+		OldGoldGuillotines: {
+			DisplayName: Old Gold Guillotines
+			Tooltip: Slice and dice your foes with these ancient and sharp chains
+		}
+	
+		Oldy: {
+			DisplayName: Antiquity Revolver
+			Tooltip: "'A precise and antique revolver crafted from the ancient bars of Old Gold"
+		}
+	
+		PagesOfPristinity: {
+			Tooltip: Conjure theurgy and divine sandnadoes from the sand-collected pages
+			DisplayName: Pages Of Pristinity
+		}
+	
+		PiggyPursuer: {
+			DisplayName: Piggy Pursuer
+			Tooltip:
+				'''
+				It gets damaged per each hit, making it lose some of its porcelain
+				In return, it gets faster
+				If damaged enough, it will shatter into lots of porcelain
+				'And I Huff and I puff and I blow your house down!!'
+				'''
+		}
+	
+		WithDraw: {
+			DisplayName: WithDraw
+			Tooltip:
+				'''
+				Shoots a very small spread of gold coins at a fast rate
+				20% chance  to not consume arrows
+				Converts Wooden Arrows to Gold Coins [i:73]
+				'''
+		}
+	
+		PalmWoodPoker: {
+			DisplayName: Palm Wood Poker
+			Tooltip: Carved from the wood of the beachside
+		}
+	
+		RichMahoganyPoker: {
+			DisplayName: Rich Mahogany Poker
+			Tooltip: Harnessed from the moist tree tops of the Jungle
+		}
+	
+		StonePoker: {
+			DisplayName: Stone Poker
+			Tooltip: A more strong and sturdy poker
+		}
+	
+		VerdantPoker: {
+			DisplayName: Verdant Poker
+			Tooltip: A reactive and environmentally friendly poker
+		}
+	
+		WoodenPoker: {
+			DisplayName: Wooden Poker
+			Tooltip: May cause splinters
+		}
+	
+		CrimcrushBlunderbuss: {
+			DisplayName: Crimcrush Blunderbuss
+			Tooltip:
+				'''
+				'The blunderbuss of the bonded flesh'
+				Shoots a flesh glob bullet that lightly heals the player
+				'''
+		}
+	
+		DustStormBlunderbuss: {
+			DisplayName: Duststorm Blunderbuss
+			Tooltip:
+				'''
+				A blunderbuss crafted with the natural mixture of the desert
+				Shoots a duststorm bullet
+				'''
+		}
+	
+		EbonfrostBlunderbuss: {
+			DisplayName: Ebonfrost Blunderbuss
+			Tooltip:
+				'''
+				'Chilled and Corrupted'
+				Shoots a icy corrupted bullet
+				'''
+		}
+	
+		HPChainShot: {
+			DisplayName: Lovecraft's Chain Shotgun
+			Tooltip:
+				'''
+				Right click to shoot out a chain that splits out of the gun
+				The gun extends into the chain!
+				[c/ACAD4D:'I used this to protect myself from my own creations, preposterous activity!]
+				Uses Rusted Bullets [i:RealmOne/RustedBullets]
+	
+				'''
+		}
+	
+		JungleTechShotgun: {
+			DisplayName: Jungle Tech Shotgun
+			Tooltip:
+				'''
+				Charge up a bio-infused shotgun to shot out a spread of bullets
+				'Snazzy!'
+				'''
+		}
+	
+		MahoganyBlunderbuss: {
+			DisplayName: Mahogany Blunderbuss
+			Tooltip:
+				'''
+				'You're most likely going to be poisoned when using this'
+				Shoots a poisonous petal
+				'''
+		}
+	
+		PumpShotgun: {
+			DisplayName: Pump Shotgun
+			Tooltip:
+				'''
+				A classic, brawny and reliable pump action shotgun
+				Shoots a spry and powerful round of 12 gauge Buckshot shells
+				The bottom rear 'handguard' must be 'slid' back and forward to load the rounds back into the gun to fire again
+				'''
+		}
+	
+		VintageBlunderbuss: {
+			DisplayName: Vintage Blunderbuss
+			Tooltip:
+				'''
+				An antique, sturdy and heavy blunderbuss
+				'There's a sheet of parchment inside the barrel of the gun!'
+				'It says: Hold the blunderbuss by the bottom and make sure your hand is not near the barrel as when shot it will recoil your entire body...'
+				'The blunderbuss has been made with reckless care but still shoots out great power.'
+				'''
+		}
+	
+		StoneTippedSpear: {
+			Tooltip: ""
+			DisplayName: Stone Tipped Spear
+		}
+	
+		WoodenTippedSpear: {
+			Tooltip: ""
+			DisplayName: Wooden Tipped Spear
+		}
+	
+		Glitterbook: {
+			DisplayName: Glitterbook
+			Tooltip:
+				'''
+				Starstriking Fury!!
+				Shoots out fast stars in a random position behind the player
+				'''
+		}
+	
+		EleJelly: {
+			DisplayName: Ele Jelly
+			Tooltip:
+				'''
+				Throws an electrical jellyfish that explodes into an electric explosion
+				'Has a cool electric trail!'
+				'''
+		}
+	
+		PreFlamedGel: {
+			DisplayName: Flammable Jelly
+			Tooltip: Throws slippery and flammable chunks of gel
+		}
+	
+		TundraThrowingKnife: {
+			DisplayName: Tundra Throwing Knife
+			Tooltip: ""
+		}
+	
+		vampdag: {
+			DisplayName: Vampire Daggers
+			Tooltip:
+				'''
+				A cheaper but weaker version of the Vampire Knives
+				Heals the player on hit
+				'''
+		}
+	
+		CrackshotWheelgun: {
+			DisplayName: Crackshot Wheelgun
+			Tooltip:
+				'''
+				Right click to throw out a Wagon Wheel that rolls on the ground
+				Left click to shoot out a fast bullet, shoot the bullet at the wheel to explode into fire shrapnel
+				'''
+		}
+	
+		TommyGun: {
+			DisplayName: Tommy Gun
+			Tooltip:
+				'''
+				Fires .45 caliber medium bullets at a circulated rate
+				'The magazine is a circular drum that can hold up to 50-100 rounds.
+				Uses Bullets [i:97]
+				'''
+		}
+	
+		ExtensionCord: {
+			DisplayName: Extension Cord
+			Tooltip:
+				'''
+				An unstable and live wire, containing many volts
+				Hold to charge the whip, fully charging the whip increases the whips length by 40% and inflicts Electricity
+				Has a multihit feature where the end of the whip increases in damage the amount of enemies you hit in a single row
+				'''
+		}
+	
+		TwinklingTwig: {
+			DisplayName: Twinkling Twig
+			Tooltip: Summons an Enchanted Nightcrawler to wriggle and starstruck your enemies!!
+		}
+	
+		SkullMask: {
+			DisplayName: Skull Mask
+			Tooltip:
+				'''
+				'Bro thinks he's bro :skull:'
+				Sold by the Clothier
+				To my skull emoji enthuasists!!
+				'''
+		}
+	
+		Parchment: {
+			Tooltip:
+				'''
+				'Parchment paper is made from cellulose fibers prepared from trees or plants such as cotton or flax.'
+				'Paper can be made which mimics the thickness and smooth surface of parchment.'
+				'Animal-free Parchment is used'
+				'''
+			DisplayName: Parchment
+		}
+	
+		OldGoldBar: {
+			Tooltip: "'An aged but pristine ingot crafted from the ancient gold of the underground'"
+			DisplayName: Old Gold Bar
+		}
+	
+		LightbulbLiquid: {
+			Tooltip: "'Liquid when light gets into its spatial property'"
+			DisplayName: Lightbulb Liquid
+		}
+	
+		LeadGunBarrel: {
+			Tooltip:
+				'''
+				Crafts metal based guns with a single barrel
+				'The barrel is sturdy, secure but quite heavy'
+				Common use of it is typically used for traditional guns with strong or medium firepower
+				'''
+			DisplayName: Lead Gun Barrel
+		}
+	
+		IronGunBarrel: {
+			Tooltip:
+				'''
+				Crafts metal based guns with a single barrel
+				'The barrel is sturdy, secure but quite heavy'
+				Common use of it is typically used for traditional guns with strong or medium firepower
+				'''
+			DisplayName: Iron Gun Barrel
+		}
+	
+		ImpactTech: {
+			Tooltip:
+				'''
+				The pieces of purged symbiones
+				'Xeonically Charged!!'
+				'''
+			DisplayName: Impact Tech
+		}
+	
+		GoopyGrass: {
+			Tooltip:
+				'''
+				'Carries millions of bacteria and nutrients'
+				#GreenThumbs
+				'''
+			DisplayName: Goopy Grass
+		}
+	
+		GizmoScrap: {
+			Tooltip:
+				'''
+				A mixture of small chips, wires and other junk
+				Dropped from the sneakiest of goblins
+				'''
+			DisplayName: Gizmo Microchips
+		}
+	
+		FreshSeaweed: {
+			Tooltip:
+				'''
+				Way too salty for my liking
+				'Can be dried and wrapped up in sushi!'
+				'''
+			DisplayName: Fresh Seaweed
+		}
+	
+		FragrantMoonMushroom: {
+			Tooltip: ""
+			DisplayName: Fragrant Moon Mushroom
+		}
+	
+		FleshyCornea: {
+			Tooltip: "'Dropped from the seers of Terraria'"
+			DisplayName: Fleshy Cornea
+		}
+	
+		EnchantedStarglitter: {
+			Tooltip: "'Paraphernalia of a shooting star!'"
+			DisplayName: Enchanted Starglitter
+		}
+	
+		EidolicInk: {
+			DisplayName: Eidolic Ink
+			Tooltip: ""
+		}
+	
+		EdibleLeechHeart: {
+			Tooltip: ""
+			DisplayName: Edible Leech Heart
+		}
+	
+		DrownedDeathpearl: {
+			Tooltip: ""
+			DisplayName: Drowned Deathpearl
+		}
+	
+		Crimcore: {
+			Tooltip: A bloody, dark and cold stone, dropped from the enemies that have surpassed and crumbled in the flesh
+			DisplayName: Crimcore
+		}
+	
+		BreadLoaf: {
+			Tooltip: "[c/BBA95E:'Freshly baked from the rustic and antique stone baker ovens']"
+			DisplayName: Bread Loaf
+		}
+	
+		BrassNuggets: {
+			Tooltip: A durable and inexpensive chunk of common brass
+			DisplayName: Brass Nuggets
+		}
+	
+		BrassIngot: {
+			Tooltip:
+				'''
+				Crafts antique and durable stationary and weaponry
+				'Brass is most widely used in applications that are decorative and mechanical.'
+				'Due to its unique properties, which include corrosion resistance to rusting.''
+				'Common uses for brass include applications that require low friction.'
+				'''
+			DisplayName: Brass Ingot
+		}
+	
+		WaterLizardCritter: {
+			DisplayName: Water Lizard
+			Tooltip: ""
+		}
+	
+		GiantDragonflyItem: {
+			DisplayName: Giant Dragonfly
+			Tooltip: ""
+		}
+	
+		MagpieItem: {
+			DisplayName: Magpie
+			Tooltip: ""
+		}
+	
+		ThornyDevilItem: {
+			DisplayName: Thorny Devil
+			Tooltip: ""
+		}
+	
+		AquaSwishSnailItem: {
+			DisplayName: AquaSwish Snail
+			Tooltip: ""
+		}
+	
+		AquaSwishFishItem: {
+			DisplayName: AquaSwish Fish
+			Tooltip: ""
+		}
+	
+		VegeToast: {
+			Tooltip: "'How do people not like VEGEMITE!!!'"
+			DisplayName: Vege Toast
+		}
+	
+		TunaAndAvacado: {
+			Tooltip:
+				'''
+				'A simple roll of sushi with beautiful Japanese Red Fin Tuna and creamy slices of avacado'
+				Increases Charm Duration by 6+ seconds
+				'''
+			DisplayName: Tuna And Avacado
+		}
+	
+		TreeSapJuice: {
+			Tooltip:
+				'''
+				Enemies are less likely to target you
+				5% increased move and running speed 
+				10% if you are in the forest
+	
+				'''
+			DisplayName: Tree Sap Juice
+		}
+	
+		ToastedNutBar: {
+			Tooltip: Extreme trace of nuts!
+			DisplayName: Toasted Nut Bar
+		}
+	
+		SalmonAvoSushi: {
+			Tooltip:
+				'''
+				'A tasty blend of the most carefully caught salmon in the ocean and fresh creamy slices of avocado'
+				Increases Charm Duration by 8+ seconds
+	
+				'''
+			DisplayName: Salmon Avo Sushi
+		}
+	
+		JamToast: {
+			Tooltip: "'What I used to wake up to in the morning as a kid'"
+			DisplayName: Jam Toast
+		}
+	
+		ProtonPole: {
+			Tooltip:
+				'''
+				Throws an electric bobber.
+				On right click you can explode the bobber into slow moving electric sparks
+				'Somewhat vulnerable to water!'
+				'''
+			DisplayName: Proton Pole
+		}
+	
+		SquirmoSummon: {
+			Tooltip:
+				'''
+				'Awaken the sludgy scavenger of the soil'
+				'The soil will adhere relief!'
+				Summons Squirmo
+				'''
+			DisplayName: Worm Infested Carrot
+		}
+	
+		MoneyVase: {
+			Tooltip:
+				'''
+				'Why you takin allat money for kid?'
+				'Your bank account finna be empty after using this dawg'
+				Summons The Possessed Piggy Bank
+				'''
+			DisplayName: Money Vase
+		}
+	
+		SquirmoBossBag: {
+			Tooltip:
+				'''
+				{$CommonItemTooltip.RightClickToOpen}
+				It's a struggle to get the goodies out of this muddy bag!'
+				'''
+			DisplayName: Squirmo Boss Bag
+		}
+	
+		OutcropBossBag: {
+			Tooltip:
+				'''
+				{$CommonItemTooltip.RightClickToOpen}
+				Open a bag of pure evolution
+				'''
+			DisplayName: Outcrop Boss Bag
+		}
+	
+		CrushedAcorns: {
+			Tooltip: Clusters of acorns, quite explosive
+			DisplayName: Crushed Acorns
+		}
+	
+		VerdantBindis: {
+			Tooltip:
+				'''
+				2+ Base Damage on all weapons
+				You are poisoned when equipping this, I mean cmon you're carrying around Poisonous Bindis!?
+				'''
+			DisplayName: Verdant Bindis
+		}
+	
+		TheOutcastsOverseer: {
+			Tooltip:
+				'''
+				'A physical form of the dirt titan's purpose'
+				6% increased critical chance
+				Crits have a chance to increase your crit chance
+				The effect increases your crit chance by %4+
+				Stacking the effect does not work
+				'''
+			DisplayName: The Outcasts Overseer
+		}
+	
+		TatteredBarkShield: {
+			Tooltip:
+				'''
+				'Nothing but skin penetrating wooden splinters on this shield'
+				When hit by an enemy, they take 20 damage and get inflicted by 'Splinted'
+				When an enemy is inflicted by Splinted, the enemy rapidly loses life for a very short duration
+				'''
+			DisplayName: Spiked Bark Shield
+		}
+	
+		StoneHilt: {
+			Tooltip:
+				'''
+				'Smoothened stone, tied around the sword handle'
+				'I'm positive this is what the vikings did when they invigorated their swords'
+				7% increased melee speed and knockback
+				This also affects all tools!
+				'''
+			DisplayName: Stone Hilt
+		}
+	
+		StaticStone: {
+			Tooltip:
+				'''
+				Increases the effectiveness of the Electrified buff
+				Full immunity to the Electrified debuff
+				Buffs E-Weapons
+				'''
+			DisplayName: Static Stone
+		}
+	
+		SquirmScarf: {
+			Tooltip: Reduces damage taken by 8%
+			DisplayName: Squirm Scarf
+		}
+	
+		RustyAmmoStock: {
+			Tooltip:
+				'''
+				25% chance to not consume ammo
+				Due to rust, you are bleeding
+				10 second affect after unequipped
+				'''
+			DisplayName: Rusty Ammo Stock
+		}
+	
+		RoyalRawhide: {
+			Tooltip:
+				'''
+				5% increased acceleration and movement speed
+				When you are hit by an enemy you are granted a slime dash buff
+				The buff cannot be stacked, as soon as your hit, the buff will last for 5 seconds
+				This dash has a 6 second cooldown
+				'''
+			DisplayName: Royal Rawhide
+		}
+	
+		MidnightHunterOptics: {
+			Tooltip:
+				'''
+				'A necessity when hunting at night'
+				Hunter and Nightowl affects
+				+6% increased crit
+				'''
+			DisplayName: Midnight Hunter Optics
+		}
+	
+		LivebornLeaf: {
+			Tooltip:
+				'''
+				'Bacteria infected leaf, radiating with nature's power'
+				10% increased summon damage
+				'''
+			DisplayName: Liveborn Leaf
+		}
+	
+		GreenNecklace: {
+			Tooltip:
+				'''
+				'Wrap Evolution around your neck'
+				'Worn from the dying soldiers of the past'
+				All weapons and equipment inflict 'Tangled'
+				You gain Thorns, Swiftness and Titan while equipping this
+				When in the Renaissance Biome, all enemies and bosses instantly get inflicted with the 'Withering Evolution' debuff, which obliterates the enemy if their health is 40%
+				Does not work on bosses.
+				'''
+			DisplayName: Renaissance Cross
+		}
+	
+		FlinxBeanie: {
+			Tooltip:
+				'''
+				Immune to Chilled and Frozen
+				'My goly gosh its so soft!'
+				'''
+			DisplayName: Flinx Beanie
+		}
+	
+		EmptyLocket: {
+			Tooltip:
+				'''
+				'The internal chaos from the locket was too much for the gods to bespoke...
+				So they abandoned it to a new rival that can withstand the essence'
+				Gives the player a void-like glow
+				Right click the locket to sacrifice it for a reckless challenge
+				'''
+			DisplayName: Empty Locket of The Lords
+		}
+	
+		EarthEmerald: {
+			Tooltip:
+				'''
+				'If the Earth was shrunk into a gem'
+				25% increased tool and weapon speed
+				Spelunker, Night Owl, Shine buffs
+				These stats are better in the day
+				'''
+			DisplayName: Earth Emerald
+		}
+	
+		DungeonPendant: {
+			Tooltip:
+				'''
+				'An ancient and powerful dungeon charm'
+				Immunity to spikes
+				Dungeon enemies do 30% less damage to you
+				10% increased damage and 10+ defense while in the dungeon
+				'''
+			DisplayName: Dungeon Pendant
+		}
+	
+		BoneBag: {
+			Tooltip:
+				'''
+				Used from the Clothier a long time when he was still trapped in the dungeon
+				'Ya bonehead!'
+				Skeletons and dungeon enemies drop more loot and bones
+				Shows the location of treasure and enemies in the dungeon
+				'''
+			DisplayName: Bone Bag
+		}
+	
+		BarkShield: {
+			Tooltip:
+				'''
+				'Carved from the bark of the trees'
+				10% increased axe and pickaxe speed when in the forest
+				'''
+			DisplayName: Bark Shield
+		}
+	
+		AntiVenomVial: {
+			Tooltip:
+				'''
+				Full immunity to Venom
+				'This anti-venom works for other critters too!'
+				'''
+			DisplayName: Anti Venom Vial
+		}
+	
+		TreeHuggerLegs: {
+			Tooltip:
+				'''
+				5% increased movement speed and acceleration
+				'Trousers of the tree tops!'
+				'''
+			DisplayName: Tree Hugger Trousers
+		}
+	
+		TreeHuggerHead: {
+			Tooltip:
+				'''
+				5% increased damage
+				'Helmet of the tree tops!'
+				'''
+			DisplayName: Tree Hugger Helmet
+		}
+	
+		TreeHuggerBody: {
+			Tooltip:
+				'''
+				5% increased knockback on all weapons
+				'Chestplate of the tree tops!'
+				'''
+			DisplayName: Tree Hugger Chestplate
+		}
+	
+		PiggyLegs: {
+			Tooltip:
+				'''
+				10% increased movement speed and acceleration
+				Hold down to fall faster
+				'Kicking something will probably shatter the grieves'
+				'''
+			DisplayName: Piggy Patroller Grieves
+		}
+	
+		PiggyHead: {
+			Tooltip:
+				'''
+				7% increased damage, 10% increased attack speed, 3% decreased acceleration
+				'This is so uncomfortable, but it does the job'
+				'''
+			DisplayName: Piggy Patroller Mask
+		}
+	
+		PiggyBody: {
+			Tooltip:
+				'''
+				8% increased damage reduction, +20 max health, 5% decreased movement speed
+				'Carrying a heavy bodyplate of porcelain'
+				'''
+			DisplayName: Piggy Patroller Bodyplate
+		}
+	
+		BrassLegs: {
+			Tooltip: 7% increased movement speed
+			DisplayName: Brass Greaves
+		}
+	
+		BrassHead: {
+			Tooltip: 6% increased melee damage
+			DisplayName: Brass Knightmask
+		}
+	
+		BrassBody: {
+			Tooltip:
+				'''
+				8% knockback and weapon speed
+				'A knight in rusty armour!'
+				'''
+			DisplayName: Brass Chestplate
+		}
+	
+		FlorenceMarble: {
+			DisplayName: Florence Marble
+			Tooltip: ""
+		}
+	
+		OldGoldOre: {
+			DisplayName: Old Gold Ore
+			Tooltip: ""
+		}
+	
+		VintageBeer: {
+			DisplayName: Limetwist Beer
+			Tooltip:
+				'''
+				A slightly sour but frothy rum
+				Gives the Limetwist Rum Buff
+				Ignores 3 points of enemy defence, increasing endurance by 10% but decreased weapon speed by 15%
+				Ingredients: 
+				'''
+		}
+	
+		VintageWine: {
+			DisplayName: Spicegrass Wine
+			Tooltip:
+				'''
+				A bitter and almost spicy wine.
+				Gives the Spicegrass Wine Buff
+				Increases acceleration and running speed by 8% but -2 defence
+				Ingredients:
+				'''
+		}
+	
+		Peni: {
+			DisplayName: Penacillin
+			Tooltip:
+				'''
+				[c/00FF00:~Sub Accessory~]
+				+10HP
+				Immunity to poison, venom, bleeding
+				When you are hit you regen health twice as fast
+				-------------------------
+				You can consume the penacillin, making the buffs 2x as strong
+				Therefore: 20+HP
+				'''
+		}
+	
+		AquaBlossomBody: {
+			DisplayName: Aqua Blossom Cuirass
+			Tooltip:
+				'''
+				6% increases magic damage
+				20+ Max Mana
+				'Wet armour? No thanks.
+				'''
+		}
+	
+		AquaBlossomHead: {
+			DisplayName: Aqua Blossom Lilyhat
+			Tooltip: 6% increased magic crit chance
+		}
+	
+		AquaBlossomLegs: {
+			DisplayName: Aqua Blossom Flippers
+			Tooltip: 6% increased movement speed and jump speed
+		}
+	
+		RustedBullets: {
+			Tooltip: Rusty, but effective
+			DisplayName: Rusted Bullets
+		}
+	
+		WoodenTrainWhip: {
+			DisplayName: Wooden Train Whip
+			Tooltip: ""
+		}
+	
+		LightbulbCannon: {
+			DisplayName: Lightbulb Cannon
+			Tooltip: "'Shoots a massive lightbulb that release a large aura of light'"
+		}
+	
+		MagmaBody: {
+			DisplayName: Magma Body
+			Tooltip: Hot cape fr
+		}
+	
+		MagmaHead: {
+			DisplayName: Magma Head
+			Tooltip: You feel like an idiot wearing this
+		}
+	
+		MagmaLegs: {
+			DisplayName: Magma Legs
+			Tooltip: Sloppy
+		}
+	
+		AcornSprinterB: {
+			DisplayName: Acorn Sprinter Banner
+			Tooltip: ""
+		}
+	
+		AcornStiltB: {
+			DisplayName: Acorn Stilt Walker Banner
+			Tooltip: ""
+		}
+	
+		HuntsmanSpiderItem: {
+			DisplayName: Caught Huntsman Spider
+			Tooltip: ""
+		}
+	
+		RedbackSpiderItem: {
+			DisplayName: Caught Redback Spider
+			Tooltip: ""
+		}
+	
+		FunnelWebSpiderItem: {
+			DisplayName: Caught FunnelWeb Spider
+			Tooltip: ""
+		}
+	
+		NewtonCradleItem: {
+			Tooltip: ""
+			DisplayName: Newton's Cradle
+		}
+	
+		Wattle: {
+			Tooltip: ""
+			DisplayName: Wattle
+		}
+	
+		PoisonPrickles: {
+			Tooltip: Throws a bunch of prickles that has a boost of speed when it penetrates an enemy
+			DisplayName: Poison Prickles
+		}
+	
+		SuperSnowballCannon: {
+			Tooltip:
+				'''
+				Go Crazy, Go Stupid!
+				Snowball Cannon but if it was good.
+				'''
+			DisplayName: Super Snowball Cannon
+		}
+	
+		RainforestBow: {
+			Tooltip:
+				'''
+				Shoots out jungle arrows
+				Has a chance to shoot out a dangerous jungle arrow that creates nettles on impact
+				With a chance of a jungle spore to shoot out, exploding on contact.
+				'''
+			DisplayName: Rainforest Bow
+		}
+	
+		AcornWand: {
+			Tooltip: Conjures Bouncing Acorns that bounce 3 times
+			DisplayName: Acorn Wand
+		}
+	
+		IchorGlobScepter: {
+			Tooltip: ""
+			DisplayName: Ichor Glob Scepter
+		}
+	
+		PlatWarAxe: {
+			Tooltip: ""
+			DisplayName: Platinum War Axe
+		}
+	
+		GoldWarAxe: {
+			Tooltip: ""
+			DisplayName: Golden War Axe
+		}
+	
+		MusicNotePNT: {
+			Tooltip: "'B.Eduardos'"
+			DisplayName: Quavers
+		}
+	
+		AddictionPNT: {
+			Tooltip: "'J.Salaki'"
+			DisplayName: Addiction
+		}
+	
+		ScathedFlesh: {
+			Tooltip: Scarred, bloody flesh off a hungry vertabrae of the crimson
+			DisplayName: Scathed Flesh
+		}
+	
+		InfectedViscus: {
+			Tooltip: The corrupted, vile body parts of a corruption entity
+			DisplayName: Infected Viscus
+		}
+	
+		HellishMembrane: {
+			Tooltip: The souls of underworld monstrosities
+			DisplayName: Hellish Membrane
+		}
+	
+		BUNNINGSSNAG: {
+			Tooltip: NOTHING BETTER THAN A GOOD OL BUNNINGS SNAG
+			DisplayName: BUNNINGS SNAG
+		}
+	
+		CursedBerries: {
+			DisplayName: Cursed Berries
+			Tooltip: "'Sour, but too sour, it makes enemy spawn increased!'"
+		}
+	
+		SunflowerPetal: {
+			DisplayName: Sunflower Petal
+			Tooltip: ""
+		}
+	
+		VulgarShot: {
+			DisplayName: Vulgar Shot
+			Tooltip:
+				'''
+				'Absolutely Vile!'
+				Charges up Vile Eyes from the bow
+				Releasing the button shoots all Vile Eyes at once
+				'''
+		}
+	
+		SquirmoTrophyItem: {
+			DisplayName: Squirmo Trophy
+			Tooltip: ""
+		}
+	
+		SquirmoMask: {
+			DisplayName: Squirmo Mask
+			Tooltip: ""
+		}
+	
+		ImpactTurretB: {
+			DisplayName: Impact Turret Banner
+			Tooltip: ""
+		}
+	
+		EeyeB: {
+			DisplayName: E-Eye Banner
+			Tooltip: ""
+		}
+	
+		EslimeB: {
+			DisplayName: E-Slime Banner
+			Tooltip: ""
+		}
+	
+		Aquablossom: {
+			DisplayName: Aquablossom
+			Tooltip: Has a taint glow to it!
+		}
+	
+		RegenMush: {
+			DisplayName: Mushroom of Regen
+			Tooltip:
+				'''
+				3+ Health Regen
+				'Don't eat it!!!'
+				'''
+		}
+	
+		ChickenCoopItem: {
+			DisplayName: Chicken Coop
+			Tooltip: Cluck Cluck Cluck!!
+		}
+	
+		TractorTileItem: {
+			DisplayName: Tractor
+			Tooltip: ""
+		}
+	
+		TatteredWood: {
+			DisplayName: Tattered Wood
+			Tooltip: Guaranteed Splinters!
+		}
+	
+		FarmKey: {
+			DisplayName: Ancient Farm Key
+			Tooltip: Unlocks an Ancient and Tattered Chest
+		}
+	
+		FarmChest: {
+			DisplayName: Farm Chest
+			Tooltip: ""
+		}
+	
+		FarmAcorn: {
+			DisplayName: Farm Acorn
+			Tooltip: ""
+		}
+	
+		FarmSoilItem: {
+			DisplayName: Farm Soil
+			Tooltip: ""
+		}
+	
+		Carrot: {
+			DisplayName: Carrot
+			Tooltip: "'Crunchy and great for your eyesight!'"
+		}
+	
+		FloralDelight: {
+			DisplayName: Floral Delight
+			Tooltip:
+				'''
+				Sweet, eadable flowers, filled with nutrients and goodness!
+				Gives the Heartreach buff"
+				You can wear this on your head as well!
+				'''
+		}
+	
+		PumpkinSoup: {
+			DisplayName: Pumpkin Soup
+			Tooltip:
+				'''
+				Delicious, gourmet and it warms up your tummy
+				Gives Medium Improvements to all stats
+				'''
+		}
+	
+		FarmPylonItem: {
+			DisplayName: Farm Pylon
+			Tooltip: ""
+		}
+	
+		OldSnailItem: {
+			DisplayName: Grandfather Snail
+			Tooltip: ""
+		}
+	
+		DepthsPNT: {
+			DisplayName: The Depths
+			Tooltip: "[c/880808:By Zero and The Possum]"
+		}
+	
+		NothingPNT: {
+			DisplayName: Nothingness
+			Tooltip: "[c/880808:By Zero and The Possum]"
+		}
+	
+		BerrybackItem: {
+			DisplayName: Berryback
+			Tooltip: ""
+		}
+	
+		RoosterItem: {
+			DisplayName: Rooster
+			Tooltip: CLUCK CLUCK CLUCK
+		}
+	
+		SquirmItem: {
+			DisplayName: Squirm
+			Tooltip: ""
+		}
+	
+		Suitcase: {
+			DisplayName: Lovecraft's Rift Suitcase
+			Tooltip:
+				'''
+				Your Journey Begins!!
+				Right Click to crack open H.P Lovecraft's Rift Essentials
+				Below are the Weapons you get from it!(You also get other necessities!)
+				[i:RealmOne/ShatteredGemBlade][i:RealmOne/DualWieldCrossbows]
+				[i:RealmOne/Twigbulb][i:RealmOne/EmptyLocket]
+	
+				'''
+		}
+	
+		WattlePot: {
+			DisplayName: Wattle Pot
+			Tooltip: Gives the Happy Buff!
+		}
+	
+		TatteredBody: {
+			DisplayName: Tattered Breastplates
+			Tooltip: ""
+		}
+	
+		TatteredLegs: {
+			DisplayName: Tattered Trousers
+			Tooltip: ""
+		}
+	
+		TatteredMask: {
+			DisplayName: Tattered Mask
+			Tooltip: ""
+		}
+	
+		SunHat: {
+			DisplayName: Lost Farmer's Straw Hat
+			Tooltip: Sunflower Effect when worn in the day!
+		}
+	
+		TatteredAxe: {
+			DisplayName: Tattered Axe
+			Tooltip: ""
+		}
+	
+		TatteredBow: {
+			DisplayName: Tattered Bow
+			Tooltip: ""
+		}
+	
+		TatteredHammer: {
+			DisplayName: Tattered Hammer
+			Tooltip: ""
+		}
+	
+		TatteredPick: {
+			DisplayName: Tattered Pick
+			Tooltip: ""
+		}
+	
+		TatteredSword: {
+			DisplayName: Tattered Sword
+			Tooltip: ""
+		}
+	
+		Goreberry: {
+			DisplayName: Goreberry
+			Tooltip: Dangerously sweet, increases your heart rate'
+		}
+	
+		ChillrendBody: {
+			DisplayName: Chillrend Body
+			Tooltip:
+				'''
+				6% increases ranged damage
+				6% increased ranged speed
+				'''
+		}
+	
+		ChillrendHead: {
+			DisplayName: Chillrend Helmet
+			Tooltip:
+				'''
+				6% increased ranged damage
+				6%increased ranged attack speed
+				'''
+		}
+	
+		ChillrendLegs: {
+			DisplayName: Chillrend Legs
+			Tooltip:
+				'''
+				6% increased movement speed
+				You leave a trail of ice!
+				'''
+		}
+	
+		FarmTorchItem: {
+			DisplayName: Farm Torch
+			Tooltip: ""
+		}
+	
+		HoneyHareItem: {
+			DisplayName: Honey Hare
+			Tooltip: ""
+		}
+	
+		CoindropWand: {
+			DisplayName: Coindrop Wand
+			Tooltip: ""
+		}
+	
+		SquirmoMusicBox: {
+			DisplayName: Squirmo Music Box
+			Tooltip: ""
+		}
+	
+		FarmMusicItem: {
+			DisplayName: Farm Music Box
+			Tooltip: ""
+		}
+	
+		Bloomarang: {
+			DisplayName: Bloomarang
+			Tooltip: Throws out 6 bloomerangs that shoot out in a circle
+		}
+	
+		SunflowerStaff: {
+			DisplayName: Sunflower Scepter
+			Tooltip:
+				'''
+				Conjures a glowing and growing sunflower on the cursor's position
+				Explodes into fast moving sunflower petals and catch in the wind.
+				'''
+		}
+	
+		BloodHook: {
+			Tooltip: Latches onto enemies while still being to hook onto walls
+			DisplayName: Blood Hook
+		}
+	
+		Crimclub: {
+			DisplayName: Crimclub
+			Tooltip:
+				'''
+				Swing a deadly and spiky club that knockback enemies heavily
+				Has a 50% chance of a bloody tooth to shoot out of the club, dealing high damage to enemies.
+				'''
+		}
+	
+		BloodBlower: {
+			DisplayName: Blood Blower
+			Tooltip: Shoots 2 Flesh Darts and a Bloodshot that penetrate enemies
+		}
+	
+		TatteredJavlin: {
+			DisplayName: Tattered Javlin
+			Tooltip: ""
+		}
+	
+		BarrensludgeJelly: {
+			DisplayName: Barrensludge Jelly
+			Tooltip:
+				'''
+				Minor Improvements to all stats
+				Sludgy!
+				'''
+		}
+	
+		BarrensludgeLime: {
+			DisplayName: Barrensludge Lime
+			Tooltip:
+				'''
+				Minor Improvements to all stats
+				Sour!
+				'''
+		}
+	
+		EyeballSoup: {
+			DisplayName: Eyeball Soup
+			Tooltip:
+				'''
+				Medium Improvements to all stats
+				Stares at you while you slurp it down!
+				'''
+		}
+	
+		JellyfishPlatter: {
+			DisplayName: Jellyfish Platter
+			Tooltip:
+				'''
+				Minor Improvements to all stats
+				Slimy, electric but also very nutritious
+				'''
+		}
+	
+		ToothedTendril: {
+			DisplayName: Toothed Tendril
+			Tooltip: ""
+		}
+	
+		SuperWheat: {
+			DisplayName: Super Wheat
+			Tooltip: Smells like beer
+		}
+	
+		CactusFruit: {
+			DisplayName: Cactus Fruit
+			Tooltip:
+				'''
+				Minor Improvements to all stats
+				'Bit prickly and poisonous'
+				'''
+		}
+	
+		FleshToothSMG: {
+			DisplayName: Flesh Tooth S M G
+			Tooltip:
+				'''
+				Shoots a burst of bloody teeth in 3 rounds
+				Very Inaccurate 
+				'''
+		}
+	
+		LiteBulb: {
+			DisplayName: Lightbulb
+			Tooltip: ""
+		}
+	
+		ToothBody: {
+			DisplayName: Goretooth Teethplate
+			Tooltip:
+				'''
+				1+ Increased Minion
+				4% increased Summon Damage
+				'''
+		}
+	
+		ToothHead: {
+			DisplayName: Goretooth Eyemask
+			Tooltip:
+				'''
+				5% Increased Summon Damage
+				1+ Max Minion
+				'''
+		}
+	
+		ToothLegs: {
+			DisplayName: Goretooth Teethfeet
+			Tooltip:
+				'''
+				8% increased movement speed
+				8% increased Whip Attack Speed
+				'''
+		}
+	
+		SanguineSlugItem: {
+			DisplayName: Sanguine Slug Item
+			Tooltip: ""
+		}
+	
+		EyeJellyItem: {
+			DisplayName: Eye Jelly Item
+			Tooltip: ""
+		}
+	
+		GoreshankShotgun: {
+			DisplayName: Goreshank Shotgun
+			Tooltip:
+				'''
+				Rapid fire goreblast bullets that gives you and the enemy the bleeding debuff
+				'Full of rust and sharp edges'
+				'''
+		}
+	
+		ImpactFlashlight: {
+			DisplayName: Impact Flashlight
+			Tooltip: Hold and release to flash a large electric cone shaped light
+		}
+	
+		JellyfishInfestedShark: {
+			DisplayName: Jellyfish Infested Shark
+			Tooltip:
+				'''
+				Shoots a variety of Jellyfish
+				Blue explodes into an area of effect electric spark
+				Pink bounces around dealing high damage and high knockback
+				Green spins in a spot and explodes into a toxic cloud
+				'''
+		}
+	
+		FireflyJar: {
+			Tooltip: Throws a jar filled with aggressive Fireflies
+			DisplayName: Firefly Jar
+		}
+	
+		CartonBeer: {
+			DisplayName: Carton Beer
+			Tooltip:
+				'''
+				'Fosters. Good call.'
+				Throws a pint of beer that smashes on impact
+				Right click to chug the beer, giving the Tipsy Buff
+				'''
+		}
+	
+		GildedGladius: {
+			DisplayName: Gilded Gladius
+			Tooltip: ""
+		}
+	
+		ForestTea: {
+			DisplayName: Forest Tea
+			Tooltip: ""
+		}
+	}
+	
+	Buffs: {
+		MagnetBuff: {
+			DisplayName: Magnet Buff
+			Description: Gift from the heavens!
+		}
+	
+		TreeSapBuff: {
+			Description: The power of rust!!
+			DisplayName: Tree Sap
+		}
+	
+		TraditionalCologneBuff: {
+			Description: You smell like exotic moonglow and cold skybreeze!
+			DisplayName: Traditional Cologne Buff
+		}
+	
+		ToastedNutBarBuff: {
+			Description: 5% increased endurance and increase to all stats
+			DisplayName: Toasted Nut Bar Buff
+		}
+	
+		TangledBuff: {
+			Description: Wrath of the vines grows in you, Greatly slows enemies and inflict poison
+			DisplayName: Tangled Buff
+		}
+	
+		SaltySwig: {
+			Description: Strong flavour of absolute rum, pineapple, vanilla and spices, washed up!
+			DisplayName: Salty Swig
+		}
+	
+		OverseerBuff: {
+			Description: Increases crit chance by 4%+
+			DisplayName: Overseer Buff
+		}
+	
+		OpticBuff: {
+			Description: DisplayName: Optic Buff
+			DisplayName: Optic Buff
+		}
+	
+		LightbulbBuff: {
+			Description: You are a lightbulb!
+			DisplayName: Lightbulb Buff
+		}
+	
+		HellfireVodkaBuff: {
+			Description: Prefered choice of alcohol from the one and only evil Satan
+			DisplayName: Hellfire Vodka Buff
+		}
+	
+		HazardBuff: {
+			Description: You are vulnerable to damage from explosives!!!
+			DisplayName: Hazard Buff
+		}
+	
+		DungeonPendantBuff: {
+			Description: The charm empowers when you step foot into the dungeon!
+			DisplayName: Dungeon Pendant Buff
+		}
+	
+		Splintered: {
+			Description: Ouch!!
+			DisplayName: Splintered
+		}
+	
+		SharpHeat: {
+			Description: Burns the enemy with sharp heat, burns faster if their health is under 4
+			DisplayName: Sharp Heat
+		}
+	
+		CigaretteBuff: {
+			Description: You're really feeling it right now
+			DisplayName: Cigarette Buff
+		}
+	
+		BUNNINGSBUFF: {
+			Description: GET THAT SHI DOWN IN YOUR MOUTH! NOTHIN BETTER THAN GOOD OLD BUNNINGS SNAG
+			DisplayName: B U N N I N G S B U F F
+		}
+	
+		BreatheBuff: {
+			Description: GET THAT SHI DOWN IN YOUR MOUTH! NOTHIN BETTER THAN GOOD OLD BUNNINGS SNAG
+			DisplayName: Breathe!!
+		}
+	
+		AltElectrified: {
+			DisplayName: Alt Electrified
+			Description: ZAP!!
+		}
+	
+		BrassMight: {
+			Description: You feel like a Brass Knight!
+			DisplayName: Brass Might
+		}
+	
+		WineBuff: {
+			Description: Bitter and spicy.
+			DisplayName: Wine
+		}
+	
+		BeerBuff: {
+			Description: Sour and tangy.
+			DisplayName: Beer
+		}
+	
+		PiggyDebuff: {
+			DisplayName: Sealed Piggy Bank
+			Description: A healing piggy bank wont be dropping soon
+		}
+	
+		PorcelainOvertime: {
+			DisplayName: Porcelain Overtime
+			Description: Mods.RealmOne.Buffs.PorcelainOvertime.Description
+		}
+	
+		PursuerNo: {
+			DisplayName: Broken Piggy Pursuer
+			Description: Your Piggy Pursuer is recovering from the shatter
+		}
+	}
+	
+	Projectiles: {
+		PompeiisPullProjectile.DisplayName: Pompeiis Pull Projectile
+		OldGoldHookProjectile.DisplayName: Old Gold Hook Projectile
+		OldChainHook.DisplayName: Old Chain Hook
+		WagonWheel.DisplayName: Wagon Wheel
+		CrossBowBolt.DisplayName: Cross Bow Bolt
+		HellBolt.DisplayName: Hell Bolt
+		CrimBulletProjectile.DisplayName: Crim Bullet Projectile
+		FlamerProj.DisplayName: Flamer Proj
+		FlowerBulletProjectile.DisplayName: Flower Bullet Projectile
+		GlobGunProjectile.DisplayName: Glob Gun Projectile
+		GlowTest.DisplayName: Glow Test
+		GreenLeaf.DisplayName: Green Leaf
+		Heller.DisplayName: Heller
+		IceBulletProjectile.DisplayName: Ice Bullet Projectile
+		PeaSilencerProj.DisplayName: Pea Silencer Proj
+		PinkLeaf.DisplayName: Pink Leaf
+		PulsaShot.DisplayName: Pulsa Shot
+		SandBulletProjectile.DisplayName: Sand Bullet Projectile
+		TommyGunBarrelFlash.DisplayName: Tommy Gun Barrel Flash
+		VintageBulletProjectile.DisplayName: Vintage Bullet Projectile
+		Wheel.DisplayName: Wheel
+		BattleboatBombProj.DisplayName: Battleboat Bomb Proj
+		C4Proj.DisplayName: C4 Proj
+		C5Proj.DisplayName: C5 Proj
+		CastawayRumProj.DisplayName: Castaway Rum Proj
+		CopperFragGrenadeProj.DisplayName: Copper Frag Grenade Proj
+		FlowerLog.DisplayName: Flower Log
+		FlowerLogProj.DisplayName: Flower Log Proj
+		ScavengerProjectile.DisplayName: Scavenger Projectile
+		TinFragGrenadeProj.DisplayName: Tin Frag Grenade Proj
+		Type24StickNadeProj.DisplayName: Type24 Stick Nade Proj
+		WormBall.DisplayName: Worm Ball
+		KnopperBall.DisplayName: Knopper Ball
+		SandTwisterProj.DisplayName: Sand Twister Proj
+		SquirYoProjectile.DisplayName: Squir Yo Projectile
+		StoneTippedSpearProj.DisplayName: Stone Tipped Spear Proj
+		VinepointProj.DisplayName: Vinepoint Proj
+		WoodenTippedSpearProj.DisplayName: Wooden Tipped Spear Proj
+		CoconutProj.DisplayName: Coconut Proj
+		DesertHands.DisplayName: Desert Hands
+		DreamerShot.DisplayName: Dreamer Shot
+		eyebig.DisplayName: eyebig
+		eyesmol.DisplayName: eyesmol
+		FlamePumpkinProj.DisplayName: Flame Pumpkin Proj
+		GobPortal.DisplayName: Gob Portal
+		GrassNote.DisplayName: Grass Note
+		LightBulbRing1.DisplayName: Light Bulb Ring1
+		OldGoldNado.DisplayName: Old Gold Nado
+		PulseProj.DisplayName: Pulse Proj
+		ShrubbyLeaf.DisplayName: Shrubby Leaf
+		Snowy.DisplayName: Snowy
+		SquirmStaffProjectile.DisplayName: Squirm Staff Projectile
+		Stary.DisplayName: Stary
+		IdolProj.DisplayName: Idol Proj
+		InkGlob.DisplayName: Ink Glob
+		LootBalloon.DisplayName: Loot Balloon
+		MiniSand.DisplayName: Mini Sand
+		SteppingStonesProj.DisplayName: Stepping Stones Proj
+		ColdHuntBoomerangProj.DisplayName: Cold Hunt Boomerang Proj
+		IgnitionPokerProjectile.DisplayName: Ignition Poker Projectile
+		PalmWoodPokerProjectile.DisplayName: Palm Wood Poker Projectile
+		RichMahoganyPokerProjectile.DisplayName: Rich Mahogany Poker Projectile
+		StonePokerProjectile.DisplayName: Stone Poker Projectile
+		VerdantPokerProjectile.DisplayName: Verdant Poker Projectile
+		WoodenPokerProjectile.DisplayName: Wooden Poker Projectile
+		ScarecrowsCutProjectile.DisplayName: Scarecrows Cut Projectile
+		ShatteredGemBladeProj1.DisplayName: Shattered Gem Blade Proj1
+		ShatteredGemBladeProj2.DisplayName: Shattered Gem Blade Proj2
+		UnstableWireBladeProj.DisplayName: Unstable Wire Blade Proj
+		AcornNadeProj.DisplayName: Acorn Nade Proj
+		BoneSpine.DisplayName: Bone Spine
+		EleJellyProj.DisplayName: Ele Jelly Proj
+		MoneyVaseProj.DisplayName: Money Vase Proj
+		PirateWheelProjectile.DisplayName: Pirate Wheel Projectile
+		StackPotionsProj.DisplayName: Stack Potions Proj
+		TundraThrowingKnifeProjectile.DisplayName: Tundra Throwing Knife Projectile
+		vampdagProjectile.DisplayName: vampdag Projectile
+		ProtonBobber.DisplayName: Proton Bobber
+		GlobGunProjectileHostile.DisplayName: Glob Gun Projectile Hostile
+		DoubleSidedSquirmProj.DisplayName: Double Sided Squirm Proj
+		StormStrikerSpinnerProj.DisplayName: Storm Striker Spinner Proj
+		BotanicLogLauncherH.DisplayName: Botanic Log Launcher H
+		CactusThrustProj.DisplayName: Cactus Thrust Proj
+		CombusterCrossbowProj.DisplayName: Combuster Crossbow Proj
+		InkSpearProj.DisplayName: Ink Spear Proj
+		JungleTechHeld.DisplayName: Jungle Tech Held
+		WaterQuarryHeld.DisplayName: Water Quarry Held
+		WoodenCrossProj.DisplayName: Wooden Cross Proj
+		CactiSticky.DisplayName: Cacti Sticky
+		ExtensionCordProjectile.DisplayName: Extension Cord Projectile
+		WoodenTrainProjectile.DisplayName: Wooden Train Projectile
+		JellySpark.DisplayName: Jelly Spark
+		LightbulbBullet.DisplayName: Lightbulb Bullet
+		IchorGlobSmall.DisplayName: Ichor Glob Small
+		IchorGlob.DisplayName: Ichor Glob
+		BouncingAcorn.DisplayName: Bouncing Acorn
+		PoisonPricklesProj.DisplayName: Poison Prickles Proj
+		WattleArrowBase.DisplayName: Wattle Arrow Base
+		WattleArrow.DisplayName: Wattle Arrow
+		StunSeedA.DisplayName: Stun Seed A
+		StunSeedBA.DisplayName: Stun Seed B A
+		StunSeedBP.DisplayName: Stun Seed B P
+		StunSeedBW.DisplayName: Stun Seed B W
+		StunSeedP.DisplayName: Stun Seed P
+		StunSeedW.DisplayName: Stun Seed W
+		VileArrow.DisplayName: Vile Arrow
+		CorruptEye.DisplayName: Corrupt Eye
+		VulgarShotHeld.DisplayName: Vulgar Shot Held
+		ConeFlash.DisplayName: Cone Flash
+		OldGoldBullet.DisplayName: Old Gold Bullet
+		LilGold.DisplayName: Lil Gold
+		StarFlash.DisplayName: Star Flash
+		Porcelain.DisplayName: Porcelain
+		Shockwave.DisplayName: Shockwave
+		CopperCoin.DisplayName: Copper Coin
+		Fire.DisplayName: Fire
+		GoldCoin.DisplayName: Gold Coin
+		HugeGoldCoin.DisplayName: Huge Gold Coin
+		PlatinumCoin.DisplayName: Platinum Coin
+		SilverCoin.DisplayName: Silver Coin
+		CopperCoinFriendly.DisplayName: Copper Coin Friendly
+		FireFriendly.DisplayName: Fire Friendly
+		GoldCoinFriendly.DisplayName: Gold Coin Friendly
+		PiggyBankFalling.DisplayName: Piggy Bank Falling
+		PlatinumCoinFriendly.DisplayName: Platinum Coin Friendly
+		PorcelainFriendly.DisplayName: Porcelain Friendly
+		ShockwaveFriendly.DisplayName: Shockwave Friendly
+		SilverCoinFriendly.DisplayName: Silver Coin Friendly
+		BloomarangProj.DisplayName: Bloomarang Proj
+		SpinFlower.DisplayName: Spin Flower
+		SunPetal.DisplayName: Sun Petal
+		BloodHookProj.DisplayName: Blood Hook Proj
+		CrimclubSwing.DisplayName: Crimclub Swing
+		BloodBlowerProj.DisplayName: Blood Blower Proj
+		TatteredJavlinProj.DisplayName: Tattered Javlin Proj
+		ImpactSonarShot.DisplayName: Impact Sonar Shot
+		Starbang.DisplayName: Starbang
+		ToothedTendrilProj.DisplayName: Toothed Tendril Proj
+		ArteryCarrionProjectile.DisplayName: Artery Carrion Projectile
+		PiggyPursuerHeld.DisplayName: Piggy Pursuer Held
+		HoppingPiggy.DisplayName: Hopping Piggy
+		StickyPorcelain.DisplayName: Sticky Porcelain
+		BloodToothProj.DisplayName: Blood Tooth Proj
+		CrimClubSwing.DisplayName: Crim Club Swing
+		BloodshotEyeProjectile.DisplayName: Bloodshot Eye Projectile
+		SwiftShot.DisplayName: Swift Shot
+		GoreshankShot.DisplayName: Goreshank Shot
+		GoreshankShotgunS.DisplayName: Goreshank Shotgun S
+		ImpactFlashLights.DisplayName: Impact Flash Lights
+		BlueJ.DisplayName: Blue J
+		GreenBoom.DisplayName: Green Boom
+		GreenJ.DisplayName: Green J
+		PinkJ.DisplayName: Pink J
+		BlueFlash.DisplayName: Blue Flash
+		FireflyProj.DisplayName: Firefly Proj
+		FireflyJarProj.DisplayName: Firefly Jar Proj
+		CartonBeerProj.DisplayName: Carton Beer Proj
+		GildedGladiusProj.DisplayName: Gilded Gladius Proj
+		GildedGladiusThrown.DisplayName: Gilded Gladius Thrown
+	}
+	
+	NPCs: {
+		AquaSwishFish.DisplayName: AquaSwish Fish
+		MagpieNPC.DisplayName: Magpie
+		ThornyDevil.DisplayName: Thorny Devil
+		AquaSwishSnail.DisplayName: AquaSwish Snail
+		GiantDragonfly.DisplayName: Giant Dragonfly
+		ImpactBunny.DisplayName: Impact Bunny
+		Squirm.DisplayName: Squirm
+		WaterLizard.DisplayName: Water Lizard
+		EleJellyNPC.DisplayName: Ele-Jelly
+		AcornSprinter.DisplayName: Acorn Sprinter
+		AcornStiltWalker.DisplayName: Acorn Stilt Walker
+		BarrenBarkSlime1.DisplayName: Barrensludge Slime
+		BarrenBarkSlime2.DisplayName: Large Barrensludge Slime
+		HeartBat.DisplayName: Heart Bat
+		MegaSquirmBody.DisplayName: Mega Squirm Body
+		MegaSquirmHead.DisplayName: Mega Squirm Head
+		MegaSquirmTail.DisplayName: Mega Squirm Tail
+	
+		MossyMarauder: {
+			DisplayName: Mossy Marauder
+	
+			BossChecklistIntegration: {
+				EntryName: The Outcrop Outcast
+				SpawnInfo:
+					'''
+					To this day, the dirt titan is a remarkable standpoint of the growth of Terraria, from its hard life and from its happiest life, it will always be a symbol of the land. The name that is given to it now is called The Outcrop Outcast, for many reasons. The dirt effigy still remains on this day and is untouched even for the irresponsible. Would you rather defeat the past or lose the future?
+	
+					'''
+				DespawnMessage: ""
 			}
 		}
-
-		Tiles: {
-			EvoGrassTile.MapEntry: Evo Grass
-			FlorenceMarbleTile.MapEntry: Florence Marble
-			OldGoldOreT.MapEntry: Old Gold Ore
-			GrassPylonTile.MapEntry: Grass Pylon
-			PhotosynthesisTile1.MapEntry: Photosynthesis Pillar
-			StoneOvenTilee.MapEntry: Stone Oven Tilee
-			TatteredBarrel.MapEntry: Tattered Barrel
-			ProtonTorch.MapEntry: Proton Torch
-			MiniWattleBush.MapEntry: Mini Wattle Bush
-			PiggyTile.MapEntry: Piggy Tile
-			MusicNotePNTtile.MapEntry: Quavers
-			AddictionPNTtile.MapEntry: Addiction
-			NewtonCradleTile.MapEntry: Newton Cradle Tile
-			ChickenCoopTile.MapEntry: Chicken Coop Tile
-			Banners.MapEntry: Banners
-			TatteredWoodTile.MapEntry: Tattered Wood Tile
-
-			FarmChestTile: {
-				MapEntry0: Farm Chest
-				MapEntry1: Farm Chest
-			}
-
-			FarmSapling.MapEntry: Farm Sapling
-			FarmSoil.MapEntry: Farm Soil
-			FarmPylonTile.MapEntry: "{$Mods.RealmOne.Items..DisplayName}"
-			Depths.MapEntry: Depths
-			Nothing.MapEntry: Nothing
-			HangingWattle.MapEntry: Hanging Wattle
-			FarmTorch.MapEntry: Farm Torch
-		}
-
-		DamageClasses: {
-			FighterClass.DisplayName: Fighter Class
-			DemolitionClass.DisplayName: Demolition Class
-		}
-
-		"Keybinds.Technicians Call.DisplayName": Technicians  Call
-
-		Biomes: {
-			FarmSurface: {
-				DisplayName: The Abandoned Farm
-				TownNPCDialogueName: Abandoned Farm
+	
+		RustedCenturion.DisplayName: Rusted Centurion
+		GlitterdustSlime.DisplayName: Glitterdust Slime
+		Eslime.DisplayName: E-Slime
+		ImpactTurret.DisplayName: Impact Turret
+		Inkling.DisplayName: Inkling Promenade
+		LightbulbBouncer.DisplayName: Lightbulb Bouncer
+	
+		PossessedPiggy: {
+			DisplayName: Possessed Piggy
+	
+			BossChecklistIntegration: {
+				EntryName: Possessed Piggy Bank
+				SpawnInfo: A rare scavenger of the land, looking for any Terrarian to stumble across it, stealing all its loot!!
+				DespawnMessage: ""
 			}
 		}
-
-		Configs: {
-			ConfigMusic: {
-				DisplayName: Music Config
-
-				BloodMoonMusic: {
-					Label: "{$Mods.RealmOne.BloodMoonAlt}"
-					Tooltip: Adds a unique track for Blood Moons
-				}
+	
+		NecroDude.DisplayName: Necromonical Envoy
+		FunnelWebSpider.DisplayName: Funnel Web Spider
+		HuntsmanSpider.DisplayName: Huntsman Spider
+		RedbackSpider.DisplayName: Redback Spider
+		SquirmoTail.DisplayName: Squirmo
+	
+		SquirmoHead: {
+			DisplayName: Squirmo
+	
+			BossChecklistIntegration: {
+				SpawnInfo: Even from the past dread of worm adaptation, they havent really caused global damage. But for Squirmo, ever seeking revenge on human inhabitants is still a current warning for people.  Adhere the relief of the soil by defeating Squirmo!!
+				DespawnMessage: ""
+				EntryName: Squirmo
 			}
 		}
-
-		Emotes: {
-			SmugBubble.Command: smugbubble
-			LuvyaBubble.Command: luvyabubble
+	
+		SquirmoBody.DisplayName: Squirmo
+		ZombieFarmer.DisplayName: Zombie Farmer
+		Espider1.DisplayName: E-Spider
+		Eye1.DisplayName: E-Eye
+		TumblingVulgar.DisplayName: Tumbling Vulgar
+		EbonScreecher.DisplayName: Ebon Screecher
+		EbonScreecherBAD.DisplayName: Aggressive Ebon Screecher
+		GlitterLeaper.DisplayName: Glitter Leaper
+		MangoBat.DisplayName: Mango Bat
+		RainsplurgeSlime.DisplayName: Rainsplurge Slime
+		OldSnail.DisplayName: Grandfather Slime
+	
+		ArcheologistNPC: {
+			DisplayName: Archeologist NPC
+	
+			TownNPCMood: {
+				Content: I am content.
+				NoHome: I hate not having a home.
+				FarFromHome: I am too far from home.
+				LoveSpace: I love having so much space.
+				DislikeCrowded: I dislike how crowded I am.
+				HateCrowded: I hate how crowded I am.
+				LoveBiome: I love {BiomeName}.
+				LikeBiome: I like {BiomeName}.
+				DislikeBiome: I dislike {BiomeName}.
+				HateBiome: I hate {BiomeName}.
+				LoveNPC: I love {NPCName}.
+				LikeNPC: I like {NPCName}.
+				DislikeNPC: I dislike {NPCName}.
+				HateNPC: I hate {NPCName}.
+				LikeNPC_Princess: I like {NPCName}.
+				Princess_LovesNPC: I like {NPCName}.
+			}
 		}
+	
+		BoundArcheologist: {
+			DisplayName: Bound Archeologist
+	
+			TownNPCMood: {
+				Content: I am content.
+				NoHome: I hate not having a home.
+				FarFromHome: I am too far from home.
+				LoveSpace: I love having so much space.
+				DislikeCrowded: I dislike how crowded I am.
+				HateCrowded: I hate how crowded I am.
+				LoveBiome: I love {BiomeName}.
+				LikeBiome: I like {BiomeName}.
+				DislikeBiome: I dislike {BiomeName}.
+				HateBiome: I hate {BiomeName}.
+				LoveNPC: I love {NPCName}.
+				LikeNPC: I like {NPCName}.
+				DislikeNPC: I dislike {NPCName}.
+				HateNPC: I hate {NPCName}.
+				LikeNPC_Princess: I like {NPCName}.
+				Princess_LovesNPC: I like {NPCName}.
+			}
+		}
+	
+		HoneyHare.DisplayName: Honey Hare
+		Berryback.DisplayName: Berryback
+		Rooster.DisplayName: Rooster
+		HaySlime.DisplayName: Hay Slime
+	
+		LostFarmer: {
+			DisplayName: Lost Farmer
+	
+			TownNPCMood: {
+				Content: I am content.
+				NoHome: I hate not having a home.
+				FarFromHome: I am too far from home.
+				LoveSpace: I love having so much space.
+				DislikeCrowded: I dislike how crowded I am.
+				HateCrowded: I hate how crowded I am.
+				LoveBiome: I love {BiomeName}.
+				LikeBiome: I like {BiomeName}.
+				DislikeBiome: I dislike {BiomeName}.
+				LoveNPC: I love {NPCName}.
+				LikeNPC: I like {NPCName}.
+				DislikeNPC: I dislike {NPCName}.
+				HateNPC: I hate {NPCName}.
+				LikeNPC_Princess: I like {NPCName}.
+				Princess_LovesNPC: I like {NPCName}.
+			}
+		}
+	
+		LostFarmerTied.DisplayName: Tangled Lost Farmer
+		JumboEye.DisplayName: Jumbo Eye
+		JumboEyeMedium.DisplayName: Jumbo Eye Medium
+	
+		FarmerSlime: {
+			DisplayName: Farmer Slime
+	
+			TownNPCMood: {
+				Content: I am content.
+				NoHome: I hate not having a home.
+				FarFromHome: I am too far from home.
+				LoveSpace: I love having so much space.
+				DislikeCrowded: I dislike how crowded I am.
+				HateCrowded: I hate how crowded I am.
+				LikeNPC_Princess: I like {NPCName}.
+				Princess_LovesNPC: I like {NPCName}.
+			}
+		}
+	
+		ArteryCarrion.DisplayName: Artery Carrion
+		ToothSerpentBody.DisplayName: Tooth Serpent Body
+		ToothSerpentHead.DisplayName: Tooth Serpent Head
+		ToothSerpentTail.DisplayName: Tooth Serpent Tail
+		BloodshotEye.DisplayName: Bloodshot Eye
+		ImpactDrone.DisplayName: Impact Drone
+		SanguineSlug.DisplayName: Sanguine Slug
+		EyeJelly.DisplayName: Eye Jelly
+		ImpactHoverdroid.DisplayName: Impact Hoverdroid
+		ButcherRat.DisplayName: Butcher Rat
+		BloodRat.DisplayName: Blood Rat
+		WhisperingShroud.DisplayName: Whispering Shroud
+	}
+	
+	Dialogue: {
+		LostFarmer: {
+			LostTalk: I can't thank you enough, kind friend, you spared an old mans life!
+			StandardDialogue1: Do you have any spare seeds?
+			StandardDialogue2: What's your favorite type of soil? Mine is slightly soft with slight dampness.
+			StandardDialogue3: Wanna hear the backstory of the farm, well its kinda of dark, literally.
+			CommonDialogue: Howdy partner, whats on the agenda for you today?
+			RareDialogue: It was his fault, everything you see is cursed.
+			TalkALot: I'm getting kinda old man, I have to go.
+		}
+	}
+	
+	Tiles: {
+		EvoGrassTile.MapEntry: Evo Grass
+		FlorenceMarbleTile.MapEntry: Florence Marble
+		OldGoldOreT.MapEntry: Old Gold Ore
+		GrassPylonTile.MapEntry: Grass Pylon
+		PhotosynthesisTile1.MapEntry: Photosynthesis Pillar
+		StoneOvenTilee.MapEntry: Stone Oven Tilee
+		TatteredBarrel.MapEntry: Tattered Barrel
+		ProtonTorch.MapEntry: Proton Torch
+		MiniWattleBush.MapEntry: Mini Wattle Bush
+		PiggyTile.MapEntry: Piggy Tile
+		MusicNotePNTtile.MapEntry: Quavers
+		AddictionPNTtile.MapEntry: Addiction
+		NewtonCradleTile.MapEntry: Newton Cradle Tile
+		ChickenCoopTile.MapEntry: Chicken Coop Tile
+		Banners.MapEntry: Banners
+		TatteredWoodTile.MapEntry: Tattered Wood Tile
+	
+		FarmChestTile: {
+			MapEntry0: Farm Chest
+			MapEntry1: Farm Chest
+		}
+	
+		FarmSapling.MapEntry: Farm Sapling
+		FarmSoil.MapEntry: Farm Soil
+		FarmPylonTile.MapEntry: "{$Mods.RealmOne.Items..DisplayName}"
+		Depths.MapEntry: Depths
+		Nothing.MapEntry: Nothing
+		HangingWattle.MapEntry: Hanging Wattle
+		FarmTorch.MapEntry: Farm Torch
+	}
+	
+	DamageClasses: {
+		FighterClass.DisplayName: Fighter Class
+		DemolitionClass.DisplayName: Demolition Class
+	}
+	
+	"Keybinds.Technicians Call.DisplayName": Technicians  Call
+	
+	Biomes: {
+		FarmSurface: {
+			DisplayName: The Abandoned Farm
+			TownNPCDialogueName: Abandoned Farm
+		}
+	}
+	
+	Configs: {
+		ConfigMusic: {
+			DisplayName: Music Config
+	
+			BloodMoonMusic: {
+				Label: "{$Mods.RealmOne.BloodMoonAlt}"
+				Tooltip: Adds a unique track for Blood Moons
+			}
+		}
+	}
+	
+	Emotes: {
+		SmugBubble.Command: smugbubble
+		LuvyaBubble.Command: luvyabubble
 	}
 }
