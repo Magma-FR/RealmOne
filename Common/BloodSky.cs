@@ -21,17 +21,14 @@ namespace RealmOne.Common
         public float Intensity;
         public override void Activate(Vector2 position, params object[] args)
         {
-            Main.bloodMoon = true;
             isActive = true;
         }
         public override void Deactivate(params object[] args)
         {
-            Main.bloodMoon = false;
             isActive = false;
         }
         public override void Reset()
         {
-            Main.bloodMoon = false;
             isActive = false;
         }
         public override void Update(GameTime gameTime)
@@ -48,7 +45,7 @@ namespace RealmOne.Common
         }
         public override bool IsActive()
         {
-            return Main.bloodMoon && Intensity > 0;
+            return Main.bloodMoon && Intensity > 0f;
         }
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {

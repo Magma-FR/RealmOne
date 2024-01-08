@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using RealmOne.Common.Systems;
 using Terraria;
@@ -23,6 +24,10 @@ public class ButcherRat : ModNPC
     
     // The way I'm using properties here eventually will make sense. I wont explain it here because it's a C# feature, not tML's.
     
+    private Player Target => Main.player[NPC.target];
+
+    public bool CanSlam { get; private set; }
+    
     public float State {
         get => NPC.ai[0];
         set {
@@ -32,23 +37,16 @@ public class ButcherRat : ModNPC
             NPC.netUpdate = true;
         }
     }
+
+    public ref float AttackTimer => ref NPC.ai[1];
     
-    public bool CanSlam {
-        get => NPC.ai[1] == 0f;
-        set => NPC.ai[1] = value ? 0f : 1f;
-    }
-
-    public ref float AttackTimer => ref NPC.ai[2];
-    public ref float CollisionTimer => ref NPC.ai[3];
-
-    public float CollisionSpeed = 4f;
-
-    private Player Target => Main.player[NPC.target];
+    public ref float CollisionTimer => ref NPC.ai[2];
+    public ref float CollisionJumpOffset => ref NPC.ai[3];
     
     public override void SetStaticDefaults() {
         DisplayName.SetDefault("Butcher Rat");
 
-        Main.npcFrameCount[NPC.type] = 1;
+        Main.npcFrameCount[NPC.type] = 7;
 
         NPCID.Sets.ImmuneToAllBuffs[Type] = true;
 
@@ -87,12 +85,41 @@ public class ButcherRat : ModNPC
         Music = MusicID.Boss2;
     }
 
+    public override void SendExtraAI(BinaryWriter writer) {
+        writer.Write(CanSlam);
+    }
+
+    public override void ReceiveExtraAI(BinaryReader reader) {
+        CanSlam = reader.ReadBoolean();
+    }
+    
+    public override void FindFrame(int frameHeight) {
+        const float FrameRate = 5f;
+        
+        NPC.spriteDirection = NPC.direction;
+
+        var isChasing = NPC.velocity.X != 0f;
+        var isThrowing = NPC.velocity.X < 3f && NPC.frame.Y != 0;
+        
+        if (NPC.frameCounter++ < FrameRate || !(isChasing || isThrowing)) {
+            return;
+        }
+        
+        NPC.frame.Y += frameHeight;
+        NPC.frameCounter = 0f;
+        
+        if (NPC.frame.Y >= Main.npcFrameCount[Type] * frameHeight) {
+            NPC.frame.Y = 0;
+            return;
+        }
+    }
+
     public override void AI() {
         NPC.TargetClosest();
 
-        var validTarget = Target.active && !Target.dead && !Target.ghost;
+        var targetAlive = Target.active && !Target.dead && !Target.ghost;
 
-        if (!validTarget) {
+        if (!targetAlive) {
             UpdateDespawn();
             return;
         }
@@ -110,23 +137,52 @@ public class ButcherRat : ModNPC
         UpdateCollision();
     }
 
-    private void UpdateThrowing() {
-        const float MinimumDistance = 12f * 16f;
-        const float Interval = 60f;
+    private void UpdateMovement() {
+        const float MinimumDistance = 10f * 16f;
+        const float MaximumDistance = 20f * 16f;
         
-        var distance = MathF.Abs(Target.Center.X - NPC.Center.X);
-        var nearby = distance < MinimumDistance;
+        const float MaximumSpeed = 3f;
 
-        if (nearby || AttackTimer++ % Interval != 0f) {
+        var targetDistance = MathF.Abs(Target.Center.X - NPC.Center.X);
+        var targetWithinRange = targetDistance > MinimumDistance && targetDistance < MaximumDistance;
+        
+        if (targetWithinRange) {
+            NPC.velocity.X = 0f;
             return;
         }
+
+        NPC.velocity.X += NPC.direction * 0.1f;
+        NPC.velocity.X = MathHelper.Clamp(NPC.velocity.X, -MaximumSpeed, MaximumSpeed);
+    }
+    
+    private void UpdateThrowing() {
+        const float MinimumDistance = 19f * 16f;
+        const float Interval = 60f;
         
+        var targetDistance = MathF.Abs(Target.Center.X - NPC.Center.X);
+        var targetNearby = targetDistance < MinimumDistance;
+        
+        var canHitTarget = Collision.CanHit(NPC, Target);
+
+        if (targetNearby || !canHitTarget || AttackTimer++ % Interval != 0f) {
+            return;
+        }
+
         var direction = MathF.Sign(Target.Center.X - NPC.Center.X);
-        var speed = new Vector2(direction * 4f, -4f) + Target.velocity;
+        var prediction = new Vector2(Target.velocity.X, MathF.Abs(Target.velocity.Y));
+        
+        if (direction == -1) {
+            prediction.X = MathHelper.Clamp(prediction.X, -Target.velocity.X, 0f);
+        }
+        else {
+            prediction.X = MathHelper.Clamp(prediction.X, 0f, Target.velocity.X);
+        }
+        
+        var velocity = new Vector2(direction * (6f + prediction.X), -4f - prediction.Y);
         
         var projectile = Projectile.NewProjectileDirect(new EntitySource_Parent(NPC),
             NPC.Center,
-            speed,
+            velocity,
             ModContent.ProjectileType<ButcherRatMachete>(),
             30,
             2f);
@@ -134,21 +190,6 @@ public class ButcherRat : ModNPC
         projectile.direction = NPC.direction;
     }
 
-    private void UpdateMovement() {
-        const float MinimumDistance = 16f;
-
-        var distance = MathF.Abs(Target.Center.X - NPC.Center.X);
-        var nearby = distance < MinimumDistance;
-        
-        var speed = NPC.direction * 3f;
-
-        if (nearby) {
-            speed = 0f;
-        }
-        
-        NPC.velocity.X = MathHelper.SmoothStep(NPC.velocity.X, speed, 0.1f);
-    }
-    
     private void UpdateSlamming() {
         if (!CanSlam) {
             return;
@@ -159,16 +200,16 @@ public class ButcherRat : ModNPC
          * It is wise to use DistanceSQ instead of Distance. Distance uses square roots for its calculations, which costs performance.
          */
         
-        const float MinimumDistance = 8f * 16f;
+        const float MinimumDistance = 4f * 16f;
 
-        var distance = Target.DistanceSQ(NPC.Center);
-        var nearby = distance < MinimumDistance * MinimumDistance;
+        var targetDisance = Target.DistanceSQ(NPC.Center);
+        var targetNearby = targetDisance < MinimumDistance * MinimumDistance;
 
-        if (!nearby) {
+        if (!targetNearby) {
             return;
         }
         
-        var amount = Main.rand.Next(6, 9);
+        var amount = Main.rand.Next(4, 8);
 
         for (var i = 0; i < amount; i++) {
             var npc = NPC.NewNPCDirect(new EntitySource_Parent(NPC),
@@ -194,10 +235,10 @@ public class ButcherRat : ModNPC
         Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
         
         // Checks if there is a hole towards the NPC's direction.
-        int tileWidth = (int)Math.Round(NPC.width / 16f);
+        var tileWidth = (int)Math.Round(NPC.width / 16f);
 			
-        int tileX = (int)(NPC.Center.X / 16f) - tileWidth;
-        int tileY = (int)((NPC.position.Y + NPC.height) / 16f);
+        var tileX = (int)(NPC.Center.X / 16f) - tileWidth;
+        var tileY = (int)((NPC.position.Y + NPC.height) / 16f);
 			
         if (NPC.velocity.X > 0f) {
             tileX += tileWidth;
@@ -207,37 +248,39 @@ public class ButcherRat : ModNPC
 
         for (var j = tileY; j < tileY + 2; j++) {
             for (var i = tileX; i < tileX + tileWidth; i++) {
-                if (Framing.GetTileSafely(i, j).HasTile) {
-                    holeBelow = false;
-                }
+                holeBelow &= !Framing.GetTileSafely(i, j).HasTile;
             }
         }
 
         // Checks if the NPC has been stuck in the same position.
         var stuck = NPC.collideX && NPC.position.X == NPC.oldPosition.X;
         var belowTarget = Target.Center.Y < NPC.Center.Y;
-        
+
+        if (NPC.velocity.Y == 0f) {
+            CollisionTimer++;
+        }
+
         // Checks for the hole or if the NPC is stuck, then jump to get over it.
-        if (CollisionTimer++ > Interval && (holeBelow || stuck || belowTarget)) {
-            CollisionTimer = 0f;
+        if (CollisionTimer < Interval || !(holeBelow || stuck || belowTarget)) {
+            return;
+        }
 
+        // TODO: Find a way to handle this better.
+        if (CollisionTimer == Interval) {
             if (stuck) {
-                
+                CollisionJumpOffset += 2f;
             }
-
-            NPC.velocity.Y = -CollisionSpeed;
+            else {
+                CollisionJumpOffset = 0f;
+            }
         }
         
-        Main.NewText(stuck);
+        CollisionTimer = 0f;
+
+        NPC.velocity.Y = -(6f + CollisionJumpOffset);
     }
 
-    private void UpdateDespawn() {
-        
-    }
-
-    public override void FindFrame(int frameHeight) {
-        NPC.spriteDirection = NPC.direction;
-    }
+    private void UpdateDespawn() { }
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit) {
         target.AddBuff(BuffID.Bleeding, 20 * 60);

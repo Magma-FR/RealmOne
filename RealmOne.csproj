@@ -28,4 +28,8 @@
 	    <HintPath>lib\StructureHelper.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Effects\" />
+	</ItemGroup>
 </Project>
