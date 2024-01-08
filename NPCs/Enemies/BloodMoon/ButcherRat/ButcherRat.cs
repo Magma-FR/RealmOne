@@ -104,22 +104,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
         public override void HitEffect(NPC.HitInfo hit)
         {
           
-                // Spawn the additional enemy every 200 health
-                if (NPC.life <= 1200 && NPC.lifeMax - NPC.life >= 200 && !spawnedEnemy)
-                {
-                // Spawn the additional enemy every 200 health
-                NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<BloodRat>(), ai3: 1).scale = 1F;
-                spawnedEnemy = true; // Set the flag to true to indicate that an enemy has been spawned
-                }
-
-                // Reset the flag if the health is not within the specified range
-                if (NPC.life > 1200 || NPC.lifeMax - NPC.life < 200)
-                {
-                    spawnedEnemy = false;
-                }
-            
-
-          
+      
          
 
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

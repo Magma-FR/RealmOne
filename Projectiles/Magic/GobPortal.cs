@@ -23,8 +23,8 @@ namespace RealmOne.Projectiles.Magic
 
         public override void SetDefaults()
         {
-            Projectile.width = 32;
-            Projectile.height = 32;
+            Projectile.width = 22;
+            Projectile.height = 22;
             Projectile.friendly = true;
             Projectile.penetrate = -2;
             Projectile.aiStyle = 0;
@@ -45,17 +45,18 @@ namespace RealmOne.Projectiles.Magic
         public override void AI()
         {
 
-            Projectile.rotation += 0.12f;
+            Projectile.rotation += 0.18f;
             Projectile.velocity.X *= 0.0f;
-            Projectile.velocity.Y *= 0.01f;
+            Projectile.velocity.Y *= 0.0f;
             Lighting.AddLight(Projectile.position, 1.5f, 0.7f, 2.5f);
             Lighting.Brightness(2, 2);
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
+                
 
-                if (npc.active && !npc.friendly && !npc.boss)
+                if (npc.active && !npc.friendly && !npc.boss && npc.type != NPCID.TargetDummy)
                 {
                     float distance = Vector2.Distance(Projectile.Center, npc.Center);
                     if (distance <= 200)
@@ -67,7 +68,7 @@ namespace RealmOne.Projectiles.Magic
                 }
             }
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, Projectile.position);
             Projectile.ownerHitCheck = true;
@@ -97,7 +98,7 @@ namespace RealmOne.Projectiles.Magic
         public override void Load()
         { // This is called once on mod (re)load when this piece of content is being loaded.
           // This is the path to the texture that we'll use for the hook's chain. Make sure to update it.
-            GobTexture = Request<Texture2D>("RealmOne/Assets/Effects/GobTexture");
+            GobTexture = Request<Texture2D>("RealmOne/Assets/Effects/twirl_03");
         }
 
         public override void Unload()

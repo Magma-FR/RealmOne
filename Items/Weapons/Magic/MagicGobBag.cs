@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Projectiles.Magic;
+using RealmOne.RealmPlayer;
+using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -8,6 +10,7 @@ using Terraria.GameContent;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.Magic
 {
@@ -19,6 +22,8 @@ namespace RealmOne.Items.Weapons.Magic
             Tooltip.SetDefault("Conjures a rift that sucks in nearby enemies.");
             DisplayName.SetDefault("Sorcerer's Rift Pouch");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/Magic/MagicGobBag_Glow");
+
         }
         public override void SetDefaults()
         {
@@ -53,6 +58,27 @@ namespace RealmOne.Items.Weapons.Magic
 
             return player.ownedProjectileCounts[Item.shoot] < 1;
 
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = Request<Texture2D>("RealmOne/Items/Weapons/Magic/MagicGobBag_Glow", AssetRequestMode.ImmediateLoad).Value;
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
+                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+
+                Color.White,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

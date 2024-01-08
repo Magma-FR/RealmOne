@@ -32,14 +32,14 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             Item.autoReuse = true;
             Item.useTurn = true;
             Item.mana = 14;
-            Item.damage = 16;
+            Item.damage = 12;
             Item.DamageType = DamageClass.Magic;
             Item.knockBack = 1f;
             Item.noMelee = true;
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 3f;
-            Item.useAnimation = 35;
-            Item.useTime = 35;
+            Item.useAnimation = 42;
+            Item.useTime = 42;
             Item.UseSound = SoundID.DD2_PhantomPhoenixShot;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.value = Item.buyPrice(gold: 4, silver: 11);

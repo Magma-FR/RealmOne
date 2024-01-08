@@ -29,7 +29,7 @@ namespace RealmOne.Projectiles.Magic
             Projectile.hostile = false;
             Projectile.timeLeft = 100;
             Projectile.light = 1;
-            Projectile.penetrate = -2;
+            Projectile.penetrate = 2;
             Projectile.tileCollide = false;
             Projectile.aiStyle = 0;
 

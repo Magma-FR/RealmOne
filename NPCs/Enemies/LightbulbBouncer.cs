@@ -54,14 +54,8 @@ namespace RealmOne.NPCs.Enemies
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.dayTime && Main.bloodMoon ==false)
-            {
-                return 0.9f;
-            }
-            else
-            {
-                return 0;
-            }
+            return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !Main.bloodMoon ? 0.08f : 0f;
+
         }
 
         public override void AI()

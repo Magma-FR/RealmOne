@@ -363,7 +363,7 @@ Mods: {
 
 			MagicGobBag: {
 				Tooltip: Conjures a rift that sucks in nearby enemies.
-				DisplayName: Sorcerer's Rift Pouch
+				DisplayName: Sorcerer's Spirit Candle
 			}
 
 			WaterQuarry: {
@@ -2610,6 +2610,7 @@ Mods: {
 			ImpactHoverdroid.DisplayName: Impact Hoverdroid
 			ButcherRat.DisplayName: Butcher Rat
 			BloodRat.DisplayName: Blood Rat
+			WhisperingShroud.DisplayName: Whispering Shroud
 		}
 
 		Dialogue: {

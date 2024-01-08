@@ -29,12 +29,12 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
         public override void SetDefaults()
         {
-            Item.damage = 16;
+            Item.damage = 14;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 32;
             Item.height = 32;
-            Item.useTime = 32;
-            Item.useAnimation = 32;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 3;
             Item.value = 30000;
@@ -102,7 +102,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
                 d.noGravity = true;
 
-                Projectile.NewProjectile(player.GetSource_ItemUse(Item), position + muzzleOffset, Vector2.Zero, ModContent.ProjectileType<ConeFlash>(), 0, 0, player.whoAmI);
+           //     Projectile.NewProjectile(player.GetSource_ItemUse(Item), position + muzzleOffset, Vector2.Zero, ModContent.ProjectileType<ConeFlash>(), 0, 0, player.whoAmI);
 
             }
 

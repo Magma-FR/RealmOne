@@ -69,7 +69,7 @@ namespace RealmOne.Projectiles.Bullet
                 NPC target = Main.npc[i];
                 if (target.active && !target.friendly && Vector2.Distance(Projectile.Center, target.Center) < radius)
                 {
-                    target.SimpleStrikeNPC(4, 0);
+                    target.SimpleStrikeNPC(0, 0);
                 }
             }
         }
