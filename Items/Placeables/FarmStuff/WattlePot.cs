@@ -6,11 +6,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Placeables.FarmStuff
 {
-
-
     public class WattlePot : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hanging Wattle Pot");

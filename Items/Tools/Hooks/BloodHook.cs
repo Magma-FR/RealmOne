@@ -14,15 +14,14 @@ namespace RealmOne.Items.Tools.Hooks
     {
         public override void SetStaticDefaults()
         {
-        
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
         public override void SetDefaults()
         {
-
             Item.shootSpeed = 25f;
             Item.shoot = ModContent.ProjectileType<BloodHookProj>();
-            Item.useTime = 35; 
+            Item.useTime = 35;
             Item.useAnimation = 35;
             Item.knockBack = 4;
             Item.value = 30000;
@@ -30,8 +29,8 @@ namespace RealmOne.Items.Tools.Hooks
             Item.damage = 25;
 
             Item.crit = 2;
-
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -40,14 +39,10 @@ namespace RealmOne.Items.Tools.Hooks
             line = new TooltipLine(Mod, "BloodHook", "Grasp onto death")
             {
                 OverrideColor = new Color(200, 80, 90)
-
             };
             tooltips.Add(line);
-
-
         }
 
-     
         internal class BloodHookProj : ModProjectile
         {
             private static Asset<Texture2D> chainTexture;
@@ -62,7 +57,8 @@ namespace RealmOne.Items.Tools.Hooks
               // It's currently pretty important to unload your static fields like this, to avoid having parts of your mod remain in memory when it's been unloaded.
                 chainTexture = null;
             }
-            public override void Kill(int timeLeft)
+
+            public override void OnKill(int timeLeft)
             {
                 for (int i = 0; i < 10; i++)
                     Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.t_Flesh, 0f, 0f, 0, default, 0.6f);
@@ -70,6 +66,7 @@ namespace RealmOne.Items.Tools.Hooks
                 Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
                 SoundEngine.PlaySound(SoundID.ChesterOpen);
             }
+
             public override void SetStaticDefaults()
             {
             }
@@ -91,6 +88,7 @@ namespace RealmOne.Items.Tools.Hooks
 
                 return hooksOut <= 1;
             }
+
             public override float GrappleRange()
             {
                 return 410f;

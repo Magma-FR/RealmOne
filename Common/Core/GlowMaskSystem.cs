@@ -9,7 +9,7 @@ namespace RealmOne.Common.Core
 {
     public class GlowMaskSystem
     {
-//## ALL CREDIT TO SPIRIT MOD GLOWMASK 
+        //## ALL CREDIT TO SPIRIT MOD GLOWMASK
 
         public static void DrawItemGlowMask(Texture2D texture, PlayerDrawSet info)
         {
@@ -63,6 +63,7 @@ namespace RealmOne.Common.Core
                 0
             ));
         }
+
         public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture, Vector2 screenPos, Color? color = null)
         {
             var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -94,6 +95,5 @@ namespace RealmOne.Common.Core
                 0
             );
         }
-
     }
 }

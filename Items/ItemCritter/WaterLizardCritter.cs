@@ -10,8 +10,8 @@ namespace RealmOne.Items.ItemCritter
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Water Lizard");
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 40;

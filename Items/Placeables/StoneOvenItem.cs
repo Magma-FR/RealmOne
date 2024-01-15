@@ -49,4 +49,3 @@ namespace RealmOne.Items.Placeables
         }
     }
 }
-

@@ -1,5 +1,3 @@
-using RealmOne.Items.Misc;
-using RealmOne.Items.Misc.Plants;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -7,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Armor.Chillrend
 {
-
     [AutoloadEquip(EquipType.Legs)]
     public class ChillrendLegs : ModItem
     {
@@ -23,7 +20,7 @@ namespace RealmOne.Armor.Chillrend
             Item.width = 18;
             Item.height = 18;
             Item.value = Item.sellPrice(0, 1, 0, 0);
-            Item.rare = 2;
+            Item.rare = ItemRarityID.Green;
             Item.defense = 2;
         }
 
@@ -31,6 +28,7 @@ namespace RealmOne.Armor.Chillrend
         {
             player.moveSpeed += 0.06f;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -52,7 +50,6 @@ namespace RealmOne.Armor.Chillrend
 
          .AddTile(TileID.Anvils)
          .Register();
-
         }
     }
 }

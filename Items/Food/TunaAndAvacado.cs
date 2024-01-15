@@ -24,7 +24,6 @@ namespace RealmOne.Items.Food
                 new Color(50, 200,50),
                 new Color(20, 230, 180),
                 new Color(20, 140, 20)
-
             };
         }
 

@@ -50,8 +50,6 @@ namespace RealmOne.Biomes.Farm
             AdjTiles = new int[] { TileID.Saplings };
         }
 
-
-
         public override void RandomUpdate(int i, int j)
         {
             if (WorldGen.genRand.NextBool(20))

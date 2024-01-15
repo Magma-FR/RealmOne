@@ -20,7 +20,6 @@ namespace RealmOne.Items.Weapons.HM
               + $"[i:{ItemID.FallenStar}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -44,17 +43,19 @@ namespace RealmOne.Items.Weapons.HM
             Item.value = Item.buyPrice(gold: 8, silver: 75);
 
             Item.useAmmo = AmmoID.FallenStar;
-
         }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (type == ProjectileID.Meteor1)
                 type = ProjectileID.Meteor2; // or ProjectileID.FireArrow;
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.OnFire, 180);
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             float numberProjectiles = 3 + Main.rand.Next(0); // 3, 4, or 5 shots
@@ -73,6 +74,7 @@ namespace RealmOne.Items.Weapons.HM
         {
             return Main.rand.NextFloat() >= 0.40f;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -82,7 +84,6 @@ namespace RealmOne.Items.Weapons.HM
             .AddIngredient(Mod, "GizmoScrap", 2)
             .AddTile(TileID.MythrilAnvil)
             .Register();
-
         }
 
         public override Vector2? HoldoutOffset()

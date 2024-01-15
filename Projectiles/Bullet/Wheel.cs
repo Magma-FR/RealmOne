@@ -31,8 +31,6 @@ namespace RealmOne.Projectiles.Bullet
             Explode();
         }
 
-
-
         private void Explode()
         {
             Projectile.netImportant = true;

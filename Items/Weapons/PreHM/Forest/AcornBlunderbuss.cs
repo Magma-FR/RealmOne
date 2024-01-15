@@ -19,7 +19,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             + "\nUses Crushed Acorns as ammo");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -39,7 +38,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Item.value = Item.buyPrice(gold: 1, silver: 75);
             Item.noMelee = true;
             Item.useAmmo = ModContent.ItemType<CrushedAcorns>();
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -57,11 +55,9 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             {
                 Dust.NewDust(player.position, player.width, player.height, DustID.WoodFurniture, 0f, 0f, 150, default, 2f);
                 Dust.NewDust(player.position, player.width, player.height, DustID.Grass, 0f, 0f, 150, default, 2f);
-
             }
 
             return false;
-
         }
 
         public override void AddRecipes()
@@ -73,8 +69,8 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(-2, 2);

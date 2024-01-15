@@ -15,7 +15,7 @@ namespace RealmOne.NPCs.Enemies.Impact
 {
     public class Eslime : ModNPC
     {
-        static Asset<Texture2D> glowmask;
+        private static Asset<Texture2D> glowmask;
 
         public override void SetStaticDefaults()
         {
@@ -28,7 +28,6 @@ namespace RealmOne.NPCs.Enemies.Impact
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
-
         }
 
         public override void SetDefaults()
@@ -49,6 +48,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             Banner = Type;
             BannerItem = ModContent.ItemType<BannerItem.EslimeB>();
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             Color color = GetAlpha(Color.LightBlue) ?? Color.LightBlue;
@@ -58,14 +58,17 @@ namespace RealmOne.NPCs.Enemies.Impact
 
             Main.EntitySpriteDraw(glowmask.Value, NPC.Center - screenPos + new Vector2(0, 0), NPC.frame, color, NPC.rotation, NPC.frame.Size() / 2f, 1f, SpriteEffects.None, 0);
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.OverworldDaySlime.Chance * 0.2f;
         }
+
         public override void AI()
         {
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.2f, b: 1.1f);
         }
+
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter++;
@@ -73,6 +76,7 @@ namespace RealmOne.NPCs.Enemies.Impact
                 NPC.frameCounter = 0;
             NPC.frame.Y = (int)NPC.frameCounter / 10 * frameHeight;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
@@ -90,20 +94,21 @@ namespace RealmOne.NPCs.Enemies.Impact
 				// so we use this line to tell the game to prioritize a specific InfoElement for sourcing the background image.
             });
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int k = 0; k < 30; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ImpactTech>(), 1, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 1, 1, 5));
-
         }
+
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             // Here we can make things happen if this NPC hits a player via its hitbox (not projectiles it shoots, this is handled in the projectile code usually)

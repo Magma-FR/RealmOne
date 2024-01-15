@@ -135,11 +135,8 @@ public class rorAudio : ModSystem
 
     public static readonly SoundStyle squeak;
 
-
-
     static rorAudio()
     {
-
         SFX_MetalSwing = new SoundStyle("RealmOne/Assets/Soundss/SFX_MetalSwing", (SoundType)0);
         SFX_Scroll = new SoundStyle("RealmOne/Assets/Soundss/SFX_Scroll", (SoundType)0);
         ElectricPulse = new SoundStyle("RealmOne/Assets/Soundss/ElectricPulse", (SoundType)0);
@@ -202,9 +199,7 @@ public class rorAudio : ModSystem
         MagpieCalling = new SoundStyle("RealmOne/Assets/Soundss/MagpieCalling", (SoundType)0);
         BulbShatter = new SoundStyle("RealmOne/Assets/Soundss/BulbShatter", (SoundType)0);
         PorcelainDamaged = new SoundStyle("RealmOne/Assets/Soundss/porcelainbreak", (SoundType)0);
-        GoreGun= new SoundStyle("RealmOne/Assets/Soundss/GoreGun", (SoundType)0);
+        GoreGun = new SoundStyle("RealmOne/Assets/Soundss/GoreGun", (SoundType)0);
         squeak = new SoundStyle("RealmOne/Assets/Soundss/squeak", (SoundType)0);
-
-
     }
 }

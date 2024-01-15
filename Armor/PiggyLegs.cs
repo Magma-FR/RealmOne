@@ -7,18 +7,17 @@ using Terraria.ModLoader;
 namespace RealmOne.Armor
 {
     [AutoloadEquip(EquipType.Legs)]
-
     public class PiggyLegs : ModItem
     {
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Piggy Patroller Grieves");
             Tooltip.SetDefault("10% increased movement speed and acceleration"
                 + "\n'Kicking something will probably shatter the grieves'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -35,7 +34,6 @@ namespace RealmOne.Armor
             player.GetModPlayer<RealmModPlayer>().FallSpeed = true;
         }
 
-
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -43,7 +41,6 @@ namespace RealmOne.Armor
             .AddIngredient(Mod, "PiggyPorcelain", 3)
             .AddTile(TileID.Furnaces)
             .Register();
-
         }
     }
 }

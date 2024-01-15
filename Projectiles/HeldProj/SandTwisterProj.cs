@@ -11,10 +11,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.HeldProj
 {
-
     public class SandTwisterProj : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sand Yoyo");
@@ -22,11 +20,10 @@ namespace RealmOne.Projectiles.HeldProj
             ProjectileID.Sets.TrailCacheLength[Type] = 60;
 
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 4f;
-            
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 300f;
-           
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18f;
 
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 300f;
+
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18f;
         }
 
         public override void SetDefaults()
@@ -39,8 +36,10 @@ namespace RealmOne.Projectiles.HeldProj
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.scale = 1f;
         }
+
         public PrimitiveTrail trail = new();
         public List<Vector2> oldPositions = new List<Vector2>();
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -75,14 +74,15 @@ namespace RealmOne.Projectiles.HeldProj
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
             return true;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Main.rand.NextBool(4))
-              {
+            {
                 Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<StarFlash>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-
             }
         }
+
         public override void AI()
         {
             Projectile.frameCounter++;
@@ -95,9 +95,9 @@ namespace RealmOne.Projectiles.HeldProj
 
                 Projectile.frameCounter = 0;
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X, Projectile.Center.Y, velocity.X, velocity.Y, ModContent.ProjectileType<MiniSand>(), Projectile.damage, Projectile.owner, 0, 0f);
-
             }
         }
+
         public override void PostAI()
         {
             if (Main.rand.NextBool())
@@ -105,7 +105,6 @@ namespace RealmOne.Projectiles.HeldProj
                 var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Sandnado);
                 dust.noGravity = true;
                 dust.scale = 1.6f;
-
             }
         }
     }

@@ -55,7 +55,6 @@ namespace RealmOne.Items.BossSummons
             //    return !Main.dayTime && !NPC.AnyNPCs(ModContent.NPCType<MinionBossBody>()); would mean "not daytime and no MinionBossBody currently alive"
             return !NPC.AnyNPCs(ModContent.NPCType<SquirmoHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>());
         }
-         
 
         public override bool? UseItem(Player player)
         {
@@ -66,8 +65,6 @@ namespace RealmOne.Items.BossSummons
                 int CarrotGore3 = Mod.Find<ModGore>("CarrotGore3").Type;
                 int CarrotGore4 = Mod.Find<ModGore>("CarrotGore4").Type;
 
-
-
                 IEntitySource entitySource = Item.GetSource_Death();
 
                 for (int i = 0; i < 1; i++)
@@ -76,11 +73,6 @@ namespace RealmOne.Items.BossSummons
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore2);
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore3);
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore4);
-
-
-
-
-
                 }
 
                 if (Main.netMode != NetmodeID.Server)
@@ -90,10 +82,6 @@ namespace RealmOne.Items.BossSummons
                 SoundEngine.PlaySound(rorAudio.SquirmoSummonSound, player.position);
 
                 player.GetModPlayer<Screenshake>().WormScreenshake = true;
-
-
-
-
             }
 
             if (player.whoAmI == Main.myPlayer)
@@ -118,7 +106,6 @@ namespace RealmOne.Items.BossSummons
                     NPC.SpawnOnPlayer(player.whoAmI, type2);
                     NPC.SpawnOnPlayer(player.whoAmI, type3);
                     NPC.SpawnOnPlayer(player.whoAmI, type4);
-
                 }
                 else
                 {
@@ -129,11 +116,9 @@ namespace RealmOne.Items.BossSummons
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type2);
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type3);
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type4);
-
                 }
 
                 player.GetModPlayer<Screenshake>().WormScreenshake = true;
-
             }
 
             return true;
@@ -148,7 +133,6 @@ namespace RealmOne.Items.BossSummons
 
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
     }
 }

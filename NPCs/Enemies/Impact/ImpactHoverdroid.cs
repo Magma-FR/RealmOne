@@ -1,20 +1,15 @@
-using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using Terraria.ModLoader.Utilities;
-using RealmOne.Items.Weapons.PreHM.Throwing;
-using Terraria.GameContent.ItemDropRules;
-using RealmOne.Projectiles.Bullet;
-using RealmOne.Items.Misc.EnemyDrops;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
-using Terraria.GameContent.Bestiary;
-using RealmOne.Common.Systems;
+using RealmOne.Items.Misc.EnemyDrops;
+using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.Impact
 {
@@ -29,6 +24,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             Main.npcFrameCount[Type] = 3;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -36,26 +32,25 @@ namespace RealmOne.NPCs.Enemies.Impact
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 
                 new FlavorTextBestiaryInfoElement("A hyperactive and trigger happy hoverdroid, shoots a bolt of electricity that stuns the player"),
-
-
             });
         }
-        public override void SetDefaults()
-		{
-			NPC.width = 24;
-			NPC.height = 30;
-			NPC.damage = 10;
-			NPC.defense = 2;
-			NPC.lifeMax = 58;
-			NPC.HitSound = SoundID.NPCHit4;
-			NPC.DeathSound = SoundID.NPCDeath44;
-			NPC.value = Item.buyPrice(0,0,2,20);
-			NPC.knockBackResist = 0.5f; 
-			
-			NPC.noGravity = true;
-		}
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
 
+        public override void SetDefaults()
+        {
+            NPC.width = 24;
+            NPC.height = 30;
+            NPC.damage = 10;
+            NPC.defense = 2;
+            NPC.lifeMax = 58;
+            NPC.HitSound = SoundID.NPCHit4;
+            NPC.DeathSound = SoundID.NPCDeath44;
+            NPC.value = Item.buyPrice(0, 0, 2, 20);
+            NPC.knockBackResist = 0.5f;
+
+            NPC.noGravity = true;
+        }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -64,6 +59,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Impact/ImpactHoverdroid_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         private ref float MoveSpeed => ref NPC.ai[1];
@@ -87,12 +83,11 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.rotation = NPC.velocity.X * 0.2f;
             NPC.spriteDirection = NPC.direction;
 
-            if (NPC.Center.X 
-                >= player.Center.X && MoveSpeed >= -90) 
+            if (NPC.Center.X
+                >= player.Center.X && MoveSpeed >= -90)
                 MoveSpeed--;
 
-
-            if (NPC.Center.Y 
+            if (NPC.Center.Y
                 <= player.Center.Y - NPC.ai[0] && MoveSpeedY <= 50)
                 MoveSpeedY++;
 
@@ -103,12 +98,11 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.velocity.X = MoveSpeed * 0.1f;
 
             if (NPC.Center.Y
-                >= player.Center.Y - NPC.ai[0] && MoveSpeedY >= -55) 
+                >= player.Center.Y - NPC.ai[0] && MoveSpeedY >= -55)
             {
                 MoveSpeedY--;
                 NPC.ai[0] = 160f;
             }
-
 
             NPC.velocity.Y = MoveSpeedY * 0.12f;
             if (Main.rand.NextBool(220) && Main.netMode != NetmodeID.MultiplayerClient)
@@ -116,9 +110,6 @@ namespace RealmOne.NPCs.Enemies.Impact
                 NPC.ai[0] = -25f;
                 NPC.netUpdate = true;
             }
-
-
-
 
             Vector2 targetDirection = player.Center - NPC.Bottom;
             targetDirection.Normalize();
@@ -134,7 +125,7 @@ namespace RealmOne.NPCs.Enemies.Impact
                 for (int i = 0; i < 12; i++) // Change 10 to the number of bullets you want to fire
                 {
                     // Spawn bullets
-                  var p=   Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom.X + (10 * NPC.spriteDirection), NPC.Bottom.Y - 8, targetDirection.X, targetDirection.Y, ProjectileID.PulseBolt, 7, 1, Main.myPlayer, 0, 0);
+                    var p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom.X + (10 * NPC.spriteDirection), NPC.Bottom.Y - 8, targetDirection.X, targetDirection.Y, ProjectileID.PulseBolt, 7, 1, Main.myPlayer, 0, 0);
                     Main.projectile[p].timeLeft = 800;
                     Main.projectile[p].scale = 0.6f;
                     Main.projectile[p].friendly = false;
@@ -164,9 +155,6 @@ namespace RealmOne.NPCs.Enemies.Impact
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoverdroidGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.TopLeft, NPC.velocity, Mod.Find<ModGore>("HoverdroidGore2").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.TopRight, NPC.velocity, Mod.Find<ModGore>("HoverdroidGore3").Type, 1f);
-
-
-
             }
             for (int k = 0; k < 14; k++)
             {
@@ -177,10 +165,8 @@ namespace RealmOne.NPCs.Enemies.Impact
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ImpactTech>(), 2, 2, 3));
-
         }
 
-     
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.14f;
@@ -189,6 +175,4 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.frame.Y = frame * frameHeight;
         }
     }
-
-
 }

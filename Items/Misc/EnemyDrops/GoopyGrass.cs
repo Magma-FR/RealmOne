@@ -14,7 +14,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
                 + "\n'#Green Thumbs'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -24,7 +23,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Item.value = Item.buyPrice(silver: 2);
             Item.rare = ItemRarityID.Green;
             Item.maxStack = 999;
-
         }
     }
 }

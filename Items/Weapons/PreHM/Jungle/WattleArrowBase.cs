@@ -9,7 +9,6 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wattle Arrow");
-
         }
 
         public override void SetDefaults()
@@ -30,14 +29,14 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             for (var i = 0; i < 6; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Plantera_Green, 0f, 0f, 0, default, 1f);
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
-
-
         }
+
         public override void AI()
         {
             int dust1 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Plantera_Green, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
@@ -46,13 +45,11 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             Main.dust[dust1].scale = 0.8f;
             Main.dust[dust1].velocity *= 0.5f;
 
-
             int dust2 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.t_Lihzahrd, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             Main.dust[dust2].noLight = false;
             Main.dust[dust2].noGravity = true;
             Main.dust[dust2].scale = 0.8f;
             Main.dust[dust2].velocity *= 0.5f;
-
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -66,4 +63,3 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
         }
     }
 }
-

@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace RealmOne.Common.Core
 {
@@ -15,12 +11,12 @@ namespace RealmOne.Common.Core
     {
         public delegate Vector2 CustomFunction(Vector2 start, Vector2 end, float t);
 
-        CustomFunction Customfunc;
+        private CustomFunction Customfunc;
 
-        KeyFrameInterpolationCurve keyFrameInterpolationCurve;
-        static string texturePath;
-        int pointCount;
-        Texture2D tex;
+        private KeyFrameInterpolationCurve keyFrameInterpolationCurve;
+        private static string texturePath;
+        private int pointCount;
+        private Texture2D tex;
 
         /// <param name="keyFrameInterpolationCurve">The method of interpolating new points between the provided points.</param>
         /// <param name="texPath">The path to the texture with the keypoints on it.</param>
@@ -42,7 +38,7 @@ namespace RealmOne.Common.Core
             List<Vector2> returnPoints = new();
             int height = tex.Height;
             int width = tex.Width;
-            
+
             Color[] colorData = new Color[tex.Width * tex.Height];
             tex.GetData(colorData);
             List<Vector2> coordsForColorData = new();
@@ -73,6 +69,7 @@ namespace RealmOne.Common.Core
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.Lerp:
                     if (coordsForColorData.Count != 1)
                     {
@@ -86,6 +83,7 @@ namespace RealmOne.Common.Core
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.Slerp:
                     if (coordsForColorData.Count != 1)
                     {
@@ -96,14 +94,15 @@ namespace RealmOne.Common.Core
                                 //NO ACTUAL WAY I SPENT 2 DAYS DEBUGGING AND GOING INSANE OVER ME SWAPPING TWO NUMBERS
                                 //anyway heres the normal code that shouldve worked all along
 
-                                Vector2 center = new((coordsForColorData[coordsForColorData.Count - 1].X + coordsForColorData[0].X) / 2, (coordsForColorData[coordsForColorData.Count - 1].Y + coordsForColorData[0].Y) / 2); //average of the two points 
+                                Vector2 center = new((coordsForColorData[coordsForColorData.Count - 1].X + coordsForColorData[0].X) / 2, (coordsForColorData[coordsForColorData.Count - 1].Y + coordsForColorData[0].Y) / 2); //average of the two points
                                 float maxRotation = center.AngleTo(coordsForColorData[i + 1]) - center.AngleTo(coordsForColorData[i]);
-                                returnPoints.Add(EasingFunctions.Slerp(coordsForColorData[i], coordsForColorData[i + 1], k / (pointCount / coordsForColorData.Count) * maxRotation, center ,radius));
+                                returnPoints.Add(EasingFunctions.Slerp(coordsForColorData[i], coordsForColorData[i + 1], k / (pointCount / coordsForColorData.Count) * maxRotation, center, radius));
                             }
                         }
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.Custom:
                     if (coordsForColorData.Count != 1)
                     {
@@ -117,15 +116,19 @@ namespace RealmOne.Common.Core
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.CompleteCustom:
                     if (coordsForColorData.Count != 1)
                         Customfunc(default, default, default);
                     return null;
+
                 default:
                     return null;
             }
         }
+
         public delegate Vector2 DesiredChange(Vector2 point, int i);
+
         /// <summary>
         /// Change all points in a certain way, implemented by desiredchange.
         /// </summary>
@@ -138,6 +141,7 @@ namespace RealmOne.Common.Core
                 points[i] = desiredChange(points[i], i);
             }
         }
+
         /// <summary>
         /// Calculates the correct position of the projectile based on the parameters. To use, set the projectile's center to what this function returns.
         /// </summary>
@@ -188,6 +192,7 @@ namespace RealmOne.Common.Core
 
             return owner.Center + points[i].RotatedBy(owner.Center.DirectionTo(mouse).ToRotation()) + projOffset;
         }
+
         /// <summary>
         /// Sets common variables that most held projectiles have. Call this in AI.
         /// </summary>
@@ -196,7 +201,7 @@ namespace RealmOne.Common.Core
         /// <param name="mouse">Make sure to only capture Main.Mouseworld as a variable when the projectile spawns in OnSpawn, dont use Main.Mouseworld in the AI hook.</param>
         public void SetAiDefaults(Projectile projectile, Player owner, Vector2 mouse)
         {
-            //cool that i dont have to make these ref 
+            //cool that i dont have to make these ref
             projectile.direction = owner.direction;
             projectile.spriteDirection = projectile.direction;
             owner.direction = Math.Sign(owner.DirectionTo(mouse).X);
@@ -205,6 +210,7 @@ namespace RealmOne.Common.Core
             owner.itemAnimation = 2;
         }
     }
+
     //long ahh name
     public enum KeyFrameInterpolationCurve
     {

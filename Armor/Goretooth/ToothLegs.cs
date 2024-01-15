@@ -6,18 +6,13 @@ using Terraria.ModLoader;
 namespace RealmOne.Armor.Goretooth
 {
     [AutoloadEquip(EquipType.Legs)]
-
     public class ToothLegs : ModItem
     {
         public override void SetStaticDefaults()
         {
-
-            
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -31,10 +26,6 @@ namespace RealmOne.Armor.Goretooth
         {
             player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 0.08f;
             player.moveSpeed += 0.08f;
-
         }
-
-
-     
     }
 }

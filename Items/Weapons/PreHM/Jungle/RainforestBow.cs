@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Items.Misc.Plants;
 using RealmOne.RealmPlayer;
 using ReLogic.Content;
-using System.Reflection.Metadata.Ecma335;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
@@ -15,17 +13,12 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
 {
     public class RainforestBow : ModItem
     {
-
         public override void SetStaticDefaults()
         {
-
             Tooltip.SetDefault("");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             ItemGlowy.AddItemGlowMask(Item.type, Texture + ("_Glow"));
-
         }
-
-
 
         public override void SetDefaults()
         {
@@ -51,7 +44,6 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             Item.useAmmo = AmmoID.Arrow;
         }
 
-
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (type == ProjectileID.WoodenArrowFriendly)
@@ -60,8 +52,6 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             {
                 type = ModContent.ProjectileType<WattleArrow>();
             }
-
-            
         }
 
         public override void PostUpdate()
@@ -84,6 +74,7 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
                 dust.alpha = 60;
             }
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 13f;
@@ -101,9 +92,10 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             }
             return true;
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = Request<Texture2D>(Texture+("_Glow"), AssetRequestMode.ImmediateLoad).Value;
+            Texture2D texture = Request<Texture2D>(Texture + ("_Glow"), AssetRequestMode.ImmediateLoad).Value;
             spriteBatch.Draw
             (
                 texture,
@@ -121,8 +113,8 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
                 SpriteEffects.None,
                 0f
             );
-
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -133,11 +125,11 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
                  .AddTile(TileID.Anvils)
             .Register();
         }
+
         public override Vector2? HoldoutOffset()
         {
             Vector2 offset = new Vector2(-1, 0);
             return offset;
         }
-
     }
 }

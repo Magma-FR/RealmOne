@@ -1,5 +1,4 @@
 ﻿using RealmOne.NPCs.Enemies.BloodMoon;
-using RealmOne.NPCs.Enemies.Spiders;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,8 +9,8 @@ namespace RealmOne.Items.ItemCritter
     {
         public override void SetStaticDefaults()
         {
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 24;

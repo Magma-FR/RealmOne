@@ -1,8 +1,4 @@
 using Microsoft.Xna.Framework;
-using RealmOne.Common.Systems;
-using RealmOne.Items.Sets.ForestRevengeSet;
-using RealmOne.Projectiles.Other;
-using RealmOne.Projectiles.Throwing;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -15,9 +11,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
     {
         public override void SetStaticDefaults()
         {
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-
         }
 
         public override void SetDefaults()
@@ -51,7 +45,6 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
         {
             if (player.altFunctionUse == 2)
             {
-
                 Item.useStyle = ItemUseStyleID.DrinkLiquid;
                 Item.useTime = 38;
                 Item.useAnimation = 38;
@@ -68,10 +61,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
                 if (Main.rand.NextBool(1))
                     player.AddBuff(BuffID.Tipsy, 600);
-
-
             }
-
             else
             {
                 Item.damage = 13;
@@ -95,9 +85,8 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
             return base.CanUseItem(player);
         }
-
-
     }
+
     public class CartonBeerProj : ModProjectile
     {
         public override string Texture => "RealmOne/Items/Weapons/PreHM/Classless/CartonBeerProj";
@@ -110,7 +99,6 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
         public override void SetDefaults()
         {
-
             Projectile.width = 24;
             Projectile.height = 24;
 
@@ -127,20 +115,17 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Projectile.extraUpdates = 2;
             Projectile.CloneDefaults(ProjectileID.Shuriken);
         }
+
         public override void AI()
         {
-
-
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 55, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
-
-
-
-
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Pixie, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.Kill();
@@ -149,23 +134,21 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
         public override void OnKill(int timeleft)
         {
-
             for (int i = 0; i < 17; i++)
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 55, 0f, 0f, 50, default, 2f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Pixie, 0f, 0f, 50, default, 2f);
 
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Shatter, Projectile.position);
-
 
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("JarGore1").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("JarGore2").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("JarGore3").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("JarGore4").Type, 1f);
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {
-
             Projectile.Kill();
         }
     }

@@ -10,7 +10,6 @@ namespace RealmOne.Buffs
         {
             DisplayName.SetDefault("Traditional Cologne");
             Description.SetDefault("'You smell like exotic moonglow and cold skybreeze!'");
-
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -20,7 +19,6 @@ namespace RealmOne.Buffs
             player.accRunSpeed += 0.15f;
             player.calmed = true;
             player.discountAvailable = true;
-
         }
     }
 }

@@ -18,7 +18,6 @@ namespace RealmOne.Items.Weapons.HM
         {
             DisplayName.SetDefault("The Dreamer");
             Tooltip.SetDefault("Shoots a purple swift fireball that explodes into rift particles");
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -28,7 +27,6 @@ namespace RealmOne.Items.Weapons.HM
             line = new TooltipLine(Mod, "TheDreamer", "'Dream on!'")
             {
                 OverrideColor = new Color(149, 10, 224)
-
             };
             tooltips.Add(line);
         }
@@ -52,12 +50,10 @@ namespace RealmOne.Items.Weapons.HM
             Item.shootSpeed = 27f;
             Item.autoReuse = true;
             Item.DamageType = DamageClass.Magic;
-
         }
 
         public override bool OnPickup(Player player)
         {
-
             bool pickupText = false;
             for (int i = 0; i < 50; i++)
                 if (player.inventory[i].type == ItemID.None && !pickupText)
@@ -71,7 +67,6 @@ namespace RealmOne.Items.Weapons.HM
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;

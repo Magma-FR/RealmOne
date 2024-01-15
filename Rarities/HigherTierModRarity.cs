@@ -36,7 +36,6 @@ namespace RealmOne.Rarities
 
     public class InkColor : ModRarity
     {
-
         public override int GetPrefixedRarity(int offset, float valueMult)
         {
             if (offset < 0)

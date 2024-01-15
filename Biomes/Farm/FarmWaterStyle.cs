@@ -10,9 +10,10 @@ namespace RealmOne.Biomes.Farm
         {
             return ModContent.GetInstance<FarmWaterfallStyle>().Slot;
         }
-        public override int GetSplashDust() => DustID.Water_Desert;
-        public override int GetDropletGore() => GoreID.WaterDrip;
 
+        public override int GetSplashDust() => DustID.Water_Desert;
+
+        public override int GetDropletGore() => GoreID.WaterDrip;
 
         public override void LightColorMultiplier(ref float r, ref float g, ref float b)
         {

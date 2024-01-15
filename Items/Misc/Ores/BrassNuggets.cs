@@ -12,8 +12,8 @@ namespace RealmOne.Items.Misc.Ores
             DisplayName.SetDefault("Brass Nuggets");
             Tooltip.SetDefault("A durable and inexpensive chunk of common brass");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-
         }
+
         public override void SetDefaults()
         {
             Item.material = true;
@@ -23,7 +23,6 @@ namespace RealmOne.Items.Misc.Ores
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 999;
             Item.value = Item.buyPrice(silver: 2);
-
         }
 
         public override void AddRecipes()

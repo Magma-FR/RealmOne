@@ -30,7 +30,6 @@ namespace RealmOne.Items.Placeables
             Tooltip.SetDefault("Right Click to teleport to another pylon and back!");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -40,10 +39,8 @@ namespace RealmOne.Items.Placeables
             line = new TooltipLine(Mod, "GrassPylonItem", "'The Crystal was constructed by elder mages when they confronted unexpectedly huge amount of energy from the biome'")
             {
                 OverrideColor = new Color(134, 232, 81)
-
             };
             tooltips.Add(line);
-
         }
     }
 }

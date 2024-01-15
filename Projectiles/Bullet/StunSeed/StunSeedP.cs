@@ -20,8 +20,8 @@ namespace RealmOne.Projectiles.Bullet.StunSeed
             Projectile.penetrate = 1;
         }
 
-        int bounce = 0;
-        int maxBounces = 3;
+        private int bounce = 0;
+        private int maxBounces = 3;
 
         public override void AI()
         {
@@ -31,6 +31,7 @@ namespace RealmOne.Projectiles.Bullet.StunSeed
             Projectile.velocity.X *= 1f;
             Projectile.aiStyle = 0;
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             bounce++;
@@ -50,7 +51,7 @@ namespace RealmOne.Projectiles.Bullet.StunSeed
             else return false;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("SeedGore9").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("SeedGore9").Type, 1f);

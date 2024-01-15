@@ -41,7 +41,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             NPC.netUpdate = true;
             AIType = NPCID.ArmoredSkeleton;
             AnimationType = NPCID.ArmoredSkeleton;
-
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -77,7 +76,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonPrickles>(), 13, 4, 6));
 
             npcLoot.Add(ItemDropRule.Common(ItemID.MudBlock, 2, 3, 6));
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
@@ -87,12 +85,10 @@ namespace RealmOne.NPCs.Enemies.Forest
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MossyGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MossyGore2").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MossyGore3").Type, 1f);
-
             }
 
             for (int i = 0; i < 12; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Bone, speed * 5, Scale: 1f);

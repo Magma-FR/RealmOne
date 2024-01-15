@@ -19,6 +19,7 @@ namespace RealmOne.Projectiles.HeldProj
         {
             Main.projFrames[Projectile.type] = 9;//number of frames the animation has
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 36;
@@ -32,11 +33,14 @@ namespace RealmOne.Projectiles.HeldProj
             Projectile.netImportant = true;
             Projectile.netUpdate = true;
         }
+
         public override bool? CanDamage()
         {
             return false;
         }
+
         private bool recoilFX;
+
         public override void AI()
         {
             Projectile.netImportant = true;
@@ -50,7 +54,6 @@ namespace RealmOne.Projectiles.HeldProj
             }
             Player player = Main.player[Projectile.owner];
             Projectile.ai[0] += 1f;
-
 
             if (Projectile.ai[0] >= 90f)
             {
@@ -66,8 +69,6 @@ namespace RealmOne.Projectiles.HeldProj
                     Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
                     Dust dust1 = Dust.NewDustPerfect(Projectile.Center, DustID.CursedTorch, speed * 7, Scale: 1.2f);
                     dust1.noGravity = true;
-
-
                 }
             }
             if (timerUp == true)
@@ -88,7 +89,6 @@ namespace RealmOne.Projectiles.HeldProj
             else
                 recoilFX = false;
 
-
             Vector2 rrp = player.RotatedRelativePoint(player.MountedCenter, true);
 
             bool stillInUse = player.channel && !player.noItems && !player.CCed;
@@ -97,12 +97,11 @@ namespace RealmOne.Projectiles.HeldProj
                 UpdatePlayerVisuals(player, rrp);
 
                 UpdateAim(rrp, player.HeldItem.shootSpeed);
-
             }
             else if (!stillInUse)
                 Projectile.timeLeft = 2;
-
         }
+
         private void UpdatePlayerVisuals(Player player, Vector2 playerhandpos)
         {
             Projectile.Center = playerhandpos;
@@ -121,8 +120,8 @@ namespace RealmOne.Projectiles.HeldProj
             }
             player.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + piover2);
-
         }
+
         private void UpdateAim(Vector2 source, float speed)
         {
             Player player = Main.player[Projectile.owner];
@@ -141,6 +140,7 @@ namespace RealmOne.Projectiles.HeldProj
             Projectile.netUpdate = true;
             Projectile.velocity = aim;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Player player = Main.player[Projectile.owner];
@@ -160,10 +160,6 @@ namespace RealmOne.Projectiles.HeldProj
             Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
             Vector2 origin = sourceRectangle.Size() / 2f;
 
-
-
-
-
             //recoil
             float offsetX = -5f;
             if (recoilFX == true)
@@ -180,8 +176,6 @@ namespace RealmOne.Projectiles.HeldProj
                 offsetX -= 8;
                 if (offsetX == 32)
                     offsetX += 4;
-
-
             }
 
             origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
@@ -211,7 +205,6 @@ namespace RealmOne.Projectiles.HeldProj
                 {
                     Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.Lerp(-MathHelper.ToRadians(Main.rand.Next(2, 16)), MathHelper.ToRadians(Main.rand.Next(4, 15)), i / (numberProjectiles - 1))) * 1f; // Watch out for dividing by 0 if there is only 1 projectile.
 
-
                     Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(player.HeldItem, AmmoID.Arrow), Projectile.position, perturbedSpeed, ModContent.ProjectileType<VileArrow>(), Projectile.damage, Projectile.knockBack, player.whoAmI);
                 }
 
@@ -219,11 +212,9 @@ namespace RealmOne.Projectiles.HeldProj
                 {
                     Vector2 perturbedSpeed1 = Projectile.velocity.RotatedBy(MathHelper.Lerp(-MathHelper.ToRadians(Main.rand.Next(2, 16)), MathHelper.ToRadians(Main.rand.Next(4, 15)), i / (numberProjectiles - 1))) * 0.4f; // Watch out for dividing by 0 if there is only 1 projectile.
 
-
                     Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(player.HeldItem, AmmoID.Arrow), Projectile.position, perturbedSpeed1, ModContent.ProjectileType<CorruptEye>(), Projectile.damage, Projectile.knockBack, player.whoAmI);
                 }
             }
-
         }
     }
 }

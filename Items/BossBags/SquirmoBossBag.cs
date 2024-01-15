@@ -33,26 +33,20 @@ namespace RealmOne.Items.BossBags
             Item.consumable = true;
             Item.maxStack = 99;
             Item.expert = true;
-
         }
         public override bool CanRightClick()
         {
             return true;
         }
 
-
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
-
             itemLoot.Add(ItemDropRule.Common(ItemID.Worm, 1, 3, 6));
-            
+
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GlobGun>(), 3, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirmStaff>(), 3, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirYo>(), 3, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirmoLorePageOne>(), 6, 1, 1));
-
-
-
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -121,15 +115,5 @@ namespace RealmOne.Items.BossBags
             }
         }
     }
-
 }
 */
-
-
-
-
-
-
-
-
-

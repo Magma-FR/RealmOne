@@ -26,7 +26,6 @@ namespace RealmOne.Buffs.Debuffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-
             if (Main.rand.NextBool(2))
             {
                 int dust = Dust.NewDust(npc.position, npc.width, npc.height, DustID.GoldFlame);
@@ -38,10 +37,8 @@ namespace RealmOne.Buffs.Debuffs
             {
                 if (npc.defense < 5)
                     npc.lifeRegen -= 12;
-
                 else
                     npc.lifeRegen -= 4;
-
             }
         }
     }

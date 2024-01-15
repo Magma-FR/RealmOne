@@ -13,7 +13,6 @@ namespace RealmOne.Projectiles.Whip
 {
     public class ExtensionCordProjectile : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.IsAWhip[Type] = true;
@@ -75,10 +74,8 @@ namespace RealmOne.Projectiles.Whip
                 List<Vector2> points = Projectile.WhipPointsForCollision;
                 Projectile.FillWhipControlPoints(Projectile, points);
                 SoundEngine.PlaySound(SoundID.Item153, points[points.Count - 1]);
-
             }
         }
-
 
         private bool Charge(Player owner)
         {
@@ -106,7 +103,6 @@ namespace RealmOne.Projectiles.Whip
             Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
             Projectile.damage = (int)(damageDone * 1f); // Multihit penalty. Decrease the damage the more enemies the whip hits.
             SoundEngine.PlaySound(rorAudio.SFX_Cord);
-
         }
 
         private void DrawLine(List<Vector2> list)

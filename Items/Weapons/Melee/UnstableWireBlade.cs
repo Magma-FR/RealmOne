@@ -24,7 +24,6 @@ namespace RealmOne.Items.Weapons.Melee
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/Melee/UnstableWireBlade_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -46,7 +45,6 @@ namespace RealmOne.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.shootSpeed = 28f;
-
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -75,7 +73,6 @@ namespace RealmOne.Items.Weapons.Melee
                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Electric, 1f, 1f, 0, default, 1f);
                Main.dust[dust].noGravity = true;
                Main.dust[dust].velocity *= 1.5f;
-
            }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
@@ -85,7 +82,6 @@ namespace RealmOne.Items.Weapons.Melee
             target.AddBuff(BuffID.Electrified, 200);
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(-1f, 1f);
 
                 var d = Dust.NewDustPerfect(target.position, DustID.LunarOre, speed * 5, Scale: 2f);
@@ -95,7 +91,6 @@ namespace RealmOne.Items.Weapons.Melee
 
             for (int i = 0; i < 15; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(-1f, 1f);
 
                 var d = Dust.NewDustPerfect(target.position, 202, speed * 5, Scale: 1.5f);

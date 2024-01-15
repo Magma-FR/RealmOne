@@ -15,7 +15,7 @@ namespace RealmOne.Items.Weapons.Melee
 {
     public class ShatteredGemBlade : ModItem
     {
-        private float rotation;
+        private readonly float rotation;
 
         public override void SetStaticDefaults()
         {
@@ -25,7 +25,6 @@ namespace RealmOne.Items.Weapons.Melee
                 + "\nRight Click to thrust the blade, dealing more damage but with no overswing capabilities");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -50,10 +49,9 @@ namespace RealmOne.Items.Weapons.Melee
 
         public override bool CanUseItem(Player player)
         {
-
             return player.ownedProjectileCounts[Item.shoot] < 1;
-
         }
+
         // public override bool? UseItem(Player player)
         //   {
         //      rotation = MathHelper.ToDegrees((Main.LocalPlayer.Center - Main.MouseWorld).ToRotation());
@@ -65,15 +63,15 @@ namespace RealmOne.Items.Weapons.Melee
         //  }
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-
             if (Main.rand.NextBool(5))
                 type = ModContent.ProjectileType<ShatteredGemBladeProj2>();
-
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(rorAudio.GemBladeHit);
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
@@ -106,7 +104,6 @@ namespace RealmOne.Items.Weapons.Melee
             int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.ApprenticeStorm, 0f, 0f, 0, default, 2f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 1f;
-
         }
 
         public override Vector2? HoldoutOffset()
@@ -114,6 +111,7 @@ namespace RealmOne.Items.Weapons.Melee
             var offset = new Vector2(6, 0);
             return offset;
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -154,6 +152,7 @@ namespace RealmOne.Items.Weapons.Melee
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.LightCyan.ToVector3() * 0.5f);
@@ -174,6 +173,7 @@ namespace RealmOne.Items.Weapons.Melee
                 dust.alpha = 0;
             }
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = Request<Texture2D>("RealmOne/Items/Weapons/Melee/ShatteredGemBlade_Glow", AssetRequestMode.ImmediateLoad).Value;

@@ -1,4 +1,4 @@
-using Terraria;
+/*using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
@@ -15,12 +15,10 @@ namespace RealmOne.Items.Accessories
             + "\nThis dash has a 8 second cooldown");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.width = 32;
             Item.height = 32;
             Item.value = 10000;
@@ -28,14 +26,12 @@ namespace RealmOne.Items.Accessories
             Item.accessory = true;
             Item.defense += 3;
             Item.masterOnly = true;
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.moveSpeed += 0.05f;
             player.accRunSpeed += 0.05f;
-
         }
     }
-}
+}*/

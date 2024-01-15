@@ -15,7 +15,6 @@ namespace RealmOne.Items.Misc
             DisplayName.SetDefault("Water Driplets"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("'Crystal clear water, its unknown if you should drink this water'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -25,7 +24,6 @@ namespace RealmOne.Items.Misc
             Item.value = 20000;
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 999;
-
         }
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {

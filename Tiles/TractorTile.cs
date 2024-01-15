@@ -34,25 +34,21 @@ namespace RealmOne.Tiles
             TileObjectData.newTile.Width = 4;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16, 16 };
 
-
             // Placement
 
-
             //      ChestDrop = ModContent.ItemType<TatteredBarrelItem>();
-
-
 
             TileObjectData.addTile(Type);
         }
 
         public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = 2;
+
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = 0.2f;
             g = 0.2f;
             b = 0.2f;
         }
-
 
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
@@ -65,12 +61,10 @@ namespace RealmOne.Tiles
 
             if (Main.netMode != NetmodeID.Server)
             {
-
                 int BGore1 = Mod.Find<ModGore>("TractorGore1").Type;
                 int BGore2 = Mod.Find<ModGore>("TractorGore2").Type;
                 int BGore3 = Mod.Find<ModGore>("TractorGore3").Type;
                 int BGore4 = Mod.Find<ModGore>("TractorGore4").Type;
-
 
                 var entitySource = new EntitySource_TileBreak(x, y);
 
@@ -83,12 +77,8 @@ namespace RealmOne.Tiles
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), BGore2);
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), BGore3);
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), BGore4);
-
-
                 }
             }
-
-
         }
     }
 }

@@ -5,11 +5,9 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class OldGoldBullet : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -35,16 +33,16 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.aiStyle = 1;
             AIType = ProjectileID.Bullet;
         }
+
         public override void AI()
         {
-
             Lighting.AddLight(Projectile.position, 0.3f, 0.38f, 0.2f);
             Lighting.Brightness(1, 1);
-
-
         }
+
         public PrimitiveTrail trail = new();
         public List<Vector2> oldPositions = new List<Vector2>();
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -79,7 +77,8 @@ namespace RealmOne.Projectiles.Bullet
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
             return true;
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, -4, ModContent.ProjectileType<LilGold>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 4, 0, ModContent.ProjectileType<LilGold>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
@@ -87,7 +86,6 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 4, ModContent.ProjectileType<LilGold>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<StarFlash>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-
 
             for (int i = 0; i < 60; i++)
             {
@@ -99,4 +97,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

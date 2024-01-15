@@ -1,11 +1,7 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-
-namespace RealmOne.Common.Dusts
+﻿namespace RealmOne.Common.Dusts
 {
     /*public class FlamerDust : ModDust
     {
-
         public override void OnSpawn(Dust dust)
         {
             dust.velocity *= 0.6f; // Multiply the dust's start velocity by 0.4, slowing it down
@@ -32,4 +28,3 @@ namespace RealmOne.Common.Dusts
         }
     }*/
 }
-

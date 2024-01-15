@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using RealmOne.Buffs;
-using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
 using Terraria.Audio;
@@ -22,7 +21,6 @@ namespace RealmOne.Items.Potions
 
         public override void SetDefaults()
         {
-
             Item.height = 32;
             Item.width = 32;
             Item.useTime = 15;
@@ -41,6 +39,7 @@ namespace RealmOne.Items.Potions
         {
             return Color.White;
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

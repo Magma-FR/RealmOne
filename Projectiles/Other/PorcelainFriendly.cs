@@ -11,7 +11,6 @@ namespace RealmOne.Projectiles.Other
 {
     public class PorcelainFriendly : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Porcelain");
@@ -85,7 +84,7 @@ namespace RealmOne.Projectiles.Other
             return true;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 7; i++)
             {

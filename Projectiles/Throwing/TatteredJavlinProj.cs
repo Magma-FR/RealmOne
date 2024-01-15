@@ -1,8 +1,8 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.Audio;
 
 namespace RealmOne.Projectiles.Throwing
 {
@@ -13,6 +13,7 @@ namespace RealmOne.Projectiles.Throwing
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 5;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -25,16 +26,12 @@ namespace RealmOne.Projectiles.Throwing
             Projectile.extraUpdates = 1;
             Projectile.light = 0;
         }
-        
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
-           
-            
-
             for (int i = 0; i < 17; i++)
-                
 
-            Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
+                Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Item1, Projectile.position);
 
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("TatteredJavelinGore1").Type, 1f);
@@ -45,9 +42,6 @@ namespace RealmOne.Projectiles.Throwing
             Main.dust[dustIndex].noGravity = false;
             Main.dust[dustIndex].position = Projectile.Center + new Vector2(0f, (float)(-(float)Projectile.height / 2)).RotatedBy(Projectile.rotation, default) * 1.6f;
             Main.dust[dustIndex].noLight = false;
-
-           
         }
-       
     }
 }

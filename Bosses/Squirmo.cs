@@ -20,7 +20,6 @@ namespace RealmOne.Bosses
     [AutoloadBossHead]
     internal class SquirmoHead : WormHead
     {
-
         public ref float RemainingShields => ref NPC.localAI[2];
 
         public int MinionMaxHealthTotal
@@ -98,8 +97,6 @@ namespace RealmOne.Bosses
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
 
                 new FlavorTextBestiaryInfoElement("The dreaded controller and ruler of all creepy crawlies of the soil. Attacks anything that touches a grain of dirt, without any care of destruction"),
-
-
             });
         }
         public override void HitEffect(NPC.HitInfo hit)
@@ -111,7 +108,6 @@ namespace RealmOne.Bosses
 
             if (NPC.life <= 0)
             {
-
                 /*int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
                int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
                 IEntitySource entitySource = NPC.GetSource_Death();
@@ -121,13 +117,12 @@ namespace RealmOne.Bosses
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreBody);
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
                 }
-                
+
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
             }
 
             for (int i = 0; i < 25; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Worm, speed * 5, Scale: 2f);
@@ -137,7 +132,6 @@ namespace RealmOne.Bosses
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-
             npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<SquirmoBossBag>()));
 
             npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<SquirmoRelicItem>()));
@@ -147,25 +141,20 @@ namespace RealmOne.Bosses
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirmoTrophyItem>(), 10));
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SquirmoMask>(), 7));
-
         }
 
         public override void OnKill()
         {
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedSquirmo, -1);
 
-
             if (Main.netMode != NetmodeID.Server)
             {
                 Main.NewText(Language.GetTextValue("The soil has been adhered, the ground has been enchanted!"), 71, 229, 231);
-
             }
-
         }
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-
         }
 
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
@@ -216,7 +205,6 @@ namespace RealmOne.Bosses
 
         public override void AI()
         {
-
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
             {
                 NPC.TargetClosest();
@@ -252,12 +240,9 @@ namespace RealmOne.Bosses
                    // attackCounter = 250;
                     NPC.netUpdate = true;
                    // Main.projectile[projectile].velocity *= 6f;
-
                 }
             }
         }
-
-
     }
     internal class SquirmoBody : WormBody
     {
@@ -291,7 +276,6 @@ namespace RealmOne.Bosses
 
             if (NPC.life <= 0)
             {
-
                 int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
                 int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
 
@@ -301,7 +285,6 @@ namespace RealmOne.Bosses
                 {
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreBody);
                     Gore.NewGore(entitySource, NPC.position, new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5)), SquirmoGoreHead);
-
                 }
 
                 SoundEngine.PlaySound(rorAudio.SquirmoMudBubblePop, NPC.Center);
@@ -309,7 +292,6 @@ namespace RealmOne.Bosses
 
             for (int i = 0; i < 18; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Worm, speed * 5, Scale: 2f);
@@ -356,7 +338,6 @@ namespace RealmOne.Bosses
 
             if (NPC.life <= 0)
             {
-
                 int SquirmoGoreBody = Mod.Find<ModGore>("SquirmoGore1").Type;
                 int SquirmoGoreHead = Mod.Find<ModGore>("SquirmoGore2").Type;
                 IEntitySource entitySource = NPC.GetSource_Death();
@@ -372,7 +353,6 @@ namespace RealmOne.Bosses
 
             for (int i = 0; i < 18; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Worm, speed * 5, Scale: 2f);

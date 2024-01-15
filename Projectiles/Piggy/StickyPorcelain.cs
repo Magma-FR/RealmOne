@@ -13,16 +13,15 @@ namespace RealmOne.Projectiles.Piggy
 {
     public class StickyPorcelain : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Porcelain");
             Main.projFrames[Projectile.type] = 6;
         }
 
-        bool stick = false;
-        int targetPorce;
-        float rotation;
+        private bool stick = false;
+        private int targetPorce;
+        private float rotation;
 
         public override void SetDefaults()
         {
@@ -52,7 +51,6 @@ namespace RealmOne.Projectiles.Piggy
         {
             if (stick)
             {
-
                 Projectile.rotation = rotation;
                 int npcTarget = targetPorce;
                 Projectile.Center = Main.npc[npcTarget].Center - Projectile.velocity;
@@ -145,7 +143,7 @@ namespace RealmOne.Projectiles.Piggy
             return true;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 9; i++)
             {

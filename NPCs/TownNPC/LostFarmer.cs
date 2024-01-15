@@ -1,39 +1,28 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using RealmOne.Biomes.Farm;
+using RealmOne.Items.Accessories;
+using RealmOne.Items.Misc;
+using RealmOne.Items.Others;
+using RealmOne.Items.Vanities;
+using RealmOne.Items.Weapons.Ranged;
+using RealmOne.Projectiles.Throwing;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.Utilities;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 using Terraria.GameContent.Personalities;
-using Terraria.ModLoader.IO;
-using RealmOne.Items.Accessories;
-using RealmOne.Items.BossSummons;
-using RealmOne.Items.Misc;
-using RealmOne.Items.Weapons.Ranged;
-using RealmOne.Items.Others;
-using RealmOne.Biomes.Farm;
-using RealmOne.Items.Weapons.PreHM.Throwing;
-using RealmOne.Projectiles.Throwing;
-using RealmOne.Items.Vanities;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace RealmOne.NPCs.TownNPC
 {
     [AutoloadHead]
-
     public class LostFarmer : ModNPC
     {
-
         public const string ShopName = "Shop";
+
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 25; // The total amount of frames the NPC has
@@ -46,7 +35,7 @@ namespace RealmOne.NPCs.TownNPC
             NPCID.Sets.AttackAverageChance[Type] = 30; // The denominator for the chance for a Town NPC to attack. Lower numbers make the Town NPC appear more aggressive.
             NPCID.Sets.ShimmerTownTransform[NPC.type] = false; // This set says that the Town NPC has a Shimmered form. Otherwise, the Town NPC will become transparent when touching Shimmer like other enemies.
 
-            NPCID.Sets.ShimmerTownTransform[Type] = false ; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
+            NPCID.Sets.ShimmerTownTransform[Type] = false; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
 
             // Influences how the NPC looks in the Bestiary
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
@@ -65,12 +54,11 @@ namespace RealmOne.NPCs.TownNPC
                 .SetNPCAffection(NPCID.Guide, AffectionLevel.Like) // Likes living near the guide.
                 .SetNPCAffection(NPCID.Merchant, AffectionLevel.Dislike) // Dislikes living near the merchant.
                 .SetNPCAffection(NPCID.Demolitionist, AffectionLevel.Hate); // Hates living near the demolitionist.
-            // < Mind the semicolon!
+                                                                            // < Mind the semicolon!
 
             // This creates a "profile" for ExamplePerson, which allows for different textures during a party and/or while the NPC is shimmered.
-            
-           
         }
+
         public override void SetDefaults()
         {
             NPC.townNPC = true; // Sets NPC to be a Town NPC
@@ -87,11 +75,11 @@ namespace RealmOne.NPCs.TownNPC
 
             AnimationType = NPCID.Guide;
         }
+
         public override string GetChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-          
             // These are things that the NPC has a chance of telling you when you talk to it.
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue1"));
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue2"));
@@ -99,11 +87,9 @@ namespace RealmOne.NPCs.TownNPC
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.CommonDialogue"));
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.RareDialogue"), 0.3);
 
-            
-
             return chat; // chat is implicitly cast to a string.
         }
-    
+
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
             // If our Town NPC hasn't been rescued, don't arrive.
@@ -113,12 +99,10 @@ namespace RealmOne.NPCs.TownNPC
             }
             return true;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-			
-			
-
 				// Sets your NPC's flavor text in the bestiary.
 				new FlavorTextBestiaryInfoElement("Abandoned, just like his home, the Lost Farmer was a child left by himself in a cursed timeline"),
 
@@ -126,6 +110,7 @@ namespace RealmOne.NPCs.TownNPC
 				// You can also use localization keys (see Localization/en-US.lang)
             });
         }
+
         public override List<string> SetNPCNameList()
         {
             return new List<string>() {
@@ -135,22 +120,22 @@ namespace RealmOne.NPCs.TownNPC
                 "Johnston"
             };
         }
+
         public override void SetChatButtons(ref string button, ref string button2)
         { // What the chat buttons are when you open up the chat UI
             button = Language.GetTextValue("LegacyInterface.28");
-         
         }
+
         public override void OnChatButtonClicked(bool firstButton, ref string shop)
         {
             if (firstButton)
             {
                 // We want 3 different functionalities for chat buttons, so we use HasItem to change button 1 between a shop and upgrade action.
 
-             
-
                 shop = ShopName; // Name of the shop tab we want to open.
             }
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             int num = NPC.life > 0 ? 1 : 5;
@@ -163,12 +148,11 @@ namespace RealmOne.NPCs.TownNPC
             if (Main.netMode != NetmodeID.Server && NPC.life <= 0)
             {
                 string variant = "";
-             
+
                 int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
                 int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
                 int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
                 int forkGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
-
 
                 // Spawn the gores. The positions of the arms and legs are lowered for a more natural look.
 
@@ -180,15 +164,14 @@ namespace RealmOne.NPCs.TownNPC
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
             }
-        
-    }
+        }
+
         public override void AddShops()
         {
             var npcShop = new NPCShop(Type, ShopName)
                 .Add(new Item(ModContent.ItemType<StunSeed>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
 
                 .Add(new Item(ModContent.ItemType<AntiVenomVial>()) { shopCustomPrice = Item.buyPrice(gold: 2) })
-
 
                                 .Add(new Item(ModContent.ItemType<SunHat>()) { shopCustomPrice = Item.buyPrice(gold: 2, silver: 25) })
 
@@ -200,11 +183,7 @@ namespace RealmOne.NPCs.TownNPC
                  .Add(new Item(ModContent.ItemType<FarmKey>()) { shopCustomPrice = Item.buyPrice(gold: 3) })
                                   .Add(new Item(ModContent.ItemType<SuperWheat>()) { shopCustomPrice = Item.buyPrice(gold: 1) });
 
-
-
-               // .Add<SquirmoSummon>(Condition.TimeNight);
-
-
+            // .Add<SquirmoSummon>(Condition.TimeNight);
 
             npcShop.Register(); // Name of this shop tab
         }
@@ -253,5 +232,3 @@ namespace RealmOne.NPCs.TownNPC
         }
     }
 }
-    
-

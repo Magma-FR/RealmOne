@@ -6,16 +6,15 @@ using Terraria.ModLoader;
 namespace RealmOne.Armor.Goretooth
 {
     [AutoloadEquip(EquipType.Body)]
-
     public class ToothBody : ModItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-         
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -27,12 +26,8 @@ namespace RealmOne.Armor.Goretooth
 
         public override void UpdateEquip(Player player)
         {
-
             player.maxMinions++;
             player.GetDamage(DamageClass.Summon) += 0.04f;
         }
-
-
-    
     }
 }

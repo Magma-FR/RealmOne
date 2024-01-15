@@ -24,7 +24,6 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/OldGold/Oldy_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -45,8 +44,8 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             Item.noMelee = true;
             Item.useAmmo = AmmoID.Bullet;
             Item.shoot = ModContent.ProjectileType<OldGoldBullet>();
-
         }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (type == ProjectileID.Bullet)
@@ -61,8 +60,8 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             .AddIngredient(Mod, "OldGoldBar", 6)
             .AddTile(TileID.Anvils)
             .Register();
-
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = Request<Texture2D>("RealmOne/Items/Weapons/PreHM/OldGold/Oldy_Glow", AssetRequestMode.ImmediateLoad).Value;
@@ -84,9 +83,9 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 0f
             );
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
 
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
@@ -94,11 +93,9 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 position += muzzleOffset;
             Gore.NewGore(source, player.Center + muzzleOffset * 1, new Vector2(player.direction * -1, -0.5f) * 2, Mod.Find<ModGore>("TommyGunPellets").Type, 1f);
 
-           
-            
-
             return true;
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -139,6 +136,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.LightCyan.ToVector3() * 0.5f);
@@ -159,6 +157,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 dust.alpha = 0;
             }
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -167,24 +166,20 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             line = new TooltipLine(Mod, "Oldy", "'Shoots a loud and capshot gold bullet that splits into other bullets.")
             {
                 OverrideColor = new Color(254, 226, 82)
-
             };
             tooltips.Add(line);
 
             line = new TooltipLine(Mod, "Oldy", $"Converts bullets into ancient gold bullets [i:{ItemID.MusketBall}]")
             {
                 OverrideColor = new Color(232, 218, 224)
-
             };
             tooltips.Add(line);
 
             line = new TooltipLine(Mod, "Oldy", "'Pristinity!'")
             {
                 OverrideColor = new Color(18, 240, 180)
-
             };
             tooltips.Add(line);
-
         }
 
         public override Vector2? HoldoutOffset()

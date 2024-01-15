@@ -14,6 +14,7 @@ namespace RealmOne.Projectiles.Magic
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 32;
@@ -23,8 +24,8 @@ namespace RealmOne.Projectiles.Magic
             Projectile.scale = 1f;
             Projectile.tileCollide = true;
             Projectile.CloneDefaults(ProjectileID.Shuriken);
-
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.penetrate--; //Make sure it doesnt penetrate anymore
@@ -42,10 +43,10 @@ namespace RealmOne.Projectiles.Magic
                 {
                     Projectile.velocity.X = -oldVelocity.X;
                 }
-
             }
             return false;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.penetrate--; //Make sure it doesnt penetrate anymore
@@ -54,10 +55,10 @@ namespace RealmOne.Projectiles.Magic
             else
             {
                 Projectile.velocity *= 0.6f;
-
             }
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("AcornGore1").Type, 1f);

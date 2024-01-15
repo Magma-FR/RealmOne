@@ -16,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             + "\nRight click to summon rope snakes you can climb on");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -37,7 +36,6 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             Item.noMelee = true;
             Item.shootSpeed = 36f;
             Item.shoot = ProjectileID.PoisonDartBlowgun;
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -46,7 +44,6 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
 
             for (int i = 0; i < NumProjectiles; i++)
             {
-
                 Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(6));
                 newVelocity *= 1f - Main.rand.NextFloat(0.4f);
 
@@ -55,6 +52,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
 
             return false; // Return false because we don't want tModLoader to shoot projectile
         }
+
         public override bool AltFunctionUse(Player player)
         {
             return true;
@@ -64,7 +62,6 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
         {
             if (player.altFunctionUse == 2)
             {
-
                 Item.width = 32;
                 Item.height = 32;
                 Item.useTime = 28;
@@ -77,7 +74,6 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             }
             else
             {
-
                 Item.damage = 16;
                 Item.DamageType = DamageClass.Ranged;
                 Item.width = 32;
@@ -94,7 +90,6 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
                 Item.noMelee = true;
                 Item.shootSpeed = 36f;
                 Item.shoot = ProjectileID.PoisonDartBlowgun;
-
             }
 
             return base.CanUseItem(player);

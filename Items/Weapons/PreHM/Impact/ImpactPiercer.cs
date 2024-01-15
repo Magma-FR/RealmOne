@@ -29,7 +29,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactPiercer_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -51,7 +50,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.shootSpeed = 27f;
             Item.noMelee = true;
             Item.crit = 1;
-
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -81,9 +79,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             if (type == ProjectileID.WoodenArrowFriendly)
                 type = ProjectileID.PulseBolt; // or ProjectileID.FireArrow;
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -105,12 +103,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     Dust.NewDust(player.position, player.width, player.height, DustID.Electric, 0f, 0f, 150, default, 1f);
 
                 SoundEngine.PlaySound(rorAudio.ElectricPulse);
-
             }
-
             else
             {
-
                 Item.damage = 11;
                 Item.DamageType = DamageClass.Ranged;
                 Item.width = 32;
@@ -141,6 +136,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
             return true;
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -181,6 +177,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
             return true;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -188,8 +185,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             .AddIngredient(Mod, "ImpactTech", 14)
             .AddTile(TileID.Anvils)
             .Register();
-
         }
+
         public override bool OnPickup(Player player)
         {
             SoundEngine.PlaySound(rorAudio.PulsaPickup);

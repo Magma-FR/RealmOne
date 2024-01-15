@@ -1,5 +1,4 @@
-﻿using RealmOne.Common.Core;
-using RealmOne.Tiles;
+﻿using RealmOne.Tiles;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -9,14 +8,12 @@ namespace RealmOne.Items.Placeables.FarmStuff
 {
     public class TractorTileItem : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tractor");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
         }
-
 
         public override void SetDefaults()
         {
@@ -35,4 +32,3 @@ namespace RealmOne.Items.Placeables.FarmStuff
         }
     }
 }
-

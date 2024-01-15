@@ -2,13 +2,10 @@
 
 namespace RealmOne.Common
 {
-
     public sealed class ManualMusic : ILoadable
     {
         public void Load(Mod mod)
         {
-
-
             MusicLoader.AddMusic(mod, "Assets/Music/squirmointro");
             MusicLoader.AddMusic(mod, "Assets/Music/InfestedSoil");
 
@@ -16,15 +13,10 @@ namespace RealmOne.Common
             MusicLoader.AddMusic(mod, "Assets/Music/PiggyPatrol");
             MusicLoader.AddMusic(mod, "Assets/Music/CottageOrchestra");
             MusicLoader.AddMusic(mod, "Assets/Music/MORTICIDE");
-
-
-
         }
 
         public void Unload()
         {
-
         }
     }
 }
-

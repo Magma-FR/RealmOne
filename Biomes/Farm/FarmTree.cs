@@ -2,8 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Food;
 using RealmOne.Items.Food.FarmFood;
-using RealmOne.Items.Misc.Plants;
-using RealmOne.Items.Placeables;
 using RealmOne.Items.Placeables.FarmStuff;
 using RealmOne.NPCs.Critters;
 using RealmOne.NPCs.Critters.Farm;
@@ -19,7 +17,6 @@ namespace RealmOne.Biomes.Farm
 {
     public class FarmTree : ModTree
     {
-
         public override TreePaintingSettings TreeShaderSettings => new TreePaintingSettings
         {
             UseSpecialGroups = true,
@@ -32,13 +29,16 @@ namespace RealmOne.Biomes.Farm
         public override void SetStaticDefaults() => GrowsOnTileId = new int[] { ModContent.TileType<FarmSoil>() };
 
         public override int CreateDust() => DustID.WoodFurniture;
+
         public override int TreeLeaf() => GoreID.TreeLeaf_Palm;
+
         public override int DropWood() => ModContent.ItemType<TatteredWood>();
 
         public override Asset<Texture2D> GetTexture() => ModContent.Request<Texture2D>("RealmOne/Biomes/Farm/FarmTree", AssetRequestMode.ImmediateLoad);
-        public override Asset<Texture2D> GetTopTextures() => ModContent.Request<Texture2D>("RealmOne/Biomes/Farm/FarmTree_Tops", AssetRequestMode.ImmediateLoad);
-        public override Asset<Texture2D> GetBranchTextures() => ModContent.Request<Texture2D>("RealmOne/Biomes/Farm/FarmTree_Branches", AssetRequestMode.ImmediateLoad);
 
+        public override Asset<Texture2D> GetTopTextures() => ModContent.Request<Texture2D>("RealmOne/Biomes/Farm/FarmTree_Tops", AssetRequestMode.ImmediateLoad);
+
+        public override Asset<Texture2D> GetBranchTextures() => ModContent.Request<Texture2D>("RealmOne/Biomes/Farm/FarmTree_Branches", AssetRequestMode.ImmediateLoad);
 
         public override int SaplingGrowthType(ref int style)
         {
@@ -51,10 +51,10 @@ namespace RealmOne.Biomes.Farm
             topTextureFrameWidth = 138;
             topTextureFrameHeight = 84;
         }
+
         // Branch Textures
         public override bool Shake(int x, int y, ref bool createLeaves)
         {
-
             WeightedRandom<FarmTreeEnum> options = new WeightedRandom<FarmTreeEnum>();
             options.Add(FarmTreeEnum.None, 0.8f);
             options.Add(FarmTreeEnum.Acorn, 0.8f);
@@ -109,13 +109,10 @@ namespace RealmOne.Biomes.Farm
                     Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, fruit ? ModContent.ItemType<ToastedNutBar>() : ModContent.ItemType<FloralDelight>(), 1);
 
                     Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, fruit ? ModContent.ItemType<FloralDelight>() : ModContent.ItemType<Carrot>(), 1);
-
                 }
             }
             return false;
-        }       
-
-
+        }
 
         public enum FarmTreeEnum
         {
@@ -126,8 +123,5 @@ namespace RealmOne.Biomes.Farm
             Gore,
             Fruit,
         }
-
-
     }
-
 }

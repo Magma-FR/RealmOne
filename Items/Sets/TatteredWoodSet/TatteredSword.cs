@@ -1,5 +1,4 @@
-﻿using RealmOne.Items.Placeables;
-using RealmOne.Items.Placeables.FarmStuff;
+﻿using RealmOne.Items.Placeables.FarmStuff;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +9,7 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
     {
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.LeadBroadsword);
+            Item.CloneDefaults(ItemID.SilverBroadsword);
             Item.autoReuse = true;
             Item.scale = 1.3f;
             Item.useTurn = true;

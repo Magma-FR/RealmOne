@@ -1,12 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
-using RealmOne.Items.Food;
 using RealmOne.Items.Misc.EnemyDrops;
-using RealmOne.Projectiles.Magic;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -21,13 +18,10 @@ namespace RealmOne.NPCs.Enemies.Impact
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;
-           
-
         }
 
         public override void SetDefaults()
         {
-
             NPC.width = 26;
             NPC.height = 28;
             NPC.height = 38;
@@ -41,13 +35,11 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.friendly = false;
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath44;
-          
+
             NPC.aiStyle = NPCAIStyleID.Unicorn;
-
-
         }
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
         public override void AI()
         {
@@ -64,12 +56,12 @@ namespace RealmOne.NPCs.Enemies.Impact
                 Main.dust[dust1].noGravity = true;
                 Main.dust[dust1].velocity = Vector2.Zero;
                 Main.dust[dust1].noLight = false;
-
             }
         }
+
         private void Explode()
         {
-            SoundEngine.PlaySound(SoundID.NPCDeath44, NPC .position);
+            SoundEngine.PlaySound(SoundID.NPCDeath44, NPC.position);
 
             NPC.active = false;
             for (int i = 0; i < 25; i++)
@@ -77,22 +69,18 @@ namespace RealmOne.NPCs.Enemies.Impact
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 0.5f, 0f, 100, default, 2f);
             }
 
-           
             Player player = Main.player[NPC.target];
-          var p =  Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), Vector2.Zero, ProjectileID.ClusterGrenadeI, 35, 2, Main.myPlayer);
+            var p = Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), Vector2.Zero, ProjectileID.ClusterGrenadeI, 35, 2, Main.myPlayer);
             Main.projectile[p].timeLeft = 10;
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore1").Type, 1f);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore2").Type, 1f);
+            Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore1").Type, 1f);
+            Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore2").Type, 1f);
 
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore3").Type, 1f);
+            Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore3").Type, 1f);
 
-                Gore.NewGore(NPC.GetSource_Death(), NPC.Top, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.Bottom, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
-
-
-            
-
+            Gore.NewGore(NPC.GetSource_Death(), NPC.Top, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
+            Gore.NewGore(NPC.GetSource_Death(), NPC.Bottom, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -104,18 +92,14 @@ namespace RealmOne.NPCs.Enemies.Impact
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Top, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Bottom, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore4").Type, 1f);
-
-
             }
 
             for (int k = 0; k < 16; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
-
-
-
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -123,10 +107,9 @@ namespace RealmOne.NPCs.Enemies.Impact
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 
                 new FlavorTextBestiaryInfoElement("An explosive and speedy droid that tumbles on the ground and explodes into explosive scrap when near the player"),
-
-
             });
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -134,12 +117,12 @@ namespace RealmOne.NPCs.Enemies.Impact
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ImpactTech>(), 2, 1, 3));
-
-
         }
     }
 }

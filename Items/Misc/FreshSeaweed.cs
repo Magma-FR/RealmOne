@@ -13,7 +13,6 @@ namespace RealmOne.Items.Misc
             Tooltip.SetDefault("'Way too salty for my liking'"
                 + "\n'Can be dried and wrapped up in sushi!'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -23,7 +22,6 @@ namespace RealmOne.Items.Misc
             Item.rare = ItemRarityID.Green;
             Item.maxStack = 999;
             Item.value = Item.buyPrice(silver: 8, copper: 20);
-
         }
     }
 }*/

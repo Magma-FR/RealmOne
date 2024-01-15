@@ -1,9 +1,4 @@
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 
 namespace RealmOne.Common.Core
@@ -14,9 +9,10 @@ namespace RealmOne.Common.Core
         {
             return radius == default ? (center).DirectionTo(start.RotatedBy(t, center)) : (center).DirectionTo(start.RotatedBy(t, center)) * radius;
             //alt implementations
-            //return Utils.AngleLerp(start.ToRotation(), end.ToRotation(), t).ToRotationVector2(); 
-            // return new((float)Math.Cos(t), (float)Math.Sin(t)); //* radius; 
+            //return Utils.AngleLerp(start.ToRotation(), end.ToRotation(), t).ToRotationVector2();
+            // return new((float)Math.Cos(t), (float)Math.Sin(t)); //* radius;
         }
+
         public static Vector2 Bezier(Vector2[] controlPoints, float t)
         {
             //my own implementation of a bezier that takes any number of points
@@ -26,8 +22,8 @@ namespace RealmOne.Common.Core
                 temp = BezierCalculation(temp, t);
             }
             return temp[0];
-            
         }
+
         private static Vector2[] BezierCalculation(Vector2[] c, float t)
         {
             Vector2[] temp = new Vector2[c.Length - 1];

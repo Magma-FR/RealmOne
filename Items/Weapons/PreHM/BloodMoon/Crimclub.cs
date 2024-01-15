@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.GameContent.Creative;
-using Terraria.Audio;
-using RealmOne.Projectiles;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 {
     public class Crimclub : ModItem
     {
-     
         public override void SetDefaults()
         {
             Item.width = 48;
@@ -34,7 +26,6 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.autoReuse = false;
             Item.noMelee = true;
 
-
             Item.DamageType = DamageClass.Melee;
             Item.UseSound = SoundID.Item1;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -44,6 +35,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.shootSpeed = 1f;
             Item.shoot = ModContent.ProjectileType<CrimClubSwing>();
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             player.GetModPlayer<CrimClubPlayer>().SwingCount++;
@@ -54,11 +46,13 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
     public class CrimClubSwing : ModProjectile
     {
         public override string Texture => "RealmOne/Items/Weapons/PreHM/BloodMoon/Crimclub";
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 30;
@@ -71,12 +65,14 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Projectile.tileCollide = false;
             Projectile.ownerHitCheck = true;
         }
-        int i = 0;
-        List<Vector2> keypoints = new();
-        Vector2 mouse;
-        Vector2 vectorToMouse;
-        Vector2 mousew;
-        ProjKeyFrameHandler keyFrameHandler;
+
+        private int i = 0;
+        private List<Vector2> keypoints = new();
+        private Vector2 mouse;
+        private Vector2 vectorToMouse;
+        private Vector2 mousew;
+        private ProjKeyFrameHandler keyFrameHandler;
+
         public override void OnSpawn(IEntitySource source)
         {
             Player player = Main.player[Projectile.owner];
@@ -97,11 +93,14 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             if ((player.direction == -1 && !upswing) || (player.direction == 1 && upswing))
                 i = keypoints.Count - 1;
         }
-        bool upswing = false;
+
+        private bool upswing = false;
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
@@ -111,6 +110,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + MathHelper.Pi + MathHelper.PiOver4 * player.direction);
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             for (int i = 0; i < 50; i++)
@@ -123,27 +123,30 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             if (Main.rand.NextBool(2))
             {
                 Vector2 vel = new(Main.rand.NextFloat(-5, 5), -10);
-              
+
                 for (int i = 0; i < 3; i++)
                 {
-                   
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<BloodToothProj>(), Projectile.damage / 2, 0);
                 }
             }
         }
     }
+
     public class CrimClubPlayer : ModPlayer
     {
         public int SwingCount = 0;
     }
+
     public class BloodToothProj : ModProjectile
     {
         public override string Texture => "RealmOne/Items/Weapons/PreHM/BloodMoon/BloodToothProj";
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -155,10 +158,12 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Projectile.penetrate = -1;
             Projectile.tileCollide = true;
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -180,6 +185,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 
             return true;
         }
+
         public override void AI()
         {
             Projectile.velocity += new Vector2(0, 0.5f);

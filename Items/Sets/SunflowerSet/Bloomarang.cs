@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne;
 using RealmOne.Items.Misc.Plants;
-using RealmOne.Items.Placeables.FarmStuff;
-using RealmOne.Projectiles.Bullet;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -14,7 +11,6 @@ namespace RealmOne.Items.Sets.SunflowerSet
     {
         public override void SetStaticDefaults()
         {
-         
         }
 
         public override void SetDefaults()
@@ -43,6 +39,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
                     return false;
             return true;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -53,6 +50,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             float numberProjectiles = 6 + Main.rand.Next(1); // 3, 4, or 5 shots

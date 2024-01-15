@@ -20,7 +20,6 @@ namespace RealmOne.Items.Weapons.Magic
             + "\n'How the landlubbers kept 'emslves entertained'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -42,8 +41,8 @@ namespace RealmOne.Items.Weapons.Magic
             Item.value = Item.buyPrice(gold: 2, silver: 75);
             Item.mana = 7;
             Item.noMelee = true;
-
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -52,15 +51,12 @@ namespace RealmOne.Items.Weapons.Magic
             line = new TooltipLine(Mod, "CoconutHarp", "'Pluck and Plunder!'")
             {
                 OverrideColor = new Color(70, 250, 22)
-
             };
             tooltips.Add(line);
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -85,7 +81,6 @@ namespace RealmOne.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-
             CreateRecipe()
             .AddIngredient(ItemID.PalmWood, 15)
             .AddIngredient(ItemID.Coconut, 1)
@@ -93,7 +88,6 @@ namespace RealmOne.Items.Weapons.Magic
             .AddIngredient(ItemID.Cobweb, 4)
             .AddTile(TileID.Anvils)
             .Register();
-
         }
 
         public override Vector2? HoldoutOffset()

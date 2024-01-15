@@ -26,7 +26,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             + "\nThe gun extends into the chain!");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -46,13 +45,10 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.noMelee = true;
             Item.shootSpeed = 16f;
             Item.shoot = ProjectileType<OldChainHook>();
-
         }
 
         public override bool CanUseItem(Player player)
         {
-
-
             if (player.altFunctionUse == 2)
             {
                 Item.useTime = 44;
@@ -65,7 +61,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
                 Item.shoot = ProjectileType<OldChainHook>();
                 Item.damage = 14;
                 Item.knockBack = 4f;
-
             }
             else
             {
@@ -97,7 +92,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             if (player.altFunctionUse == 2)
             {
             }
@@ -108,7 +102,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 
                 for (int i = 0; i < NumProjectiles; i++)
                 {
-
                     Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(14));
                     newVelocity *= 1f - Main.rand.NextFloat(0.2f);
 
@@ -148,7 +141,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 
     internal class OldChainHook : ModProjectile
     {
-
         private static Asset<Texture2D> chainTexture;
 
         public override void Load()
@@ -182,7 +174,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Projectile.light = 0.2f;
             Projectile.CloneDefaults(ProjectileID.ChainGuillotine);
             Projectile.alpha = 0;
-
         }
         // Amethyst Hook is 300, Static Hook is 600.
 
@@ -241,7 +232,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
                 Main.dust[dust1].noLight = false;
 
                 Vector2 speed = Main.rand.NextVector2CircularEdge(0.25f, 0.25f);
-
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -251,7 +241,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
             SoundEngine.PlaySound(SoundID.DD2_CrystalCartImpact);
             Projectile.Kill();
-
         }
     }
 }

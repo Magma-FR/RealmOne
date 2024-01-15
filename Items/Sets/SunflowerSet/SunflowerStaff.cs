@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne;
 using RealmOne.Items.Misc.Plants;
 using RealmOne.RealmPlayer;
 using Terraria;
@@ -14,9 +13,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
         public override void SetStaticDefaults()
         {
             ItemGlowy.AddItemGlowMask(Item.type, Texture + "_Glow");
-
         }
-
 
         public override void SetDefaults()
         {
@@ -38,6 +35,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Item.shoot = ModContent.ProjectileType<SpinFlower>();
             Item.shootSpeed = 15f;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -48,6 +46,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (Main.myPlayer == player.whoAmI)

@@ -10,8 +10,8 @@ namespace RealmOne.Items.ItemCritter
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Caught Redback Spider");
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 24;

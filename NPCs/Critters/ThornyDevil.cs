@@ -1,5 +1,4 @@
-﻿using RealmOne.Common.Systems;
-using RealmOne.Items.ItemCritter;
+﻿using RealmOne.Items.ItemCritter;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
@@ -10,15 +9,11 @@ namespace RealmOne.NPCs.Critters
 {
     public class ThornyDevil : ModNPC
     {
-
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Thorny Devil");
             Main.npcFrameCount[NPC.type] = 8;
             Main.npcCatchable[NPC.type] = true;
-
-
 
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
@@ -27,14 +22,10 @@ namespace RealmOne.NPCs.Critters
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
             NPCID.Sets.CountsAsCritter[Type] = true;
-
-
-
         }
 
         public override void SetDefaults()
         {
-
             NPC.catchItem = (short)ModContent.ItemType<ThornyDevilItem>();
             NPC.width = 24;
             NPC.height = 20;
@@ -52,7 +43,6 @@ namespace RealmOne.NPCs.Critters
             NPC.aiStyle = NPCAIStyleID.Passive;
             AIType = NPCID.Scorpion;
             AnimationType = NPCID.Scorpion;
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
@@ -73,11 +63,6 @@ namespace RealmOne.NPCs.Critters
             return 0;
         }
 
-
-
-
-
-
         /*  public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
           {
               drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
@@ -86,16 +71,12 @@ namespace RealmOne.NPCs.Critters
               return false;
           }*/
 
-
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                    BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
 
-
                 new FlavorTextBestiaryInfoElement("The spiked beast! This interesting but spiky fella treads on the hot dry grains of the desert with ease, hunting prey by rolling over them with their penetrating spikes! Be careful this guy hurts"),
-
-
             });
         }
     }

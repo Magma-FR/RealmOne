@@ -1,41 +1,40 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.DataStructures;
-using ReLogic.Content;
-using Terraria.GameContent;
 using RealmOne.Common.Core;
-using Terraria.Audio;
 using RealmOne.Common.Systems;
-using RealmOne.Projectiles.Bullet;
 using RealmOne.Projectiles.Other;
+using ReLogic.Content;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
-{ 
+{
     internal class LightBulbRing1 : ModProjectile
     {
-        static Texture2D tex;
+        private static Texture2D tex;
+
         public override void Load()
         {
             tex = (Texture2D)ModContent.Request<Texture2D>("RealmOne/Assets/Effects/LightbulbShine", AssetRequestMode.ImmediateLoad);
         }
+
         public override void Unload()
         {
             tex = null;
         }
+
         public override string Texture => Helper.Empty;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 30;
@@ -44,18 +43,21 @@ namespace RealmOne.Projectiles.Magic
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Magic;
             Projectile.tileCollide = false;
- 
+
             Projectile.penetrate = -1;
             Projectile.damage = 1;
         }
-        ref float Timer => ref Projectile.ai[0];
-        ref float NumOfImages => ref Projectile.ai[1];
-        Vector2 scale;
-        bool channel = false;   
+
+        private ref float Timer => ref Projectile.ai[0];
+        private ref float NumOfImages => ref Projectile.ai[1];
+        private Vector2 scale;
+        private bool channel = false;
+
         public override void OnSpawn(IEntitySource source)
         {
             NumOfImages = 1;
         }
+
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(rorAudio.BulbShatter, Projectile.position);
@@ -64,6 +66,7 @@ namespace RealmOne.Projectiles.Magic
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("LightbulbBulletGore2").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("LightbulbBulletGore3").Type, 1f);
         }
+
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
@@ -94,11 +97,11 @@ namespace RealmOne.Projectiles.Magic
             {
                 channel = true;
                 Projectile.velocity = Projectile.DirectionTo(Main.MouseWorld) * 2 * NumOfImages;
-                
+
                 Projectile.timeLeft = 30 * (int)NumOfImages;
             }
 
-            if(channel == false)
+            if (channel == false)
             {
                 Projectile.Center = player.Center;
             }
@@ -113,6 +116,7 @@ namespace RealmOne.Projectiles.Magic
 
             Lighting.AddLight(Projectile.Center, Color.LightGoldenrodYellow.ToVector3() * 1f * NumOfImages / maxNumImages);
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             for (int i = 1; i <= NumOfImages; i++)
@@ -128,6 +132,7 @@ namespace RealmOne.Projectiles.Magic
             }
             return false;
         }
+
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             return Vector2.Distance(Projectile.Center, targetHitbox.Center.ToVector2()) <= tex.Width * scale.X / 2;

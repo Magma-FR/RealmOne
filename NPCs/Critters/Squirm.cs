@@ -18,7 +18,6 @@ namespace RealmOne.NPCs.Critters
 
             NPCID.Sets.CountsAsCritter[Type] = true;
 
-
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
@@ -44,8 +43,8 @@ namespace RealmOne.NPCs.Critters
             AnimationType = NPCID.Worm;
             NPC.npcSlots = 0;
             NPC.dontCountMe = true;
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.TownGeneralCritter.Chance * 0.6f;
@@ -56,7 +55,7 @@ namespace RealmOne.NPCs.Critters
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				// Sets the spawning conditions of this NPC that is listed in the bestiary.
-				
+
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
@@ -69,12 +68,11 @@ namespace RealmOne.NPCs.Critters
 				// so we use this line to tell the game to prioritize a specific InfoElement for sourcing the background image.
             });
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int i = 0; i < 15; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Worm, speed * 5, Scale: 0.3f);

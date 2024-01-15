@@ -5,14 +5,11 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class SandBulletProjectile : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sand Bullet");
-
         }
 
         public override void SetDefaults()
@@ -31,7 +28,6 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 1;
             AIType = 0;
-
         }
 
         public override void AI()
@@ -41,7 +37,8 @@ namespace RealmOne.Projectiles.Bullet
             Lighting.Brightness(1, 1);
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Sandnado, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 6; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Sandnado, 0f, 0f, 0, default, 1f);
@@ -49,9 +46,9 @@ namespace RealmOne.Projectiles.Bullet
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.DD2_BetsyWindAttack, Projectile.position);
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
             for (int i = 0; i < 6; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Sandnado, 0f, 0f, 0, default, 1f);
         }

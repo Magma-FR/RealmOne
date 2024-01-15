@@ -11,7 +11,7 @@ namespace RealmOne.Items.Weapons.Melee
 {
     public class HeatedXiphoss : ModItem
     {
-        int hitCount = 0;
+        private int hitCount = 0;
 
         public override void SetStaticDefaults()
         {
@@ -25,7 +25,6 @@ namespace RealmOne.Items.Weapons.Melee
              + "\nThese effects reset on the 16th swing");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -45,7 +44,6 @@ namespace RealmOne.Items.Weapons.Melee
             Item.crit = 4;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_MetalSwing");
             Item.autoReuse = true;
-
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -53,12 +51,10 @@ namespace RealmOne.Items.Weapons.Melee
             int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, 0f, 0f, 0, default, 1f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 1.5f;
-
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-
             target.AddBuff(BuffID.OnFire3, 180);
             Collision.AnyCollision(Item.position + Item.velocity, Item.velocity, Item.width, Item.height);
             SoundEngine.PlaySound(rorAudio.SFX_MetalClash);
@@ -71,24 +67,20 @@ namespace RealmOne.Items.Weapons.Melee
 
                 //  hitCount = 0;
             }
-
             else if (hitCount >= 10)
             {
                 Item.damage = 18;
 
                 //hitCount = 0;
             }
-
             else if (hitCount >= 15)
             {
                 target.AddBuff(ModContent.BuffType<SharpHeat>(), 3600);
 
                 //hitCount = 0;
             }
-
             else if (hitCount >= 20)
             {
-
                 hitCount = 0;
             }
         }

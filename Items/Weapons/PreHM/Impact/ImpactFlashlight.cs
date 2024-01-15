@@ -1,12 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Projectiles.Bullet;
-using RealmOne.Projectiles.Returning;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,14 +11,13 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 {
     public class ImpactFlashlight : ModItem
     {
+       
 
-        private float AimResponsiveness = 0.67f;
-        private bool timerUp = false;
         public override void SetStaticDefaults()
         {
-            
             Item.ResearchUnlockCount = 1;
         }
+
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -40,14 +36,14 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.shootSpeed = 1f;
             Item.shoot = ModContent.ProjectileType<ImpactFlashLights>();
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(Mod, "ImpactTech", 10 );
+            recipe.AddIngredient(Mod, "ImpactTech", 10);
 
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -90,6 +86,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.AliceBlue.ToVector3() * 0.4f);
@@ -112,9 +109,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         }
     }
 
-    public class ImpactFlashLights: ModProjectile
+    public class ImpactFlashLights : ModProjectile
     {
-
         public override string Texture => "RealmOne/Items/Weapons/PreHM/Impact/ImpactFlashLights";
 
         public override void SetDefaults()
@@ -128,8 +124,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Projectile.DamageType = DamageClass.Magic;
         }
 
-
-   
         public override void AI()
         {
             Player Player = Main.player[Projectile.owner];
@@ -146,7 +140,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     {
                         if (Projectile.ai[1] == 3f)
                             Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, 20f).RotatedBy(Projectile.rotation), Vector2.Zero, ModContent.ProjectileType<BlueFlash>(), Damage: 25, Projectile.knockBack, Main.myPlayer);
-
                     }
                     else
                     {
@@ -156,8 +149,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             }
             else
             {
-                if (Projectile.ai[0] % 5 == 0) 
-                if (!Player.channel || Player.noItems || Player.CCed) Projectile.Kill();
+                if (Projectile.ai[0] % 5 == 0)
+                    if (!Player.channel || Player.noItems || Player.CCed) Projectile.Kill();
             }
             Projectile.ai[0]++;
             if (Main.MouseWorld.X > Player.Center.X) Player.ChangeDir(1);

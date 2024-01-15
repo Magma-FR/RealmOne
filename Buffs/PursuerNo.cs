@@ -1,10 +1,8 @@
-﻿using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
+
 namespace RealmOne.Buffs
 {
     public class PursuerNo : ModBuff
     {
-        
     }
-
 }

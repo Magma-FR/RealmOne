@@ -9,7 +9,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class CorruptEye : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -32,17 +31,18 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.tileCollide = true;
             Projectile.aiStyle = ProjAIStyleID.Arrow;
         }
+
         public override void AI()
         {
             Projectile.rotation += 0.1f;
 
             Lighting.AddLight(Projectile.position, 0.1f, 0.6f, 0.2f);
             Lighting.Brightness(1, 1);
-
-
         }
+
         public PrimitiveTrail trail = new();
         public List<Vector2> oldPositions = new List<Vector2>();
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -64,7 +64,8 @@ namespace RealmOne.Projectiles.Bullet
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
             return true;
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("VulgarGore1").Type, 1.5f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("VulgarGore2").Type, 1f);
@@ -94,4 +95,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

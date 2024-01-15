@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Projectiles.Bullet;
 using Terraria;
@@ -17,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             DisplayName.SetDefault("Lightbulb Cannon"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("'Shoots a massive lightbulb that release a large aura of light'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -39,9 +37,9 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             Item.value = Item.buyPrice(gold: 1, silver: 3);
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -57,6 +55,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             return true;
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
@@ -67,6 +66,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(3, 0);

@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
-using RealmOne.Common.Systems;
 using Terraria;
-using Terraria.Audio;
 using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -48,19 +46,17 @@ namespace RealmOne.Projectiles.Shortsword
             Projectile.width = 40;
             Projectile.height = 55;
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {
-
-        
-
             for (int i2 = 0; i2 < 10; i2++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(-1f, 1f);
 
                 var d2 = Dust.NewDustPerfect(target.position, DustID.GoldFlame, speed * 5, Scale: 2f);
@@ -105,7 +101,6 @@ namespace RealmOne.Projectiles.Shortsword
             Lighting.Brightness(1, 1);
             // The code in this method is important to align the sprite with the hitbox how we want it to
             SetVisualOffsets();
-
         }
 
         private void SetVisualOffsets()
@@ -158,7 +153,6 @@ namespace RealmOne.Projectiles.Shortsword
             Vector2 end = start + Projectile.velocity * 6f;
             float collisionPoint = 0f; // Don't need that variable, but required as parameter
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), start, end, CollisionWidth, ref collisionPoint);
-
         }
     }
 }

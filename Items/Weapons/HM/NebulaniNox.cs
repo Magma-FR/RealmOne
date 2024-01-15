@@ -18,7 +18,6 @@ namespace RealmOne.Items.Weapons.HM
             + "\n'Uses mana and ammo but shoots a extra Nebula Arcanum if used with bullets");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -41,7 +40,6 @@ namespace RealmOne.Items.Weapons.HM
             Item.crit = 4;
             Item.mana = 10;
             Item.noMelee = true;
-
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -51,10 +49,8 @@ namespace RealmOne.Items.Weapons.HM
             line = new TooltipLine(Mod, "NebulaniNox", "'Feel the power of a new born star!'")
             {
                 OverrideColor = new Color(167, 68, 236)
-
             };
             tooltips.Add(line);
-
         }
 
         public override Vector2? HoldoutOffset()
@@ -82,7 +78,6 @@ namespace RealmOne.Items.Weapons.HM
             {
                 Dust.NewDust(player.position, player.width, player.height, DustID.UnusedWhiteBluePurple, 0f, 0f, 150, default, 2f);
                 Dust.NewDust(player.position, player.width, player.height, DustID.Shadowflame, 0f, 0f, 150, default, 2f);
-
             }
 
             for (int i = 0; i < 20; i++)
@@ -117,7 +112,6 @@ namespace RealmOne.Items.Weapons.HM
 
             .AddTile(TileID.LunarCraftingStation)
             .Register();
-
         }s
     }
 }*/

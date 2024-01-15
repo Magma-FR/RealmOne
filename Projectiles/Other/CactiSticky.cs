@@ -28,6 +28,7 @@ namespace RealmOne.Projectiles.Other
             get => Projectile.localAI[0];
             set => Projectile.localAI[0] = value;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 16;
@@ -42,8 +43,8 @@ namespace RealmOne.Projectiles.Other
             Projectile.alpha = 255;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;
-
         }
+
         public override void AI()
         {
             UpdateAlpha();
@@ -60,9 +61,9 @@ namespace RealmOne.Projectiles.Other
         }
 
         private const int GravityDelay = 20;
+
         private void NormalAI()
         {
-
             GravityDelayTimer++; // doesn't make sense.
 
             if (GravityDelayTimer >= GravityDelay)
@@ -93,6 +94,7 @@ namespace RealmOne.Projectiles.Other
                 dust.velocity *= 0.5f;
             }
         }
+
         private const int StickTime = 60 * 5; // 5 seconds
 
         private void StickyAI()
@@ -127,7 +129,7 @@ namespace RealmOne.Projectiles.Other
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
             Vector2 usePos = Projectile.position; //pos for dust spawning
@@ -138,9 +140,9 @@ namespace RealmOne.Projectiles.Other
             {
                 // Create a new dust
                 var dust = Dust.NewDustDirect(usePos, Projectile.width, Projectile.height, DustID.OasisCactus);
-
             }
         }
+
         private const int MaxStickies = 3; // This is the max amount of javelins able to be attached to a single NPC
         private readonly Point[] StickingCactis = new Point[MaxStickies]; // The point array holding for sticking javelins
 
@@ -171,7 +173,6 @@ namespace RealmOne.Projectiles.Other
             if (targetHitbox.Width > 8 && targetHitbox.Height > 8)
             {
                 targetHitbox.Inflate(-targetHitbox.Width / 8, -targetHitbox.Height / 8);
-
             }
 
             return projHitbox.Intersects(targetHitbox);
@@ -200,6 +201,7 @@ namespace RealmOne.Projectiles.Other
         }
 
         private const int AlphaFadeInSpeed = 25;
+
         private void UpdateAlpha()
         {
             // Slowly remove alpha as it is present

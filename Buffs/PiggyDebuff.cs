@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+
 namespace RealmOne.Buffs
 {
     public class PiggyDebuff : ModBuff
@@ -13,6 +14,5 @@ namespace RealmOne.Buffs
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
         }
-
     }
 }

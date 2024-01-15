@@ -34,6 +34,7 @@ namespace RealmOne.Items.Fishing
                 .AddTile(TileID.Anvils)
                 .Register();
         }
+
         public override void SetDefaults()
         {
             Item.rare = ItemRarityID.Blue;
@@ -69,7 +70,6 @@ namespace RealmOne.Items.Fishing
 
     internal class ProtonBobber : ModProjectile
     {
-
         public static readonly Color[] PossibleLineColors = new Color[2] {
             new Color(110, 200, 252), // A white color
 			new Color(40, 40, 218) // A blue color
@@ -87,7 +87,6 @@ namespace RealmOne.Items.Fishing
 
         public override void SetDefaults()
         {
-
             // Projectile.netImportant = true;
             Projectile.CloneDefaults(ProjectileID.BobberReinforced);
             Projectile.damage = 10;
@@ -116,10 +115,10 @@ namespace RealmOne.Items.Fishing
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 1f);
 
                 //   Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Electric, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.7f);
-
             }
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("ProtonBobberGore1").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("ProtonBobberGore2").Type, 1f);
@@ -134,7 +133,6 @@ namespace RealmOne.Items.Fishing
 
         public override void ModifyFishingLine(ref Vector2 lineOriginOffset, ref Color lineColor)
         {
-
             lineOriginOffset = new Vector2(26, -20);
             // Sets the fishing line's color. Note that this will be overridden by the colored string accessories.
             lineColor = FishingLineColor;
@@ -151,4 +149,3 @@ namespace RealmOne.Items.Fishing
         }
     }
 }
-

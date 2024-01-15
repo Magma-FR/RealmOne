@@ -20,7 +20,6 @@ namespace RealmOne.Items.Potions.Cologne
 
         public override void SetDefaults()
         {
-
             Item.height = 32;
             Item.width = 32;
             Item.useTime = 20;
@@ -35,14 +34,13 @@ namespace RealmOne.Items.Potions.Cologne
             Item.buffType = ModContent.BuffType<TraditionalCologneBuff>();
             Item.buffTime = 7200;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_Cologne");
-
         }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PurificationPowder, 0f, 0f, 35, default, 3f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 2f;
-
         }
 
         public override void HoldItem(Player player)

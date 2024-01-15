@@ -6,8 +6,6 @@ namespace RealmOne.Items.Placeables.BannerItems
 {
     public class BannerItem
     {
-
-
         public class AcornSprinterB : ModItem
         {
             public override void SetStaticDefaults()
@@ -20,6 +18,7 @@ namespace RealmOne.Items.Placeables.BannerItems
                 Item.DefaultToPlaceableTile(ModContent.TileType<Banners>(), 0);
             }
         }
+
         public class AcornStiltB : ModItem
         {
             public override void SetStaticDefaults()

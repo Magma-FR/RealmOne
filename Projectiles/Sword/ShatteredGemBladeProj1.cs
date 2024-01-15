@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Sword
 {
-
     public class ShatteredGemBladeProj1 : ModProjectile
     {
         public override void SetStaticDefaults()

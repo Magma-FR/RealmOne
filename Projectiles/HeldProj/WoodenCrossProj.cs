@@ -18,6 +18,7 @@ namespace RealmOne.Projectiles.HeldProj
         {
             Main.projFrames[Projectile.type] = 1;//number of frames the animation has
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 36;
@@ -31,11 +32,14 @@ namespace RealmOne.Projectiles.HeldProj
             Projectile.netImportant = true;
             Projectile.netUpdate = true;
         }
+
         public override bool? CanDamage()
         {
             return false;
         }
+
         private bool recoilFX;
+
         public override void AI()
         {
             Projectile.netImportant = true;
@@ -77,12 +81,11 @@ namespace RealmOne.Projectiles.HeldProj
                 UpdatePlayerVisuals(player, rrp);
 
                 UpdateAim(rrp, player.HeldItem.shootSpeed);
-
             }
             else if (!stillInUse)
                 Projectile.timeLeft = 2;
-
         }
+
         private void UpdatePlayerVisuals(Player player, Vector2 playerhandpos)
         {
             Projectile.netImportant = true;
@@ -104,8 +107,8 @@ namespace RealmOne.Projectiles.HeldProj
                 piover2 -= MathHelper.Pi;
             }
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + piover2);
-
         }
+
         private void UpdateAim(Vector2 source, float speed)
         {
             Player player = Main.player[Projectile.owner];
@@ -124,6 +127,7 @@ namespace RealmOne.Projectiles.HeldProj
             Projectile.netUpdate = true;
             Projectile.velocity = aim;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Player player = Main.player[Projectile.owner];
@@ -161,7 +165,6 @@ namespace RealmOne.Projectiles.HeldProj
                 offsetX -= 8;
                 if (offsetX == 32)
                     offsetX += 4;
-
             }
 
             origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
@@ -183,7 +186,6 @@ namespace RealmOne.Projectiles.HeldProj
             if (Main.myPlayer == Projectile.owner)
                 Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(player.HeldItem, AmmoID.Arrow), Projectile.Center, Projectile.velocity * 7f, ModContent.ProjectileType<CrossBowBolt>(), Projectile.damage, Projectile.knockBack, player.whoAmI);
             //screenshake
-
         }
     }
 }

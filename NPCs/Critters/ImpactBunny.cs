@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
-using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
@@ -13,12 +12,12 @@ namespace RealmOne.NPCs.Critters
 {
     public class ImpactBunny : ModNPC
     {
-       // static Asset<Texture2D> glowmask;
+        // static Asset<Texture2D> glowmask;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("E-Bunny");
-       //     glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
+            //     glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
 
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Bunny];
 
@@ -42,12 +41,13 @@ namespace RealmOne.NPCs.Critters
             NPC.DeathSound = SoundID.NPCDeath1;
             AIType = NPCID.Bunny;
             AnimationType = NPCID.Bunny;
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.OverworldNight.Chance * 0.16f;
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -55,10 +55,9 @@ namespace RealmOne.NPCs.Critters
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Critters/ImpactBunny_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
-
-        
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -66,15 +65,13 @@ namespace RealmOne.NPCs.Critters
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 
                 new FlavorTextBestiaryInfoElement("These fluffy bunnies were unfortunately purged when a catastrophic and otherworldly raid started."),
-
             });
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Electric, speed * 5, Scale: 2f);
@@ -82,6 +79,7 @@ namespace RealmOne.NPCs.Critters
                 d.noGravity = true;
             }
         }
+
         public override void AI()
         {
             Lighting.AddLight(NPC.position, r: 0f, g: 0.3f, b: 1f);

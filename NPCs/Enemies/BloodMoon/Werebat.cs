@@ -22,7 +22,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
-
         }
 
 		public override void SetDefaults()
@@ -54,7 +53,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			Player player = Main.player[NPC.target];
 			NPC.rotation = NPC.velocity.ToRotation() + (float)Math.PI;
 
-
 			if (Main.rand.NextBool(4))
 			{
 				Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, NPC.velocity.X * -0.5f, NPC.velocity.Y * -0.5f);
@@ -63,8 +61,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 			var entitySource = NPC.GetSource_FromThis();
 			if (Vector2.Distance(player.Center, NPC.Center) <= 250)
 			{
-				
-				
 				Timer++;
                 if (Timer >= 50 && Timer <= 71)
                 {
@@ -86,14 +82,11 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 						SoundEngine.PlaySound(SoundID.NPCHit19, NPC.position);
 						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (6 * NPC.spriteDirection), NPC.Center.Y - 8, direction.X, direction.Y, ProjectileID.BloodShot, 9, 1, Main.myPlayer, 0, 0);
 					}
-
                 }
                 if (Timer == 120)
 				{
 					Timer = 0;
 				}
-
-
 			}
 			else
 			{
@@ -107,7 +100,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
-
         }
         public override void HitEffect(NPC.HitInfo hit) // when the npc is hit, do smth (better than checking when hit by proj or melee)
         {
@@ -121,8 +113,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 		private int AnimTimer;
 		public override void FindFrame(int frameHeight)
 		{
-
-
             if (!Attacking)
             {
 				if (AnimFrameCount >= 4)
@@ -132,9 +122,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 				AnimTimer++;
 				if (AnimTimer % 10 == 0)
 					AnimFrameCount++;
-				
 			}
-				
             else
             {
                 if (((int)Timer - 50) % 5 == 0)
@@ -148,7 +136,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             }
 
 			NPC.frame.Y = NPC.frame.Height * AnimFrameCount;
-			
 		}
 
 		public class BloodshotEyeProjectile : ModProjectile
@@ -168,9 +155,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 				Projectile.tileCollide = true; // Can the projectile collide with tiles?
 				Projectile.extraUpdates = 1; // Set to above 0 if you want the projectile to update multiple time in a frame
 
-
 				; // Act exactly like default Bullet
-			}	
+			}
 
 			public override void AI()
 			{

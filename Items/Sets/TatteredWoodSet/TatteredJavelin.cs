@@ -1,13 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using System;
-using RealmOne.Items.Placeables;
-using RealmOne.Items.Placeables.FarmStuff;
+﻿using RealmOne.Items.Placeables.FarmStuff;
 using RealmOne.Projectiles.Throwing;
-
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace RealmOne.Items.Sets.TatteredWoodSet
 {
@@ -33,8 +28,6 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
             Item.shootSpeed = 9f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-
-
         }
 
         public override void AddRecipes()
@@ -44,7 +37,5 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }
-  
-
     }
 }

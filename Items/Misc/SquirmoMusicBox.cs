@@ -1,5 +1,4 @@
-﻿using RealmOne.Tiles;
-using RealmOne.Tiles.Furniture.MusicBoxx;
+﻿using RealmOne.Tiles.Furniture.MusicBoxx;
 using Terraria.ID;
 using Terraria.ModLoader;
 

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
+﻿using Microsoft.Xna.Framework;
 using RealmOne.Items.ItemCritter;
-using Terraria.GameContent.Bestiary;
 using RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
+using Terraria;
+using Terraria.GameContent.Bestiary;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
@@ -40,6 +35,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             AIType = NPCID.Grubby;
             NPC.dontTakeDamageFromHostiles = false;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -48,10 +44,9 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
 
                 new FlavorTextBestiaryInfoElement("While you fight all the gorey and bloody creatures of the night, this vampiric critter crawls around the surface sucking up excess carcass and blood. "),
-
-
             });
         }
+
         public override void FindFrame(int frameHeight)
         {
             if (NPC.velocity != Vector2.Zero || NPC.IsABestiaryIconDummy)
@@ -62,6 +57,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 NPC.frame.Y = frame * frameHeight;
             }
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0)
@@ -70,12 +66,10 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 1.75f * hit.HitDirection, -1.75f, 0, new Color(), 0.6f);
             }
             NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<BloodRat>(), ai3: 1).scale = 1f;
-
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) =>  Main.bloodMoon && spawnInfo.Player.ZoneOverworldHeight ? 0.17f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.bloodMoon && spawnInfo.Player.ZoneOverworldHeight ? 0.17f : 0f;
+
         public override void AI() => NPC.spriteDirection = NPC.direction;
-
-
     }
 }

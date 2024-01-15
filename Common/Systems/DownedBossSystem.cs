@@ -8,7 +8,6 @@ namespace RealmOne.Common.Systems
         public static bool downedPiggy;
         public static bool downedRat;
 
-
         public static bool downedSquirmo;
         public static bool downedOutcropOutcast;
 
@@ -32,7 +31,6 @@ namespace RealmOne.Common.Systems
 
         public override void SaveWorldData(TagCompound tag)
         {
-
             if (downedPiggy)
             {
                 tag.Set("downedPiggy", true);
@@ -56,11 +54,10 @@ namespace RealmOne.Common.Systems
         public override void LoadWorldData(TagCompound tag)
         {
             downedPiggy = tag.ContainsKey("downedPiggy");
-            downedRat= tag.ContainsKey("downedRat");
+            downedRat = tag.ContainsKey("downedRat");
 
             downedSquirmo = tag.ContainsKey("downedSquirmo");
             downedOutcropOutcast = tag.ContainsKey("downedOutcropOutcast");
-
         }
     }
 }

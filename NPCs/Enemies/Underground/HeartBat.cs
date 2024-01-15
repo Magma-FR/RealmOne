@@ -14,7 +14,6 @@ namespace RealmOne.NPCs.Enemies.Underground
 {
     public class HeartBat : ModNPC
     {
-        static Asset<Texture2D> glow;
 
         public override void SetStaticDefaults()
         {
@@ -28,13 +27,10 @@ namespace RealmOne.NPCs.Enemies.Underground
             };
 
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
-
-
         }
 
         public override void SetDefaults()
         {
-
             //  NPC.catchItem = (short)ModContent.ItemType<ThornyDevilItem>();
             NPC.width = 20;
             NPC.height = 20;
@@ -56,7 +52,6 @@ namespace RealmOne.NPCs.Enemies.Underground
             AIType = NPCID.CaveBat;
             AnimationType = NPCID.CaveBat;
             NPC.lifeRegen = 5;
-
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -66,7 +61,9 @@ namespace RealmOne.NPCs.Enemies.Underground
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Underground/HeartBat_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -74,7 +71,6 @@ namespace RealmOne.NPCs.Enemies.Underground
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HeartbatGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HeartbatGore2").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HeartbatGore3").Type, 1f);
-
             }
             for (int k = 0; k < 16; k++)
             {
@@ -89,19 +85,18 @@ namespace RealmOne.NPCs.Enemies.Underground
                 return SpawnCondition.Underground.Chance * 0.20f;
             return SpawnCondition.Cavern.Chance * 0.20f;
         }
+
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-
             target.AddBuff(BuffID.Rabies, 180);
             target.AddBuff(BuffID.Regeneration, 120);
-
         }
 
-        
         public override void AI()
         {
             NPC.lifeRegen += 5;
         }
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.LifeCrystal, 20, 1, 1));
@@ -110,18 +105,16 @@ namespace RealmOne.NPCs.Enemies.Underground
 
             npcLoot.Add(ItemDropRule.Common(ItemID.Heart, 1, 1, 1));
 
-
             npcLoot.Add(ItemDropRule.Common(ItemID.LifeforcePotion, 12, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.RegenerationPotion, 6, 1, 1));
-
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                    BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground ,
 
                 new FlavorTextBestiaryInfoElement("Crystalised with pure life, this fortunate bat can regenerate its health super fast"),
-
             });
         }
     }

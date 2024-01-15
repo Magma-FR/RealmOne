@@ -6,13 +6,13 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class TommyGunBarrelFlash : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Muzzle Flash");
         }
+
         private Vector2 flashoffset = Vector2.Zero;
 
         private Player Owner => Main.player[Projectile.owner];
@@ -36,7 +36,6 @@ namespace RealmOne.Projectiles.Bullet
 
         public override void AI()
         {
-
             Player player = Main.player[Projectile.owner];
 
             Lighting.AddLight(Projectile.Center, Color.Orange.ToVector3() * 0.8f);
@@ -65,4 +64,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

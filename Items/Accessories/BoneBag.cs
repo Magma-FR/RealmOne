@@ -16,12 +16,10 @@ namespace RealmOne.Items.Accessories
               + "\nShows the location of treasure and enemies in the dungeon");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.width = 20;
             Item.height = 20;
             Item.value = 10000;
@@ -29,7 +27,6 @@ namespace RealmOne.Items.Accessories
             Item.accessory = true;
 
             Item.material = true;
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -38,7 +35,6 @@ namespace RealmOne.Items.Accessories
             {
                 player.AddBuff(BuffID.Spelunker, 20);
                 player.AddBuff(BuffID.Hunter, 20);
-
             }
         }
         public override void AddRecipes()

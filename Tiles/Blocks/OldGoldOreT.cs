@@ -29,12 +29,10 @@ namespace RealmOne.Tiles.Blocks
 
             DustType = DustID.Gold;
 
-
             HitSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/OldGoldTink");
             MineResist = 1.5f;
             MinPick = 60;
         }
-
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
             => NPC.downedBoss1;
@@ -42,15 +40,11 @@ namespace RealmOne.Tiles.Blocks
         public override bool CanExplode(int i, int j)
             => NPC.downedBoss1;
 
-
-
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = 0.13f;
             g = 0.11f;
             b = 0.08f;
         }
-
-
     }
 }

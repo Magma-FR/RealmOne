@@ -1,46 +1,25 @@
-﻿using System;
+﻿using RealmOne.Items.Misc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.Utilities;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
-using Terraria.GameContent.Personalities;
-using Terraria.ModLoader.IO;
-using RealmOne.Items.Accessories;
-using RealmOne.Items.BossSummons;
-using RealmOne.Items.Misc;
-using RealmOne.Items.Weapons.Ranged;
-using RealmOne.Items.Others;
-using RealmOne.Biomes.Farm;
-using RealmOne.Items.Weapons.PreHM.Throwing;
-using RealmOne.Projectiles.Throwing;
-using RealmOne.Items.Vanities;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace RealmOne.NPCs.TownNPC
 {
     [AutoloadHead]
-
     public class FarmerSlime : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 14; // The total amount of frames the NPC has
-            
 
             NPCID.Sets.ShimmerTownTransform[NPC.type] = false; // This set says that the Town NPC has a Shimmered form. Otherwise, the Town NPC will become transparent when touching Shimmer like other enemies.
 
-            NPCID.Sets.ShimmerTownTransform[Type] = false ; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
+            NPCID.Sets.ShimmerTownTransform[Type] = false; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
 
             // Influences how the NPC looks in the Bestiary
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
@@ -55,9 +34,8 @@ namespace RealmOne.NPCs.TownNPC
             // < Mind the semicolon!
 
             // This creates a "profile" for ExamplePerson, which allows for different textures during a party and/or while the NPC is shimmered.
-
-
         }
+
         public override void SetDefaults()
         {
             NPC.townNPC = true; // Sets NPC to be a Town NPC
@@ -71,11 +49,11 @@ namespace RealmOne.NPCs.TownNPC
             NPC.CloneDefaults(NPCID.TownSlimeBlue);
             AnimationType = NPCID.TownSlimeBlue;
         }
+
         public override string GetChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-          
             // These are things that the NPC has a chance of telling you when you talk to it.
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.FarmerSlime.First"));
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.FarmerSlime.Second"));
@@ -83,11 +61,9 @@ namespace RealmOne.NPCs.TownNPC
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.FarmerSlime.Forth"));
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.FarmerSlime.Rare"), 0.3);
 
-            
-
             return chat; // chat is implicitly cast to a string.
         }
-    
+
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
             // If our Town NPC hasn't been rescued, don't arrive.
@@ -97,12 +73,10 @@ namespace RealmOne.NPCs.TownNPC
             }
             return true;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-			
-			
-
 				// Sets your NPC's flavor text in the bestiary.
 				new FlavorTextBestiaryInfoElement("A slightly drunk and tipsy slime, give him some hay and he might give you something special."),
 
@@ -110,6 +84,7 @@ namespace RealmOne.NPCs.TownNPC
 				// You can also use localization keys (see Localization/en-US.lang)
             });
         }
+
         public override List<string> SetNPCNameList()
         {
             return new List<string>() {
@@ -119,7 +94,7 @@ namespace RealmOne.NPCs.TownNPC
                 "Wheetie"
             };
         }
-    
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             int num = NPC.life > 0 ? 1 : 5;
@@ -128,11 +103,7 @@ namespace RealmOne.NPCs.TownNPC
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Hay);
             }
-
-           
-        
-    }
-       
+        }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
@@ -151,9 +122,5 @@ namespace RealmOne.NPCs.TownNPC
 				npc.frame.X = 0;
 			}*/
         }
-
-       
     }
 }
-    
-

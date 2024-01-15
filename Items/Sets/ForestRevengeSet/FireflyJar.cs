@@ -1,16 +1,7 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Buffs.Debuffs;
-using RealmOne.Common.Core;
 using RealmOne.Common.Systems;
-using RealmOne.Items.Sets.ForestRevengeSet;
-using RealmOne.Items.Sets.SunflowerSet;
-using RealmOne.Projectiles.Other;
-using RealmOne.Projectiles.Throwing;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,10 +12,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
     {
         public override void SetStaticDefaults()
         {
-           
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-
         }
 
         public override void SetDefaults()
@@ -37,7 +25,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Item.useAnimation = 22;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
-            Item.value = Item.buyPrice(0,0,0,45);
+            Item.value = Item.buyPrice(0, 0, 0, 45);
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
@@ -48,8 +36,6 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Item.noUseGraphic = true;
             Item.consumable = true;
         }
-
-      
 
         public override void PostUpdate()
         {
@@ -72,6 +58,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             }
         }
     }
+
     public class FireflyJarProj : ModProjectile
     {
         public override string Texture => "RealmOne/Items/Sets/ForestRevengeSet/FireflyJar";
@@ -100,6 +87,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Projectile.extraUpdates = 2;
             Projectile.CloneDefaults(ProjectileID.Shuriken);
         }
+
         public override void AI()
         {
             Lighting.AddLight(Projectile.position, r: 0.2f, g: 0.8f, b: 1.5f);
@@ -107,23 +95,21 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Lighting.Brightness(1, 1);
 
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
-
-
-
-
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.Kill();
             return false;
         }
-       
+
         public override void OnKill(int timeleft)
-     {
+        {
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileID.SolarWhipSwordExplosion, Damage: 0, Projectile.knockBack, Projectile.owner);
 
             for (int i = 0; i < 17; i++)
@@ -148,6 +134,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("JarGore3").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("JarGore4").Type, 1f);
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {

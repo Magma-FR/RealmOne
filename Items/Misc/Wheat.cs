@@ -13,7 +13,6 @@ namespace RealmOne.Items.Misc
             Tooltip.SetDefault("'Hand picked from the fields, ready to be baked'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
-
         }
 
         public override void SetDefaults()

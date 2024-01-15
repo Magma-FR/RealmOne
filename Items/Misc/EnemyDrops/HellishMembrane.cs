@@ -24,7 +24,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Item.rare = ItemRarityID.Orange;
             Item.maxStack = 999;
             Item.value = Item.buyPrice(silver: 28, copper: 10);
-
         }
 
         public override void PostUpdate()

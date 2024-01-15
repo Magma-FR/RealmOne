@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne.Biomes.Farm;
 using Terraria;
 using Terraria.Graphics.Capture;
 using Terraria.ModLoader;
@@ -9,6 +8,7 @@ namespace RealmOne.Biomes.Farm
     public class FarmSurface : ModBiome
     {
         public override void SetStaticDefaults() => DisplayName.SetDefault("Abandoned Farm");
+
         public override ModWaterStyle WaterStyle => ModContent.GetInstance<FarmWaterStyle>(); // Sets a water style for when inside this biome
         public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<FarmBiomeBackgroundStyle>();
         public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
@@ -20,7 +20,6 @@ namespace RealmOne.Biomes.Farm
 
         public override Color? BackgroundColor => base.BackgroundColor;
         public override string MapBackground => BackgroundPath; // Re-uses Bestiary Background for Map Background
-
 
         public override bool IsBiomeActive(Player player)
         {
@@ -38,9 +37,4 @@ namespace RealmOne.Biomes.Farm
         // Declare biome priority. The default is BiomeLow so this is only necessary if it needs a higher priority.
         public override SceneEffectPriority Priority => SceneEffectPriority.BiomeLow;
     }
-
-
-
-
 }
-

@@ -1,4 +1,3 @@
-
 /*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.Magic;
 using Terraria;
@@ -10,7 +9,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
 {
-
     public class SquirmStaff : ModItem
     {
         public override void SetStaticDefaults()
@@ -87,7 +85,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             .AddRecipeGroup("Wood", 18)
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
     }
 }

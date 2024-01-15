@@ -18,6 +18,7 @@ namespace RealmOne.Projectiles.Piggy
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
@@ -61,6 +62,7 @@ namespace RealmOne.Projectiles.Piggy
         {
             Projectile.scale *= 4f;
         }
+
         public override void AI()
         {
             int dust = Dust.NewDust(Projectile.position, 2, 2, DustID.GoldCoin);
@@ -74,7 +76,7 @@ namespace RealmOne.Projectiles.Piggy
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Main.LocalPlayer.GetModPlayer<Screenshake>().ScreenShake = 45;
             for (int i = 0; i < 300; i++)

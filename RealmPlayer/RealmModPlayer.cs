@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Projectiles.Other;
 using RealmOne.Buffs;
 using RealmOne.Common.Core;
-using RealmOne.Items.Misc;
 using RealmOne.Items.Opens;
+using RealmOne.Items.PaperUI;
+using RealmOne.Projectiles.Other;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -15,60 +15,49 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
-using RealmOne.Items.PaperUI;
-using Terraria.GameContent;
 
 namespace RealmOne.RealmPlayer
 {
-
     public static class Zones
     {
         public static bool ZoneFarmy(this Player player)
             => player.InModBiome<Biomes.Farm.FarmSurface>();
-
     }
+
     public class Scrolly : ModPlayer
     {
         public bool ShowScroll = false;
-
 
         public override void PostUpdate()
         {
             if (ShowScroll == true)
             {
                 Player target = Main.LocalPlayer;
-
             }
-
-
-
 
             base.PostUpdate();
         }
     }
+
     public class ScrollyWorm : ModPlayer
 
     {
-
         public bool ShowWorm1 = false;
 
         public override void PostUpdate()
         {
-
             if (ShowWorm1 == true)
             {
                 Player target = Main.LocalPlayer;
-
             }
-
 
             base.PostUpdate();
         }
     }
+
     //ALL THIS CODE UP TO THE # IS SPIRIT MOD'S GITHUB CODE, ALL CREDIT GOES TO THEM.
     public class ItemGlowy : ModPlayer
     {
-
         internal new static void Unload()
         {
             ItemGlowMask.Clear();
@@ -98,28 +87,29 @@ namespace RealmOne.RealmPlayer
                 GlowMaskSystem.DrawItemGlowMask(textureItem, drawInfo);
         }
     }
+
     //#
 
     public class Screenshake : ModPlayer
     {
-        int timer = 0;
+        private int timer = 0;
         public bool SmallScreenshake = false;
-        bool makeTimerWork = false;
+        private bool makeTimerWork = false;
 
         public int ScreenShake = 0;
         public int BigShake = 0;
 
-        int timer1 = 0;
+        private int timer1 = 0;
         public bool BombScreenshake = false;
-        bool makeTimerWork1 = false;
+        private bool makeTimerWork1 = false;
 
-        int timerworm = 0;
+        private int timerworm = 0;
         public bool WormScreenshake = false;
-        bool WormTimerWork = false;
+        private bool WormTimerWork = false;
 
-        int LongShakeTimer = 0;
+        private int LongShakeTimer = 0;
         public bool LongShake = false;
-        bool LongShakeWork = false;
+        private bool LongShakeWork = false;
 
         public override void ModifyScreenPosition()
         {
@@ -261,18 +251,16 @@ namespace RealmOne.RealmPlayer
 
     public class ThornsPlayer : ModPlayer
     {
-
-
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
             if (Player.HasBuff(BuffID.Thorns))
 
             {
                 npc.AddBuff(BuffID.Poisoned, 60); // Apply Poisoned buff to the enemy for 1 second (60 frames)
-
             }
         }
     }
+
     public class RealmModPlayer : ModPlayer
     {
         public bool marbleJustJumped;
@@ -291,9 +279,9 @@ namespace RealmOne.RealmPlayer
         public int PigSwings = 0;
         public int cd;
 
-        int coinFall = 0;
-        int coinFallAmount = 0;
-        bool hasStriken = false;
+        private int coinFall = 0;
+        private int coinFallAmount = 0;
+        private bool hasStriken = false;
 
         public bool piggy = false;
 
@@ -305,12 +293,11 @@ namespace RealmOne.RealmPlayer
             Rusty = false;
             GreenNeck = false;
             marbleJustJumped = false;
-    
+
             FallSpeed = false;
             brassSet = false;
             PiggySet = false;
             hasStriken = false;
-
         }
 
         /*public void DoubleTapEffects(int keyDir)
@@ -320,10 +307,10 @@ namespace RealmOne.RealmPlayer
 				if( brassSet && !Player.HasBuff(ModContent.BuffType<BrassMight>()))
 				{
                     Player.AddBuff(ModContent.BuffType<BrassMight>(), 500);
-
                 }
             }
 		}*/
+
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             Player p = Main.LocalPlayer;
@@ -335,16 +322,13 @@ namespace RealmOne.RealmPlayer
                     p.maxFallSpeed += 4f;
                 }
             }
-
-
-
-
         }
+
         public override void PostUpdateMiscEffects()
         {
             Player.ManageSpecialBiomeVisuals("RealmOne:BloodSky", Main.bloodMoon);
-
         }
+
         public override bool CanConsumeAmmo(Item weapon, Item ammo)
         {
             if (Rusty == true)
@@ -353,8 +337,8 @@ namespace RealmOne.RealmPlayer
             }
 
             return base.CanConsumeAmmo(weapon, ammo);
-
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (GreenNeck)
@@ -368,15 +352,15 @@ namespace RealmOne.RealmPlayer
                 }
             }
         }
+
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
             if (Overseer && Main.rand.NextBool(3) && !target.friendly && hit.Crit && target.lifeMax > 10 && target.type != NPCID.TargetDummy)
             {
                 Player.AddBuff(ModContent.BuffType<OverseerBuff>(), 400);
             }
-
-
         }
+
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             if (Overseer && Main.rand.NextBool(3) && hit.Crit && !target.friendly && target.lifeMax > 10 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
@@ -384,12 +368,11 @@ namespace RealmOne.RealmPlayer
                 Player.AddBuff(ModContent.BuffType<OverseerBuff>(), 400);
             }
         }
+
         public class BrightProjectilePlayer : ModPlayer
         {
             public bool brightProjectiles = false;
-
         }
-
 
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -401,8 +384,6 @@ namespace RealmOne.RealmPlayer
                 }
             }
         }
-
-
 
         public override void PreUpdate()
         {
@@ -418,7 +399,6 @@ namespace RealmOne.RealmPlayer
 
             if (Main.GameModeInfo.IsMasterMode)
             {
-
                 if (Player.ZoneSkyHeight)
                 {
                     Player.AddBuff(BuffID.Suffocation, 20);
@@ -426,7 +406,6 @@ namespace RealmOne.RealmPlayer
 
                 if (Player.HasBuff(BuffID.Suffocation))
                 {
-
                     CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height), new Color(80, 150, 240, 140), "You're losing air!!", false, false);
                 }
             }
@@ -488,20 +467,16 @@ namespace RealmOne.RealmPlayer
             }
         }
 
-
         public override void OnEnterWorld()
         {
-
             if (Main.netMode != NetmodeID.Server)
             {
                 Main.NewText(Language.GetTextValue("Another day, Another Disappointment"), 180, 30, 250);
-
             }
 
             if (Main.netMode != NetmodeID.Server)
             {
                 Main.NewText(Language.GetTextValue($"[i:{ItemID.FallenStar}] Go and join the discord server for the mod!! [c/0000FF:discord.gg/vsBJ8PrmCh] [i:{ItemID.FallenStar}]"), 128, 200, 55);
-
             }
         }
 
@@ -510,9 +485,9 @@ namespace RealmOne.RealmPlayer
             if (Main.netMode != NetmodeID.Server)
             {
                 Main.NewText(Language.GetTextValue("Death is only so fragile, yet you take advantage of it."), 218, 39, 44);
-
             }
         }
+
         public override void PlayerConnect()
         {
             if (Main.netMode != NetmodeID.Server)
@@ -520,6 +495,7 @@ namespace RealmOne.RealmPlayer
                 Main.NewText(Language.GetTextValue("'Your acquaintance wants to feel distress as well I see'"), 64, 16, 227);
             }
         }
+
         public override void PlayerDisconnect()
         {
             if (Main.netMode != NetmodeID.Server)
@@ -538,14 +514,10 @@ namespace RealmOne.RealmPlayer
 
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
-
             return (IEnumerable<Item>)(object)new Item[2]
             {
                 new Item(ModContent.ItemType<Suitcase>(), 1, 0),
                 new Item(ModContent.ItemType<LovecraftPaper>(), 1, 0),
-
-
-
             };
         }
     }

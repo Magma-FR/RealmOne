@@ -40,6 +40,7 @@ namespace RealmOne.Tiles.Banners
                 case 0:
                     Item.NewItem(new EntitySource_TileBreak(i * 16, j * 16), i * 16, j * 16, 16, 48, ModContent.ItemType<BannerItem.AcornSprinterB>());
                     break;
+
                 case 1:
                     Item.NewItem(new EntitySource_TileBreak(i * 16, j * 16), i * 16, j * 16, 16, 48, ModContent.ItemType<BannerItem.AcornStiltB>());
                     break;
@@ -59,7 +60,6 @@ namespace RealmOne.Tiles.Banners
                 default:
                     return;
             }
-
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
@@ -74,13 +74,14 @@ namespace RealmOne.Tiles.Banners
                         Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<AcornSprinter>()] = true;
                         Main.SceneMetrics.hasBanner = true;
                         break;
+
                     case 1:
                         Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<AcornStiltWalker>()] = true;
                         Main.SceneMetrics.hasBanner = true;
                         break;
 
                     case 2:
-                //        Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<ImpactTurret>()] = true;
+                        //        Main.SceneMetrics.NPCBannerBuff[ModContent.NPCType<ImpactTurret>()] = true;
                         Main.SceneMetrics.hasBanner = true;
                         break;
 
@@ -97,8 +98,6 @@ namespace RealmOne.Tiles.Banners
                     default:
                         return;
                 }
-
-
             }
         }
 

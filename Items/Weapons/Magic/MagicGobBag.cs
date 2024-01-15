@@ -14,7 +14,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.Magic
 {
-
     public class MagicGobBag : ModItem
     {
         public override void SetStaticDefaults()
@@ -23,8 +22,8 @@ namespace RealmOne.Items.Weapons.Magic
             DisplayName.SetDefault("Sorcerer's Rift Pouch");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/Magic/MagicGobBag_Glow");
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 30;
@@ -47,6 +46,7 @@ namespace RealmOne.Items.Weapons.Magic
 
             Item.shoot = ModContent.ProjectileType<GobPortal>();
         }
+
         public override bool OnPickup(Player player)
         {
             SoundEngine.PlaySound(SoundID.Item130);
@@ -55,10 +55,9 @@ namespace RealmOne.Items.Weapons.Magic
 
         public override bool CanUseItem(Player player)
         {
-
             return player.ownedProjectileCounts[Item.shoot] < 1;
-
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = Request<Texture2D>("RealmOne/Items/Weapons/Magic/MagicGobBag_Glow", AssetRequestMode.ImmediateLoad).Value;
@@ -80,6 +79,7 @@ namespace RealmOne.Items.Weapons.Magic
                 0f
             );
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 mouse = Main.MouseWorld;
@@ -136,6 +136,7 @@ namespace RealmOne.Items.Weapons.Magic
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.Purple.ToVector3() * 1f);
@@ -156,7 +157,5 @@ namespace RealmOne.Items.Weapons.Magic
                 dust.alpha = 0;
             }
         }
-
-
     }
 }

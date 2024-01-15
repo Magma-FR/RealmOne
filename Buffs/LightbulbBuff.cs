@@ -10,7 +10,6 @@ namespace RealmOne.Buffs
         {
             DisplayName.SetDefault("Lightbulb Buff");
             Description.SetDefault("'You are a lightbulb!'");
-
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -18,12 +17,10 @@ namespace RealmOne.Buffs
             if (player.ZoneNormalUnderground && player.ZoneRockLayerHeight)
             {
                 Lighting.AddLight(player.position, 2f, 1.8f, 0.2f);
-
             }
             else
             {
                 Lighting.AddLight(player.position, 1f, 0.8f, 0.1f);
-
             }
         }
     }

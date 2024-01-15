@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Items.ItemCritter;
 using RealmOne.Items.Others;
-using RealmOne.Items.Placeables;
 using RealmOne.Items.Placeables.FarmStuff;
 using RealmOne.RealmPlayer;
 using RealmOne.Tiles.Blocks;
@@ -24,7 +23,7 @@ namespace RealmOne.NPCs.Critters.Farm
 
             Main.npcCatchable[NPC.type] = true;
             Main.npcFrameCount[NPC.type] = 7;
-        
+
             NPCID.Sets.CountsAsCritter[Type] = true;
         }
 
@@ -48,9 +47,8 @@ namespace RealmOne.NPCs.Critters.Farm
 
             AnimationType = NPCID.Snail;
             SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.Farm.FarmSurface>().Type };
-
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             Player player = spawnInfo.Player;
@@ -62,7 +60,6 @@ namespace RealmOne.NPCs.Critters.Farm
             }
             return 0f;
         }
-
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
@@ -78,17 +75,14 @@ namespace RealmOne.NPCs.Critters.Farm
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-          
-                if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
-                {
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail1").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail2").Type, 1f);
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail1").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail2").Type, 1f);
 
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail3").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail4").Type, 1f);
-
-
-                }
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail3").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("OldSnail4").Type, 1f);
+            }
 
             for (int k = 0; k < 15; k++)
             {
@@ -102,7 +96,6 @@ namespace RealmOne.NPCs.Critters.Farm
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FarmKey>(), 35, 1, 1));
 
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TatteredWood>(), 1, 1, 4));
-
         }
     }
 }

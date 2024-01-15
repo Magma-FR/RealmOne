@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.Bullet.StunSeed;
 using Terraria;
 using Terraria.ID;
@@ -39,7 +38,6 @@ namespace RealmOne.Items.Weapons.Ranged
             else
             {
                 type = Main.rand.Next(new int[] { type, ModContent.ProjectileType<StunSeedA>(), ModContent.ProjectileType<StunSeedP>(), ModContent.ProjectileType<StunSeedW>() });
-
             }
 
             Vector2 muzzleOffset = Vector2.Normalize(velocity) * 25f;
@@ -54,6 +52,5 @@ namespace RealmOne.Items.Weapons.Ranged
         {
             return new Vector2(-5, 0);
         }
-
     }
 }

@@ -1,7 +1,4 @@
 using Microsoft.Xna.Framework;
-using RealmOne.Items.Accessories;
-using RealmOne.Items.Misc;
-using RealmOne.Items.Misc.Plants;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -9,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Armor.Chillrend
 {
-
     [AutoloadEquip(EquipType.Head)]
     public class ChillrendHead : ModItem
     {
@@ -27,13 +23,12 @@ namespace RealmOne.Armor.Chillrend
             Item.width = 18;
             Item.height = 18;
             Item.value = Item.sellPrice(0, 1, 0, 0);
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Green;
             Item.defense = 3;
         }
 
         public override void UpdateEquip(Player player)
         {
-
             player.GetDamage(DamageClass.Ranged) += 0.06f;
             player.GetAttackSpeed(DamageClass.Ranged) += 0.06f;
         }
@@ -49,7 +44,7 @@ namespace RealmOne.Armor.Chillrend
 
         public override void UpdateArmorSet(Player player)
         {
-            player.GetModPlayer<IceArmour>().icySHIT= true;
+            player.GetModPlayer<IceArmour>().icySHIT = true;
 
             player.setBonus = "When enemies strike you they inflict frostburn\nWhen enemies strike you they take 40 damage\n5% increased ranged crit chance";
             player.gills = true;
@@ -57,7 +52,7 @@ namespace RealmOne.Armor.Chillrend
             Lighting.Brightness(2, 2);
             Watertimer++;
             Vector2 center = player.Center;
-            for (int j = 0; j <150; j++)
+            for (int j = 0; j < 150; j++)
             {
                 int dust1 = Dust.NewDust(center, 0, 0, DustID.IceTorch, 0f, 0f, 100, default, 1.2f);
                 Main.dust[dust1].noGravity = true;
@@ -65,6 +60,7 @@ namespace RealmOne.Armor.Chillrend
                 Main.dust[dust1].noLight = false;
             }
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -77,7 +73,6 @@ namespace RealmOne.Armor.Chillrend
             .AddTile(TileID.Anvils)
             .Register();
 
-
             CreateRecipe()
 
            .AddIngredient(ItemID.IceBlock, 16)
@@ -87,21 +82,19 @@ namespace RealmOne.Armor.Chillrend
 
            .AddTile(TileID.Anvils)
            .Register();
-
-
         }
     }
 
     public class IceArmour : ModPlayer
     {
-        public bool icySHIT= false;
+        public bool icySHIT = false;
 
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
             if (icySHIT)
             {
                 npc.SimpleStrikeNPC(damage: 40, 0);
-                npc.AddBuff(BuffID.Frostburn, 120); 
+                npc.AddBuff(BuffID.Frostburn, 120);
             }
         }
     }

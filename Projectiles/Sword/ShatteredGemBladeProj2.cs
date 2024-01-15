@@ -8,14 +8,12 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Sword
 {
-
     public class ShatteredGemBladeProj2 : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shattered Gem Blade Alt");
             Main.projFrames[Projectile.type] = 9;
-
         }
 
         public override void SetDefaults()
@@ -56,7 +54,6 @@ namespace RealmOne.Projectiles.Sword
             Projectile.Center = ownerMountedCenter + new Vector2(40, 0) * player.direction;
             player.ChangeDir(Projectile.direction);
             Projectile.spriteDirection = Projectile.direction;
-
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -89,13 +86,12 @@ namespace RealmOne.Projectiles.Sword
                 sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
 
             return false;
-
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.WitheredArmor, 180);
             SoundEngine.PlaySound(rorAudio.GemBladeAltSwing);
-
         }
     }
 }

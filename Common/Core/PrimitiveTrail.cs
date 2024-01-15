@@ -17,6 +17,7 @@ namespace RealmOne.Common.Core
         public float width;
 
         public bool isDissapearing;
+
         public void Draw(Color color, Vector2 pos, List<Vector2> oldPositions, float width = 3f)
         {
             this.color = color;

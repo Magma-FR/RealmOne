@@ -45,7 +45,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             if (Main.rand.NextBool(5))
                 type = ModContent.ProjectileType<BoneSpine>();
-
         }
         public override bool CanUseItem(Player player)
         {

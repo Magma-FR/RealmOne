@@ -17,7 +17,6 @@ namespace RealmOne.Items.Weapons.PreHM.Grenades
                 + "\nThe acorns split into acorn shrapnel");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-
         }
 
         public override void SetDefaults()
@@ -73,7 +72,6 @@ namespace RealmOne.Items.Weapons.PreHM.Grenades
             recipe.AddIngredient(ModContent.ItemType<CrushedAcorns>(), 10);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
-
         }
     }
 }

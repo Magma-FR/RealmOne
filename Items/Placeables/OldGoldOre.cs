@@ -33,7 +33,6 @@ namespace RealmOne.Items.Placeables
             Item.createTile = ModContent.TileType<Tiles.Blocks.OldGoldOreT>();
         }
 
-
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;

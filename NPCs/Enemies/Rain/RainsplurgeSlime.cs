@@ -12,7 +12,6 @@ namespace RealmOne.NPCs.Enemies.Rain
 {
     public class RainsplurgeSlime : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rainsplurge Slime");
@@ -23,7 +22,6 @@ namespace RealmOne.NPCs.Enemies.Rain
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
-
         }
 
         public override void SetDefaults()
@@ -41,7 +39,6 @@ namespace RealmOne.NPCs.Enemies.Rain
             NPC.netUpdate = true;
             AIType = NPCID.GoldenSlime;
             AnimationType = NPCID.GreenSlime;
-
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -49,11 +46,9 @@ namespace RealmOne.NPCs.Enemies.Rain
 
             if (NPC.IsABestiaryIconDummy)
                 color = Color.White;
-
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
             => spawnInfo.Player.ZoneForest && Main.raining ? 0.4f : 0f;
-
 
         public override void AI()
         {
@@ -70,8 +65,6 @@ namespace RealmOne.NPCs.Enemies.Rain
 
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("Covered in algae and extremely slippery sludge, this slime hunts things in the rain!"),
-
-
             });
         }
         public override void FindFrame(int frameHeight)
@@ -83,7 +76,6 @@ namespace RealmOne.NPCs.Enemies.Rain
         }
         public override void OnKill()
         {
-
             int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity, 0, 6, ProjectileID.RainCloudMoving, 15, 0, Main.myPlayer);
 
             Main.projectile[p].scale = 1f;
@@ -92,10 +84,8 @@ namespace RealmOne.NPCs.Enemies.Rain
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int i = 0; i < 30; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Water, speed * 5, Scale: 1.5f);
@@ -109,15 +99,9 @@ namespace RealmOne.NPCs.Enemies.Rain
 
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Aquablossom>(), 2, 2, 4));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WaterDriplets>(), 2, 2, 4));
-
-
-
-
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-
-
             int buffType = BuffID.Wet;
             // Alternatively, you can use a vanilla buff: int buffType = BuffID.Slow;
 

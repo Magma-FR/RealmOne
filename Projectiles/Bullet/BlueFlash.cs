@@ -1,21 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Common.Core;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
+
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class BlueFlash : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Muzzle Flash");
         }
+
         private Vector2 flashoffset = Vector2.Zero;
-
-
 
         private Player Owner => Main.player[Projectile.owner];
 
@@ -36,12 +34,10 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.netImportant = true;
             Projectile.netUpdate = true;
             Projectile.tileCollide = false;
-
         }
 
         public override void AI()
         {
-
             Player player = Main.player[Projectile.owner];
 
             Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 1f);
@@ -70,4 +66,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

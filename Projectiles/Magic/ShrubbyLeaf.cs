@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class ShrubbyLeaf : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -38,8 +37,8 @@ namespace RealmOne.Projectiles.Magic
             for (int i = 0; i < 6; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Grass, 0f, 0f, 0, default, 1.5f);
             SoundEngine.PlaySound(SoundID.Grass);
-
         }
+
         public override void AI()
         {
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Grass, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);

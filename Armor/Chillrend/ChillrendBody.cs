@@ -1,5 +1,3 @@
-using RealmOne.Items.Misc;
-using RealmOne.Items.Misc.Plants;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -7,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Armor.Chillrend
 {
-
     [AutoloadEquip(EquipType.Body)]
     public class ChillrendBody : ModItem
     {
@@ -31,16 +28,14 @@ namespace RealmOne.Armor.Chillrend
 
         public override void UpdateEquip(Player player)
         {
-
             player.GetKnockback(DamageClass.Ranged) += 0.06f;
-
         }
-        
+
         public override void AddRecipes()
         {
             CreateRecipe()
 
-            .AddIngredient(ItemID.IceBlock,22)
+            .AddIngredient(ItemID.IceBlock, 22)
                         .AddIngredient(ItemID.GoldBar, 10)
 
                                     .AddIngredient(ItemID.Snowball, 50)
@@ -51,14 +46,12 @@ namespace RealmOne.Armor.Chillrend
             CreateRecipe()
 
         .AddIngredient(ItemID.IceBlock, 22)
-                    .AddIngredient(ItemID.PlatinumBar  , 10)
+                    .AddIngredient(ItemID.PlatinumBar, 10)
 
                                 .AddIngredient(ItemID.Snowball, 50)
 
         .AddTile(TileID.Anvils)
         .Register();
-
-
         }
     }
 }

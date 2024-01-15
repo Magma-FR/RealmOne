@@ -18,7 +18,6 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
                 + "\nExplodes after 3 seconds");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-
         }
 
         public override void SetDefaults()

@@ -25,6 +25,7 @@ namespace RealmOne.Items.Food.FarmFood
             };
             ItemID.Sets.IsFood[Type] = true;
         }
+
         public override void SetDefaults()
         {
             Item.width = 30;
@@ -39,10 +40,6 @@ namespace RealmOne.Items.Food.FarmFood
             Item.rare = ItemRarityID.Green;
             Item.consumable = true;
             Item.UseSound = SoundID.Item3;
-
         }
-
-
-
     }
 }

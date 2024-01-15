@@ -1,17 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Buffs.Debuffs;
 using RealmOne.Common.Core;
-using RealmOne.Common.Systems;
 using ReLogic.Content;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Projectiles.Other
 {
-
     public class Starbang : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -45,7 +41,6 @@ namespace RealmOne.Projectiles.Other
 
         public override void AI()
         {
-
             Player player = Main.player[Projectile.owner];
 
             Lighting.AddLight(Projectile.Center, r: 0.3f, g: 0.6f, 0.1f);
@@ -59,7 +54,6 @@ namespace RealmOne.Projectiles.Other
             //   Projectile.rotation = player.DirectionTo(Main.MouseWorld).ToRotation();
 
             //  Projectile.Center = Owner.Center + flashoffset;
-
 
             int radius = 50;
 
@@ -85,6 +79,7 @@ namespace RealmOne.Projectiles.Other
           // It's currently pretty important to unload your static fields like this, to avoid having parts of your mod remain in memory when it's been unloaded.
             Star = null;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
@@ -94,9 +89,5 @@ namespace RealmOne.Projectiles.Other
                           Star.Size() * 0.5f, 0.5f, SpriteEffects.None, 0);
             return true;
         }
-      
-
-
     }
 }
-

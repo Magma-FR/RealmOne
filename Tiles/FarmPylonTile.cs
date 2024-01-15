@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Items.Placeables;
 using RealmOne.Items.Placeables.FarmStuff;
 using RealmOne.Tiles.TileEntities;
 using ReLogic.Content;
@@ -13,6 +12,7 @@ using Terraria.Map;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Default;
 using Terraria.ObjectData;
+
 namespace RealmOne.Tiles
 {
     public class FarmPylonTile : ModPylon
@@ -28,8 +28,8 @@ namespace RealmOne.Tiles
             crystalTexture = ModContent.Request<Texture2D>(Texture + "_Crystal");
             crystalHighlightTexture = ModContent.Request<Texture2D>(Texture + "_CrystalHighlight");
             mapIcon = ModContent.Request<Texture2D>(Texture + "_MapIcon");
-
         }
+
         public override void SetStaticDefaults()
         {
             Main.tileLighted[Type] = true;
@@ -54,6 +54,7 @@ namespace RealmOne.Tiles
             name.SetDefault("Abandoned Farm Pylon");
             AddMapEntry(new Color(200, 200, 200), name);
         }
+
         public override void MouseOver(int i, int j)
         {
             Main.LocalPlayer.cursorItemIconEnabled = true;
@@ -69,6 +70,7 @@ namespace RealmOne.Tiles
         {
             return true;
         }
+
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = g = b = 0.75f;
@@ -86,4 +88,3 @@ namespace RealmOne.Tiles
         }
     }
 }
-

@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Misc.EnemyDrops;
 using ReLogic.Content;
-using System.Security.Cryptography.X509Certificates;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -15,7 +14,7 @@ namespace RealmOne.NPCs.Enemies.Impact
 {
     public class Espider1 : ModNPC
     {
-        static Asset<Texture2D> glowmask;
+        private static Asset<Texture2D> glowmask;
 
         public override void SetStaticDefaults()
         {
@@ -28,7 +27,6 @@ namespace RealmOne.NPCs.Enemies.Impact
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
-
         }
 
         public override void SetDefaults()
@@ -45,8 +43,8 @@ namespace RealmOne.NPCs.Enemies.Impact
 
             AIType = NPCID.DesertGhoul;
             AnimationType = NPCID.DesertGhoul;
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.OverworldNightMonster.Chance * 0.15f;
@@ -61,48 +59,47 @@ namespace RealmOne.NPCs.Enemies.Impact
 
             Main.EntitySpriteDraw(glowmask.Value, NPC.Center - screenPos + new Vector2(0, 0), NPC.frame, color, NPC.rotation, NPC.frame.Size() / 2f, 1f, SpriteEffects.None, 0);
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				   BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                   BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 
-				new FlavorTextBestiaryInfoElement("Be extra careful when walking around at night with these plasma arachnids walking around."),
-
-				
+                new FlavorTextBestiaryInfoElement("Be extra careful when walking around at night with these plasma arachnids walking around."),
             });
         }
+
         public override void AI()
         {
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.2f, b: 1.0f);
         }
-        
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-          
-                if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
-                {
-                    // These gores work by simply existing as a texture inside any folder which path contains "Gores/"
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+            {
+                // These gores work by simply existing as a texture inside any folder which path contains "Gores/"
 
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore1").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore2").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore3").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore4").Type, 1f);
-
-                }
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore1").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore2").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore3").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("EspiderGore4").Type, 1f);
+            }
 
             for (int k = 0; k < 18; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ImpactTech>(), 1, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ItemID.WebSlinger, 35, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.Cobweb, 1, 3, 6));
-
         }
+
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             // Here we can make things happen if this NPC hits a player via its hitbox (not projectiles it shoots, this is handled in the projectile code usually)

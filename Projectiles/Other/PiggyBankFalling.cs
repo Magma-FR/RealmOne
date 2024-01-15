@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Projectiles.Other;
-using RealmOne.Projectiles.Piggy;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,9 +8,9 @@ namespace RealmOne.Projectiles.Other
 {
     public class PiggyBankFalling : ModProjectile
     {
-        bool exploded = false;
-        int soundLoop = 0;
-        int angle = 60;
+        private bool exploded = false;
+        private int soundLoop = 0;
+        private int angle = 60;
 
         public override void SetDefaults()
         {
@@ -26,6 +22,7 @@ namespace RealmOne.Projectiles.Other
             Projectile.friendly = true;
             Projectile.tileCollide = true;
         }
+
         public override void AI()
         {
             if (soundLoop > 0)
@@ -62,10 +59,9 @@ namespace RealmOne.Projectiles.Other
             Projectile.velocity.X = 0;
             Projectile.spriteDirection = Projectile.direction;
             Vector2 loc = new Vector2(Projectile.position.X, Projectile.position.Y - 1);
-
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 50; i++)
             {
@@ -104,7 +100,5 @@ namespace RealmOne.Projectiles.Other
                 }
             }
         }
-
-
     }
 }

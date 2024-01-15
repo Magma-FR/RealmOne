@@ -15,7 +15,6 @@ namespace RealmOne.Items.Tools.Pick
              + "\n'Light as the clouds'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -37,7 +36,6 @@ namespace RealmOne.Items.Tools.Pick
             Item.pick = 55;
             Item.useTurn = true;
             Item.value = Item.buyPrice(silver: 40, copper: 80);
-
         }
 
         public override void AddRecipes()

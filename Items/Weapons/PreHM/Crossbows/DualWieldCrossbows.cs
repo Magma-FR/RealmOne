@@ -7,10 +7,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.Crossbows
 {
-
     public class DualWieldCrossbows : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dual-Shot Crossbows"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -18,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Crossbows
                 + "\nThe crossbow shoots out 2 crossbolts, having to let go of the button and reload"
                 + "\n'Double Trouble!'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -41,7 +38,6 @@ namespace RealmOne.Items.Weapons.PreHM.Crossbows
             Item.noUseGraphic = true;
             Item.channel = true;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_CrossbowLoad");
-
         }
 
         public override void AddRecipes()

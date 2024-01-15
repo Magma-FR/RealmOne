@@ -8,7 +8,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Armor
 {
-
     [AutoloadEquip(EquipType.Head)]
     public class AquaBlossomHead : ModItem
     {
@@ -46,7 +45,6 @@ namespace RealmOne.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-
             player.setBonus = "Shine effect. Even larger while underwater\nGills effect and flipper underwater\n2+ mana regen.";
             player.gills = true;
             Lighting.AddLight(player.position, 0.08f, 0.4f, 0.8f);
@@ -72,7 +70,6 @@ namespace RealmOne.Armor
 
             .AddTile(TileID.Anvils)
             .Register();
-
         }
     }
 }

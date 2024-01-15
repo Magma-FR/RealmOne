@@ -15,10 +15,7 @@ namespace RealmOne.Items.Misc.EnemyDrops
     {
         public override void SetStaticDefaults()
         {
-            
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -28,8 +25,8 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Item.value = Item.buyPrice(0, 0, 2, 14);
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 999;
-
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = Request<Texture2D>("RealmOne/Items/Misc/EnemyDrops/ImpactTech_Glow", AssetRequestMode.ImmediateLoad).Value;
@@ -51,10 +48,12 @@ namespace RealmOne.Items.Misc.EnemyDrops
                 0f
             );
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.Cyan.ToVector3() * 0.55f * Main.essScale); // Makes this item glow when thrown out of inventory.
         }
+
         public override bool PreDrawInInventory(SpriteBatch sB, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             for (int i = 0; i < 1; i++)
@@ -75,8 +74,5 @@ namespace RealmOne.Items.Misc.EnemyDrops
 
             return true;
         }
-
-       
-    
     }
 }

@@ -27,6 +27,7 @@ namespace RealmOne.Items.Food
             };
             ItemID.Sets.IsFood[Type] = true;
         }
+
         public override void SetDefaults()
         {
             Item.DefaultToFood(22, 22, BuffID.WellFed2, 57600);
@@ -39,7 +40,6 @@ namespace RealmOne.Items.Food
             Item.rare = ItemRarityID.Green;
             Item.consumable = true;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_Toast");
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -49,19 +49,16 @@ namespace RealmOne.Items.Food
             line = new TooltipLine(Mod, "JamToast", "'Excellent with home style butter!'")
             {
                 OverrideColor = new Color(211, 197, 73)
-
             };
             tooltips.Add(line);
-
-
         }
+
         public override void AddRecipes()
         {
             CreateRecipe(2)
             .AddIngredient(Mod, "Wheat", 8)
             .AddTile(ModContent.TileType<StoneOvenTilee>())
             .Register();
-
         }
     }
 }

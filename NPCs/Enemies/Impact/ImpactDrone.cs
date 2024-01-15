@@ -1,19 +1,16 @@
-using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using Terraria.ModLoader.Utilities;
-using RealmOne.Items.Weapons.PreHM.Throwing;
-using Terraria.GameContent.ItemDropRules;
-using RealmOne.Projectiles.Bullet;
-using RealmOne.Items.Misc.EnemyDrops;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
-using Terraria.GameContent.Bestiary;
+using RealmOne.Items.Misc.EnemyDrops;
+using System;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.Impact
 {
@@ -28,6 +25,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             Main.npcFrameCount[Type] = 4;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -35,33 +33,34 @@ namespace RealmOne.NPCs.Enemies.Impact
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 
                 new FlavorTextBestiaryInfoElement("Programmed to zoom and cause doom, unfortunately this reckless and hyperactive drone has its CPU coded to be a complete trigger happy drone."),
-
-
             });
         }
-        public override void SetDefaults()
-		{
-			NPC.width = 28;
-			NPC.height = 20;
-			NPC.damage = 10;
-			NPC.defense = 2;
-			NPC.lifeMax = 58;
-			NPC.HitSound = SoundID.NPCHit4;
-			NPC.DeathSound = SoundID.NPCDeath44;
-			NPC.value = Item.buyPrice(0,0,2,15);
-			NPC.knockBackResist = 0.5f; 
-			
-			NPC.noGravity = true;
-		}
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
-		private double Timer;
-		private double SinThing;
-		private bool CanShoot;
+        public override void SetDefaults()
+        {
+            NPC.width = 28;
+            NPC.height = 20;
+            NPC.damage = 10;
+            NPC.defense = 2;
+            NPC.lifeMax = 58;
+            NPC.HitSound = SoundID.NPCHit4;
+            NPC.DeathSound = SoundID.NPCDeath44;
+            NPC.value = Item.buyPrice(0, 0, 2, 15);
+            NPC.knockBackResist = 0.5f;
+
+            NPC.noGravity = true;
+        }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+
+        private double Timer;
+        private double SinThing;
+
         public override void OnSpawn(IEntitySource source)
         {
-			Timer = 0;
+            Timer = 0;
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -69,6 +68,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Impact/ImpactDrone_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void AI()
@@ -86,23 +86,22 @@ namespace RealmOne.NPCs.Enemies.Impact
             }
 
             Timer++;
-			if (Timer % 15 == 0)
-				SinThing++;
-			Player player = Main.player[NPC.target];
-			Vector2 TargetLocation = new Vector2(player.position.X + ((float)Math.Sin(SinThing)*100), player.position.Y - 150 - ((float)Math.Sin(SinThing) *10));
+            if (Timer % 15 == 0)
+                SinThing++;
+            Player player = Main.player[NPC.target];
+            Vector2 TargetLocation = new Vector2(player.position.X + ((float)Math.Sin(SinThing) * 100), player.position.Y - 150 - ((float)Math.Sin(SinThing) * 10));
 
-			float speed = 13f;
-			float inertia = 30f;
-			Vector2 direction = TargetLocation - NPC.Center;
-			direction.Normalize();
-			direction *= speed;
-			NPC.velocity = (NPC.velocity * (inertia - 1) + direction) / inertia;
+            float speed = 13f;
+            float inertia = 30f;
+            Vector2 direction = TargetLocation - NPC.Center;
+            direction.Normalize();
+            direction *= speed;
+            NPC.velocity = (NPC.velocity * (inertia - 1) + direction) / inertia;
 
-			NPC.rotation = NPC.velocity.X * 0.3f;
-			var entitySource = NPC.GetSource_FromThis();
-			if (Vector2.Distance(TargetLocation, NPC.Center) <= 130 && Main.netMode != NetmodeID.MultiplayerClient)
-			{
-
+            NPC.rotation = NPC.velocity.X * 0.3f;
+            var entitySource = NPC.GetSource_FromThis();
+            if (Vector2.Distance(TargetLocation, NPC.Center) <= 130 && Main.netMode != NetmodeID.MultiplayerClient)
+            {
                 if (Timer % 160 == 0)
                 {
                     NPC.velocity.X = .008f * NPC.direction;
@@ -112,12 +111,9 @@ namespace RealmOne.NPCs.Enemies.Impact
                     Main.projectile[p].friendly = false;
                     Main.projectile[p].hostile = true;
                 }
-					
+            }
+        }
 
-			} 
-				
-		}
-       
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -126,11 +122,8 @@ namespace RealmOne.NPCs.Enemies.Impact
                 Gore.NewGore(NPC.GetSource_Death(), NPC.TopLeft, NPC.velocity, Mod.Find<ModGore>("ImpactDroneGore2").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.TopRight, NPC.velocity, Mod.Find<ModGore>("ImpactDroneGore2").Type, 1f);
 
-
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Top, NPC.velocity, Mod.Find<ModGore>("ImpactDroneGore3").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactDroneGore4").Type, 1f);
-
-
             }
             for (int k = 0; k < 14; k++)
             {
@@ -141,17 +134,14 @@ namespace RealmOne.NPCs.Enemies.Impact
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ImpactTech>(), 2, 2, 3));
-
         }
-     
-		public override void FindFrame(int frameHeight)
-		{
+
+        public override void FindFrame(int frameHeight)
+        {
             NPC.frameCounter += 0.14f;
             NPC.frameCounter %= Main.npcFrameCount[NPC.type];
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
-	}
-
-
+    }
 }

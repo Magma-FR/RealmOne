@@ -15,7 +15,6 @@ namespace RealmOne.Items.Potions
             + "\nInflicts Tangled"
             + "\nInflicts Poison");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
-
         }
 
         public override void SetDefaults()

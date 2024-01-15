@@ -15,7 +15,6 @@ namespace RealmOne.Items.PaperUI
             DisplayName.SetDefault("Lore Scroll (Squirmo)"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("Open up a scroll to reveal the secrets of the soil");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -47,6 +46,7 @@ namespace RealmOne.Items.PaperUI
 
             return base.UseItem(player);
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

@@ -1,32 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Reflection.Emit;
-using System;
-using Terraria;
-using Terraria.Audio;
-using Terraria.Enums;
-using Terraria.ID;
-using Terraria.Map;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
+using RealmOne.Buffs;
 using RealmOne.Common.Systems;
 using RealmOne.Items.Weapons.PreHM.Piggy;
-using RealmOne.RealmPlayer;
-using MonoMod.Utils;
 using RealmOne.Projectiles.Piggy;
-using RealmOne.Buffs;
+using RealmOne.RealmPlayer;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.HeldProj
 {
     public class PiggyPursuerHeld : ModProjectile
     {
-        int d = 0;
-        int speed = 0;
-        int acceleration = 0;
-        int speedaddon = 0;
-        int frame = 0;
+        private int d = 0;
+        private int speed = 0;
+        private int acceleration = 0;
+        private int speedaddon = 0;
+        private int frame = 0;
 
-        int livingTime = 53;
+        private int livingTime = 53;
 
         public override void SetStaticDefaults()
         {
@@ -77,7 +72,6 @@ namespace RealmOne.Projectiles.HeldProj
                     Projectile.velocity = new Vector2(-3, 34);
                 }
             }
-
 
             frame = player.GetModPlayer<RealmModPlayer>().PorceDMG;
             if (player.GetModPlayer<RealmModPlayer>().DMGPor == 1)
@@ -156,7 +150,6 @@ namespace RealmOne.Projectiles.HeldProj
                 livingTime--;
             }
 
-
             if (player.GetModPlayer<RealmModPlayer>().cd == 1)
             {
                 player.GetModPlayer<RealmModPlayer>().cd = 0;
@@ -164,7 +157,6 @@ namespace RealmOne.Projectiles.HeldProj
                 player.GetModPlayer<RealmModPlayer>().DMGPor = 0;
                 frame = 0;
             }
-
 
             if (livingTime == 0)
             {
@@ -181,7 +173,6 @@ namespace RealmOne.Projectiles.HeldProj
                 Projectile.Kill();
             }
 
-            
             if (player.GetModPlayer<RealmModPlayer>().PiggySwing == 0)
             {
                 if (acceleration < 10)
@@ -220,7 +211,6 @@ namespace RealmOne.Projectiles.HeldProj
                 {
                     speed += 2 + speedaddon;
                 }
-                
             }
             else
             {
@@ -260,18 +250,12 @@ namespace RealmOne.Projectiles.HeldProj
                 {
                     speed -= 2 + speedaddon;
                 }
-                
             }
-
-
 
             bool stillInUse = !player.noItems && !player.CCed && player.HeldItem.ModItem is PiggyPursuer;
             if (!stillInUse)
                 Projectile.Kill();
-
         }
-
-       
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -327,9 +311,6 @@ namespace RealmOne.Projectiles.HeldProj
                 player.GetModPlayer<RealmModPlayer>().DMGPor = 4;
                 frame = 248;
             }
-            
-
-
 
             SoundEngine.PlaySound(rorAudio.SFX_Porce);
             SoundEngine.PlaySound(SoundID.Shatter);
@@ -346,10 +327,7 @@ namespace RealmOne.Projectiles.HeldProj
                 frame = player.GetModPlayer<RealmModPlayer>().PorceDMG;
             }
             frame = player.GetModPlayer<RealmModPlayer>().PorceDMG;
-
-
         }
-
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -360,8 +338,6 @@ namespace RealmOne.Projectiles.HeldProj
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-            
-
 
             var texture = (Texture2D)ModContent.Request<Texture2D>("RealmOne/Projectiles/HeldProj/PiggyPursuerHeld");
             if (player.GetModPlayer<RealmModPlayer>().PiggySwing == 1)
@@ -381,7 +357,5 @@ namespace RealmOne.Projectiles.HeldProj
 
             return false;
         }
-
-
     }
 }

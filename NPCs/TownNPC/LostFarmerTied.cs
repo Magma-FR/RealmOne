@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using RealmOne.Items.Accessories;
-using RealmOne.Items.BossSummons;
-using RealmOne.Items.Misc;
-using RealmOne.Items.Weapons.Ranged;
-using RealmOne.RealmPlayer;
+﻿using RealmOne.RealmPlayer;
 using RealmOne.Tiles.Blocks;
 using System.IO;
 using Terraria;
@@ -21,7 +16,6 @@ namespace RealmOne.NPCs.TownNPC
 
         public override void SetStaticDefaults()
         {
-
             Main.npcFrameCount[Type] = 1;
 
             // Hide this NPC from the bestiary.
@@ -46,8 +40,7 @@ namespace RealmOne.NPCs.TownNPC
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
             NPC.rarity = 1; // To make our NPC will show up on the Lifeform Analyzer.\
-            NPC.dontTakeDamageFromHostiles = true;  
-            
+            NPC.dontTakeDamageFromHostiles = true;
         }
 
         public override bool CanChat()
@@ -66,16 +59,15 @@ namespace RealmOne.NPCs.TownNPC
             // First, don't run this code if it is a multiplayer client.
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-             
                 // Loop through every player on the server.
                 for (int i = 0; i < Main.maxPlayers; i++)
                 {
                     // If the player is active (on the server) and are talking to this NPC...
                     if (Main.player[i].active && Main.player[i].talkNPC == NPC.whoAmI)
                     {
-                        NPC.Transform(ModContent.NPCType<LostFarmer>()); // Transform to our real Town NPC.																  
-                        Main.BestiaryTracker.Chats.RegisterChatStartWith(NPC); // Unlock the Town NPC in the Bestiary.																  
-                        Main.player[i].SetTalkNPC(NPC.whoAmI);  // Change who the player is talking to to the new Town NPC. 
+                        NPC.Transform(ModContent.NPCType<LostFarmer>()); // Transform to our real Town NPC.
+                        Main.BestiaryTracker.Chats.RegisterChatStartWith(NPC); // Unlock the Town NPC in the Bestiary.
+                        Main.player[i].SetTalkNPC(NPC.whoAmI);  // Change who the player is talking to to the new Town NPC.
                         NPCsync.rescuedFarmer = true; // Set our rescue bool to true.
 
                         // We need to sync these changes in multiplayer.
@@ -89,7 +81,6 @@ namespace RealmOne.NPCs.TownNPC
             }
         }
 
-       
         public override string GetChat()
         {
             // Make the Town NPC say something unique when first rescued.
@@ -112,6 +103,7 @@ namespace RealmOne.NPCs.TownNPC
             return 0f;
         }
     }
+
     public class NPCsync : ModSystem
     {
         public static bool rescuedFarmer = false;

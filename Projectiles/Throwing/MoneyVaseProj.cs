@@ -33,20 +33,18 @@ namespace RealmOne.Projectiles.Throwing
             Projectile.extraUpdates = 2;
             Projectile.CloneDefaults(ProjectileID.Shuriken);
         }
+
         public override void AI()
         {
             Lighting.AddLight(Projectile.position, r: 0.2f, g: 0.2f, b: 0.2f);
             Lighting.Brightness(1, 1);
 
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.DungeonPink, Projectile.velocity.X * 0.7f, Projectile.velocity.Y * 0.7f, Scale: 0.8f, Alpha: 120);
-
         }
 
-        public override void Kill(int timeleft)
+        public override void OnKill(int timeleft)
 
         {
-        
-
             for (int i = 0; i < 17; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonPink, 0f, 0f, 50, default, 2f);
             Player player = Main.player[Projectile.owner];

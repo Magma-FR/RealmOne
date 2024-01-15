@@ -40,7 +40,5 @@ namespace RealmOne.Tiles.Furniture.Paintings
         {
             num = fail ? 1 : 3;
         }
-
-
     }
 }

@@ -10,10 +10,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.BossBars
 {
-
     public class SquirmoBar : ModBossBar
     {
-
         private int bossHeadIndex = -1;
 
         public override Asset<Texture2D> GetIconTexture(ref Rectangle? iconFrame)
@@ -28,7 +26,6 @@ namespace RealmOne.BossBars
 
         public override bool? ModifyInfo(ref BigProgressBarInfo info, ref float life, ref float lifeMax, ref float shield, ref float shieldMax)
         {
-
             NPC npc = Main.npc[info.npcIndexToAimAt];
             if (!npc.active)
                 return false;
@@ -43,7 +40,6 @@ namespace RealmOne.BossBars
                 shield = body.MinionHealthTotal;
                 shieldMax = body.MinionMaxHealthTotal;
             }
-
 
             return true;
         }

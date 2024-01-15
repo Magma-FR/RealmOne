@@ -1,16 +1,6 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Common.Systems;
-using RealmOne.Projectiles.Bullet;
 using RealmOne.Projectiles.Shortsword;
-using RealmOne.Projectiles.Throwing;
-using RealmOne.RealmPlayer;
-using ReLogic.Content;
-using System.Security.Principal;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,57 +10,46 @@ namespace RealmOne.Items.Weapons.Melee
 {
     public class GildedGladius : ModItem
     {
-        private int stabCount = 0;
 
         public override void SetStaticDefaults()
         {
-          
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-            Item.damage = 14;
+            Item.damage = 10;
 
             Item.width = 42;
             Item.height = 42;
-            Item.useTime = 8;
-            Item.useAnimation = 8;
+            Item.useTime = 14;
+            Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Rapier;
-            Item.knockBack = 4;
-            Item.value = 10000;
+            Item.knockBack = 2;
+            Item.value = Item.buyPrice(0,0,80,0);
             Item.rare = ItemRarityID.Blue;
             Item.useTurn = true;
             Item.autoReuse = true;
-            Item.crit = 4;
             Item.UseSound = SoundID.Item1;
 
-            Item.flame = true;
             Item.shoot = ProjectileType<GildedGladiusProj>();
             Item.shootSpeed = 4f;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-
             if (Main.rand.NextBool(10))
                 type = ModContent.ProjectileType<GildedGladiusThrown>();
-         
-
-
-
         }
-
 
         public override void PostUpdate()
         {
@@ -92,21 +71,8 @@ namespace RealmOne.Items.Weapons.Melee
                 dust.alpha = 0;
             }
         }
-        
-        public override void HoldItem(Player player)
-        {
-            player.statDefense += 4;
 
-
-            
-        }
 
        
-
-        public override Vector2? HoldoutOffset()
-        {
-            var offset = new Vector2(6, 0);
-            return offset;
-        }
     }
 }

@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 namespace RealmOne.Items.Accessories
 {
     [AutoloadEquip(EquipType.Shield)]
-
     public class TatteredBarkShield : ModItem
     {
         public override void SetStaticDefaults()
@@ -18,27 +17,24 @@ namespace RealmOne.Items.Accessories
                 + "\nAll weapons inflict Splintered while equipping the shield");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.width = 20;
             Item.height = 20;
             Item.value = 10000;
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
             Item.defense += 2;
-
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(Mod, "BarkShield", 1);
             recipe.AddTile(TileID.Sawmill);
             recipe.Register();
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -61,4 +57,3 @@ namespace RealmOne.Items.Accessories
         }
     }
 }
-

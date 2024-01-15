@@ -24,8 +24,6 @@ namespace RealmOne.Tiles.Ambient
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
 
-
-
             AddMapEntry(new Color(120, 142, 68));
         }
 
@@ -45,6 +43,7 @@ namespace RealmOne.Tiles.Ambient
 
             return true;
         }
+
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             if (Main.rand.NextBool(14))

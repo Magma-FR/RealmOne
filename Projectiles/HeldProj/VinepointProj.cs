@@ -21,11 +21,10 @@ public class VinepointProj : ModProjectile
     {
         Projectile.CloneDefaults(ProjectileID.Spear);
     }
-    int Speartimer = 10;
+
 
     public override bool PreAI()
     {
-
         for (int i = 0; i < 2; ++i)
         {
             int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Plantera_Green, Projectile.velocity.X * 0.7f, Projectile.velocity.Y * 0.7f);

@@ -1,11 +1,12 @@
 using RealmOne.Tiles;
 using Terraria;
 using Terraria.GameContent.Creative;
+using Terraria.GameContent.UI;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace RealmOne.Items.Placeables.FarmStuff
 {
-
     public class TatteredBarrelItem : ModItem
     {
         public override void SetStaticDefaults()
@@ -16,7 +17,7 @@ namespace RealmOne.Items.Placeables.FarmStuff
 
         public override void SetDefaults()
         {
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.useTurn = true;
             Item.useAnimation = 15;
             Item.useTime = 10;
@@ -26,7 +27,7 @@ namespace RealmOne.Items.Placeables.FarmStuff
             Item.width = 24;
             Item.height = 24;
             Item.maxStack = 20;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.value = 100000;
         }
     }

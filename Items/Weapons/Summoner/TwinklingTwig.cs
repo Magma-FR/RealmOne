@@ -19,7 +19,6 @@ namespace RealmOne.Items.Weapons.Summoner
             Tooltip.SetDefault("Summons an Enchanted Nightcrawler to wriggle and starstruck your enemies!!");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -29,17 +28,14 @@ namespace RealmOne.Items.Weapons.Summoner
             line = new TooltipLine(Mod, "TwinklingTwig", "'Sent from the birth of a nebula'")
             {
                 OverrideColor = new Color(250, 100, 168)
-
             };
             tooltips.Add(line);
 
             line = new TooltipLine(Mod, "TwinklingTwig", "'Right click to shoot a Hallow Star from the wand, consuming double the mana '")
             {
                 OverrideColor = new Color(118, 215, 196)
-
             };
             tooltips.Add(line);
-
         }
 
         public override void SetDefaults()
@@ -61,12 +57,10 @@ namespace RealmOne.Items.Weapons.Summoner
             Item.shoot = ProjectileID.StarCannonStar;
             Item.shootSpeed = 44f;
             Item.noMelee = true;
-
         }
 
         public override bool OnPickup(Player player)
         {
-
             bool pickupText = false;
             for (int i = 0; i < 50; i++)
                 if (player.inventory[i].type == ItemID.None && !pickupText)
@@ -81,7 +75,6 @@ namespace RealmOne.Items.Weapons.Summoner
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height), new Color(234, 129, 178, 105), "Twinkle", false, false);
-
         }
 
         /*  public override void AddRecipes()
@@ -92,9 +85,7 @@ namespace RealmOne.Items.Weapons.Summoner
               .AddIngredient(ItemID.EnchantedNightcrawler, 10)
               .AddTile(TileID.Anvils)
               .Register();
-
           }
-        
 
         public override Vector2? HoldoutOffset()
         {

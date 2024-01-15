@@ -15,18 +15,14 @@ namespace RealmOne.NPCs.Enemies.Corruption
     {
         public override void SetStaticDefaults()
         {
-
-
             NPCID.Sets.TrailingMode[NPC.type] = 0;
             NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 
             Main.npcFrameCount[NPC.type] = 4;
-
         }
 
         public override void SetDefaults()
         {
-
             NPC.width = 26;
             NPC.height = 28;
             NPC.height = 38;
@@ -41,11 +37,8 @@ namespace RealmOne.NPCs.Enemies.Corruption
             NPC.value = Item.buyPrice(0, 2, 50, 5);
             NPC.knockBackResist = 0.50f;
 
-
             NPC.HitSound = SoundID.ChesterOpen;
             NPC.DeathSound = SoundID.NPCDeath38;
-
-
         }
 
         public override void FindFrame(int frameHeight)
@@ -55,6 +48,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
+
         public override void AI()
         {
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.8f, b: 0.1f);
@@ -62,11 +56,10 @@ namespace RealmOne.NPCs.Enemies.Corruption
             Player target = Main.player[NPC.target];
             NPC.spriteDirection = NPC.direction;
 
-
             Vector2 center = NPC.Center;
             for (int j = 0; j < 120; j++)
             {
-                int dust1 = Dust.NewDust(center, 0, 0, 75, 0f, 0f, 100, default, 0.7f);
+                int dust1 = Dust.NewDust(center, 0, 0, DustID.CursedTorch, 0f, 0f, 100, default, 0.7f);
                 Main.dust[dust1].noGravity = true;
                 Main.dust[dust1].velocity = Vector2.Zero;
                 Main.dust[dust1].noLight = false;
@@ -78,10 +71,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
                 Main.projectile[p].scale = 0.5f;
                 Main.projectile[p].friendly = false;
                 Main.projectile[p].hostile = true;
-
-
             }
-
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -91,10 +81,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
 
-
                 new FlavorTextBestiaryInfoElement("A silent hunter, the Ebon Screecher is a mysterious entity that hunts enemies that go anywhere near. It phases into an aggressive phase when it sheds its vile skin."),
-
-
             });
         }
 
@@ -104,6 +91,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             return true;
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -115,16 +103,12 @@ namespace RealmOne.NPCs.Enemies.Corruption
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("VulgarGore3").Type, 1.3f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("VulgarGore3").Type, 1.3f);
-
-
-
             }
 
             for (int k = 0; k < 16; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptionThorns, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
-
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -133,8 +117,6 @@ namespace RealmOne.NPCs.Enemies.Corruption
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<VulgarShot>(), 15, 1, 2));
 
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CursedBerries>(), 15, 1, 2));
-
-
         }
     }
 }

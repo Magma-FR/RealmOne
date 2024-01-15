@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class PulseProj : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -42,7 +41,6 @@ namespace RealmOne.Projectiles.Magic
             Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
             Projectile.rotation = Projectile.velocity.ToRotation();
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Electric, Projectile.velocity.X * 1f, Projectile.velocity.Y * 1f);   //spawns dust behind it, this is a spectral light blue dust
-
         }
 
         public NPC FindClosestNPC(float maxDetectDistance)
@@ -57,7 +55,6 @@ namespace RealmOne.Projectiles.Magic
 
                 if (target.CanBeChasedBy())
                 {
-
                     float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
 
                     if (sqrDistanceToTarget < sqrMaxDetectDistance)

@@ -29,7 +29,6 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             glowmask = ModContent.Request<Texture2D>(Texture + "_Tex");
-
         }
 
         public override void SetDefaults()
@@ -47,7 +46,6 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
             NPC.netAlways = true;
             NPC.netUpdate = true;
             NPC.defense = 1;
-
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -90,14 +88,11 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
         public override void OnSpawn(IEntitySource source)
         {
             SoundEngine.PlaySound(SoundID.Item9);
-
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
          {
-
                  Color color = Helper.IndicatorColor;
                  spriteBatch.Draw(Request<Texture2D>("RealmOne/NPCs/Enemies/GlitterdustSlime_Tex").Value, NPC.position - screenPos + new Vector2(-3, -6), color);
-
          }
         public override void FindFrame(int frameHeight)
         {
@@ -116,8 +111,6 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
 
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("Sent from the stars, this slime bounces around with a star lodged in its asteroid flesh."),
-
-
             });
         }
 
@@ -126,15 +119,12 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedStarglitter>(), 1, 2, 3));
             npcLoot.Add(ItemDropRule.Common(ItemID.FallenStar, 1, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 1, 2, 4));
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int i = 0; i < 23; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.YellowStarDust, speed * 5, Scale: 1f);

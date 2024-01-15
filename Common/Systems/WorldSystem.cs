@@ -1,23 +1,18 @@
-﻿using RealmOne.Common.Core;
-using RealmOne.Common.Systems.GenPasses;
+﻿using RealmOne.Common.Systems.GenPasses;
 using RealmOne.Items.Accessories;
 using RealmOne.Items.Food;
-using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.Plants;
 using RealmOne.Items.Opens;
 using RealmOne.Items.Weapons.PreHM.Classless;
 using RealmOne.Items.Weapons.PreHM.Grenades;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using RealmOne.NPCs.Critters;
-using RealmOne.NPCs.Enemies.Forest;
 using RealmOne.NPCs.Enemies.Underground;
 using RealmOne.Tiles.Blocks;
-using StructureHelper;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
@@ -26,8 +21,8 @@ namespace RealmOne.Common.Systems
 {
     public static class BiomePlayer
     {
-
     }
+
     public class TileDrops : GlobalTile
     {
         public override void Drop(int i, int j, int type)
@@ -42,7 +37,7 @@ namespace RealmOne.Common.Systems
                 }
 
                 if (type == TileID.Sunflower && Main.rand.NextBool(2))
-                {   
+                {
                     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ItemType<SunflowerPetal>(), 3);
                 }
 
@@ -54,8 +49,7 @@ namespace RealmOne.Common.Systems
                 {
                     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemType<Goreberry>(), Main.rand.Next(1, 2));
                 }
-               
-            
+
                 if (type == 12 && Main.rand.NextBool(7))
                 {
                     NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16, NPCType<HeartBat>(), 1);
@@ -66,10 +60,7 @@ namespace RealmOne.Common.Systems
                     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 48, ItemType<CactusFruit>(), Main.rand.Next(1, 1));
                 }
 
-
-
-
-                if (type == TileID.Dirt && DownedBossSystem.downedSquirmo == false && Main.rand.NextBool(20))
+                /*if (type == TileID.Dirt && DownedBossSystem.downedSquirmo == false && Main.rand.NextBool(20))
                 {
                     NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16, NPCType<Squirm>(), 1);
                 }
@@ -77,73 +68,45 @@ namespace RealmOne.Common.Systems
                 if (type == ModContent.TileType<FarmSoil>() && DownedBossSystem.downedSquirmo == false && Main.rand.NextBool(12))
                 {
                     NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16, NPCType<Squirm>(), 1);
-                }
-
+                }*/
             }
         }
-
-
     }
 
+    /* public sealed class SourceDependentItemTweaks : GlobalItem
+      {
+           public override void OnSpawn(Item item, IEntitySource source)
+           {
+               if (source is EntitySource_ShakeTree)
+               {
+                   IEntitySource newSource = item.GetSource_FromThis(); // Use a separate source for the newly created projectiles, to not cause a stack overflow.
 
-  /* public sealed class SourceDependentItemTweaks : GlobalItem
-    {
-         public override void OnSpawn(Item item, IEntitySource source)
-         {
-             if (source is EntitySource_ShakeTree)
-             {
-                 IEntitySource newSource = item.GetSource_FromThis(); // Use a separate source for the newly created projectiles, to not cause a stack overflow.
+                  if (Main.dayTime == true)
+                  {
+                      NPC.NewNPC(newSource, (int)item.position.X, (int)item.position.Y, NPCType<AcornSprinter>());
+                  }
+               }
+           }
 
-                if (Main.dayTime == true)
-                {
-                    NPC.NewNPC(newSource, (int)item.position.X, (int)item.position.Y, NPCType<AcornSprinter>());
-                }
-             }
-         }
-
-         */
-
-    
+           */
 
     public class WorldSystem : ModSystem
     {
-        private void Pumpkin(GenerationProgress progress, GameConfiguration configuration)
-        {
-            progress.Message = "Take a fucking seat mate";
-            for (int k = 60; k < Main.maxTilesX - 60; k++)
+        /*    public class Test : GenPass
             {
-                if (k > Main.maxTilesX / 3 && k < Main.maxTilesX / 3 * 2) 
+                public Test(string name, double loadWeight) : base(name, loadWeight)
                 {
-                    if (WorldGen.genRand.NextBool(16)) 
-                    {
-                        for (int y = 12; y < Main.worldSurface; y++)
-                        {
-                            if (Main.tile[k, y].TileType == TileID.Grass && Main.tile[k + 1, y].TileType == TileID.Grass)
-                            {
-                                int type = TileID.Jackolanterns;
-
-                            }
-                        }
-                    }
                 }
-            }
-        }
-                    
-    /*    public class Test : GenPass
-        {
-            public Test(string name, double loadWeight) : base(name, loadWeight)
-            {
-            }
 
-            protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
-            {
-                int x = (int)(GenVars.worldSurfaceLow + GenVars.worldSurfaceLow / 2);
-                int y = (int)(GenVars.worldSurfaceLow + GenVars.worldSurfaceLow / 2);
-                Point16 point = new Point16(x, y);
-                Generator.GenerateStructure("Structures/Test", point, RealmOne.Instance, false);
-            }
+                protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
+                {
+                    int x = (int)(GenVars.worldSurfaceLow + GenVars.worldSurfaceLow / 2);
+                    int y = (int)(GenVars.worldSurfaceLow + GenVars.worldSurfaceLow / 2);
+                    Point16 point = new Point16(x, y);
+                    Generator.GenerateStructure("Structures/Test", point, RealmOne.Instance, false);
+                }
+            }*/
 
-        }*/
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {
             int shiniesIndex = tasks.FindIndex((GenPass genpass) => genpass.Name.Equals("Shinies"));
@@ -151,12 +114,13 @@ namespace RealmOne.Common.Systems
             {
                 tasks.Insert(shiniesIndex + 1, (GenPass)(object)new OldGoldOreNameGenPass("OldGoldOreNameGenPass", 320f));
             }
-          /*  int shiniesIndex2 = tasks.FindIndex((GenPass genpass1) => genpass1.Name.Equals("Shinies"));
-            if (shiniesIndex2 != -1)
-            {
-                tasks.Insert(shiniesIndex2 + 1, (GenPass)(object)new FlorenceMarbleOreNameGenPass("FlorenceMarbleOreNameGenPass", 320f));
-            }*/
+            /*  int shiniesIndex2 = tasks.FindIndex((GenPass genpass1) => genpass1.Name.Equals("Shinies"));
+              if (shiniesIndex2 != -1)
+              {
+                  tasks.Insert(shiniesIndex2 + 1, (GenPass)(object)new FlorenceMarbleOreNameGenPass("FlorenceMarbleOreNameGenPass", 320f));
+              }*/
         }
+
         public override void PostWorldGen()
         {
             int[] goldenchest = { ItemType<MinersPouch>() };
@@ -165,7 +129,7 @@ namespace RealmOne.Common.Systems
             for (int gchestIndex = 0; gchestIndex < 1000; gchestIndex++)
             {
                 Chest gchest = Main.chest[gchestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
+                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding.
                 if (gchest != null && Main.tile[gchest.x, gchest.y].TileType == TileID.Containers && Main.tile[gchest.x, gchest.y].TileFrameX == 1 * 36)
                 {
                     for (int ginventoryIndex = 0; ginventoryIndex < 40; ginventoryIndex++)
@@ -186,7 +150,7 @@ namespace RealmOne.Common.Systems
             for (int acornchestIndex = 0; acornchestIndex < 1000; acornchestIndex++)
             {
                 Chest acChest = Main.chest[acornchestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
+                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding.
                 if (acChest != null && Main.tile[acChest.x, acChest.y].TileType == TileID.Containers && Main.tile[acChest.x, acChest.y].TileFrameX == 1 * 36)
                 {
                     for (int acorninventory = 0; acorninventory < 40; acorninventory++)
@@ -208,17 +172,13 @@ namespace RealmOne.Common.Systems
             for (int WchestIndex = 0; WchestIndex < 1000; WchestIndex++)
 
             {
-
                 Chest Wchest = Main.chest[WchestIndex];
                 if (Wchest != null && Main.tile[Wchest.x, Wchest.y].TileType == TileID.Containers && Main.tile[Wchest.x, Wchest.y].TileFrameX == 17 * 36)
                 {
-
                     for (int WinventoryIndex = 0; WinventoryIndex < 40; WinventoryIndex++)
                     {
-
                         if (Wchest.item[WinventoryIndex].type == ItemID.None)
                         {
-
                             Wchest.item[WinventoryIndex].SetDefaults(waterchest[waterchestchoice]);
 
                             Wchest.item[WinventoryIndex].stack = WorldGen.genRand.Next(20, 30);
@@ -231,24 +191,18 @@ namespace RealmOne.Common.Systems
                 }
             }
 
-          
-
             int[] pot = { ItemType<StackPotions>() };
             int potchoice = 0;
             for (int PchestIndex = 0; PchestIndex < 1000; PchestIndex++)
 
             {
-
                 Chest Pchest = Main.chest[PchestIndex];
                 if (Pchest != null && Main.tile[Pchest.x, Pchest.y].TileType == TileID.Containers && Main.tile[Pchest.x, Pchest.y].TileFrameX == 1 * 36)
                 {
-
                     for (int PinventoryIndex = 0; PinventoryIndex < 40; PinventoryIndex++)
                     {
-
                         if (Pchest.item[PinventoryIndex].type == ItemID.None)
                         {
-
                             Pchest.item[PinventoryIndex].SetDefaults(pot[potchoice]);
 
                             Pchest.item[PinventoryIndex].stack = WorldGen.genRand.Next(2, 5);
@@ -266,7 +220,7 @@ namespace RealmOne.Common.Systems
             for (int chestIndex1 = 0; chestIndex1 < 1000; chestIndex1++)
             {
                 Chest chest1 = Main.chest[chestIndex1];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
+                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding.
                 if (chest1 != null && Main.tile[chest1.x, chest1.y].TileType == TileID.Containers && Main.tile[chest1.x, chest1.y].TileFrameX == 11 * 36)
                 {
                     for (int inventoryIndex1 = 0; inventoryIndex1 < 40; inventoryIndex1++)

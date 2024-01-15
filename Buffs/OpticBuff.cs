@@ -13,15 +13,12 @@ namespace RealmOne.Buffs
 
             DisplayName.SetDefault("Midnight Hunter");
             Description.SetDefault("Hunter and Nightowl effects, 5% increased crit");
-
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-
             player.nightVision = true;
             player.AddBuff(BuffID.Hunter, 60);
-
         }
     }
 }

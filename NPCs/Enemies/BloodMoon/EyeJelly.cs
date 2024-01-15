@@ -2,20 +2,15 @@
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
 using RealmOne.Items.ItemCritter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
-using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+
 namespace RealmOne.NPCs.Enemies.BloodMoon
 {
-    public class EyeJelly: ModNPC
+    public class EyeJelly : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -52,7 +47,9 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/BloodMoon/EyeJelly_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.15f;
@@ -63,16 +60,13 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.16f : 0f;
 
-
-
-        public override void HitEffect(NPC.HitInfo hit) 
+        public override void HitEffect(NPC.HitInfo hit)
         {
             for (int k = 0; k < 10; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
-
 
         public override void AI()
         {

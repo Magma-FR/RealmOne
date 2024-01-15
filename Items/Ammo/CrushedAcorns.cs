@@ -7,7 +7,6 @@ namespace RealmOne.Items.Ammo
 {
     public class CrushedAcorns : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Shoots explosives acorns"); // The item's description, can be set to whatever you want.
@@ -41,8 +40,6 @@ namespace RealmOne.Items.Ammo
 
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
     }
 }
-

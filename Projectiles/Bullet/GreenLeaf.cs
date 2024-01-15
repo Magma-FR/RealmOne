@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class GreenLeaf : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -29,8 +28,8 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.timeLeft = 500;
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 1;
-
         }
+
         public override void AI()
         {
             Projectile.aiStyle = ProjAIStyleID.Leaf;
@@ -47,7 +46,8 @@ namespace RealmOne.Projectiles.Bullet
                     Projectile.frame = 0;
             }
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 
@@ -55,7 +55,6 @@ namespace RealmOne.Projectiles.Bullet
             {
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.JungleGrass, 0f, 0f, 0, default, 0.7f);
-
             }
         }
 
@@ -65,4 +64,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

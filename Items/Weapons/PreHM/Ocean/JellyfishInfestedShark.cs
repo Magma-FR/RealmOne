@@ -2,9 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Buffs.Debuffs;
 using RealmOne.Common.Core;
-using RealmOne.Projectiles.Bullet.StunSeed;
 using RealmOne.Projectiles.Throwing;
-using RealmOne.RealmPlayer;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -32,6 +30,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Item.shootSpeed = 20f;
             Item.shoot = ModContent.ProjectileType<BlueJ>();
         }
+
         public override bool? UseItem(Player player)
         {
             SoundEngine.PlaySound(SoundID.Item11 with { Volume = 0.7f, PitchVariance = 0.5f }, player.Center);
@@ -39,6 +38,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
 
             return true;
         }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (Main.rand.Next(100) < 25)
@@ -51,7 +51,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             else
             {
                 type = Main.rand.Next(new int[] { type, ModContent.ProjectileType<BlueJ>(), ModContent.ProjectileType<PinkJ>(), ModContent.ProjectileType<GreenJ>() });
-
             }
 
             Vector2 muzzleOffset = Vector2.Normalize(velocity) * 25f;
@@ -66,8 +65,8 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
         {
             return new Vector2(-5, 0);
         }
-
     }
+
     public class BlueJ : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -75,6 +74,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 20;
@@ -90,8 +90,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Projectile.CloneDefaults(ProjectileID.Shuriken);
         }
 
-
-
         public override void AI()
         {
             Projectile.rotation += 0.4f * Projectile.direction;
@@ -102,17 +100,21 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
 
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Water_GlowingMushroom, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 1f);
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.Kill();
             return false;
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public PrimitiveTrail trail = new();
         public List<Vector2> oldPositions = new List<Vector2>();
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -134,6 +136,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
             return true;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {
@@ -141,9 +144,9 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
 
             Projectile.Kill();
         }
+
         public override void OnKill(int timeLeft)
         {
-
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<JellySpark>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Item95, Projectile.position);
@@ -161,6 +164,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Main.dust[dustIndex1].noLight = false;
         }
     }
+
     public class PinkJ : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -168,6 +172,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 32;
@@ -177,8 +182,8 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Projectile.scale = 1f;
             Projectile.tileCollide = true;
             Projectile.CloneDefaults(ProjectileID.Shuriken);
-
         }
+
         public override void AI()
         {
             Projectile.rotation += 0.4f * Projectile.direction;
@@ -199,6 +204,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Projectile.velocity.X *= 1f;
             Projectile.aiStyle = 0;
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.penetrate--; //Make sure it doesnt penetrate anymore
@@ -216,18 +222,18 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
                 {
                     Projectile.velocity.X = -oldVelocity.X;
                 }
-
             }
             return false;
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit25, Projectile.position);
-
 
             for (int i = 0; i < 80; i++)
             {
@@ -238,6 +244,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
                 d.noLight = false;
             }
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.penetrate--; //Make sure it doesnt penetrate anymore
@@ -246,7 +253,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             else
             {
                 Projectile.velocity *= 0.7f;
-
             }
         }
     }
@@ -277,18 +283,18 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Projectile.rotation += 0.09f;
             Projectile.velocity.X *= 0.96f;
             Projectile.velocity.Y *= 0.95f;
-
-
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Poisoned, 500);
-
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit25, Projectile.position);
@@ -301,9 +307,11 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             }
         }
     }
+
     public class GreenBoom : ModProjectile
     {
         public override string Texture => Helper.Empty;
+
         public override void SetDefaults()
         {
             Projectile.height = 400;
@@ -314,6 +322,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Projectile.tileCollide = false;
             Projectile.timeLeft = 200;
         }
+
         public override void AI()
         {
             Projectile.ai[0] += 0.05f;
@@ -322,6 +331,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
                 Projectile.Kill();
             }
         }
+
         public override void PostAI()
         {
             if (Projectile.ai[1] == 1)
@@ -338,12 +348,14 @@ namespace RealmOne.Items.Weapons.PreHM.Ocean
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); return false;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hitinfo, int damage)
         {
             Projectile.ai[1] = 1;
             target.AddBuff(BuffID.Poisoned, 500);
         }
-        public override bool ShouldUpdatePosition() 
+
+        public override bool ShouldUpdatePosition()
         {
             return false;
         }

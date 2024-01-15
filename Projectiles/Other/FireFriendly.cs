@@ -7,11 +7,11 @@ namespace RealmOne.Projectiles.Other
 {
     public class FireFriendly : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Shockwave");
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 200;
@@ -30,7 +30,6 @@ namespace RealmOne.Projectiles.Other
             int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch);
             Main.dust[dust].scale = 1.5f;
             Main.dust[dust].noGravity = true;
-
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
@@ -39,13 +38,9 @@ namespace RealmOne.Projectiles.Other
             return true;
         }
 
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             return false;
         }
-
-
-
     }
 }

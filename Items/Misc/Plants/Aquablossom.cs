@@ -10,13 +10,11 @@ namespace RealmOne.Items.Misc.Plants
 {
     public class Aquablossom : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Aquablossom");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -41,7 +39,6 @@ namespace RealmOne.Items.Misc.Plants
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.AliceBlue;
-
         }
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {

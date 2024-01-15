@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class eyebig : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -31,12 +30,10 @@ namespace RealmOne.Projectiles.Magic
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 1;
             Projectile.damage = 40;
-
-
         }
+
         public override void AI()
         {
-
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Blood, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 2f);
             Projectile.aiStyle = 1;
             Lighting.AddLight(Projectile.position, 0.1f, 0.1f, 0.1f);
@@ -51,7 +48,7 @@ namespace RealmOne.Projectiles.Magic
             }
         }
 
-        public override void Kill(int timeleft)
+        public override void OnKill(int timeleft)
         {
             Projectile.ownerHitCheck = true;
 
@@ -83,4 +80,3 @@ namespace RealmOne.Projectiles.Magic
         }
     }
 }
-

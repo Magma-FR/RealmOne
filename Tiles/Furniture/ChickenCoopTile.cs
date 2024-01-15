@@ -9,10 +9,8 @@ namespace RealmOne.Tiles.Furniture
 {
     public class ChickenCoopTile : ModTile
     {
-
         public override void SetStaticDefaults()
         {
-
             Main.tileLavaDeath[Type] = true;
             //   AnimationFrameHeight = 50;
             Main.tileFrameImportant[Type] = true;
@@ -28,10 +26,6 @@ namespace RealmOne.Tiles.Furniture
             name.SetDefault("Chicken Coop");
             AddMapEntry(new Color(50, 30, 150), name);
             TileObjectData.addTile(Type);
-
         }
-
-
-
     }
 }

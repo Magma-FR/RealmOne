@@ -14,10 +14,12 @@ namespace RealmOne.NPCs.Enemies
         /// The head segment for the worm.  Only one "head" is considered to be active for any given worm
         /// </summary>
         Head,
+
         /// <summary>
         /// The body segment.  Follows the segment in front of it
         /// </summary>
         Body,
+
         /// <summary>
         /// The tail segment.  Has the same AI as the body segments.  Only one "tail" is considered to be active for any given worm
         /// </summary>
@@ -30,10 +32,10 @@ namespace RealmOne.NPCs.Enemies
     public abstract class Worm : ModNPC
     {
         /*  ai[] usage:
-             *  
+             *
              *  ai[0] = "follower" segment, the segment that's following this segment
              *  ai[1] = "following" segment, the segment that this segment is following
-             *  
+             *
              *  localAI[0] = used when syncing changes to collision detection
              *  localAI[1] = checking if Init() was called
              */
@@ -75,7 +77,7 @@ namespace RealmOne.NPCs.Enemies
 
         private bool startDespawning;
 
-        public sealed override bool PreAI()
+        public override sealed bool PreAI()
         {
             if (NPC.localAI[1] == 0)
             {
@@ -115,9 +117,11 @@ namespace RealmOne.NPCs.Enemies
         }
 
         // Not visible to public API, but is used to indicate what AI to run
-        internal virtual void HeadAI() { }
+        internal virtual void HeadAI()
+        { }
 
-        internal virtual void BodyTailAI() { }
+        internal virtual void BodyTailAI()
+        { }
 
         public abstract void Init();
     }
@@ -127,7 +131,7 @@ namespace RealmOne.NPCs.Enemies
     /// </summary>
     public abstract class WormHead : Worm
     {
-        public sealed override WormSegmentType SegmentType => WormSegmentType.Head;
+        public override sealed WormSegmentType SegmentType => WormSegmentType.Head;
 
         /// <summary>
         /// The NPCID or ModContent.NPCType for the body segment NPCs.<br/>
@@ -163,7 +167,7 @@ namespace RealmOne.NPCs.Enemies
         public virtual int MaxDistanceForUsingTileCollision => 1000;
 
         /// <summary>
-        /// Whether the NPC uses 
+        /// Whether the NPC uses
         /// </summary>
         public virtual bool HasCustomBodySegments => false;
 
@@ -209,7 +213,7 @@ namespace RealmOne.NPCs.Enemies
             return latestNPC;
         }
 
-        internal sealed override void HeadAI()
+        internal override sealed void HeadAI()
         {
             HeadAI_SpawnSegments();
 
@@ -557,7 +561,7 @@ namespace RealmOne.NPCs.Enemies
 
     public abstract class WormBody : Worm
     {
-        public sealed override WormSegmentType SegmentType => WormSegmentType.Body;
+        public override sealed WormSegmentType SegmentType => WormSegmentType.Body;
 
         internal override void BodyTailAI()
         {
@@ -611,7 +615,7 @@ namespace RealmOne.NPCs.Enemies
     // Since the body and tail segments share the same AI
     public abstract class WormTail : Worm
     {
-        public sealed override WormSegmentType SegmentType => WormSegmentType.Tail;
+        public override sealed WormSegmentType SegmentType => WormSegmentType.Tail;
 
         internal override void BodyTailAI()
         {

@@ -14,7 +14,6 @@ namespace RealmOne.Items.Weapons.Magic
         {
             DisplayName.SetDefault("Cornea Scepter");
             Tooltip.SetDefault("Casts reckless demon eyes out of the staff");
-
         }
 
         public override void SetDefaults()
@@ -36,12 +35,10 @@ namespace RealmOne.Items.Weapons.Magic
             Item.shootSpeed = 20f;
             Item.autoReuse = true;
             Item.DamageType = DamageClass.Magic;
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -67,8 +64,8 @@ namespace RealmOne.Items.Weapons.Magic
 
             if (Main.rand.NextBool(8))
                 type = ModContent.ProjectileType<eyebig>();
-
         }
+
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             if (Item.shoot == ModContent.ProjectileType<eyebig>())
@@ -91,12 +88,11 @@ namespace RealmOne.Items.Weapons.Magic
             .AddIngredient(ItemID.DemoniteBar, 10)
             .AddTile(TileID.Anvils)
             .Register();
-
         }
+
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-6f, -2f);
         }
     }
 }
-

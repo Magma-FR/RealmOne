@@ -36,6 +36,7 @@ namespace RealmOne.Tiles.Ambient
 
             return true;
         }
+
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             if (Main.rand.NextBool(14))

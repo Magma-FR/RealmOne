@@ -17,7 +17,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Tooltip.SetDefault("Sharp, pink porcelain, dropped from the ones that carry all the gold"
                 + "\n'Tell em to bring me my money!'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
-
         }
 
         public override void SetDefaults()
@@ -28,7 +27,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 999;
             Item.value = Item.buyPrice(silver: 2);
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

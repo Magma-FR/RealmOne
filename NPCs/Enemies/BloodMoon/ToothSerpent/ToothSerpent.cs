@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using RealmOne.Items.Weapons.PreHM.BloodMoon;
+using System.IO;
 using Terraria;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Common.Core;
 using static Terraria.ModLoader.ModContent;
-using RealmOne.NPCs.Enemies.Forest;
-using RealmOne.Items.Weapons.PreHM.BloodMoon;
-using Terraria.GameContent.ItemDropRules;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 {
-
-    public class ToothSerpentHead: WormHead
+    public class ToothSerpentHead : WormHead
     {
         public override void SetStaticDefaults()
         {
@@ -31,8 +22,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                 PortraitPositionYOverride = 12f
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
-
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -41,13 +32,12 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
 
                 new FlavorTextBestiaryInfoElement("A flesh-hungry serpent, the Tooth Serpent slithers around in the sky, launching bloodteeth at the player. If it gets close enough to a Terrarian, it starts to circle around the player, getting it trapped and ready for its next meal."),
-
-
             });
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.bloodMoon) 
+            if (Main.bloodMoon)
             {
                 return .07f;
             }
@@ -56,6 +46,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                 return 0;
             }
         }
+
         private int timer = 0;
         private bool circlingPlayer = false;
 
@@ -63,15 +54,13 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
         public override int TailType => NPCType<ToothSerpentTail>();
 
-        float offset;
+        private float offset;
 
         public override void AI()
         {
             NPC.ai[2]++;
             if (NPC.ai[2] == 300)
                 offset = Main.rand.NextFloat(1.5f, 3);
-
-
 
             Player player = Main.player[NPC.target];
             if (player.dead)
@@ -127,6 +116,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
             timer++;
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -135,17 +125,15 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Right, NPC.velocity, Mod.Find<ModGore>("ToothSerpentGore1").Type, 1f);
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ToothSerpentGore2").Type, 1f);
-
-
             }
             for (int k = 0; k < 15; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+
         public override void SetDefaults()
         {
-
             NPC.CloneDefaults(NPCID.DiggerHead);
             NPC.damage = 14;
             NPC.defense = 0;
@@ -157,7 +145,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ToothedTendril>(), 40, 1, 1));
-
         }
 
         public override void Init()
@@ -170,39 +157,39 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
             CommonWormInit(this);
         }
+
         internal static void CommonWormInit(Worm worm)
         {
             worm.MoveSpeed = 6f;
             worm.Acceleration = 0.06f;
         }
+
         private int attackCounter;
+
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(attackCounter);
             writer.Write(offset);
-
         }
+
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
             offset = reader.ReadSingle();
-
         }
-
-
     }
+
     public class ToothSerpentBody : WormBody
     {
         public override void SetStaticDefaults()
         {
-
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Hide = true // Hides this NPC from the Bestiary, useful for multi-part NPCs whom you only want one entry.
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
         }
-     
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -210,22 +197,15 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ToothSerpentGore3").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Right, NPC.velocity, Mod.Find<ModGore>("ToothSerpentGore4").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Left, NPC.velocity, Mod.Find<ModGore>("ToothSerpentGore4").Type, 1f);
-
-
-     
-
-
-
             }
             for (int k = 0; k < 15; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
-        
+
         public override void SetDefaults()
         {
-
             NPC.CloneDefaults(NPCID.DiggerBody);
             NPC.damage = 8;
             NPC.defense = 1;
@@ -233,29 +213,26 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
             NPC.netAlways = true;
             NPC.netUpdate = true;
         }
-        
+
         public override void Init()
         {
             ToothSerpentHead.CommonWormInit(this);
-
-
         }
     }
+
     public class ToothSerpentTail : WormTail
     {
         public override void SetStaticDefaults()
         {
-
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Hide = true // Hides this NPC from the Bestiary, useful for multi-part NPCs whom you only want one entry.
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
         }
-      
+
         public override void SetDefaults()
         {
-
             NPC.CloneDefaults(NPCID.DiggerTail);
             NPC.damage = 12;
             NPC.defense = 1;
@@ -263,31 +240,23 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
             NPC.netAlways = true;
             NPC.netUpdate = true;
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
-          
-
-
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ToothSerpentGore5").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ToothSerpentGore6").Type, 1f);
-
-
-
-
             }
             for (int k = 0; k < 15; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+
         public override void Init()
         {
             ToothSerpentHead.CommonWormInit(this);
-
-
         }
     }
 }
-

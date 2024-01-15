@@ -1,30 +1,23 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
-using RealmOne.Common.Systems;
-using RealmOne.Projectiles.Bullet;
 using RealmOne.RealmPlayer;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.Enums;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
 {
-
     public class GoreshankShotgun : ModItem
     {
-        private int shotCount;
+    //    private int shotCount;
 
         public override void SetStaticDefaults()
         {
-       
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -48,8 +41,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             Item.useAmmo = AmmoID.Bullet;
             Item.scale = 1.1f;
         }
-       
-        
+
         public override bool? UseItem(Player player)
         {
             SoundEngine.PlaySound(SoundID.Item38 with { Volume = 0.5f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
@@ -58,9 +50,9 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
             return true;
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -75,12 +67,9 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
                 Projectile.NewProjectile(source, position, perturbedSpeed, ModContent.ProjectileType<GoreshankShot>(), damage, knockback, player.whoAmI);
             }
 
-          
-
             return false;
         }
 
-      
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(0, 0);
@@ -90,13 +79,11 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
 
     public class GoreshankShot : ModProjectile
     {
-        public override string Texture 
+        public override string Texture
             => Helper.Empty;
 
         private const int timeLeftMax = 25;
         private Vector2 origin;
-
-
 
         public override void SetDefaults()
         {
@@ -120,7 +107,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             if (timeLeft <= 0)
             {
@@ -142,26 +129,25 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             float Descaling = (float)
             Projectile.timeLeft / timeLeftMax;
             float ScaleY = 20;
-              Color color = Color.PaleVioletRed;
+            Color color = Color.PaleVioletRed;
 
             for (int i = 0; i < 3; i++)
             {
                 float shotLength = origin.Distance(Projectile.Center);
 
-                Texture2D texture = (i > 1) ? 
+                Texture2D texture = (i > 1) ?
                 Mod.Assets.Request<Texture2D>("Assets/Effects/Trail_1").Value : Mod.Assets.Request<Texture2D>("Assets/Effects/GlowTrail").Value;
                 Vector2 scale = new Vector2(shotLength, MathHelper.Lerp(ScaleY, 5, 1f - Descaling)) / texture.Size();
 
-               //descales by colour
+                //descales by colour
                 color = (color with { A = 0 }) * Descaling;
                 Main.EntitySpriteDraw(texture, origin - Main.screenPosition, null, color, Projectile.velocity.ToRotation(), new Vector2(0, texture.Height / 2), scale, SpriteEffects.None, 0);
-
-              
             }
 
             return false;
         }
     }
+
     public class GoreshankShotgunS : ModProjectile
     {
         public override void SetDefaults()

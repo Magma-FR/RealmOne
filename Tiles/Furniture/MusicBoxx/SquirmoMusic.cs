@@ -1,8 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using RealmOne.Items.Misc;
+﻿using RealmOne.Items.Misc;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 

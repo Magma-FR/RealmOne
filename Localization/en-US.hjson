@@ -1281,7 +1281,7 @@ Mods: {
 					Due to rust, you are bleeding
 					10 second affect after unequipped
 					'''
-				DisplayName: Rusty Ammo Stock
+				DisplayName: Brass Extended Mag
 			}
 
 			RoyalRawhide: {
@@ -1308,10 +1308,10 @@ Mods: {
 			LivebornLeaf: {
 				Tooltip:
 					'''
-					'Bacteria infected leaf, radiating with nature's power'
+					'Radiates with nature's power'
 					10% increased summon damage
 					'''
-				DisplayName: Liveborn Leaf
+				DisplayName: Nymph Leaf
 			}
 
 			GreenNecklace: {
@@ -2141,6 +2141,21 @@ Mods: {
 
 			ForestTea: {
 				DisplayName: Forest Tea
+				Tooltip: ""
+			}
+
+			VerminhideBody: {
+				DisplayName: Verminhide Body
+				Tooltip: ""
+			}
+
+			VerminhideHead: {
+				DisplayName: Verminhide Head
+				Tooltip: ""
+			}
+
+			VerminhideLegs: {
+				DisplayName: Verminhide Legs
 				Tooltip: ""
 			}
 		}

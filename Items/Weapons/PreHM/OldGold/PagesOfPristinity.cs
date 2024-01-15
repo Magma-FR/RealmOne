@@ -15,7 +15,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.OldGold
 {
-
     public class PagesOfPristinity : ModItem
     {
         public override void SetStaticDefaults()
@@ -24,6 +23,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             DisplayName.SetDefault("Pages of Pristinity");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
         public override void SetDefaults()
         {
             Item.width = 30;
@@ -46,6 +46,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
             Item.shoot = ModContent.ProjectileType<OldGoldNado>();
         }
+
         public override bool OnPickup(Player player)
         {
             SoundEngine.PlaySound(SoundID.Item90);
@@ -61,7 +62,6 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 Vector2 PositionArea = Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 35f;
                 if (Collision.CanHit(position, 0, 0, position + PositionArea, 0, 0))
                     position += PositionArea;
-
             }
 
             for (int i = 0; i < 130; i++)
@@ -115,6 +115,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.SkyBlue.ToVector3() * 1f);
@@ -144,18 +145,16 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             line = new TooltipLine(Mod, "PagesOfPristinity", "'The Sandnadoes have been spinning before the dawn of time!'")
             {
                 OverrideColor = new Color(254, 226, 82)
-
             };
             tooltips.Add(line);
 
             line = new TooltipLine(Mod, "PagesOfPristinity", "'Pristinity!'")
             {
                 OverrideColor = new Color(18, 240, 180)
-
             };
             tooltips.Add(line);
-
         }
+
         public override void AddRecipes()
         {
             CreateRecipe(1)
@@ -165,7 +164,6 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             .AddRecipeGroup("Sand", 10)
             .AddTile(TileID.MythrilAnvil)
             .Register();
-
         }
     }
 }

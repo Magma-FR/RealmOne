@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Other
 {
-
     public class SteppingStonesProj : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -28,8 +27,8 @@ namespace RealmOne.Projectiles.Other
             Projectile.timeLeft = 80;
             Projectile.penetrate = 3;
             Projectile.CloneDefaults(ProjectileID.IceBlock);
-
         }
+
         public override void AI()
         {
             Projectile.aiStyle = ProjAIStyleID.IceRod;
@@ -37,9 +36,9 @@ namespace RealmOne.Projectiles.Other
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Stone, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.6f);
             Lighting.AddLight(Projectile.position, 0.2f, 0.2f, 0.2f);
             Lighting.Brightness(1, 1);
-
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 
@@ -47,9 +46,7 @@ namespace RealmOne.Projectiles.Other
             {
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.JungleGrass, 0f, 0f, 0, default, 2f);
-
             }
         }
     }
 }
-

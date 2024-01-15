@@ -18,7 +18,6 @@ namespace RealmOne.Items.Weapons.PreHM.Meteorite
               + $"[i:{ItemID.ManaCrystal}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -38,12 +37,10 @@ namespace RealmOne.Items.Weapons.PreHM.Meteorite
             Item.shootSpeed = 30f;
             Item.noMelee = true;
             Item.value = Item.buyPrice(gold: 3, silver: 75);
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -52,7 +49,6 @@ namespace RealmOne.Items.Weapons.PreHM.Meteorite
 
             for (int i = 0; i < NumProjectiles; i++)
             {
-
                 Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(3));
                 newVelocity *= 1f - Main.rand.NextFloat(0.2f);
 
@@ -77,7 +73,6 @@ namespace RealmOne.Items.Weapons.PreHM.Meteorite
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
-
         }
 
         public override void AddRecipes()
@@ -88,7 +83,6 @@ namespace RealmOne.Items.Weapons.PreHM.Meteorite
             .AddIngredient(Mod, "GizmoScrap", 2)
             .AddTile(TileID.Anvils)
             .Register();
-
         }
 
         public override Vector2? HoldoutOffset()

@@ -12,7 +12,6 @@ namespace RealmOne.NPCs.Enemies
 {
     public class NecroDude : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Necro Envoyholder");
@@ -30,15 +29,12 @@ namespace RealmOne.NPCs.Enemies
                 PortraitPositionXOverride = 0f,
                 PortraitPositionYOverride = 11f,
                 PortraitScale = 1.45f,
-
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
         }
 
-
         public override void SetDefaults()
         {
-
             NPC.width = 24;
             NPC.height = 42;
             NPC.damage = 24;
@@ -55,7 +51,6 @@ namespace RealmOne.NPCs.Enemies
         {
             return SpawnCondition.OverworldDay.Chance * 0.14f;
         }
-
 
         public override void FindFrame(int frameHeight)
         {
@@ -74,14 +69,12 @@ namespace RealmOne.NPCs.Enemies
 
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("A y'tarp ph'nglui n'ghftnah cloak ah'f'nah be'wa ot orr'ee.  Ah'n'gha nilgh'ri oi'uytalesi ph'nglui wta"),
-
             });
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
             for (int i = 0; i < 20; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Obsidian, speed * 5, Scale: 1.5f);
@@ -89,7 +82,6 @@ namespace RealmOne.NPCs.Enemies
                 d.noGravity = true;
             }
 
-          
                 if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
                 {
                     // These gores work by simply existing as a texture inside any folder which path contains "Gores/"
@@ -98,9 +90,7 @@ namespace RealmOne.NPCs.Enemies
                     Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("NecroDudeGore2").Type, 1f);
                     Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("NecroDudeGore3").Type, 1f);
                     Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("NecroDudeStick").Type, 1f);
-
                 }
-            
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
@@ -131,7 +121,6 @@ namespace RealmOne.NPCs.Enemies
         {
            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EidolicInk>(), 2, 3, 5));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Parchment>(), 3, 3, 5));
-
         }
     }
 }

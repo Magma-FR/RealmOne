@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -49,6 +48,5 @@ namespace RealmOne.Tiles
         // We can change frames manually, but since we are just simulating a different tile, we can just use the same value
         //    frame = Main.tileFrame[TileID.GoldGrasshopperCage];
         //  }
-       
     }
 }

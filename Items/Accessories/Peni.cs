@@ -1,4 +1,4 @@
-﻿using RealmOne.Common.Systems;
+﻿/*using RealmOne.Common.Systems;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -20,7 +20,6 @@ namespace RealmOne.Items.Accessories
             + "\nTherefore: 20+HP");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -29,15 +28,13 @@ namespace RealmOne.Items.Accessories
             Item.height = 24;
             Item.accessory = true;
             Item.value = 16000;
-            Item.rare = 2;
+            Item.rare = ItemRarityID.Green;
             Item.useTime = 25;
             Item.useAnimation = 25;
             Item.value = 500;
-            Item.rare = 2;
             Item.UseSound = SoundID.Item1;
 
             Item.useStyle = ItemUseStyleID.Swing;
-
         }
 
         public override bool AltFunctionUse(Player player)
@@ -53,14 +50,13 @@ namespace RealmOne.Items.Accessories
                 Item.height = 24;
                 Item.accessory = true;
                 Item.value = 16000;
-                Item.rare = 2;
+                Item.rare = ItemRarityID.Green;
                 Item.useTime = 25;
                 Item.useAnimation = 25;
                 Item.value = 500;
-                Item.rare = 2;
+                Item.rare = ItemRarityID.Green;
                 Item.UseSound = SoundID.Item1;
                 Item.useStyle = ItemUseStyleID.Swing;
-
             }
             else
             {
@@ -69,21 +65,20 @@ namespace RealmOne.Items.Accessories
                 Item.useAnimation = 25;
                 Item.shoot = ProjectileID.None;
                 Item.value = 500;
-                Item.rare = 2;
+                Item.rare = ItemRarityID.Green;
                 Item.UseSound = rorAudio.LightbulbShine;
                 if (Main.rand.NextBool(1))
                     player.AddBuff(BuffID.Ironskin, 800);
             }
             return base.CanUseItem(player);
         }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.statLifeMax2 += 10;
             player.buffImmune[BuffID.Venom] = true;
             player.buffImmune[BuffID.Poisoned] = true;
             player.buffImmune[BuffID.Bleeding] = true;
-
-
         }
     }
-}
+}*/

@@ -17,7 +17,6 @@ namespace RealmOne.Items.BossSummons
                 + "\nSummons The Possessed Piggy Bank");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
             ItemID.Sets.SortingPriorityBossSpawns[Type] = 12;
-
         }
 
         public override void SetDefaults()
@@ -34,7 +33,6 @@ namespace RealmOne.Items.BossSummons
             Item.shoot = ModContent.ProjectileType<MoneyVaseProj>();
             Item.shootSpeed = 13f;
             Item.noUseGraphic = true;
-
         }
 
         public override bool CanUseItem(Player player)
@@ -51,7 +49,6 @@ namespace RealmOne.Items.BossSummons
              {
                  NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y - 180, ModContent.NPCType<PossessedPiggy>());
 
-
                  if (Main.netMode != NetmodeID.Server)
                  {
                      CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height), new Color(255, 198, 125, 255), "'Goofy ahh pig fr'", false, false);
@@ -59,11 +56,11 @@ namespace RealmOne.Items.BossSummons
                  SoundEngine.PlaySound(SoundID.Item59, player.position);
 
                  player.GetModPlayer<Screenshake>().SmallScreenshake = true;
-
              }
 
              return true;
          }*/
+
         public override void AddRecipes()
         {
             CreateRecipe(1)
@@ -71,7 +68,6 @@ namespace RealmOne.Items.BossSummons
 
             .AddTile(TileID.PiggyBank)
             .Register();
-
         }
     }
 }

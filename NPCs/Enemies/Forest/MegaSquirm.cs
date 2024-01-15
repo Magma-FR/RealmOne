@@ -31,7 +31,6 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public bool HasPosition => PositionIndex > -1;
 
-      
         public override int BodyType => ModContent.NPCType<MegaSquirmBody>();
 
         public override int TailType => ModContent.NPCType<MegaSquirmTail>();
@@ -76,8 +75,6 @@ namespace RealmOne.NPCs.Enemies.Forest
               BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
 
                 new FlavorTextBestiaryInfoElement("Consuming and scavenging anything and anywhere it goes, serving for something much more disasterous"),
-
-
             });
         }
         public override void HitEffect(NPC.HitInfo hit)
@@ -87,12 +84,10 @@ namespace RealmOne.NPCs.Enemies.Forest
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore2").Type, 1f);
-
             }
 
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Worm, speed * 5, Scale: 2f);
@@ -102,13 +97,9 @@ namespace RealmOne.NPCs.Enemies.Forest
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-
             npcLoot.Add(ItemDropRule.Common(ItemID.MudBlock, 1, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirmoSummon>(), 36, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Carrot>(), 10, 1, 2));
-
-
-
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
@@ -148,12 +139,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public override void AI()
         {
-
-          
-            
         }
-       
-
     }
 
     internal class MegaSquirmBody : WormBody
@@ -185,8 +171,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             {
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
-
-
             }
         }
         public override void Init()
@@ -224,7 +208,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
-
             }
         }
         public override void Init()

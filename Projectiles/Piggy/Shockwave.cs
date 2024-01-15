@@ -7,11 +7,11 @@ namespace RealmOne.Projectiles.Piggy
 {
     public class Shockwave : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Shockwave");
         }
+
         public override void SetDefaults()
         {
             Projectile.ArmorPenetration = 999999999;
@@ -39,6 +39,5 @@ namespace RealmOne.Projectiles.Piggy
             Projectile.velocity.X *= 1f;
             return false;
         }
-
     }
 }

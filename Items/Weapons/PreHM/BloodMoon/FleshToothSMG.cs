@@ -1,10 +1,6 @@
 using Microsoft.Xna.Framework;
-using rail;
 using RealmOne.Common.Systems;
-using RealmOne.Items.Weapons.PreHM.BloodMoon;
-using RealmOne.Projectiles.Bullet;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             + "\nDoes not use ammo");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -33,7 +28,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2f;
-            Item.value = Item.buyPrice(0,0,30,0);
+            Item.value = Item.buyPrice(0, 0, 30, 0);
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = rorAudio.GoreGun;
             Item.autoReuse = true;
@@ -41,14 +36,12 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.noMelee = true;
             Item.shootSpeed = 21f;
 
-      
             Item.reuseDelay = 20;
             Item.consumeAmmoOnLastShotOnly = true;
 
             Item.shoot = ModContent.ProjectileType<BloodToothProj>();
-
         }
-     
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             velocity = velocity.RotatedByRandom(MathHelper.ToRadians(12));

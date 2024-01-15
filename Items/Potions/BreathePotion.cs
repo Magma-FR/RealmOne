@@ -19,7 +19,6 @@ namespace RealmOne.Items.Potions
             + "\nThese stats increase by +10% when in space");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
-
         }
 
         public override void SetDefaults()
@@ -36,7 +35,6 @@ namespace RealmOne.Items.Potions
             Item.consumable = true;
             Item.buffType = ModContent.BuffType<BreatheBuff>();
             Item.buffTime = 10000;
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -47,11 +45,10 @@ namespace RealmOne.Items.Potions
             line = new TooltipLine(Mod, "BreathePotion", "'BREATHE AIR!!!'")
             {
                 OverrideColor = new Color(10, 255, 255)
-
             };
             tooltips.Add(line);
-
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(3);

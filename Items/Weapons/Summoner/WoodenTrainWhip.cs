@@ -23,7 +23,6 @@ namespace RealmOne.Items.Weapons.Summoner
             Item.channel = true;
         }
 
-
         public override bool MeleePrefix()
         {
             return true;

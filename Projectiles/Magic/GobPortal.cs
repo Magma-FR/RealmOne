@@ -9,7 +9,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class GobPortal : ModProjectile
     {
         private static Asset<Texture2D> GobTexture;
@@ -39,12 +38,10 @@ namespace RealmOne.Projectiles.Magic
             Projectile.penetrate = -1;
             Projectile.stepSpeed = 1f;
             Projectile.alpha = 255;
-
         }
 
         public override void AI()
         {
-
             Projectile.rotation += 0.18f;
             Projectile.velocity.X *= 0.0f;
             Projectile.velocity.Y *= 0.0f;
@@ -54,7 +51,6 @@ namespace RealmOne.Projectiles.Magic
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
-                
 
                 if (npc.active && !npc.friendly && !npc.boss && npc.type != NPCID.TargetDummy)
                 {
@@ -68,6 +64,7 @@ namespace RealmOne.Projectiles.Magic
                 }
             }
         }
+
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, Projectile.position);
@@ -107,10 +104,8 @@ namespace RealmOne.Projectiles.Magic
             GobTexture = null;
         }
 
-
         public override bool PreDraw(ref Color lightColor)
         {
-
             Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
 
             Main.EntitySpriteDraw(GobTexture.Value, Projectile.Center - Main.screenPosition,
@@ -118,10 +113,5 @@ namespace RealmOne.Projectiles.Magic
                           GobTexture.Size() * 0.5f, 1f, SpriteEffects.None, 0);
             return true;
         }
-
-
-
-
     }
 }
-

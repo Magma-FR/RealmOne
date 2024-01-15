@@ -11,7 +11,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.Brass
 {
-
     public class BrassCandlewick : ModItem
     {
         public override void SetStaticDefaults()
@@ -20,8 +19,8 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             DisplayName.SetDefault("Brass Candlewick");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Brass/BrassCandlewick_Glow");
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -45,7 +44,6 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Item.value = Item.buyPrice(gold: 3, silver: 20);
 
             Item.shoot = ProjectileID.MolotovFire;
-
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -69,6 +67,7 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
                 0f
             );
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             float numberProjectiles = 6 + Main.rand.Next(1); // 3, 4, or 5 shots

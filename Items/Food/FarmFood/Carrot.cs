@@ -25,6 +25,7 @@ namespace RealmOne.Items.Food.FarmFood
             };
             ItemID.Sets.IsFood[Type] = true;
         }
+
         public override void SetDefaults()
         {
             Item.DefaultToFood(20, 20, BuffID.WellFed, 30600);
@@ -37,15 +38,12 @@ namespace RealmOne.Items.Food.FarmFood
             Item.rare = ItemRarityID.Green;
             Item.consumable = true;
             Item.UseSound = SoundID.Item2;
-
         }
+
         public override bool CanUseItem(Player player)
         {
             player.AddBuff(BuffID.NightOwl, 1000);
             return true;
         }
-
-
-
     }
 }

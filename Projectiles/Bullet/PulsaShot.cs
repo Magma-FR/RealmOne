@@ -8,7 +8,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class PulsaShot : ModProjectile
     {
         private static Asset<Texture2D> PulsaShott;
@@ -33,15 +32,14 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.timeLeft = 400;
             Projectile.penetrate = 2;
             AIType = ProjectileID.PulseBolt;
-
         }
+
         public override void AI()
         {
             Projectile.aiStyle = ProjAIStyleID.Arrow;
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.6f);
             Lighting.AddLight(Projectile.position, 0.2f, 0.2f, 0.2f);
             Lighting.Brightness(1, 1);
-
         }
 
         public override void Load()
@@ -55,6 +53,7 @@ namespace RealmOne.Projectiles.Bullet
           // It's currently pretty important to unload your static fields like this, to avoid having parts of your mod remain in memory when it's been unloaded.
             PulsaShott = null;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
@@ -66,4 +65,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

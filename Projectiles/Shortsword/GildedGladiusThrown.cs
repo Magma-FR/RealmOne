@@ -1,9 +1,9 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using Microsoft.Xna.Framework.Graphics;
 using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Projectiles.Shortsword
@@ -15,6 +15,7 @@ namespace RealmOne.Projectiles.Shortsword
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -26,6 +27,7 @@ namespace RealmOne.Projectiles.Shortsword
             Projectile.timeLeft = 600;
             Projectile.light = 1;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -47,15 +49,12 @@ namespace RealmOne.Projectiles.Shortsword
 
             return true;
         }
+
         public override void OnKill(int timeleft)
         {
-           
-            
-
             for (int i = 0; i < 17; i++)
-                
 
-            Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
+                Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Item53, Projectile.position);
 
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("GoldSword").Type, 1f);
@@ -68,14 +67,14 @@ namespace RealmOne.Projectiles.Shortsword
                 d.noGravity = true;
                 d.noLight = false;
             }
-
-
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.Kill();
             return false;
-        }   
+        }
+
         public override void AI()
         {
             Projectile.velocity *= 1.04f;

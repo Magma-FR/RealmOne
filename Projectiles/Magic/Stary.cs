@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class Stary : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -31,20 +30,18 @@ namespace RealmOne.Projectiles.Magic
             Projectile.penetrate = 2;
             Projectile.extraUpdates = 1;
             AIType = ProjectileID.StarCannonStar;
-
         }
+
         public override void AI()
         {
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.YellowStarDust, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
             Projectile.aiStyle = ProjAIStyleID.FallingStar;
             Lighting.AddLight(Projectile.position, 0.2f, 0.2f, 0.1f);
             Lighting.Brightness(1, 1);
-
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
             for (int i = 0; i < 60; i++)
             {
                 Vector2 speed = Main.rand.NextVector2CircularEdge(0.5f, 0.5f);
@@ -57,4 +54,3 @@ namespace RealmOne.Projectiles.Magic
         }
     }
 }
-

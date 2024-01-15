@@ -14,25 +14,22 @@ namespace RealmOne.Items.Accessories
                 + "\n'This anti-venom works for other critters too!'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.width = 20;
             Item.height = 20;
             Item.value = 10000;
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.buffImmune[BuffID.Venom] = true;
-
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
@@ -41,7 +38,6 @@ namespace RealmOne.Items.Accessories
             recipe.AddIngredient(Mod, "GoopyGrass", 2);
             recipe.AddTile(TileID.Bottles);
             recipe.Register();
-
         }
     }
 }

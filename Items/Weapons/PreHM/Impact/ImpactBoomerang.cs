@@ -20,7 +20,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 + "\nInflicts Electrified");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -42,17 +41,15 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.shootSpeed = 17f;
-
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(Mod, "ImpactTech", 10 );
+            recipe.AddIngredient(Mod, "ImpactTech", 10);
 
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -95,6 +92,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.AliceBlue.ToVector3() * 0.4f);

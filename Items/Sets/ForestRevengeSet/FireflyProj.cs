@@ -8,8 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Sets.ForestRevengeSet
 {
-
-    public class FireflyProj: ModProjectile
+    public class FireflyProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -33,6 +32,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Projectile.tileCollide = false;
             Projectile.aiStyle = ProjAIStyleID.PaperPlane;
         }
+
         public override void AI()
         {
             Vector2 center = Projectile.Center;
@@ -44,13 +44,11 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
                 Main.dust[dust1].noLight = false;
 
                 Vector2 speed = Main.rand.NextVector2CircularEdge(0.25f, 0.25f);
-
             }
 
             Lighting.AddLight(Projectile.position, 0.3f, 0.2f, 0.1f);
-
-         
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -59,7 +57,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D texture = Request<Texture2D>("RealmOne/Assets/Effects/GlowLight").Value;
             for (int k = 0; k < Projectile.oldPos.Length; k++)
-            {   
+            {
                 var offset = new Vector2(Projectile.width / 2f, Projectile.height / 2f);
                 var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
                 Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + offset;
@@ -72,6 +70,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
 
             return true;
         }
+
         public override void OnKill(int timeleft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("FireflyGore").Type, 1f);
@@ -87,4 +86,3 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
         }
     }
 }
-
