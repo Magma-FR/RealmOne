@@ -28,12 +28,12 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
         public override void SetDefaults()
         {
-            Item.damage = 14;
+            Item.damage = 12;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 32;
             Item.height = 32;
-            Item.useTime = 50;
-            Item.useAnimation = 50;
+            Item.useTime = 60;
+            Item.useAnimation = 60;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 3;
             Item.value = 30000;
@@ -49,7 +49,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (type == ProjectileID.Bullet)
-                type = ModContent.ProjectileType<OldGoldBullet>(); // or ProjectileID.FireArrow;
+                type = ProjectileType<OldGoldBullet>(); // or ProjectileID.FireArrow;
         }
 
         public override void AddRecipes()

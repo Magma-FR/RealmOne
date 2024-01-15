@@ -26,8 +26,8 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             Item.DamageType = DamageClass.Ranged;
             Item.width = 34;
             Item.height = 25;
-            Item.useTime = 16;
-            Item.useAnimation = 16;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2;
             Item.rare = ItemRarityID.Orange;
@@ -35,11 +35,9 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             Item.shootSpeed = 70f;
             Item.shoot = ModContent.ProjectileType<GoreshankShot>();
             Item.noMelee = true; // The projectile will do the damage and not the item
-            Item.value = Item.buyPrice(gold: 8, silver: 3);
-            //   Item.noUseGraphic = true;
-            // Item.channel = true;
+            Item.value = Item.buyPrice(gold: 5, silver: 3);
+          
             Item.useAmmo = AmmoID.Bullet;
-            Item.scale = 1.1f;
         }
 
         public override bool? UseItem(Player player)
@@ -70,11 +68,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             return false;
         }
 
-        public override Vector2? HoldoutOffset()
-        {
-            var offset = new Vector2(0, 0);
-            return offset;
-        }
+        
     }
 
     public class GoreshankShot : ModProjectile
@@ -82,7 +76,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
         public override string Texture
             => Helper.Empty;
 
-        private const int timeLeftMax = 25;
+        private const int timeLeftMax = 18;
         private Vector2 origin;
 
         public override void SetDefaults()
@@ -125,7 +119,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
 
         public override bool PreDraw(ref Color lightColor)
         {
-            //some descaling floats
             float Descaling = (float)
             Projectile.timeLeft / timeLeftMax;
             float ScaleY = 20;

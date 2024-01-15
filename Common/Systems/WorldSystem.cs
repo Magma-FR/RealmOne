@@ -31,7 +31,7 @@ namespace RealmOne.Common.Systems
             {
                 Player player = Main.LocalPlayer;
 
-                if (type == 3 && Main.rand.NextBool(82))
+                if (type == 3 && Main.rand.NextBool(90))
                 {
                     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ItemType<RegenMush>(), 1);
                 }
