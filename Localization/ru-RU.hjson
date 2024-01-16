@@ -2158,6 +2158,11 @@ Mods: {
 				// DisplayName: Verminhide Legs
 				// Tooltip: ""
 			}
+
+			BloodDrill: {
+				// DisplayName: Blood Drill
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2443,6 +2448,7 @@ Mods: {
 			// GildedGladiusProj.DisplayName: Gilded Gladius Proj
 			// GildedGladiusThrown.DisplayName: Gilded Gladius Thrown
 			// ButcherRatMachete.DisplayName: Butcher Rat Machete
+			// BloodDrillProj.DisplayName: Blood Drill Proj
 		}
 
 		NPCs: {
