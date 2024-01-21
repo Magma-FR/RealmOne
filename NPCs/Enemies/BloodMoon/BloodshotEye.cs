@@ -16,7 +16,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
     {
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[Type] = 9;
+            Main.npcFrameCount[NPC.type] = 9;
         }
 
         public override void SetDefaults()

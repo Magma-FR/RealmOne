@@ -43,10 +43,7 @@ namespace RealmOne.Tiles.Ambient
             {
                 NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16, ModContent.NPCType<OldSnail>(), 32);
             }
-            if (Main.rand.NextBool(12))
-            {
-                NPC.NewNPC(new EntitySource_TileBreak(i, j), (int)i * 16 + 8, (int)j * 16 + 16, ModContent.NPCType<NPCs.Critters.Squirm>(), 0, 2, 1, 0, 0, Main.myPlayer);
-            }
+            
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;
