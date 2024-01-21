@@ -26,7 +26,7 @@ namespace RealmOne.Items.ItemCritter
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.value = Item.sellPrice(gold: 1, silver: 2);
+            Item.value = Item.sellPrice(silver: 3, copper: 50);
         }
 
         public override bool? UseItem(Player player)
