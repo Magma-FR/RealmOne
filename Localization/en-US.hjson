@@ -2136,7 +2136,7 @@ Mods: {
 
 			GildedGladius: {
 				DisplayName: Gilded Gladius
-				Tooltip: ""
+				Tooltip: Elegant and Antique Stabber of the Centuries
 			}
 
 			ForestTea: {
@@ -2145,7 +2145,7 @@ Mods: {
 			}
 
 			VerminhideBody: {
-				DisplayName: Verminhide Body
+				DisplayName: Verminhide Breastpiece
 				Tooltip: ""
 			}
 
@@ -2155,12 +2155,33 @@ Mods: {
 			}
 
 			VerminhideLegs: {
-				DisplayName: Verminhide Legs
+				DisplayName: Verminhide Boots
 				Tooltip: ""
 			}
 
 			BloodDrill: {
 				DisplayName: Blood Drill
+				Tooltip: ""
+			}
+
+			PlayerBannerTen: {
+				DisplayName: Begineer's Recklessness
+				Tooltip:
+					'''
+					Your first real punishment, but as a reward??
+					5% increased damage
+					5% increased move speed
+					4+ Defence
+					'''
+			}
+
+			OrchidMothItem: {
+				DisplayName: Orchid Moth
+				Tooltip: ""
+			}
+
+			OrchidSluggyItem: {
+				DisplayName: Orchid Sluggy
 				Tooltip: ""
 			}
 		}
@@ -2284,6 +2305,11 @@ Mods: {
 			PursuerNo: {
 				DisplayName: Broken Piggy Pursuer
 				Description: Your Piggy Pursuer is recovering from the shatter
+			}
+
+			PlayerBannerTenBuff: {
+				DisplayName: Begineer's Recklessness
+				Description: Your first real punishment, but as a reward??
 			}
 		}
 
@@ -2635,6 +2661,8 @@ Mods: {
 			WhisperingShroud.DisplayName: Whispering Shroud
 			ImpactMine.DisplayName: Impact Mine
 			FloatingLantern.DisplayName: Floating Lantern
+			OrchidMoth.DisplayName: Orchid Moth
+			OrchidSluggy.DisplayName: Orchid Sluggy
 		}
 
 		Dialogue: {
@@ -2679,6 +2707,8 @@ Mods: {
 			Nothing.MapEntry: Nothing
 			HangingWattle.MapEntry: Hanging Wattle
 			FarmTorch.MapEntry: Farm Torch
+			PlayerBanners.MapEntry: Player Banners
+			BannerTenTile.MapEntry: Banner Ten Tile
 		}
 
 		DamageClasses: {

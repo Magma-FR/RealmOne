@@ -19,7 +19,9 @@ namespace RealmOne.NPCs.Critters.Forest
     {
         public override void SetStaticDefaults()
         {
-
+            Main.npcFrameCount[NPC.type] = 4;
+            Main.npcCatchable[NPC.type] = true;
+            NPCID.Sets.CountsAsCritter[Type] = true;
         }
 
         public override void SetDefaults()
@@ -41,10 +43,10 @@ namespace RealmOne.NPCs.Critters.Forest
             NPC.noGravity = true;
             AIType = NPCID.Firefly;
 
-         }
+         }  
         public override void AI()
         {
-            NPC.spriteDirection = -NPC.direction;
+            NPC.spriteDirection = NPC.direction;
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -54,7 +56,7 @@ namespace RealmOne.NPCs.Critters.Forest
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Critters/ImpactBunny_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.16f;

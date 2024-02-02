@@ -66,7 +66,7 @@ namespace RealmOne.Tiles
                     dust.fadeIn = 0.5f + Main.rand.Next(10) * 0.1f;
 
                 }
-                if(tile.TileFrameY == 0 && Main.rand.NextBool(17)&& ((Main.drawToScreen && Main.rand.NextBool(24)) || !Main.drawToScreen))
+                if(tile.TileFrameY == 0 && Main.rand.NextBool(30)&& ((Main.drawToScreen && Main.rand.NextBool(30)) || !Main.drawToScreen))
                 {
 
                     Dust dust1 = Dust.NewDustDirect(new Vector2(i * 16 + 2, j * 16 - 4), 4, 8, DustID.Torch, 0f, 0f, 30);
