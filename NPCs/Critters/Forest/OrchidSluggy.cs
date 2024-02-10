@@ -70,10 +70,7 @@ namespace RealmOne.NPCs.Critters.Forest
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            Player player = spawnInfo.Player;
-            if (spawnInfo.SpawnTileY > Main.worldSurface && spawnInfo.Player.ZoneForest)
-                return SpawnCondition.OverworldDay.Chance * 0.325f + SpawnCondition.OverworldNight.Chance * 0.325f;
-            return 0f;
+            return SpawnCondition.OverworldNightMonster.Chance * 0.15f + SpawnCondition.OverworldDay.Chance * 0.15f;
         }
     }
 }

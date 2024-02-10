@@ -65,12 +65,10 @@ namespace RealmOne.NPCs.Critters.Forest
             NPC.frame.Y = frame * frameHeight;
         }
 
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            Player player = spawnInfo.Player;
-            if (spawnInfo.SpawnTileY > Main.worldSurface && !Main.dayTime)
-                return spawnInfo.Player.ZoneForest ? .325f : 0f;
-            return 0f;
+            return SpawnCondition.OverworldNightMonster.Chance * 0.15f + SpawnCondition.OverworldDay.Chance * 0.15f;
         }
     }
 }

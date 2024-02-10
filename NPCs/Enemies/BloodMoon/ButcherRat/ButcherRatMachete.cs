@@ -50,8 +50,8 @@ public class ButcherRatMachete : ModProjectile
             var offset = new Vector2(Projectile.width / 2f, Projectile.height / 2f);
             var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
             Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + offset;
-            float sizec = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 1.2f);
-            Color color = new Color(244, 204, 39) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+            float sizec = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 1.1f);
+            Color color = new Color(255, 32, 99) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
             Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.oldRot[k], frame.Size() / 2f, sizec, SpriteEffects.None, 0);
         }
         Main.spriteBatch.End();

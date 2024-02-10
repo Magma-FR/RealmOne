@@ -74,9 +74,7 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
                 new FlavorTextBestiaryInfoElement("A fragile but nimble lantern that looks for any Terrarian that stumbles in its way at night"),
             });
         }
-        private Vector2 scale;
-        private float _timerr = 0;
-
+      
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {

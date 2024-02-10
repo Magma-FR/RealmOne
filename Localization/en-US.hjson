@@ -2184,6 +2184,16 @@ Mods: {
 				DisplayName: Orchid Sluggy
 				Tooltip: ""
 			}
+
+			OrchidEssence: {
+				DisplayName: Orchid Essence
+				Tooltip: ""
+			}
+
+			SuperSunflowerBow: {
+				DisplayName: Super Sunflower Bow
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2475,6 +2485,7 @@ Mods: {
 			GildedGladiusThrown.DisplayName: Gilded Gladius Thrown
 			ButcherRatMachete.DisplayName: Butcher Rat Machete
 			BloodDrillProj.DisplayName: Blood Drill Proj
+			SunflowerArrow.DisplayName: Sunflower Arrow
 		}
 
 		NPCs: {
@@ -2663,6 +2674,8 @@ Mods: {
 			FloatingLantern.DisplayName: Floating Lantern
 			OrchidMoth.DisplayName: Orchid Moth
 			OrchidSluggy.DisplayName: Orchid Sluggy
+			OrchidSlime.DisplayName: Orchid Slime
+			OrchidSlimeTiny.DisplayName: Orchid Slime Tiny
 		}
 
 		Dialogue: {
@@ -2739,6 +2752,8 @@ Mods: {
 		Emotes: {
 			SmugBubble.Command: smugbubble
 			LuvyaBubble.Command: luvyabubble
+			BlackManBubble.Command: blackmanbubble
+			ThumbBubble.Command: thumbbubble
 		}
 	}
 }

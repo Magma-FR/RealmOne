@@ -1,0 +1,28 @@
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ModLoader;
+
+namespace RealmOne.Common.Gores
+{
+    public class orchiD : ModGore
+    {
+        public override void OnSpawn(Gore gore, IEntitySource source)
+        {
+            base.OnSpawn(gore, source);
+        }
+        public override bool Update(Gore gore)
+        {
+            return base.Update(gore);
+        }
+        public override Color? GetAlpha(Gore gore, Color lightColor)
+        {
+            return Color.White;
+        }
+    }
+}
