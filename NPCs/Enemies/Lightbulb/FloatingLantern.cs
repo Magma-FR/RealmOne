@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.EnemyDrops;
 using ReLogic.Content;
 using System;
@@ -43,13 +44,21 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
             NPC.DeathSound = SoundID.DD2_WitherBeastHurt;
             NPC.netAlways = true;
             NPC.netUpdate = true;
+            SpawnModBiomes = new int[]
+            {
+                ModContent.GetInstance<CursedForestBiome>().Type
+            };
         }
 
+        // public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        //  {
+        //      return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !Main.bloodMoon ? 0.08f : 0f;
+        //  }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !Main.bloodMoon ? 0.08f : 0f;
+            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
+            ? 0 : 0.22f;
         }
-
         public override void AI()
         {
             NPC.TargetClosest();

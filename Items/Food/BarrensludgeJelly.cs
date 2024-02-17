@@ -36,10 +36,6 @@ namespace RealmOne.Items.Food
             Item.UseSound = SoundID.Item2;
         }
 
-        public override bool CanUseItem(Player player)
-        {
-            player.AddBuff(BuffID.Slimed, 4000);
-            return true;
-        }
+        
     }
 }

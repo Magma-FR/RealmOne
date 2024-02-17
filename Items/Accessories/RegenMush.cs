@@ -24,10 +24,11 @@ namespace RealmOne.Items.Accessories
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
         }
+        public int lifeRegen = 3;
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.lifeRegen += 3;
+            player.lifeRegen += lifeRegen;
         }
     }
 }

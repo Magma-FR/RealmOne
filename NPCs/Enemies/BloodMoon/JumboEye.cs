@@ -27,7 +27,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             NPC.defense = 0;
             NPC.lifeMax = 200;
             NPC.npcSlots = 2;
-            NPC.knockBackResist = 0.3f;
 
             NPC.value = Item.buyPrice(0, 0, 4, 55);
             NPC.aiStyle = NPCAIStyleID.DemonEye;
@@ -39,7 +38,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             AnimationType = NPCID.DemonEye;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.10f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.09f : 0f;
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {

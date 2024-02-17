@@ -1,4 +1,5 @@
-﻿using RealmOne.Common.Systems.GenPasses;
+﻿using RealmOne.Common.Core;
+using RealmOne.Common.Systems.GenPasses;
 using RealmOne.Items.Accessories;
 using RealmOne.Items.Food;
 using RealmOne.Items.Misc.Plants;
@@ -8,11 +9,13 @@ using RealmOne.Items.Weapons.PreHM.Grenades;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using RealmOne.NPCs.Critters;
 using RealmOne.NPCs.Enemies.Underground;
+using RealmOne.Tiles;
 using RealmOne.Tiles.Blocks;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
@@ -106,7 +109,7 @@ namespace RealmOne.Common.Systems
                     Generator.GenerateStructure("Structures/Test", point, RealmOne.Instance, false);
                 }
             }*/
-
+       
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {
             int shiniesIndex = tasks.FindIndex((GenPass genpass) => genpass.Name.Equals("Shinies"));
@@ -119,8 +122,55 @@ namespace RealmOne.Common.Systems
               {
                   tasks.Insert(shiniesIndex2 + 1, (GenPass)(object)new FlorenceMarbleOreNameGenPass("FlorenceMarbleOreNameGenPass", 320f));
               }*/
+            int forestIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Ambient"));
+
+            if (forestIndex != -1)
+            {
+                tasks.Insert(forestIndex + 1, new ForestAmbient("Ambients", 130f));
+            }
+
         }
 
+        public class ForestAmbient : GenPass
+        {
+            public ForestAmbient(string name, float loadWeight) : base(name, loadWeight)
+            {
+            }
+
+            protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
+            {
+                progress.Message = "Ambients";
+
+                int[] tileTypes = new int[] { ModContent.TileType<TatteredBarrel>() };
+
+                // To not be annoying, we'll only spawn 15 Example Rubble near the spawn point.
+                // This example uses the Try Until Success approach: https://github.com/tModLoader/tModLoader/wiki/World-Generation#try-until-success
+                for (int k = 0; k < 15; k++)
+                {
+                    bool success = false;
+                    int attempts = 0;
+
+                    while (!success)
+                    {
+                        attempts++;
+                        if (attempts > 1000)
+                        {
+                            break;
+                        }
+                        int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 40, Main.maxTilesX / 2 + 40);
+                        int y = WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, (int)GenVars.worldSurfaceHigh);
+                        int tileType = WorldGen.genRand.Next(tileTypes);
+                        if (Main.tile[x, y].TileType == tileType)
+                        {
+                            continue;
+                        }
+
+                        WorldGen.PlaceTile(x, y, tileType, mute: true);
+                        success = Main.tile[x, y].TileType == tileType;
+                    }
+                }
+            }
+        }
         public override void PostWorldGen()
         {
             int[] goldenchest = { ItemType<MinersPouch>() };

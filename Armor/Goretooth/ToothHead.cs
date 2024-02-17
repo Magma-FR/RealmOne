@@ -26,8 +26,8 @@ namespace RealmOne.Armor.Goretooth
         public override void UpdateEquip(Player player)
         {
             {
-                player.GetDamage(DamageClass.Summon) += 0.05f;
-                player.maxMinions += 1;
+                player.GetDamage(DamageClass.Melee) += 0.08f;
+                player.GetArmorPenetration(DamageClass.Melee) += 0.05f;
             }
         }
 
@@ -39,7 +39,7 @@ namespace RealmOne.Armor.Goretooth
         public override void UpdateArmorSet(Player player)
         {
             //      string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-            player.setBonus = "When you are under 50% of health, you are surrounded by teeth. These teeth attack nearby enemies. \n2+ maximum minions";
+            player.setBonus = "When you are under 50% of health, you are surrounded by teeth. These teeth attack nearby enemies. 2+ extra defence";
             //        player.GetModPlayer<>().SpecialSetBonus = true;
 
             player.statDefense += 2;

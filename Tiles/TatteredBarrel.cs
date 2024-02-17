@@ -73,17 +73,23 @@ namespace RealmOne.Tiles
 
         public override bool CanDrop(int i, int j)
         {
-            if (Main.rand.NextBool(1))
+            if (Main.rand.NextBool(2))
             {
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
 
             }
-           // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(1, 1), Main.rand.NextBool(60));
-           // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(3, 12), Main.rand.NextBool(2));
-       //     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<SuperWheat>(), Main.rand.Next(1, 1), Main.rand.NextBool(80));
-        //    Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<RustedBullets>(), Main.rand.Next(10, 15), Main.rand.NextBool(2));
 
-       //     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Hay, Main.rand.Next(4, 7), Main.rand.NextBool(3));
+            if (Main.rand.NextBool(20))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(2, 6));
+
+            }
+            // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(1, 1), Main.rand.NextBool(60));
+            // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(3, 12), Main.rand.NextBool(2));
+            //     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<SuperWheat>(), Main.rand.Next(1, 1), Main.rand.NextBool(80));
+            //    Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<RustedBullets>(), Main.rand.Next(10, 15), Main.rand.NextBool(2));
+
+            //     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Hay, Main.rand.Next(4, 7), Main.rand.NextBool(3));
 
             //        Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<TatteredBarrelItem>(), 0);
 

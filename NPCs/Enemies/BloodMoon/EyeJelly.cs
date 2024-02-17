@@ -58,7 +58,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             NPC.frame.Y = frame * frameHeight;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.16f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.18f : 0f;
 
         public override void HitEffect(NPC.HitInfo hit)
         {

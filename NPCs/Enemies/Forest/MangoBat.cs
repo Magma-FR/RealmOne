@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Others;
+using RealmOne.RealmPlayer;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
@@ -34,8 +36,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             NPC.lifeMax = 30;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath4;
-
-            NPC.knockBackResist = 0.34f;
+            NPC.value = Item.buyPrice(0, 0, 1, 80);
 
             NPC.npcSlots = 0;
             NPC.aiStyle = NPCAIStyleID.Bat;
@@ -69,10 +70,14 @@ namespace RealmOne.NPCs.Enemies.Forest
             }
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.15f;
+       public override float SpawnChance(NPCSpawnInfo spawnInfo)
+       {
+            Player player = spawnInfo.Player;
+
+            return (spawnInfo.Player.ZoneFarmy() && ((!Main.pumpkinMoon && !Main.snowMoon && !CursedForestEvent.CursedForest) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) &&
+            (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 0.2f : 0f;
         }
+        
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

@@ -29,7 +29,9 @@ namespace RealmOne.Tiles
 
             MineResist = 3f;
             MinPick = 20;
-            HitSound = rorAudio.OldGoldTink;
+            HitSound = rorAudio.OldGoldTink;      
+            TileObjectData.newTile.Origin = new Point16(0, 1);
+
             DustType = DustID.DungeonPink;
             TileID.Sets.DisableSmartCursor[Type] = true;
 
@@ -41,7 +43,6 @@ namespace RealmOne.Tiles
 
             // Placement
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-            TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 
             TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock };

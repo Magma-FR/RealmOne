@@ -1,5 +1,12 @@
-﻿using Terraria.ModLoader;
+﻿using System.IO;
+using Terraria;
+using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using System;
+using System.Collections.Generic;
+    using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealmOne.Common.Systems
 {
@@ -7,17 +14,62 @@ namespace RealmOne.Common.Systems
     {
         public static bool downedPiggy;
         public static bool downedRat;
-
         public static bool downedSquirmo;
-        public static bool downedOutcropOutcast;
 
-        public override void OnWorldLoad()
+        public override void SaveWorldData(TagCompound tag)
+        {
+            if (downedPiggy)
+            {
+                tag["downedPiggy"] = true;
+            }
+            if (downedRat)
+            {
+                tag["downedRat"] = true;
+            }
+
+            if (downedSquirmo)
+            {
+                tag["downedSquirmo"] = true;
+            }
+
+           
+        }
+
+        public override void ClearWorld()
         {
             downedPiggy = false;
             downedRat = false;
+            downedSquirmo = false;
+
+
+        }
+
+        public override void LoadWorldData(TagCompound tag)
+        {
+            downedPiggy = tag.ContainsKey("downedPiggy");
+
+            downedRat = tag.ContainsKey("downedRat");
+
+            downedSquirmo = tag.ContainsKey("downedSquirmo");
+        }
+
+        public override void NetSend(BinaryWriter writer)
+        {
+            // Order of operations is important and has to match that of NetReceive
+            var flags = new BitsByte();
+            flags[0] = downedPiggy;
+            flags[1] = downedRat;
+            flags[2] = downedSquirmo;
+
+            writer.Write(flags);
+        }
+        public override void OnWorldLoad()
+        {
+            downedPiggy = false;
+
+            downedRat = false;
 
             downedSquirmo = false;
-            downedOutcropOutcast = false;
         }
 
         public override void OnWorldUnload()
@@ -26,38 +78,21 @@ namespace RealmOne.Common.Systems
             downedRat = false;
 
             downedSquirmo = false;
-            downedOutcropOutcast = false;
         }
 
-        public override void SaveWorldData(TagCompound tag)
+    
+
+    
+
+        public override void NetReceive(BinaryReader reader)
         {
-            if (downedPiggy)
-            {
-                tag.Set("downedPiggy", true);
-            }
-            if (downedRat)
-            {
-                tag.Set("downedRat", true);
-            }
+            // Order of operations is important and has to match that of NetSend
+            BitsByte flags = reader.ReadByte();
+            downedPiggy = flags[0];
+            downedRat= flags[1];
+            downedSquirmo = flags[2];
 
-            if (downedSquirmo)
-            {
-                tag.Set("downedSquirmo", true);
-            }
 
-            if (downedOutcropOutcast)
-            {
-                tag.Set("downedOutcropOutcast", true);
-            }
-        }
-
-        public override void LoadWorldData(TagCompound tag)
-        {
-            downedPiggy = tag.ContainsKey("downedPiggy");
-            downedRat = tag.ContainsKey("downedRat");
-
-            downedSquirmo = tag.ContainsKey("downedSquirmo");
-            downedOutcropOutcast = tag.ContainsKey("downedOutcropOutcast");
         }
     }
 }

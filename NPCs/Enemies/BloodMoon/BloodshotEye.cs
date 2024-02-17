@@ -23,9 +23,9 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         {
             NPC.width = 26;
             NPC.height = 18;
-            NPC.damage = 10;
-            NPC.defense = 3;
-            NPC.lifeMax = 45;
+            NPC.damage = 8;
+            NPC.defense = 0;
+            NPC.lifeMax = 40;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath2;
             NPC.value = 60f;
@@ -36,7 +36,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             NPC.aiStyle = NPCAIStyleID.DemonEye;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.10f : 0f;
 
         private double Timer;
         private bool Attacking;
@@ -57,7 +57,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             }
 
             var entitySource = NPC.GetSource_FromThis();
-            if (Vector2.Distance(player.Center, NPC.Center) <= 250)
+            if (Vector2.Distance(player.Center, NPC.Center) <= 270)
             {
                 Timer++;
                 if (Timer >= 50 && Timer <= 71)
@@ -74,12 +74,12 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 }
                 Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
 
-                if (Timer == 80)
+                if (Timer == 85)
                 {
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         SoundEngine.PlaySound(SoundID.NPCHit19, NPC.position);
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (6 * NPC.spriteDirection), NPC.Center.Y - 8, direction.X, direction.Y, ProjectileID.BloodShot, 9, 1, Main.myPlayer, 0, 0);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + (6 * NPC.spriteDirection), NPC.Center.Y - 8, direction.X, direction.Y, ProjectileID.BloodShot, 7, 1, Main.myPlayer, 0, 0);
                     }
                 }
                 if (Timer == 120)

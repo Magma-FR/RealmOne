@@ -19,7 +19,8 @@ using RealmOne.Items.Sets.OrchidSet;
 using RealmOne.Common.Core;
 using Terraria.GameContent;
 using RealmOne.Items.Misc.Plants;
-namespace RealmOne.NPCs.Enemies.Forest.Orchid
+
+namespace RealmOne.NPCs.Enemies.Forest
 {
     public class SunflowerSlime : ModNPC
     {

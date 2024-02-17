@@ -41,17 +41,16 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.width = 28;
             NPC.height = 20;
             NPC.damage = 10;
-            NPC.defense = 2;
-            NPC.lifeMax = 58;
+            NPC.lifeMax = 50;
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath44;
             NPC.value = Item.buyPrice(0, 0, 2, 15);
-            NPC.knockBackResist = 0.5f;
+            NPC.knockBackResist = 0.2f;
 
             NPC.noGravity = true;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
         private double Timer;
         private double SinThing;
@@ -91,8 +90,8 @@ namespace RealmOne.NPCs.Enemies.Impact
             Player player = Main.player[NPC.target];
             Vector2 TargetLocation = new Vector2(player.position.X + ((float)Math.Sin(SinThing) * 100), player.position.Y - 150 - ((float)Math.Sin(SinThing) * 10));
 
-            float speed = 13f;
-            float inertia = 30f;
+            float speed = 10f;
+            float inertia = 10f;
             Vector2 direction = TargetLocation - NPC.Center;
             direction.Normalize();
             direction *= speed;
@@ -107,7 +106,7 @@ namespace RealmOne.NPCs.Enemies.Impact
                     NPC.velocity.X = .008f * NPC.direction;
 
                     var p = Projectile.NewProjectile(entitySource, NPC.Center, new Vector2(0f, 2f), ProjectileID.PulseBolt, 8, 0f);
-                    Main.projectile[p].scale = 0.6f;
+                    Main.projectile[p].scale = 0.8f;
                     Main.projectile[p].friendly = false;
                     Main.projectile[p].hostile = true;
                 }

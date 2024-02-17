@@ -39,7 +39,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
         {
             if (Main.bloodMoon)
             {
-                return .07f;
+                return .06f;
             }
             else
             {

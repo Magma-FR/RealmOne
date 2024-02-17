@@ -135,6 +135,9 @@ public class rorAudio : ModSystem
 
     public static readonly SoundStyle squeak;
 
+    public static readonly SoundStyle Rat;
+
+
     static rorAudio()
     {
         SFX_MetalSwing = new SoundStyle("RealmOne/Assets/Soundss/SFX_MetalSwing", (SoundType)0);
@@ -201,5 +204,7 @@ public class rorAudio : ModSystem
         PorcelainDamaged = new SoundStyle("RealmOne/Assets/Soundss/porcelainbreak", (SoundType)0);
         GoreGun = new SoundStyle("RealmOne/Assets/Soundss/GoreGun", (SoundType)0);
         squeak = new SoundStyle("RealmOne/Assets/Soundss/squeak", (SoundType)0);
+        Rat = new SoundStyle("RealmOne/Assets/Soundss/Rat", (SoundType)0);
+
     }
 }

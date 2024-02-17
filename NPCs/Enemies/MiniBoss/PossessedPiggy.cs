@@ -67,6 +67,7 @@ namespace RealmOne.NPCs.Enemies.MiniBoss
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Possessed Piggybank");
+
             Main.npcFrameCount[NPC.type] = 5;
             NPCID.Sets.TrailCacheLength[NPC.type] = 3;
             NPCID.Sets.TrailingMode[NPC.type] = 0;

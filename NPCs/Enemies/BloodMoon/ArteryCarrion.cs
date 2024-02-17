@@ -41,7 +41,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             NPC.aiStyle = -1;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.095f : 0f;
 
         private double Timer;
         private double SinThing;
@@ -66,7 +66,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
             Player player = Main.player[NPC.target];
             Vector2 TargetLocation = new Vector2(player.position.X + ((float)Math.Sin(SinThing) * 100), player.position.Y - 150 - ((float)Math.Sin(SinThing) * 10));
 
-            float speed = 11f;
+            float speed = 10f;
             float inertia = 30f;
             Vector2 direction = TargetLocation - NPC.Center;
             direction.Normalize();

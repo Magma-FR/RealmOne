@@ -26,6 +26,11 @@
       <None Remove="Effects\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Common\Core\ParticleContent\Particles\GenericGlowParticle.png" />
+      <None Remove="Common\Core\ParticleContent\Particles\SparkleParticle.png" />
+    </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
 	</ItemGroup>

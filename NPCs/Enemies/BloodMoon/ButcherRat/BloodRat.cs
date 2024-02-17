@@ -24,12 +24,11 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
             NPC.width = 26;
             NPC.height = 28;
             NPC.defense = 0;
-            NPC.damage = 9;
-            NPC.lifeMax = 60;
+            NPC.damage = 7;
+            NPC.lifeMax = 39;
             NPC.value = Item.buyPrice(0, 0, 1, 5);
             NPC.noGravity = false;
             NPC.noTileCollide = false;
-            NPC.knockBackResist = 0.50f;
             NPC.friendly = false;
 
             NPC.HitSound = SoundID.NPCHit18;
@@ -42,10 +41,14 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
 
         public override void FindFrame(int frameHeight)
         {
-            NPC.frameCounter += 0.10f;
+            NPC.frameCounter += 0.15f;
             NPC.frameCounter %= Main.npcFrameCount[NPC.type];
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
+        }
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+        {
+            
         }
 
         public override void AI()

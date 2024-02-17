@@ -12,7 +12,6 @@ namespace RealmOne.Common
     {
         public bool isActive;
         public float Intensity;
-
         public override void Activate(Vector2 position, params object[] args)
         {
             isActive = true;
@@ -42,15 +41,15 @@ namespace RealmOne.Common
 
         public override bool IsActive()
         {
-            return Main.bloodMoon && Intensity > 0f;
+            return Intensity > 0f;
         }
-
+        
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
 
-            if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f && Main.bloodMoon == true)
+            if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 Texture2D Tex = ModContent.Request<Texture2D>("RealmOne/Assets/Effects/gradation").Value;
                 Texture2D Tex2 = ModContent.Request<Texture2D>("RealmOne/Assets/Effects/gradation2").Value;
@@ -63,7 +62,7 @@ namespace RealmOne.Common
             {
             }
             Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
         }
 
         public override Color OnTileColor(Color inColor)

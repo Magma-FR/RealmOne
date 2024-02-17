@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Food;
 using Terraria;
 using Terraria.GameContent;
@@ -37,10 +38,17 @@ namespace RealmOne.NPCs.Enemies.Forest
             NPC.DeathSound = SoundID.NPCDeath6;
             NPC.netAlways = true;
             NPC.netUpdate = true;
+            SpawnModBiomes = new int[]
+            {
+                ModContent.GetInstance<CursedForestBiome>().Type
+            };
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldDay.Chance * 0.05f : 0f;
-
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight) 
+            ? 0 : 0.25f;
+        }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -92,7 +100,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
             for (int k = 0; k < 15; k++)
             {
-                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WitherLightning, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
     }

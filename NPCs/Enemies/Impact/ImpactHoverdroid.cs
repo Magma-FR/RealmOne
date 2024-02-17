@@ -40,17 +40,15 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.width = 24;
             NPC.height = 30;
             NPC.damage = 10;
-            NPC.defense = 2;
-            NPC.lifeMax = 58;
+            NPC.lifeMax = 52;
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath44;
             NPC.value = Item.buyPrice(0, 0, 2, 20);
-            NPC.knockBackResist = 0.5f;
 
             NPC.noGravity = true;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -84,27 +82,27 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.spriteDirection = NPC.direction;
 
             if (NPC.Center.X
-                >= player.Center.X && MoveSpeed >= -90)
+                >= player.Center.X && MoveSpeed >= -70)
                 MoveSpeed--;
 
             if (NPC.Center.Y
-                <= player.Center.Y - NPC.ai[0] && MoveSpeedY <= 50)
+                <= player.Center.Y - NPC.ai[0] && MoveSpeedY <= 40)
                 MoveSpeedY++;
 
             if (NPC.Center.X
-                <= player.Center.X && MoveSpeed <= 90)
+                <= player.Center.X && MoveSpeed <= 70)
                 MoveSpeed++;
 
             NPC.velocity.X = MoveSpeed * 0.1f;
 
             if (NPC.Center.Y
-                >= player.Center.Y - NPC.ai[0] && MoveSpeedY >= -55)
+                >= player.Center.Y - NPC.ai[0] && MoveSpeedY >= -45)
             {
                 MoveSpeedY--;
                 NPC.ai[0] = 160f;
             }
 
-            NPC.velocity.Y = MoveSpeedY * 0.12f;
+            NPC.velocity.Y = MoveSpeedY * 0.10f;
             if (Main.rand.NextBool(220) && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 NPC.ai[0] = -25f;
@@ -114,7 +112,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             Vector2 targetDirection = player.Center - NPC.Bottom;
             targetDirection.Normalize();
             // Check if not currently firing, and if enough time has passed to fire again
-            if (!isFiring && timeSinceLastFire > 10f * fireRate) // Assuming 60 frames per second
+            if (!isFiring && timeSinceLastFire > 20f * fireRate) // Assuming 60 frames per second
             {
                 // Start firing
                 isFiring = true;
@@ -126,8 +124,8 @@ namespace RealmOne.NPCs.Enemies.Impact
                 {
                     // Spawn bullets
                     var p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom.X + (10 * NPC.spriteDirection), NPC.Bottom.Y - 8, targetDirection.X, targetDirection.Y, ProjectileID.PulseBolt, 7, 1, Main.myPlayer, 0, 0);
-                    Main.projectile[p].timeLeft = 800;
-                    Main.projectile[p].scale = 0.6f;
+                    Main.projectile[p].timeLeft = 600;
+                    Main.projectile[p].scale = 1f;
                     Main.projectile[p].friendly = false;
                     Main.projectile[p].hostile = true;
                     Main.projectile[p].velocity *= 1.5f;
@@ -135,7 +133,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             }
 
             // Check if currently firing and if 2 seconds have passed
-            if (isFiring && timeSinceLastFire > 80) // Assuming 60 frames per second
+            if (isFiring && timeSinceLastFire > 100) // Assuming 60 frames per second
             {
                 // Stop firing after 2 seconds
                 isFiring = false;
@@ -169,7 +167,7 @@ namespace RealmOne.NPCs.Enemies.Impact
 
         public override void FindFrame(int frameHeight)
         {
-            NPC.frameCounter += 0.14f;
+            NPC.frameCounter += 0.15f;
             NPC.frameCounter %= Main.npcFrameCount[NPC.type];
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;

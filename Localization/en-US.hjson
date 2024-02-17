@@ -2194,6 +2194,41 @@ Mods: {
 				DisplayName: Super Sunflower Bow
 				Tooltip: ""
 			}
+
+			CursedForestItem: {
+				DisplayName: Cursed Forest Item
+				Tooltip: ""
+			}
+
+			OrchidBody: {
+				DisplayName: Orchid Body
+				Tooltip: ""
+			}
+
+			OrchidHead: {
+				DisplayName: Orchid Head
+				Tooltip: ""
+			}
+
+			OrchidLegs: {
+				DisplayName: Orchid Legs
+				Tooltip: ""
+			}
+
+			GoldSkullTome: {
+				DisplayName: Gold Skull Tome
+				Tooltip: ""
+			}
+
+			SunflowerCharm: {
+				DisplayName: Sunflower Charm
+				Tooltip: ""
+			}
+
+			Ratty: {
+				DisplayName: Ratty
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2486,6 +2521,7 @@ Mods: {
 			ButcherRatMachete.DisplayName: Butcher Rat Machete
 			BloodDrillProj.DisplayName: Blood Drill Proj
 			SunflowerArrow.DisplayName: Sunflower Arrow
+			ImpactBoomerangProj.DisplayName: Impact Boomerang Proj
 		}
 
 		NPCs: {
@@ -2676,6 +2712,7 @@ Mods: {
 			OrchidSluggy.DisplayName: Orchid Sluggy
 			OrchidSlime.DisplayName: Orchid Slime
 			OrchidSlimeTiny.DisplayName: Orchid Slime Tiny
+			SunflowerSlime.DisplayName: Sunflower Slime
 		}
 
 		Dialogue: {
@@ -2722,6 +2759,7 @@ Mods: {
 			FarmTorch.MapEntry: Farm Torch
 			PlayerBanners.MapEntry: Player Banners
 			BannerTenTile.MapEntry: Banner Ten Tile
+			AnkhPot.MapEntry: Ankh Pot
 		}
 
 		DamageClasses: {
@@ -2735,6 +2773,11 @@ Mods: {
 			FarmSurface: {
 				DisplayName: The Abandoned Farm
 				TownNPCDialogueName: Abandoned Farm
+			}
+
+			CursedForestBiome: {
+				DisplayName: Cursed Forest Biome
+				TownNPCDialogueName: the Cursed Forest Biome
 			}
 		}
 

@@ -32,8 +32,9 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.timeLeft = 400;
             Projectile.penetrate = 2;
             AIType = ProjectileID.PulseBolt;
+            Projectile.hide = true;
         }
-
+        
         public override void AI()
         {
             Projectile.aiStyle = ProjAIStyleID.Arrow;

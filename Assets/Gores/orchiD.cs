@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace RealmOne.Common.Gores
+namespace RealmOne.Assets.Gores
 {
     public class orchiD : ModGore
     {

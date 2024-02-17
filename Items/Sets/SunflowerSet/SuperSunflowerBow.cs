@@ -12,6 +12,7 @@ using RealmOne.Items.Weapons.PreHM.Jungle;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.Graphics.Shaders;
+using RealmOne.Items.Misc.Plants;
 
 namespace RealmOne.Items.Sets.SunflowerSet
 {
@@ -56,7 +57,18 @@ namespace RealmOne.Items.Sets.SunflowerSet
                type = ModContent.ProjectileType<SunPetal>();
             }
         }
+        public override Vector2? HoldoutOffset() => new Vector2(-6, 0);
 
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+            .AddIngredient(ModContent.ItemType<SunflowerPetal>(), 14)
+            .AddIngredient(ItemID.WoodenBow, 1)
+            .AddIngredient(ItemID.FallenStar,  1)
+            .AddTile(TileID.WorkBenches)
+
+            .Register();
+        }
     }
     public class SunflowerArrow : ModProjectile
     {

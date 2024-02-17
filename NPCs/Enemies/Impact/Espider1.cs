@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core;
 using RealmOne.Items.Misc.EnemyDrops;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -26,15 +28,14 @@ namespace RealmOne.NPCs.Enemies.Impact
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
-            glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
         }
 
         public override void SetDefaults()
         {
             NPC.width = 70;
             NPC.height = 22;
-            NPC.damage = 21;
-            NPC.defense = 2;
+            NPC.damage = 20;
+            NPC.defense = 1;
             NPC.lifeMax = 80;
             NPC.value = Item.buyPrice(0, 0, 6, 15);
             NPC.aiStyle = 3;
@@ -45,20 +46,8 @@ namespace RealmOne.NPCs.Enemies.Impact
             AnimationType = NPCID.DesertGhoul;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.15f;
-        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNight.Chance * 0.12f : 0f;
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        {
-            Color color = GetAlpha(Color.LightBlue) ?? Color.LightBlue;
-
-            if (NPC.IsABestiaryIconDummy)
-                color = Color.LightBlue;
-
-            Main.EntitySpriteDraw(glowmask.Value, NPC.Center - screenPos + new Vector2(0, 0), NPC.frame, color, NPC.rotation, NPC.frame.Size() / 2f, 1f, SpriteEffects.None, 0);
-        }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
@@ -74,6 +63,15 @@ namespace RealmOne.NPCs.Enemies.Impact
         {
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.2f, b: 1.0f);
         }
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
+            spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+            return false;
+        }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void HitEffect(NPC.HitInfo hit)
         {
