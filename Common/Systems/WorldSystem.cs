@@ -1,5 +1,4 @@
-﻿using RealmOne.Common.Core;
-using RealmOne.Common.Systems.GenPasses;
+﻿using RealmOne.Common.Systems.GenPasses;
 using RealmOne.Items.Accessories;
 using RealmOne.Items.Food;
 using RealmOne.Items.Misc.Plants;
@@ -7,10 +6,8 @@ using RealmOne.Items.Opens;
 using RealmOne.Items.Weapons.PreHM.Classless;
 using RealmOne.Items.Weapons.PreHM.Grenades;
 using RealmOne.Items.Weapons.PreHM.Throwing;
-using RealmOne.NPCs.Critters;
 using RealmOne.NPCs.Enemies.Underground;
 using RealmOne.Tiles;
-using RealmOne.Tiles.Blocks;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -109,7 +106,7 @@ namespace RealmOne.Common.Systems
                     Generator.GenerateStructure("Structures/Test", point, RealmOne.Instance, false);
                 }
             }*/
-       
+
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {
             int shiniesIndex = tasks.FindIndex((GenPass genpass) => genpass.Name.Equals("Shinies"));

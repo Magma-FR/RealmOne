@@ -1,5 +1,4 @@
-﻿using RealmOne.Armor.Verminhide;
-using Terraria;
+﻿using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,7 +26,7 @@ namespace RealmOne.Armor.Orchid
         {
             {
                 player.GetCritChance(DamageClass.Generic) += 5f;
-                
+
             }
         }
 

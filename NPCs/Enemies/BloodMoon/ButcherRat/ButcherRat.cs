@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Common.Systems;
-using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops;
 using System;
 using System.IO;
@@ -34,7 +33,7 @@ public class ButcherRat : ModNPC
     public float State
     {
         get => NPC.ai[0];
-        set 
+        set
         {
             NPC.ai[0] = value;
 

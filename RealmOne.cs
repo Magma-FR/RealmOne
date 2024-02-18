@@ -1,11 +1,6 @@
 using RealmOne.Common;
 using RealmOne.Common.Core.ParticleContent;
-using RealmOne.Common.Systems;
-using RealmOne.Items.BossSummons;
-using RealmOne.Items.Misc.EnemyDrops;
-using RealmOne.NPCs.Enemies.MiniBoss;
 using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Graphics.Effects;
@@ -70,4 +65,4 @@ namespace RealmOne
 
 }
 
-  
+

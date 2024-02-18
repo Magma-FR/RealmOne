@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Systems;
-using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -46,7 +44,7 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.rotation = Projectile.velocity.ToRotation();
 
             Lighting.AddLight(Projectile.Center, r: 2f, g: 2.2f, 1f);
-  
+
         }
 
         public override Color? GetAlpha(Color lightColor)

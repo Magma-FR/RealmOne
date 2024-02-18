@@ -2,11 +2,6 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using System;
-using System.Collections.Generic;
-    using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealmOne.Common.Systems
 {
@@ -32,7 +27,7 @@ namespace RealmOne.Common.Systems
                 tag["downedSquirmo"] = true;
             }
 
-           
+
         }
 
         public override void ClearWorld()
@@ -80,16 +75,16 @@ namespace RealmOne.Common.Systems
             downedSquirmo = false;
         }
 
-    
 
-    
+
+
 
         public override void NetReceive(BinaryReader reader)
         {
             // Order of operations is important and has to match that of NetSend
             BitsByte flags = reader.ReadByte();
             downedPiggy = flags[0];
-            downedRat= flags[1];
+            downedRat = flags[1];
             downedSquirmo = flags[2];
 
 

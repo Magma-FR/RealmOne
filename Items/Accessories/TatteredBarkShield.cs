@@ -51,7 +51,7 @@ namespace RealmOne.Items.Accessories
         {
             if (splinteredShield)
             {
-                npc.SimpleStrikeNPC(damage: 40, 0);
+                npc.SimpleStrikeNPC(damage: 20, 0);
                 //	npc.AddBuff(ModContent.BuffType<Splintered>(), 60); // Inflict the 'Splintered' debuff for 1 year (60 seconds * 60 minutes * 24 hours * 365 days)
             }
         }

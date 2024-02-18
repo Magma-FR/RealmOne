@@ -20,7 +20,7 @@ namespace RealmOne.RealmPlayer
 {
     public static class Zones
     {
-        public static bool ZoneFarmy(this Player player)  => player.InModBiome<Biomes.Farm.FarmSurface>();
+        public static bool ZoneFarmy(this Player player) => player.InModBiome<Biomes.Farm.FarmSurface>();
     }
 
     public class Scrolly : ModPlayer

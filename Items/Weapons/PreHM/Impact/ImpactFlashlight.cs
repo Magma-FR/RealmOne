@@ -11,7 +11,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 {
     public class ImpactFlashlight : ModItem
     {
-       
+
 
         public override void SetStaticDefaults()
         {

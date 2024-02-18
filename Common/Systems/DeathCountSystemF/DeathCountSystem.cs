@@ -1,14 +1,11 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using Terraria.DataStructures;
-using Terraria.Enums;
-using Terraria.Localization;
-using Terraria.ObjectData;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using Terraria.ObjectData;
 
 namespace RealmOne.Common.Systems.DeathCountSystemF
 {
@@ -80,7 +77,6 @@ namespace RealmOne.Common.Systems.DeathCountSystemF
             AddMapEntry(new Color(200, 200, 200), name);
         }
 
-
         public override void NearbyEffects(int i, int j, bool closer)
         {
             if (closer)
@@ -90,8 +86,6 @@ namespace RealmOne.Common.Systems.DeathCountSystemF
                     player.AddBuff(ModContent.BuffType<PlayerBannerTenBuff>(), 10, true);
             }
         }
-
-       
     }
 
     public class PlayerBannerTen : ModItem

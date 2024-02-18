@@ -1,24 +1,12 @@
-﻿using RealmOne.Items.Food;
-using RealmOne.Items.Misc.EnemyDrops;
-using RealmOne.Items.Weapons.PreHM.Throwing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using RealmOne.Items.Misc.Plants;
+using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using static Terraria.ModLoader.ModContent;
-using RealmOne.Items.Sets.OrchidSet;
-using RealmOne.Common.Core;
-using Terraria.GameContent;
-using RealmOne.Items.Misc.Plants;
 
 namespace RealmOne.NPCs.Enemies.Forest
 {
@@ -94,7 +82,7 @@ namespace RealmOne.NPCs.Enemies.Forest
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Teleporter, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.6f);
 
             }
-        
+
         }
         public override void AI()
         {

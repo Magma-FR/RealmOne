@@ -13,7 +13,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
 {
     public class GoreshankShotgun : ModItem
     {
-    //    private int shotCount;
+        //    private int shotCount;
 
         public override void SetStaticDefaults()
         {
@@ -36,7 +36,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             Item.shoot = ModContent.ProjectileType<GoreshankShot>();
             Item.noMelee = true; // The projectile will do the damage and not the item
             Item.value = Item.buyPrice(gold: 5, silver: 3);
-          
+
             Item.useAmmo = AmmoID.Bullet;
         }
 
@@ -68,7 +68,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             return false;
         }
 
-        
+
     }
 
     public class GoreshankShot : ModProjectile

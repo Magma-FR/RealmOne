@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Common.Systems;
-using RealmOne.Items.Ammo;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
-using RealmOne.Items.Others;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -95,7 +93,7 @@ namespace RealmOne.Tiles
 
             return false;
         }
-        
+
         public override void KillMultiTile(int x, int y, int frameX, int frameY)
         {
             //       Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 48, 32, ModContent.ItemType<BrassNuggets>(), Main.rand.Next(10, 10));

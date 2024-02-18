@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
-using Terraria.IO;
 using Terraria.Audio;
-using RealmOne.Common.Systems;
-using Microsoft.Xna.Framework;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace RealmOne.Common.Events.CursedForest
 {
@@ -17,7 +10,7 @@ namespace RealmOne.Common.Events.CursedForest
     {
         public override void SetStaticDefaults()
         {
-            
+
             Item.ResearchUnlockCount = 5;
         }
 

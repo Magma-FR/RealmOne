@@ -121,7 +121,7 @@ namespace RealmOne.Items.Weapons.Ranged
 
         private Player Owner => Main.player[Projectile.owner];
 
-        
+
 
         public override void SetStaticDefaults()
         {

@@ -1,10 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core.ParticleContent.Particles;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
-using RealmOne.Common.Core.ParticleContent.Particles;
 
 namespace RealmOne.Common.Core.ParticleContent
 {

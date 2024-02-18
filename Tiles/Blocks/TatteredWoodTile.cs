@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne.Common.Systems;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -27,10 +24,10 @@ namespace RealmOne.Tiles.Blocks
             name.SetDefault("Tattered Wood");
             AddMapEntry(new Color(160, 80, 80), name);
 
-            
+
         }
 
-      
-        
+
+
     }
 }

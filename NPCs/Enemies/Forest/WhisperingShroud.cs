@@ -9,7 +9,6 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.Forest
 {
@@ -46,7 +45,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight) 
+            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight)
             ? 0 : 0.25f;
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

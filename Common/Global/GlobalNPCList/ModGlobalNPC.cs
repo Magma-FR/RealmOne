@@ -1,5 +1,4 @@
-﻿using RealmOne.Items.Accessories;
-using RealmOne.Items.Misc.EnemyDrops;
+﻿using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Opens;
 using RealmOne.Items.Placeables.Furniture.Paintings;
 using RealmOne.Items.Tools.Pick;
@@ -192,7 +191,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshyCornea>(), 1, 1, 10));
             }
 
-        
+
             if (npc.type == NPCID.Vampire)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1

@@ -1,5 +1,4 @@
-﻿using RealmOne.NPCs.Critters;
-using RealmOne.NPCs.Critters.Forest;
+﻿using RealmOne.NPCs.Critters.Forest;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +7,7 @@ namespace RealmOne.Items.ItemCritter
 {
     public class OrchidMothItem : ModItem
     {
-      
+
         public override void SetDefaults()
         {
             Item.width = 24;

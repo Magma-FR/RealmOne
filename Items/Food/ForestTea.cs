@@ -18,7 +18,7 @@ namespace RealmOne.Items.Food
                 new Color(228, 154, 106 ),
                 new Color(137, 54, 0),
             };
-            ItemID.Sets.IsFood[Type] = true;   
+            ItemID.Sets.IsFood[Type] = true;
         }
 
         public override void SetDefaults()

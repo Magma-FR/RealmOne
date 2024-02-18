@@ -5,7 +5,6 @@ using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.EnemyDrops;
 using ReLogic.Content;
 using System;
-using System.Timers;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
@@ -59,9 +58,11 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
             return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
             ? 0 : 0.22f;
         }
+
         public override void AI()
         {
             NPC.TargetClosest();
+            alphaCounter += .07f;
 
             Lighting.AddLight(NPC.Center, 0.411f * 2, 0.431f * 2, 0.075f * 2);
         }
@@ -83,21 +84,26 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
                 new FlavorTextBestiaryInfoElement("A fragile but nimble lantern that looks for any Terrarian that stumbles in its way at night"),
             });
         }
-      
+
+        float alphaCounter;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
+            drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
+
+            float sineWave = MathHelper.Clamp(MathF.Sin(alphaCounter / 2f) + 1f, 0f, 1f);
+
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             int PositionX = (int)(NPC.Center.X - screenPos.X);
             int PositionY = (int)(NPC.Center.Y - screenPos.Y);
+            var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
 
             Texture2D ripple = Mod.Assets.Request<Texture2D>("Assets/Effects/lilglow").Value;
 
-            Main.spriteBatch.Draw(ripple, new Vector2(PositionX, PositionY), new Microsoft.Xna.Framework.Rectangle?(), Color.Orange, NPC.rotation, ripple.Size() / 2f, 1f, effects, 0);
+            Main.spriteBatch.Draw(ripple, new Vector2(PositionX, PositionY), null, new Color(254, 164, 56) * sineWave, NPC.rotation, ripple.Size() / 2f, 1f, effects, 0);
 
-          
 
-            var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
+
 
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 

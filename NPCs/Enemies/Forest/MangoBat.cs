@@ -70,14 +70,14 @@ namespace RealmOne.NPCs.Enemies.Forest
             }
         }
 
-       public override float SpawnChance(NPCSpawnInfo spawnInfo)
-       {
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
             Player player = spawnInfo.Player;
 
             return (spawnInfo.Player.ZoneFarmy() && ((!Main.pumpkinMoon && !Main.snowMoon && !CursedForestEvent.CursedForest) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) &&
             (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 0.2f : 0f;
         }
-        
+
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

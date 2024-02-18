@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.ModLoader.Utilities;
-using RealmOne.Items.ItemCritter;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Items.ItemCritter;
+using Terraria;
 using Terraria.GameContent;
-using Microsoft.Xna.Framework;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Critters.Forest
 {
@@ -43,7 +38,7 @@ namespace RealmOne.NPCs.Critters.Forest
             NPC.noGravity = true;
             AIType = NPCID.Firefly;
 
-         }  
+        }
         public override void AI()
         {
             NPC.spriteDirection = NPC.direction;

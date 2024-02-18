@@ -1,23 +1,16 @@
-﻿using RealmOne.Items.Food;
-using RealmOne.Items.Misc.EnemyDrops;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core;
+using RealmOne.Items.Sets.OrchidSet;
 using RealmOne.Items.Weapons.PreHM.Throwing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using static Terraria.ModLoader.ModContent;
-using RealmOne.Items.Sets.OrchidSet;
-using RealmOne.Common.Core;
-using Terraria.GameContent;
 namespace RealmOne.NPCs.Enemies.Forest.Orchid
 {
     public class OrchidSlimeTiny : ModNPC

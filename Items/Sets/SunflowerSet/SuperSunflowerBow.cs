@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Items.Weapons.PreHM.Jungle;
-using static Terraria.ModLoader.ModContent;
+using RealmOne.Items.Misc.Plants;
+using Terraria;
 using Terraria.Audio;
 using Terraria.Graphics.Shaders;
-using RealmOne.Items.Misc.Plants;
+using Terraria.ID;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Sets.SunflowerSet
 {
@@ -29,17 +23,17 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Item.damage = 11;
             Item.useTime = 16;
             Item.useAnimation = 16;
-         
+
 
             Item.autoReuse = true;
             Item.useTurn = true;
-           
+
             Item.DamageType = DamageClass.Ranged;
 
             Item.knockBack = 1f;
             Item.noMelee = true;
             Item.rare = ItemRarityID.Green;
-          
+
             Item.UseSound = SoundID.Item5;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.value = Item.buyPrice(silver: 20);
@@ -54,7 +48,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 type = ModContent.ProjectileType<SunflowerArrow>(); // or ProjectileID.FireArrow;
             if (Main.rand.NextBool(2))
             {
-               type = ModContent.ProjectileType<SunPetal>();
+                type = ModContent.ProjectileType<SunPetal>();
             }
         }
         public override Vector2? HoldoutOffset() => new Vector2(-6, 0);
@@ -64,7 +58,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             CreateRecipe()
             .AddIngredient(ModContent.ItemType<SunflowerPetal>(), 14)
             .AddIngredient(ItemID.WoodenBow, 1)
-            .AddIngredient(ItemID.FallenStar,  1)
+            .AddIngredient(ItemID.FallenStar, 1)
             .AddTile(TileID.WorkBenches)
 
             .Register();
@@ -72,9 +66,9 @@ namespace RealmOne.Items.Sets.SunflowerSet
     }
     public class SunflowerArrow : ModProjectile
     {
-     
-		public override void SetStaticDefaults()
-		{
+
+        public override void SetStaticDefaults()
+        {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
@@ -83,13 +77,13 @@ namespace RealmOne.Items.Sets.SunflowerSet
             return Color.White;
         }
         public override void SetDefaults()
-		{
-			Projectile.width = 14;
-			Projectile.height = 14;
-			Projectile.friendly = true;
-			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.extraUpdates = 1;
-			Projectile.timeLeft = 600;
+        {
+            Projectile.width = 14;
+            Projectile.height = 14;
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.extraUpdates = 1;
+            Projectile.timeLeft = 600;
             Projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
         }
         public override void OnKill(int timLeft)

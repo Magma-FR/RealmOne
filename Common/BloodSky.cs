@@ -43,7 +43,7 @@ namespace RealmOne.Common
         {
             return Intensity > 0f;
         }
-        
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             Main.spriteBatch.End();

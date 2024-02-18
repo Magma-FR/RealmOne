@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader.IO;
-using System.IO;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terraria.Localization;
+﻿using Microsoft.Xna.Framework;
 using RealmOne.NPCs.Enemies.Forest;
 using RealmOne.NPCs.Enemies.Lightbulb;
-using System.Drawing.Text;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+using System.IO;
+using Terraria;
 using Terraria.Chat;
-using System.Globalization;
-using Microsoft.VisualBasic;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace RealmOne.Common.Events.CursedForest
 {
@@ -144,43 +134,43 @@ namespace RealmOne.Common.Events.CursedForest
 
     }
 }
- /*   public class CursedForestballs : GlobalNPC
-    {
-        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
-        {
-            int activePlayers = 0;
-            for (int i = 0; i < Main.maxPlayers; i++)
-                if (Main.player[i].active)
-                    activePlayers++;
+/*   public class CursedForestballs : GlobalNPC
+   {
+       public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+       {
+           int activePlayers = 0;
+           for (int i = 0; i < Main.maxPlayers; i++)
+               if (Main.player[i].active)
+                   activePlayers++;
 
-            if (CursedForestEvent.CursedForest && player.ZoneForest)
-            {
-                maxSpawns = (int)(5 + 1.5f * activePlayers);
-                spawnRate = 10;
-            }
-        }
-
-
-        public static List<IDictionary<int, float>> Spawnpool
-        {
-            get => new List<IDictionary<int, float>>
-            { //list containing a dictionary of spawn pool information for each wave of the tide, key int is enemy type and value float is spawn rate
-                new Dictionary<int, float>
-                { //wave 1
-                    { NPCID.Bird, 7.35f },
-                    { NPCID.BirdBlue, 5.35f },
-                    { NPCID.Bunny, 7.35f },
-                    { NPCID.Squirrel, 1.73f },
-                    { NPCID.Owl, .135f },
-                    { NPCID.Firefly, 2f },
-                }
-            };
-        }
-
-        //Continue with EditSpawnPool code
-        //And OnKill, like event points ig
+           if (CursedForestEvent.CursedForest && player.ZoneForest)
+           {
+               maxSpawns = (int)(5 + 1.5f * activePlayers);
+               spawnRate = 10;
+           }
+       }
 
 
-    }
+       public static List<IDictionary<int, float>> Spawnpool
+       {
+           get => new List<IDictionary<int, float>>
+           { //list containing a dictionary of spawn pool information for each wave of the tide, key int is enemy type and value float is spawn rate
+               new Dictionary<int, float>
+               { //wave 1
+                   { NPCID.Bird, 7.35f },
+                   { NPCID.BirdBlue, 5.35f },
+                   { NPCID.Bunny, 7.35f },
+                   { NPCID.Squirrel, 1.73f },
+                   { NPCID.Owl, .135f },
+                   { NPCID.Firefly, 2f },
+               }
+           };
+       }
+
+       //Continue with EditSpawnPool code
+       //And OnKill, like event points ig
+
+
+   }
 }
- */
+*/

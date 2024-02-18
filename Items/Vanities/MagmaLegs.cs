@@ -22,7 +22,7 @@ namespace RealmOne.Items.Vanities
             Item.height = 18;
             Item.value = Item.sellPrice(gold: 1);
             Item.rare = ItemRarityID.Expert;
-            Item.defense = 1; 
+            Item.defense = 1;
         }
 
         public override void UpdateArmorSet(Player player)

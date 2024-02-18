@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Enums;
-using Terraria.Localization;
-using Terraria.ObjectData;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using RealmOne.Common.Systems;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Systems;
+using System;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.Enums;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ObjectData;
 
 namespace RealmOne.Tiles
 {
@@ -32,7 +28,7 @@ namespace RealmOne.Tiles
             DustType = DustID.Sandnado;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-         //   TileObjectData.newTile.Origin = new Point16(0, 1);
+            //   TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 
             TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock };
@@ -49,8 +45,8 @@ namespace RealmOne.Tiles
             return (ushort)(Main.tile[i, j].TileFrameX / 36);
         }
 
-        float RandomMovement() => 
-        (float) Math.Sin(Main.GlobalTimeWrappedHourly * 1f) * 6f;
+        float RandomMovement() =>
+        (float)Math.Sin(Main.GlobalTimeWrappedHourly * 1f) * 6f;
 
 
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)

@@ -91,13 +91,13 @@ namespace RealmOne.NPCs.Enemies.Impact
             Vector2 TargetLocation = new Vector2(player.position.X + ((float)Math.Sin(SinThing) * 100), player.position.Y - 150 - ((float)Math.Sin(SinThing) * 10));
 
             float speed = 10f;
-            float inertia = 10f;
+            float inertia = 6f;
             Vector2 direction = TargetLocation - NPC.Center;
             direction.Normalize();
             direction *= speed;
             NPC.velocity = (NPC.velocity * (inertia - 1) + direction) / inertia;
 
-            NPC.rotation = NPC.velocity.X * 0.3f;
+            NPC.rotation = NPC.velocity.X * 0.2f;
             var entitySource = NPC.GetSource_FromThis();
             if (Vector2.Distance(TargetLocation, NPC.Center) <= 130 && Main.netMode != NetmodeID.MultiplayerClient)
             {

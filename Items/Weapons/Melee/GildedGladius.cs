@@ -26,7 +26,7 @@ namespace RealmOne.Items.Weapons.Melee
             Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.knockBack = 2;
-            Item.value = Item.buyPrice(0,0,80,0);
+            Item.value = Item.buyPrice(0, 0, 80, 0);
             Item.rare = ItemRarityID.Blue;
             Item.useTurn = true;
             Item.autoReuse = true;
@@ -73,6 +73,6 @@ namespace RealmOne.Items.Weapons.Melee
         }
 
 
-       
+
     }
 }

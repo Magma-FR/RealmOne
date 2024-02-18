@@ -1,10 +1,9 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using RealmOne.Common.Systems;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System;
-using RealmOne.Common.Systems;
 
 namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
 {
@@ -42,8 +41,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
         {
             if (player.whoAmI == Main.myPlayer)
             {
-               
-                SoundEngine.PlaySound(rorAudio.Rat, new Vector2(0,15));
+
+                SoundEngine.PlaySound(rorAudio.Rat, new Vector2(0, 15));
 
                 int type = ModContent.NPCType<ButcherRat>();
 
@@ -53,7 +52,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
                 }
                 else
                 {
-                    
+
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
                 }
             }
@@ -61,6 +60,6 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
             return true;
         }
 
-        
+
     }
 }

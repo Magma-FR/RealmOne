@@ -1,23 +1,11 @@
-﻿
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Bosses;
-using RealmOne.Common.Systems;
-using RealmOne.Items.BossSummons;
-using RealmOne.Items.Food;
+﻿using RealmOne.Common.Systems;
 using RealmOne.Items.Misc.EnemyDrops;
-using RealmOne.Items.PaperUI;
-using RealmOne.Items.Placeables.Furniture.BossThing;
-using RealmOne.Items.Vanities;
-using RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops;
 
 //using RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops;
-using RealmOne.NPCs.Critters;
 using RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
 using RealmOne.NPCs.Enemies.MiniBoss;
 using System;
 using System.Collections.Generic;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace RealmOne
@@ -40,7 +28,7 @@ namespace RealmOne
             }
 
             string internalName = "PossessedPiggy";
-            
+
             float weight = 0.2f;
             Func<bool> downed = () => DownedBossSystem.downedPiggy;
             int bossType = ModContent.NPCType<PossessedPiggy>();
@@ -48,7 +36,7 @@ namespace RealmOne
             {
 
                 ModContent.ItemType<PiggyPorcelain>(),
-             
+
             };
             bossChecklistMod.Call(
                 "LogBoss",
@@ -73,7 +61,7 @@ namespace RealmOne
             List<int> collectibles2 = new List<int>()
             {
 
-              
+
 
 
             };
@@ -88,12 +76,12 @@ namespace RealmOne
                 new Dictionary<string, object>()
                 {
                     ["collectibles"] = collectibles2,
-                        
+
                     //  ["customPortrait"] = customPortrait
                     // Other optional arguments as needed are inferred from the wiki
                 }
             );
-       
+
         }
     }
 }

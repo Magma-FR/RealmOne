@@ -1,7 +1,6 @@
 using RealmOne.Tiles;
 using Terraria;
 using Terraria.GameContent.Creative;
-using Terraria.GameContent.UI;
 using Terraria.ID;
 using Terraria.ModLoader;
 

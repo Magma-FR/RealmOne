@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace RealmOne.Common.Events.CursedForest
 {
     public class CursedForestBiome : ModBiome
     {
-        public static CursedForestBiome Instance  { get; set; }
+        public static CursedForestBiome Instance { get; set; }
         public CursedForestBiome()
         {
             Instance = this;
@@ -59,11 +52,11 @@ namespace RealmOne.Common.Events.CursedForest
 
         public override void OnInBiome(Player player)
         {
-            if(Main.netMode != NetmodeID.Server)
+            if (Main.netMode != NetmodeID.Server)
             {
 
             }
         }
     }
-        
+
 }

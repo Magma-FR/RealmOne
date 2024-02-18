@@ -50,7 +50,7 @@ namespace RealmOne.Tiles.Ambient
             {
                 NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16, ModContent.NPCType<OldSnail>(), 32);
             }
-          
+
         }
     }
 }

@@ -36,6 +36,6 @@ namespace RealmOne.Items.Food
             Item.UseSound = SoundID.Item2;
         }
 
-        
+
     }
 }

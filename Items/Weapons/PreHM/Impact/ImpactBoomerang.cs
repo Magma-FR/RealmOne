@@ -1,15 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Common.Core.ParticleContent.Particles;
 using RealmOne.Common.Core.ParticleContent;
+using RealmOne.Common.Core.ParticleContent.Particles;
 using RealmOne.Common.Systems;
-using RealmOne.Projectiles.Returning;
 using RealmOne.RealmPlayer;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -36,7 +33,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.useAnimation = 26;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1;
-            Item.value = Item.buyPrice(0,0,12,0);
+            Item.value = Item.buyPrice(0, 0, 12, 0);
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
@@ -112,7 +109,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-           
+
             return false;
         }
         public override void AI()
@@ -179,7 +176,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         }
         public override void OnKill(int timeLeft)
         {
-           
+
         }
     }
 }

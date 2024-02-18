@@ -48,7 +48,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-            
+
         }
 
         public override void AI()

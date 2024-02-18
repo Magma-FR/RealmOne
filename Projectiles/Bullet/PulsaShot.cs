@@ -34,7 +34,7 @@ namespace RealmOne.Projectiles.Bullet
             AIType = ProjectileID.PulseBolt;
             Projectile.hide = true;
         }
-        
+
         public override void AI()
         {
             Projectile.aiStyle = ProjAIStyleID.Arrow;

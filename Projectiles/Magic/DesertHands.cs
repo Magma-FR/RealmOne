@@ -31,6 +31,7 @@ namespace RealmOne.Projectiles.Magic
 
         public override void AI()
         {
+            Projectile.direction = Projectile.spriteDirection;
             Vector2 center = Projectile.Center;
             for (int j = 0; j < 5; j++)
             {

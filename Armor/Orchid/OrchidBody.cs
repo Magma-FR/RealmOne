@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace RealmOne.Armor.Orchid
 {
     [AutoloadEquip(EquipType.Body)]
-    public class OrchidBody: ModItem
+    public class OrchidBody : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -26,7 +26,7 @@ namespace RealmOne.Armor.Orchid
 
         public override void UpdateEquip(Player player)
         {
-            
+
             player.GetDamage(DamageClass.Generic) += 0.03f;
             player.maxMinions += 1;
 

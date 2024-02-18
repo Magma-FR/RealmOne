@@ -2229,6 +2229,11 @@ Mods: {
 				DisplayName: Ratty
 				Tooltip: ""
 			}
+
+			SafeHook: {
+				DisplayName: Safe Hook
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2522,6 +2527,7 @@ Mods: {
 			BloodDrillProj.DisplayName: Blood Drill Proj
 			SunflowerArrow.DisplayName: Sunflower Arrow
 			ImpactBoomerangProj.DisplayName: Impact Boomerang Proj
+			SafeHookProj.DisplayName: Safe Hook Proj
 		}
 
 		NPCs: {
@@ -2542,25 +2548,7 @@ Mods: {
 			MegaSquirmBody.DisplayName: Mega Squirm Body
 			MegaSquirmHead.DisplayName: Mega Squirm Head
 			MegaSquirmTail.DisplayName: Mega Squirm Tail
-
-			MossyMarauder: {
-				DisplayName: Mossy Marauder
-
-				BossChecklistIntegration: {
-					EntryName: The Outcrop Outcast
-					SpawnInfo:
-						'''
-						To this day, the dirt titan is a remarkable standpoint of the growth of Terraria, from its hard life and from its happiest life, it will always be a symbol of the land. The name that is given to it now is called The Outcrop Outcast, for many reasons. The dirt effigy still remains on this day and is untouched even for the irresponsible. Would you rather defeat the past or lose the future?
-
-						'''
-					DespawnMessage: ""
-				}
-			}
-
-			RustedCenturion.DisplayName: Rusted Centurion
-			GlitterdustSlime.DisplayName: Glitterdust Slime
-			Eslime.DisplayName: E-Slime
-			ImpactTurret.DisplayName: Impact Turret
+			Eslime.DisplayName: Impact Slime
 			Inkling.DisplayName: Inkling Promenade
 			LightbulbBouncer.DisplayName: Lightbulb Bouncer
 

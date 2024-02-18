@@ -29,7 +29,7 @@ namespace RealmOne.Tiles
 
             MineResist = 3f;
             MinPick = 20;
-            HitSound = rorAudio.OldGoldTink;      
+            HitSound = rorAudio.OldGoldTink;
             TileObjectData.newTile.Origin = new Point16(0, 1);
 
             DustType = DustID.DungeonPink;
