@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using RealmOne.Items.Misc.Plants;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,12 +7,10 @@ using Terraria.ModLoader;
 namespace RealmOne.Items.Accessories
 {
     [AutoloadEquip(EquipType.Neck)]
-
     public class SunflowerCharm : ModItem
     {
         public override void SetStaticDefaults()
         {
-
             Item.ResearchUnlockCount = 1;
         }
 
@@ -23,13 +22,23 @@ namespace RealmOne.Items.Accessories
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
         }
+
         public int lifeRegen = 3;
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.lifeRegen += lifeRegen;
             Lighting.AddLight(player.Center, Color.Yellow.ToVector3() / 1.8f);
+        }
 
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<SunflowerPetal>(), 10)
+                .AddIngredient(ItemID.FallenStar, 1)
+
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }

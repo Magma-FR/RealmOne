@@ -16,8 +16,6 @@ namespace RealmOne.NPCs.Enemies.Impact
 {
     public class Espider1 : ModNPC
     {
-        private static Asset<Texture2D> glowmask;
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("E-Spider");
@@ -48,7 +46,6 @@ namespace RealmOne.NPCs.Enemies.Impact
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNight.Chance * 0.12f : 0f;
 
-
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -63,6 +60,7 @@ namespace RealmOne.NPCs.Enemies.Impact
         {
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.2f, b: 1.0f);
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;

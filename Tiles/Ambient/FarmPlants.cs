@@ -43,7 +43,6 @@ namespace RealmOne.Tiles.Ambient
             {
                 NPC.NewNPC(new EntitySource_TileBreak(i, j), i * 16, j * 16, ModContent.NPCType<OldSnail>(), 32);
             }
-
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num) => num = 2;

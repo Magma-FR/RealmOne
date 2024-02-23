@@ -32,7 +32,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 1;
             Item.value = 30000;
-            Item.rare = ItemRarityID.Blue;
+            Item.rare = ItemRarityID.Quest;
             Item.UseSound = SoundID.Item13;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.WaterStream;

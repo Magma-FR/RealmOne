@@ -46,8 +46,9 @@ namespace RealmOne.NPCs.Enemies.Forest
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight)
-            ? 0 : 0.25f;
+            ? 0 : 0.8f;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {

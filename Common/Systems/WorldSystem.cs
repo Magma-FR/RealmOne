@@ -8,6 +8,8 @@ using RealmOne.Items.Weapons.PreHM.Grenades;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using RealmOne.NPCs.Enemies.Underground;
 using RealmOne.Tiles;
+using RealmOne.Tiles.Ambient;
+using RealmOne.Tiles.Torches;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -119,13 +121,12 @@ namespace RealmOne.Common.Systems
               {
                   tasks.Insert(shiniesIndex2 + 1, (GenPass)(object)new FlorenceMarbleOreNameGenPass("FlorenceMarbleOreNameGenPass", 320f));
               }*/
-            int forestIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Ambient"));
+            int forestIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Piles"));
 
             if (forestIndex != -1)
             {
-                tasks.Insert(forestIndex + 1, new ForestAmbient("Ambients", 130f));
+                tasks.Insert(forestIndex + 1, new ForestAmbient("Ambients", 100f));
             }
-
         }
 
         public class ForestAmbient : GenPass
@@ -138,11 +139,11 @@ namespace RealmOne.Common.Systems
             {
                 progress.Message = "Ambients";
 
-                int[] tileTypes = new int[] { ModContent.TileType<TatteredBarrel>() };
+                int[] tileTypes = new int[] { TileType<WoodLog1>(), TileType<WoodLog2>(), TileType<WoodLog3>() };
 
                 // To not be annoying, we'll only spawn 15 Example Rubble near the spawn point.
                 // This example uses the Try Until Success approach: https://github.com/tModLoader/tModLoader/wiki/World-Generation#try-until-success
-                for (int k = 0; k < 15; k++)
+                for (int k = 0; k < 25; k++)
                 {
                     bool success = false;
                     int attempts = 0;
@@ -154,7 +155,7 @@ namespace RealmOne.Common.Systems
                         {
                             break;
                         }
-                        int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 40, Main.maxTilesX / 2 + 40);
+                        int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 200);
                         int y = WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, (int)GenVars.worldSurfaceHigh);
                         int tileType = WorldGen.genRand.Next(tileTypes);
                         if (Main.tile[x, y].TileType == tileType)
@@ -168,6 +169,7 @@ namespace RealmOne.Common.Systems
                 }
             }
         }
+
         public override void PostWorldGen()
         {
             int[] goldenchest = { ItemType<MinersPouch>() };

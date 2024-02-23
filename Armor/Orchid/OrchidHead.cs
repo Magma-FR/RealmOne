@@ -26,7 +26,6 @@ namespace RealmOne.Armor.Orchid
         {
             {
                 player.GetCritChance(DamageClass.Generic) += 5f;
-
             }
         }
 

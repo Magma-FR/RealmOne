@@ -17,13 +17,10 @@ namespace RealmOne.NPCs.Enemies.Forest
 {
     public class MangoBat : ModNPC
     {
-        private static Asset<Texture2D> glow;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mango Fruitbat");
             Main.npcFrameCount[NPC.type] = 5;
-
         }
 
         public override void SetDefaults()
@@ -61,6 +58,7 @@ namespace RealmOne.NPCs.Enemies.Forest
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -77,7 +75,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             return (spawnInfo.Player.ZoneFarmy() && ((!Main.pumpkinMoon && !Main.snowMoon && !CursedForestEvent.CursedForest) || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) &&
             (!Main.eclipse || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) && !spawnInfo.Invasion && !spawnInfo.PlayerInTown && SpawnCondition.GoblinArmy.Chance == 0) ? 0.2f : 0f;
         }
-
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

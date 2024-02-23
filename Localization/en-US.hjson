@@ -125,7 +125,7 @@ Mods: {
 				DisplayName: Stone Oven
 				Tooltip:
 					'''
-					Capable of cooking wheat based foods
+					Capable of cooking wheat based foods and advanced stuff
 					Always cooked to perfection!
 					'''
 			}
@@ -237,39 +237,6 @@ Mods: {
 					'''
 					Dig with divinity!!
 					Sells measily well!
-					'''
-			}
-
-			BattleboatBomb: {
-				DisplayName: Battleboat Bomb
-				Tooltip:
-					'''
-					Without a Cannon what's the use of this explosive!?
-					It has an extremely fast detonation time, so its either you die or you die
-					Self Explode yourself, dealing huge damage to enemies and you
-					Would this classify as Euthanism?
-					'''
-			}
-
-			BotanicLogLauncher: {
-				DisplayName: Botanic Log Launcher
-				Tooltip:
-					'''
-					Hold out a heavy and floral cannon that shoots oversized bouncing flower logs!
-					Theres a family of worms living in it!
-					Must reload the launcher after each shot
-					'''
-			}
-
-			CastawayRum: {
-				DisplayName: Castaway Rum
-				Tooltip:
-					'''
-					A washed up old bottle of strong pineapple, vanilla, coffee beans and paprika
-					The bottle explodes into explosive and sharp pieces of glass
-					Right click to drink the rum, granting the Salty Swig buff, an exclusive buff to Drink-Related Items
-					Salty Swig buff grants 8% increased weapon speed and movement speed but you have -5 defence
-					'Surprised there's no fish or sand in the bottle!'
 					'''
 			}
 
@@ -476,7 +443,7 @@ Mods: {
 
 			BrassSword: {
 				DisplayName: Brass Sword
-				Tooltip: Has a chance to shrink in size and significantly increase its usetime
+				Tooltip: ""
 			}
 
 			StackPotions: {
@@ -499,7 +466,7 @@ Mods: {
 			}
 
 			DualWieldCrossbows: {
-				DisplayName: Dual Wield Crossbows
+				DisplayName: Dualshot Crossbow
 				Tooltip:
 					'''
 					Wield a Dualshot crossbow!
@@ -597,8 +564,8 @@ Mods: {
 			Twigbulb: {
 				Tooltip:
 					'''
-					Casts a bright, dangly lightbulb at the mouse position.
-					Lights a large area
+					Casts a dim lightbulb and the more you charge the Twigbulb the larger and faster release speed will be
+					Release the button to send the lightbulb flying out 
 					'''
 				DisplayName: Twigbulb
 			}
@@ -1262,11 +1229,10 @@ Mods: {
 			StaticStone: {
 				Tooltip:
 					'''
-					Increases the effectiveness of the Electrified buff
 					Full immunity to the Electrified debuff
-					Buffs E-Weapons
+					Buffs All Impact Weapons if Equipped
 					'''
-				DisplayName: Static Stone
+				DisplayName: Impact Microchip
 			}
 
 			SquirmScarf: {
@@ -2234,6 +2200,21 @@ Mods: {
 				DisplayName: Safe Hook
 				Tooltip: ""
 			}
+
+			JungleFisharang: {
+				Tooltip: ""
+				DisplayName: Jungle Fisharang
+			}
+
+			OrchidMothTileItem: {
+				DisplayName: Orchid Moth Tile Item
+				Tooltip: ""
+			}
+
+			OrchidSluggyTileItem: {
+				DisplayName: Orchid Sluggy Tile Item
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2528,6 +2509,7 @@ Mods: {
 			SunflowerArrow.DisplayName: Sunflower Arrow
 			ImpactBoomerangProj.DisplayName: Impact Boomerang Proj
 			SafeHookProj.DisplayName: Safe Hook Proj
+			JungleFisharangProj.DisplayName: Jungle Fisharang Proj
 		}
 
 		NPCs: {
@@ -2748,6 +2730,8 @@ Mods: {
 			PlayerBanners.MapEntry: Player Banners
 			BannerTenTile.MapEntry: Banner Ten Tile
 			AnkhPot.MapEntry: Ankh Pot
+			OrchidMothJar.MapEntry: Orchid Moth Jar
+			OrchidSluggyCage.MapEntry: Orchid Sluggy Cage
 		}
 
 		DamageClasses: {

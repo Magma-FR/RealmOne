@@ -26,8 +26,6 @@ namespace RealmOne.Common.Systems
             {
                 tag["downedSquirmo"] = true;
             }
-
-
         }
 
         public override void ClearWorld()
@@ -35,8 +33,6 @@ namespace RealmOne.Common.Systems
             downedPiggy = false;
             downedRat = false;
             downedSquirmo = false;
-
-
         }
 
         public override void LoadWorldData(TagCompound tag)
@@ -58,6 +54,7 @@ namespace RealmOne.Common.Systems
 
             writer.Write(flags);
         }
+
         public override void OnWorldLoad()
         {
             downedPiggy = false;
@@ -75,10 +72,6 @@ namespace RealmOne.Common.Systems
             downedSquirmo = false;
         }
 
-
-
-
-
         public override void NetReceive(BinaryReader reader)
         {
             // Order of operations is important and has to match that of NetSend
@@ -86,8 +79,6 @@ namespace RealmOne.Common.Systems
             downedPiggy = flags[0];
             downedRat = flags[1];
             downedSquirmo = flags[2];
-
-
         }
     }
 }

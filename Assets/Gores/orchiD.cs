@@ -11,10 +11,12 @@ namespace RealmOne.Assets.Gores
         {
             base.OnSpawn(gore, source);
         }
+
         public override bool Update(Gore gore)
         {
             return base.Update(gore);
         }
+
         public override Color? GetAlpha(Gore gore, Color lightColor)
         {
             return Color.White;

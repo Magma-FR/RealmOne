@@ -191,7 +191,6 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshyCornea>(), 1, 1, 10));
             }
 
-
             if (npc.type == NPCID.Vampire)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1

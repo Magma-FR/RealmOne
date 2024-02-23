@@ -10,7 +10,6 @@ namespace RealmOne.Common.Events.CursedForest
     {
         public override void SetStaticDefaults()
         {
-
             Item.ResearchUnlockCount = 5;
         }
 
@@ -52,7 +51,6 @@ namespace RealmOne.Common.Events.CursedForest
             else
             {
                 CursedForestEvent.CursedForest = true;
-
             }
             return true;
         }

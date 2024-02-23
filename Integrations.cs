@@ -16,6 +16,7 @@ namespace RealmOne
         {
             DoBossChecklistIntegration();
         }
+
         private void DoBossChecklistIntegration()
         {
             if (!ModLoader.TryGetMod("BossChecklist", out Mod bossChecklistMod))
@@ -34,9 +35,7 @@ namespace RealmOne
             int bossType = ModContent.NPCType<PossessedPiggy>();
             List<int> collectibles = new List<int>()
             {
-
                 ModContent.ItemType<PiggyPorcelain>(),
-
             };
             bossChecklistMod.Call(
                 "LogBoss",
@@ -54,16 +53,12 @@ namespace RealmOne
                     // Other optional arguments as needed are inferred from the wiki
                 }
             );
-            string internalName2 = "Balls";
-            float weight2 = 4f;
+            string internalName2 = "Butcher Rat";
+            float weight2 = 22.3f;
             Func<bool> downed2 = () => DownedBossSystem.downedRat;
             int bossType2 = ModContent.NPCType<ButcherRat>();
             List<int> collectibles2 = new List<int>()
             {
-
-
-
-
             };
             bossChecklistMod.Call(
                 "LogBoss",
@@ -81,7 +76,6 @@ namespace RealmOne
                     // Other optional arguments as needed are inferred from the wiki
                 }
             );
-
         }
     }
 }

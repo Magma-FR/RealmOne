@@ -26,7 +26,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Item.knockBack = 3;
             Item.value = Item.sellPrice(0, 0, 4, 0);
             Item.rare = ItemRarityID.Green;
-            Item.shootSpeed = 13f;
+            Item.shootSpeed = 16f;
             Item.shoot = ModContent.ProjectileType<BloomarangProj>();
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

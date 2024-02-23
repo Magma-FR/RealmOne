@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.EnemyDrops;
 using ReLogic.Content;
 using Terraria;
@@ -14,7 +15,6 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
 {
     public class LightbulbBouncer : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lightbulb Bouncer");
@@ -48,7 +48,7 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !Main.bloodMoon ? 0.08f : 0f;
+            return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !CursedForestEvent.CursedForest && !Main.bloodMoon ? 0.08f : 0f;
         }
 
         public override void AI()

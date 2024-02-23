@@ -16,13 +16,12 @@ namespace RealmOne.Common.Events.CursedForest
     {
         public static bool testedEvents;
 
-
         public static bool CursedForest = false;
 
         public static bool downedCursedForest = false;
 
-
         public static CursedForestEvent Instance { get; set; }
+
         public CursedForestEvent()
         {
             Instance = this;
@@ -39,6 +38,7 @@ namespace RealmOne.Common.Events.CursedForest
 
             tag["downed"] = downed;
         }
+
         public override void LoadWorldData(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
@@ -46,6 +46,7 @@ namespace RealmOne.Common.Events.CursedForest
             CursedForest = downed.Contains("CursedForest");
             testedEvents = true;
         }
+
         public override void NetSend(BinaryWriter writer)
         {
             var flags = new BitsByte();
@@ -53,27 +54,24 @@ namespace RealmOne.Common.Events.CursedForest
             flags[1] = CursedForest;
             writer.Write(flags);
         }
+
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte flags = reader.ReadByte();
             downedCursedForest = flags[0];
             CursedForest = flags[1];
         }
+
         public override void OnWorldLoad()
         {
-
-
             CursedForest = false;
             downedCursedForest = false;
-
         }
+
         public override void OnWorldUnload()
         {
-
-
             CursedForest = false;
             downedCursedForest = false;
-
         }
 
         public static int[] CursedForestEnemies => new[]
@@ -81,7 +79,6 @@ namespace RealmOne.Common.Events.CursedForest
             ModContent.NPCType<FloatingLantern>(),
             ModContent.NPCType<WhisperingShroud>(),
         };
-
 
         public override void PreUpdateWorld()
         {
@@ -102,7 +99,6 @@ namespace RealmOne.Common.Events.CursedForest
                         NetMessage.SendData(MessageID.WorldData);
                 }
                 testedEvents = true;
-
             }
             else if (CursedForest && Main.dayTime)
             {
@@ -120,20 +116,16 @@ namespace RealmOne.Common.Events.CursedForest
             }
             if (Main.dayTime)
                 testedEvents = false;
-
         }
-
-
-
 
         public override void PostUpdateWorld()
         {
             if (CursedForest && !downedCursedForest)
                 downedCursedForest = true;
         }
-
     }
 }
+
 /*   public class CursedForestballs : GlobalNPC
    {
        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
@@ -149,7 +141,6 @@ namespace RealmOne.Common.Events.CursedForest
                spawnRate = 10;
            }
        }
-
 
        public static List<IDictionary<int, float>> Spawnpool
        {
@@ -169,8 +160,6 @@ namespace RealmOne.Common.Events.CursedForest
 
        //Continue with EditSpawnPool code
        //And OnKill, like event points ig
-
-
    }
 }
 */

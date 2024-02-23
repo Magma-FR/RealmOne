@@ -7,13 +7,16 @@ namespace RealmOne.Common.Events.CursedForest
     public class CursedForestBiome : ModBiome
     {
         public static CursedForestBiome Instance { get; set; }
+
         public CursedForestBiome()
         {
             Instance = this;
         }
+
         public override void SetStaticDefaults()
         {
         }
+
         public override string BestiaryIcon
         {
             get
@@ -21,6 +24,7 @@ namespace RealmOne.Common.Events.CursedForest
                 return base.BestiaryIcon;
             }
         }
+
         public override string BackgroundPath
         {
             get
@@ -28,6 +32,7 @@ namespace RealmOne.Common.Events.CursedForest
                 return base.BackgroundPath;
             }
         }
+
         public override string MapBackground
         {
             get
@@ -43,6 +48,7 @@ namespace RealmOne.Common.Events.CursedForest
                 return (Main.LocalPlayer.ZoneOverworldHeight || Main.LocalPlayer.ZoneSkyHeight) ? MusicLoader.GetMusicSlot(Mod, "Assets/Music/squirmotheme") : base.Music;
             }
         }
+
         public override SceneEffectPriority Priority => SceneEffectPriority.Event;
 
         public override bool IsBiomeActive(Player player)
@@ -54,9 +60,7 @@ namespace RealmOne.Common.Events.CursedForest
         {
             if (Main.netMode != NetmodeID.Server)
             {
-
             }
         }
     }
-
 }

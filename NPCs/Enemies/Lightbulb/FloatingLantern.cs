@@ -16,7 +16,6 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
 {
     public class FloatingLantern : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 4;
@@ -56,7 +55,7 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
-            ? 0 : 0.22f;
+            ? 0 : 0.8f;
         }
 
         public override void AI()
@@ -85,7 +84,7 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
             });
         }
 
-        float alphaCounter;
+        private float alphaCounter;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -101,9 +100,6 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
             Texture2D ripple = Mod.Assets.Request<Texture2D>("Assets/Effects/lilglow").Value;
 
             Main.spriteBatch.Draw(ripple, new Vector2(PositionX, PositionY), null, new Color(254, 164, 56) * sineWave, NPC.rotation, ripple.Size() / 2f, 1f, effects, 0);
-
-
-
 
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
 

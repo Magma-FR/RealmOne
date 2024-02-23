@@ -38,12 +38,13 @@ namespace RealmOne.Common.Global
 
         public override void SetDefaults(Item item)
         {
-            //Pre-Hardmode Accessories
             if (item.type == ItemID.CobaltShield) item.defense = 3;
             if (item.type == ItemID.ObsidianShield) item.defense = 5;
             if (item.type == ItemID.AnkhShield) item.defense = 8;
             if (item.type == ItemID.BandofRegeneration) item.lifeRegen += 8;
-            if (item.type == ItemID.BandofStarpower) item.manaIncrease += 200;
+            if (item.type == ItemID.BandofStarpower) item.manaIncrease += 8;
+            //         if (item.type == ItemID.BandofStarpower) player.statManaMax2 += 20;
+
             if (item.type == ItemID.Shackle) item.defense = 2;
 
             if (item.type == ItemID.NimbusRod) item.DamageType = DamageClass.Summon;

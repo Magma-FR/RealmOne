@@ -12,6 +12,7 @@ namespace RealmOne.Common
     {
         public bool isActive;
         public float Intensity;
+
         public override void Activate(Vector2 position, params object[] args)
         {
             isActive = true;

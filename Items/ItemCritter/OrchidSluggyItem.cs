@@ -7,7 +7,6 @@ namespace RealmOne.Items.ItemCritter
 {
     public class OrchidSluggyItem : ModItem
     {
-
         public override void SetDefaults()
         {
             Item.width = 24;

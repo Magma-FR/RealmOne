@@ -70,9 +70,9 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Projectile.friendly = true;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.aiStyle = 1;
+            Projectile.aiStyle = ProjAIStyleID.Harpoon;
             Projectile.timeLeft = 500;
-            AIType = ProjectileID.Bullet;
+            AIType = ProjectileID.Harpoon;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

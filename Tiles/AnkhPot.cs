@@ -21,7 +21,6 @@ namespace RealmOne.Tiles
             Main.tileLavaDeath[Type] = true;
             // Placement
 
-
             MineResist = 1f;
             MinPick = 20;
             HitSound = rorAudio.OldGoldTink;
@@ -45,10 +44,6 @@ namespace RealmOne.Tiles
             return (ushort)(Main.tile[i, j].TileFrameX / 36);
         }
 
-        float RandomMovement() =>
-        (float)Math.Sin(Main.GlobalTimeWrappedHourly * 1f) * 6f;
-
-
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Framing.GetTileSafely(i, j);
@@ -58,7 +53,7 @@ namespace RealmOne.Tiles
 
             Vector2 num1 = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
 
-            spriteBatch.Draw(glow, new Vector2(i * 16, j * 16) - Main.screenPosition + num1 + (Vector2.UnitY * RandomMovement()), new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), Lighting.GetColor(i, j));
+            spriteBatch.Draw(glow, new Vector2(i * 16, j * 16) - Main.screenPosition + num1 + (Vector2.UnitY * UpandDown()), new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), Lighting.GetColor(i, j));
             return false;
         }
 
@@ -71,7 +66,9 @@ namespace RealmOne.Tiles
 
             Vector2 num2 = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
 
-            spriteBatch.Draw(glow, new Vector2(i * 16, j * 16) - Main.screenPosition + num2 + (Vector2.UnitY * RandomMovement()), new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), colour);
+            spriteBatch.Draw(glow, new Vector2(i * 16, j * 16) - Main.screenPosition + num2 + (Vector2.UnitY * UpandDown()), new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), colour);
         }
+
+        private float UpandDown() => (float)Math.Sin(Main.GlobalTimeWrappedHourly * 1f) * 5f;
     }
 }
