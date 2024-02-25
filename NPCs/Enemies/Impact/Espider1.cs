@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.EnemyDrops;
 using ReLogic.Content;
 using Terraria;
@@ -44,7 +45,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             AnimationType = NPCID.DesertGhoul;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNight.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNight.Chance * 0.12f : 0f;
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {

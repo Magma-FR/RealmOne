@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
 using Terraria.Audio;
@@ -48,7 +49,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.noGravity = true;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.NPCs.Enemies.Forest;
+using RealmOne.NPCs.Enemies.ForestRevenge;
 using RealmOne.NPCs.Enemies.Lightbulb;
 using System.Collections.Generic;
 using System.IO;
@@ -75,10 +76,12 @@ namespace RealmOne.Common.Events.CursedForest
         }
 
         public static int[] CursedForestEnemies => new[]
-       {
+        {
             ModContent.NPCType<FloatingLantern>(),
             ModContent.NPCType<WhisperingShroud>(),
-        };
+            ModContent.NPCType<CursedBird>(),
+            ModContent.NPCType<CursedOwl>(),
+       };
 
         public override void PreUpdateWorld()
         {

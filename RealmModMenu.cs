@@ -34,10 +34,10 @@ namespace RealmOne
             spriteBatch.Draw(tex2, logoDrawCenter, null, color, logoRotation, tex2.Size() / 2f, logoScale, 0, 0);
             logoRotation *= 3f;
 
-            logoScale = 0.8f;
+            logoScale = 0.5f;
             drawColor = Color.White;
 
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/MainMenu/MenuBackground").Value;
+            Texture2D texture = ModContent.Request<Texture2D>("RealmOne/Assets/Textures/Menu/NewMenu").Value;
 
             Vector2 drawOffset = Vector2.Zero;
             float xScale = (float)Main.screenWidth / texture.Width;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Food;
 using RealmOne.Items.Placeables.BannerItems;
 using RealmOne.Items.Weapons.PreHM.Throwing;
@@ -45,7 +46,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.Player.ZoneForest && Main.dayTime && !spawnInfo.PlayerSafe ? 0.14f : 0f;
+            return spawnInfo.Player.ZoneForest && !CursedForestEvent.CursedForest && Main.dayTime && !spawnInfo.PlayerSafe ? 0.14f : 0f;
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

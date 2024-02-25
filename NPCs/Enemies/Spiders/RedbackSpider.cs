@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.ItemCritter;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -45,7 +46,7 @@ namespace RealmOne.NPCs.Enemies.Spiders
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDay.Chance * 0.09f;
+            return spawnInfo.Player.ZoneForest && Main.dayTime && !CursedForestEvent.CursedForest && !spawnInfo.PlayerSafe ? 0.14f : 0f;
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

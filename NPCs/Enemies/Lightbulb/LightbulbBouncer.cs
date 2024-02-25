@@ -44,12 +44,22 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
             NPC.netAlways = true;
             NPC.netUpdate = true;
             AnimationType = NPCID.FloatyGross;
+            SpawnModBiomes = new int[]
+            {
+                ModContent.GetInstance<CursedForestBiome>().Type
+            };
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !CursedForestEvent.CursedForest && !Main.bloodMoon ? 0.08f : 0f;
+            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
+            ? 0 : 6f;
         }
+
+        //   public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        //   {
+        //      return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !CursedForestEvent.CursedForest && !Main.bloodMoon ? 0.08f : 0f;
+        //  }
 
         public override void AI()
         {

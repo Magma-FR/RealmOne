@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
 using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Food;
+using RealmOne.Items.Misc;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
@@ -16,7 +17,7 @@ namespace RealmOne.NPCs.Enemies.Forest
     {
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[Type] = 6;
+            Main.npcFrameCount[Type] = 5;
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
@@ -46,7 +47,7 @@ namespace RealmOne.NPCs.Enemies.Forest
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight)
-            ? 0 : 0.8f;
+            ? 0 : 6f;
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -61,7 +62,8 @@ namespace RealmOne.NPCs.Enemies.Forest
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ForestTea>(), 2, 1, 2));
-            npcLoot.Add(ItemDropRule.Common(ItemID.StoneBlock, 1, 2, 4));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Parchment>(), 4, 1, 3));
+            npcLoot.Add(ItemDropRule.Common(ItemID.StoneBlock, 1, 2, 3));
         }
 
         public override void AI()

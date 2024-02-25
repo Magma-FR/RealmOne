@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.RealmPlayer;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -39,7 +41,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.aiStyle = NPCAIStyleID.Unicorn;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
         public override void AI()
         {
@@ -70,6 +72,8 @@ namespace RealmOne.NPCs.Enemies.Impact
             }
 
             Player player = Main.player[NPC.target];
+            player.GetModPlayer<Screenshake>().SmallScreenshake = true;
+
             var p = Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), Vector2.Zero, ProjectileID.ClusterGrenadeI, 35, 2, Main.myPlayer);
             Main.projectile[p].timeLeft = 10;
             Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ImpactMineGore1").Type, 1f);

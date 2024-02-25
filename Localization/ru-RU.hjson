@@ -2683,6 +2683,8 @@ Mods: {
 			// OrchidSlime.DisplayName: Orchid Slime
 			// OrchidSlimeTiny.DisplayName: Orchid Slime Tiny
 			// SunflowerSlime.DisplayName: Sunflower Slime
+			// CursedBird.DisplayName: Cursed Bird
+			// CursedOwl.DisplayName: Cursed Owl
 		}
 
 		Dialogue: {

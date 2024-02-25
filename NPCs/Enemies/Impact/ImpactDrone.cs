@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.EnemyDrops;
 using System;
 using Terraria;
@@ -45,12 +46,11 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath44;
             NPC.value = Item.buyPrice(0, 0, 2, 15);
-            NPC.knockBackResist = 0.2f;
 
             NPC.noGravity = true;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
 
         private double Timer;
         private double SinThing;
@@ -90,8 +90,8 @@ namespace RealmOne.NPCs.Enemies.Impact
             Player player = Main.player[NPC.target];
             Vector2 TargetLocation = new Vector2(player.position.X + ((float)Math.Sin(SinThing) * 100), player.position.Y - 150 - ((float)Math.Sin(SinThing) * 10));
 
-            float speed = 10f;
-            float inertia = 6f;
+            float speed = 6f;
+            float inertia = 0f;
             Vector2 direction = TargetLocation - NPC.Center;
             direction.Normalize();
             direction *= speed;

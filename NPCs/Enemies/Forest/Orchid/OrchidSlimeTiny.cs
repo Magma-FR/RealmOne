@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Sets.OrchidSet;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria;
@@ -11,6 +12,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using static Terraria.ModLoader.ModContent;
+
 namespace RealmOne.NPCs.Enemies.Forest.Orchid
 {
     public class OrchidSlimeTiny : ModNPC
@@ -18,7 +20,6 @@ namespace RealmOne.NPCs.Enemies.Forest.Orchid
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 2;
-
 
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
@@ -44,7 +45,7 @@ namespace RealmOne.NPCs.Enemies.Forest.Orchid
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (spawnInfo.Player.ZoneForest)
+            if (spawnInfo.Player.ZoneForest && !CursedForestEvent.CursedForest)
                 return SpawnCondition.OverworldDaySlime.Chance * 0.15f;
             return base.SpawnChance(spawnInfo);
         }
@@ -56,11 +57,12 @@ namespace RealmOne.NPCs.Enemies.Forest.Orchid
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
+
         public override void AI()
         {
             NPC.spriteDirection -= NPC.direction;
-
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -85,13 +87,13 @@ namespace RealmOne.NPCs.Enemies.Forest.Orchid
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.BubbleBurst_Green, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.BubbleBurst_Pink, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
-
             }
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("orchiD").Type, 1f);
             }
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -102,8 +104,6 @@ namespace RealmOne.NPCs.Enemies.Forest.Orchid
 
             Main.spriteBatch.Draw(ripple, new Vector2(PositionX, PositionY), new Microsoft.Xna.Framework.Rectangle?(), Color.Yellow, NPC.rotation, ripple.Size() / 2f, 1f, effects, 0);
 
-
-
             var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
 
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
@@ -111,6 +111,7 @@ namespace RealmOne.NPCs.Enemies.Forest.Orchid
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             // Here we can make things happen if this NPC hits a player via its hitbox (not projectiles it shoots, this is handled in the projectile code usually)

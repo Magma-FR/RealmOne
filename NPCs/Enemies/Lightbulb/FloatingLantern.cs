@@ -55,7 +55,7 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
-            ? 0 : 0.8f;
+            ? 0 : 6f;
         }
 
         public override void AI()

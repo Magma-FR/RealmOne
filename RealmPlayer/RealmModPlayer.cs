@@ -470,11 +470,6 @@ namespace RealmOne.RealmPlayer
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                Main.NewText(Language.GetTextValue("Another day, Another Disappointment"), 180, 30, 250);
-            }
-
-            if (Main.netMode != NetmodeID.Server)
-            {
                 Main.NewText(Language.GetTextValue($"[i:{ItemID.FallenStar}] Go and join the discord server for the mod!! [c/0000FF:discord.gg/vsBJ8PrmCh] [i:{ItemID.FallenStar}]"), 128, 200, 55);
             }
         }

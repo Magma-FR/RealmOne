@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Misc.Plants;
+using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -15,7 +18,6 @@ namespace RealmOne.NPCs.Enemies.Forest
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 2;
-
 
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
@@ -40,7 +42,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (spawnInfo.Player.ZoneForest)
+            if (spawnInfo.Player.ZoneForest && !CursedForestEvent.CursedForest)
                 return SpawnCondition.OverworldDaySlime.Chance * 0.15f;
             return base.SpawnChance(spawnInfo);
         }
@@ -80,16 +82,13 @@ namespace RealmOne.NPCs.Enemies.Forest
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Sunflower, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Teleporter, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.6f);
-
             }
-
         }
+
         public override void AI()
         {
             NPC.spriteDirection = NPC.direction;
             Lighting.AddLight(NPC.Center, 0.311f * 2, 0.331f * 2, 0.075f * 2);
-
         }
-
     }
 }
