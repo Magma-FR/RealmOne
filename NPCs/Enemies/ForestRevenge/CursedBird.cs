@@ -37,8 +37,8 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             NPC.width = 28;
             NPC.height = 18;
             NPC.noGravity = true;
-            NPC.damage = 10;
-            NPC.lifeMax = 48;
+            NPC.damage = 9;
+            NPC.lifeMax = 46;
 
             NPC.value = Item.buyPrice(0, 0, 2, 10);
             NPC.aiStyle = NPCAIStyleID.Bat;

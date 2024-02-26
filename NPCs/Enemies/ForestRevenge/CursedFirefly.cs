@@ -39,22 +39,19 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             NPC.width = 12;
             NPC.height = 9;
             NPC.noGravity = true;
-            NPC.damage = 12;
-            NPC.lifeMax = 56;
-            AIType = NPCID.Bee;
+            NPC.damage = 15;
+            NPC.lifeMax = 30;
+            AIType = NPCID.NebulaBrain;
 
             NPC.value = Item.buyPrice(0, 0, 0, 80);
-            NPC.aiStyle = NPCAIStyleID.Flying;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.netAlways = true;
             NPC.netUpdate = true;
-
-            AIType = NPCID.Bee;
-
+            NPC.aiStyle = NPCAIStyleID.Flying;
             SpawnModBiomes = new int[]
             {
-                ModContent.GetInstance<CursedForestBiome>().Type
+                GetInstance<CursedForestBiome>().Type
             };
         }
 
@@ -66,17 +63,23 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override void FindFrame(int frameHeight)
         {
-            NPC.frameCounter += 0.15f;
+            NPC.frameCounter += 0.14f;
             NPC.frameCounter %= Main.npcFrameCount[NPC.type];
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
         public override void AI()
         {
             NPC.TargetClosest();
+            NPC.rotation = 0;
             NPC.spriteDirection = NPC.direction;
-            alphaCounter += .05f;
+            alphaCounter += .10f;
 
             Player player = Main.player[NPC.target];
             Vector2 center = NPC.Center;
@@ -98,8 +101,11 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             Player player = Main.player[NPC.target];
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
 
-            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, 1), ProjectileID.GreekFire1, 15, 2, Main.myPlayer);
-            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(1, 0), ProjectileID.GreekFire1, 15, 2, Main.myPlayer);
+            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, 1), ProjectileID.MolotovFire, 10, 2, Main.myPlayer);
+            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, -1), ProjectileID.MolotovFire2, 10, 2, Main.myPlayer);
+
+            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(1, 0), ProjectileID.MolotovFire3, 10, 2, Main.myPlayer);
+            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(-1, 0), ProjectileID.MolotovFire3, 10, 2, Main.myPlayer);
         }
 
         public override void HitEffect(NPC.HitInfo hit)
@@ -123,7 +129,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             int PositionY = (int)(NPC.Center.Y - screenPos.Y);
             var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
 
-            Texture2D ripple = Mod.Assets.Request<Texture2D>("Assets/Effects/lilglow").Value;
+            Texture2D ripple = Mod.Assets.Request<Texture2D>("Assets/Effects/lighty").Value;
 
             Main.spriteBatch.Draw(ripple, new Vector2(PositionX, PositionY), null, new Color(255, 20, 10) * sineWave, NPC.rotation, ripple.Size() / 2f, 1f, effects, 0);
 
@@ -140,7 +146,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
               return false;
           }*/
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color color) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color color) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

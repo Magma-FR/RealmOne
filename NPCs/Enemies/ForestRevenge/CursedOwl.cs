@@ -37,8 +37,8 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             NPC.width = 38;
             NPC.height = 32;
             NPC.noGravity = true;
-            NPC.damage = 12;
-            NPC.lifeMax = 56;
+            NPC.damage = 9;
+            NPC.lifeMax = 54;
             AIType = NPCID.ShadowFlameApparition;
 
             NPC.value = Item.buyPrice(0, 0, 2, 60);

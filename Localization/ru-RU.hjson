@@ -2685,6 +2685,7 @@ Mods: {
 			// SunflowerSlime.DisplayName: Sunflower Slime
 			// CursedBird.DisplayName: Cursed Bird
 			// CursedOwl.DisplayName: Cursed Owl
+			// CursedFirefly.DisplayName: Cursed Firefly
 		}
 
 		Dialogue: {
