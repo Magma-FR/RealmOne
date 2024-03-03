@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Items.Food;
+using RealmOne.Items.Weapons.Magic;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -42,7 +43,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorneaScepter>(), 16));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 8, 1, 1));
         }
 
         public override bool CheckDead()

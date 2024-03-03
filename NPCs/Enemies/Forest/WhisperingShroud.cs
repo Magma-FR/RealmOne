@@ -10,6 +10,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.Forest
 {
@@ -38,16 +39,13 @@ namespace RealmOne.NPCs.Enemies.Forest
             NPC.DeathSound = SoundID.NPCDeath6;
             NPC.netAlways = true;
             NPC.netUpdate = true;
-            SpawnModBiomes = new int[]
-            {
-                ModContent.GetInstance<CursedForestBiome>().Type
-            };
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight)
-            ? 0 : 6f;
+            if (spawnInfo.Player.ZoneForest && !CursedForestEvent.CursedForest)
+                return SpawnCondition.Overworld.Chance * 0.12f;
+            return base.SpawnChance(spawnInfo);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

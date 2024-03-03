@@ -2162,27 +2162,32 @@ Mods: {
 			}
 
 			CursedForestItem: {
-				// DisplayName: Cursed Forest Item
-				// Tooltip: ""
+				// DisplayName: Cursed Forest Crucifix
+				/* Tooltip:
+					'''
+					A strange and demonic crucifix, looks like its been used before 
+					Use the Crucifix to start the Forest's Revenge
+					Only useable at Nightime
+					''' */
 			}
 
 			OrchidBody: {
-				// DisplayName: Orchid Body
+				// DisplayName: Orchid Leafplate
 				// Tooltip: ""
 			}
 
 			OrchidHead: {
-				// DisplayName: Orchid Head
+				// DisplayName: Orchid Leafhat
 				// Tooltip: ""
 			}
 
 			OrchidLegs: {
-				// DisplayName: Orchid Legs
+				// DisplayName: Orchid Leaflegs
 				// Tooltip: ""
 			}
 
 			GoldSkullTome: {
-				// DisplayName: Gold Skull Tome
+				// DisplayName: Ankh Skull Tome
 				// Tooltip: ""
 			}
 
@@ -2197,7 +2202,7 @@ Mods: {
 			}
 
 			SafeHook: {
-				// DisplayName: Safe Hook
+				// DisplayName: Critter Harpoon Gun
 				// Tooltip: ""
 			}
 
@@ -2207,12 +2212,17 @@ Mods: {
 			}
 
 			OrchidMothTileItem: {
-				// DisplayName: Orchid Moth Tile Item
+				// DisplayName: Orchid Moth Jar
 				// Tooltip: ""
 			}
 
 			OrchidSluggyTileItem: {
-				// DisplayName: Orchid Sluggy Tile Item
+				// DisplayName: Orchid Sluggy Cage
+				// Tooltip: ""
+			}
+
+			GrislyHide: {
+				// DisplayName: Grisly Hide
 				// Tooltip: ""
 			}
 		}
@@ -2510,6 +2520,7 @@ Mods: {
 			// ImpactBoomerangProj.DisplayName: Impact Boomerang Proj
 			// SafeHookProj.DisplayName: Safe Hook Proj
 			// JungleFisharangProj.DisplayName: Jungle Fisharang Proj
+			// InvisibleExplosion.DisplayName: Invisible Explosion
 		}
 
 		NPCs: {
@@ -2686,6 +2697,7 @@ Mods: {
 			// CursedBird.DisplayName: Cursed Bird
 			// CursedOwl.DisplayName: Cursed Owl
 			// CursedFirefly.DisplayName: Cursed Firefly
+			// CursedBunny.DisplayName: Cursed Bunny
 		}
 
 		Dialogue: {

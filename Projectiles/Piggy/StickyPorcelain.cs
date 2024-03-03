@@ -55,7 +55,6 @@ namespace RealmOne.Projectiles.Piggy
                 int npcTarget = targetPorce;
                 Projectile.Center = Main.npc[npcTarget].Center - Projectile.velocity;
                 Projectile.gfxOffY = Main.npc[npcTarget].gfxOffY;
-                Main.npc[npcTarget].HitEffect(0, 0);
             }
         }
 

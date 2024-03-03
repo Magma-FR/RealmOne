@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Sets.OrchidSet;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,6 +22,16 @@ namespace RealmOne.Armor.Verminhide
             Item.value = Item.sellPrice(gold: 1);
             Item.rare = ItemRarityID.Blue;
             Item.defense = 2;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+
+            .AddIngredient(ModContent.ItemType<GrislyHide>(), 4)
+
+            .AddTile(TileID.WorkBenches)
+            .Register();
         }
 
         public override void UpdateEquip(Player player)

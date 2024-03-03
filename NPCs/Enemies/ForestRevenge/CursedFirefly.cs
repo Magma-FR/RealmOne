@@ -17,6 +17,11 @@ using Terraria.GameContent;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using RealmOne.RealmPlayer;
+using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Common.Core.ParticleContent;
+using RealmOne.Items.Weapons.PreHM.Throwing;
+using Terraria.GameContent.ItemDropRules;
+using RealmOne.Items.Sets.ForestRevengeSet;
 
 namespace RealmOne.NPCs.Enemies.ForestRevenge
 {
@@ -40,7 +45,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             NPC.height = 9;
             NPC.noGravity = true;
             NPC.damage = 15;
-            NPC.lifeMax = 30;
+            NPC.lifeMax = 26;
             AIType = NPCID.NebulaBrain;
 
             NPC.value = Item.buyPrice(0, 0, 0, 80);
@@ -57,8 +62,13 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
-            ? 0 : 6f;
+            return (CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
+            ? 0 : 12f;
+        }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FireflyJar>(), 2, 5, 10));
         }
 
         public override void FindFrame(int frameHeight)
@@ -83,7 +93,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
             Player player = Main.player[NPC.target];
             Vector2 center = NPC.Center;
-            if (NPC.Distance(player.Center) < 55f)
+            if (NPC.Distance(player.Center) < 60f)
             {
                 Explode();
             }
@@ -98,14 +108,30 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.t_Flesh, 0.5f, 0f, 100, default, 2f);
             }
+            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, 4), ProjectileType<InvisibleExplosion>(), 10, 2, Main.myPlayer);
+
+            for (int i = 0; i < 100; i++)
+            {
+                Vector2 speed = Main.rand.NextVector2CircularEdge(2.5f, 2.5f);
+                var d = Dust.NewDustPerfect(NPC.Center, DustID.RedTorch, speed * 8, Scale: 3f);
+                d.noGravity = true;
+            }
+
             Player player = Main.player[NPC.target];
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
 
-            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, 1), ProjectileID.MolotovFire, 10, 2, Main.myPlayer);
-            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, -1), ProjectileID.MolotovFire2, 10, 2, Main.myPlayer);
-
-            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(1, 0), ProjectileID.MolotovFire3, 10, 2, Main.myPlayer);
-            Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(-1, 0), ProjectileID.MolotovFire3, 10, 2, Main.myPlayer);
+            var p = Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, 4), ProjectileID.MolotovFire, 10, 2, Main.myPlayer);
+            Main.projectile[p].friendly = false;
+            Main.projectile[p].hostile = true;
+            var p1 = Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(0, -4), ProjectileID.MolotovFire2, 10, 2, Main.myPlayer);
+            Main.projectile[p1].friendly = false;
+            Main.projectile[p1].hostile = true;
+            var p2 = Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(4, 0), ProjectileID.MolotovFire3, 10, 2, Main.myPlayer);
+            Main.projectile[p2].friendly = false;
+            Main.projectile[p2].hostile = true;
+            var p3 = Projectile.NewProjectile(NPC.GetSource_Death(), new Vector2(NPC.Center.X, NPC.Center.Y), new Vector2(-4, 0), ProjectileID.MolotovFire3, 10, 2, Main.myPlayer);
+            Main.projectile[p3].friendly = false;
+            Main.projectile[p3].hostile = true;
         }
 
         public override void HitEffect(NPC.HitInfo hit)
@@ -154,6 +180,36 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
             int timeToAdd = 2 * 60; //This makes it 5 seconds, one second is 60 ticks
             target.AddBuff(buffType, timeToAdd);
+        }
+    }
+
+    public class InvisibleExplosion : ModProjectile
+    {
+        public override string Texture => Helper.Empty;
+
+        public override void SetStaticDefaults()
+        {
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 100;
+            Projectile.height = 100;
+            Projectile.friendly = false;
+            Projectile.hostile = true;
+            Projectile.hide = true;
+            Projectile.tileCollide = false;
+            Projectile.timeLeft = 2;
+        }
+
+        public override bool ShouldUpdatePosition()
+        {
+            return false;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.OnFire, 200);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Common.Systems;
+using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Sets.OrchidSet;
 using RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops;
 using System;
 using System.IO;
@@ -91,11 +93,13 @@ public class ButcherRat : ModNPC
 
         Music = MusicID.Boss2;
     }
+
     public override void BossLoot(ref string name, ref int potionType)
     {
         potionType = ItemID.None;
         NPCLoader.blockLoot.Add(ItemID.Heart);
     }
+
     public override void SendExtraAI(BinaryWriter writer)
     {
         writer.Write(CanSlam);
@@ -331,11 +335,15 @@ public class ButcherRat : ModNPC
     {
         target.AddBuff(BuffID.Bleeding, 20 * 60);
     }
+
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoreshankShotgun>(), 1, 1, 1));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrislyHide>(), 1, 5, 8));
+
         npcLoot.Add(ItemDropRule.Common(ItemID.RatCage, 5));
     }
+
     public override void OnKill()
     {
         // TODO: Change the text from literal strings to localized strings.
@@ -346,6 +354,7 @@ public class ButcherRat : ModNPC
         var rat = NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<BloodRat>(), ai3: 1);
 
         rat.scale = 3f;
+        rat.life = 120;
         rat.life = rat.lifeMax;
     }
 

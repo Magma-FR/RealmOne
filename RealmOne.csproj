@@ -40,4 +40,8 @@
 	    <HintPath>lib\StructureHelper.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Items\Weapons\PreHM\Forest\CursedFort\" />
+	</ItemGroup>
 </Project>

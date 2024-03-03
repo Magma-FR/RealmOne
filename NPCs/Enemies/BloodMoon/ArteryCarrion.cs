@@ -112,8 +112,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshToothSMG>(), 18));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshToothSMG>(), 16));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 12));
         }
 
         public override void FindFrame(int frameHeight)

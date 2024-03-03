@@ -11,6 +11,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.Lightbulb
 {
@@ -42,21 +43,13 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
             NPC.DeathSound = SoundID.DD2_WitherBeastHurt;
             NPC.netAlways = true;
             NPC.netUpdate = true;
-            SpawnModBiomes = new int[]
-            {
-                ModContent.GetInstance<CursedForestBiome>().Type
-            };
         }
 
         // public override float SpawnChance(NPCSpawnInfo spawnInfo)
         //  {
         //      return spawnInfo.SpawnTileY < Main.rockLayer && !Main.dayTime && !Main.bloodMoon ? 0.08f : 0f;
         //  }
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
-            ? 0 : 6f;
-        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNight.Chance * 0.12f : 0f;
 
         public override void AI()
         {

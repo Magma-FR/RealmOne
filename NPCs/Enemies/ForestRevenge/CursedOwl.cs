@@ -38,7 +38,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             NPC.height = 32;
             NPC.noGravity = true;
             NPC.damage = 9;
-            NPC.lifeMax = 54;
+            NPC.lifeMax = 50;
             AIType = NPCID.ShadowFlameApparition;
 
             NPC.value = Item.buyPrice(0, 0, 2, 60);
@@ -52,14 +52,14 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
             SpawnModBiomes = new int[]
             {
-                ModContent.GetInstance<CursedForestBiome>().Type
+                GetInstance<CursedForestBiome>().Type
             };
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
-            ? 0 : 6f;
+            return (CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
+            ? 0 : 12f;
         }
 
         public override void FindFrame(int frameHeight)

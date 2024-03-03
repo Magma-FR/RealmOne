@@ -54,7 +54,7 @@ namespace RealmOne
                 }
             );
             string internalName2 = "Butcher Rat";
-            float weight2 = 22.3f;
+            float weight2 = 2.2f;
             Func<bool> downed2 = () => DownedBossSystem.downedRat;
             int bossType2 = ModContent.NPCType<ButcherRat>();
             List<int> collectibles2 = new List<int>()

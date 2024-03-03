@@ -1,4 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Common.Core.ParticleContent;
+using RealmOne.Common.Systems;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -42,10 +45,17 @@ namespace RealmOne.Common.Events.CursedForest
 
         public override bool? UseItem(Player player)
         {
-            Main.NewText("Big balls tbh", 179, 0, 255);
-            SoundEngine.PlaySound(SoundID.Roar, new Vector2((int)player.position.X, (int)player.position.Y));
+            Main.NewText("The Forest has shifted into a transcendental state!!", 200, 0, 80);
+            SoundEngine.PlaySound(rorAudio.LeechHeartEat, new Vector2((int)player.position.X, (int)player.position.Y));
             CursedForestEvent.CursedForest = true;
+            for (int i = 0; i < 5; i++)
+            {
+                GenericGlowParticle particle = new(new Vector2(player.Center.X + Main.rand.Next(-30, 30), player.Center.Y), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), Color.IndianRed, 0.5f, 120);
+                SparkleParticle sparkle = new(Color.Red, 1, new Vector2(player.Center.X + Main.rand.Next(-30, 30), player.Center.Y), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
 
+                ParticleSystem.GenerateParticle(sparkle);
+                ParticleSystem.GenerateParticle(particle);
+            }
             if (Main.netMode == NetmodeID.Server)
                 NetMessage.SendData(MessageID.WorldData);
             else

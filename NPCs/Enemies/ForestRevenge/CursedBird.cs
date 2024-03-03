@@ -57,8 +57,8 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
-            ? 0 : 6f;
+            return (CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
+            ? 0 : 12f;
         }
 
         public override void FindFrame(int frameHeight)

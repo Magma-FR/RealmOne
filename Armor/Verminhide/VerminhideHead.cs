@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Sets.OrchidSet;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,6 +30,16 @@ namespace RealmOne.Armor.Verminhide
                 player.GetDamage(DamageClass.Summon) += 0.05f;
                 player.maxMinions += 1;
             }
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+
+            .AddIngredient(ModContent.ItemType<GrislyHide>(), 4)
+
+            .AddTile(TileID.WorkBenches)
+            .Register();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

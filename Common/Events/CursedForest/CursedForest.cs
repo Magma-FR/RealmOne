@@ -81,6 +81,8 @@ namespace RealmOne.Common.Events.CursedForest
             ModContent.NPCType<WhisperingShroud>(),
             ModContent.NPCType<CursedBird>(),
             ModContent.NPCType<CursedOwl>(),
+            ModContent.NPCType<CursedFirefly>(),
+            ModContent.NPCType<CursedBunny>(),
        };
 
         public override void PreUpdateWorld()

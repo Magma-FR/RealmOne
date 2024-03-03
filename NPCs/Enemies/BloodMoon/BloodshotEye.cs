@@ -98,7 +98,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 15));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 11));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 8, 1, 1));
         }
 
         public override void HitEffect(NPC.HitInfo hit) // when the npc is hit, do smth (better than checking when hit by proj or melee)
