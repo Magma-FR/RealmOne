@@ -15,6 +15,7 @@ using RealmOne.Common.Core;
 using ReLogic.Content;
 using Terraria.GameContent;
 using static Terraria.ModLoader.ModContent;
+using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.ForestRevenge
 {
@@ -57,8 +58,8 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return (CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
-            ? 0 : 12f;
+            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
+            ? 0 : 40f;
         }
 
         public override void FindFrame(int frameHeight)

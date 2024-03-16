@@ -2352,6 +2352,11 @@ Mods: {
 				// DisplayName: Begineer's Recklessness
 				// Description: Your first real punishment, but as a reward??
 			}
+
+			CursedBuff: {
+				// Description: Mods.RealmOne.Buffs.CursedBuff.Description
+				// DisplayName: Cursed Buff
+			}
 		}
 
 		Projectiles: {
@@ -2698,6 +2703,7 @@ Mods: {
 			// CursedOwl.DisplayName: Cursed Owl
 			// CursedFirefly.DisplayName: Cursed Firefly
 			// CursedBunny.DisplayName: Cursed Bunny
+			// CursedSquirrel.DisplayName: Cursed Squirrel
 		}
 
 		Dialogue: {

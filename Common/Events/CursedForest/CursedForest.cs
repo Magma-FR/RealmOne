@@ -77,20 +77,22 @@ namespace RealmOne.Common.Events.CursedForest
 
         public static int[] CursedForestEnemies => new[]
         {
-            ModContent.NPCType<FloatingLantern>(),
-            ModContent.NPCType<WhisperingShroud>(),
             ModContent.NPCType<CursedBird>(),
             ModContent.NPCType<CursedOwl>(),
             ModContent.NPCType<CursedFirefly>(),
             ModContent.NPCType<CursedBunny>(),
+            ModContent.NPCType<CursedSquirrel>(),
        };
 
         public override void PreUpdateWorld()
         {
+            Player player = Main.LocalPlayer;
+
             if (!CursedForest && !testedEvents && !Main.bloodMoon && !Main.dayTime && WorldGen.spawnHardBoss == 0)
             {
                 if ((Main.rand.NextBool(8) && !downedCursedForest) || (Main.rand.NextBool(16) && downedCursedForest))
                 {
+                    player.aggro += 100;
                     string status = "The forest has been cursed into a detrimental state";
                     if (Main.netMode == NetmodeID.Server)
                         ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(status), new Color(200, 0, 50));

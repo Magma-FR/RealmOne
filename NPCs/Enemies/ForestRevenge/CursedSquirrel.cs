@@ -15,6 +15,7 @@ using RealmOne.Common.Core;
 using ReLogic.Content;
 using Terraria.GameContent;
 using static Terraria.ModLoader.ModContent;
+using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.ForestRevenge
 {
@@ -22,7 +23,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
     {
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[NPC.type] = 7;
+            Main.npcFrameCount[NPC.type] = 5;
             NPCID.Sets.TrailCacheLength[NPC.type] = 9;
             NPCID.Sets.TrailingMode[NPC.type] = 1;
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
@@ -37,8 +38,8 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             NPC.width = 38;
             NPC.height = 32;
             NPC.damage = 8;
-            NPC.lifeMax = 65;
-            AIType = NPCID.LarvaeAntlion;
+            NPC.lifeMax = 58;
+            AIType = NPCID.GiantWalkingAntlion;
 
             NPC.value = Item.buyPrice(0, 0, 2, 20);
             NPC.aiStyle = NPCAIStyleID.Fighter;
@@ -55,8 +56,8 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon
-            ? 0 : 50f;
+            return !(CursedForestEvent.CursedForest && spawnInfo.Player.ZoneOverworldHeight && !Main.bloodMoon)
+            ? 0 : 40f;
         }
 
         public override void FindFrame(int frameHeight)
@@ -77,10 +78,10 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CursedBunnyGore1").Type, 1f);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CursedBunnyGore2").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CursedSquirrelGore1").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CursedSquirrelGore2").Type, 1f);
 
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CursedBunnyGore3").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CursedSquirrelGore3").Type, 1f);
             }
 
             for (int k = 0; k < 10; k++)
