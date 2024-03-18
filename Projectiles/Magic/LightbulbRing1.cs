@@ -47,8 +47,7 @@ namespace RealmOne.Projectiles.Magic
             Projectile.penetrate = -1;
             Projectile.damage = 1;
             Projectile.usesLocalNPCImmunity = true; // Used for hit cooldown changes in the ai hook
-            Projectile.localNPCHitCooldown = 20; // This facilitates custom hit cooldown logic
-
+            Projectile.localNPCHitCooldown = 6; // This facilitates custom hit cooldown logic
         }
 
         private ref float Timer => ref Projectile.ai[0];

@@ -1370,7 +1370,7 @@ Mods: {
 					5% increased movement speed and acceleration
 					'Trousers of the tree tops!'
 					'''
-				DisplayName: Tree Hugger Trousers
+				DisplayName: Acorn Adventurer Boots
 			}
 
 			TreeHuggerHead: {
@@ -1379,7 +1379,7 @@ Mods: {
 					5% increased damage
 					'Helmet of the tree tops!'
 					'''
-				DisplayName: Tree Hugger Helmet
+				DisplayName: Acorn Adventurer Hat
 			}
 
 			TreeHuggerBody: {
@@ -1388,7 +1388,7 @@ Mods: {
 					5% increased knockback on all weapons
 					'Chestplate of the tree tops!'
 					'''
-				DisplayName: Tree Hugger Chestplate
+				DisplayName: Acorn Adventurer Scarf
 			}
 
 			PiggyLegs: {
