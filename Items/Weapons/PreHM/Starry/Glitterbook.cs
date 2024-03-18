@@ -16,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Starry
 {
     public class Glitterbook : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Glitterbook"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -26,7 +25,6 @@ namespace RealmOne.Items.Weapons.PreHM.Starry
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Starry/Glitterbook_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -46,7 +44,6 @@ namespace RealmOne.Items.Weapons.PreHM.Starry
             Item.value = Item.buyPrice(gold: 2, silver: 75);
             Item.mana = 3;
             Item.noMelee = true;
-
         }
 
         public override Vector2? HoldoutOffset()
@@ -75,7 +72,6 @@ namespace RealmOne.Items.Weapons.PreHM.Starry
                 SpriteEffects.None,
                 0f
             );
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -87,7 +83,6 @@ namespace RealmOne.Items.Weapons.PreHM.Starry
                 Vector2 PositionArea = Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 20f;
                 if (Collision.CanHit(position, 0, 0, position + PositionArea, 0, 0))
                     position += PositionArea;
-
             }
 
             Lighting.AddLight(player.position, r: 0.3f, g: 0.25f, b: 0.1f);
@@ -160,7 +155,6 @@ namespace RealmOne.Items.Weapons.PreHM.Starry
 
             .AddTile(TileID.Anvils)
             .Register();
-
         }
     }
 }

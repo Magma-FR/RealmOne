@@ -17,7 +17,6 @@ namespace RealmOne.Items.Potions.Alcohol
                         + $"\nIngreients: [i:{ItemID.Mushroom}], [i:{ItemID.Grapes}] [i:{ItemID.Fireblossom}]"); */
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
-
         }
 
         public override void SetDefaults()
@@ -51,4 +50,3 @@ namespace RealmOne.Items.Potions.Alcohol
         }
     }
 }
-

@@ -11,7 +11,6 @@ namespace RealmOne.Items.Misc.Plants
         {
             DisplayName.SetDefault("Sunflower Petal");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
-
         }
 
         public override void SetDefaults()
@@ -21,7 +20,6 @@ namespace RealmOne.Items.Misc.Plants
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 999;
             Item.value = Item.buyPrice(silver: 1);
-
         }
     }
 }

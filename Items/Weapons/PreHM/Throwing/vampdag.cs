@@ -15,12 +15,10 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
                 + "\nHeals the player on hit");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.damage = 61;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 15;
@@ -41,7 +39,6 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
             Item.noUseGraphic = true;
             Item.consumable = true;
             Item.crit = 6;
-
         }
     }
 }

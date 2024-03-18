@@ -15,7 +15,6 @@ namespace RealmOne.Buffs.Debuffs
             Main.buffNoTimeDisplay[Type] = false;
 
             Main.pvpBuff[Type] = true;
-
         }
 
         public override void Update(NPC npc, ref int buffIndex)

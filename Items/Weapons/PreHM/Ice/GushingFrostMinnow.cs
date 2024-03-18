@@ -16,10 +16,9 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
         {
             DisplayName.SetDefault("Gushing Frost Minnow"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("'A rare fish of the snow that has been frozen over time, filled with icy water'");
-            ItemGlowy.AddItemGlowMask(Item.type, Texture +("_Glow"));
+            ItemGlowy.AddItemGlowMask(Item.type, Texture + ("_Glow"));
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -33,7 +32,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 1;
             Item.value = 30000;
-            Item.rare = ItemRarityID.Blue;
+            Item.rare = ItemRarityID.Quest;
             Item.UseSound = SoundID.Item13;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.WaterStream;
@@ -43,12 +42,11 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
             Item.questItem = true;
             Item.uniqueStack = true;
             Item.noMelee = true;
-
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = Request<Texture2D>(Texture+"_Glow", AssetRequestMode.ImmediateLoad).Value;
+            Texture2D texture = Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value;
             spriteBatch.Draw
             (
                 texture,
@@ -67,6 +65,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
                 0f
             );
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Frostburn, 180);
@@ -89,6 +88,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
             // What it says on the bottom of the angler's text box of how to catch the fish.
             catchLocation = "Caught in the tundra.";
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(3, 0);

@@ -28,7 +28,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactPulsa_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -50,7 +49,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.shootSpeed = 60f;
             Item.noMelee = true;
             Item.crit = 2;
-
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -81,8 +79,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             .AddIngredient(Mod, "ImpactTech", 12)
             .AddTile(TileID.Anvils)
             .Register();
-
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
@@ -104,7 +102,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 for (int d = 0; d < 40; d++)
                     Dust.NewDust(player.position, player.width, player.height, DustID.Electric, 0f, 0f, 150, default, 1.5f);
                 SoundEngine.PlaySound(rorAudio.ElectricPulse);
-
             }
             else if (shotCount == 3)
             {
@@ -122,7 +119,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 Item.useAmmo = AmmoID.None;
                 for (int d = 0; d < 40; d++)
                     Dust.NewDust(player.position, player.width, player.height, DustID.UnusedWhiteBluePurple, 0f, 0f, 500, default, 1f);
-
             }
             else
             {
@@ -202,6 +198,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             var offset = new Vector2(-1, 3);
             return offset;
         }
+
         public override bool OnPickup(Player player)
         {
             SoundEngine.PlaySound(rorAudio.PulsaPickup);

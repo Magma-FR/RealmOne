@@ -18,7 +18,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Barrensludge Slime");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[2];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -39,8 +39,8 @@ namespace RealmOne.NPCs.Enemies.Forest
             AnimationType = NPCID.GreenSlime;
             NPC.netAlways = true;
             NPC.netUpdate = true;
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.Player.ZoneForest)
@@ -55,6 +55,7 @@ namespace RealmOne.NPCs.Enemies.Forest
                 NPC.frameCounter = 0;
             NPC.frame.Y = (int)NPC.frameCounter / 10 * frameHeight;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
@@ -65,7 +66,6 @@ namespace RealmOne.NPCs.Enemies.Forest
 
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("A sludged and poisonous variant of the slime, tends to appear near more grassy and wet areas."),
-
             });
         }
 
@@ -77,17 +77,16 @@ namespace RealmOne.NPCs.Enemies.Forest
 
             npcLoot.Add(ItemDropRule.Common(ItemID.MudBlock, 2, 3, 6));
             npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 1, 2, 6));
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int k = 0; k < 16; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.BubbleBurst_Green, 2.7f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             // Here we can make things happen if this NPC hits a player via its hitbox (not projectiles it shoots, this is handled in the projectile code usually)

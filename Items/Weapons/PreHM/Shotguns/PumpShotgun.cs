@@ -11,10 +11,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.Shotguns
 {
-
     public class PumpShotgun : ModItem
     {
-        private int shotCount;
 
         public override void SetStaticDefaults()
         {
@@ -23,24 +21,23 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
                 + "\nShoots a spry and powerful round of 12 gauge Buckshot shells"
                 + "\n'The bottom rear 'handguard' must be 'slid' back and forward to load the rounds back into the gun to fire again'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-            Item.damage = 20;
+            Item.damage = 18;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 34;
             Item.height = 25;
-            Item.useTime = 45;
-            Item.useAnimation = 45;
+            Item.useTime = 48;
+            Item.useAnimation = 48;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 4;
             Item.rare = ItemRarityID.Orange;
             Item.autoReuse = true;
             Item.shootSpeed = 87f;
             Item.shoot = ModContent.ProjectileType<VintageBulletProjectile>();
-            Item.noMelee = true; // The projectile will do the damage and not the item
+            Item.noMelee = false; // The projectile will do the damage and not the item
             Item.value = Item.buyPrice(gold: 8, silver: 3);
             //   Item.noUseGraphic = true;
             // Item.channel = true;
@@ -48,14 +45,15 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.reuseDelay = 20;
             Item.useAmmo = AmmoID.Bullet;
         }
+
         public override bool? UseItem(Player player)
         {
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
             return true;
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -72,11 +70,9 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 
             for (int d = 0; d < 40; d++)
             {
-
                 Dust.NewDust(player.position, player.width, player.height, DustID.Smoke, 0f, 0f, 150, default, 1.5f);
 
                 Dust.NewDust(player.position, player.width, player.height, DustID.Torch, 0f, 0f, 150, default, 1.5f);
-
             }
 
             return false;
@@ -92,9 +88,8 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             recipe.AddIngredient(ItemID.Chain, 2);
             recipe.AddTile(TileID.HeavyWorkBench);
             recipe.Register();
-
-            
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             var line = new TooltipLine(Mod, "", "");
@@ -102,11 +97,10 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             line = new TooltipLine(Mod, "PumpShotgun", "'Can't Double Pump with this!'")
             {
                 OverrideColor = new Color(0, 255, 255)
-
             };
             tooltips.Add(line);
-
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(-10, -5);

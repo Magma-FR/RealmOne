@@ -12,23 +12,22 @@ namespace RealmOne.NPCs.Enemies.Corruption
     {
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            {
-                Hide = true,
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            { // Influences how the NPC looks in the Bestiary
+                Velocity = 1f, // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+                Hide = true
             };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
             NPCID.Sets.TrailingMode[NPC.type] = 0;
             NPCID.Sets.TrailCacheLength[NPC.type] = 10;
 
             Main.npcFrameCount[NPC.type] = 4;
             NPCID.Sets.TownCritter[NPC.type] = true;
-
         }
 
         public override void SetDefaults()
         {
-
             NPC.width = 26;
             NPC.height = 28;
             NPC.height = 38;
@@ -45,8 +44,8 @@ namespace RealmOne.NPCs.Enemies.Corruption
 
             NPC.HitSound = SoundID.ChesterOpen;
             NPC.DeathSound = SoundID.NPCHit23;
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.Player.ZoneCorrupt && DownedBossSystem.downedSquirmo == true)
@@ -55,6 +54,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
             }
             return 0;
         }
+
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.14f;
@@ -62,6 +62,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
+
         public override void AI()
         {
             Player target = Main.player[NPC.target];
@@ -86,8 +87,6 @@ namespace RealmOne.NPCs.Enemies.Corruption
                 Dust.NewDustPerfect(NPC.Center, DustID.CorruptionThorns, Scale: 0.5f, Alpha: 120);
             }
 
-
-
             /*  int npcaway = (int)Math.Sqrt((NPC.Center.X - target.Center.X) * (NPC.Center.X - target.Center.X) + (NPC.Center.Y - target.Center.Y) * (NPC.Center.Y - target.Center.Y));
               if (npcaway <= 400 || NPC.life < NPC.lifeMax && !target.dead)
               {
@@ -102,6 +101,7 @@ namespace RealmOne.NPCs.Enemies.Corruption
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             return true;
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -113,19 +113,14 @@ namespace RealmOne.NPCs.Enemies.Corruption
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("VulgarGore3").Type, 1.3f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("VulgarGore3").Type, 1.3f);
-
-
-
             }
 
             for (int k = 0; k < 16; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CorruptionThorns, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
-
-
-
         }
+
         public override bool CheckDead()
         {
             for (int i = 0; i < Main.rand.Next(1, 1); i++)
@@ -134,12 +129,11 @@ namespace RealmOne.NPCs.Enemies.Corruption
             }
             return true;
         }
+
         public override void OnKill()
         {
-
             for (int i = 0; i < 23; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.CursedTorch, speed * 5, Scale: 1f);
@@ -148,6 +142,4 @@ namespace RealmOne.NPCs.Enemies.Corruption
             }
         }
     }
-
 }
-

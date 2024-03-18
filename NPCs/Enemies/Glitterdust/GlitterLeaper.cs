@@ -29,7 +29,6 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             glowmask = ModContent.Request<Texture2D>(Texture + "_Tex");
-
         }
 
         public override void SetDefaults()
@@ -44,7 +43,6 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
             NPC.DeathSound = SoundID.DD2_LightningBugDeath;
             NPC.netAlways = true;
             NPC.netUpdate = true;
-
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -55,7 +53,7 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
 
             Main.EntitySpriteDraw(glowmask.Value, NPC.Center - screenPos + new Vector2(0, 0), NPC.frame, color, NPC.rotation, NPC.frame.Size() / 2f, 1f, SpriteEffects.None, 0);
         }
-       
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.Player.ZoneOverworldHeight)
@@ -78,9 +76,6 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
 
             if (++NPC.ai[0] % 180 == 0)
             {
-
-
-
                 for (int i = 0; i < 60; i++)
                 {
                     Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
@@ -88,10 +83,7 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
                     ;
                     d.noGravity = true;
                 }
-
-
             }
-
 
             /*   dustTimer++;
                if (dustTimer >= 18)
@@ -105,16 +97,12 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
                    }
 
                    dustTimer = 0;
-            
-
         }
-       
+
          public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
          {
-
                  Color color = Helper.IndicatorColor;
                  spriteBatch.Draw(Request<Texture2D>("RealmOne/NPCs/Enemies/GlitterdustSlime_Tex").Value, NPC.position - screenPos + new Vector2(-3, -6), color);
-
          }
         public override void FindFrame(int frameHeight)
         {
@@ -133,8 +121,6 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
 
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("Critter from a comet! This creepy crawly tends to leap around and then shoot a star out of its body."),
-
-
             });
         }
 
@@ -142,15 +128,12 @@ namespace RealmOne.NPCs.Enemies.Glitterdust
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedStarglitter>(), 1, 2, 3));
             npcLoot.Add(ItemDropRule.Common(ItemID.FallenStar, 1, 1, 1));
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int i = 0; i < 23; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.YellowStarDust, speed * 5, Scale: 1f);

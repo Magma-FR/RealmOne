@@ -23,6 +23,7 @@ namespace RealmOne.Items.Weapons.Ranged
             Tooltip.SetDefault("Right click to throw out a Wagon Wheel that rolls on the ground"
                 + "\nLeft click to shoot out a fast bullet, shoot the bullet at the wheel to explode into fire shrapnel");
         }
+
         public override void SetDefaults()
         {
             Item.damage = 13;
@@ -55,7 +56,6 @@ namespace RealmOne.Items.Weapons.Ranged
                 Item.autoReuse = false;
                 if (cooldown > 0)
                     return false;
-
             }
             else
             {
@@ -65,11 +65,11 @@ namespace RealmOne.Items.Weapons.Ranged
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.noUseGraphic = false;
                 Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/WheelgunSound");
-
             }
 
             return base.CanUseItem(player);
         }
+
         public override bool AltFunctionUse(Player player)
         {
             return true;
@@ -87,7 +87,6 @@ namespace RealmOne.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             if (player.altFunctionUse == 2)
             {
             }
@@ -116,11 +115,13 @@ namespace RealmOne.Items.Weapons.Ranged
             return true;
         }
     }
+
     public class WagonWheel : ModProjectile
     {
+
         private Player Owner => Main.player[Projectile.owner];
 
-        private bool shot = false;
+
 
         public override void SetStaticDefaults()
         {
@@ -149,7 +150,6 @@ namespace RealmOne.Items.Weapons.Ranged
             foreach (Projectile proj in list)
                 if (proj.GetGlobalProjectile<CrackShotGlobalProj>().hasbeenShot && Projectile.timeLeft > 20 && proj.active)
                 {
-                    shot = true;
                     Projectile.timeLeft = 5;
 
                     proj.active = false;
@@ -161,13 +161,14 @@ namespace RealmOne.Items.Weapons.Ranged
                     }
                 }
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.Kill();
         }
-        public override void Kill(int timeLeft)
-        {
 
+        public override void OnKill(int timeLeft)
+        {
             for (int i = 0; i < 2; i++)
                 Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("WheelGore1").Type, 1f);
             for (int i = 0; i < 2; i++)
@@ -176,11 +177,15 @@ namespace RealmOne.Items.Weapons.Ranged
                 Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Projectile.velocity, Mod.Find<ModGore>("WheelGore3").Type, 1f);
         }
     }
+
     public class CrackShotGlobalProj : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
         public bool hasbeenShot = false;
 
+        public override void SetDefaults(Projectile entity)
+        {
+            entity.damage = 0;
+        }
     }
 }
-

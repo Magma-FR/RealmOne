@@ -11,8 +11,6 @@ namespace RealmOne.Items.Food
     {
         public override void SetStaticDefaults()
         {
-            
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
 
             Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
@@ -20,10 +18,10 @@ namespace RealmOne.Items.Food
             ItemID.Sets.DrinkParticleColors[Type] = new Color[2] {
                 new Color(76, 255, 36),
                 new Color(170, 0, 233),
-
             };
             ItemID.Sets.IsFood[Type] = true;
         }
+
         public override void SetDefaults()
         {
             Item.DefaultToFood(20, 20, BuffID.WellFed, 20600);
@@ -36,15 +34,6 @@ namespace RealmOne.Items.Food
             Item.rare = ItemRarityID.Green;
             Item.consumable = true;
             Item.UseSound = SoundID.Item2;
-
         }
-        public override bool CanUseItem(Player player)
-        {
-            player.AddBuff(BuffID.Slimed, 4000);
-            return true;
-        }
-
-
-
     }
 }

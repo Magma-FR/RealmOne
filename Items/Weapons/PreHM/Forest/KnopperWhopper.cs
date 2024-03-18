@@ -7,10 +7,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.Forest
 {
-
     public class KnopperWhopper : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Knopper Whopper"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -45,7 +43,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Item.noUseGraphic = true;
             Item.channel = true;
             Item.UseSound = SoundID.DD2_SkyDragonsFurySwing;
-
         }
 
         public override Color? GetAlpha(Color lightColor)

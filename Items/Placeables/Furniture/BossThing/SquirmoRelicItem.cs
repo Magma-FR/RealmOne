@@ -8,7 +8,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Placeables.Furniture.BossThing
 {
-
     public class SquirmoRelicItem : ModItem
     {
         public override void SetDefaults()
@@ -32,8 +31,8 @@ namespace RealmOne.Items.Placeables.Furniture.BossThing
             Tooltip.SetDefault("Reward for giving relief to the soil!");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -74,6 +73,7 @@ namespace RealmOne.Items.Placeables.Furniture.BossThing
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.Gold.ToVector3() * 0.5f);

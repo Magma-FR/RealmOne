@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class DreamerShot : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -29,8 +28,8 @@ namespace RealmOne.Projectiles.Magic
             Projectile.timeLeft = 600;
             Projectile.penetrate = 3;
             Projectile.extraUpdates = 1;
-
         }
+
         public override void AI()
         {
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.WitherLightning, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
@@ -46,11 +45,12 @@ namespace RealmOne.Projectiles.Magic
                     Projectile.frame = 0;
             }
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
-
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.ShadowFlame, 180);
@@ -58,7 +58,6 @@ namespace RealmOne.Projectiles.Magic
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
             for (int i = 0; i < 60; i++)
             {
                 Vector2 speed = Main.rand.NextVector2CircularEdge(0.5f, 0.5f);
@@ -71,4 +70,3 @@ namespace RealmOne.Projectiles.Magic
         }
     }
 }
-

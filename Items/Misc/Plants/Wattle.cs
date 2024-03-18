@@ -8,13 +8,11 @@ namespace RealmOne.Items.Misc.Plants
 {
     public class Wattle : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wattle");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -39,9 +37,7 @@ namespace RealmOne.Items.Misc.Plants
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.NavajoWhite;
-
         }
-
     }
 }
 */

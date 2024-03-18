@@ -11,7 +11,6 @@ namespace RealmOne.Buffs
         {
             DisplayName.SetDefault("Breathe Buff!");
             Description.SetDefault("'Ability to breathe in space and gain various buffs that increase if your in space'");
-
         }
 
         public override void Update(Player player, ref int buffIndex)
@@ -28,7 +27,6 @@ namespace RealmOne.Buffs
                 player.accRunSpeed += 0.16f;
                 player.jumpSpeedBoost += 0.1f;
                 player.buffImmune[BuffID.Suffocation] = true;
-
             }
         }
     }

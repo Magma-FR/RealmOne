@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Sword
 {
-
     public class UnstableWireBladeProj : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -51,7 +50,6 @@ namespace RealmOne.Projectiles.Sword
             var swingangle = new Vector2(Projectile.ai[0], Projectile.ai[1]);
             Projectile.rotation = swingangle.ToRotation();
             Projectile.position = player.Center + swingangle - new Vector2(Projectile.width / 2, Projectile.height / 2);
-
         }
 
         public override bool PreDraw(ref Color lightColor)

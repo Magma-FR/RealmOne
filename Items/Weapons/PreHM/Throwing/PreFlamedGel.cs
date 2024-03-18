@@ -13,7 +13,6 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
             DisplayName.SetDefault("Pre-Flamed Gel"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("'Sparkling, but extremely flammable chunks of gel'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -33,7 +32,6 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
             Item.shoot = ProjectileID.MolotovFire;
             Item.useAmmo = AmmoID.Gel;
             Item.shootSpeed = 9f;
-
         }
 
         public override void AddRecipes()
@@ -44,6 +42,7 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(6, 0);

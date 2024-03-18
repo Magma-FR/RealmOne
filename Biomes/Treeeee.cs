@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.ModLoader;
 
-
 namespace RealmOne.Biomes
 {
     //# Spirit Mod lil helper. All credit goes for them.

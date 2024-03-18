@@ -1,27 +1,22 @@
-﻿using RealmOne.Buffs;
-using RealmOne.RealmPlayer;
+﻿using Microsoft.Xna.Framework;
+using RealmOne.Buffs;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace RealmOne.Armor
 {
     [AutoloadEquip(EquipType.Head)]
-
     public class BrassHead : ModItem
     {
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Brass Helmet");
             Tooltip.SetDefault("6% increased melee damage ");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
-
         }
 
         public override void SetDefaults()
@@ -30,13 +25,12 @@ namespace RealmOne.Armor
             Item.height = 18;
             Item.value = Item.sellPrice(gold: 1);
             Item.rare = ItemRarityID.Blue;
-            Item.defense = 3; // 
+            Item.defense = 3; //
         }
 
         public override void UpdateEquip(Player player)
         {
             player.GetCritChance(DamageClass.Melee) += 0.6f;
-
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -44,7 +38,7 @@ namespace RealmOne.Armor
             return body.type == ModContent.ItemType<BrassBody>() && legs.type == ModContent.ItemType<BrassLegs>();
         }
 
-        int Watertimer = 0;
+        private int Watertimer = 0;
 
         public override void UpdateArmorSet(Player player)
         {
@@ -52,7 +46,6 @@ namespace RealmOne.Armor
             player.setBonus = "Double tap UP to gain Brass Might which increases the players defense by 10+ but 14% decreased movement & running speed\n10 second cooldown";
             Watertimer++;
             player.GetModPlayer<BrassSetBonus>().SpecialSetBonus = true;
-
 
             if (Watertimer == 9)
             {
@@ -74,28 +67,19 @@ namespace RealmOne.Armor
             .AddIngredient(Mod, "BrassIngot", 4)
             .AddTile(TileID.Furnaces)
             .Register();
-
         }
-
-        
-        
     }
+
     public class BrassSetBonus : ModPlayer
     {
-
-
         public const int PressUp = 1;
-
 
         public const int Cooldown = 1400;
         public const int Duration = 30;
 
-
         public const float Thing = 10f;
 
-
         public int Dir = -1;
-
 
         public bool SpecialSetBonus;
         public int Delay = 0;
@@ -103,30 +87,24 @@ namespace RealmOne.Armor
 
         public override void ResetEffects()
         {
-
             SpecialSetBonus = false;
 
             if (Player.controlUp && Player.releaseUp && Player.doubleTapCardinalTimer[PressUp] < 15)
             {
                 Dir = PressUp;
             }
-
             else
             {
                 Dir = -1;
             }
         }
+
         public override void PreUpdateMovement()//this is were the code gets very sketchy, this is the only way i could get it to work cause me dumb, please fix if you know how to
         {//the code may be sketch, however i game it works
-
-
             if (CanUseDash() && Dir != -1 && Delay == 0)//this is stupic im sorry
             {
-
-
                 switch (Dir)
                 {
-
                     case PressUp when Player.velocity.Y > -Thing:
                         {
                             Player.AddBuff(ModContent.BuffType<BrassMight>(), 750);
@@ -140,19 +118,14 @@ namespace RealmOne.Armor
                                 d.noGravity = true;
                             }
                             break;
-
                         }
 
                     default:
                         return;
                 }
 
-
                 Delay = Cooldown;
                 Timer = Duration;
-               
-
-
             }
 
             if (Delay > 0)
@@ -160,9 +133,6 @@ namespace RealmOne.Armor
 
             if (Timer > 0)
             {
-
-
-
                 Timer--;
             }
         }

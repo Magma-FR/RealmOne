@@ -16,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             + "\n'Snazzy!'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -49,8 +48,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             recipe.AddIngredient(Mod, "GizmoScrap", 8);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-
-            
         }
 
         public override Vector2? HoldoutOffset()

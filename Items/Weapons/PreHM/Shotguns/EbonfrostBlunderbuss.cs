@@ -17,7 +17,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             + "\nShoots a icy corruption bullet");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -40,7 +39,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.shootSpeed = 57f;
 
             Item.shoot = ModContent.ProjectileType<IceBulletProjectile>();
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -76,7 +74,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 
             recipe2.AddTile(TileID.Anvils);
             recipe2.Register();
-
         }
 
         public override Vector2? HoldoutOffset()

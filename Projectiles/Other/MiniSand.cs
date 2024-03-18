@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Other
 {
-
     public class MiniSand : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -20,7 +19,6 @@ namespace RealmOne.Projectiles.Other
 
         public override void SetDefaults()
         {
-
             Projectile.width = 60;
             Projectile.height = 60;
 
@@ -32,8 +30,8 @@ namespace RealmOne.Projectiles.Other
             Projectile.penetrate = -2;
             Projectile.tileCollide = false;
             Projectile.aiStyle = 0;
-
         }
+
         public override bool PreAI()
         {
             Player player = Main.player[Projectile.owner];
@@ -56,9 +54,9 @@ namespace RealmOne.Projectiles.Other
             for (int i = 0; i < 6; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Sandnado, 0f, 0f, 0, default, 1.5f);
             SoundEngine.PlaySound(SoundID.DD2_PhantomPhoenixShot);
-
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];
 
@@ -73,12 +71,10 @@ namespace RealmOne.Projectiles.Other
                 d.noGravity = true;
             }
             //Spawns 3 Desert Hands
-
         }
 
         public override void AI()
         {
-
             Lighting.AddLight(Projectile.position, 0.4f, 0.2f, 0.1f);
 
             int fadeTime = 8;

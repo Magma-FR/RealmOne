@@ -1,4 +1,3 @@
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -60,7 +59,7 @@ namespace RealmOne.Tiles.Torches
             // Assets
             if (!Main.dedServ)
             {
-                flameTexture = ModContent.Request<Texture2D>(Texture+ "_Flame");
+                flameTexture = ModContent.Request<Texture2D>(Texture + "_Flame");
             }
         }
 

@@ -13,16 +13,15 @@ namespace RealmOne.Projectiles.Piggy
 {
     public class StickyPorcelain : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Porcelain");
             Main.projFrames[Projectile.type] = 6;
         }
 
-        bool stick = false;
-        int targetPorce;
-        float rotation;
+        private bool stick = false;
+        private int targetPorce;
+        private float rotation;
 
         public override void SetDefaults()
         {
@@ -33,7 +32,7 @@ namespace RealmOne.Projectiles.Piggy
             Projectile.tileCollide = true;
             Projectile.timeLeft = 300;
             Projectile.aiStyle = 2;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 2;
             Projectile.extraUpdates = 1;
         }
 
@@ -52,12 +51,10 @@ namespace RealmOne.Projectiles.Piggy
         {
             if (stick)
             {
-
                 Projectile.rotation = rotation;
                 int npcTarget = targetPorce;
                 Projectile.Center = Main.npc[npcTarget].Center - Projectile.velocity;
                 Projectile.gfxOffY = Main.npc[npcTarget].gfxOffY;
-                Main.npc[npcTarget].HitEffect(0, 1.0);
             }
         }
 
@@ -145,9 +142,9 @@ namespace RealmOne.Projectiles.Piggy
             return true;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 9; i++)
             {
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
                 Dust dust1 = Dust.NewDustPerfect(Projectile.Center, DustID.PinkCrystalShard, speed * 8, Scale: 1f);

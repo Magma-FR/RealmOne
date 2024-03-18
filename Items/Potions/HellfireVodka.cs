@@ -1,4 +1,4 @@
-using RealmOne.Buffs;
+/*using RealmOne.Buffs;
 using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
 using Terraria.Audio;
@@ -13,12 +13,10 @@ namespace RealmOne.Items.Potions
         {
             DisplayName.SetDefault("Hellfire Vodka");
             Tooltip.SetDefault("15% running speed, movement speed and accerelation\r\nAll weapons inflict OnFire\r\n10% increased damage and knockback\r\n5- Defense\r\nYou are On Fire!\r\n");
-
         }
 
         public override void SetDefaults()
         {
-
             Item.height = 32;
             Item.width = 32;
             Item.useTime = 20;
@@ -31,7 +29,6 @@ namespace RealmOne.Items.Potions
             Item.buffType = ModContent.BuffType<HellfireVodkaBuff>();
             Item.buffTime = 9000;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/DrinkingFire");
-
         }
 
         public override void AddRecipes()
@@ -46,3 +43,4 @@ namespace RealmOne.Items.Potions
         }
     }
 }
+*/

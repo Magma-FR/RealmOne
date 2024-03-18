@@ -16,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Tooltip.SetDefault("Has a chance to shrink in size and significantly increase its usetime");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -30,12 +29,11 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 2f;
             Item.value = 10000;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.useTurn = true;
             Item.crit = 2;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_MetalSwing");
             Item.autoReuse = true;
-
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -43,13 +41,11 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CopperCoin, 0f, 0f, 0, default, 0.7f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 0.5f;
-
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(rorAudio.SFX_Porce);
-
         }
 
         public override void AddRecipes()

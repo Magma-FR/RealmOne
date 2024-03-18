@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
+﻿using RealmOne.Items.Placeables.FarmStuff;
 using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
-using RealmOne.Items.Placeables.FarmStuff;
 
 namespace RealmOne.Common.Recipess
 {
@@ -22,18 +11,17 @@ namespace RealmOne.Common.Recipess
         public override void AddRecipeGroups()
         {
             RecipeGroup woods = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["Wood"]];
-            
-            woods.ValidItems.Add(ModContent.ItemType<TatteredWood>());
 
-           
+            woods.ValidItems.Add(ModContent.ItemType<TatteredWood>());
 
             RecipeGroup BaseGroup(object GroupName, int[] Items)
             {
                 string Name = "";
                 Name += GroupName switch
-                {    
-                    int i => Lang.GetItemNameValue((int)GroupName), short s => Lang.GetItemNameValue((short)GroupName),
-                            _ => GroupName.ToString(),
+                {
+                    int i => Lang.GetItemNameValue((int)GroupName),
+                    short s => Lang.GetItemNameValue((short)GroupName),
+                    _ => GroupName.ToString(),
                 };
                 return new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + Name, Items);
             }
@@ -49,15 +37,11 @@ namespace RealmOne.Common.Recipess
             RecipeGroup.RegisterGroup("RealmOne:Any evil chunk", BaseGroup(ItemID.ShadowScale, new int[]
                 { ItemID.ShadowScale, ItemID.TissueSample }));
 
-
             RecipeGroup.RegisterGroup("RealmOne:SilverBars", BaseGroup(ItemID.SilverBar, new int[]
                 { ItemID.SilverBar, ItemID.TungstenBar }));
 
-      
-
             RecipeGroup.RegisterGroup("RealmOne:Tier3HMBar", BaseGroup(ItemID.AdamantiteBar, new int[]
                 { ItemID.AdamantiteBar, ItemID.TitaniumBar }));
-
         }
     }
 }

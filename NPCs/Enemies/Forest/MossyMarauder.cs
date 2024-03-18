@@ -19,7 +19,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Mossy Marauder");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.ArmoredSkeleton];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+                 NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -41,7 +41,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             NPC.netUpdate = true;
             AIType = NPCID.ArmoredSkeleton;
             AnimationType = NPCID.ArmoredSkeleton;
-
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -77,7 +76,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonPrickles>(), 13, 4, 6));
 
             npcLoot.Add(ItemDropRule.Common(ItemID.MudBlock, 2, 3, 6));
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
@@ -87,12 +85,10 @@ namespace RealmOne.NPCs.Enemies.Forest
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MossyGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MossyGore2").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MossyGore3").Type, 1f);
-
             }
 
             for (int i = 0; i < 12; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Bone, speed * 5, Scale: 1f);

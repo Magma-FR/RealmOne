@@ -6,13 +6,10 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-
 namespace RealmOne.Common.Global
 {
     public class GlobalItemList : GlobalItem
     {
-
-
         //remove the tooltip
         //   tooltips.RemoveAll(x => x.Name == "Tooltip0" && x.mod == "Terraria");
         //actually, the hood's old statics is increased damage and crit chance by 10%.
@@ -23,16 +20,13 @@ namespace RealmOne.Common.Global
                 TooltipLine line = tooltips.FirstOrDefault(x => x.Name == "Tooltip0" && x.Mod == "Terraria");
                 if (line != null)
                     line.Text = "10% increased melee weapon speed and knockback";
-
             }
-
 
             if (item.type == ItemID.ThornsPotion)
             {
                 TooltipLine line = tooltips.FirstOrDefault(x => x.Name == "Tooltip0" && x.Mod == "Terraria");
                 if (line != null)
                     line.Text = "Enemies are poisoned when touching you" + "\nYour weapons also inflict poisoned";
-
             }
         }
 
@@ -44,15 +38,14 @@ namespace RealmOne.Common.Global
 
         public override void SetDefaults(Item item)
         {
-
-            //Pre-Hardmode Accessories
             if (item.type == ItemID.CobaltShield) item.defense = 3;
             if (item.type == ItemID.ObsidianShield) item.defense = 5;
             if (item.type == ItemID.AnkhShield) item.defense = 8;
             if (item.type == ItemID.BandofRegeneration) item.lifeRegen += 8;
-            if (item.type == ItemID.BandofStarpower) item.manaIncrease += 200;
-            if (item.type == ItemID.Shackle) item.defense = 2;
+            if (item.type == ItemID.BandofStarpower) item.manaIncrease += 8;
+            //         if (item.type == ItemID.BandofStarpower) player.statManaMax2 += 20;
 
+            if (item.type == ItemID.Shackle) item.defense = 2;
 
             if (item.type == ItemID.NimbusRod) item.DamageType = DamageClass.Summon;
             if (item.type == ItemID.CrimsonRod) item.DamageType = DamageClass.Summon;
@@ -87,12 +80,6 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.LavaBomb) item.damage = 100;
             if (item.type == ItemID.LavaBomb) item.useTime = 25;
 
-
-
-
-
-
-
             //Pre-Hardmode Weapons
             if (item.type == ItemID.Starfury) item.damage = 26;
             if (item.type == ItemID.Starfury) item.useTime = 18;
@@ -113,8 +100,6 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.WoodenBoomerang) item.useTime = 13;
             if (item.type == ItemID.WoodenBoomerang) item.shootSpeed = 12;
 
-
-
             if (item.type == ItemID.IceBoomerang) item.damage = 22;
             if (item.type == ItemID.IceBoomerang) item.useTime = 12;
             if (item.type == ItemID.IceBoomerang) item.shootSpeed = 15;
@@ -123,21 +108,16 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.Flamarang) item.useTime = 11;
             if (item.type == ItemID.Flamarang) item.shootSpeed = 19;
 
-
-
             if (item.type == ItemID.LightsBane) item.damage = 30;
             if (item.type == ItemID.LightsBane) item.useTime = 15;
 
-
             if (item.type == ItemID.HornetStaff) item.damage = 25;
-
 
             if (item.type == ItemID.ImpStaff) item.damage = 31;
             if (item.type == ItemID.HornetStaff) item.shootSpeed = 20;
             if (item.type == ItemID.HornetStaff) item.useTime = 12;
 
             if (item.type == ItemID.Arkhalis) item.damage = 32;
-
 
             if (item.type == ItemID.Minishark) item.useTime = 5;
             if (item.type == ItemID.MoltenFury) item.useTime = 14;
@@ -150,19 +130,14 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.DarkLance) item.damage = 53;
             if (item.type == ItemID.DarkLance) item.scale = 1.7f;
 
-
             if (item.type == ItemID.Blowpipe) item.shootSpeed = 15;
             if (item.type == ItemID.Blowpipe) item.damage = 15;
             if (item.type == ItemID.Blowpipe) item.knockBack = 4f;
-
 
             if (item.type == ItemID.Blowgun) item.shootSpeed = 17;
             if (item.type == ItemID.Blowgun) item.damage = 42;
             if (item.type == ItemID.Blowgun) item.useTime = 18;
             if (item.type == ItemID.Blowgun) item.useAnimation = 18;
-
-
-
 
             if (item.type == ItemID.EnchantedSword) item.shootSpeed = 15;
             if (item.type == ItemID.EnchantedSword) item.damage = 30;
@@ -203,16 +178,6 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.Swordfish) item.damage = 24;
             if (item.type == ItemID.Swordfish) item.useTime = 10;
 
-
-
-
-
-
-
-
-
-
-
             //Hardmode Weapons
 
             if (item.type == ItemID.GelBalloon) item.damage = 90;
@@ -227,15 +192,10 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.PearlwoodBow) item.useTime = 13;
             if (item.type == ItemID.PearlwoodBow) item.crit = 11;
 
-
-
-
             if (item.type == ItemID.MagicDagger) item.damage = 45;
             if (item.type == ItemID.MagicDagger) item.mana = 1;
             if (item.type == ItemID.MagicDagger) item.shootSpeed = 19;
             if (item.type == ItemID.MagicDagger) item.autoReuse = true;
-
-
 
             if (item.type == ItemID.KOCannon) item.damage = 89;
             if (item.type == ItemID.KOCannon) item.crit = 19;
@@ -276,11 +236,6 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.BrokenHeroSword) item.knockBack = 2f;
             if (item.type == ItemID.BrokenHeroSword) item.autoReuse = true;
             if (item.type == ItemID.BrokenHeroSword) item.useTurn = true;
-
-
-
-
-
 
             //PUMPKIN MOON
             /*   if (item.type == ItemID.TheHorsemansBlade) item.damage = 180;
@@ -324,7 +279,6 @@ namespace RealmOne.Common.Global
                if (item.type == ItemID.ScytheWhip) item.knockBack = 6;
                if (item.type == ItemID.ScytheWhip) item.shootSpeed = 22f;
 
-
                if (item.type == ItemID.StakeLauncher) item.damage = 90;
                if (item.type == ItemID.StakeLauncher) item.useTime = 10;
                if (item.type == ItemID.StakeLauncher) item.crit = 20;
@@ -347,28 +301,12 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.SolarEruption) item.damage = 159;
             if (item.type == ItemID.SolarEruption) item.useTime = 17;
 
-
-
-
-
-
-
-
             if (item.type == ItemID.Wood)
                 item.ammo = item.type;
             if (item.type == ItemID.MudBlock)
                 item.ammo = item.type;
             if (item.type == ItemID.Cactus)
                 item.ammo = item.type;
-
-
-
-
-
-
-
-
-
 
             //Hooks
             if (item.type == ItemID.GrapplingHook) item.damage = 14;
@@ -397,13 +335,6 @@ namespace RealmOne.Common.Global
             if (item.type == ItemID.ChristmasHook) item.damage = 70;
             if (item.type == ItemID.StaticHook) item.damage = 78;
             if (item.type == ItemID.LunarHook) item.damage = 90;
-
-
-
-
-
-
-
         }
 
         public override void AddRecipes()
@@ -428,7 +359,6 @@ namespace RealmOne.Common.Global
             enchantedboomerang.AddIngredient(ItemID.WoodenBoomerang);
             enchantedboomerang.AddTile(TileID.WorkBenches);
             enchantedboomerang.Register();
-
 
             Recipe woodenboomerang = Recipe.Create(ItemID.WoodenBoomerang);
             woodenboomerang.AddIngredient(ItemID.Wood, 12);
@@ -501,7 +431,6 @@ namespace RealmOne.Common.Global
             SlapLOL.AddTile(TileID.Anvils);
             SlapLOL.Register();
 
-
             Recipe Hermes = Recipe.Create(ItemID.HermesBoots);
             Hermes.AddIngredient(ItemID.Feather, 1);
             Hermes.AddIngredient(ItemID.Silk, 10);
@@ -522,7 +451,6 @@ namespace RealmOne.Common.Global
             IceBlade.AddRecipeGroup("IronBar", 5);
             IceBlade.AddTile(TileID.Anvils);
             IceBlade.Register();
-
 
             Recipe Nimbus = Recipe.Create(ItemID.NimbusRod);
             Nimbus.AddIngredient(ItemID.Bone, 20);
@@ -601,7 +529,6 @@ namespace RealmOne.Common.Global
             DPSM1.AddTile(TileID.Sawmill);
             DPSM1.Register();
 
-
             Recipe EOC1 = Recipe.Create(ItemID.EyeMask);
             EOC1.AddIngredient(Mod, "FleshyCornea", 4);
             EOC1.AddTile(TileID.Anvils);
@@ -612,12 +539,10 @@ namespace RealmOne.Common.Global
             EOC2.AddTile(TileID.Anvils);
             EOC2.Register();
 
-
             Recipe EOC3 = Recipe.Create(ItemID.EyeOfCthulhuBossBag);
             EOC3.AddIngredient(Mod, "FleshyCornea", 100);
             EOC3.AddTile(TileID.Anvils);
             EOC3.Register();
-
 
             Recipe EOC4 = Recipe.Create(ItemID.EyeofCthulhuTrophy);
             EOC4.AddIngredient(Mod, "FleshyCornea", 4);
@@ -628,7 +553,6 @@ namespace RealmOne.Common.Global
             EOC5.AddIngredient(Mod, "FleshyCornea", 15);
             EOC5.AddTile(TileID.Anvils);
             EOC5.Register();
-
 
             Recipe spear = Recipe.Create(ItemID.Spear);
             spear.AddRecipeGroup("IronBar", 8);
@@ -650,7 +574,6 @@ namespace RealmOne.Common.Global
             Swordfish.AddTile(TileID.Anvils);
             Swordfish.Register();
 
-
             Recipe CSerpent = Recipe.Create(ItemID.CrystalSerpent);
             CSerpent.AddIngredient(ItemID.SoulofLight, 15);
             CSerpent.AddIngredient(ItemID.PearlstoneBlock, 50);
@@ -659,14 +582,12 @@ namespace RealmOne.Common.Global
             CSerpent.AddTile(TileID.CrystalBall);
             CSerpent.Register();
 
-
             Recipe BTongue = Recipe.Create(ItemID.Bladetongue);
             BTongue.AddIngredient(ItemID.Vertebrae, 15);
             BTongue.AddIngredient(ItemID.Ichor, 20);
             BTongue.AddIngredient(ItemID.SoulofNight, 6);
             BTongue.AddTile(TileID.MythrilAnvil);
             BTongue.Register();
-
 
             Recipe BeamS = Recipe.Create(ItemID.BeamSword);
             BeamS.AddIngredient(ItemID.CobaltBar, 10);
@@ -693,7 +614,6 @@ namespace RealmOne.Common.Global
 
             FrostB.AddTile(TileID.MythrilAnvil);
             FrostB.Register();
-
 
             Recipe BGlove = Recipe.Create(ItemID.BladedGlove);
             BGlove.AddIngredient(ItemID.Leather, 5);
@@ -753,7 +673,6 @@ namespace RealmOne.Common.Global
             iceskates.AddTile(TileID.IceMachine);
             iceskates.Register();
 
-
             Recipe icebow = Recipe.Create(ItemID.IceBow);
             icebow.AddIngredient(ItemID.WoodenBow, 1);
             icebow.AddIngredient(ItemID.FrostCore, 1);
@@ -762,7 +681,6 @@ namespace RealmOne.Common.Global
             icebow.AddIngredient(ItemID.SoulofLight, 4);
             icebow.AddTile(TileID.MythrilAnvil);
             icebow.Register();
-
 
             Recipe icebow1 = Recipe.Create(ItemID.IceBow);
             icebow1.AddIngredient(ItemID.WoodenBow, 1);
@@ -773,8 +691,6 @@ namespace RealmOne.Common.Global
             icebow1.AddTile(TileID.MythrilAnvil);
             icebow1.Register();
 
-
-
             Recipe icesickle = Recipe.Create(ItemID.IceSickle);
             icesickle.AddIngredient(ItemID.FrostCore, 1);
             icesickle.AddIngredient(ItemID.IceBlock, 35);
@@ -782,7 +698,6 @@ namespace RealmOne.Common.Global
             icesickle.AddIngredient(ItemID.SoulofNight, 4);
             icesickle.AddTile(TileID.MythrilAnvil);
             icesickle.Register();
-
 
             Recipe icesickle1 = Recipe.Create(ItemID.IceSickle);
             icesickle1.AddIngredient(ItemID.FrostCore, 1);
@@ -792,7 +707,6 @@ namespace RealmOne.Common.Global
             icesickle1.AddTile(TileID.MythrilAnvil);
             icesickle1.Register();
 
-
             Recipe flowerfrost = Recipe.Create(ItemID.FlowerofFrost);
             flowerfrost.AddIngredient(ItemID.FrostCore, 1);
             flowerfrost.AddIngredient(ItemID.NaturesGift, 1);
@@ -800,7 +714,6 @@ namespace RealmOne.Common.Global
             flowerfrost.AddIngredient(ItemID.SoulofNight, 4);
             flowerfrost.AddTile(TileID.MythrilAnvil);
             flowerfrost.Register();
-
 
             Recipe amarok = Recipe.Create(ItemID.Amarok);
             amarok.AddIngredient(ItemID.FrostCore, 1);
@@ -837,7 +750,6 @@ namespace RealmOne.Common.Global
             climbingclaws1.AddIngredient(ItemID.ThrowingKnife, 25);
             climbingclaws1.AddTile(TileID.Anvils);
             climbingclaws1.Register();
-
 
             Recipe extractinator = Recipe.Create(ItemID.Extractinator);
             extractinator.AddRecipeGroup("IronBar", 15);
@@ -880,23 +792,14 @@ namespace RealmOne.Common.Global
             obj6.AddIngredient(ItemID.Bone, 10);
             obj6.AddTile(TileID.Hellforge);
             obj6.Register();
-            Recipe obj7 = Recipe.Create(ItemID.Marrow);
-            obj7.AddIngredient(Mod, "MossMarrow", 1);
-            obj7.AddIngredient(ItemID.SoulofNight, 8);
-            obj7.AddIngredient(ItemID.Bone, 10);
-            obj7.AddTile(TileID.Hellforge);
-            obj7.Register();
-
         }
-
-
     }
 
     public class RecipeGroups : ModSystem
     {
-        static string ItemXOrY(int id1, int id2) => $"{Lang.GetItemName(id1)} {Language.GetTextValue($"Mods.RealmOne.RecipeGroups.Or")} {Lang.GetItemName(id2)}";
+        private static string ItemXOrY(int id1, int id2) => $"{Lang.GetItemName(id1)} {Language.GetTextValue($"Mods.RealmOne.RecipeGroups.Or")} {Lang.GetItemName(id2)}";
 
-        static string AnyItem(int id) => $"{Lang.misc[37]} {Lang.GetItemName(id)}";
+        private static string AnyItem(int id) => $"{Lang.misc[37]} {Lang.GetItemName(id)}";
 
         public override void AddRecipeGroups()
         {
@@ -908,14 +811,12 @@ namespace RealmOne.Common.Global
            );
             RecipeGroup.RegisterGroup("RealmOne:AnyCopperBar", group);
 
-
             group = new RecipeGroup(() => AnyItem(ItemID.GoldBar),
                ItemID.GoldBar,
                ItemID.PlatinumBar
 
            );
             RecipeGroup.RegisterGroup("RealmOne:AnyGoldBar", group);
-
         }
     }
 }

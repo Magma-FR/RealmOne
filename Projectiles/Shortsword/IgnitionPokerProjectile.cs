@@ -49,6 +49,7 @@ namespace RealmOne.Projectiles.Shortsword
             Projectile.width = 60;
             Projectile.height = 60;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {
@@ -56,7 +57,6 @@ namespace RealmOne.Projectiles.Shortsword
 
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(-1f, 1f);
 
                 var d = Dust.NewDustPerfect(target.position, DustID.Lava, speed * 6, Scale: 1.2f);
@@ -66,7 +66,6 @@ namespace RealmOne.Projectiles.Shortsword
 
             for (int i2 = 0; i2 < 10; i2++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(-1f, 1f);
 
                 var d2 = Dust.NewDustPerfect(target.position, DustID.GoldFlame, speed * 5, Scale: 2f);
@@ -113,7 +112,6 @@ namespace RealmOne.Projectiles.Shortsword
             Lighting.Brightness(1, 1);
             // The code in this method is important to align the sprite with the hitbox how we want it to
             SetVisualOffsets();
-
         }
 
         private void SetVisualOffsets()
@@ -166,7 +164,6 @@ namespace RealmOne.Projectiles.Shortsword
             Vector2 end = start + Projectile.velocity * 6f;
             float collisionPoint = 0f; // Don't need that variable, but required as parameter
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), start, end, CollisionWidth, ref collisionPoint);
-
         }
     }
 }

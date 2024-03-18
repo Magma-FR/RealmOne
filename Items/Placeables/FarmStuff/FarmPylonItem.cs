@@ -9,7 +9,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Placeables.FarmStuff
 {
-    
     public class FarmPylonItem : ModItem
     {
         public override void SetDefaults()
@@ -28,8 +27,8 @@ namespace RealmOne.Items.Placeables.FarmStuff
             Tooltip.SetDefault("Right Click to teleport to another pylon and back!");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -38,10 +37,8 @@ namespace RealmOne.Items.Placeables.FarmStuff
             line = new TooltipLine(Mod, "FarmPylonItem", "Formed from nature and overgrown weeds, smells like burnt wood!'")
             {
                 OverrideColor = new Color(239, 198, 58)
-
             };
             tooltips.Add(line);
-
         }
     }
 }

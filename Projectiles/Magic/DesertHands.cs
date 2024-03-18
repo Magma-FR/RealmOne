@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class DesertHands : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -29,8 +28,10 @@ namespace RealmOne.Projectiles.Magic
             Projectile.extraUpdates = 1;
             Projectile.tileCollide = false;
         }
+
         public override void AI()
         {
+            Projectile.direction = Projectile.spriteDirection;
             Vector2 center = Projectile.Center;
             for (int j = 0; j < 5; j++)
             {
@@ -40,7 +41,6 @@ namespace RealmOne.Projectiles.Magic
                 Main.dust[dust1].noLight = false;
 
                 Vector2 speed = Main.rand.NextVector2CircularEdge(0.25f, 0.25f);
-
             }
 
             Lighting.AddLight(Projectile.position, 0.3f, 0.2f, 0.1f);
@@ -54,7 +54,8 @@ namespace RealmOne.Projectiles.Magic
                     Projectile.frame = 0;
             }
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("BoneSpineGore1").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("BoneSpineGore2").Type, 1f);
@@ -70,4 +71,3 @@ namespace RealmOne.Projectiles.Magic
         }
     }
 }
-

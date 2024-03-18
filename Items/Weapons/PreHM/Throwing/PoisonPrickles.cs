@@ -9,7 +9,6 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
 {
     public class PoisonPrickles : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Poison Prickles");
@@ -17,8 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
             Tooltip.SetDefault("Throw a bunch of prickles that stick to enemies");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
         }
-
-
 
         public override void SetDefaults()
         {
@@ -44,6 +41,7 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
             Item.shoot = ModContent.ProjectileType<PoisonPricklesProj>();
             Item.shootSpeed = 23f;
         }
+
         public override bool RangedPrefix()
         {
             return true;
@@ -82,8 +80,5 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
                 dust.alpha = 60;
             }
         }
-
-
-
     }
 }

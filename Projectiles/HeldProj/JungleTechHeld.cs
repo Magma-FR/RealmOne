@@ -12,11 +12,12 @@ namespace RealmOne.Projectiles.HeldProj
     {
         private float AimResponsiveness = 0.67f;
         private bool timerUp = false;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 7;
-
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 26;//23
@@ -97,7 +98,6 @@ namespace RealmOne.Projectiles.HeldProj
                 UpdatePlayerVisuals(player, player.Center);
 
                 UpdateAim(player.Center, player.HeldItem.shootSpeed);
-
             }
             else if (!stillInUse)
             {
@@ -105,8 +105,8 @@ namespace RealmOne.Projectiles.HeldProj
             }
 
             Projectile.timeLeft = 2;
-
         }
+
         private void UpdatePlayerVisuals(Player player, Vector2 playerhandpos)
         {
             Projectile.netImportant = true;
@@ -130,6 +130,7 @@ namespace RealmOne.Projectiles.HeldProj
 
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + piover2);
         }
+
         private void UpdateAim(Vector2 source, float speed)
         {
             Player player = Main.player[Projectile.owner];
@@ -152,7 +153,6 @@ namespace RealmOne.Projectiles.HeldProj
                 Projectile.netImportant = true;
                 Projectile.netUpdate = true;
             }
-
 
             Projectile.velocity = aim;
         }

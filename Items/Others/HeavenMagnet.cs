@@ -22,8 +22,8 @@ namespace RealmOne.Items.Others
                 + "\nHas a cooldown of 5 minutes");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
+
         private int cooldownTime = 900; // 30 seconds in frames (1 second = 60 frames)
         private int cooldownTimer = 0;
 
@@ -41,32 +41,23 @@ namespace RealmOne.Items.Others
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.shoot = ModContent.ProjectileType<LootBalloon>();
             Item.shootSpeed = 4f;
-
         }
+
         public override bool CanUseItem(Player player)
         {
-
-
             if (player.HasBuff(ModContent.BuffType<MagnetBuff>()))
             {
                 Main.NewText(Language.GetTextValue("You are already under the effects of the Heaven's Magnet"), 150, 243, 244);
-
             }
-
             else
             {
-
                 Main.NewText(Language.GetTextValue($"\n[i:{ItemID.FallenStar}]The heaven has accepeted your wish, you have been granted an item![i:{ItemID.FallenStar}]"), 150, 243, 244);
             }
             return cooldownTimer == 0;
-
-
-
         }
 
         public override bool? UseItem(Player player)
         {
-
             player.AddBuff(ModContent.BuffType<MagnetBuff>(), 900);
 
             // Start the cooldown
@@ -78,23 +69,22 @@ namespace RealmOne.Items.Others
             return true;
         }
 
-
         public override void UpdateInventory(Player player)
         {
-            // Decrease the cooldown timer
             if (cooldownTimer > 0)
             {
                 cooldownTimer--;
             }
         }
 
-        public int spreadMax = 22; //Maximal Projectile Spread
-        public int spreadMin = -20; //Minimum Projectile Spread
+        public int spreadMax = 22;
+        public int spreadMin = -20;
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position,
            Vector2 velocity, int type,
            int damage, float knockback)
         {
-            int numberProjectiles = 1; // shoots *(Inserted Value)* of projectiles
+            int numberProjectiles = 1;
             for (int index = 0; index < numberProjectiles; ++index)
             {
                 Vector2 vector2_1 = new Vector2((float)(player.position.X + player.width * 0.5 +
@@ -121,6 +111,7 @@ namespace RealmOne.Items.Others
 
             return false;
         }
+
         public override bool PreDrawInInventory(SpriteBatch sB, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             for (int i = 0; i < 1; i++)
@@ -144,16 +135,13 @@ namespace RealmOne.Items.Others
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-
             var line = new TooltipLine(Mod, "", "");
 
             line = new TooltipLine(Mod, "HeavenMagnet", "'Some would even say this is a gift from God!'")
             {
                 OverrideColor = new Color(220, 230, 149)
-
             };
             tooltips.Add(line);
-
         }
     }
 
@@ -168,26 +156,17 @@ namespace RealmOne.Items.Others
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
-
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-
             if (player.buffTime[buffIndex] == 2 && player.whoAmI == Main.myPlayer)
             {
-                if (Main.netMode == 2)
+                if (Main.netMode == NetmodeID.Server)
                 {
-
-
                     Main.NewText(Language.GetTextValue($"\n[i:{ItemID.FallenStar}]The heaven has accepeted your wish, you have been granted an item![i:{ItemID.FallenStar}]"), 150, 243, 244);
-
                 }
-
-
-
             }
         }
-
     }
 }

@@ -14,7 +14,6 @@ namespace RealmOne.Projectiles.Other
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cthulhu Medallion");
-
         }
 
         public override void SetDefaults()
@@ -36,7 +35,6 @@ namespace RealmOne.Projectiles.Other
             Projectile.stepSpeed = 1f;
             Projectile.alpha = 255;
             Projectile.scale = 1f;
-
         }
 
         public override void AI()
@@ -47,7 +45,7 @@ namespace RealmOne.Projectiles.Other
         }
 
         public override void Load()
-        { // This is called once on mod (re)load when this piece of content is being loaded.    
+        { // This is called once on mod (re)load when this piece of content is being loaded.
           // This is the path to the texture that we'll use for the hook's chain. Make sure to update it.
             Idol = Request<Texture2D>("RealmOne/Assets/Effects/Idol");
         }
@@ -57,6 +55,7 @@ namespace RealmOne.Projectiles.Other
           // It's currently pretty important to unload your static fields like this, to avoid having parts of your mod remain in memory when it's been unloaded.
             Idol = null;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));

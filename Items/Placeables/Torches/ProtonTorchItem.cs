@@ -9,13 +9,13 @@ namespace RealmOne.Items.Placeables.Torches
 {
     public class ProtonTorchItem : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Proton Torch");
             Tooltip.SetDefault("Creates electrical sparks when swung and placed");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
         }
+
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)
         { // Overrides the default sorting method of this Item.
             itemGroup = ContentSamples.CreativeHelper.ItemGroup.Torches; // Vanilla usually matches sorting methods with the right type of item, but sometimes, like with torches, it doesn't. Make sure to set whichever items manually if need be.
@@ -62,8 +62,6 @@ namespace RealmOne.Items.Placeables.Torches
                 Lighting.AddLight(ItemPos, 0.2f, 0.8f, 1.6f);
             }
         }
-
-
 
         public override void AddRecipes()
         {

@@ -11,7 +11,6 @@ namespace RealmOne.NPCs.Critters
 {
     public class GiantDragonfly : ModNPC
     {
-
         // static Asset<Texture2D> glowmask;
 
         public override void SetStaticDefaults()
@@ -20,22 +19,19 @@ namespace RealmOne.NPCs.Critters
             Main.npcFrameCount[NPC.type] = 4;
             Main.npcCatchable[NPC.type] = true;
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Velocity = 1f
             };
-
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
             NPCID.Sets.CountsAsCritter[Type] = true;
 
             //  glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
-
         }
 
         public override void SetDefaults()
         {
-
             NPC.catchItem = (short)ModContent.ItemType<GiantDragonflyItem>();
             NPC.width = 15;
             NPC.height = 8;
@@ -53,15 +49,14 @@ namespace RealmOne.NPCs.Critters
             NPC.npcSlots = 0;
             NPC.aiStyle = NPCAIStyleID.Dragonfly;
             AIType = NPCID.BlueDragonfly;
-
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GiantDragonflyGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GiantDragonflyGore2").Type, 1f);
-
             }
         }
 
@@ -82,7 +77,6 @@ namespace RealmOne.NPCs.Critters
 
             if (NPC.IsABestiaryIconDummy)
                 color = Color.White;
-
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -91,7 +85,6 @@ namespace RealmOne.NPCs.Critters
                    BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
                 new FlavorTextBestiaryInfoElement("Larger from their normal counterpart of dragonfly, this dragonfly is a hunter of other larger prey, including ants and even water beetles!"),
-
             });
         }
     }

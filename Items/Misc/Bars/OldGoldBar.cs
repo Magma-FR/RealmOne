@@ -17,7 +17,6 @@ namespace RealmOne.Items.Misc.Bars
             DisplayName.SetDefault("Old Gold Bar"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("'An aged but pristine ingot crafted from the gold of the underground'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -32,8 +31,8 @@ namespace RealmOne.Items.Misc.Bars
             Item.maxStack = 999;
             Item.consumable = true;
             Item.createTile = ModContent.TileType<OldGoldBarTile>();
-
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -74,6 +73,7 @@ namespace RealmOne.Items.Misc.Bars
 
             return true;
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -82,18 +82,16 @@ namespace RealmOne.Items.Misc.Bars
             line = new TooltipLine(Mod, "OldGoldBar", "'The bar is old and ancient, yet, it holds lustrous glory!'")
             {
                 OverrideColor = new Color(254, 226, 82)
-
             };
             tooltips.Add(line);
-
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
             .AddIngredient(Mod, "OldGoldOre", 3)
             .AddTile(TileID.Furnaces)
             .Register();
-
         }
     }
 }

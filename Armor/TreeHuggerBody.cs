@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 namespace RealmOne.Armor
 {
     [AutoloadEquip(EquipType.Body)]
-
     public class TreeHuggerBody : ModItem
     {
         public override void SetStaticDefaults()
@@ -17,9 +16,8 @@ namespace RealmOne.Armor
                 + "\n'Chestplate of the tree tops!'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -32,9 +30,7 @@ namespace RealmOne.Armor
         public override void UpdateEquip(Player player)
         {
             player.GetKnockback(DamageClass.Generic) += 0.05f;
-
         }
-
 
         public override void AddRecipes()
         {
@@ -44,7 +40,6 @@ namespace RealmOne.Armor
             .AddIngredient(Mod, "CrushedAcorns", 30)
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
     }
 }

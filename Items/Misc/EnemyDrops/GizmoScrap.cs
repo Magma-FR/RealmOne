@@ -14,7 +14,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
                 + "\n'Dropped from the sneakiest of goblins'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 35;
-
         }
 
         public override void SetDefaults()
@@ -25,7 +24,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Item.value = Item.buyPrice(silver: 19);
             Item.rare = ItemRarityID.Green;
             Item.maxStack = 999;
-
         }
     }
 }

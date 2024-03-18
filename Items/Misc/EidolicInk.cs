@@ -14,7 +14,6 @@ namespace RealmOne.Items.Misc
             DisplayName.SetDefault("Eidolic Ink");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
-
         }
 
         public override void SetDefaults()
@@ -26,7 +25,6 @@ namespace RealmOne.Items.Misc
             Item.maxStack = 999;
             Item.ammo = Item.type;
             Item.consumable = true;
-
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -35,10 +33,8 @@ namespace RealmOne.Items.Misc
             line = new TooltipLine(Mod, "EidolicInk", "'Such elegant and expensive ink, use it effectively'")
             {
                 OverrideColor = new Color(95, 6, 195)
-
             };
             tooltips.Add(line);
-
         }
     }
 }*/

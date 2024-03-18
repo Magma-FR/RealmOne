@@ -1,5 +1,4 @@
-﻿using RealmOne.Items.Placeables;
-using RealmOne.Items.Placeables.FarmStuff;
+﻿using RealmOne.Items.Placeables.FarmStuff;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -8,7 +7,6 @@ using Terraria.ModLoader;
 namespace RealmOne.Items.Sets.TatteredWoodSet
 {
     [AutoloadEquip(EquipType.Body)]
-
     public class TatteredBody : ModItem
     {
         public override void SetStaticDefaults()
@@ -18,9 +16,8 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
             Tooltip.SetDefault("5% increased damage and knockback");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -34,9 +31,7 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
         {
             player.GetKnockback(DamageClass.Generic) += 0.05f;
             player.moveSpeed -= 0.05f;
-
         }
-
 
         public override void AddRecipes()
         {
@@ -45,7 +40,6 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
             .AddIngredient(ModContent.ItemType<TatteredWood>(), 20)
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
     }
 }

@@ -7,7 +7,6 @@ namespace RealmOne.Items.Ammo
 {
     public class RustedBullets : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Rusty but effective"); // The item's description, can be set to whatever you want.
@@ -40,8 +39,6 @@ namespace RealmOne.Items.Ammo
 
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
     }
 }
-

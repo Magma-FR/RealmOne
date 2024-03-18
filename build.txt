@@ -1,9 +1,9 @@
-displayName = [i/p3601:3601][c/65CEA6:Realm Of R'lyeh (Beta)][i/p3601:3601]
-author = Magma!
+displayName = [i/p3601:3601][c/65CEA6:Realm Of R'lyeh][i/p3601:3601]
+author = Magma!!
 homepage = https://discord.gg/Npk2dDzRdt
 version = 1.01
-hideCode = false;
-includeSource = true;
+hideCode = false
+includeSource = true
 dllReferences = StructureHelper
 
 

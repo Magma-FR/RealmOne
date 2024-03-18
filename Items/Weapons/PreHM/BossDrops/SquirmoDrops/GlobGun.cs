@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.Bullet;
 using Terraria;
 using Terraria.Audio;
@@ -19,7 +19,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
              + $"\nUses Mud Blocks [i:{ItemID.MudBlock}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -40,7 +39,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             Item.noMelee = true;
             Item.shootSpeed = 10f;
             Item.shoot = ProjectileID.Bullet;
-
         }
         public override bool OnPickup(Player player)
         {
@@ -65,7 +63,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
               .AddTile(TileID.Anvils)
               .Register();
         }
-   */
 
         public override Vector2? HoldoutOffset()
         {
@@ -74,3 +71,4 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
         }
     }
 }
+*/

@@ -11,16 +11,13 @@ namespace RealmOne.Buffs
         {
             DisplayName.SetDefault("Tangled");
             Description.SetDefault("'Wrath of the vines grows in you, Greatly slows enemies and inflict poison'");
-
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-
             player.moveSpeed -= 0.3f;
             player.buffImmune[BuffID.Poisoned] = true;
             player.AddBuff(BuffID.Poisoned, 300);
-
 
             if (Main.rand.NextBool(3))
             {
@@ -32,7 +29,6 @@ namespace RealmOne.Buffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-
             if (Main.rand.NextBool(3))
             {
                 int dust = Dust.NewDust(npc.position, npc.width, npc.height, DustID.JungleGrass);

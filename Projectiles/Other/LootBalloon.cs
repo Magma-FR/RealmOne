@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Other
 {
-
     public class LootBalloon : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -26,11 +25,10 @@ namespace RealmOne.Projectiles.Other
             Projectile.extraUpdates = 1;
             Projectile.tileCollide = true;
             Projectile.aiStyle = 0;
-
         }
+
         public override void AI()
         {
-
             Projectile.rotation += 0.00f;
             Projectile.velocity.Y += 0.00001f;
 
@@ -38,9 +36,9 @@ namespace RealmOne.Projectiles.Other
 
             Lighting.AddLight(Projectile.position, 0.2f, 0.2f, 0.4f);
             Lighting.Brightness(1, 1);
-
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             if (Main.rand.Next(0, 0) == 0)
                 Item.NewItem(Projectile.GetSource_DropAsItem(), (int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height,
@@ -61,4 +59,3 @@ namespace RealmOne.Projectiles.Other
         }
     }
 }
-

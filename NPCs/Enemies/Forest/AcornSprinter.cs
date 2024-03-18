@@ -1,18 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne.Common.Systems;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.Food;
 using RealmOne.Items.Placeables.BannerItems;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace RealmOne.NPCs.Enemies.Forest
 {
-
     public class AcornSprinter : ModNPC
     {
         public override void SetStaticDefaults()
@@ -20,7 +18,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Acorn Sprinter");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -44,11 +42,11 @@ namespace RealmOne.NPCs.Enemies.Forest
             AnimationType = NPCID.Zombie;
             Banner = Type;
             BannerItem = ModContent.ItemType<BannerItem.AcornSprinterB>();
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.Player.ZoneForest && Main.dayTime && !spawnInfo.PlayerSafe ? 0.14f : 0f;
+            return spawnInfo.Player.ZoneForest && !CursedForestEvent.CursedForest && Main.dayTime && !spawnInfo.PlayerSafe ? 0.14f : 0f;
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -67,15 +65,14 @@ namespace RealmOne.NPCs.Enemies.Forest
 				// so we use this line to tell the game to prioritize a specific InfoElement for sourcing the background image.
             });
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("AcornSprinterGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("AcornSprinterGore2").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("AcornSprinterGore3").Type, 1f);
-
             }
 
             for (int k = 0; k < 30; k++)
@@ -83,22 +80,14 @@ namespace RealmOne.NPCs.Enemies.Forest
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-
             npcLoot.Add(ItemDropRule.Common(ItemID.Acorn, 1, 2, 4));
             npcLoot.Add(ItemDropRule.Common(ItemID.Wood, 2, 4, 6));
             npcLoot.Add(ItemDropRule.Common(ItemID.LivingWoodWand, 40, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ToastedNutBar>(), 20));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonPrickles>(), 13, 5, 8));
-
-
-
         }
-
-
-
-
     }
 }
-

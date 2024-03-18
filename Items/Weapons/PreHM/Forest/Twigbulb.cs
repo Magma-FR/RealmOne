@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Items.Misc;
+using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Projectiles.Magic;
 using RealmOne.RealmPlayer;
 using ReLogic.Content;
@@ -13,7 +13,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.Forest
 {
-
     public class Twigbulb : ModItem
     {
         public override void SetStaticDefaults()
@@ -24,6 +23,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -47,6 +47,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
             Item.shoot = ProjectileType<LightBulbRing1>();
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = Request<Texture2D>("RealmOne/Items/Weapons/PreHM/Forest/Twigbulb_Glow", AssetRequestMode.ImmediateLoad).Value;
@@ -67,19 +68,19 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
                 SpriteEffects.None,
                 0f
             );
-
         }
+
         /*  public override Color? GetAlpha(Color lightColor)
           {
               // Aside from SetDefaults, when making a copy of a vanilla weapon you may have to hunt down other bits of code. This code makes the item draw in full brightness when dropped.
               return Color.NavajoWhite;
           }*/
+
         public override bool CanUseItem(Player player)
         {
-
             return player.ownedProjectileCounts[Item.shoot] < 1;
-
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 mouse = Main.MouseWorld;
@@ -91,7 +92,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
         {
             CreateRecipe(1)
             .AddIngredient(ItemID.Glass, 15)
-            .AddIngredient(ModContent.ItemType<Lightbulb>(), 6)
+            .AddIngredient(ModContent.ItemType<LiteBulb>(), 6)
 
             .AddRecipeGroup("Wood", 16)
             .AddTile(TileID.WorkBenches)
@@ -102,8 +103,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
         {
             var offset = new Vector2(2, 0);
             return offset;
-
         }
     }
 }
-

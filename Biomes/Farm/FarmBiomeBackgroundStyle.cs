@@ -1,12 +1,11 @@
 ﻿using Terraria.ModLoader;
-using Terraria;
-using System;
 
 namespace RealmOne.Biomes.Farm
 {
     public class FarmBiomeBackgroundStyle : ModSurfaceBackgroundStyle
     {
-        public override int ChooseMiddleTexture() =>BackgroundTextureLoader.GetBackgroundSlot(Mod, "Assets/Textures/Backgrounds/FarmBG_Mid");
+        public override int ChooseMiddleTexture() => BackgroundTextureLoader.GetBackgroundSlot(Mod, "Assets/Textures/Backgrounds/FarmBG_Mid");
+
         public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
         {
             b -= 400;

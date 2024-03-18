@@ -7,7 +7,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Armor
 {
-
     [AutoloadEquip(EquipType.Body)]
     public class AquaBlossomBody : ModItem
     {
@@ -31,7 +30,6 @@ namespace RealmOne.Armor
 
         public override void UpdateEquip(Player player)
         {
-
             player.GetDamage(DamageClass.Magic) += 0.06f;
 
             player.statManaMax2 += 20;
@@ -45,7 +43,6 @@ namespace RealmOne.Armor
 
             .AddTile(TileID.Anvils)
             .Register();
-
         }
     }
 }

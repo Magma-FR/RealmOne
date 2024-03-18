@@ -19,7 +19,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Rusted Centurion");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BoneThrowingSkeleton2];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+               NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -41,7 +41,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             NPC.netAlways = true;
             NPC.netUpdate = true;
             AnimationType = NPCID.BoneThrowingSkeleton2;
-
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -77,14 +76,12 @@ namespace RealmOne.NPCs.Enemies.Forest
             npcLoot.Add(ItemDropRule.Common(ItemID.MudBlock, 2, 3, 6));
 
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonPrickles>(), 13, 4, 6));
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
             for (int i = 0; i < 19; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(2f, 2f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Bone, speed * 5, Scale: 1.5f);
@@ -129,7 +126,6 @@ namespace RealmOne.NPCs.Enemies.Forest
                 float projectileSpeed = 8f;
                 Vector2 velocity = Vector2.Normalize(new Vector2(player.position.X + player.width / 2, player.position.Y + player.height / 2) -
                     new Vector2(NPC.position.X + NPC.width / 2, NPC.position.Y + NPC.height / 2)) * projectileSpeed;
-
             }
         }
     }

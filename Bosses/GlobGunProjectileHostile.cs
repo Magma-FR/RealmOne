@@ -13,11 +13,10 @@ namespace RealmOne.Bosses
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Super Explodey Mud Ball");
-
         }
+
         public override void SetDefaults()
         {
-
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.friendly = false;
@@ -104,7 +103,7 @@ namespace RealmOne.Bosses
             return;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Projectile.penetrate = 1;
 
@@ -184,4 +183,3 @@ namespace RealmOne.Bosses
         }
     }
 }
-

@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class eyesmol : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -30,8 +29,8 @@ namespace RealmOne.Projectiles.Magic
             Projectile.timeLeft = 600;
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 1;
-
         }
+
         public override void AI()
         {
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Blood, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.8f);
@@ -47,7 +46,8 @@ namespace RealmOne.Projectiles.Magic
                     Projectile.frame = 0;
             }
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("smoleyegore1").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("smoleyegore2").Type, 1f);
@@ -64,4 +64,3 @@ namespace RealmOne.Projectiles.Magic
         }
     }
 }
-

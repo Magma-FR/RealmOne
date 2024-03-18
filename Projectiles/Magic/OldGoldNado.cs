@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class OldGoldNado : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -20,7 +19,6 @@ namespace RealmOne.Projectiles.Magic
 
         public override void SetDefaults()
         {
-
             Projectile.width = 60;
             Projectile.height = 60;
 
@@ -29,11 +27,11 @@ namespace RealmOne.Projectiles.Magic
             Projectile.hostile = false;
             Projectile.timeLeft = 100;
             Projectile.light = 1;
-            Projectile.penetrate = -2;
+            Projectile.penetrate = 2;
             Projectile.tileCollide = false;
             Projectile.aiStyle = 0;
-
         }
+
         public override bool PreAI()
         {
             Player player = Main.player[Projectile.owner];
@@ -56,9 +54,9 @@ namespace RealmOne.Projectiles.Magic
             for (int i = 0; i < 6; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Sandnado, 0f, 0f, 0, default, 1.5f);
             SoundEngine.PlaySound(SoundID.DD2_PhantomPhoenixShot);
-
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];
 
@@ -89,16 +87,13 @@ namespace RealmOne.Projectiles.Magic
                 //Spawns 3 Desert Hands
                 for (int f = 0; f < 3; f++)
                 {
-
                     int pr = Projectile.NewProjectile(Projectile.GetSource_Death(), position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<DesertHands>(), Projectile.damage, Projectile.knockBack, 0, 0.0f, 0.0f);
-
                 }
             }
         }
 
         public override void AI()
         {
-
             Lighting.AddLight(Projectile.position, 0.4f, 0.2f, 0.1f);
 
             int fadeTime = 8;

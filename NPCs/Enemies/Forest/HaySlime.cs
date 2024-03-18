@@ -21,7 +21,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Hay Slime");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[2];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -43,8 +43,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             NPC.netAlways = true;
             NPC.netUpdate = true;
             SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.Farm.FarmSurface>().Type };
-
-
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -58,6 +56,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             }
             return 0f;
         }
+
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter++;
@@ -65,11 +64,11 @@ namespace RealmOne.NPCs.Enemies.Forest
                 NPC.frameCounter = 0;
             NPC.frame.Y = (int)NPC.frameCounter / 10 * frameHeight;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
           new FlavorTextBestiaryInfoElement("What would you get if you had a slime that had to much playtime in haybales, well there we have it. This hay slime decreases in size the more it gets!")
-
             });
         }
 
@@ -80,20 +79,18 @@ namespace RealmOne.NPCs.Enemies.Forest
 
             npcLoot.Add(ItemDropRule.Common(ItemID.Hay, 2, 3, 4));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FarmKey>(), 35, 1, 1));
-
-
         }
+
         public override void AI()
         {
             NPC.spriteDirection = NPC.direction;
-
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-
-            if (NPC.life <=0 && Main.netMode != NetmodeID.Server)
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, GoreID.TreeLeaf_Normal,1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, GoreID.TreeLeaf_Normal, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, GoreID.TreeLeaf_Jungle, 1f);
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Left, NPC.velocity, GoreID.TreeLeaf_Normal, 1f);
@@ -101,13 +98,11 @@ namespace RealmOne.NPCs.Enemies.Forest
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Top, NPC.velocity, GoreID.TreeLeaf_Normal, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.Top, NPC.velocity, GoreID.TreeLeaf_Jungle, 1f);
-
             }
             for (int k = 0; k < 30; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Hay, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.9f);
             }
         }
-
     }
 }

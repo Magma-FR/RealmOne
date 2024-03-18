@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Placeables.FarmStuff;
 using Terraria;
 using Terraria.GameContent.Creative;
@@ -10,13 +9,13 @@ namespace RealmOne.Items.Placeables.Torches
 {
     public class FarmTorchItem : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Farm Torch");
             Tooltip.SetDefault("Surprised its still flamable!");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
         }
+
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)
         { // Overrides the default sorting method of this Item.
             itemGroup = ContentSamples.CreativeHelper.ItemGroup.Torches; // Vanilla usually matches sorting methods with the right type of item, but sometimes, like with torches, it doesn't. Make sure to set whichever items manually if need be.
@@ -62,8 +61,6 @@ namespace RealmOne.Items.Placeables.Torches
                 Lighting.AddLight(ItemPos, 1.3f, 0.8f, 0.1f);
             }
         }
-
-
 
         public override void AddRecipes()
         {

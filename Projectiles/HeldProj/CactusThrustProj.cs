@@ -15,18 +15,17 @@ namespace RealmOne.Projectiles.HeldProj
         {
             Projectile.CloneDefaults(ProjectileID.Spear);
         }
+
         private int t = 0;
+
         public override bool PreAI()
         {
-
             t++;
 
             if (t == 1)
             {
-
                 Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, Projectile.velocity * 1f, ModContent.ProjectileType<CactiSticky>(), 2, 0, Main.myPlayer);
                 //   Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, Projectile.velocity, ModContent.ProjectileType<CactiSticky>(), 2, 0, Main.myPlayer);
-
             }
 
             Player player = Main.player[Projectile.owner];
@@ -34,7 +33,7 @@ namespace RealmOne.Projectiles.HeldProj
 
             player.heldProj = Projectile.whoAmI;
 
-            // Reset projectile time left if necessary  
+            // Reset projectile time left if necessary
             if (Projectile.timeLeft > duration)
             {
                 Projectile.timeLeft = duration;

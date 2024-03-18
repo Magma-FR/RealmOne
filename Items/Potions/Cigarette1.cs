@@ -17,7 +17,6 @@ namespace RealmOne.Items.Potions
             + "\nWhen holding a cigarette, you gain 25% increased damage and weapon speed but no life regen nor pickup hearts");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
-
         }
 
         public override void SetDefaults()
@@ -36,14 +35,13 @@ namespace RealmOne.Items.Potions
             Item.buffType = ModContent.BuffType<CigaretteBuff>();
             Item.buffTime = 3000;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_Cigarette");
-
         }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, 0f, 0f, 35, default, 2f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 2f;
-
         }
 
         public override void AddRecipes()

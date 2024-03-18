@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
@@ -24,7 +24,6 @@ namespace RealmOne.Items.Food
                 new Color(50, 200,50),
                 new Color(20, 230, 180),
                 new Color(20, 140, 20)
-
             };
         }
 
@@ -51,4 +50,4 @@ namespace RealmOne.Items.Food
             recipe.Register();
         }
     }
-}
+}*/

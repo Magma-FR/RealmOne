@@ -17,7 +17,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             + "\nShoots a duststorm bullet");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -28,7 +27,7 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.height = 32;
             Item.useTime = 57;
             Item.useAnimation = 57;
-            //54 FOR BOTH 
+            //54 FOR BOTH
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2f;
             Item.value = 30000;
@@ -40,7 +39,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.shootSpeed = 62f;
 
             Item.shoot = ModContent.ProjectileType<SandBulletProjectile>();
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

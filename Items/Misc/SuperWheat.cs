@@ -1,16 +1,13 @@
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using RealmOne.Common.Core;
-using RealmOne.Rarities;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using RealmOne.NPCs.TownNPC;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
-using Terraria.ModLoader;
 using Terraria.ID;
-using RealmOne.NPCs.Critters;
-using RealmOne.NPCs.TownNPC;
+using Terraria.ModLoader;
 
 namespace RealmOne.Items.Misc
 {
@@ -24,14 +21,13 @@ namespace RealmOne.Items.Misc
             Tooltip.SetDefault("'Hand picked from the fields, ready to be baked'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
-
         }
 
         public override void SetDefaults()
         {
             Item.width = 20;
             Item.height = 20;
-            Item.value = Item.buyPrice(0,2,0,0);
+            Item.value = Item.buyPrice(0, 2, 0, 0);
             Item.maxStack = 999;
             Item.rare = ItemRarityID.Expert;
             Item.consumable = true;
@@ -41,11 +37,13 @@ namespace RealmOne.Items.Misc
             Item.noUseGraphic = true;
             Item.useStyle = ItemUseStyleID.Swing;
         }
+
         public override bool? UseItem(Player player)
         {
             NPC.NewNPC(player.GetSource_ItemUse(Item), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<FarmerSlime>());
             return true;
         }
+
         public override bool PreDrawInInventory(SpriteBatch sB, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             for (int i = 0; i < 1; i++)
@@ -69,16 +67,13 @@ namespace RealmOne.Items.Misc
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-
             var line = new TooltipLine(Mod, "", "");
 
             line = new TooltipLine(Mod, "SuperWheat", "Smells like beer!")
             {
                 OverrideColor = new Color(220, 230, 149)
-
             };
             tooltips.Add(line);
-
         }
     }
 }

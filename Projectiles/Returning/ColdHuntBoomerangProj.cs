@@ -67,7 +67,6 @@ namespace RealmOne.Projectiles.Returning
 
                 if (target.CanBeChasedBy())
                 {
-
                     float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
 
                     if (sqrDistanceToTarget < sqrMaxDetectDistance)
@@ -80,9 +79,9 @@ namespace RealmOne.Projectiles.Returning
 
             return closestNPC;
         }
-        public override void Kill(int timeleft)
-        {
 
+        public override void OnKill(int timeleft)
+        {
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Item39, Projectile.position);
 
@@ -95,6 +94,7 @@ namespace RealmOne.Projectiles.Returning
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ProjectileID.ThunderStaffShot, Projectile.damage, Projectile.knockBack, Main.myPlayer);
             return true;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {
@@ -102,7 +102,6 @@ namespace RealmOne.Projectiles.Returning
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ProjectileID.ThunderStaffShot, Projectile.damage, Projectile.knockBack, Main.myPlayer);
 
             target.AddBuff(ModContent.BuffType<AltElectrified>(), 180);
-
         }
     }
 }

@@ -7,12 +7,11 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.HeldProj
 {
-
     public class KnopperBall : ModProjectile
     {
-
         private const string ChainTexturePath = "RealmOne/Projectiles/HeldProj/KnopperChainProj"; // The folder path to the flail chain sprite
         private const string ChainTextureExtraPath = "RealmOne/Projectiles/HeldProj/KnopperChain2Proj";  // This texture and related code is optional and used for a unique effe
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Knopper Ball");
@@ -38,12 +37,10 @@ namespace RealmOne.Projectiles.HeldProj
             AIType = ProjectileID.Mace;
 
             // These help center the projectile as it rotates since its hitbox and scale doesn't match the actual texture size
-
         }
 
         public override void AI()
         {
-
             if (Main.myPlayer == Projectile.owner && Projectile.ai[0] == 2f && Projectile.ai[1] == 0f)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ProjectileID.Wasp, Projectile.damage, Projectile.knockBack, Main.myPlayer);
@@ -53,7 +50,6 @@ namespace RealmOne.Projectiles.HeldProj
 
         public override bool PreDraw(ref Color lightColor)
         {
-
             Vector2 playerArmPosition = Main.GetPlayerArmPosition(Projectile);
 
             // This fixes a vanilla GetPlayerArmPosition bug causing the chain to draw incorrectly when stepping up slopes. The flail itself still draws incorrectly due to another similar bug. This should be removed once the vanilla bug is fixed.
@@ -64,7 +60,7 @@ namespace RealmOne.Projectiles.HeldProj
 
             Rectangle? chainSourceRectangle = null;
             // Drippler Crippler customizes sourceRectangle to cycle through sprite frames: sourceRectangle = asset.Frame(1, 6);
-            float chainHeightAdjustment = 0f; // Use this to adjust the chain overlap. 
+            float chainHeightAdjustment = 0f; // Use this to adjust the chain overlap.
 
             Vector2 chainOrigin = chainSourceRectangle.HasValue ? chainSourceRectangle.Value.Size() / 2f : chainTexture.Size() / 2f;
             Vector2 chainDrawPosition = Projectile.Center;
@@ -120,7 +116,6 @@ namespace RealmOne.Projectiles.HeldProj
             }
 
             return true;
-
         }
     }
 }

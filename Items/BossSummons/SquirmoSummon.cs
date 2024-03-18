@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*using Microsoft.Xna.Framework;
 using RealmOne.Bosses;
 using RealmOne.Common.Systems;
 using RealmOne.Items.ItemCritter;
@@ -55,22 +55,6 @@ namespace RealmOne.Items.BossSummons
             //    return !Main.dayTime && !NPC.AnyNPCs(ModContent.NPCType<MinionBossBody>()); would mean "not daytime and no MinionBossBody currently alive"
             return !NPC.AnyNPCs(ModContent.NPCType<SquirmoHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>()) && !NPC.AnyNPCs(ModContent.NPCType<MegaSquirmHead>());
         }
-        /*  public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-          {
-              Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 1f;
-
-              if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-                  position += muzzleOffset;
-
-              Gore.NewGore(source, player.Center + muzzleOffset * 1, new Vector2(player.direction * -1, -0.5f) * 2, Mod.Find<ModGore>("CarrotGore1").Type, 1f);
-              Gore.NewGore(source, player.Center + muzzleOffset * 1, new Vector2(player.direction * -1, -0.5f) * 2, Mod.Find<ModGore>("CarrotGore2").Type, 1f);
-              Gore.NewGore(source, player.Center + muzzleOffset * 1, new Vector2(player.direction * -1, -0.5f) * 2, Mod.Find<ModGore>("CarrotGore3").Type, 1f);
-              Gore.NewGore(source, player.Center + muzzleOffset * 1, new Vector2(player.direction * -1, -0.5f) * 2, Mod.Find<ModGore>("CarrotGore4").Type, 1f);
-
-
-
-              return true;
-          }*/
 
         public override bool? UseItem(Player player)
         {
@@ -81,8 +65,6 @@ namespace RealmOne.Items.BossSummons
                 int CarrotGore3 = Mod.Find<ModGore>("CarrotGore3").Type;
                 int CarrotGore4 = Mod.Find<ModGore>("CarrotGore4").Type;
 
-
-
                 IEntitySource entitySource = Item.GetSource_Death();
 
                 for (int i = 0; i < 1; i++)
@@ -91,11 +73,6 @@ namespace RealmOne.Items.BossSummons
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore2);
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore3);
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore4);
-
-
-
-
-
                 }
 
                 if (Main.netMode != NetmodeID.Server)
@@ -105,10 +82,6 @@ namespace RealmOne.Items.BossSummons
                 SoundEngine.PlaySound(rorAudio.SquirmoSummonSound, player.position);
 
                 player.GetModPlayer<Screenshake>().WormScreenshake = true;
-
-
-
-
             }
 
             if (player.whoAmI == Main.myPlayer)
@@ -133,7 +106,6 @@ namespace RealmOne.Items.BossSummons
                     NPC.SpawnOnPlayer(player.whoAmI, type2);
                     NPC.SpawnOnPlayer(player.whoAmI, type3);
                     NPC.SpawnOnPlayer(player.whoAmI, type4);
-
                 }
                 else
                 {
@@ -144,11 +116,9 @@ namespace RealmOne.Items.BossSummons
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type2);
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type3);
                     NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type4);
-
                 }
 
                 player.GetModPlayer<Screenshake>().WormScreenshake = true;
-
             }
 
             return true;
@@ -163,7 +133,7 @@ namespace RealmOne.Items.BossSummons
 
             .AddTile(TileID.WorkBenches)
             .Register();
-
         }
     }
 }
+*/

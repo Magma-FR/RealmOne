@@ -1,10 +1,13 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Weapons.PreHM.Impact;
+using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Accessories
 {
@@ -12,14 +15,9 @@ namespace RealmOne.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Static Stone");
-            Tooltip.SetDefault("Increases the effectiveness of the Electrified buff"
-                + "\nFull immunity to the Electrified debuff"
-                + "\nBuffs E-Weapons");
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             var line = new TooltipLine(Mod, "", "");
@@ -27,39 +25,73 @@ namespace RealmOne.Items.Accessories
             line = new TooltipLine(Mod, "StaticStone", "'Portable Electricity!'")
             {
                 OverrideColor = new Color(0, 255, 255)
-
             };
             tooltips.Add(line);
-
         }
+
         public override void SetDefaults()
         {
-
             Item.width = 20;
             Item.height = 20;
             Item.value = 10000;
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
-            Item.material = true;
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.buffImmune[BuffID.Electrified] = true;
-            if (Item.type == ModContent.ItemType<ImpactPiercer>())
-                Item.damage += 40;
+            {
+                bool holdingWeapon1 = player.HeldItem.type == ItemType<ImpactPiercer>();
+                bool holdingWeapon2 = player.HeldItem.type == ItemType<ImpactInterceptor>();
+                bool holdingWeapon3 = player.HeldItem.type == ItemType<ImpactPulsa>();
+                bool holdingWeapon4 = player.HeldItem.type == ItemType<ImpactBoomerang>();
+
+                if (holdingWeapon1 || holdingWeapon2 || holdingWeapon3 || holdingWeapon4)
+                {
+                    // Increase damage by 10%
+                    player.GetDamage(DamageClass.Melee) *= 1.10f;
+                    player.GetDamage(DamageClass.Ranged) *= 1.10f;
+                    player.GetDamage(DamageClass.Magic) *= 1.10f;
+                    player.GetDamage(DamageClass.Summon) *= 1.10f;
+                }
+            }
         }
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value;
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
+                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+
+                Color.LightCyan,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(Mod, "ImpactTech", 6);
-            recipe.AddIngredient(ItemID.StoneBlock, 6);
 
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-
         }
     }
-}
 
+    public static partial class Balls
+    {
+        public static Item ActiveItem(this Player player) => Main.mouseItem.IsAir ? player.HeldItem : Main.mouseItem;
+    }
+}

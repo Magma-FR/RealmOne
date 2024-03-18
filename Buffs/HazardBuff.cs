@@ -9,7 +9,6 @@ namespace RealmOne.Buffs
         {
             DisplayName.SetDefault("EXPLOSIVE HAZARD!");
             Description.SetDefault("'You are vulnerable to damage from explosives!!!'");
-
         }
     }
 }

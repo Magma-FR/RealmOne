@@ -1,11 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using RealmOne.Common.Systems;
-using RealmOne.Projectiles.Whip;
-using RealmOne.Rarities;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
@@ -19,19 +15,19 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-                     Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(9, 9));
-
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(9, 9));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
+
         public override void SetDefaults()
         {
             Item.DefaultToWhip(ModContent.ProjectileType<ToothedTendrilProj>(), 17, 3, 4);
-            Item.useTime = 35;
-            Item.useAnimation = 35;
+            Item.useTime = 38;
+            Item.useAnimation = 38;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.channel = true;
         }
-
 
         public override bool MeleePrefix()
         {
@@ -50,15 +46,15 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         {
             Projectile.DefaultToWhip();
 
-            Projectile.WhipSettings.Segments = 15;
-            Projectile.WhipSettings.RangeMultiplier = 1.5f;
+            Projectile.WhipSettings.Segments = 18;
+            Projectile.WhipSettings.RangeMultiplier = 1f;
         }
 
         public override void AI()
         {
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.t_Flesh, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Alpha: 180, Scale: 0.8f);
-
         }
+
         private void DrawLine(List<Vector2> list)
         {
             Texture2D texture = TextureAssets.FishingLine.Value;
@@ -84,14 +80,12 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
-            
-            
-          //  Gore.NewGore(Projectile.GetSource_Death(), Projectile.Left, Vector2.Zero, Mod.Find<ModGore>("ToothGore1").Type, 1f);
-         //   Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("ToothGore2").Type, 1f);
-        //    Gore.NewGore(Projectile.GetSource_Death(), Projectile.Right, Vector2.Zero, Mod.Find<ModGore>("ToothGore3").Type, 1f);
 
-
+            //  Gore.NewGore(Projectile.GetSource_Death(), Projectile.Left, Vector2.Zero, Mod.Find<ModGore>("ToothGore1").Type, 1f);
+            //   Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("ToothGore2").Type, 1f);
+            //    Gore.NewGore(Projectile.GetSource_Death(), Projectile.Right, Vector2.Zero, Mod.Find<ModGore>("ToothGore3").Type, 1f);
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             List<Vector2> list = new List<Vector2>();
@@ -104,13 +98,11 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             // If you don't want that, you can remove it all and instead call one of vanilla's DrawWhip methods, like above.
             // However, you must adhere to how they draw if you do.
 
-
-
             return false;
         }
-        public override void Kill(int timeLeft)
-        {
 
+        public override void OnKill(int timeLeft)
+        {
         }
     }
 }

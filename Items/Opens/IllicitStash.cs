@@ -21,7 +21,6 @@ namespace RealmOne.Items.Opens
 
             //  + $"\n[i:{ModContent.ItemType<DualWieldCrossbows>()}][i:{ModContent.ItemType<DumLightbulb>()}]"
             //        + $"\n[i:{ModContent.ItemType<ShatteredGemBlade>()}][i:{ModContent.ItemType<EmptyLocket>()}]");
-
         }
 
         public override void SetDefaults()
@@ -32,8 +31,8 @@ namespace RealmOne.Items.Opens
             Item.consumable = true;
             Item.maxStack = 30;
             Item.value = Item.buyPrice(gold: 15);
-
         }
+
         public override bool CanRightClick()
         {
             return true;
@@ -89,11 +88,8 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.Campfire, 10, 1, 1));
 
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrassNuggets>(), 6, 8, 10));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.SalmonAvoSushi>(), 6, 1, 3));
-
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.TunaAndAvacado>(), 6, 1, 3));
-
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -134,6 +130,7 @@ namespace RealmOne.Items.Opens
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.Gold.ToVector3() * 0.4f);

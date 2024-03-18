@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*using Microsoft.Xna.Framework;
+using RealmOne.Bosses;
 using RealmOne.Items.BossSummons;
 using RealmOne.Items.Food.FarmFood;
 using System.IO;
@@ -30,10 +31,6 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public bool HasPosition => PositionIndex > -1;
 
-        /*  public static new int BodyType1()
-          {
-              return ModContent.NPCType<SquirmoHead>();
-          }*/
         public override int BodyType => ModContent.NPCType<MegaSquirmBody>();
 
         public override int TailType => ModContent.NPCType<MegaSquirmTail>();
@@ -42,14 +39,14 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Mega Squirm");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.DiggerHead];
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 CustomTexturePath = "RealmOne/NPCs/Enemies/Forest/MegaSquirm1", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
                 Position = new Vector2(40f, 28f),
                 PortraitPositionXOverride = 0f,
                 PortraitPositionYOverride = 12f
             };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
         }
 
         public override void SetDefaults()
@@ -78,8 +75,6 @@ namespace RealmOne.NPCs.Enemies.Forest
               BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
 
                 new FlavorTextBestiaryInfoElement("Consuming and scavenging anything and anywhere it goes, serving for something much more disasterous"),
-
-
             });
         }
         public override void HitEffect(NPC.HitInfo hit)
@@ -89,12 +84,10 @@ namespace RealmOne.NPCs.Enemies.Forest
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore2").Type, 1f);
-
             }
 
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Worm, speed * 5, Scale: 2f);
@@ -104,13 +97,9 @@ namespace RealmOne.NPCs.Enemies.Forest
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-
             npcLoot.Add(ItemDropRule.Common(ItemID.MudBlock, 1, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SquirmoSummon>(), 36, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Carrot>(), 10, 1, 2));
-
-
-
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
@@ -150,48 +139,7 @@ namespace RealmOne.NPCs.Enemies.Forest
 
         public override void AI()
         {
-
-            /*   if (Despawn())
-               {
-                   return;
-               }
-
-               FadeIn();
-            */
-
-          
-            
         }
-        /*   private bool Despawn()
-           {
-               if (Main.netMode != NetmodeID.MultiplayerClient &&
-                   (!HasPosition || !HasParent || !Main.npc[ParentIndex].active || Main.npc[ParentIndex].type != BodyType1()))
-               {
-                   // * Not spawned by the boss body (didn't assign a position and parent) or
-                   // * Parent isn't active or
-                   // * Parent isn't the body
-                   // => invalid, kill itself without dropping any items
-                   NPC.active = false;
-                   NPC.life = 0;
-                   NetMessage.SendData(MessageID.SyncNPC, number: NPC.whoAmI);
-                   return true;
-               }
-               return false;
-           }*/
-
-        /*  private void FadeIn()
-          {
-              // Fade in (we have NPC.alpha = 255 in SetDefaults which means it spawns transparent)
-              if (NPC.alpha > 0)
-              {
-                  NPC.alpha -= 10;
-                  if (NPC.alpha < 0)
-                  {
-                      NPC.alpha = 0;
-                  }
-              }
-          }*/
-
     }
 
     internal class MegaSquirmBody : WormBody
@@ -223,8 +171,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             {
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
-
-
             }
         }
         public override void Init()
@@ -262,7 +208,6 @@ namespace RealmOne.NPCs.Enemies.Forest
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SquirmoGore1").Type, 1f);
-
             }
         }
         public override void Init()
@@ -272,3 +217,4 @@ namespace RealmOne.NPCs.Enemies.Forest
     }
 }
 
+*/

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.HeldProj;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             ItemID.Sets.GamepadSmartQuickReach[Item.type] = true;
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -46,7 +45,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             Item.channel = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-
         }
         private static readonly int[] unwantedPrefixes = new int[] { PrefixID.Terrible, PrefixID.Dull, PrefixID.Shameful, PrefixID.Annoying, PrefixID.Broken, PrefixID.Damaged, PrefixID.Shoddy };
 
@@ -66,7 +64,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             return true;
         }
 
-        /*   public override void AddRecipes()
+           public override void AddRecipes()
            {
                CreateRecipe(1)
                .AddIngredient(ItemID.Worm, 3)
@@ -76,7 +74,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
                .AddTile(TileID.Anvils)
                .Register();
            }
-        */
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -85,10 +83,8 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             line = new TooltipLine(Mod, "SquirYo", "'Don't tell me how worms are supposed to come out of a spinning yo-yo? :shrug:'")
             {
                 OverrideColor = new Color(195, 118, 155)
-
             };
             tooltips.Add(line);
-
         }
         public override bool OnPickup(Player player)
         {
@@ -96,4 +92,4 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.SquirmoDrops
             return true;
         }
     }
-}
+}*/

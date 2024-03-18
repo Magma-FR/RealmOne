@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne.Items.Placeables;
 using RealmOne.Items.Placeables.FarmStuff;
 using Terraria;
 using Terraria.DataStructures;
@@ -39,12 +38,11 @@ namespace RealmOne.Tiles.PlantTiles
             name.SetDefault("Hanging Wattle Pot");
 
             AddMapEntry(new Color(215, 240, 60));
-
         }
+
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<WattlePot>());
-
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
@@ -56,6 +54,7 @@ namespace RealmOne.Tiles.PlantTiles
                     player.AddBuff(BuffID.Shine, 10, true);
             }
         }
+
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             (r, g, b) = (0.3f, 0.3f, 0.1f);

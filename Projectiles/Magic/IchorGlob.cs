@@ -8,12 +8,9 @@ namespace RealmOne.Projectiles.Magic
 {
     public class IchorGlob : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ichor Glob");
-
-
         }
 
         public override void SetDefaults()
@@ -35,10 +32,9 @@ namespace RealmOne.Projectiles.Magic
         {
             return Color.NavajoWhite;
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
-
-
             int radius = 150;
 
             for (int i = 0; i < Main.npc.Length; i++)
@@ -46,7 +42,6 @@ namespace RealmOne.Projectiles.Magic
                 NPC target = Main.npc[i];
                 if (target.active && !target.friendly && Vector2.Distance(Projectile.Center, target.Center) < radius)
                 {
-
                     target.SimpleStrikeNPC(damage: 25, 0);
                 }
             }
@@ -72,22 +67,22 @@ namespace RealmOne.Projectiles.Magic
                 d.noGravity = true;
             }
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Ichor, 400);
-
         }
+
         public override bool? CanHitNPC(NPC target)
         {
             return !target.friendly;
         }
+
         public override void AI()
         {
             Projectile.rotation += 0.1f;
             Projectile.velocity *= 0.95f;
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Blood, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 1.2f);
-
         }
-
     }
 }

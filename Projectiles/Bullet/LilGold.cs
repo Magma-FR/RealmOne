@@ -8,7 +8,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class LilGold : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -34,16 +33,16 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.aiStyle = 1;
             AIType = ProjectileID.Bullet;
         }
+
         public override void AI()
         {
-
             Lighting.AddLight(Projectile.position, 0.3f, 0.3f, 0.2f);
             Lighting.Brightness(1, 1);
-
-
         }
+
         public PrimitiveTrail trail = new();
         public List<Vector2> oldPositions = new List<Vector2>();
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -78,7 +77,8 @@ namespace RealmOne.Projectiles.Bullet
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
             return true;
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             for (int i = 0; i < 60; i++)
             {
@@ -90,4 +90,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

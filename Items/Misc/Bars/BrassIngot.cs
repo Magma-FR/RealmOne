@@ -16,7 +16,6 @@ namespace RealmOne.Items.Misc.Bars
                 + "\n'Due to its unique properties, which include corrosion resistance to rusting.'"
                 + "\n'Common uses for brass include applications that require low friction.'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
-
         }
 
         public override void SetDefaults()
@@ -31,7 +30,6 @@ namespace RealmOne.Items.Misc.Bars
             Item.maxStack = 999;
             Item.value = Item.buyPrice(silver: 15);
             Item.createTile = ModContent.TileType<BrassBarTile>();
-
         }
 
         public override void AddRecipes()
@@ -40,7 +38,6 @@ namespace RealmOne.Items.Misc.Bars
             .AddIngredient(Mod, "BrassNuggets", 4)
             .AddTile(TileID.Furnaces)
             .Register();
-
         }
     }
 }

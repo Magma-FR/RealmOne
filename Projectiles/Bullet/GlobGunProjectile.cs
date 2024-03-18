@@ -17,9 +17,9 @@ namespace RealmOne.Projectiles.Bullet
 
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
         }
+
         public override void SetDefaults()
         {
-
             // while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
             Projectile.width = 16;
             Projectile.height = 16;
@@ -108,7 +108,7 @@ namespace RealmOne.Projectiles.Bullet
             return;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
@@ -179,4 +179,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

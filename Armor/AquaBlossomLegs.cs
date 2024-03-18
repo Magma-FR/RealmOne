@@ -7,7 +7,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Armor
 {
-
     [AutoloadEquip(EquipType.Legs)]
     public class AquaBlossomLegs : ModItem
     {
@@ -41,7 +40,6 @@ namespace RealmOne.Armor
 
             .AddTile(TileID.Anvils)
             .Register();
-
         }
     }
 }

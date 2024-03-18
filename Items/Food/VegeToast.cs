@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using RealmOne.Tiles;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -25,9 +26,8 @@ namespace RealmOne.Items.Food
                 new Color(137, 54, 0),
             };
             ItemID.Sets.IsFood[Type] = true;
-
-
         }
+
         public override void SetDefaults()
         {
             Item.DefaultToFood(22, 22, BuffID.WellFed2, 57600);
@@ -40,7 +40,6 @@ namespace RealmOne.Items.Food
             Item.rare = ItemRarityID.Green;
             Item.consumable = true;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_Toast");
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -51,17 +50,16 @@ namespace RealmOne.Items.Food
             line = new TooltipLine(Mod, "JamToast", "'Tastes like Australia!'")
             {
                 OverrideColor = new Color(220, 197, 73)
-
             };
             tooltips.Add(line);
         }
+
         public override void AddRecipes()
         {
-            CreateRecipe(3)
-            .AddIngredient(Mod, "BreadLoaf", 1)
-            .AddTile(TileID.Furnaces)
+            CreateRecipe(2)
+            .AddIngredient(Mod, "Wheat", 8)
+            .AddTile(ModContent.TileType<StoneOvenTilee>())
             .Register();
-
         }
     }
 }

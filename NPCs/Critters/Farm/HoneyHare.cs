@@ -20,15 +20,14 @@ namespace RealmOne.NPCs.Critters.Farm
             DisplayName.SetDefault("Honey Hare");
 
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.GoldBunny];
-
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            { // Influences how the NPC looks in the Bestiary
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                Velocity = 1f
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
+
             NPCID.Sets.CountsAsCritter[Type] = true;
             Main.npcCatchable[NPC.type] = true;
-
         }
 
         public override void SetDefaults()
@@ -50,10 +49,8 @@ namespace RealmOne.NPCs.Critters.Farm
             AIType = NPCID.Bunny;
             AnimationType = NPCID.Bunny;
             SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.Farm.FarmSurface>().Type };
-
-
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             Player player = spawnInfo.Player;
@@ -66,19 +63,16 @@ namespace RealmOne.NPCs.Critters.Farm
             return 0f;
         }
 
-
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-                  
                 new FlavorTextBestiaryInfoElement("This bunny got a bit too curious hanging around in the farm, its got a bucket full of honey wedged onto its head, and a beehive on its back!!??"),
-
             });
         }
+
         public override void AI()
         {
             NPC.spriteDirection = NPC.direction;
-
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -86,24 +80,18 @@ namespace RealmOne.NPCs.Critters.Farm
             npcLoot.Add(ItemDropRule.Common(ItemID.HoneyBucket, 5, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ItemID.BottomlessHoneyBucket, 30, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FarmKey>(), 35, 1, 1));
-
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-            
-                if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
-                {
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore1").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore2").Type, 1f);
+            if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+            {
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore1").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore2").Type, 1f);
 
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore3").Type, 1f);
-                    Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore4").Type, 1f);
-
-
-                }
-
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore3").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HoneyHareGore4").Type, 1f);
+            }
 
             for (int k = 0; k < 30; k++)
             {
@@ -114,7 +102,6 @@ namespace RealmOne.NPCs.Critters.Farm
         public override void OnKill()
         {
             Projectile.NewProjectile(NPC.GetSource_Death(), NPC.Center, NPC.velocity, ProjectileID.BeeHive, 10, 1);
-
         }
     }
 }

@@ -17,7 +17,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             + "\nShoots a poison petal");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -28,7 +27,7 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.height = 32;
             Item.useTime = 60;
             Item.useAnimation = 60;
-            //BOTH 60 
+            //BOTH 60
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2f;
             Item.value = 30000;
@@ -40,7 +39,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.shootSpeed = 55f;
 
             Item.shoot = ModContent.ProjectileType<FlowerBulletProjectile>();
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -76,7 +74,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 
             recipe1.AddTile(TileID.Anvils);
             recipe1.Register();
-
         }
 
         public override Vector2? HoldoutOffset()

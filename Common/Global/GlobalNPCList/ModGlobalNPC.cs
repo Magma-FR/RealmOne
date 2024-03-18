@@ -1,9 +1,8 @@
-﻿using RealmOne.Items.Accessories;
-using RealmOne.Items.Misc;
-using RealmOne.Items.Misc.EnemyDrops;
+﻿using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Opens;
 using RealmOne.Items.Placeables.Furniture.Paintings;
 using RealmOne.Items.Tools.Pick;
+using RealmOne.Items.Weapons.Magic;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -18,6 +17,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
         public override void ModifyShop(NPCShop shop)
         {
             if (shop.NpcType == NPCID.Merchant)
+
             {
                 // Adding an item to a vanilla NPC is easy:
                 // This item sells for the normal price.
@@ -32,6 +32,7 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 //Such an insult that you gave me smth so shrimple:sob::sob:sob:
             }
         }
+
         // ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
         // Here we go through all of them, and how they can be used.
         // There are tons of other examples in vanilla! In a decompiled vanilla build, GameContent/ItemDropRules/ItemDropDatabase adds item drops to every single vanilla NPC, which can be a good resource.
@@ -42,7 +43,6 @@ namespace RealmOne.Common.Global.GlobalNPCList
 				if (Main.netMode != NetmodeID.Server)
 				{
 					Main.NewText(Language.GetTextValue("The soil has been adhered, the ground has been enchanted!"), 71, 229, 231);
-
 				}
 			}*/
 
@@ -54,9 +54,9 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 if (Main.netMode != NetmodeID.Server)
                     Main.NewText(Language.GetTextValue("The seer of the land has been slayed, but you're still being watched."), 178, 30, 250);
 
-      //      if (npc.type == NPCID.EaterofWorldsHead)
-      //          if (Main.netMode != NetmodeID.Server)
-      //              Main.NewText(Language.GetTextValue("The vile, slithering worm of infection has been slaughtered, decreasing the spread of power of the corruption"), 200, 50, 230);
+            //      if (npc.type == NPCID.EaterofWorldsHead)x
+            //          if (Main.netMode != NetmodeID.Server)
+            //              Main.NewText(Language.GetTextValue("The vile, slithering worm of infection has been slaughtered, decreasing the spread of power of the corruption"), 200, 50, 230);
 
             if (npc.type == NPCID.BrainofCthulhu)
                 if (Main.netMode != NetmodeID.Server)
@@ -66,8 +66,12 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 if (Main.netMode != NetmodeID.Server)
                     Main.NewText(Language.GetTextValue("The grand protector of the hives has been killed, making insects favour you in positive or negatives ways"), 235, 221, 54);
         }
+
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
+            // 4  is the chance, so 4 chance of dropping it. And 1-2 is the amount you will probably get
+            //Blood Moon Drops
+
             //Evil Biome drops
 
             if (npc.type == NPCID.EaterofSouls)
@@ -109,65 +113,76 @@ namespace RealmOne.Common.Global.GlobalNPCList
 
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 4, 1, 3));
 
-
-
-
-
-
             //Hell Drops
-            if (npc.type == NPCID.Demon)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2)); // 4 and 1 is the chance, so 1 out of 4 chance of dropping it. And 2 is the amount you will probably get
-
-            if (npc.type == NPCID.Hellbat)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
-
-            if (npc.type == NPCID.LavaSlime)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
-
-            if (npc.type == NPCID.FireImp)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
-
-            if (npc.type == NPCID.BoneSerpentHead)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
-
-            if (npc.type == NPCID.VoodooDemon)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
-
-            if (npc.type == NPCID.Demon)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
-
+            /*     if (npc.type == NPCID.Demon)
+                 {
+                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
+                 }
+                 if (npc.type == NPCID.Hellbat)
+                 {
+                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
+                 }
+                 if (npc.type == NPCID.LavaSlime)
+                 {
+                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
+                 }
+                 if (npc.type == NPCID.FireImp)
+                 {
+                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 2));
+                 }
+                 if (npc.type == NPCID.BoneSerpentHead)
+                 {
+                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
+                 }
+                 if (npc.type == NPCID.VoodooDemon)
+                 {
+                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
+                 }
+                 if (npc.type == NPCID.Demon)
+                 {
+                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 4, 1, 3));
+                 }
+            */
             //Goblin Army
             if (npc.type == NPCID.GoblinArcher)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinPeon)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinScout)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
+            }
 
             if (npc.type == NPCID.GoblinThief)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinWarrior)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
-
+            }
             if (npc.type == NPCID.GoblinSorcerer)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 3));
+            }
 
             if (npc.type == NPCID.GoblinSummoner)
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GizmoScrap>(), 4, 1, 5));
+            }
 
+            if (npc.type == NPCID.GoblinSorcerer)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MagicGobBag>(), 50, 1, 1));
+            }
             if (npc.type == NPCID.ServantofCthulhu)
-
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshyCornea>(), 3, 1, 2));
+            }
 
             if (npc.type == NPCID.EyeofCthulhu)
             {
@@ -176,28 +191,15 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshyCornea>(), 1, 1, 10));
             }
 
-            if (npc.type == NPCID.WallofFlesh)
+            if (npc.type == NPCID.Vampire)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellishMembrane>(), 2, 1, 12));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1
             }
 
-            if (npc.type == NPCID.KingSlime)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RoyalRawhide>(), 2, 1, 1));
-
-            if (npc.type == NPCID.SkeletronHead)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DungeonPendant>(), 2, 1, 1));
-
-            if (npc.type == NPCID.Vampire)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1 
-
             if (npc.type == NPCID.VampireBat)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1 
-
-
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 1, 30)); //4 out of 1
+            }
 
             /*	public override void ModifyActiveShop(NPC npc, string shopName, Item[] items)
 				{
@@ -217,7 +219,6 @@ namespace RealmOne.Common.Global.GlobalNPCList
 						shop.item[nextSlot].shopCustomPrice = 2;
 
 						nextSlot++;
-
 					}
 
 					if (type == NPCID.Clothier)
@@ -231,14 +232,12 @@ namespace RealmOne.Common.Global.GlobalNPCList
 						// Editing item.value in SetupShop is an incorrect approach.
 
 						// This shop entry sells for 2 Defenders Medals
-
 					}
 					else if (type == NPCID.Merchant)
 					{
 						// You can use conditions to dynamically change items offered for sale in a shop
 						if (Main.dayTime == false && Main.hardMode == false)
 						{
-
 							shop.item[nextSlot].SetDefaults(ModContent.ItemType<IllicitStash>());
 							nextSlot++;
 						}

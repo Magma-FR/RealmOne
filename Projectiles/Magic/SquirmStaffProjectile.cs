@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class SquirmStaffProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -57,7 +56,6 @@ namespace RealmOne.Projectiles.Magic
 
                 if (target.CanBeChasedBy())
                 {
-
                     float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
 
                     if (sqrDistanceToTarget < sqrMaxDetectDistance)

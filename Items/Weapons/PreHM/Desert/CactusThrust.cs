@@ -36,10 +36,12 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             Item.shootSpeed = 10f;
             Item.shoot = ModContent.ProjectileType<CactusThrustProj>();
         }
+
         public override bool CanUseItem(Player player)
         {
             return player.ownedProjectileCounts[Item.shoot] < 1;
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

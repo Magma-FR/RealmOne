@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using RealmOne.Common.Events.CursedForest;
 using RealmOne.Items.ItemCritter;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -16,18 +17,16 @@ namespace RealmOne.NPCs.Enemies.Spiders
             DisplayName.SetDefault("Redback Spider");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.EyeballFlyingFish];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             NPCID.Sets.CountsAsCritter[Type] = true;
-
         }
 
         public override void SetDefaults()
         {
-
             NPC.catchItem = (short)ModContent.ItemType<RedbackSpiderItem>();
 
             NPC.width = 20;
@@ -43,11 +42,11 @@ namespace RealmOne.NPCs.Enemies.Spiders
             NPC.netUpdate = true;
             AIType = NPCID.WalkingAntlion;
             AnimationType = NPCID.EyeballFlyingFish;
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDay.Chance * 0.12f;
+            return spawnInfo.Player.ZoneForest && Main.dayTime && !CursedForestEvent.CursedForest && !spawnInfo.PlayerSafe ? 0.14f : 0f;
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -67,12 +66,11 @@ namespace RealmOne.NPCs.Enemies.Spiders
 				// so we use this line to tell the game to prioritize a specific InfoElement for sourcing the background image.
             });
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
 
                 var d = Dust.NewDustPerfect(NPC.position, DustID.Buggy, speed * 5, Scale: 0.5f);
@@ -80,12 +78,12 @@ namespace RealmOne.NPCs.Enemies.Spiders
                 d.noGravity = true;
             }
         }
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-
             npcLoot.Add(ItemDropRule.Common(ItemID.Cobweb, 3, 1, 3));
-
         }
+
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             // Here we can make things happen if this NPC hits a player via its hitbox (not projectiles it shoots, this is handled in the projectile code usually)

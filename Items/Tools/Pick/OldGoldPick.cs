@@ -18,7 +18,6 @@ namespace RealmOne.Items.Tools.Pick
              + "\n'Sells measily well!'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -48,13 +47,13 @@ namespace RealmOne.Items.Tools.Pick
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Collision.AnyCollision(Item.position + Item.velocity, Item.velocity, Item.width, Item.height);
             SoundEngine.PlaySound(SoundID.Item35, Item.position);
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(-1f, 1f);
 
                 var d = Dust.NewDustPerfect(target.position, DustID.Sandnado, speed * 5, Scale: 1.5f);
@@ -62,12 +61,14 @@ namespace RealmOne.Items.Tools.Pick
                 d.noGravity = true;
             }
         }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Sandnado, 0f, 0f, 230, default, 1f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 2f;
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -108,6 +109,7 @@ namespace RealmOne.Items.Tools.Pick
 
             return true;
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(6, 0);

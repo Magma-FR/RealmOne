@@ -22,7 +22,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             + "\n'The blunderbuss has been made with reckless care but still shoots out great power");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -45,13 +44,14 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             Item.crit = 4;
             Item.reuseDelay = 75;
             Item.noMelee = true;
-
         }
+
         public override bool? UseItem(Player player)
         {
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
             return true;
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             float numberProjectiles = 5 + Main.rand.Next(2); // 3, 4, or 5 shots
@@ -67,17 +67,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             {
                 Dust.NewDust(player.position, player.width, player.height, DustID.Smoke, 0f, 0f, 150, default, 3f);
                 Dust.NewDust(player.position, player.width, player.height, DustID.Torch, 0f, 0f, 150, default, 3f);
-
-            }
-
-            for (int i = 0; i < 50; i++)
-            {
-                Vector2 speed = Utils.RandomVector2(Main.rand, -10f, 1f);
-                var d = Dust.NewDustPerfect(Main.LocalPlayer.Center, DustID.Torch, speed * 10, Scale: 2.5f);
-
-
-
-                d.noGravity = true;
             }
 
             SoundEngine.PlaySound(rorAudio.blunderbussShot);
@@ -95,15 +84,12 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
              .AddIngredient(Mod, "BrassIngot", 6)
             .AddTile(TileID.Anvils)
             .Register();
-
-         
-
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(-10, -5);
             return offset;
         }
-
     }
 }

@@ -20,7 +20,6 @@ namespace RealmOne.Items.Weapons.Summoner
             Tooltip.SetDefault("'An unstable and live wire, containing many volts'"
                 + "\nHold to charge the whip, fully charging the whip increases the whips length by 40% and inflicts Electricity"
                 + "\nHas a multihit feature where the end of the whip increases in damage the amount of enemies you hit in a single row");
-
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -30,10 +29,8 @@ namespace RealmOne.Items.Weapons.Summoner
             line = new TooltipLine(Mod, "ExtensionCord", "'However, rats can connect many things together, building and multiplying at ease'")
             {
                 OverrideColor = new Color(141, 209, 169)
-
             };
             tooltips.Add(line);
-
         }
         public override void SetDefaults()
         {

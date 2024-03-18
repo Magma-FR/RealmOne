@@ -10,8 +10,6 @@ namespace RealmOne.Common
     {
         public override void PostWorldGen()
         {
-
-
             bool PlaceBlock(int baseCheckX, int baseCheckY)
             {
                 List<int> blocksallowed = new List<int> {

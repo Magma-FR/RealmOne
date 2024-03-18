@@ -15,26 +15,22 @@ namespace RealmOne.Items.Accessories
                  + "\n10% increased summon damage");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.width = 20;
             Item.height = 20;
             Item.value = 10000;
             Item.rare = ItemRarityID.Green;
             Item.accessory = true;
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-
             player.GetDamage(DamageClass.Summon) += 0.10f;
-
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
@@ -42,7 +38,6 @@ namespace RealmOne.Items.Accessories
             recipe.AddIngredient(ItemID.Wood, 6);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
-
         }
     }
 }

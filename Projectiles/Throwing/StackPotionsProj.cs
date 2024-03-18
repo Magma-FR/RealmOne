@@ -33,6 +33,7 @@ namespace RealmOne.Projectiles.Throwing
             Projectile.extraUpdates = 2;
             Projectile.CloneDefaults(ProjectileID.RottenEgg);
         }
+
         public override void AI()
         {
             if (Main.rand.NextBool(7))
@@ -41,7 +42,7 @@ namespace RealmOne.Projectiles.Throwing
             }
 
             Lighting.AddLight(Projectile.position, r: 0.8f, g: 0.8f, b: 0.8f);
-            ;
+
             Lighting.Brightness(1, 1);
 
             Dust.NewDust(Projectile.Right + Projectile.velocity, Projectile.width, Projectile.height, DustID.GreenTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.8f);
@@ -49,10 +50,9 @@ namespace RealmOne.Projectiles.Throwing
             Dust.NewDust(Projectile.Center + Projectile.velocity, Projectile.width, Projectile.height, DustID.PinkTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.8f);
         }
 
-        public override void Kill(int timeleft)
+        public override void OnKill(int timeleft)
 
         {
-
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Shatter, Projectile.position);
             SoundEngine.PlaySound(SoundID.Drip, Projectile.position);
@@ -119,13 +119,13 @@ namespace RealmOne.Projectiles.Throwing
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Left, Vector2.Zero, Mod.Find<ModGore>("PotionGore2").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("PotionGore3").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Right, Vector2.Zero, Mod.Find<ModGore>("PotionGore4").Type, 1f);
-
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.damage = 20;
         }
+
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             Projectile.damage = 0;

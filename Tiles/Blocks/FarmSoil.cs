@@ -11,7 +11,6 @@ namespace RealmOne.Tiles.Blocks
     {
         public override void SetStaticDefaults()
         {
-
             Main.tileSolid[Type] = true;
             Main.tileMerge[Type][Type] = true;
             Main.tileBlockLight[Type] = true;
@@ -23,14 +22,11 @@ namespace RealmOne.Tiles.Blocks
 
             DustType = DustID.Grass;
 
-
             MinPick = 20;
 
             LocalizedText name = CreateMapEntryName();
             name.SetDefault("Farm Soil");
             AddMapEntry(new Color(141, 135, 47), name);
-
-
         }
 
         public override void RandomUpdate(int i, int j)
@@ -39,8 +35,7 @@ namespace RealmOne.Tiles.Blocks
             Tile tileBelow = Framing.GetTileSafely(i, j + 1);
             Tile tileAbove = Framing.GetTileSafely(i, j - 1);
 
-
-            if (WorldGen.genRand.NextBool(25) && !tileAbove.HasTile && !(tileBelow.LiquidType == LiquidID.Lava))
+            if (WorldGen.genRand.NextBool(20) && !tileAbove.HasTile && !(tileBelow.LiquidType == LiquidID.Lava))
             {
                 if (!tile.BottomSlope && !tile.TopSlope && !tile.IsHalfBlock && !tile.TopSlope)
                 {
@@ -68,6 +63,5 @@ namespace RealmOne.Tiles.Blocks
                 }
             }
         }
-
     }
 }

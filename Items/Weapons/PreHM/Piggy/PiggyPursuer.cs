@@ -1,6 +1,3 @@
-using Microsoft.Xna.Framework;
-using RealmOne.Buffs;
-using RealmOne.Common.Systems;
 using RealmOne.Projectiles.HeldProj;
 using Terraria;
 using Terraria.Audio;
@@ -19,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
              + "\n'And I Huff and I puff and I blow your house down!!'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -41,7 +37,6 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
             Item.shoot = ModContent.ProjectileType<PiggyPursuerHeld>();
             Item.shootSpeed = 20f;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_MetalSwing");
-
         }
 
         public override bool CanUseItem(Player player)
@@ -51,8 +46,6 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
 
         public override bool? UseItem(Player player)
         {
-            
-
             return base.UseItem(player);
         }
 
@@ -65,7 +58,5 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
-
-       
     }
 }

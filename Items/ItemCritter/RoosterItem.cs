@@ -10,8 +10,8 @@ namespace RealmOne.Items.ItemCritter
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rooster");
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 24;
@@ -25,7 +25,7 @@ namespace RealmOne.Items.ItemCritter
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.value = Item.sellPrice(gold: 2, silver: 2);
+            Item.value = Item.sellPrice(gold: 1, silver: 2);
         }
 
         public override bool? UseItem(Player player)

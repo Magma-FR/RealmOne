@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework.Graphics;
+/*using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent;
@@ -19,29 +19,24 @@ namespace RealmOne.Items.Accessories
               + "\nThese stats are better in the day");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.width = 20;
             Item.height = 20;
             Item.value = 10000;
             Item.rare = ItemRarityID.Orange;
             Item.accessory = true;
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-
             if (Main.dayTime)
             {
                 player.GetAttackSpeed(DamageClass.Generic) += 0.5f;
                 player.nightVision = true;
             }
-
             else
             {
                 player.GetDamage(DamageClass.Generic) += 0.25f;
@@ -127,4 +122,4 @@ namespace RealmOne.Items.Accessories
             balls.Register();
         }
     }
-}
+}*/

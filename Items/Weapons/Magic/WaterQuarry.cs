@@ -9,10 +9,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.Magic
 {
-
     public class WaterQuarry : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Water's Quarry"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -20,7 +18,6 @@ namespace RealmOne.Items.Weapons.Magic
                 + "\nShoots out a reckless and powerful swishing ball of water"
                 + "\nThe water swish explodes in a large radius");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -51,7 +48,6 @@ namespace RealmOne.Items.Weapons.Magic
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -68,7 +64,5 @@ namespace RealmOne.Items.Weapons.Magic
 
             return true;
         }
-
-
     }
 }*/

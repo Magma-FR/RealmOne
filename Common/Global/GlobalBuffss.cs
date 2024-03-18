@@ -10,7 +10,6 @@ namespace RealmOne.Common.Global
 {
     public class GlobalBuffss : GlobalBuff
     {
-
         public class ThornsPotionChange : GlobalBuff
         {
             public override void Update(int type, Player player, ref int buffIndex)
@@ -20,12 +19,9 @@ namespace RealmOne.Common.Global
             }
         }
 
-
-
         public class ThornsPotionChangePlayer : ModPlayer
         {
             public bool thornsPoisoned;
-
 
             public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
             {
@@ -39,9 +35,9 @@ namespace RealmOne.Common.Global
                     target.AddBuff(BuffID.Poisoned, 500);
             }
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, int type, int buffIndex, ref BuffDrawParams drawParams)
         {
-
             if (type == ModContent.BuffType<HazardBuff>())
             {
                 drawParams.DrawColor = Main.DiscoColor * Main.buffAlpha[buffIndex];
@@ -53,16 +49,5 @@ namespace RealmOne.Common.Global
             }
             return true;
         }
-
     }
-
-
-
-
 }
-
-
-
-
-
-

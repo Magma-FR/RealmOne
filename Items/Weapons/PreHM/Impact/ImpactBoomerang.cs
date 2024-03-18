@@ -1,11 +1,15 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Projectiles.Returning;
+using RealmOne.Common.Core.ParticleContent;
+using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Common.Systems;
+using RealmOne.RealmPlayer;
+using ReLogic.Content;
 using Terraria;
-using Terraria.GameContent;
-using Terraria.GameContent.Creative;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.Impact
 {
@@ -13,107 +17,167 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Impact Techarang"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("Throws a frigid and dark boomerang that homes onto enemies"
-                + "\nIf the boomerang hits a tile, it will summon an electrical current"
-                + "\nThis electrical current will go the opposite way of the boomerang"
-                + "\nInflicts Electrified");
 
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            Item.ResearchUnlockCount = 1;
+            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactBoomerang_Glow");
 
         }
 
         public override void SetDefaults()
         {
-            Item.damage = 12;
+            Item.damage = 13;
             Item.DamageType = DamageClass.Melee;
             Item.width = 24;
             Item.height = 24;
-            Item.useTime = 30;
-            Item.useAnimation = 30;
+            Item.useTime = 26;
+            Item.useAnimation = 26;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.knockBack = 2;
-            Item.value = 10000;
+            Item.knockBack = 1;
+            Item.value = Item.buyPrice(0, 0, 12, 0);
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.maxStack = 1;
-            Item.shoot = ModContent.ProjectileType<ColdHuntBoomerangProj>();
+            Item.shoot = ModContent.ProjectileType<ImpactBoomerangProj>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.shootSpeed = 17f;
-
+            Item.shootSpeed = 14f;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(Mod, "ImpactTech", 10 );
+            recipe.AddIngredient(Mod, "ImpactTech", 10);
 
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-
         }
 
-        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = TextureAssets.Item[Item.type].Value;
+            Texture2D texture = Request<Texture2D>("RealmOne/Items/Weapons/PreHM/Impact/ImpactBoomerang_Glow", AssetRequestMode.ImmediateLoad).Value;
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
+                    Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
 
-            Rectangle frame;
+                Color.LightCyan,
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
 
-            if (Main.itemAnimations[Item.type] != null)
-                frame = Main.itemAnimations[Item.type].GetFrame(texture, Main.itemFrameCounter[whoAmI]);
-            else
-                frame = texture.Frame();
 
-            Vector2 frameOrigin = frame.Size() / 2f;
-            var offset = new Vector2(Item.width / 2 - frameOrigin.X, Item.height - frame.Height);
-            Vector2 drawPos = Item.position - Main.screenPosition + frameOrigin + offset;
+    }
+    internal class ImpactBoomerangProj : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 16;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
 
-            float time = Main.GlobalTimeWrappedHourly;
-            float timer = Item.timeSinceItemSpawned / 240f + time * 0.04f;
+        public override void SetDefaults()
+        {
+            Projectile.width = 14;
+            Projectile.height = 14;
+            Projectile.aiStyle = 3;
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 600;
+            Projectile.scale = 1f;
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            SoundEngine.PlaySound(rorAudio.SawbladeRev, Projectile.position);
 
-            time %= 4f;
-            time /= 2f;
-
-            if (time >= 1f)
-                time = 2f - time;
-
-            time = time * 0.5f + 0.5f;
-
-            for (float i = 0f; i < 1f; i += 0.25f)
+            for (int i = 0; i < 5; i++)
             {
-                float radians = (i + timer) * MathHelper.TwoPi;
-                spriteBatch.Draw(texture, drawPos + new Vector2(0f, 8f).RotatedBy(radians) * time, frame, new Color(20, 170, 250, 70), rotation, frameOrigin, scale, SpriteEffects.None, 0);
+                SparkleParticle sparkle = new(Color.LightSkyBlue, 1, new Vector2(Projectile.Center.X + Main.rand.Next(-30, 30), Projectile.Center.Y), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
+
+                ParticleSystem.GenerateParticle(sparkle);
+            }
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+
+            return false;
+        }
+        public override void AI()
+        {
+
+
+            float maxDetectRadius = 300;
+            float projSpeed = 16;
+
+            NPC closestNPC = FindClosestNPC(maxDetectRadius);
+            if (closestNPC == null)
+                return;
+
+            Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+        }
+
+        public NPC FindClosestNPC(float maxDetectDistance)
+        {
+            NPC closestNPC = null;
+
+            float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;
+
+            for (int k = 0; k < Main.maxNPCs; k++)
+            {
+                NPC target = Main.npc[k];
+
+                if (target.CanBeChasedBy())
+                {
+                    float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
+
+                    if (sqrDistanceToTarget < sqrMaxDetectDistance)
+                    {
+                        sqrMaxDetectDistance = sqrDistanceToTarget;
+                        closestNPC = target;
+                    }
+                }
             }
 
-            for (float i = 0f; i < 1f; i += 0.34f)
+            return closestNPC;
+        }
+
+        private Player player => Main.player[Projectile.owner];
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D texture = Request<Texture2D>("RealmOne/Assets/Effects/GlowLight").Value;
+            for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
-                float radians = (i + timer) * MathHelper.TwoPi;
-                spriteBatch.Draw(texture, drawPos + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(70, 120, 190, 77), rotation, frameOrigin, scale, SpriteEffects.None, 0);
+                var offset = new Vector2(Projectile.width / 2f, Projectile.height / 2f);
+                var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
+                Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + offset;
+                float sizec = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 0.5f);
+                Color color = new Color(30, 183, 237) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.oldRot[k], frame.Size() / 2f, sizec, SpriteEffects.None, 0);
             }
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
 
             return true;
         }
-        public override void PostUpdate()
+        public override void OnKill(int timeLeft)
         {
-            Lighting.AddLight(Item.Center, Color.AliceBlue.ToVector3() * 0.4f);
 
-            if (Item.timeSinceItemSpawned % 12 == 0)
-            {
-                Vector2 center = Item.Center + new Vector2(0f, Item.height * -0.1f);
-
-                Vector2 direction = Main.rand.NextVector2CircularEdge(Item.width * 0.6f, Item.height * 0.6f);
-                float distance = 0.3f + Main.rand.NextFloat() * 0.5f;
-                var velocity = new Vector2(0f, -Main.rand.NextFloat() * 0.3f - 1.5f);
-
-                var dust = Dust.NewDustPerfect(center + direction * distance, DustID.IceGolem, velocity);
-                dust.scale = 0.9f;
-                dust.fadeIn = 1.1f;
-                dust.noGravity = true;
-                dust.noLight = true;
-                dust.alpha = 0;
-            }
         }
     }
 }
+

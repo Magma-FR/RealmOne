@@ -1,6 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,8 +7,6 @@ namespace RealmOne.Projectiles.Bullet
 {
     public class FlamerProj : ModProjectile
     {
-        //  public ref float Progress => ref Projectile.ai[0];
-        private static Asset<Texture2D> Flamer;
 
         public override void SetStaticDefaults()
         {
@@ -38,12 +34,10 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.scale = 2f;
             Projectile.light = 2f;
             AIType = ProjectileID.Bullet;
-
         }
 
         public override void AI()
         {
-
             if (++Projectile.frameCounter >= 14f)//the amount of ticks the game spends on each frame
             {
                 Projectile.frameCounter = 0;
@@ -80,11 +74,10 @@ namespace RealmOne.Projectiles.Bullet
             Main.dust[dustIndex].noGravity = true;
             Main.dust[dustIndex].position = Projectile.Center + new Vector2(0f, (float)(-(float)Projectile.height / 2)).RotatedBy(Projectile.rotation, default) * 1.1f;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.OnFire3, 160);
-
         }
     }
 }
-

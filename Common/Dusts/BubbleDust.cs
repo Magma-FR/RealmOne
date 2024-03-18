@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-
-namespace RealmOne.Common.Dusts
+﻿namespace RealmOne.Common.Dusts
 {
     /*public class BubbleDust : ModDust
     {

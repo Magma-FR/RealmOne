@@ -14,7 +14,6 @@ namespace RealmOne.Items.Tools.Axe
             Tooltip.SetDefault("'Cuts through anything!'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -36,10 +35,7 @@ namespace RealmOne.Items.Tools.Axe
             Item.crit = 6;
             Item.useTurn = true;
             Item.value = Item.buyPrice(gold: 1, silver: 40, copper: 80);
-
         }
-
-
 
         public override void AddRecipes()
         {
@@ -53,13 +49,8 @@ namespace RealmOne.Items.Tools.Axe
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-
             Collision.AnyCollision(Item.position + Item.velocity, Item.velocity, Item.width, Item.height);
             SoundEngine.PlaySound(SoundID.Item53);
         }
-
-
-
-
     }
 }

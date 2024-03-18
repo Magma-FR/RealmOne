@@ -4,19 +4,19 @@ using RealmOne.Common.Core;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
+
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class ConeFlash : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Muzzle Flash");
         }
+
         private Vector2 flashoffset = Vector2.Zero;
 
         public override string Texture => Helper.Empty;
-
 
         private Player Owner => Main.player[Projectile.owner];
 
@@ -34,12 +34,10 @@ namespace RealmOne.Projectiles.Bullet
             Projectile.alpha = 255;
             Projectile.netImportant = true;
             Projectile.netUpdate = true;
-
         }
 
         public override void AI()
         {
-
             Player player = Main.player[Projectile.owner];
 
             Lighting.AddLight(Projectile.Center, Color.Orange.ToVector3() * 0.8f);
@@ -68,4 +66,3 @@ namespace RealmOne.Projectiles.Bullet
         }
     }
 }
-

@@ -15,7 +15,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.Hell
 {
-
     public class TorchedTextbook : ModItem
     {
         public override void SetStaticDefaults()
@@ -24,8 +23,8 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
             DisplayName.SetDefault("Torched Textbook");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Hell/TorchedTextbook_Glow");
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 30;
@@ -48,11 +47,13 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
 
             Item.shoot = ProjectileID.Hellwing;
         }
+
         public override bool OnPickup(Player player)
         {
             SoundEngine.PlaySound(SoundID.Item73);
             return true;
         }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = Request<Texture2D>("RealmOne/Items/Weapons/PreHM/Hell/TorchedTextbook_Glow", AssetRequestMode.ImmediateLoad).Value;
@@ -115,6 +116,7 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.Orange.ToVector3() * 1f);
@@ -144,19 +146,17 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
             line = new TooltipLine(Mod, "TorchedTextbook", "Read with heat")
             {
                 OverrideColor = new Color(255, 87, 51)
-
             };
             tooltips.Add(line);
 
             line = new TooltipLine(Mod, "TorchedTextbook", "'Turn to page -666 for instant human combustion'")
             {
                 OverrideColor = new Color(223, 159, 103)
-
             };
 
             tooltips.Add(line);
-
         }
+
         public override void AddRecipes()
         {
             CreateRecipe(1)
@@ -167,16 +167,16 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
 
             .AddTile(TileID.Anvils)
             .Register();
-
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(-1, 0);
             return offset;
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;

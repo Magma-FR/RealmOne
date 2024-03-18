@@ -1,8 +1,5 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using RealmOne.Common.Systems;
 using RealmOne.Projectiles.Other;
-using RealmOne.RealmPlayer;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -13,17 +10,16 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
 {
     public class CoindropWand : ModItem
     {
-        bool set = false;
-        Vector2 mouse;
-        int coin = 0;
-        int triggerAmount = 0;
+        private bool set = false;
+        private Vector2 mouse;
+        private int coin = 0;
+        private int triggerAmount = 0;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Coindrop Wand");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -84,9 +80,7 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
                         Projectile.NewProjectile(p.GetSource_FromThis(), new Vector2(SpawnLoc.X + Main.rand.Next(1, 193), SpawnLoc.Y), new Vector2(0, 9f), ModContent.ProjectileType<CopperCoinFriendly>(), Item.damage, 6f, Main.myPlayer);
                     }
                 }
-
             }
-
 
             set = false;
             return false;

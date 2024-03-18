@@ -9,12 +9,10 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.BossDrops.OutcastDrops
 {
-
     public class Overgrowth : ModItem
     {
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Overgrowth");
             Tooltip.SetDefault("Conjure a large swarm of foliage to damage enemies"
                 + "\n'This is what happens when you dont take care of your backyard'"
@@ -46,7 +44,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.OutcastDrops
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 target = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
             float ceilingLimit = target.Y;
             if (ceilingLimit > player.Center.Y - 200f)

@@ -15,7 +15,6 @@ namespace RealmOne.Items.PaperUI
             DisplayName.SetDefault("The World we live in - H.P Lovecraft"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
 
             Tooltip.SetDefault("Open a scroll of Lovecraft's Ancient Scripts.");
-
         }
 
         public override void SetDefaults()
@@ -32,6 +31,7 @@ namespace RealmOne.Items.PaperUI
             Item.reuseDelay = 29;
             Item.noUseGraphic = true;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()

@@ -15,7 +15,7 @@ namespace RealmOne.NPCs.Enemies
             DisplayName.SetDefault("Ele-Jelly");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BlueJellyfish];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -36,8 +36,8 @@ namespace RealmOne.NPCs.Enemies
             AIType = NPCID.BlueJellyfish;
             AnimationType = NPCID.BlueJellyfish;
             NPC.npcSlots = 0;
-
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return spawnInfo.Water ? 0.6f : 0f;
@@ -50,8 +50,6 @@ namespace RealmOne.NPCs.Enemies
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
 
                 new FlavorTextBestiaryInfoElement("A more reckless and more conductive jellyfish, this jellyfish does a major amount of damage compared to other jellies."),
-
-
             });
         }
 
@@ -59,12 +57,10 @@ namespace RealmOne.NPCs.Enemies
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EleJelly>(), 1, 5, 10));
             npcLoot.Add(ItemDropRule.Common(ItemID.Glowstick, 2, 3, 6));
-
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             for (int k = 0; k < 16; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
@@ -75,6 +71,7 @@ namespace RealmOne.NPCs.Enemies
         {
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.2f, b: 1.1f);
         }
+
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             // Here we can make things happen if this NPC hits a player via its hitbox (not projectiles it shoots, this is handled in the projectile code usually)

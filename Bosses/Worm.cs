@@ -11,7 +11,6 @@ namespace RealmOne.Bosses
 {
     public enum WormSegmentType
     {
-
         Head,
 
         Body,
@@ -19,10 +18,8 @@ namespace RealmOne.Bosses
         Tail
     }
 
-
     public abstract class Worm : ModNPC
     {
-
         public abstract WormSegmentType SegmentType { get; }
 
         /// <summary>
@@ -57,7 +54,7 @@ namespace RealmOne.Bosses
 
         private bool startDespawning;
 
-        public sealed override bool PreAI()
+        public override sealed bool PreAI()
         {
             if (NPC.localAI[1] == 0)
             {
@@ -97,9 +94,11 @@ namespace RealmOne.Bosses
         }
 
         // Not visible to public API, but is used to indicate what AI to run
-        internal virtual void HeadAI() { }
+        internal virtual void HeadAI()
+        { }
 
-        internal virtual void BodyTailAI() { }
+        internal virtual void BodyTailAI()
+        { }
 
         public abstract void Init();
     }
@@ -109,7 +108,7 @@ namespace RealmOne.Bosses
     /// </summary>
     public abstract class WormHead : Worm
     {
-        public sealed override WormSegmentType SegmentType => WormSegmentType.Head;
+        public override sealed WormSegmentType SegmentType => WormSegmentType.Head;
 
         /// <summary>
         /// The NPCID or ModContent.NPCType for the body segment NPCs.<br/>
@@ -145,7 +144,7 @@ namespace RealmOne.Bosses
         public virtual int MaxDistanceForUsingTileCollision => 1000;
 
         /// <summary>
-        /// Whether the NPC uses 
+        /// Whether the NPC uses
         /// </summary>
         public virtual bool HasCustomBodySegments => false;
 
@@ -191,7 +190,7 @@ namespace RealmOne.Bosses
             return latestNPC;
         }
 
-        internal sealed override void HeadAI()
+        internal override sealed void HeadAI()
         {
             HeadAI_SpawnSegments();
 
@@ -539,7 +538,7 @@ namespace RealmOne.Bosses
 
     public abstract class WormBody : Worm
     {
-        public sealed override WormSegmentType SegmentType => WormSegmentType.Body;
+        public override sealed WormSegmentType SegmentType => WormSegmentType.Body;
 
         internal override void BodyTailAI()
         {
@@ -593,7 +592,7 @@ namespace RealmOne.Bosses
     // Since the body and tail segments share the same AI
     public abstract class WormTail : Worm
     {
-        public sealed override WormSegmentType SegmentType => WormSegmentType.Tail;
+        public override sealed WormSegmentType SegmentType => WormSegmentType.Tail;
 
         internal override void BodyTailAI()
         {

@@ -21,7 +21,6 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             ItemID.Sets.GamepadSmartQuickReach[Item.type] = true;
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -44,14 +43,15 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             Item.channel = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-
         }
+
         private static readonly int[] unwantedPrefixes = new int[] { PrefixID.Terrible, PrefixID.Dull, PrefixID.Shameful, PrefixID.Annoying, PrefixID.Broken, PrefixID.Damaged, PrefixID.Shoddy };
 
         public override bool MeleePrefix()
         {
             return true;
         }
+
         public override bool AllowPrefix(int pre)
         {
             // return false to make the game reroll the prefix

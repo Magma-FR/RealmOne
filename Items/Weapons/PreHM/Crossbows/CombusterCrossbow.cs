@@ -9,10 +9,8 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.Crossbows
 {
-
     public class CombusterCrossbow : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Combuster Crossbow");
@@ -20,7 +18,6 @@ namespace RealmOne.Items.Weapons.PreHM.Crossbows
                 + "\nThe crossbow shoots out 2 crossbolts, having to let go of the button and reload"
                 + "\nThe crossbow is equipped with a helpful scope to zoom out and scout further out");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -43,7 +40,6 @@ namespace RealmOne.Items.Weapons.PreHM.Crossbows
             Item.noUseGraphic = true;
             Item.channel = true;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_CrossbowLoad");
-
         }
 
         /*public override bool AltFunctionUse(Player player)
@@ -60,7 +56,6 @@ namespace RealmOne.Items.Weapons.PreHM.Crossbows
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;

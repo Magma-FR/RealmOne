@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne;
-using RealmOne.Projectiles.Magic;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
@@ -11,14 +9,13 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Sets.SunflowerSet
 {
-    public class SpinFlower: ModProjectile
+    public class SpinFlower : ModProjectile
     {
         private static Asset<Texture2D> Sun;
 
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 19;
-
         }
 
         public override void SetDefaults()
@@ -32,7 +29,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Projectile.tileCollide = false;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.MaxMana, Projectile.position);
             for (int i = 0; i < 8; i++)
@@ -45,7 +42,6 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("SunflowerGore2").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("SunflowerGore3").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("SunflowerGore4").Type, 1f);
-
 
             for (int i = 0; i < 130; i++)
             {
@@ -64,7 +60,6 @@ namespace RealmOne.Items.Sets.SunflowerSet
         public override void AI()
         {
             Lighting.AddLight(Projectile.position, r: 0.35f, g: 0.2f, b: 0.05f);
-           
 
             if (++Projectile.frameCounter >= 20f)
             {
@@ -73,15 +68,15 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 if (++Projectile.frame >= Main.projFrames[Projectile.type])
                     Projectile.frame = 0;
             }
-
-      
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override void Load()
-        { // This is called once on mod (re)load when this piece of content is being loaded.    
+        { // This is called once on mod (re)load when this piece of content is being loaded.
           // This is the path to the texture that we'll use for the hook's chain. Make sure to update it.
             Sun = Request<Texture2D>("RealmOne/Assets/Effects/Sunny");
         }

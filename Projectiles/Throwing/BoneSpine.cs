@@ -28,9 +28,9 @@ namespace RealmOne.Projectiles.Throwing
             Projectile.extraUpdates = 1;
             Projectile.light = 0;
         }
+
         public override void AI()
         {
-
             if (Main.rand.NextBool(1))
             {
                 int dust = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Bone, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
@@ -38,9 +38,9 @@ namespace RealmOne.Projectiles.Throwing
                 Main.dust[dust].noGravity = true;
             }
         }
-        public override void Kill(int timeLeft)
-        {
 
+        public override void OnKill(int timeLeft)
+        {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("BoneSpineGore1").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("BoneSpineGore2").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("BoneSpineGore3").Type, 1f);

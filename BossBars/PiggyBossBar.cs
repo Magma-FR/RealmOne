@@ -8,11 +8,9 @@ using Terraria.ModLoader;
 
 namespace RealmOne.BossBars
 {
-
     public class PiggyBossBar : ModBossBar
     {
         private int bossHeadIndex = -1;
-
 
         public override Asset<Texture2D> GetIconTexture(ref Rectangle? iconFrame)
         {
@@ -26,7 +24,6 @@ namespace RealmOne.BossBars
 
         public override bool? ModifyInfo(ref BigProgressBarInfo info, ref float life, ref float lifeMax, ref float shield, ref float shieldMax)
         {
-
             NPC npc = Main.npc[info.npcIndexToAimAt];
             if (!npc.active)
             {
@@ -37,7 +34,6 @@ namespace RealmOne.BossBars
             lifeMax = npc.lifeMax;
             bossHeadIndex = npc.GetBossHeadTextureIndex();
 
-            
             return true;
         }
     }

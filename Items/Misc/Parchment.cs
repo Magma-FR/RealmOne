@@ -15,7 +15,6 @@ namespace RealmOne.Items.Misc
                 + "\n'Animal-free Parchment is used'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
-
         }
 
         public override void SetDefaults()
@@ -25,8 +24,8 @@ namespace RealmOne.Items.Misc
             Item.value = Item.buyPrice(copper: 69);
             Item.rare = ItemRarityID.White;
             Item.maxStack = 999;
-
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()

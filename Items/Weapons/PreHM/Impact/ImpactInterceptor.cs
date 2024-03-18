@@ -3,12 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Buffs.Debuffs;
 using RealmOne.Common.Core;
 using RealmOne.Common.Systems;
-using RealmOne.Projectiles.Magic;
 using RealmOne.RealmPlayer;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,7 +14,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.Impact
 {
-
     public class ImpactInterceptor : ModItem
     {
         public override void SetStaticDefaults()
@@ -27,8 +24,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 + "\n'No WIFI password required'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactInterceptor_Glow");
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 32;
@@ -50,7 +47,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.shoot = ProjectileType<ImpactSonarShot>();
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_Sonar");
             Item.scale = 1f;
-
         }
 
         public override Vector2? HoldoutOffset()
@@ -58,7 +54,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             var offset = new Vector2(1, 0);
             return offset;
         }
-
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -88,6 +83,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
             return true;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe(1)
@@ -95,12 +91,13 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
             .AddTile(TileID.Anvils)
             .Register();
-
         }
     }
+
     public class ImpactSonarShot : ModProjectile
     {
         public override string Texture => Helper.Empty;
+
         public override void SetDefaults()
         {
             Projectile.height = 400;
@@ -110,6 +107,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Projectile.penetrate = -2;
             Projectile.tileCollide = false;
         }
+
         public override void AI()
         {
             Projectile.ai[0] += 0.05f;
@@ -118,27 +116,30 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 Projectile.Kill();
             }
         }
+
         public override void PostAI()
         {
             if (Projectile.ai[1] == 1)
                 Projectile.damage = 0;
         }
-     
+
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D tex= Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
+            Texture2D tex = Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
             Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0,  Projectile.ai[0]);
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.ai[0]);
             for (int i = 0; i < 3; i++)
-                Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, Color.Cyan*(3-alpha), Projectile.rotation, tex.Size() / 2, Projectile.ai[0], SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, Color.Cyan * (3 - alpha), Projectile.rotation, tex.Size() / 2, Projectile.ai[0], SpriteEffects.None, 0);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); return false;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hitinfo, int damage)
         {
             Projectile.ai[1] = 1;
             target.AddBuff(BuffType<AltElectrified>(), 180);
         }
+
         public override bool ShouldUpdatePosition()
         {
             return false;

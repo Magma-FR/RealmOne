@@ -16,6 +16,7 @@ namespace RealmOne.Projectiles.Piggy
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 14;
@@ -51,7 +52,6 @@ namespace RealmOne.Projectiles.Piggy
 
         public override void AI()
         {
-
             if (++Projectile.frameCounter >= 5)
             {
                 Projectile.frameCounter = 0;
@@ -60,7 +60,7 @@ namespace RealmOne.Projectiles.Piggy
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             int num553 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Platinum);
             Main.dust[num553].noGravity = true;

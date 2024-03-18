@@ -18,7 +18,6 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
                 + "\nRight Click to Drink a random potion");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-
         }
 
         public override void SetDefaults()
@@ -52,7 +51,6 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
         {
             if (player.altFunctionUse == 2)
             {
-
                 Item.useStyle = ItemUseStyleID.DrinkLiquid;
                 Item.useTime = 48;
                 Item.useAnimation = 48;
@@ -93,9 +91,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
                 if (Main.rand.NextBool(5))
                     player.AddBuff(BuffID.NightOwl, 240);
-
             }
-
             else
             {
                 Item.damage = 20;

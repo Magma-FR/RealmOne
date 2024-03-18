@@ -4,8 +4,6 @@ using RealmOne.Items.Accessories;
 using RealmOne.Items.Ammo;
 using RealmOne.Items.Weapons.Melee;
 using RealmOne.Items.Weapons.PreHM.Crossbows;
-using RealmOne.Items.Weapons.PreHM.Forest;
-using RealmOne.Items.Weapons.PreHM.Shotguns;
 using RealmOne.RealmPlayer;
 using System.Collections.Generic;
 using Terraria;
@@ -26,9 +24,8 @@ namespace RealmOne.Items.Opens
 
                 + "\nBelow are the Weapons you get from it!(You also get other necessities!)"
 
-             + $"\n[i:{ModContent.ItemType<DualWieldCrossbows>()}][i:{ModContent.ItemType<HPChainShot>()}]"
-                          + $"\n[i:{ModContent.ItemType<ShatteredGemBlade>()}][i:{ModContent.ItemType<EmptyLocket>()}]");
-
+             + $"\n[i:{ModContent.ItemType<DualWieldCrossbows>()}]"
+                          + $"\n[i:{ModContent.ItemType<GildedGladius>()}][i:{ModContent.ItemType<EmptyLocket>()}]");
         }
 
         public override void SetDefaults()
@@ -38,12 +35,13 @@ namespace RealmOne.Items.Opens
             Item.rare = ItemRarityID.Expert;
             Item.consumable = true;
             Item.maxStack = 1;
-
         }
+
         public override bool CanRightClick()
         {
             return true;
         }
+
         public override bool? UseItem(Player player)
         {
             if (player.whoAmI == Main.myPlayer)
@@ -63,14 +61,11 @@ namespace RealmOne.Items.Opens
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore1);
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore2);
                     Gore.NewGore(entitySource, player.position, new Vector2(Main.rand.Next(0, 0), Main.rand.Next(0, 0)), CarrotGore3);
-
-
-
-
                 }
             }
             return true;
         }
+
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
             itemLoot.Add(ItemDropRule.Common(ItemID.WoodenArrow, 1, 50, 50));
@@ -79,17 +74,15 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.MiningPotion, 1, 5, 5));
             itemLoot.Add(ItemDropRule.Common(ItemID.Bomb, 1, 15, 15));
             itemLoot.Add(ItemDropRule.Common(ItemID.SpelunkerPotion, 1, 5, 5));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ShatteredGemBlade>(), 1, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DualWieldCrossbows>(), 1, 1, 1));
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GildedGladius>(), 1, 1, 1));
+
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmptyLocket>(), 1, 1, 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.SalmonAvoSushi>(), 1, 1, 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.TunaAndAvacado>(), 1, 1, 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<HPChainShot>(), 1, 1, 1));
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.ForestTea>(), 1, 1, 1));
+
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<RustedBullets>(), 1, 50, 50));
-
-
-
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -130,6 +123,7 @@ namespace RealmOne.Items.Opens
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.Teal.ToVector3() * 0.4f);
@@ -150,6 +144,7 @@ namespace RealmOne.Items.Opens
                 dust.alpha = 0;
             }
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Here we add a tooltipline that will later be removed, showcasing how to remove tooltips from an item
@@ -158,10 +153,8 @@ namespace RealmOne.Items.Opens
             line = new TooltipLine(Mod, "Suitcase", "You gotta frickin smash the thing for it to open!!!")
             {
                 OverrideColor = new Color(107, 234, 186)
-
             };
             tooltips.Add(line);
-
         }
     }
 }

@@ -18,7 +18,6 @@ namespace RealmOne.Items.Weapons.Magic
             DisplayName.SetDefault("Haemocele Glob Scepter");
             Tooltip.SetDefault("Shoots out an icky glob of ichor that splits into 3 exploding chunks of ichor");
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/Magic/IchorGlobScepter_Glow");
-
         }
 
         public override void SetDefaults()
@@ -41,7 +40,6 @@ namespace RealmOne.Items.Weapons.Magic
             Item.autoReuse = true;
             Item.DamageType = DamageClass.Magic;
             Item.channel = true;
-
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -78,15 +76,10 @@ namespace RealmOne.Items.Weapons.Magic
             return false;
         }
 
-
         public override bool CanUseItem(Player player)
         {
-
             return player.ownedProjectileCounts[Item.shoot] < 1;
-
         }
-
-
     }
 }
 */

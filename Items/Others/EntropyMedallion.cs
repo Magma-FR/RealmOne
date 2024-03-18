@@ -33,7 +33,6 @@ namespace RealmOne.Items.Others
             + "\n'I've always wondered how far you will go, pathetic!'"
            + "\n**TEST ITEM!! DOES NOT FULLY WORK**");
             */
-
         }
 
         public override void SetDefaults()
@@ -52,6 +51,7 @@ namespace RealmOne.Items.Others
             Item.shoot = ModContent.ProjectileType<IdolProj>();
             Item.shootSpeed = 0.5f;
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             var tooltip = tooltips.Where((line => line.Name == "Tooltip0")).FirstOrDefault();
@@ -72,8 +72,8 @@ namespace RealmOne.Items.Others
 
                 "Toggles Transcendental Entropy Mode."
                + "\nPress [c/22ff22:SHIFT to reveal info]";
-
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

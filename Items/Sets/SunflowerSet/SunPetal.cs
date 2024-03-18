@@ -8,8 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Sets.SunflowerSet
 {
-
-    public class SunPetal: ModProjectile
+    public class SunPetal : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -26,11 +25,11 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 400;
-            AIType = ProjectileID.PaperAirplaneA;
             Projectile.extraUpdates = 1;
             Projectile.tileCollide = false;
             Projectile.aiStyle = ProjAIStyleID.PaperPlane;
         }
+
         public override void AI()
         {
             Vector2 center = Projectile.Center;
@@ -42,13 +41,11 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 Main.dust[dust1].noLight = false;
 
                 Vector2 speed = Main.rand.NextVector2CircularEdge(0.25f, 0.25f);
-
             }
 
             Lighting.AddLight(Projectile.position, 0.3f, 0.2f, 0.1f);
-
-         
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -70,7 +67,8 @@ namespace RealmOne.Items.Sets.SunflowerSet
 
             return true;
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("SunflowerGore4").Type, 1f);
             for (int i = 0; i < 10; i++)
@@ -85,4 +83,3 @@ namespace RealmOne.Items.Sets.SunflowerSet
         }
     }
 }
-

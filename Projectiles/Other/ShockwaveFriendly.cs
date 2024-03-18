@@ -7,11 +7,11 @@ namespace RealmOne.Projectiles.Other
 {
     public class ShockwaveFriendly : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Shockwave");
         }
+
         public override void SetDefaults()
         {
             Projectile.ArmorPenetration = 999999999;
@@ -38,6 +38,5 @@ namespace RealmOne.Projectiles.Other
             Projectile.velocity.X *= 1f;
             return false;
         }
-
     }
 }

@@ -22,7 +22,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ink
             + $"\nUses Eidolic Ink [i:{ModContent.ItemType<EidolicInk>()}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -44,17 +43,14 @@ namespace RealmOne.Items.Weapons.PreHM.Ink
             Item.noMelee = true;
             Item.shootSpeed = 25f;
             Item.shoot = ModContent.ProjectileType<InkGlob>();
-
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             velocity = velocity.RotatedByRandom(MathHelper.ToRadians(6));
-
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 35f;
 
             int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, 0, 0.0f, 0.0f);

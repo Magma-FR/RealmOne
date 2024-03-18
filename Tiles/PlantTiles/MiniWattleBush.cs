@@ -1,16 +1,14 @@
 ﻿namespace RealmOne.Tiles.PlantTiles
 {
-
     /*  public class MiniWattleBush : ModTile
       {
-
           public enum PlantStage : byte
           {
               Planted,
               Growing,
               Grown
           }
-          private const int FrameWidth = 32; 
+          private const int FrameWidth = 32;
 
           public override void SetStaticDefaults()
           {
@@ -56,7 +54,6 @@
               }
           }
           public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY) => offsetY = -2;
-
 
           public override bool CanPlace(int i, int j)
           {
@@ -168,24 +165,17 @@
 
               if (Main.netMode != NetmodeID.Server)
               {
-
                   int WattleGore1 = Mod.Find<ModGore>("WattleGore1").Type;
                   int WattleGore2 = Mod.Find<ModGore>("WattleGore2").Type;
 
-
                   var entitySource = new EntitySource_TileBreak(i, j);
-
-
 
                   for (int g = 0; g < 1; g++)
                   {
                       Gore.NewGore(entitySource, new Vector2(i * 16, j * 16), new Vector2(Main.rand.Next(1)), WattleGore1);
                       Gore.NewGore(entitySource, new Vector2(i * 16, j * 16), new Vector2(Main.rand.Next(1)), WattleGore2);
-
                   }
               }
-
-
           }
           private static PlantStage GetStage(int i, int j)
           {
@@ -202,9 +192,6 @@
               Tile tile = Framing.GetTileSafely(i, j);
               tile.TileFrameX = (short)(FrameWidth * (int)stage);
           }
-
-
-
       }
       */
 }

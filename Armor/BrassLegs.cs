@@ -6,19 +6,16 @@ using Terraria.ModLoader;
 namespace RealmOne.Armor
 {
     [AutoloadEquip(EquipType.Legs)]
-
     public class BrassLegs : ModItem
     {
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Brass Greaves");
             Tooltip.SetDefault("7% increased running and movement speed");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -31,9 +28,7 @@ namespace RealmOne.Armor
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += 0.07f;
-
         }
-
 
         public override void AddRecipes()
         {
@@ -42,7 +37,6 @@ namespace RealmOne.Armor
             .AddIngredient(Mod, "BrassIngot", 4)
             .AddTile(TileID.Furnaces)
             .Register();
-
         }
     }
 }

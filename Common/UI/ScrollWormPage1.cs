@@ -11,16 +11,13 @@ namespace RealmOne.Common.UI
 {
     internal class ScrollWormPage1 : UIState
     {
-
         private UIElement area;
         private UIImage barFrame;
 
         public override void OnInitialize()
         {
-
             area = new UIElement();
             area.Left.Set(-area.Width.Pixels - 1200, 1f);
-
 
             area.Top.Set(250, 0f);
             area.Width.Set(30, 0f);
@@ -36,7 +33,6 @@ namespace RealmOne.Common.UI
             Append(area);
         }
 
-
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             base.DrawSelf(spriteBatch);
@@ -46,13 +42,10 @@ namespace RealmOne.Common.UI
             hitbox.Width -= 24;
             hitbox.Y += 8;
             hitbox.Height -= 16;
-
-
         }
-
     }
 
-    class UISystemWorm1 : ModSystem
+    internal class UISystemWorm1 : ModSystem
     {
         public UserInterface ScrollInterface;
 
@@ -60,7 +53,6 @@ namespace RealmOne.Common.UI
 
         public override void Load()
         {
-
             if (!Main.dedServ)
             {
                 Scroll = new();
@@ -96,5 +88,4 @@ namespace RealmOne.Common.UI
             }
         }
     }
-
 }

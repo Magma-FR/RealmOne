@@ -1,10 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,7 +9,6 @@ namespace RealmOne.Projectiles.Piggy
 {
     public class HoppingPiggy : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Porcelain");
@@ -34,7 +30,6 @@ namespace RealmOne.Projectiles.Piggy
         public override void AI()
         {
             Projectile.rotation += 0.4f * Projectile.direction;
-
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -52,7 +47,7 @@ namespace RealmOne.Projectiles.Piggy
             return false;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 10; i++)
             {

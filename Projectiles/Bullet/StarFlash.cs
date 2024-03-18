@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Buffs.Debuffs;
 using RealmOne.Common.Core;
 using RealmOne.Common.Systems;
 using ReLogic.Content;
@@ -11,7 +10,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Projectiles.Bullet
 {
-
     public class StarFlash : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -45,7 +43,6 @@ namespace RealmOne.Projectiles.Bullet
 
         public override void AI()
         {
-
             Player player = Main.player[Projectile.owner];
 
             Lighting.AddLight(Projectile.Center, r: 0.3f, g: 0.6f, 0.1f);
@@ -60,7 +57,6 @@ namespace RealmOne.Projectiles.Bullet
 
             //  Projectile.Center = Owner.Center + flashoffset;
 
-
             int radius = 50;
 
             // Damage enemies within the splash radius
@@ -69,11 +65,11 @@ namespace RealmOne.Projectiles.Bullet
                 NPC target = Main.npc[i];
                 if (target.active && !target.friendly && Vector2.Distance(Projectile.Center, target.Center) < radius)
                 {
-                    target.SimpleStrikeNPC(4, 0);
+                    target.SimpleStrikeNPC(0, 0);
                 }
             }
         }
-     
+
         public override void Load()
         { // This is called once on mod (re)load when this piece of content is being loaded.
           // This is the path to the texture that we'll use for the hook's chain. Make sure to update it.
@@ -85,6 +81,7 @@ namespace RealmOne.Projectiles.Bullet
           // It's currently pretty important to unload your static fields like this, to avoid having parts of your mod remain in memory when it's been unloaded.
             Star = null;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
@@ -94,12 +91,10 @@ namespace RealmOne.Projectiles.Bullet
                           Star.Size() * 0.5f, 0.5f, SpriteEffects.None, 0);
             return true;
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(rorAudio.SFX_OldGoldBeam, Projectile.position);
         }
-
-
     }
 }
-

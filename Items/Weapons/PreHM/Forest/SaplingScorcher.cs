@@ -19,7 +19,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             + $"\nUses Wood [i:{ItemID.Wood}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -33,14 +32,13 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 0f;
             Item.value = 30000;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item34;
             Item.autoReuse = true;
             Item.useAmmo = ItemID.Wood;
             Item.noMelee = true;
             Item.shootSpeed = 7f;
             Item.shoot = ProjectileID.Flames;
-
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -53,8 +51,8 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Vector2 muzzleOffset = Vector2.Normalize(velocity) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
-
         }
+
         public override bool CanConsumeAmmo(Item ammo, Player player)
         {
             return Main.rand.NextFloat() >= 0.25f;

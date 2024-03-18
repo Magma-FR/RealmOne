@@ -18,7 +18,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
               + $"[i:{ItemID.Snowball}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -38,13 +37,10 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
             Item.noMelee = true;
             Item.value = Item.buyPrice(gold: 3, silver: 75);
             Item.useAmmo = AmmoID.Snowball;
-
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -53,14 +49,11 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
 
             for (int i = 0; i < NumProjectiles; i++)
             {
-
                 Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(4));
                 newVelocity *= 0.8f - Main.rand.NextFloat(0.2f);
 
                 Projectile.NewProjectileDirect(source, position, newVelocity, type, damage, knockback, player.whoAmI);
             }
-
-
 
             return true;
         }
@@ -71,7 +64,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
-
         }
 
         public override void AddRecipes()

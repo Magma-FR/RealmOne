@@ -10,13 +10,13 @@ using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Projectiles.Throwing
 {
-
     public class JellySpark : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Jelly Spark");
         }
+
         //  private Vector2 flashoffset = Vector2.Zero;
 
         // private Player Owner => Main.player[Projectile.owner];
@@ -39,7 +39,6 @@ namespace RealmOne.Projectiles.Throwing
 
         public override void AI()
         {
-
             Player player = Main.player[Projectile.owner];
 
             Lighting.AddLight(Projectile.Center, r: 0f, g: 0.6f, 1.3f);
@@ -68,10 +67,12 @@ namespace RealmOne.Projectiles.Throwing
                 }
             }
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<AltElectrified>(), 600);
         }
+
         public override void Load()
         { // This is called once on mod (re)load when this piece of content is being loaded.
           // This is the path to the texture that we'll use for the hook's chain. Make sure to update it.
@@ -83,6 +84,7 @@ namespace RealmOne.Projectiles.Throwing
           // It's currently pretty important to unload your static fields like this, to avoid having parts of your mod remain in memory when it's been unloaded.
             Spark = null;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16));
@@ -92,12 +94,10 @@ namespace RealmOne.Projectiles.Throwing
                           Spark.Size() * 0.5f, 0.5f, SpriteEffects.None, 0);
             return true;
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(rorAudio.ElectricPulse, Projectile.position);
         }
-
-
     }
 }
-

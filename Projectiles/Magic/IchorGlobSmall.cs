@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Magic
 {
-
     public class IchorGlobSmall : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -29,34 +28,29 @@ namespace RealmOne.Projectiles.Magic
             Projectile.timeLeft = 60;
             Projectile.penetrate = 2;
             Projectile.alpha = 0;
-
         }
+
         public override void AI()
         {
-
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Blood, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.8f);
             Lighting.AddLight(Projectile.position, 0.1f, 0.1f, 0.1f);
             Lighting.Brightness(1, 1);
             Projectile.rotation += 0.3f;
             Projectile.velocity *= 0.97f;
-
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Ichor, 400);
-
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.NavajoWhite;
         }
 
-        public override void Kill(int timeleft)
+        public override void OnKill(int timeleft)
         {
-
-
-
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("LightbulbBulletGore1").Type, 1f);
 
             for (int i = 0; i < 50; i++)
@@ -71,4 +65,3 @@ namespace RealmOne.Projectiles.Magic
         }
     }
 }
-

@@ -1,13 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core;
 using RealmOne.Items.ItemCritter;
-using RealmOne.Items.Misc;
-using RealmOne.Items.Misc.Plants;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,8 +13,7 @@ namespace RealmOne.NPCs.Critters.Rain
 {
     public class AquaSwishSnail : ModNPC
     {
-
-        static Asset<Texture2D> glowmask;
+        private static Asset<Texture2D> glowmask;
 
         public override void SetStaticDefaults()
         {
@@ -24,22 +21,13 @@ namespace RealmOne.NPCs.Critters.Rain
             Main.npcFrameCount[NPC.type] = 6;
             Main.npcCatchable[NPC.type] = true;
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            {
-                Velocity = 1f
-            };
-
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
-
             NPCID.Sets.CountsAsCritter[Type] = true;
 
             glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
-
         }
 
         public override void SetDefaults()
         {
-
             NPC.catchItem = (short)ModContent.ItemType<AquaSwishSnailItem>();
             NPC.width = 24;
             NPC.height = 20;
@@ -57,8 +45,8 @@ namespace RealmOne.NPCs.Critters.Rain
             NPC.aiStyle = NPCAIStyleID.Snail;
             AIType = NPCID.Snail;
             AnimationType = NPCID.Snail;
-
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -74,33 +62,24 @@ namespace RealmOne.NPCs.Critters.Rain
         public override void AI()
         {
             Lighting.AddLight(NPC.position, r: 0.09f, g: 0.2f, b: 0.2f);
-            
-        }
-
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        {
-            Color color = GetAlpha(Color.White) ?? Color.White;
-
-            if (NPC.IsABestiaryIconDummy)
-                color = Color.White;
-
-            Main.EntitySpriteDraw(glowmask.Value, NPC.Center - screenPos + new Vector2(0, 0), NPC.frame, color, NPC.rotation, NPC.frame.Size() / 2f, 1f, SpriteEffects.FlipHorizontally, 0);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
-            SpriteEffects effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY), NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
+            var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            var pos = NPC.Center - screenPos + new Vector2(0, NPC.gfxOffY);
+            spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Critters/Rain/AquaSwishSnail_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-           // npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Aquablossom>(), 3, 1, 3));
-          //  npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WaterDriplets>(), 3, 1, 3));
-
-
+            // npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Aquablossom>(), 3, 1, 3));
+            //  npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WaterDriplets>(), 3, 1, 3));
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -108,7 +87,6 @@ namespace RealmOne.NPCs.Critters.Rain
                                    BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.Rain,
 
                 new FlavorTextBestiaryInfoElement("From the constant dew of the morning moisture, some species of snails have been blended with a zealous and unusual source of water magic!"),
-
             });
         }
     }

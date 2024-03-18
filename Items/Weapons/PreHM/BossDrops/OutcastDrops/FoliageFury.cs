@@ -16,7 +16,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.OutcastDrops
             + "\nDoes not use ammo");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -38,7 +37,6 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.OutcastDrops
             Item.shootSpeed = 40f;
 
             Item.shoot = ModContent.ProjectileType<GreenLeaf>();
-
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

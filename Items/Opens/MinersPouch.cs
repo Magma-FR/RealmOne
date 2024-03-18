@@ -26,8 +26,8 @@ namespace RealmOne.Items.Opens
             Item.rare = ItemRarityID.Green;
             Item.consumable = true;
             Item.maxStack = 99;
-
         }
+
         public override bool CanRightClick()
         {
             return true;
@@ -35,7 +35,6 @@ namespace RealmOne.Items.Opens
 
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
-
             itemLoot.Add(ItemDropRule.Common(ItemID.CopperOre, 4, 15, 20));
             itemLoot.Add(ItemDropRule.Common(ItemID.IronOre, 4, 15, 20));
             itemLoot.Add(ItemDropRule.Common(ItemID.SilverOre, 4, 15, 20));
@@ -50,9 +49,8 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.Bomb, 4, 8, 10));
             itemLoot.Add(ItemDropRule.Common(ItemID.Dynamite, 4, 4, 6));
             itemLoot.Add(ItemDropRule.Common(ItemID.SpelunkerPotion, 4, 2, 4));
-
-
         }
+
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
@@ -93,6 +91,7 @@ namespace RealmOne.Items.Opens
 
             return true;
         }
+
         public override void PostUpdate()
         {
             Lighting.AddLight(Item.Center, Color.White.ToVector3() * 0.4f);

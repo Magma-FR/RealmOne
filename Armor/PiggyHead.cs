@@ -7,17 +7,15 @@ using Terraria.ModLoader;
 namespace RealmOne.Armor
 {
     [AutoloadEquip(EquipType.Head)]
-
     public class PiggyHead : ModItem
     {
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Piggy Patroller Mask");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -32,7 +30,6 @@ namespace RealmOne.Armor
             player.GetDamage(DamageClass.Generic) += 0.07f;
             player.runAcceleration -= 0.03f;
             player.GetAttackSpeed(DamageClass.Generic) += 0.10f;
-
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -55,7 +52,6 @@ namespace RealmOne.Armor
             .AddIngredient(Mod, "PiggyPorcelain", 5)
             .AddTile(TileID.Furnaces)
             .Register();
-
         }
     }
 }

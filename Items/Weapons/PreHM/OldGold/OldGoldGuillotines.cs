@@ -21,7 +21,6 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             Tooltip.SetDefault("'Slice and penetrate your foes with these ancient and sharp chains'");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -43,7 +42,6 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/OldGoldChainSound");
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.channel = true;
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -54,17 +52,14 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             line = new TooltipLine(Mod, "OldGoldGuillotines", "'Whips out a sharp, gold guillotine with a sharp end that does guaranteed critical strike chance")
             {
                 OverrideColor = new Color(254, 226, 82)
-
             };
             tooltips.Add(line);
 
             line = new TooltipLine(Mod, "OldGoldGuillotines", "'Pristinity!'")
             {
                 OverrideColor = new Color(18, 240, 180)
-
             };
             tooltips.Add(line);
-
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -128,6 +123,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 dust.alpha = 0;
             }
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -137,7 +133,6 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
             .AddTile(TileID.Anvils)
             .Register();
-
         }
 
         public override Vector2? HoldoutOffset()
@@ -145,9 +140,9 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             var offset = new Vector2(6, 0);
             return offset;
         }
+
         internal class OldGoldHookProjectile : ModProjectile
         {
-
             private static Asset<Texture2D> chainTexture;
 
             public override void Load()
@@ -180,13 +175,12 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 AIType = ProjectileID.ChainGuillotine;
                 Projectile.CritChance = 100;
                 Projectile.CloneDefaults(ProjectileID.ChainGuillotine);
-
             }
+
             // Amethyst Hook is 300, Static Hook is 600.
 
-            public override void Kill(int timeLeft)
+            public override void OnKill(int timeLeft)
             {
-
                 Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 
                 for (int i = 0; i < 80; i++)
@@ -198,6 +192,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                     d.noLight = false;
                 }
             }
+
             public override bool PreDrawExtras()
             {
                 Vector2 playerCenter = Main.player[Projectile.owner].MountedCenter;
@@ -225,6 +220,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
                 // Stop vanilla from drawing the default chain.
                 return false;
             }
+
             public override void AI()
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Enchanted_Gold, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f);
@@ -232,6 +228,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
 
             public PrimitiveTrail trail = new();
             public List<Vector2> oldPositions = new List<Vector2>();
+
             public override bool PreDraw(ref Color lightColor)
             {
                 Main.spriteBatch.End();

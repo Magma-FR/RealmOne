@@ -9,7 +9,6 @@ using Terraria.ModLoader.Utilities;
 
 namespace RealmOne.NPCs.Enemies.Ink
 {
-
     public class Inkling : ModNPC
     {
         public override void SetStaticDefaults()
@@ -40,7 +39,6 @@ namespace RealmOne.NPCs.Enemies.Ink
             NPC.netUpdate = true;
             AIType = NPCID.SnowFlinx;
             AnimationType = NPCID.SnowFlinx;
-
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -65,14 +63,12 @@ namespace RealmOne.NPCs.Enemies.Ink
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
                 // These gores work by simply existing as a texture inside any folder which path contains "Gores/"
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("InkGore1").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("InkGore2").Type, 1f);
-
             }
 
             for (int k = 0; k < 20; k++)
@@ -84,7 +80,6 @@ namespace RealmOne.NPCs.Enemies.Ink
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EidolicInk>(), 1, 2, 4));
             npcLoot.Add(ItemDropRule.Common(ItemID.BlackInk, 7, 1, 1));
-
         }
     }
 }

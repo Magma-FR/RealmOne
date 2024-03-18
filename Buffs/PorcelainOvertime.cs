@@ -1,8 +1,9 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+
 namespace RealmOne.Buffs
 {
-    class PorcelainOvertime : ModBuff
+    internal class PorcelainOvertime : ModBuff
     {
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -33,9 +34,7 @@ namespace RealmOne.Buffs
                 {
                     npc.lifeRegen -= 8;
                 }
-                
             }
-
         }
     }
 }

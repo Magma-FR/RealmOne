@@ -9,6 +9,8 @@ namespace RealmOne.Common.Core
 {
     public class GlowMaskSystem
     {
+        //## ALL CREDIT TO SPIRIT MOD GLOWMASK
+
         public static void DrawItemGlowMask(Texture2D texture, PlayerDrawSet info)
         {
             Item item = info.drawPlayer.HeldItem;
@@ -60,6 +62,38 @@ namespace RealmOne.Common.Core
                 info.playerEffect,
                 0
             ));
+        }
+
+        public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture, Vector2 screenPos, Color? color = null)
+        {
+            var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            Main.EntitySpriteDraw(
+                texture,
+                npc.Center - screenPos + new Vector2(0, npc.gfxOffY),
+                npc.frame,
+                npc.GetNPCColorTintedByBuffs(color ?? Color.White),
+                npc.rotation,
+                npc.frame.Size() / 2,
+                npc.scale,
+                effects,
+                0
+            );
+        }
+
+        public static void DrawExtras(SpriteBatch spriteBatch, NPC npc, Texture2D texture)
+        {
+            var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(
+                texture,
+                npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY),
+                npc.frame,
+                new Color(200, 200, 200),
+                npc.velocity.X * .1f,
+                npc.frame.Size() / 2,
+                npc.scale,
+                effects,
+                0
+            );
         }
     }
 }

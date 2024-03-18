@@ -1,4 +1,4 @@
-using RealmOne.RealmPlayer;
+/*using RealmOne.RealmPlayer;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -18,18 +18,15 @@ namespace RealmOne.Items.Accessories
                 + "\nMaximum crit stack is +20% (5 times)");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
         {
-
             Item.width = 20;
             Item.height = 20;
             Item.value = 10000;
             Item.rare = ItemRarityID.Green;
             Item.accessory = true;
-
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -38,4 +35,4 @@ namespace RealmOne.Items.Accessories
             player.GetCritChance(DamageClass.Generic) += 6f;
         }
     }
-}
+}*/

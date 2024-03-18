@@ -2,11 +2,6 @@
 using RealmOne.Common.Systems;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
-using RealmOne.Items.Misc.Ores;
-using RealmOne.Items.Others;
-using RealmOne.Items.Placeables;
-using RealmOne.Items.Placeables.Furniture.Paintings;
-using RealmOne.Items.Weapons.PreHM.Brass;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -73,36 +68,42 @@ namespace RealmOne.Tiles
         {
             num = 1;
         }
+
         public override bool CanDrop(int i, int j)
         {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<BrassNuggets>(), Main.rand.Next(3, 4));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(5, 10));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(1, 1), Main.rand.NextBool(10));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<NothingPNT>(), Main.rand.Next(1, 1), Main.rand.NextBool(5));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(3, 12), Main.rand.NextBool(2));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<SuperWheat>(), Main.rand.Next(1, 1), Main.rand.NextBool(50));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<BrassCandlewick>(), Main.rand.Next(1, 1), Main.rand.NextBool(8));
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Hay, Main.rand.Next(4, 7), Main.rand.NextBool(3));
+            if (Main.rand.NextBool(2))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
 
+            }
+
+            if (Main.rand.NextBool(20))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(2, 6));
+
+            }
+            // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(1, 1), Main.rand.NextBool(60));
+            // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(3, 12), Main.rand.NextBool(2));
+            //     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<SuperWheat>(), Main.rand.Next(1, 1), Main.rand.NextBool(80));
+            //    Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<RustedBullets>(), Main.rand.Next(10, 15), Main.rand.NextBool(2));
+
+            //     Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Hay, Main.rand.Next(4, 7), Main.rand.NextBool(3));
 
             //        Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<TatteredBarrelItem>(), 0);
 
-
-
             return false;
         }
+
         public override void KillMultiTile(int x, int y, int frameX, int frameY)
         {
-     //       Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 48, 32, ModContent.ItemType<BrassNuggets>(), Main.rand.Next(10, 10));
-    //        Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 48, 32, ItemID.Wood, Main.rand.Next(25, 30));
-     //       Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 48, 32, ModContent.ItemType<GoopyGrass>(), Main.rand.Next(10, 30));
+            //       Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 48, 32, ModContent.ItemType<BrassNuggets>(), Main.rand.Next(10, 10));
+            //        Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 48, 32, ItemID.Wood, Main.rand.Next(25, 30));
+            //       Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 48, 32, ModContent.ItemType<GoopyGrass>(), Main.rand.Next(10, 30));
 
-  //          Chest.DestroyChest(x, y);
+            //          Chest.DestroyChest(x, y);
             SoundEngine.PlaySound(rorAudio.BrokenBarrel);
             if (Main.netMode != NetmodeID.Server)
             {
-
                 int BGore1 = Mod.Find<ModGore>("BarrelGore1").Type;
                 int BGore2 = Mod.Find<ModGore>("BarrelGore2").Type;
                 int BGore3 = Mod.Find<ModGore>("BarrelGore3").Type;
@@ -116,10 +117,7 @@ namespace RealmOne.Tiles
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(-6, 7), Main.rand.Next(-6, 7)), BGore1);
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(-6, 7), Main.rand.Next(-6, 7)), BGore2);
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(-3, 7), Main.rand.Next(-3, 7)), BGore3);
-
                 }
-
-
             }
 
             if (Main.netMode != NetmodeID.Server)
@@ -127,7 +125,6 @@ namespace RealmOne.Tiles
                 CombatText.NewText(new Rectangle(Main.tile.Width + 30, Main.tile.Height - 20, Main.tile.Height - 10, Main.tile.Height + 10), new Color(234, 129, 178, 190), "It won't budge!!", false, false);
             }
         }
-
 
         public override void MouseOver(int i, int j)
         {

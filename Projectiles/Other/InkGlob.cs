@@ -27,6 +27,7 @@ namespace RealmOne.Projectiles.Other
             if (Main.rand.NextBool(2))
                 target.AddBuff(BuffID.ShadowFlame, 160, true);
         }
+
         public override bool PreAI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + 1.5f;
@@ -46,12 +47,12 @@ namespace RealmOne.Projectiles.Other
                 Main.dust[dust1].noLight = false;
 
                 Vector2 speed = Main.rand.NextVector2CircularEdge(0.25f, 0.25f);
-
             }
 
             return false;
         }
-        public override void Kill(int timeLeft)
+
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCDeath19, Projectile.position);
             for (int i = 0; i < 80; i++)

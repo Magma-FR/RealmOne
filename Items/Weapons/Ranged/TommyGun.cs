@@ -20,7 +20,6 @@ namespace RealmOne.Items.Weapons.Ranged
             + $"\nUses Bullets [i:{ItemID.MusketBall}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -43,12 +42,10 @@ namespace RealmOne.Items.Weapons.Ranged
             Item.shootSpeed = 40f;
             Item.shoot = ProjectileID.Bullet;
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/TommyGunShot");
-
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 13f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                 position += muzzleOffset;
@@ -74,9 +71,8 @@ namespace RealmOne.Items.Weapons.Ranged
             recipe.AddIngredient(ItemID.IllegalGunParts, 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-
-          
         }
+
         public override bool CanConsumeAmmo(Item ammo, Player player)
         {
             return Main.rand.NextFloat() >= 0.38f;

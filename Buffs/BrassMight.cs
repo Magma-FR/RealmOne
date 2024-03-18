@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+
 namespace RealmOne.Buffs
 {
     public class BrassMight : ModBuff
@@ -17,12 +18,8 @@ namespace RealmOne.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-
             player.statDefense += 10;
             player.moveSpeed -= 0.14f;
-
-
         }
-
     }
 }

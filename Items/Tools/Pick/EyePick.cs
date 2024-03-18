@@ -17,7 +17,6 @@ namespace RealmOne.Items.Tools.Pick
              + $"\nCapable of mining Old Gold! [i:{ModContent.ItemType<OldGoldOre>()}]");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -61,11 +60,11 @@ namespace RealmOne.Items.Tools.Pick
             var offset = new Vector2(6, 0);
             return offset;
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Collision.AnyCollision(Item.position + Item.velocity, Item.velocity, Item.width, Item.height);
             SoundEngine.PlaySound(SoundID.DD2_BetsyWindAttack, Item.position);
-
         }
     }
 }

@@ -10,17 +10,16 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.PreHM.Ice
 {
-
     public class SnowflakeScepter : ModItem
     {
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Snowflake Scepter");
             Tooltip.SetDefault("Conjure snowflakes from the sky and from the staff!"
                 + "\nThese snowflakes can pierce up to 3 enemies!'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
         public override void SetDefaults()
         {
             Item.width = 40;
@@ -48,7 +47,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
             for (int a = 0; a < Main.rand.Next(1, 5); a++)
             {
                 float angle = Main.rand.NextFloat(MathHelper.PiOver4, -MathHelper.Pi - MathHelper.PiOver2);
@@ -56,7 +54,6 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
                 Vector2 PositionArea = Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 20f;
                 if (Collision.CanHit(position, 0, 0, position + PositionArea, 0, 0))
                     position += PositionArea;
-
             }
 
             Lighting.AddLight(player.position, r: 0.3f, g: 0.25f, b: 0.1f);
@@ -98,11 +95,13 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
 
             return false;
         }
+
         public override bool OnPickup(Player player)
         {
             SoundEngine.PlaySound(SoundID.MaxMana);
             return true;
         }
+
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(2, 0);

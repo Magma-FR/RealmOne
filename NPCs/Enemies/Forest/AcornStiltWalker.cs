@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne.Common.Systems;
 using RealmOne.Items.Food;
 using RealmOne.Items.Placeables.BannerItems;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -13,7 +10,6 @@ using Terraria.ModLoader;
 
 namespace RealmOne.NPCs.Enemies.Forest
 {
-
     public class AcornStiltWalker : ModNPC
     {
         public override void SetStaticDefaults()
@@ -21,7 +17,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             DisplayName.SetDefault("Acorn Stilt Walker");
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.GiantWalkingAntlion];
 
-            var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             { // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
@@ -47,6 +43,7 @@ namespace RealmOne.NPCs.Enemies.Forest
             Banner = Type;
             BannerItem = ModContent.ItemType<BannerItem.AcornStiltB>();
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return spawnInfo.Player.ZoneForest && Main.dayTime && !spawnInfo.PlayerSafe ? 0.14f : 0f;
@@ -61,9 +58,9 @@ namespace RealmOne.NPCs.Enemies.Forest
                                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
 
                 new FlavorTextBestiaryInfoElement("Being in the forest gets a bit boring sometimes, so this Acorn found some tree branches and stuck it to its legs! "),
-
             });
         }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
@@ -73,7 +70,6 @@ namespace RealmOne.NPCs.Enemies.Forest
 
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("AcornStiltGore2").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("AcornStiltGore3").Type, 1f);
-
             }
 
             for (int k = 0; k < 15; k++)
@@ -81,23 +77,15 @@ namespace RealmOne.NPCs.Enemies.Forest
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.WoodFurniture, 3.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
             }
         }
+
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-
             npcLoot.Add(ItemDropRule.Common(ItemID.Acorn, 1, 2, 4));
             npcLoot.Add(ItemDropRule.Common(ItemID.Wood, 2, 4, 6));
             npcLoot.Add(ItemDropRule.Common(ItemID.LivingWoodWand, 40, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.PortableStool, 42, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ToastedNutBar>(), 20));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonPrickles>(), 13, 5, 8));
-
-
-
         }
-
-
-
-
     }
 }
-

@@ -1,11 +1,8 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using RealmOne.Common.Core;
-using System.Collections.Generic;
 using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.Jungle
@@ -37,20 +34,21 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             Projectile.arrow = true;
             AIType = ProjectileID.WoodenArrowFriendly;
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
         {
             for (var i = 0; i < 10; i++)
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Plantera_Green, 0f, 0f, 0, default, 1f);
             Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.t_Lihzahrd, 0f, 0f, 0, default, 1f);
 
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ProjectileID.NettleBurstLeft, Projectile.damage, Projectile.knockBack, Main.myPlayer);
-
-
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -73,6 +71,7 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
 
             return true;
         }
+
         public override void AI()
         {
             int dust1 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Plantera_Green, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
@@ -88,8 +87,8 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             Main.dust[dust2].noGravity = true;
             Main.dust[dust2].scale = 0.8f;
             Main.dust[dust2].velocity *= 0.5f;
-
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.ai[0] = 1f;
@@ -98,8 +97,6 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
             Projectile.velocity = (target.Center - Projectile.Center) * 0.75f;
             Projectile.netUpdate = true;
             Projectile.damage = 10;
-
         }
     }
 }
-

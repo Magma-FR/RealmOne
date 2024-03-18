@@ -11,7 +11,6 @@ namespace RealmOne.Projectiles.Explosive
 {
     public class CopperFragGrenadeProj : ModProjectile
     {
-
         public bool Exploded { get => Projectile.ai[0] != 0; set => Projectile.ai[0] = !value ? 0 : 1; }
 
         public override void SetStaticDefaults()
@@ -19,7 +18,6 @@ namespace RealmOne.Projectiles.Explosive
             DisplayName.SetDefault("Copper Frag Grenade");
 
             Main.projFrames[Projectile.type] = 2;
-
         }
 
         public override void SetDefaults()
@@ -61,7 +59,6 @@ namespace RealmOne.Projectiles.Explosive
                 Projectile.hide = true;
                 SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode);
                 Exploded = true;
-
             }
 
             int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default, 1f);
@@ -73,7 +70,6 @@ namespace RealmOne.Projectiles.Explosive
             Main.dust[dustIndex].scale = 1f + Main.rand.Next(5) * 0.1f;
             Main.dust[dustIndex].noGravity = true;
             Main.dust[dustIndex].position = Projectile.Center + new Vector2(0f, (float)(-(float)Projectile.height / 2 - 6)).RotatedBy(Projectile.rotation, default) * 1.1f;
-
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -87,13 +83,11 @@ namespace RealmOne.Projectiles.Explosive
             Projectile.velocity.X *= 0.9f;
 
             return false;
-
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.OnFire, 140);
-
         }
 
         public override bool? CanHitNPC(NPC target)
@@ -101,9 +95,8 @@ namespace RealmOne.Projectiles.Explosive
             return !target.friendly;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
-
             Player player = Main.player[Projectile.owner];
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
             Collision.AnyCollision(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
@@ -122,7 +115,6 @@ namespace RealmOne.Projectiles.Explosive
                 Main.dust[dustIndex].velocity *= 5f;
                 dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default, 1f);
                 Main.dust[dustIndex].velocity *= 3f;
-
             }
 
             int RumGore1 = Mod.Find<ModGore>("CopperGore1").Type;
@@ -136,9 +128,7 @@ namespace RealmOne.Projectiles.Explosive
                 Gore.NewGore(entitySource, Projectile.position, new Vector2(Main.rand.Next(-6, 7), Main.rand.Next(-6, 7)), RumGore1);
                 Gore.NewGore(entitySource, Projectile.position, new Vector2(Main.rand.Next(-6, 7), Main.rand.Next(-6, 7)), RumGore2);
                 Gore.NewGore(entitySource, Projectile.position, new Vector2(Main.rand.Next(-6, 7), Main.rand.Next(-6, 7)), RumGore3);
-
             }
         }
     }
 }
-

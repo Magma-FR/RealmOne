@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using RealmOne;
-using RealmOne.Projectiles.Bullet;
+using RealmOne.Items.Misc.Plants;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,7 +11,6 @@ namespace RealmOne.Items.Sets.SunflowerSet
     {
         public override void SetStaticDefaults()
         {
-         
         }
 
         public override void SetDefaults()
@@ -28,7 +26,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Item.knockBack = 3;
             Item.value = Item.sellPrice(0, 0, 4, 0);
             Item.rare = ItemRarityID.Green;
-            Item.shootSpeed = 13f;
+            Item.shootSpeed = 16f;
             Item.shoot = ModContent.ProjectileType<BloomarangProj>();
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
@@ -40,6 +38,17 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == Item.shoot)
                     return false;
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<SunflowerPetal>(), 12)
+                .AddIngredient(ItemID.WoodenBoomerang, 1)
+                .AddIngredient(ItemID.FallenStar, 1)
+
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

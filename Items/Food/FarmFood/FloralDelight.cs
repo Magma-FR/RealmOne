@@ -8,7 +8,6 @@ using Terraria.ModLoader;
 namespace RealmOne.Items.Food.FarmFood
 {
     [AutoloadEquip(EquipType.Head)]
-
     public class FloralDelight : ModItem
     {
         public override void SetStaticDefaults()
@@ -29,6 +28,7 @@ namespace RealmOne.Items.Food.FarmFood
             };
             ItemID.Sets.IsFood[Type] = true;
         }
+
         public override void SetDefaults()
         {
             Item.DefaultToFood(20, 20, BuffID.WellFed, 16000);
@@ -43,15 +43,12 @@ namespace RealmOne.Items.Food.FarmFood
             Item.vanity = true;
 
             Item.UseSound = SoundID.Item2;
-
         }
+
         public override bool CanUseItem(Player player)
         {
             player.AddBuff(BuffID.Heartreach, 1000);
             return true;
         }
-
-
-
     }
 }

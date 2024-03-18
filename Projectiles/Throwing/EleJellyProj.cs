@@ -38,6 +38,7 @@ namespace RealmOne.Projectiles.Throwing
             Projectile.extraUpdates = 2;
             Projectile.CloneDefaults(ProjectileID.Shuriken);
         }
+
         public override void AI()
         {
             Lighting.AddLight(Projectile.position, r: 0.2f, g: 0.8f, b: 1.5f);
@@ -45,18 +46,17 @@ namespace RealmOne.Projectiles.Throwing
             Lighting.Brightness(1, 1);
 
             Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Water_GlowingMushroom, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 1f);
-
-
-
-
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.Kill();
             return false;
         }
+
         public PrimitiveTrail trail = new();
         public List<Vector2> oldPositions = new List<Vector2>();
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
@@ -78,7 +78,8 @@ namespace RealmOne.Projectiles.Throwing
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
             return true;
         }
-        public override void Kill(int timeleft)
+
+        public override void OnKill(int timeleft)
 
         {
             Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<JellySpark>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
@@ -105,6 +106,7 @@ namespace RealmOne.Projectiles.Throwing
             Main.dust[dustIndex1].position = Projectile.Center + new Vector2(0f, (float)(-(float)Projectile.height / 2)).RotatedBy(Projectile.rotation, default) * 1.1f;
             Main.dust[dustIndex1].noLight = false;
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {

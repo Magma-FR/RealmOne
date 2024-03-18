@@ -6,7 +6,6 @@ namespace RealmOne.Items.Others
 {
     public class FarmKey : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 3;
@@ -17,5 +16,4 @@ namespace RealmOne.Items.Others
             Item.CloneDefaults(ItemID.GoldenKey);
         }
     }
-
 }

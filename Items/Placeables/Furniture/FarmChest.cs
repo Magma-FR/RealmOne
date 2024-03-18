@@ -8,7 +8,6 @@ namespace RealmOne.Items.Placeables.Furniture
 {
     public class FarmChest : ModItem
     {
-
         public override void SetDefaults()
         {
             Item.DefaultToPlaceableTile(ModContent.TileType<FarmChestTile>());
@@ -27,5 +26,4 @@ namespace RealmOne.Items.Placeables.Furniture
             recipe.Register();
         }
     }
-
 }

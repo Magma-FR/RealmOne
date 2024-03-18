@@ -1,5 +1,6 @@
+using Microsoft.Xna.Framework;
 using RealmOne.Buffs;
-using RealmOne.Items.Misc;
+using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -20,7 +21,6 @@ namespace RealmOne.Items.Potions
 
         public override void SetDefaults()
         {
-
             Item.height = 32;
             Item.width = 32;
             Item.useTime = 15;
@@ -35,11 +35,16 @@ namespace RealmOne.Items.Potions
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/LightbulbShine");
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Mushroom, 2);
-            recipe.AddIngredient(ModContent.ItemType<Lightbulb>(), 2);
+            recipe.AddIngredient(ModContent.ItemType<LiteBulb>(), 2);
             recipe.AddIngredient(ItemID.BottledWater, 1);
             recipe.AddTile(TileID.Bottles);
             recipe.Register();

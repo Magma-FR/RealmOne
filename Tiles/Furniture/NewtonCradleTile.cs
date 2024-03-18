@@ -11,7 +11,6 @@ namespace RealmOne.Tiles.Furniture
 {
     public class NewtonCradleTile : ModTile
     {
-
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -43,7 +42,5 @@ namespace RealmOne.Tiles.Furniture
                 frame %= 5;
             }
         }
-
-
     }
 }

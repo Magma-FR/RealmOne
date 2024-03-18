@@ -1,5 +1,4 @@
-﻿using RealmOne.Common.Core;
-using RealmOne.Tiles.Furniture;
+﻿using RealmOne.Tiles.Furniture;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -9,16 +8,12 @@ namespace RealmOne.Items.Placeables.Furniture
 {
     public class ChickenCoopItem : ModItem
     {
-
-
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chicken Coop");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
         }
-
 
         public override void SetDefaults()
         {
@@ -37,4 +32,3 @@ namespace RealmOne.Items.Placeables.Furniture
         }
     }
 }
-

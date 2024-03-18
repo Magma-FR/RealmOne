@@ -36,17 +36,14 @@ namespace RealmOne.Items.BossBags
             Item.consumable = true;
             Item.maxStack = 99;
             Item.expert = true;
-
         }
         public override bool CanRightClick()
         {
             return true;
         }
 
-
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
-
             itemLoot.Add(ItemDropRule.Common(ItemID.MudBlock, 1, 20, 30));
             itemLoot.Add(ItemDropRule.Common(ItemID.GrassSeeds, 1, 30, 50));
             itemLoot.Add(ItemDropRule.Common(ItemID.Wood, 1, 30, 50));
@@ -58,15 +55,12 @@ namespace RealmOne.Items.BossBags
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheOutcastsOverseer>(), 3, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EarthEmerald>(), 3, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BarrenBrew>(), 3, 4, 6));
-
-
         }
 
         public override Color? GetAlpha(Color lightColor)
         {
             // Makes sure the dropped bag is always visible
             return Color.Lerp(lightColor, Color.LimeGreen, 0.5f);
-
         }
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
@@ -129,17 +123,6 @@ namespace RealmOne.Items.BossBags
             }
         }
     }
-
 }
-
-
-
-
-
-
-
-
-
-
 
 */

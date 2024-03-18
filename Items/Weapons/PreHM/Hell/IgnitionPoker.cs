@@ -29,7 +29,6 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
             ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Hell/IgnitionPoker_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
         }
 
         public override void SetDefaults()
@@ -56,7 +55,6 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
             Item.autoReuse = false;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -141,6 +139,7 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
                 dust.alpha = 0;
             }
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Collision.AnyCollision(Item.position + Item.velocity, Item.velocity, Item.width, Item.height);
@@ -148,7 +147,6 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
             target.AddBuff(BuffID.OnFire3, 500);
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 speed = Main.rand.NextVector2Square(-1f, 1f);
 
                 var d = Dust.NewDustPerfect(target.position, DustID.GoldFlame, speed * 5, Scale: 2f);
@@ -156,6 +154,7 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
                 d.noGravity = true;
             }
         }
+
         public override void HoldItem(Player player)
         {
             player.statDefense += 4;
@@ -169,7 +168,6 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
                 player.buffImmune[BuffID.OnFire] = true;
                 player.buffImmune[BuffID.OnFire3] = true;
                 player.lavaImmune = true;
-
             }
         }
 

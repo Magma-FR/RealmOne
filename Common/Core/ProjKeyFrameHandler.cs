@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace RealmOne.Common.Core
 {
@@ -15,12 +11,12 @@ namespace RealmOne.Common.Core
     {
         public delegate Vector2 CustomFunction(Vector2 start, Vector2 end, float t);
 
-        CustomFunction Customfunc;
+        private CustomFunction Customfunc;
 
-        KeyFrameInterpolationCurve keyFrameInterpolationCurve;
-        static string texturePath;
-        int pointCount;
-        Texture2D tex;
+        private KeyFrameInterpolationCurve keyFrameInterpolationCurve;
+        private static string texturePath;
+        private int pointCount;
+        private Texture2D tex;
 
         /// <param name="keyFrameInterpolationCurve">The method of interpolating new points between the provided points.</param>
         /// <param name="texPath">The path to the texture with the keypoints on it.</param>
@@ -42,7 +38,7 @@ namespace RealmOne.Common.Core
             List<Vector2> returnPoints = new();
             int height = tex.Height;
             int width = tex.Width;
-            
+
             Color[] colorData = new Color[tex.Width * tex.Height];
             tex.GetData(colorData);
             List<Vector2> coordsForColorData = new();
@@ -73,6 +69,7 @@ namespace RealmOne.Common.Core
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.Lerp:
                     if (coordsForColorData.Count != 1)
                     {
@@ -86,6 +83,7 @@ namespace RealmOne.Common.Core
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.Slerp:
                     if (coordsForColorData.Count != 1)
                     {
@@ -96,14 +94,15 @@ namespace RealmOne.Common.Core
                                 //NO ACTUAL WAY I SPENT 2 DAYS DEBUGGING AND GOING INSANE OVER ME SWAPPING TWO NUMBERS
                                 //anyway heres the normal code that shouldve worked all along
 
-                                Vector2 center = new((coordsForColorData[coordsForColorData.Count - 1].X + coordsForColorData[0].X) / 2, (coordsForColorData[coordsForColorData.Count - 1].Y + coordsForColorData[0].Y) / 2); //average of the two points 
+                                Vector2 center = new((coordsForColorData[coordsForColorData.Count - 1].X + coordsForColorData[0].X) / 2, (coordsForColorData[coordsForColorData.Count - 1].Y + coordsForColorData[0].Y) / 2); //average of the two points
                                 float maxRotation = center.AngleTo(coordsForColorData[i + 1]) - center.AngleTo(coordsForColorData[i]);
-                                returnPoints.Add(EasingFunctions.Slerp(coordsForColorData[i], coordsForColorData[i + 1], k / (pointCount / coordsForColorData.Count) * maxRotation, center ,radius));
+                                returnPoints.Add(EasingFunctions.Slerp(coordsForColorData[i], coordsForColorData[i + 1], k / (pointCount / coordsForColorData.Count) * maxRotation, center, radius));
                             }
                         }
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.Custom:
                     if (coordsForColorData.Count != 1)
                     {
@@ -117,15 +116,19 @@ namespace RealmOne.Common.Core
                         return returnPoints;
                     }
                     return null;
+
                 case KeyFrameInterpolationCurve.CompleteCustom:
                     if (coordsForColorData.Count != 1)
                         Customfunc(default, default, default);
                     return null;
+
                 default:
                     return null;
             }
         }
-        public delegate Vector2 DesiredChange(Vector2 point);
+
+        public delegate Vector2 DesiredChange(Vector2 point, int i);
+
         /// <summary>
         /// Change all points in a certain way, implemented by desiredchange.
         /// </summary>
@@ -135,9 +138,10 @@ namespace RealmOne.Common.Core
         {
             for (int i = 0; i < points.Count; i++)
             {
-                points[i] = desiredChange(points[i]);
+                points[i] = desiredChange(points[i], i);
             }
         }
+
         /// <summary>
         /// Calculates the correct position of the projectile based on the parameters. To use, set the projectile's center to what this function returns.
         /// </summary>
@@ -146,27 +150,49 @@ namespace RealmOne.Common.Core
         /// <param name="owner">The projectile's owner.</param>
         /// <param name="points">The returned keypoints from GetPoints().</param>
         /// <param name="i">A timer. Set this to zero if the player is facing right, keypoints.Count - 1 if facing left. Set this in OnSpawn.</param>
+        /// <param name="projOffset">A vector2 offset for the position of the projectile.</param>
+        /// <param name="upswing">Use in conjunction with a modplayer variable. Whether the projectile swings up or not.</param>
+        /// <param name="rotOffset">A float offset for the rotation of the projectile, measured in radians</param>
         /// <returns>The projectile's center with the right movement applied from the points.</returns>
-        public Vector2 CalculateSwordSwingPoints(Projectile projectile, Vector2 mouse, Player owner, List<Vector2> points, ref int i, float rotOffset = 0)
+        public Vector2 CalculateSwordSwingPointsAndApplyRotation(Projectile projectile, Vector2 mouse, Player owner, List<Vector2> points, ref int i, Vector2 projOffset = default, bool upswing = false, float rotOffset = 0)
         {
-            if (i < points.Count - 1 && owner.direction == 1)
+            if (projOffset == default)
             {
-                i++;
-                projectile.rotation = owner.Center.DirectionTo(owner.Center + points[i]).ToRotation() + MathHelper.PiOver4 + owner.Center.DirectionTo(mouse).ToRotation() + rotOffset;
-
+                projOffset = Vector2.Zero;
             }
-            else if (i > 0 && owner.direction == -1)
+            if (upswing)
             {
-                i--;
-                projectile.rotation = owner.Center.DirectionTo(owner.Center + points[i]).ToRotation() - MathHelper.PiOver4 + MathHelper.Pi + owner.Center.DirectionTo(mouse).ToRotation() + rotOffset;
+                rotOffset -= MathHelper.PiOver2 * owner.direction;
+            }
+
+            if ((owner.direction == 1 && !upswing) || owner.direction == -1 && upswing)
+            {
+                if (i < points.Count - 1)
+                {
+                    i++;
+                    projectile.rotation = owner.Center.DirectionTo(owner.Center + points[i]).ToRotation() + MathHelper.PiOver4 + owner.Center.DirectionTo(mouse).ToRotation() + rotOffset;
+                }
+                else
+                {
+                    projectile.Kill();
+                }
             }
             else
             {
-               projectile.Kill();
+                if (i > 0)
+                {
+                    i--;
+                    projectile.rotation = owner.Center.DirectionTo(owner.Center + points[i]).ToRotation() - MathHelper.PiOver4 + MathHelper.Pi + owner.Center.DirectionTo(mouse).ToRotation() + rotOffset;
+                }
+                else
+                {
+                    projectile.Kill();
+                }
             }
 
-            return owner.Center + points[i].RotatedBy(owner.Center.DirectionTo(mouse).ToRotation());
+            return owner.Center + points[i].RotatedBy(owner.Center.DirectionTo(mouse).ToRotation()) + projOffset;
         }
+
         /// <summary>
         /// Sets common variables that most held projectiles have. Call this in AI.
         /// </summary>
@@ -175,7 +201,7 @@ namespace RealmOne.Common.Core
         /// <param name="mouse">Make sure to only capture Main.Mouseworld as a variable when the projectile spawns in OnSpawn, dont use Main.Mouseworld in the AI hook.</param>
         public void SetAiDefaults(Projectile projectile, Player owner, Vector2 mouse)
         {
-            //cool that i dont have to make these ref 
+            //cool that i dont have to make these ref
             projectile.direction = owner.direction;
             projectile.spriteDirection = projectile.direction;
             owner.direction = Math.Sign(owner.DirectionTo(mouse).X);
@@ -184,6 +210,7 @@ namespace RealmOne.Common.Core
             owner.itemAnimation = 2;
         }
     }
+
     //long ahh name
     public enum KeyFrameInterpolationCurve
     {

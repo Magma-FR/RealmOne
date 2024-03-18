@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Common.Systems;
-using RealmOne.Items.Accessories;
 using RealmOne.Items.BossSummons;
-using RealmOne.Items.Misc.Ores;
 using RealmOne.NPCs.Enemies.MiniBoss;
 using Terraria;
 using Terraria.Audio;
@@ -32,6 +30,8 @@ namespace RealmOne.Tiles
             MineResist = 3f;
             MinPick = 20;
             HitSound = rorAudio.OldGoldTink;
+            TileObjectData.newTile.Origin = new Point16(0, 1);
+
             DustType = DustID.DungeonPink;
             TileID.Sets.DisableSmartCursor[Type] = true;
 
@@ -43,7 +43,6 @@ namespace RealmOne.Tiles
 
             // Placement
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-            TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 
             TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock };
@@ -66,11 +65,13 @@ namespace RealmOne.Tiles
         {
             num = 1;
         }
+
         public override bool CanDrop(int i, int j)
         {
             Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<MoneyVase>());
             return false;
         }
+
         public override void KillMultiTile(int x, int y, int frameX, int frameY)
         {
             NPC.NewNPC(new EntitySource_TileBreak(x, y), x * 16, y * 16, ModContent.NPCType<PossessedPiggy>(), 32);
@@ -79,7 +80,6 @@ namespace RealmOne.Tiles
             SoundEngine.PlaySound(SoundID.Shatter);
             if (Main.netMode != NetmodeID.Server)
             {
-
                 int BGore1 = Mod.Find<ModGore>("MoneyVaseGore1").Type;
                 int BGore2 = Mod.Find<ModGore>("MoneyVaseGore2").Type;
                 int BGore3 = Mod.Find<ModGore>("MoneyVaseGore3").Type;
@@ -93,16 +93,8 @@ namespace RealmOne.Tiles
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(-6, 7), Main.rand.Next(-6, 7)), BGore1);
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(-6, 7), Main.rand.Next(-6, 7)), BGore2);
                     Gore.NewGore(entitySource, new Vector2(x * 16, y * 16), new Vector2(Main.rand.Next(-3, 7), Main.rand.Next(-3, 7)), BGore3);
-
                 }
-
-
             }
-
-
         }
-
-
-
     }
 }
