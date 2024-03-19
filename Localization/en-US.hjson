@@ -2225,6 +2225,16 @@ Mods: {
 				DisplayName: Grisly Hide
 				Tooltip: ""
 			}
+
+			ForestVengeance: {
+				DisplayName: Forest's Vengeance
+				Tooltip:
+					'''
+					Conjure forest spirits from your surrounding spirits
+					Hitting grounded enemies summons trees that rapidly damage your enemies
+					Meanwhile, hitting aerial enemies will cause a small explosion of fast homing spirits
+					'''
+			}
 		}
 
 		Buffs: {
@@ -2356,6 +2366,11 @@ Mods: {
 			CursedBuff: {
 				Description: Mods.RealmOne.Buffs.CursedBuff.Description
 				DisplayName: Cursed Buff
+			}
+
+			TreePoisoning: {
+				DisplayName: Tree Poisoning
+				Description: Mods.RealmOne.Buffs.TreePoisoning.Description
 			}
 		}
 
@@ -2526,6 +2541,13 @@ Mods: {
 			SafeHookProj.DisplayName: Safe Hook Proj
 			JungleFisharangProj.DisplayName: Jungle Fisharang Proj
 			InvisibleExplosion.DisplayName: Invisible Explosion
+			ForestVengeanceProj.DisplayName: Forest Vengeance Proj
+			ForestSpirit.DisplayName: Forest Spirit
+			None.DisplayName: None
+			TreeBush.DisplayName: Tree Bush
+			TreeBush2.DisplayName: Tree Bush2
+			TreeBush3.DisplayName: Tree Bush3
+			ForestVengeanceProjec.DisplayName: Forest Vengeance Projec
 		}
 
 		NPCs: {

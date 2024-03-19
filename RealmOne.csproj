@@ -29,6 +29,14 @@
     <ItemGroup>
       <None Remove="Common\Core\ParticleContent\Particles\GenericGlowParticle.png" />
       <None Remove="Common\Core\ParticleContent\Particles\SparkleParticle.png" />
+      <None Remove="Items\Weapons\PreHM\Forest\ForestVengeance.png" />
+      <None Remove="Projectiles\Magic\ForestSpirit.png" />
+      <None Remove="Projectiles\Magic\ForestVengeanceProj.png" />
+      <None Remove="Projectiles\Magic\ForestVengeanceProjec.png" />
+      <None Remove="Projectiles\Magic\None.png" />
+      <None Remove="Projectiles\Magic\TreeBush.png" />
+      <None Remove="Projectiles\Magic\TreeBush2.png" />
+      <None Remove="Projectiles\Magic\TreeBush3.png" />
     </ItemGroup>
 
 	<ItemGroup>
