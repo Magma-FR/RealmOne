@@ -15,7 +15,7 @@ namespace RealmOne.Projectiles.Magic
         bool fadeIn;
         int cd = 30;
         int cd2 = 10;
-        int heightMax = 13;
+        int heightMax = 26;
         int height = 0;
 
         bool splosion = false;
@@ -74,7 +74,7 @@ namespace RealmOne.Projectiles.Magic
                     if (height < heightMax)
                     {
                         height++;
-                        for (int i = 0; i < 9; i++)
+                        for (int i = 0; i < 5; i++)
                         {
                             Projectile.position.Y--;
                         }

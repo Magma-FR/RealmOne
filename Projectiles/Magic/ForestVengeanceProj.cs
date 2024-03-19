@@ -95,8 +95,8 @@ namespace RealmOne.Projectiles.Magic
             {
                 CombatText.NewText(target.getRect(), Color.DarkRed, "!");
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(target.Center.X, target.Center.Y + 140), new Vector2(0, 0), ModContent.ProjectileType<TreeBush>(), 1, 0f, Main.myPlayer);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(target.Center.X + 50, target.Center.Y + 140), new Vector2(0, 0), ModContent.ProjectileType<TreeBush2>(), 1, 0f, Main.myPlayer);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(target.Center.X - 50, target.Center.Y + 140), new Vector2(0, 0), ModContent.ProjectileType<TreeBush3>(), 1, 0f, Main.myPlayer);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(target.Center.X + 70, target.Center.Y + 140), new Vector2(0, 0), ModContent.ProjectileType<TreeBush2>(), 1, 0f, Main.myPlayer);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(target.Center.X - 70, target.Center.Y + 140), new Vector2(0, 0), ModContent.ProjectileType<TreeBush3>(), 1, 0f, Main.myPlayer);
             }
             else //aerial
             {
