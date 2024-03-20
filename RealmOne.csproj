@@ -27,13 +27,23 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Buffs\Debuffs\Shocked2.png" />
+      <None Remove="Buffs\Debuffs\Shocked3.png" />
+      <None Remove="Buffs\Debuffs\Shocked4.png" />
+      <None Remove="Buffs\Debuffs\Shocked5.png" />
+      <None Remove="Buffs\Debuffs\Shocked6.png" />
+      <None Remove="Buffs\Debuffs\Shocked7.png" />
+      <None Remove="Buffs\Debuffs\SlowLeaf.png" />
+      <None Remove="Buffs\OrchidBonus.png" />
       <None Remove="Common\Core\ParticleContent\Particles\GenericGlowParticle.png" />
       <None Remove="Common\Core\ParticleContent\Particles\SparkleParticle.png" />
       <None Remove="Items\Weapons\PreHM\Forest\ForestVengeance.png" />
       <None Remove="Projectiles\Magic\ForestSpirit.png" />
       <None Remove="Projectiles\Magic\ForestVengeanceProj.png" />
       <None Remove="Projectiles\Magic\ForestVengeanceProjec.png" />
+      <None Remove="Projectiles\Magic\LightningBolt.png" />
       <None Remove="Projectiles\Magic\None.png" />
+      <None Remove="Projectiles\Magic\OrchidRingRing.png" />
       <None Remove="Projectiles\Magic\TreeBush.png" />
       <None Remove="Projectiles\Magic\TreeBush2.png" />
       <None Remove="Projectiles\Magic\TreeBush3.png" />

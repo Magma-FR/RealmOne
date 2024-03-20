@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using RealmOne.RealmPlayer;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +18,7 @@ namespace RealmOne.Armor.Orchid
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = Item.sellPrice(gold: 1);
+            Item.value = Item.sellPrice(gold: 0, silver: 57, copper: 80);
             Item.rare = ItemRarityID.Green;
             Item.defense = 1; //
         }
@@ -37,12 +38,12 @@ namespace RealmOne.Armor.Orchid
         public override void UpdateArmorSet(Player player)
         {
             //      string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-            player.setBonus = "Summon an aura that gives you extra regen and heart and mana pickup. This aura slows down enemies and changes their colour slightly.";
+            player.setBonus = "Conjures a leafy aura from nearby spirits that increases health- and mana regen.\nRandomly conjures homing forest spirits \nMana and heart drops inside the aura will be carried by leaves to you \nEnemies inside the aura get slowed down significantly";
             //        player.GetModPlayer<>().SpecialSetBonus = true;
 
-            player.lifeRegen += 5;
-            player.lifeMagnet = true;
-            player.manaMagnet = true;
+            player.GetModPlayer<RealmModPlayer>().OrchidBonus = true;
+            player.lifeRegen += 4;
+            player.manaRegen += 4;
         }
     }
 }

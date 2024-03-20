@@ -623,12 +623,15 @@ Mods: {
 			}
 
 			ImpactBoomerang: {
-				DisplayName: Impact Boomerang
+				DisplayName: Impact Disc
 				Tooltip:
 					'''
-					Throws a electric and dark boomerang that homes onto enemies
-					If the boomerang hits a tile, it will summon an electrical current
-					This electrical current will go the opposite way of the boomerang
+					Throws a smart electric disc with recent top-notch techonology
+					It homes into nearby enemies, bouncing on their heads few times before returning
+					[c/FF1414:Hits] inflict [c/A6FEFF:Shocked] that stacks, damages and slows enemies overtime
+					Nearby enemies get also a stack of [c/A6FEFF:Shocked] 
+					If an enemy reaches [c/FF1414:six stacks] of [c/A6FEFF:Shocked], 
+					all stacks are consumed and the enemy is struck by a piercing [c/A6FEFF:lightning strike]
 					'''
 			}
 
@@ -2372,6 +2375,61 @@ Mods: {
 				DisplayName: Tree Poisoning
 				Description: Mods.RealmOne.Buffs.TreePoisoning.Description
 			}
+
+			Shocked: {
+				DisplayName: Shocked
+				Description: Mods.RealmOne.Buffs.Shocked.Description
+			}
+
+			Shocked2x: {
+				DisplayName: Shocked2x
+				Description: Mods.RealmOne.Buffs.Shocked2x.Description
+			}
+
+			Shocked2: {
+				DisplayName: Shocked2
+				Description: Mods.RealmOne.Buffs.Shocked2.Description
+			}
+
+			Shocked3x: {
+				DisplayName: Shocked3x
+				Description: Mods.RealmOne.Buffs.Shocked3x.Description
+			}
+
+			Shocked3: {
+				DisplayName: Shocked3
+				Description: Mods.RealmOne.Buffs.Shocked3.Description
+			}
+
+			Shocked4: {
+				DisplayName: Shocked4
+				Description: Mods.RealmOne.Buffs.Shocked4.Description
+			}
+
+			Shocked5: {
+				DisplayName: Shocked5
+				Description: Mods.RealmOne.Buffs.Shocked5.Description
+			}
+
+			Shocked6: {
+				DisplayName: Shocked6
+				Description: Mods.RealmOne.Buffs.Shocked6.Description
+			}
+
+			Shocked7: {
+				DisplayName: Shocked7
+				Description: Mods.RealmOne.Buffs.Shocked7.Description
+			}
+
+			OrchidBonus: {
+				Description: Mods.RealmOne.Buffs.OrchidBonus.Description
+				DisplayName: Orchid Bonus
+			}
+
+			SlowLeaf: {
+				Description: Mods.RealmOne.Buffs.SlowLeaf.Description
+				DisplayName: Slow Leaf
+			}
 		}
 
 		Projectiles: {
@@ -2548,6 +2606,10 @@ Mods: {
 			TreeBush2.DisplayName: Tree Bush2
 			TreeBush3.DisplayName: Tree Bush3
 			ForestVengeanceProjec.DisplayName: Forest Vengeance Projec
+			ElectricBolt.DisplayName: Electric Bolt
+			LightningBolt.DisplayName: Lightning Bolt
+			OrchidRingRing.DisplayName: Orchid Ring Ring
+			OrchidRing.DisplayName: Orchid Ring
 		}
 
 		NPCs: {

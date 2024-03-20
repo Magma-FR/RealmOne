@@ -34,6 +34,7 @@ namespace RealmOne.Projectiles.Piggy
             Projectile.aiStyle = 2;
             Projectile.penetrate = 2;
             Projectile.extraUpdates = 1;
+            Projectile.damage = 1;
         }
 
         public override bool PreDraw(ref Color lightColor)

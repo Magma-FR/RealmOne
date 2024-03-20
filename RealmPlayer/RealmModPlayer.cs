@@ -1,10 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Buffs;
+using RealmOne.Buffs.Debuffs;
 using RealmOne.Common.Core;
 using RealmOne.Items.Opens;
 using RealmOne.Items.PaperUI;
+using RealmOne.Items.Weapons.PreHM.Impact;
+using RealmOne.Projectiles.Magic;
 using RealmOne.Projectiles.Other;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -109,6 +113,9 @@ namespace RealmOne.RealmPlayer
         private int LongShakeTimer = 0;
         public bool LongShake = false;
         private bool LongShakeWork = false;
+
+        //public Vector2 beamStart;
+       // public Vector2 beamEnd;
 
         public override void ModifyScreenPosition()
         {
@@ -264,6 +271,9 @@ namespace RealmOne.RealmPlayer
     {
         public bool marbleJustJumped;
 
+        public bool OrchidBonus = false;
+        public int cdOrchid = 0;
+
         public bool GreenNeck = false;
         public bool Overseer = false;
         public bool Rusty = false;
@@ -288,6 +298,7 @@ namespace RealmOne.RealmPlayer
 
         public override void ResetEffects()
         {
+            OrchidBonus = false;
             Overseer = false;
             Rusty = false;
             GreenNeck = false;
@@ -413,6 +424,75 @@ namespace RealmOne.RealmPlayer
         public override void PostUpdate()
         {
             Player p = Main.LocalPlayer;
+
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+
+                if (Vector2.Distance(p.Center, Main.npc[i].Center) > 150)
+                {
+                    if (Main.npc[i].color == Color.LightGreen)
+                    {
+                        Main.npc[i].color = Color.White;
+                    }
+                }
+            }
+
+            if (OrchidBonus == true)
+            {
+                if (cdOrchid > 0)
+                {
+                    cdOrchid--;
+                }
+
+                if (Main.rand.Next(1, 51) == 1)
+                {
+                    Vector2 spawnLoc = new Vector2(p.Center.X + Main.rand.Next(-260, 260), p.Center.Y + Main.rand.Next(-260, -20));
+                    Projectile.NewProjectile(p.GetSource_FromThis(), p.Center, new Vector2(Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f)), ModContent.ProjectileType<ForestVengeanceProjec>(), 11, 5f, Main.myPlayer);
+                }
+
+                if (cdOrchid == 0)
+                {
+                    cdOrchid = 20;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Vector2 spawnLoc = new Vector2(p.Center.X + Main.rand.Next(-260, 260), p.Center.Y + Main.rand.Next(-260, -20));
+                        if (Collision.CanHit(spawnLoc, 1, 1, spawnLoc, 1, 1))
+                        {
+                            Gore.NewGorePerfect(p.GetSource_Death(), spawnLoc, new Vector2(0, 0), GoreID.TreeLeaf_Normal, 1f);
+                        }
+                        
+                    }
+
+                }
+
+                p.AddBuff(ModContent.BuffType<OrchidBonus>(), 1);
+                if (p.ownedProjectileCounts[ModContent.ProjectileType<OrchidRingRing>()] < 1)
+                {
+                    Projectile.NewProjectile(p.GetSource_FromThis(), p.Center, new Vector2(0, 0), ModContent.ProjectileType<OrchidRingRing>(), 0, 0f, Main.myPlayer);
+                }
+
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+
+                    if (Vector2.Distance(p.Center, Main.npc[i].Center) < 300)
+                    {
+                        if (Main.npc[i].boss == false)
+                        {
+                            Main.npc[i].AddBuff(ModContent.BuffType<SlowLeaf>(), 5);
+                        }
+                    }
+                }
+
+                for (int i = 0; i < Main.maxItems; i++)
+                {
+                    if (Vector2.Distance(p.Center, Main.item[i].Center) < 300 && Main.item[i].type == ItemID.Heart || Main.item[i].type == ItemID.Star)
+                    {
+                        Main.item[i].velocity = (p.Center - Main.item[i].Center).SafeNormalize(Vector2.Zero) * 14f;
+                        int d = Dust.NewDust(Main.item[i].position, Main.item[i].width, Main.item[i].height, DustID.GreenTorch, Scale: 1.25f);
+                        Main.dust[d].noGravity = true;
+                    }
+                }
+            }
 
             if (PiggySet == true)
             {
