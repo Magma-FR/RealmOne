@@ -30,11 +30,11 @@ namespace RealmOne.Buffs.Debuffs.ShockStacks
                 Main.player[Main.myPlayer].GetModPlayer<Screenshake>().BigShake = 20;
                 if (Main.IsItStorming == true) // More dmg during storms :)
                 {
-                    Projectile.NewProjectile(Main.player[Main.myPlayer].GetSource_FromThis(), new Vector2(npc.Center.X, npc.Center.Y - 800), Main.player[Main.myPlayer].velocity, ModContent.ProjectileType<LightningBolt>(), Main.rand.Next(150, 190), 20f, Main.myPlayer);
+                    Projectile.NewProjectile(Main.player[Main.myPlayer].GetSource_FromThis(), new Vector2(npc.Center.X, npc.Center.Y - 1500), Main.player[Main.myPlayer].velocity, ModContent.ProjectileType<LightningBolt>(), Main.rand.Next(80, 90), 20f, Main.myPlayer);
                 }
                 else
                 {
-                    Projectile.NewProjectile(Main.player[Main.myPlayer].GetSource_FromThis(), new Vector2(npc.Center.X, npc.Center.Y - 800), Main.player[Main.myPlayer].velocity, ModContent.ProjectileType<LightningBolt>(), Main.rand.Next(80, 110), 20f, Main.myPlayer);
+                    Projectile.NewProjectile(Main.player[Main.myPlayer].GetSource_FromThis(), new Vector2(npc.Center.X, npc.Center.Y - 1500), Main.player[Main.myPlayer].velocity, ModContent.ProjectileType<LightningBolt>(), Main.rand.Next(50, 60), 20f, Main.myPlayer);
                 }
                 
             }

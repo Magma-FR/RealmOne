@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Buffs.Debuffs;
 using RealmOne.Buffs.Debuffs.ShockStacks;
 using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Common.Core.ParticleContent.Particles;
@@ -158,7 +159,11 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                         //Projectile.rotation += 0.4f;
                         Vector2 OnTop = new Vector2(npc.Center.X, npc.Center.Y - 300);
                         Vector2 direction = (Projectile.Center - OnTop).SafeNormalize(Vector2.UnitX);
-                        Projectile.velocity = (OnTop - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
+                        if (goingToLoc == false)
+                        {
+                            Projectile.velocity = (OnTop - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
+                        }
+                        
                         if (Vector2.Distance(OnTop, Projectile.Center) < 10 && goingToLoc == false)
                         {
                             goingToLoc = true;
@@ -208,6 +213,50 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             return false;
         }
 
+        public void ApplyShock(NPC npc, int time)
+        {
+            if (npc.HasBuff<Shocked5>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked5>(), time);
+            }
+            else if (npc.HasBuff<Shocked4>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked4>(), time);
+            }
+            else if (npc.HasBuff<Shocked3>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked3>(), time);
+            }
+            else if (npc.HasBuff<Shocked2>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked2>(), time);
+            }
+            else if (npc.HasBuff<Shocked>() && !npc.HasBuff<Shocked6>() || !npc.HasBuff<Shocked>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked>(), time);
+            }
+        }
+
+        public void Copperized(NPC npc, int buffTime)
+        {
+            ApplyShock(npc, buffTime);
+            for (int i = 0; i < 90; i++)
+            {
+                Vector2 speed = Main.rand.NextVector2CircularEdge(3f, 3f);
+                var dus = Dust.NewDustPerfect(Projectile.Center, DustID.Copper, speed * 6f, Scale: 2.5f);
+                ;
+                dus.noGravity = true;
+            }
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Vector2.Distance(npc.Center, Main.npc[i].Center) < 175 && Main.npc[i] != npc)
+                {
+                    ApplyShock(Main.npc[i], 90);
+                }
+            }
+
+        }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(rorAudio.SawbladeRev, Projectile.position);
@@ -216,25 +265,10 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 hits++;
             }
             goingToLoc = false;
-            if (target.HasBuff<Shocked5>() && !target.HasBuff<Shocked6>())
+            ApplyShock(target, 150);
+            if (target.HasBuff<Copperized>())
             {
-                target.AddBuff(ModContent.BuffType<Shocked5>(), 150);
-            }
-            else if (target.HasBuff<Shocked4>() && !target.HasBuff<Shocked6>())
-            {
-                target.AddBuff(ModContent.BuffType<Shocked4>(), 150);
-            }
-            else if (target.HasBuff<Shocked3>() && !target.HasBuff<Shocked6>())
-            {
-                target.AddBuff(ModContent.BuffType<Shocked3>(), 150);
-            }
-            else if (target.HasBuff<Shocked2>() && !target.HasBuff<Shocked6>())
-            {
-                target.AddBuff(ModContent.BuffType<Shocked2>(), 150);
-            }
-            else if (target.HasBuff<Shocked>() && !target.HasBuff<Shocked6>() || !target.HasBuff<Shocked>() && !target.HasBuff<Shocked6>())
-            {
-                target.AddBuff(ModContent.BuffType<Shocked>(), 150);
+                Copperized(target, 150);
             }
             for (int i = 0; i < 90; i++)
             {
@@ -245,28 +279,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             }
             for (int i = 0; i < Main.maxNPCs; i++)
             {
-                if (Vector2.Distance(target.Center, Main.npc[i].Center) < 225 && Main.npc[i] != target)
+                if (Vector2.Distance(target.Center, Main.npc[i].Center) < 175 && Main.npc[i] != target)
                 {
-                    if (Main.npc[i].HasBuff<Shocked5>() && !Main.npc[i].HasBuff<Shocked6>())
-                    {
-                        Main.npc[i].AddBuff(ModContent.BuffType<Shocked5>(), 90);
-                    }
-                    else if (Main.npc[i].HasBuff<Shocked4>() && !Main.npc[i].HasBuff<Shocked6>())
-                    {
-                        Main.npc[i].AddBuff(ModContent.BuffType<Shocked4>(), 90);
-                    }
-                    else if (Main.npc[i].HasBuff<Shocked3>() && !Main.npc[i].HasBuff<Shocked6>())
-                    {
-                        Main.npc[i].AddBuff(ModContent.BuffType<Shocked3>(), 90);
-                    }
-                    else if (Main.npc[i].HasBuff<Shocked2>() && !Main.npc[i].HasBuff<Shocked6>())
-                    {
-                        Main.npc[i].AddBuff(ModContent.BuffType<Shocked2>(), 90);
-                    }
-                    else if (Main.npc[i].HasBuff<Shocked>() && !Main.npc[i].HasBuff<Shocked6>() || !Main.npc[i].HasBuff<Shocked>() && !Main.npc[i].HasBuff<Shocked6>())
-                    {
-                        Main.npc[i].AddBuff(ModContent.BuffType<Shocked>(), 90);
-                    }
+                    ApplyShock(Main.npc[i], 90);
                 }
             }
         }

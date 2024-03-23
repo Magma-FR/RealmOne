@@ -1,8 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Buffs;
+using RealmOne.Common.Systems;
+using RealmOne.RealmPlayer;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -38,26 +41,12 @@ namespace RealmOne.Armor
             return body.type == ModContent.ItemType<BrassBody>() && legs.type == ModContent.ItemType<BrassLegs>();
         }
 
-        private int Watertimer = 0;
-
         public override void UpdateArmorSet(Player player)
         {
-            //      string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-            player.setBonus = "Double tap UP to gain Brass Might which increases the players defense by 10+ but 14% decreased movement & running speed\n10 second cooldown";
-            Watertimer++;
-            player.GetModPlayer<BrassSetBonus>().SpecialSetBonus = true;
-
-            if (Watertimer == 9)
-            {
-                int d = Dust.NewDust(player.position, player.width, player.height, DustID.CopperCoin);
-                Main.dust[d].scale = 1f;
-                Main.dust[d].velocity *= 0.5f;
-                Main.dust[d].noLight = false;
-
-                Watertimer = 0;
-            }
-
+            player.setBonus = $"+2 Defense\nEnemies that collide with you have a chance to get [c/C87C00:Copperized]\nPressing [c/C1C1C1:{KeybindSystem.BrassActivation.GetAssignedKeys()[0]}] causes you to encase yourself in another layer of brass that gives:\n[c/9BFF01:+4 life regen]\n[c/9BFF01:+20 max health]\n[c/9BFF01:+8 defense]\n[c/F00000:-50% movement speed]\nWhen pressed, also conjure a [c/C87C00:Brass Missile] that seeks out for your cursor\nUpon reaching your cursor or running out of time, it drops down like a bomb and explodes upon any impact\nUpon exploding, it inflicts [c/C87C00:Copperized] to all hit enemies\n[c/C87C00:Copperized]:\nEnemies get turned into copper for a short while\nWhile [c/C87C00:Copperized], enemies conduct electricity better\nThis causes [c/A6FEFF:Impact Weapons] to gain a special effect against [c/C87C00:Copperized] enemies";
+            // change X to whatever hotkey the player has set it to
             player.statDefense += 2;
+            player.GetModPlayer<RealmModPlayer>().BrassSetBonus = true;
         }
 
         public override void AddRecipes()

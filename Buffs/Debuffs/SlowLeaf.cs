@@ -7,7 +7,7 @@ using Terraria.ID;
 
 namespace RealmOne.Buffs.Debuffs
 {
-    public class SlowLeaf: ModBuff
+    public class SlowLeaf : ModBuff
     {
         public override void SetStaticDefaults()
         {

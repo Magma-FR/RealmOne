@@ -639,8 +639,9 @@ Mods: {
 				DisplayName: Impact Interceptor
 				Tooltip:
 					'''
-					Releases an electric pulse sonar that damages enemies in a large area
-					Goes through walls		
+					Releases few [c/00E0FF:electrical signals] to nearby enemies
+					[c/00E0FF:Electrical signals] ignore defense
+					Causes [c/FF0000:hit] enemies to lose their good ping for a while, causing them to occasionally stagger in place
 					'No WI-FI password required!'
 					'''
 			}
@@ -2332,8 +2333,15 @@ Mods: {
 			}
 
 			BrassMight: {
-				Description: You feel like a Brass Knight!
-				DisplayName: Brass Might
+				DisplayName: Brass Encasement
+				Description:
+					'''
+					The power of rust!
+					+4 life regen
+					+20 max health
+					+8 defense
+					-50% movement speed
+					'''
 			}
 
 			WineBuff: {
@@ -2372,63 +2380,83 @@ Mods: {
 			}
 
 			TreePoisoning: {
-				DisplayName: Tree Poisoning
-				Description: Mods.RealmOne.Buffs.TreePoisoning.Description
+				DisplayName: Braned
+				Description: You are stuck in branches!
 			}
 
 			Shocked: {
 				DisplayName: Shocked
-				Description: Mods.RealmOne.Buffs.Shocked.Description
+				Description: Losing health rapdily while your legs slow down
 			}
 
 			Shocked2x: {
-				DisplayName: Shocked2x
-				Description: Mods.RealmOne.Buffs.Shocked2x.Description
+				DisplayName: Shocked x2
+				Description: Losing health rapdily while your legs slow down
 			}
 
 			Shocked2: {
-				DisplayName: Shocked2
-				Description: Mods.RealmOne.Buffs.Shocked2.Description
+				DisplayName: Shocked x2
+				Description: Losing health rapdily while your legs slow down
 			}
 
 			Shocked3x: {
-				DisplayName: Shocked3x
-				Description: Mods.RealmOne.Buffs.Shocked3x.Description
+				DisplayName: Shocked x3
+				Description: Losing health rapdily while your legs slow down
 			}
 
 			Shocked3: {
-				DisplayName: Shocked3
-				Description: Mods.RealmOne.Buffs.Shocked3.Description
+				DisplayName: Shocked x3
+				Description: Losing health rapdily while your legs slow down
 			}
 
 			Shocked4: {
-				DisplayName: Shocked4
-				Description: Mods.RealmOne.Buffs.Shocked4.Description
+				DisplayName: Shocked x4
+				Description: Your body trembles with electricity
 			}
 
 			Shocked5: {
-				DisplayName: Shocked5
-				Description: Mods.RealmOne.Buffs.Shocked5.Description
+				DisplayName: Shocked x5
+				Description: You see small-scaled lightnings happening around you
 			}
 
 			Shocked6: {
-				DisplayName: Shocked6
-				Description: Mods.RealmOne.Buffs.Shocked6.Description
+				DisplayName: Shocked x6
+				Description: o7
 			}
 
 			Shocked7: {
-				DisplayName: Shocked7
-				Description: Mods.RealmOne.Buffs.Shocked7.Description
+				DisplayName: Shocked x7
+				Description: o7
 			}
 
 			OrchidBonus: {
-				Description: Mods.RealmOne.Buffs.OrchidBonus.Description
-				DisplayName: Orchid Bonus
+				Description: The smooth sound of leaves passing by soothes you
+				DisplayName: Orchidaceae
 			}
 
 			SlowLeaf: {
 				Description: Mods.RealmOne.Buffs.SlowLeaf.Description
 				DisplayName: Slow Leaf
+			}
+
+			BrassMightCD: {
+				DisplayName: Out of rust
+				Description: There is no longer rust to be used..
+			}
+
+			Copperized: {
+				DisplayName: Copperized
+				Description: Made out of copper!
+			}
+
+			NoConnect: {
+				Description: Maybe its time for a better router?
+				DisplayName: No Connection
+			}
+
+			Cancelled: {
+				Description: Hey, atleast you're not on twitter
+				DisplayName: Cancelled
 			}
 		}
 
@@ -2568,7 +2596,7 @@ Mods: {
 			CrimclubSwing.DisplayName: Crimclub Swing
 			BloodBlowerProj.DisplayName: Blood Blower Proj
 			TatteredJavlinProj.DisplayName: Tattered Javlin Proj
-			ImpactSonarShot.DisplayName: Impact Sonar Shot
+			ImpactSonarShot.DisplayName: Impact Sonar
 			Starbang.DisplayName: Starbang
 			ToothedTendrilProj.DisplayName: Toothed Tendril Proj
 			ArteryCarrionProjectile.DisplayName: Artery Carrion Projectile
@@ -2610,6 +2638,11 @@ Mods: {
 			LightningBolt.DisplayName: Lightning Bolt
 			OrchidRingRing.DisplayName: Orchid Ring Ring
 			OrchidRing.DisplayName: Orchid Ring
+			BrassExplosion.DisplayName: Brass Explosion
+			BrassMissile.DisplayName: Brass Missile
+			ImpactLesserSonarShot.DisplayName: Impact Sonar
+			ImpactEvenLesserSonarShot.DisplayName: Impact Even Lesser Sonar Shot
+			GoretoothTooth.DisplayName: Goretooth
 		}
 
 		NPCs: {
@@ -2844,7 +2877,10 @@ Mods: {
 			DemolitionClass.DisplayName: Demolition Class
 		}
 
-		"Keybinds.Technicians Call.DisplayName": Technicians  Call
+		Keybinds: {
+			"Technicians Call.DisplayName": Technicians  Call
+			"Brass Set Bonus.DisplayName": Brass  Set  Bonus
+		}
 
 		Biomes: {
 			FarmSurface: {

@@ -1,12 +1,15 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Buffs;
 using RealmOne.Buffs.Debuffs;
+using RealmOne.Buffs.Debuffs.ShockStacks;
 using RealmOne.Common.Core;
 using RealmOne.Common.Systems;
 using RealmOne.RealmPlayer;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -40,13 +43,14 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.noMelee = true;
             Item.rare = ItemRarityID.Blue;
             Item.shootSpeed = 4f;
-            Item.useAnimation = 60;
-            Item.useTime = 60;
+            Item.useAnimation = 120;
+            Item.useTime = 120;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.value = Item.buyPrice(silver: 90);
             Item.shoot = ProjectileType<ImpactSonarShot>();
             Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/SFX_Sonar");
             Item.scale = 1f;
+            Item.ArmorPenetration = 999999999;
         }
 
         public override Vector2? HoldoutOffset()
@@ -98,46 +102,367 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
     {
         public override string Texture => Helper.Empty;
 
+        int size;
+        bool fadeIN = false;
+
         public override void SetDefaults()
         {
-            Projectile.height = 400;
-            Projectile.width = 400;
-            Projectile.friendly = true;
+            Projectile.height = 1;
+            Projectile.width = 1;
+            Projectile.friendly = false;
             Projectile.hostile = false;
             Projectile.penetrate = -2;
             Projectile.tileCollide = false;
+            Projectile.timeLeft = 80;
+            Projectile.alpha = 255;
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            size = 0;
+            Projectile.ai[1] = 1f;
+            Projectile.ai[2] = 1f;
         }
 
         public override void AI()
         {
-            Projectile.ai[0] += 0.05f;
-            if (Projectile.ai[0] > 1)
+            Projectile.ai[0] += 0.02f;
+            size += 5;
+
+            if (size == 100)
             {
-                Projectile.Kill();
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Main.player[Projectile.owner].Center, new Vector2(0, 0), ModContent.ProjectileType<ImpactLesserSonarShot>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
             }
+            if (size == 200)
+            {
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Main.player[Projectile.owner].Center, new Vector2(0, 0), ModContent.ProjectileType<ImpactLesserSonarShot>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
+            }
+
+
+            /*if (fadeIN == false)
+            {
+                if (Projectile.ai[1] < 0.6f)
+                {
+                    Projectile.ai[1] += 0.02f;
+                }
+                else if (Projectile.ai[1] == 0.6f)
+                {
+                    fadeIN = true;
+                }
+
+            }
+            else
+            {
+                
+            }*/
+
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Vector2.Distance(Projectile.Center, Main.npc[i].Center) < size && Vector2.Distance(Projectile.Center, Main.npc[i].Center) > size - 5 && Projectile.timeLeft > 20)
+                {
+                    int hitDir = 0;
+                    bool crit = false;
+                    if (Main.npc[i].Center.X < Projectile.Center.X)
+                    {
+                        hitDir = 1; // right
+                    }
+                    if (Main.npc[i].Center.X > Projectile.Center.X)
+                    {
+                        hitDir = -1; // left
+                    }
+                    if (Main.rand.Next(100) < Projectile.CritChance)
+                    {
+                        crit = true;
+                    }
+                    if (Main.npc[i].friendly == false)
+                    {
+                        Main.npc[i].SimpleStrikeNPC(Projectile.damage, hitDir, crit, Projectile.knockBack, DamageClass.Magic);
+                        if (Main.npc[i].HasBuff<Copperized>())
+                        {
+                            Main.npc[i].AddBuff(BuffType<Cancelled>(), 300);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Main.npc[i].Center, new Vector2(0, 0), ModContent.ProjectileType<ImpactEvenLesserSonarShot>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
+                        }
+                        else if (!Main.npc[i].HasBuff<Copperized>())
+                        {
+                            Main.npc[i].AddBuff(BuffType<NoConnect>(), 300);
+                        }
+                    }
+                }
+            }
+
+            if (Projectile.timeLeft < 50)
+            {
+                if (Projectile.ai[1] > 0f)
+                {
+                    Projectile.ai[1] -= 0.02f;
+                    Projectile.ai[2] -= 0.02f;
+                }
+
+            }
+
+
+
         }
 
         public override void PostAI()
         {
-            if (Projectile.ai[1] == 1)
-                Projectile.damage = 0;
+            /*if (Projectile.ai[0] == 1)
+                Projectile.damage = 0;*/
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
+
             Texture2D tex = Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
             Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.ai[0]);
-            for (int i = 0; i < 3; i++)
-                Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, Color.Cyan * (3 - alpha), Projectile.rotation, tex.Size() / 2, Projectile.ai[0], SpriteEffects.None, 0);
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.alpha);
+            for (int i = 0; i < 1; i++)
+                Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, new Color(0, Projectile.ai[1], Projectile.ai[1], Projectile.ai[2]), Projectile.rotation, tex.Size() / 2, Projectile.ai[0], SpriteEffects.None, 0);
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); return false;
+        }
+
+        public override bool ShouldUpdatePosition()
+        {
+            return false;
+        }
+    }
+
+    public class ImpactLesserSonarShot : ModProjectile
+    {
+        public override string Texture => Helper.Empty;
+
+        int size;
+        bool fadeIN = false;
+
+        public override void SetDefaults()
+        {
+            Projectile.height = 1;
+            Projectile.width = 1;
+            Projectile.friendly = false;
+            Projectile.hostile = false;
+            Projectile.penetrate = -2;
+            Projectile.tileCollide = false;
+            Projectile.timeLeft = 80;
+            Projectile.alpha = 255;
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            size = 1;
+            Projectile.ai[1] = 1f;
+            Projectile.ai[2] = 1f;
+        }
+
+        public override void AI()
+        {
+            Projectile.ai[0] += 0.02f;
+            size += 5;
+
+            /*if (fadeIN == false)
+            {
+                if (Projectile.ai[1] < 0.6f)
+                {
+                    Projectile.ai[1] += 0.02f;
+                }
+                else if (Projectile.ai[1] == 0.6f)
+                {
+                    fadeIN = true;
+                }
+
+            }
+            else
+            {
+                
+            }*/
+
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Vector2.Distance(Projectile.Center, Main.npc[i].Center) < size && Vector2.Distance(Projectile.Center, Main.npc[i].Center) > size - 5 && Projectile.timeLeft > 20)
+                {
+                    int hitDir = 0;
+                    bool crit = false;
+                    if (Main.npc[i].Center.X < Projectile.Center.X)
+                    {
+                        hitDir = 1; // right
+                    }
+                    if (Main.npc[i].Center.X > Projectile.Center.X)
+                    {
+                        hitDir = -1; // left
+                    }
+                    if (Main.rand.Next(100) < Projectile.CritChance)
+                    {
+                        crit = true;
+                    }
+                    if (Main.npc[i].friendly == false)
+                    {
+                        Main.npc[i].SimpleStrikeNPC(Projectile.damage, hitDir, crit, Projectile.knockBack, DamageClass.Magic);
+                        if (Main.npc[i].HasBuff<Copperized>())
+                        {
+                            Main.npc[i].AddBuff(BuffType<Cancelled>(), 300);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Main.npc[i].Center, new Vector2(0, 0), ModContent.ProjectileType<ImpactEvenLesserSonarShot>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
+                        }
+                        else if (!Main.npc[i].HasBuff<Copperized>())
+                        {
+                            Main.npc[i].AddBuff(BuffType<NoConnect>(), 300);
+                        }
+                    }
+                }
+            }
+
+            if (Projectile.timeLeft < 50)
+            {
+                if (Projectile.ai[1] > 0f)
+                {
+                    Projectile.ai[1] -= 0.02f;
+                    Projectile.ai[2] -= 0.02f;
+                }
+
+            }
+
+
+
+        }
+
+        public override void PostAI()
+        {
+            /*if (Projectile.ai[0] == 1)
+                Projectile.damage = 0;*/
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+
+            Texture2D tex = Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.alpha);
+            for (int i = 0; i < 1; i++)
+                Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, new Color(0, Projectile.ai[1], Projectile.ai[1], Projectile.ai[2]), Projectile.rotation, tex.Size() / 2, Projectile.ai[0], SpriteEffects.None, 0);
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); return false;
+        }
+
+
+        public override bool ShouldUpdatePosition()
+        {
+            return false;
+        }
+
+
+    }
+
+    public class ImpactEvenLesserSonarShot : ModProjectile
+    {
+        public override string Texture => Helper.Empty;
+
+        int size;
+        float g;
+        bool fadeIN = false;
+
+        public override void SetDefaults()
+        {
+            Projectile.height = 1;
+            Projectile.width = 1;
+            Projectile.friendly = false;
+            Projectile.hostile = false;
+            Projectile.penetrate = -2;
+            Projectile.tileCollide = false;
+            Projectile.timeLeft = 80;
+            Projectile.alpha = 255;
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            size = 1;
+            Projectile.ai[1] = 1f;
+            g = 0.5f;
+            Projectile.ai[2] = 1f;
+        }
+
+        public override void AI()
+        {
+            Projectile.ai[0] += 0.01f;
+            size += 3;
+
+            /*if (fadeIN == false)
+            {
+                if (Projectile.ai[1] < 0.6f)
+                {
+                    Projectile.ai[1] += 0.02f;
+                }
+                else if (Projectile.ai[1] == 0.6f)
+                {
+                    fadeIN = true;
+                }
+
+            }
+            else
+            {
+
+            }*/
+
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Vector2.Distance(Projectile.Center, Main.npc[i].Center) < size && Vector2.Distance(Projectile.Center, Main.npc[i].Center) > size - 5 && Projectile.timeLeft > 20)
+                {
+                    int hitDir = 0;
+                    bool crit = false;
+                    if (Main.npc[i].Center.X < Projectile.Center.X)
+                    {
+                        hitDir = 1; // right
+                    }
+                    if (Main.npc[i].Center.X > Projectile.Center.X)
+                    {
+                        hitDir = -1; // left
+                    }
+                    if (Main.rand.Next(100) < Projectile.CritChance)
+                    {
+                        crit = true;
+                    }
+                    if (Main.npc[i].friendly == false)
+                    {
+                        Main.npc[i].SimpleStrikeNPC(Projectile.damage, hitDir, crit, Projectile.knockBack, DamageClass.Magic);
+                        Main.npc[i].AddBuff(BuffType<NoConnect>(), 300);
+                    }
+                }
+            }
+
+            if (Projectile.timeLeft < 50)
+            {
+                if (Projectile.ai[1] > 0f)
+                {
+                    Projectile.ai[1] -= 0.02f;
+                    Projectile.ai[2] -= 0.02f;
+                    g -= 0.01f;
+                }
+
+            }
+
+
+
+        }
+
+        public override void PostAI()
+        {
+            /*if (Projectile.ai[0] == 1)
+                Projectile.damage = 0;*/
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+
+            Texture2D tex = Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.alpha);
+            for (int i = 0; i < 1; i++)
+                Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, new Color(Projectile.ai[1], g, 0, Projectile.ai[2]), Projectile.rotation, tex.Size() / 2, Projectile.ai[0], SpriteEffects.None, 0);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); return false;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hitinfo, int damage)
         {
-            Projectile.ai[1] = 1;
-            target.AddBuff(BuffType<AltElectrified>(), 180);
+            target.AddBuff(BuffType<NoConnect>(), 300);
         }
 
         public override bool ShouldUpdatePosition()

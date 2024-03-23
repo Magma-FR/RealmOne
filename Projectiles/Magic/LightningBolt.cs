@@ -37,8 +37,8 @@ namespace RealmOne.Projectiles.Magic
 
         public override void SetDefaults()
         {
-            Projectile.width = 60;
-            Projectile.height = 60;
+            Projectile.width = 100;
+            Projectile.height = 100;
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = -1; 

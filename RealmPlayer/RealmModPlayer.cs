@@ -3,9 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Buffs;
 using RealmOne.Buffs.Debuffs;
 using RealmOne.Common.Core;
+using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Common.Core.ParticleContent;
+using RealmOne.Common.Systems;
 using RealmOne.Items.Opens;
 using RealmOne.Items.PaperUI;
 using RealmOne.Items.Weapons.PreHM.Impact;
+using RealmOne.Projectiles.Bullet;
 using RealmOne.Projectiles.Magic;
 using RealmOne.Projectiles.Other;
 using System;
@@ -271,13 +275,21 @@ namespace RealmOne.RealmPlayer
     {
         public bool marbleJustJumped;
 
+        public bool BrassSetBonus = false;
+        public bool MaxTeeth = false;
+        public int BrassCD = 0;
+        public int BrassShineCD = 0;
+
+        public bool GoreToothBonus = false;
+        public int GoreToothCD = 0;
+        public int ShineGoreCD = 0;
+
         public bool OrchidBonus = false;
         public int cdOrchid = 0;
 
         public bool GreenNeck = false;
         public bool Overseer = false;
         public bool Rusty = false;
-        public bool brassSet = false;
         public bool FallSpeed = false;
         public bool PiggySet = false;
 
@@ -298,6 +310,8 @@ namespace RealmOne.RealmPlayer
 
         public override void ResetEffects()
         {
+            GoreToothBonus = false;
+            BrassSetBonus = false;
             OrchidBonus = false;
             Overseer = false;
             Rusty = false;
@@ -305,9 +319,39 @@ namespace RealmOne.RealmPlayer
             marbleJustJumped = false;
 
             FallSpeed = false;
-            brassSet = false;
             PiggySet = false;
             hasStriken = false;
+        }
+
+        public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
+        {
+            if (BrassSetBonus)
+            {
+                if (Main.rand.Next(101) < 20)
+                {
+                    npc.AddBuff(ModContent.BuffType<Copperized>(), 240);
+                }
+            }
+        }
+
+        public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+        {
+            if (Main.LocalPlayer.HasBuff<BrassMight>())
+            {
+                r = 1f;
+                g = 0.5f;
+                b = 0f;
+                a = 1f;
+
+            }
+            if (GoreToothBonus = true && Main.LocalPlayer.statLife <= Main.LocalPlayer.statLifeMax2 / 2)
+            {
+                r = 1f;
+                g = 0.7f;
+                b = 0.7f;
+                a = 1f;
+
+            }
         }
 
         /*public void DoubleTapEffects(int keyDir)
@@ -324,6 +368,20 @@ namespace RealmOne.RealmPlayer
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             Player p = Main.LocalPlayer;
+
+            if (KeybindSystem.BrassActivation.JustPressed && !p.HasBuff<BrassMightCD>() && !p.HasBuff<BrassMight>())
+            {
+                for (int i = 0; i < 90; i++)
+                {
+                    Vector2 speed = Main.rand.NextVector2CircularEdge(2.5f, 2.5f);
+                    var dus = Dust.NewDustPerfect(p.Center, DustID.Copper, speed * 5f, Scale: 2.5f);
+                    ;
+                    dus.noGravity = true;
+                }
+                SoundEngine.PlaySound(SoundID.NPCHit43, p.Center);
+                p.AddBuff(ModContent.BuffType<BrassMight>(), 600);
+                Projectile.NewProjectile(p.GetSource_FromThis(), p.Center, (p.Center - Main.MouseWorld).SafeNormalize(Vector2.Zero) * -5f, ModContent.ProjectileType<BrassMissile>(), 30, 0f, Main.myPlayer);
+            }
 
             if (FallSpeed == true)
             {
@@ -384,8 +442,12 @@ namespace RealmOne.RealmPlayer
             public bool brightProjectiles = false;
         }
 
+        
+
         public override void OnHurt(Player.HurtInfo info)
         {
+            
+
             if (PiggySet == true)
             {
                 if (Main.rand.Next(101) < 80 && coinFallAmount <= 0)
@@ -404,8 +466,6 @@ namespace RealmOne.RealmPlayer
                 player.GetModPlayer<RealmModPlayer>().cd--;
             }
 
-            if (!brassSet)
-                marbleJustJumped = false;
 
             if (Main.GameModeInfo.IsMasterMode)
             {
@@ -424,6 +484,94 @@ namespace RealmOne.RealmPlayer
         public override void PostUpdate()
         {
             Player p = Main.LocalPlayer;
+
+            if (GoreToothBonus)
+            {
+                if (p.statLife <= p.statLifeMax2 / 2)
+                {
+                    if (ShineGoreCD == 0)
+                    {
+                        ShineGoreCD = 5;
+                        int d = Dust.NewDust(p.position, p.width, p.height, DustID.RedTorch);
+                        Main.dust[d].scale = 1f;
+                        Main.dust[d].velocity *= 1f;
+                        Main.dust[d].noLight = false;
+                    }
+                    if (GoreToothCD == 0 && p.ownedProjectileCounts[ModContent.ProjectileType<GoretoothTooth>()] < 24 && MaxTeeth == false) //24
+                    {
+                        GoreToothCD = Main.rand.Next(8, 17);
+                        int dmg = Main.rand.Next(18, 25);
+                        if (p.HeldItem.DamageType == DamageClass.Summon)
+                        {
+                            if (p.HeldItem.damage > 20)
+                            {
+                                dmg = Main.rand.Next(p.HeldItem.damage / 2 + 18, p.HeldItem.damage / 2 + 10 + 7);
+                            }
+                            
+                        }
+                        Projectile.NewProjectile(p.GetSource_FromThis(), new Vector2(p.Center.X, p.Center.Y - 35), new Vector2(0, 0), ModContent.ProjectileType<GoretoothTooth>(), dmg, 2f, Main.myPlayer);
+                    }
+                    if (p.ownedProjectileCounts[ModContent.ProjectileType<GoretoothTooth>()] >= 23)
+                    {
+                        MaxTeeth = true;
+                    }
+
+                    if (GoreToothCD == 0 && MaxTeeth == true && p.ownedProjectileCounts[ModContent.ProjectileType<GoretoothTooth>()] < 24)
+                    {
+                        GoreToothCD = Main.rand.Next(280, 311);
+                        Projectile.NewProjectile(p.GetSource_FromThis(), new Vector2(p.Center.X, p.Center.Y - 35), new Vector2(0, 0), ModContent.ProjectileType<GoretoothTooth>(), Main.rand.Next(18, 25), 2f, Main.myPlayer);
+                    }
+                }
+                else if (p.statLife > p.statLifeMax2 / 2)
+                {
+                    MaxTeeth = false;
+                    GoreToothCD = 15;
+                }
+            }
+
+            if (ShineGoreCD > 0)
+            {
+                ShineGoreCD--;
+            }
+
+            if (GoreToothCD > 0)
+            {
+                GoreToothCD--;
+            }
+
+            if (BrassCD > 0)
+            {
+                BrassCD--;
+            }
+
+            if (BrassShineCD > 0)
+            {
+                BrassShineCD--;
+            }
+
+            if (BrassSetBonus && BrassShineCD == 0)
+            {
+                BrassShineCD = 60;
+                SparkleParticle sparkle = new(Color.White, 1, new Vector2(p.Center.X + Main.rand.Next(-50, 50), p.Center.Y + Main.rand.Next(-50, 50)), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
+                ParticleSystem.GenerateParticle(sparkle);
+            }
+
+            if (BrassSetBonus && BrassCD == 0 && !p.HasBuff<BrassMight>())
+            {
+                BrassCD = 9;
+                int d = Dust.NewDust(p.position, p.width, p.height, DustID.CopperCoin);
+                Main.dust[d].scale = 1f;
+                Main.dust[d].velocity *= 1f;
+                Main.dust[d].noLight = false;
+            }
+            else if (BrassSetBonus && BrassCD == 0 && p.HasBuff<BrassMight>())
+            {
+                BrassCD = 2;
+                int d = Dust.NewDust(p.position, p.width, p.height, DustID.CopperCoin);
+                Main.dust[d].scale = 2f;
+                Main.dust[d].velocity *= 1f;
+                Main.dust[d].noLight = false;
+            }
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
@@ -444,7 +592,7 @@ namespace RealmOne.RealmPlayer
                     cdOrchid--;
                 }
 
-                if (Main.rand.Next(1, 51) == 1)
+                if (Main.rand.Next(200) < 3)
                 {
                     Vector2 spawnLoc = new Vector2(p.Center.X + Main.rand.Next(-260, 260), p.Center.Y + Main.rand.Next(-260, -20));
                     Projectile.NewProjectile(p.GetSource_FromThis(), p.Center, new Vector2(Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f)), ModContent.ProjectileType<ForestVengeanceProjec>(), 11, 5f, Main.myPlayer);
@@ -485,9 +633,15 @@ namespace RealmOne.RealmPlayer
 
                 for (int i = 0; i < Main.maxItems; i++)
                 {
-                    if (Vector2.Distance(p.Center, Main.item[i].Center) < 300 && Main.item[i].type == ItemID.Heart || Main.item[i].type == ItemID.Star)
+                    if (Vector2.Distance(p.Center, Main.item[i].Center) < 300 && Main.item[i].type == ItemID.Heart)
                     {
-                        Main.item[i].velocity = (p.Center - Main.item[i].Center).SafeNormalize(Vector2.Zero) * 14f;
+                        Main.item[i].velocity = (p.Center - Main.item[i].Center).SafeNormalize(Vector2.Zero) * 5f;
+                        int d = Dust.NewDust(Main.item[i].position, Main.item[i].width, Main.item[i].height, DustID.GreenTorch, Scale: 1.25f);
+                        Main.dust[d].noGravity = true;
+                    }
+                    if (Vector2.Distance(p.Center, Main.item[i].Center) < 150 && Main.item[i].type == ItemID.Star)
+                    {
+                        Main.item[i].velocity = (p.Center - Main.item[i].Center).SafeNormalize(Vector2.Zero) * 5f;
                         int d = Dust.NewDust(Main.item[i].position, Main.item[i].width, Main.item[i].height, DustID.GreenTorch, Scale: 1.25f);
                         Main.dust[d].noGravity = true;
                     }
