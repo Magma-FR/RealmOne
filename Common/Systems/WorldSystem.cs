@@ -9,6 +9,7 @@ using RealmOne.Items.Weapons.PreHM.Throwing;
 using RealmOne.NPCs.Enemies.Underground;
 using RealmOne.Tiles;
 using RealmOne.Tiles.Ambient;
+using RealmOne.Tiles.PlantTiles;
 using RealmOne.Tiles.Torches;
 using System.Collections.Generic;
 using Terraria;
@@ -139,7 +140,7 @@ namespace RealmOne.Common.Systems
             {
                 progress.Message = "Ambients";
 
-                int[] tileTypes = new int[] { TileType<WoodLog1>(), TileType<WoodLog2>(), TileType<WoodLog3>() };
+                int[] tileTypes = new int[] { TileType<WoodLog1>(), TileType<WoodLog2>(), TileType<WoodLog3>(), TileType<OrchidTree>() };
 
                 // To not be annoying, we'll only spawn 15 Example Rubble near the spawn point.
                 // This example uses the Try Until Success approach: https://github.com/tModLoader/tModLoader/wiki/World-Generation#try-until-success

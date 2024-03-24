@@ -2870,6 +2870,7 @@ Mods: {
 			// AnkhPot.MapEntry: Ankh Pot
 			// OrchidMothJar.MapEntry: Orchid Moth Jar
 			// OrchidSluggyCage.MapEntry: Orchid Sluggy Cage
+			// OrchidTree.MapEntry: Orchid Tree
 		}
 
 		DamageClasses: {

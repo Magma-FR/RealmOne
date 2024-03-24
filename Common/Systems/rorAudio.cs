@@ -137,6 +137,10 @@ public class rorAudio : ModSystem
 
     public static readonly SoundStyle Rat;
 
+    public static readonly SoundStyle TreeHurt;
+
+    public static readonly SoundStyle TreeKill;
+
     static rorAudio()
     {
         SFX_MetalSwing = new SoundStyle("RealmOne/Assets/Soundss/SFX_MetalSwing", (SoundType)0);
@@ -204,5 +208,7 @@ public class rorAudio : ModSystem
         GoreGun = new SoundStyle("RealmOne/Assets/Soundss/GoreGun", (SoundType)0);
         squeak = new SoundStyle("RealmOne/Assets/Soundss/squeak", (SoundType)0);
         Rat = new SoundStyle("RealmOne/Assets/Soundss/Rat", (SoundType)0);
+        TreeHurt = new SoundStyle("RealmOne/Assets/Soundss/TreeHurt", (SoundType)0);
+        TreeKill = new SoundStyle("RealmOne/Assets/Soundss/TreeKill", (SoundType)0);
     }
 }
