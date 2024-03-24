@@ -36,7 +36,7 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
             Item.knockBack = 3f;
             Item.value = Item.buyPrice(0, 0, 87, 34);
             Item.rare = ItemRarityID.Blue;
-            Item.useTurn = true;
+            Item.useTurn = false;
             Item.crit = 2;
             Item.UseSound = SoundID.Item30;
         }

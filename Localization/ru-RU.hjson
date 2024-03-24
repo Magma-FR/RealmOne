@@ -623,12 +623,15 @@ Mods: {
 			}
 
 			ImpactBoomerang: {
-				// DisplayName: Impact Boomerang
+				// DisplayName: Impact Disc
 				/* Tooltip:
 					'''
-					Throws a electric and dark boomerang that homes onto enemies
-					If the boomerang hits a tile, it will summon an electrical current
-					This electrical current will go the opposite way of the boomerang
+					Throws a smart electric disc with recent top-notch techonology
+					It homes into nearby enemies, bouncing on their heads few times before returning
+					[c/FF1414:Hits] inflict [c/A6FEFF:Shocked] that stacks, damages and slows enemies overtime
+					Nearby enemies get also a stack of [c/A6FEFF:Shocked] 
+					If an enemy reaches [c/FF1414:six stacks] of [c/A6FEFF:Shocked], 
+					all stacks are consumed and the enemy is struck by a piercing [c/A6FEFF:lightning strike]
 					''' */
 			}
 
@@ -636,8 +639,9 @@ Mods: {
 				// DisplayName: Impact Interceptor
 				/* Tooltip:
 					'''
-					Releases an electric pulse sonar that damages enemies in a large area
-					Goes through walls		
+					Releases few [c/00E0FF:electrical signals] to nearby enemies
+					[c/00E0FF:Electrical signals] ignore defense
+					Causes [c/FF0000:hit] enemies to lose their good ping for a while, causing them to occasionally stagger in place
 					'No WI-FI password required!'
 					''' */
 			}
@@ -2225,6 +2229,16 @@ Mods: {
 				// DisplayName: Grisly Hide
 				// Tooltip: ""
 			}
+
+			ForestVengeance: {
+				// DisplayName: Forest's Vengeance
+				/* Tooltip:
+					'''
+					Conjure forest spirits from your surrounding spirits
+					Hitting grounded enemies summons trees that rapidly damage your enemies
+					Meanwhile, hitting aerial enemies will cause a small explosion of fast homing spirits
+					''' */
+			}
 		}
 
 		Buffs: {
@@ -2319,8 +2333,15 @@ Mods: {
 			}
 
 			BrassMight: {
-				// Description: You feel like a Brass Knight!
-				// DisplayName: Brass Might
+				// DisplayName: Brass Encasement
+				/* Description:
+					'''
+					The power of rust!
+					+4 life regen
+					+20 max health
+					+8 defense
+					-50% movement speed
+					''' */
 			}
 
 			WineBuff: {
@@ -2356,6 +2377,86 @@ Mods: {
 			CursedBuff: {
 				// Description: Mods.RealmOne.Buffs.CursedBuff.Description
 				// DisplayName: Cursed Buff
+			}
+
+			TreePoisoning: {
+				// DisplayName: Braned
+				// Description: You are stuck in branches!
+			}
+
+			Shocked: {
+				// DisplayName: Shocked
+				// Description: Losing health rapdily while your legs slow down
+			}
+
+			Shocked2x: {
+				// DisplayName: Shocked x2
+				// Description: Losing health rapdily while your legs slow down
+			}
+
+			Shocked2: {
+				// DisplayName: Shocked x2
+				// Description: Losing health rapdily while your legs slow down
+			}
+
+			Shocked3x: {
+				// DisplayName: Shocked x3
+				// Description: Losing health rapdily while your legs slow down
+			}
+
+			Shocked3: {
+				// DisplayName: Shocked x3
+				// Description: Losing health rapdily while your legs slow down
+			}
+
+			Shocked4: {
+				// DisplayName: Shocked x4
+				// Description: Your body trembles with electricity
+			}
+
+			Shocked5: {
+				// DisplayName: Shocked x5
+				// Description: You see small-scaled lightnings happening around you
+			}
+
+			Shocked6: {
+				// DisplayName: Shocked x6
+				// Description: o7
+			}
+
+			Shocked7: {
+				// DisplayName: Shocked x7
+				// Description: o7
+			}
+
+			OrchidBonus: {
+				// Description: The smooth sound of leaves passing by soothes you
+				// DisplayName: Orchidaceae
+			}
+
+			SlowLeaf: {
+				// Description: Mods.RealmOne.Buffs.SlowLeaf.Description
+				// DisplayName: Slow Leaf
+			}
+
+			BrassMightCD: {
+				// DisplayName: Out of rust
+				// Description: There is no longer rust to be used..
+			}
+
+			Copperized: {
+				// DisplayName: Copperized
+				// Description: Made out of copper!
+			}
+
+			NoConnect: {
+				// Description: Maybe its time for a better router?
+				// DisplayName: No Connection
+			}
+
+			Cancelled: {
+				// Description: Hey, atleast you're not on twitter
+				// DisplayName: Cancelled
 			}
 		}
 
@@ -2495,7 +2596,7 @@ Mods: {
 			// CrimclubSwing.DisplayName: Crimclub Swing
 			// BloodBlowerProj.DisplayName: Blood Blower Proj
 			// TatteredJavlinProj.DisplayName: Tattered Javlin Proj
-			// ImpactSonarShot.DisplayName: Impact Sonar Shot
+			// ImpactSonarShot.DisplayName: Impact Sonar
 			// Starbang.DisplayName: Starbang
 			// ToothedTendrilProj.DisplayName: Toothed Tendril Proj
 			// ArteryCarrionProjectile.DisplayName: Artery Carrion Projectile
@@ -2526,6 +2627,22 @@ Mods: {
 			// SafeHookProj.DisplayName: Safe Hook Proj
 			// JungleFisharangProj.DisplayName: Jungle Fisharang Proj
 			// InvisibleExplosion.DisplayName: Invisible Explosion
+			// ForestVengeanceProj.DisplayName: Forest Vengeance Proj
+			// ForestSpirit.DisplayName: Forest Spirit
+			// None.DisplayName: None
+			// TreeBush.DisplayName: Tree Bush
+			// TreeBush2.DisplayName: Tree Bush2
+			// TreeBush3.DisplayName: Tree Bush3
+			// ForestVengeanceProjec.DisplayName: Forest Vengeance Projec
+			// ElectricBolt.DisplayName: Electric Bolt
+			// LightningBolt.DisplayName: Lightning Bolt
+			// OrchidRingRing.DisplayName: Orchid Ring Ring
+			// OrchidRing.DisplayName: Orchid Ring
+			// BrassExplosion.DisplayName: Brass Explosion
+			// BrassMissile.DisplayName: Brass Missile
+			// ImpactLesserSonarShot.DisplayName: Impact Sonar
+			// ImpactEvenLesserSonarShot.DisplayName: Impact Even Lesser Sonar Shot
+			// GoretoothTooth.DisplayName: Goretooth
 		}
 
 		NPCs: {
@@ -2760,7 +2877,10 @@ Mods: {
 			// DemolitionClass.DisplayName: Demolition Class
 		}
 
-		// "Keybinds.Technicians Call.DisplayName": Technicians  Call
+		Keybinds: {
+			// "Technicians Call.DisplayName": Technicians  Call
+			// "Brass Set Bonus.DisplayName": Brass  Set  Bonus
+		}
 
 		Biomes: {
 			FarmSurface: {

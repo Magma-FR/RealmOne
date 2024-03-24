@@ -1,12 +1,17 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Buffs.Debuffs;
+using RealmOne.Buffs.Debuffs.ShockStacks;
 using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Common.Core.ParticleContent.Particles;
 using RealmOne.Common.Systems;
+using RealmOne.Projectiles.Magic;
 using RealmOne.RealmPlayer;
 using ReLogic.Content;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -27,8 +32,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         {
             Item.damage = 13;
             Item.DamageType = DamageClass.Melee;
-            Item.width = 24;
-            Item.height = 24;
+            Item.width = 34;
+            Item.height = 34;
+            Item.crit = 20;
             Item.useTime = 26;
             Item.useAnimation = 26;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -42,6 +48,11 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.shootSpeed = 14f;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            return player.ownedProjectileCounts[ModContent.ProjectileType<ImpactBoomerangProj>()] < 1;
         }
 
         public override void AddRecipes()
@@ -79,24 +90,32 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
     }
     internal class ImpactBoomerangProj : ModProjectile
     {
+        bool goingToLoc = false;
+        int hits = 0;
+        bool hitGround = false;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 16;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
 
+        public override void OnSpawn(IEntitySource source)
+        {
+            hits = 0;
+            goingToLoc = false;
+        }
+
         public override void SetDefaults()
         {
-            Projectile.width = 14;
-            Projectile.height = 14;
+            Projectile.width = 34;
+            Projectile.height = 34;
             Projectile.aiStyle = 3;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = -1;
             Projectile.timeLeft = 600;
-            Projectile.scale = 1f;
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        /*public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(rorAudio.SawbladeRev, Projectile.position);
 
@@ -111,19 +130,160 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         {
 
             return false;
-        }
+        }*/
         public override void AI()
         {
 
+            Main.player[Projectile.owner].itemTime = 12;
+            Main.player[Projectile.owner].itemAnimation = 12;
+            Projectile.timeLeft = 20;
 
-            float maxDetectRadius = 300;
-            float projSpeed = 16;
+            if (hitGround == false)
+            {
+                if (hits < 3)
+                {
+                    Projectile.aiStyle = 3;
+                    NPC npc = FindClosestNPC(600);
+                    if (npc == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Projectile.aiStyle = 2;
+                        if (goingToLoc == false)
+                        {
+                            Projectile.friendly = false;
+                        }
 
-            NPC closestNPC = FindClosestNPC(maxDetectRadius);
-            if (closestNPC == null)
-                return;
+                        //Projectile.rotation += 0.4f;
+                        Vector2 OnTop = new Vector2(npc.Center.X, npc.Center.Y - 300);
+                        Vector2 direction = (Projectile.Center - OnTop).SafeNormalize(Vector2.UnitX);
+                        if (goingToLoc == false)
+                        {
+                            Projectile.velocity = (OnTop - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
+                        }
+                        
+                        if (Vector2.Distance(OnTop, Projectile.Center) < 10 && goingToLoc == false)
+                        {
+                            goingToLoc = true;
+                        }
 
-            Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+                        if (goingToLoc == true)
+                        {
+                            Projectile.friendly = true;
+                            Projectile.velocity = (npc.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
+                        }
+                    }
+
+
+
+                    
+                }
+                else if (hits >= 3)
+                {
+                    //Projectile.aiStyle = 3;
+                    Projectile.velocity = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
+                    if (Projectile.Colliding(Projectile.getRect(), Main.player[Projectile.owner].getRect()))
+                    {
+                        Projectile.Kill();
+                        hits = 0;
+                    }
+
+                }
+            }
+            else
+            {
+                Projectile.tileCollide = false;
+                Projectile.velocity = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
+                if (Projectile.Colliding(Projectile.getRect(), Main.player[Projectile.owner].getRect()))
+                {
+                    Projectile.Kill();
+                    hits = 0;
+                }
+            }
+
+
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            SoundEngine.PlaySound(SoundID.Dig, Projectile.Center);
+            hitGround = true;
+            return false;
+        }
+
+        public void ApplyShock(NPC npc, int time)
+        {
+            if (npc.HasBuff<Shocked5>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked5>(), time);
+            }
+            else if (npc.HasBuff<Shocked4>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked4>(), time);
+            }
+            else if (npc.HasBuff<Shocked3>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked3>(), time);
+            }
+            else if (npc.HasBuff<Shocked2>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked2>(), time);
+            }
+            else if (npc.HasBuff<Shocked>() && !npc.HasBuff<Shocked6>() || !npc.HasBuff<Shocked>() && !npc.HasBuff<Shocked6>())
+            {
+                npc.AddBuff(ModContent.BuffType<Shocked>(), time);
+            }
+        }
+
+        public void Copperized(NPC npc, int buffTime)
+        {
+            ApplyShock(npc, buffTime);
+            for (int i = 0; i < 90; i++)
+            {
+                Vector2 speed = Main.rand.NextVector2CircularEdge(3f, 3f);
+                var dus = Dust.NewDustPerfect(Projectile.Center, DustID.Copper, speed * 6f, Scale: 2.5f);
+                ;
+                dus.noGravity = true;
+            }
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Vector2.Distance(npc.Center, Main.npc[i].Center) < 175 && Main.npc[i] != npc)
+                {
+                    ApplyShock(Main.npc[i], 90);
+                }
+            }
+
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            SoundEngine.PlaySound(rorAudio.SawbladeRev, Projectile.position);
+            if (goingToLoc == true)
+            {
+                hits++;
+            }
+            goingToLoc = false;
+            ApplyShock(target, 150);
+            if (target.HasBuff<Copperized>())
+            {
+                Copperized(target, 150);
+            }
+            for (int i = 0; i < 90; i++)
+            {
+                Vector2 speed = Main.rand.NextVector2CircularEdge(2.5f, 2.5f);
+                var dus = Dust.NewDustPerfect(Projectile.Center, DustID.GemSapphire, speed * 5f, Scale: 2.5f);
+                ;
+                dus.noGravity = true;
+            }
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Vector2.Distance(target.Center, Main.npc[i].Center) < 175 && Main.npc[i] != target)
+                {
+                    ApplyShock(Main.npc[i], 90);
+                }
+            }
         }
 
         public NPC FindClosestNPC(float maxDetectDistance)
@@ -173,10 +333,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
 
             return true;
-        }
-        public override void OnKill(int timeLeft)
-        {
-
         }
     }
 }
