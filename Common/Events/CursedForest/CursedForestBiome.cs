@@ -45,7 +45,7 @@ namespace RealmOne.Common.Events.CursedForest
         {
             get
             {
-                return (Main.LocalPlayer.ZoneOverworldHeight || Main.LocalPlayer.ZoneSkyHeight) ? MusicLoader.GetMusicSlot(Mod, "Assets/Music/squirmotheme") : base.Music;
+                return (Main.LocalPlayer.ZoneOverworldHeight || Main.LocalPlayer.ZoneSkyHeight) ? MusicLoader.GetMusicSlot(Mod, "Assets/Music/Moonwalker") : base.Music;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using RealmOne.RealmPlayer;
+﻿using RealmOne.Items.Sets.OrchidSet;
+using RealmOne.RealmPlayer;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -28,6 +29,16 @@ namespace RealmOne.Armor.Orchid
             {
                 player.GetCritChance(DamageClass.Generic) += 5f;
             }
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<OrchidEssence>(), 5)
+            .AddIngredient(ItemID.Mushroom, 2)
+
+            .AddTile(TileID.WorkBenches)
+            .Register();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

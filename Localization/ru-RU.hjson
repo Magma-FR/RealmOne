@@ -2239,6 +2239,11 @@ Mods: {
 					Meanwhile, hitting aerial enemies will cause a small explosion of fast homing spirits
 					''' */
 			}
+
+			OrchidBow: {
+				// Tooltip: ""
+				// DisplayName: Orchid Bow
+			}
 		}
 
 		Buffs: {
@@ -2643,6 +2648,8 @@ Mods: {
 			// ImpactLesserSonarShot.DisplayName: Impact Sonar
 			// ImpactEvenLesserSonarShot.DisplayName: Impact Even Lesser Sonar Shot
 			// GoretoothTooth.DisplayName: Goretooth
+			// OrchidCross.DisplayName: Orchid Cross
+			// OrchidArrow.DisplayName: Orchid Arrow
 		}
 
 		NPCs: {

@@ -22,6 +22,8 @@ namespace RealmOne.Tiles.PlantTiles
             Main.tileLavaDeath[Type] = true;
             HitSound = rorAudio.TreeHurt;
             DustType = DustID.Grass;
+            Main.tileAxe[Type] = true;
+
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
             TileObjectData.newTile.Height = 9;
             TileObjectData.newTile.Width = 7;

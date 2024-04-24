@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using RealmOne.Items.Sets.OrchidSet;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,6 +27,16 @@ namespace RealmOne.Armor.Orchid
         {
             player.runAcceleration += 0.05f;
             player.moveSpeed += 0.05f;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<OrchidEssence>(), 4)
+            .AddIngredient(ItemID.Acorn, 2)
+
+            .AddTile(TileID.WorkBenches)
+            .Register();
         }
     }
 }

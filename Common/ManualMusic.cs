@@ -13,6 +13,7 @@ namespace RealmOne.Common
             MusicLoader.AddMusic(mod, "Assets/Music/PiggyPatrol");
             MusicLoader.AddMusic(mod, "Assets/Music/CottageOrchestra");
             MusicLoader.AddMusic(mod, "Assets/Music/MORTICIDE");
+            MusicLoader.AddMusic(mod, "Assets/Music/Moonwalker");
         }
 
         public void Unload()
