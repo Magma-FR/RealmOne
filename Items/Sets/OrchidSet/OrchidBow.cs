@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Misc.Plants;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Graphics.Shaders;
@@ -22,9 +23,9 @@ namespace RealmOne.Items.Sets.OrchidSet
             Item.width = 24;
             Item.height = 44;
             Item.damage = 11;
+            Item.useAnimation = 24;
             Item.useTime = 8;
-            Item.useAnimation = 18;
-            Item.reuseDelay = 8;
+            Item.reuseDelay = 12;
             Item.autoReuse = true;
             Item.useTurn = true;
 
@@ -39,7 +40,7 @@ namespace RealmOne.Items.Sets.OrchidSet
             Item.value = Item.buyPrice(silver: 20);
 
             Item.shoot = ProjectileType<OrchidArrow>();
-            Item.shootSpeed = 20f;
+            Item.shootSpeed = 10f;
             Item.useAmmo = AmmoID.Arrow;
         }
 
@@ -146,7 +147,7 @@ namespace RealmOne.Items.Sets.OrchidSet
 
         public override void SetDefaults()
         {
-            Projectile.scale = 1.6f;
+            Projectile.scale = 2f;
             Projectile.width = 14;
             Projectile.height = 18;
             Projectile.friendly = true;
@@ -154,6 +155,19 @@ namespace RealmOne.Items.Sets.OrchidSet
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 600;
             Projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+
+        {
+            SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, Projectile.position);
+            Player p = Main.player[Projectile.owner];
+            int healingAmount = damageDone / 8; //decrease the value 30 to increase heal, increase value to decrease. Or you can just replace damage/x with a set value to heal, instead of making it based on damage.
+            p.statLife += healingAmount;
+            p.HealEffect(healingAmount, true);
+
+            // KillOldestJavelin will kill the oldest projectile stuck to the specified npc.
+            // It only works if ai[0] is 1 when sticking and ai[1] is the target npc index, which is what IsStickingToTarget and TargetWhoAmI correspond to.
         }
 
         public override void OnKill(int timeLeft)

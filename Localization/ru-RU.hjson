@@ -2244,6 +2244,11 @@ Mods: {
 				// Tooltip: ""
 				// DisplayName: Orchid Bow
 			}
+
+			SpecialDynamite: {
+				// DisplayName: Special Dynamite
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2650,6 +2655,7 @@ Mods: {
 			// GoretoothTooth.DisplayName: Goretooth
 			// OrchidCross.DisplayName: Orchid Cross
 			// OrchidArrow.DisplayName: Orchid Arrow
+			// SpecialDynamiteProj.DisplayName: Special Dynamite Proj
 		}
 
 		NPCs: {
