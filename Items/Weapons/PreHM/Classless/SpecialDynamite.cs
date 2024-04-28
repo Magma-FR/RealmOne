@@ -33,11 +33,11 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Item.rare = ModContent.RarityType<ModRarities>();
 
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<CartonBeerProj>();
-            Item.shootSpeed = 13f;
+            Item.shoot = ModContent.ProjectileType<SpecialDynamiteProj>();
+            Item.shootSpeed = 10f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.consumable = true;
+            Item.consumable = false;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -67,6 +67,9 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
     {
         public override string Texture => "RealmOne/Items/Weapons/PreHM/Classless/SpecialDynamiteProj";
 
+        private const int DefaultWidthHeight = 40;
+        private const int ExplosionWidthHeight = 200;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
@@ -75,8 +78,8 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
         public override void SetDefaults()
         {
-            Projectile.width = 24;
-            Projectile.height = 24;
+            Projectile.width = DefaultWidthHeight;
+            Projectile.height = DefaultWidthHeight;
 
             Projectile.aiStyle = ProjAIStyleID.Explosive;
             Projectile.DamageType = DamageClass.Ranged;
@@ -85,14 +88,64 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Projectile.ignoreWater = true;
             Projectile.light = 1f;
 
-            Projectile.tileCollide = true;
-            Projectile.timeLeft = 400;
-            Projectile.CloneDefaults(ProjectileID.Dynamite);
+            DrawOffsetX = -2;
+            DrawOriginOffsetY = -5;
+            Projectile.timeLeft = 280;
         }
 
         public override void AI()
         {
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, Scale: 0.5f);
+            // The projectile is in the midst of exploding during the last 3 updates.
+            if (Projectile.owner == Main.myPlayer && Projectile.timeLeft <= 3)
+            {
+                Projectile.tileCollide = false;
+                // Set to transparent. This projectile technically lives as transparent for about 3 frames
+                Projectile.alpha = 255;
+
+                // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
+                Projectile.Resize(ExplosionWidthHeight, ExplosionWidthHeight);
+                Projectile.friendly = true;
+                Projectile.hostile = false;
+                Projectile.damage = 250;
+                Projectile.knockBack = 10f;
+            }
+            else
+            {
+                // Smoke and fuse dust spawn. The position is calculated to spawn the dust directly on the fuse.
+                if (Main.rand.NextBool())
+                {
+                    Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default, 1f);
+                    dust.scale = 0.2f + Main.rand.Next(5) * 0.1f;
+                    dust.fadeIn = 1.5f + Main.rand.Next(5) * 0.1f;
+                    dust.noGravity = true;
+                    dust.position = Projectile.Center + new Vector2(1, 0).RotatedBy(Projectile.rotation - 2.1f, default) * 10f;
+
+                    dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default, 1f);
+                    dust.scale = 1f + Main.rand.Next(5) * 0.1f;
+                    dust.noGravity = true;
+                    dust.position = Projectile.Center + new Vector2(1, 0).RotatedBy(Projectile.rotation - 2.1f, default) * 10f;
+                }
+            }
+            Projectile.ai[0] += 1f;
+            if (Projectile.ai[0] > 10f)
+            {
+                Projectile.ai[0] = 10f;
+                // Roll speed dampening.
+                if (Projectile.velocity.Y == 0f && Projectile.velocity.X != 0f)
+                {
+                    Projectile.velocity.X = Projectile.velocity.X * 0.2f;
+
+                    if (Projectile.velocity.X > -0.01 && Projectile.velocity.X < 0.01)
+                    {
+                        Projectile.velocity.X = 0f;
+                        Projectile.netUpdate = true;
+                    }
+                }
+                // Delayed gravity
+                Projectile.velocity.Y = Projectile.velocity.Y + 0.2f;
+            }
+            // Rotation increased by velocity.X
+            Projectile.rotation += Projectile.velocity.X * 0.03f;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -104,6 +157,68 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
         {
             Projectile.Kill();
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+            // Smoke Dust spawn
+            for (int i = 0; i < 50; i++)
+            {
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default, 2f);
+                dust.velocity *= 1.4f;
+            }
+
+            // Fire Dust spawn
+            for (int i = 0; i < 80; i++)
+            {
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default, 3f);
+                dust.noGravity = true;
+                dust.velocity *= 5f;
+                dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default, 2f);
+                dust.velocity *= 3f;
+            }
+
+            // Large Smoke Gore spawn
+            for (int g = 0; g < 2; g++)
+            {
+                var goreSpawnPosition = new Vector2(Projectile.position.X + Projectile.width / 2 - 24f, Projectile.position.Y + Projectile.height / 2 - 24f);
+                Gore gore = Gore.NewGoreDirect(Projectile.GetSource_FromThis(), goreSpawnPosition, default, Main.rand.Next(61, 64), 1f);
+                gore.scale = 1.5f;
+                gore.velocity.X += 1.5f;
+                gore.velocity.Y += 1.5f;
+                gore = Gore.NewGoreDirect(Projectile.GetSource_FromThis(), goreSpawnPosition, default, Main.rand.Next(61, 64), 1f);
+                gore.scale = 1.5f;
+                gore.velocity.X -= 1.5f;
+                gore.velocity.Y += 1.5f;
+                gore = Gore.NewGoreDirect(Projectile.GetSource_FromThis(), goreSpawnPosition, default, Main.rand.Next(61, 64), 1f);
+                gore.scale = 1.5f;
+                gore.velocity.X += 1.5f;
+                gore.velocity.Y -= 1.5f;
+                gore = Gore.NewGoreDirect(Projectile.GetSource_FromThis(), goreSpawnPosition, default, Main.rand.Next(61, 64), 1f);
+                gore.scale = 1.5f;
+                gore.velocity.X -= 1.5f;
+                gore.velocity.Y -= 1.5f;
+            }
+            // reset size to normal width and height.
+            Projectile.Resize(DefaultWidthHeight, DefaultWidthHeight);
+
+            // Finally, actually explode the tiles and walls. Run this code only for the owner
+            if (Projectile.owner == Main.myPlayer)
+            {
+                int explosionRadius = 10;
+                int minTileX = (int)(Projectile.Center.X / 16f - explosionRadius);
+                int maxTileX = (int)(Projectile.Center.X / 16f + explosionRadius);
+                int minTileY = (int)(Projectile.Center.Y / 16f - explosionRadius);
+                int maxTileY = (int)(Projectile.Center.Y / 16f + explosionRadius);
+
+                // Ensure that all tile coordinates are within the world bounds
+                Utils.ClampWithinWorld(ref minTileX, ref minTileY, ref maxTileX, ref maxTileY);
+
+                // These 2 methods handle actually mining the tiles and walls while honoring tile explosion conditions
+                bool explodeWalls = Projectile.ShouldWallExplode(Projectile.Center, explosionRadius, minTileX, maxTileX, minTileY, maxTileY);
+                Projectile.ExplodeTiles(Projectile.Center, explosionRadius, minTileX, maxTileX, minTileY, maxTileY, explodeWalls);
+            }
         }
     }
 }
