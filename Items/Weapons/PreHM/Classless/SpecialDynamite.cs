@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Rarities;
 using ReLogic.Content;
 using Terraria;
@@ -8,6 +10,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using RealmOne.RealmPlayer;
 
 namespace RealmOne.Items.Weapons.PreHM.Classless
 {
@@ -67,7 +70,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
     {
         public override string Texture => "RealmOne/Items/Weapons/PreHM/Classless/SpecialDynamiteProj";
 
-        private const int DefaultWidthHeight = 40;
+        private const int DefaultWidthHeight = 30;
         private const int ExplosionWidthHeight = 200;
 
         public override void SetStaticDefaults()
@@ -86,10 +89,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.ignoreWater = true;
-            Projectile.light = 1f;
-
-            DrawOffsetX = -2;
-            DrawOriginOffsetY = -5;
+            Projectile.tileCollide = true;
             Projectile.timeLeft = 280;
         }
 
@@ -104,8 +104,8 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
 
                 // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
                 Projectile.Resize(ExplosionWidthHeight, ExplosionWidthHeight);
+                Projectile.hostile = true;
                 Projectile.friendly = true;
-                Projectile.hostile = false;
                 Projectile.damage = 250;
                 Projectile.knockBack = 10f;
             }
@@ -126,31 +126,15 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
                     dust.position = Projectile.Center + new Vector2(1, 0).RotatedBy(Projectile.rotation - 2.1f, default) * 10f;
                 }
             }
-            Projectile.ai[0] += 1f;
-            if (Projectile.ai[0] > 10f)
-            {
-                Projectile.ai[0] = 10f;
-                // Roll speed dampening.
-                if (Projectile.velocity.Y == 0f && Projectile.velocity.X != 0f)
-                {
-                    Projectile.velocity.X = Projectile.velocity.X * 0.2f;
 
-                    if (Projectile.velocity.X > -0.01 && Projectile.velocity.X < 0.01)
-                    {
-                        Projectile.velocity.X = 0f;
-                        Projectile.netUpdate = true;
-                    }
-                }
-                // Delayed gravity
-                Projectile.velocity.Y = Projectile.velocity.Y + 0.2f;
-            }
             // Rotation increased by velocity.X
-            Projectile.rotation += Projectile.velocity.X * 0.03f;
         }
 
-        public override Color? GetAlpha(Color lightColor)
+        public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            return Color.White;
+            Projectile.Kill();
+
+            return false;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -159,8 +143,32 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Projectile.Kill();
         }
 
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D texture = Request<Texture2D>("RealmOne/Assets/Effects/GlowLight").Value;
+            for (int k = 0; k < Projectile.oldPos.Length; k++)
+            {
+                var offset = new Vector2(Projectile.width / 2f, Projectile.height / 2f);
+                var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
+                Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + offset;
+                float sizec = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 0.7f);
+                Color color = new Color(252, 186, 32) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.oldRot[k], frame.Size() / 2f, sizec, SpriteEffects.None, 0);
+            }
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+
+            return true;
+        }
+
         public override void OnKill(int timeLeft)
         {
+            Player player = Main.player[Projectile.owner];
+            player.GetModPlayer<Screenshake>().SmallScreenshake = true;
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
             // Smoke Dust spawn
             for (int i = 0; i < 50; i++)

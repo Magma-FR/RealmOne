@@ -2249,6 +2249,11 @@ Mods: {
 				// DisplayName: Special Dynamite
 				// Tooltip: ""
 			}
+
+			CactusCannon: {
+				// DisplayName: Cactus Cannon
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2656,6 +2661,7 @@ Mods: {
 			// OrchidCross.DisplayName: Orchid Cross
 			// OrchidArrow.DisplayName: Orchid Arrow
 			// SpecialDynamiteProj.DisplayName: Special Dynamite Proj
+			// CactusCannonProj.DisplayName: Cactus Cannon Proj
 		}
 
 		NPCs: {
