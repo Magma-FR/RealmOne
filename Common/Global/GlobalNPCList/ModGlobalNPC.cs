@@ -3,6 +3,7 @@ using RealmOne.Items.Opens;
 using RealmOne.Items.Placeables.Furniture.Paintings;
 using RealmOne.Items.Tools.Pick;
 using RealmOne.Items.Weapons.Magic;
+using RealmOne.Items.Weapons.PreHM.Classless;
 using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -24,6 +25,11 @@ namespace RealmOne.Common.Global.GlobalNPCList
                 shop.Add<IllicitStash>();
             }
 
+            if (shop.NpcType == NPCID.Merchant)
+
+            {
+                shop.Add<SpecialDynamite>();
+            }
             if (shop.NpcType == NPCID.Clothier)
             {
                 shop.Add<NothingPNT>();

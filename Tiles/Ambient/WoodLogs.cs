@@ -8,6 +8,8 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ObjectData;
+using RealmOne.Items.Sets.OrchidSet;
+using Terraria.DataStructures;
 
 namespace RealmOne.Tiles.Ambient
 {
@@ -28,6 +30,15 @@ namespace RealmOne.Tiles.Ambient
             AdjTiles = new int[] { 93 };
             TileID.Sets.BreakableWhenPlacing[Type] = true;
         }
+
+        public override bool CanDrop(int i, int j)
+        {
+            if (Main.rand.NextBool(1))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(3, 5));
+            }
+            return false;
+        }
     }
 
     public class WoodLog2 : ModTile
@@ -47,6 +58,15 @@ namespace RealmOne.Tiles.Ambient
             AdjTiles = new int[] { 93 };
             TileID.Sets.BreakableWhenPlacing[Type] = true;
         }
+
+        public override bool CanDrop(int i, int j)
+        {
+            if (Main.rand.NextBool(1))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(3, 5));
+            }
+            return false;
+        }
     }
 
     public class WoodLog3 : ModTile
@@ -65,6 +85,15 @@ namespace RealmOne.Tiles.Ambient
             AddMapEntry(new Color(186, 149, 85));
             AdjTiles = new int[] { 93 };
             TileID.Sets.BreakableWhenPlacing[Type] = true;
+        }
+
+        public override bool CanDrop(int i, int j)
+        {
+            if (Main.rand.NextBool(1))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(3, 5));
+            }
+            return false;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Item.useAnimation = 60;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
-            Item.value = Item.buyPrice(0, 0, 0, 25);
+            Item.value = Item.buyPrice(0, 5, 0, 0);
             Item.UseSound = SoundID.Item1;
             Item.rare = ModContent.RarityType<ModRarities>();
 
@@ -84,7 +84,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Projectile.width = DefaultWidthHeight;
             Projectile.height = DefaultWidthHeight;
 
-            Projectile.aiStyle = ProjAIStyleID.Explosive;
+            Projectile.aiStyle = ProjAIStyleID.ThrownProjectile;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.friendly = true;
             Projectile.hostile = false;
@@ -188,7 +188,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             }
 
             // Large Smoke Gore spawn
-            for (int g = 0; g < 2; g++)
+            for (int g = 0; g < 3; g++)
             {
                 var goreSpawnPosition = new Vector2(Projectile.position.X + Projectile.width / 2 - 24f, Projectile.position.Y + Projectile.height / 2 - 24f);
                 Gore gore = Gore.NewGoreDirect(Projectile.GetSource_FromThis(), goreSpawnPosition, default, Main.rand.Next(61, 64), 1f);

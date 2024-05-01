@@ -43,7 +43,7 @@ namespace RealmOne.Tiles.PlantTiles
         {
             if (Main.rand.NextBool(1))
             {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<OrchidEssence>(), Main.rand.Next(2, 6));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<OrchidEssence>(), Main.rand.Next(6, 10));
             }
             return false;
         }
