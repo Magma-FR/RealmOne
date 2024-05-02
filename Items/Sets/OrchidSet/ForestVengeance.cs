@@ -12,14 +12,15 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace RealmOne.Items.Weapons.PreHM.Forest
+namespace RealmOne.Items.Sets.OrchidSet
 {
     public class ForestVengeance : ModItem
     {
-        int useDelay = 64; //usetime - 1
-        int cd = 8;
-        int cd2 = 0;
-        Vector2 mouse;
+        private int useDelay = 64; //usetime - 1
+        private int cd = 8;
+        private int cd2 = 0;
+        private Vector2 mouse;
+
         public override void SetDefaults()
         {
             Item.width = 34;
@@ -35,7 +36,6 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Item.DamageType = DamageClass.Magic;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 0f;
-
         }
 
         public override bool? CanHitNPC(Player player, NPC target)
@@ -53,9 +53,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
         public override bool? UseItem(Player player)
         {
             if (cd2 > 0)
-            {
                 cd2--;
-            }
 
             if (cd2 == 0)
             {
@@ -64,20 +62,14 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             }
 
             if (mouse.X < player.position.X)
-            {
                 player.direction = -1;
-            }
             if (mouse.X > player.position.X)
-            {
                 player.direction = 1;
-            }
 
             if (useDelay > 8)
             {
                 if (cd > 0)
-                {
                     cd--;
-                }
 
                 if (cd == 0)
                 {
@@ -87,14 +79,10 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
                     Vector2 d = (player.Center - spawnLoc).SafeNormalize(Vector2.UnitX);
                     Projectile.NewProjectile(player.GetSource_FromThis(), spawnLoc, d, ModContent.ProjectileType<ForestSpirit>(), 0, 8f, Main.myPlayer);
                 }
-                
             }
-            
 
             if (useDelay > 0)
-            {
                 useDelay--;
-            }
 
             if (useDelay == 0)
             {
@@ -112,10 +100,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
                 }
             }
 
-
             return false;
         }
-
-
     }
 }

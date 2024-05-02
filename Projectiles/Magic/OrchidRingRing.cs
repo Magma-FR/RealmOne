@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Buffs;
-using RealmOne.Common.Core;
 using RealmOne.RealmPlayer;
 using System.Collections.Generic;
 using Terraria;
@@ -45,6 +44,11 @@ namespace RealmOne.Projectiles.Magic
             {
                 Projectile.timeLeft = 2;
             }
+        }
+
+        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+        {
+            behindNPCsAndTiles.Add(index);
         }
     }
 }

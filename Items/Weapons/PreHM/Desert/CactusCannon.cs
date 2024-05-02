@@ -64,7 +64,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
         {
             CreateRecipe()
             .AddIngredient(ItemID.Cactus, 15)
-            .AddIngredient(ItemID.IllegalGunParts, 1)
+            .AddIngredient(ItemID.Wood, 15)
             .AddRecipeGroup("IronBar", 6)
             .AddTile(TileID.Anvils)
             .Register();
@@ -89,7 +89,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
                 Projectile.width = 32;
                 Projectile.height = 32;
                 Projectile.timeLeft = 340;
-                Projectile.penetrate = 5;
+                Projectile.penetrate = 4;
                 Projectile.scale = 1f;
                 Projectile.tileCollide = true;
                 Projectile.CloneDefaults(ProjectileID.Shuriken);
@@ -117,6 +117,17 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
 
             public override bool OnTileCollide(Vector2 oldVelocity)
             {
+                if (Projectile.timeLeft == 0)
+                {
+                    for (int i = 0; i < 80; i++)
+                    {
+                        Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
+                        var d = Dust.NewDustPerfect(Main.LocalPlayer.Center, DustID.t_Cactus, speed * 4, Scale: 1.3f);
+                        ;
+                        d.noGravity = true;
+                        d.noLight = false;
+                    }
+                }
                 Projectile.penetrate--; //Make sure it doesnt penetrate anymore
                 if (Projectile.penetrate <= 0)
                     Projectile.Kill();

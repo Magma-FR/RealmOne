@@ -2,6 +2,9 @@
 using RealmOne.Common.Systems;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Others;
+using RealmOne.Items.Weapons.PreHM.Classless;
+using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -11,6 +14,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Tiles
 {
@@ -73,14 +77,20 @@ namespace RealmOne.Tiles
         {
             if (Main.rand.NextBool(2))
             {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
-
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(2, 6));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.IronBar, Main.rand.Next(2, 4));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.LeadBar, Main.rand.Next(2, 4));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<Wheat>(), Main.rand.Next(1, 3));
             }
 
-            if (Main.rand.NextBool(20))
+            if (Main.rand.NextBool(4))
             {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(2, 6));
-
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<CartonBeer>(), Main.rand.Next(10, 14));
+            }
+            if (Main.rand.NextBool(15))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(2, 6));
             }
             // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(1, 1), Main.rand.NextBool(60));
             // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(3, 12), Main.rand.NextBool(2));

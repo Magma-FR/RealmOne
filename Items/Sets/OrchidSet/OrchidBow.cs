@@ -59,9 +59,9 @@ namespace RealmOne.Items.Sets.OrchidSet
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<SunflowerPetal>(), 14)
+            .AddIngredient(ModContent.ItemType<OrchidEssence>(), 10)
             .AddIngredient(ItemID.WoodenBow, 1)
-            .AddIngredient(ItemID.FallenStar, 1)
+            .AddIngredient(ItemID.Daybloom, 1)
             .AddTile(TileID.WorkBenches)
 
             .Register();

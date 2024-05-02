@@ -91,7 +91,7 @@ namespace RealmOne.Tiles.Ambient
         {
             if (Main.rand.NextBool(1))
             {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(3, 5));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Mushroom, Main.rand.Next(1, 2));
             }
             return false;
         }

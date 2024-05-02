@@ -119,7 +119,7 @@ namespace RealmOne.RealmPlayer
         private bool LongShakeWork = false;
 
         //public Vector2 beamStart;
-       // public Vector2 beamEnd;
+        // public Vector2 beamEnd;
 
         public override void ModifyScreenPosition()
         {
@@ -342,7 +342,6 @@ namespace RealmOne.RealmPlayer
                 g = 0.5f;
                 b = 0f;
                 a = 1f;
-
             }
             if (GoreToothBonus = true && Main.LocalPlayer.statLife <= Main.LocalPlayer.statLifeMax2 / 2)
             {
@@ -350,7 +349,6 @@ namespace RealmOne.RealmPlayer
                 g = 0.7f;
                 b = 0.7f;
                 a = 1f;
-
             }
         }
 
@@ -442,12 +440,8 @@ namespace RealmOne.RealmPlayer
             public bool brightProjectiles = false;
         }
 
-        
-
         public override void OnHurt(Player.HurtInfo info)
         {
-            
-
             if (PiggySet == true)
             {
                 if (Main.rand.Next(101) < 80 && coinFallAmount <= 0)
@@ -465,7 +459,6 @@ namespace RealmOne.RealmPlayer
             {
                 player.GetModPlayer<RealmModPlayer>().cd--;
             }
-
 
             if (Main.GameModeInfo.IsMasterMode)
             {
@@ -507,7 +500,6 @@ namespace RealmOne.RealmPlayer
                             {
                                 dmg = Main.rand.Next(p.HeldItem.damage / 2 + 18, p.HeldItem.damage / 2 + 10 + 7);
                             }
-                            
                         }
                         Projectile.NewProjectile(p.GetSource_FromThis(), new Vector2(p.Center.X, p.Center.Y - 35), new Vector2(0, 0), ModContent.ProjectileType<GoretoothTooth>(), dmg, 2f, Main.myPlayer);
                     }
@@ -575,7 +567,6 @@ namespace RealmOne.RealmPlayer
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
-
                 if (Vector2.Distance(p.Center, Main.npc[i].Center) > 150)
                 {
                     if (Main.npc[i].color == Color.LightGreen)
@@ -608,9 +599,7 @@ namespace RealmOne.RealmPlayer
                         {
                             Gore.NewGorePerfect(p.GetSource_Death(), spawnLoc, new Vector2(0, 0), GoreID.TreeLeaf_Normal, 1f);
                         }
-                        
                     }
-
                 }
 
                 p.AddBuff(ModContent.BuffType<OrchidBonus>(), 1);
@@ -621,7 +610,6 @@ namespace RealmOne.RealmPlayer
 
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
-
                     if (Vector2.Distance(p.Center, Main.npc[i].Center) < 300)
                     {
                         if (Main.npc[i].boss == false)
