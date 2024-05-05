@@ -12,7 +12,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
     {
         public override void SetStaticDefaults()
         {
-            ItemGlowy.AddItemGlowMask(Item.type, Texture + "_Glow");
+            ItemGlowy.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
         public override void SetDefaults()

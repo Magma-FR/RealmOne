@@ -25,10 +25,21 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Tooltip.SetDefault("'A weak, plasma diverged rifle'"
                 + "\nMidway through firing the gun, the gun will short circuit and burst a burst of pulse bullets that bounces and targets enemies"
             + "\n'Xeonically Charged!!'");
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactPulsa_Glow");
+            //  ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactPulsa_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
+        /*   public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+           {
+               if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
+               {
+                   return;
+               }
+
+               damage *= 1.5f;
+           }
+        */
 
         public override void SetDefaults()
         {
@@ -49,6 +60,11 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.shootSpeed = 60f;
             Item.noMelee = true;
             Item.crit = 2;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

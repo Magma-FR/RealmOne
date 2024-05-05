@@ -19,7 +19,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
         {
             Tooltip.SetDefault("Casts a bright, dangly lightbulb at the mouse position." + "\nLights up a large area.");
             DisplayName.SetDefault("Twigbulb");
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Forest/Twigbulb_Glow");
+            //  ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Forest/Twigbulb_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -46,6 +46,11 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Item.scale = 1f;
 
             Item.shoot = ProjectileType<LightBulbRing1>();
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

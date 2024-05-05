@@ -70,7 +70,7 @@ namespace RealmOne.RealmPlayer
             ItemGlowMask.Clear();
         }
 
-        public static void AddItemGlowMask(int itemType, string texturePath)
+        public static void AddGlowMask(int itemType, string texturePath)
         {
             ItemGlowMask[itemType] = ModContent.Request<Texture2D>(texturePath, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
         }
@@ -91,7 +91,7 @@ namespace RealmOne.RealmPlayer
             Item item = drawInfo.drawPlayer.HeldItem;
 
             if (item.type >= ItemID.Count && ItemGlowy.ItemGlowMask.TryGetValue(item.type, out Texture2D textureItem) && (drawInfo.drawPlayer.itemTime > 0 || item.useStyle != ItemUseStyleID.None)) //Held ItemType
-                GlowMaskSystem.DrawItemGlowMask(textureItem, drawInfo);
+                GlowmMaskSystem.DrawItemGlowMask(textureItem, drawInfo);
         }
     }
 
@@ -290,6 +290,7 @@ namespace RealmOne.RealmPlayer
         public bool GreenNeck = false;
         public bool Overseer = false;
         public bool Rusty = false;
+
         public bool FallSpeed = false;
         public bool PiggySet = false;
 
@@ -592,7 +593,7 @@ namespace RealmOne.RealmPlayer
                 if (cdOrchid == 0)
                 {
                     cdOrchid = 20;
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         Vector2 spawnLoc = new Vector2(p.Center.X + Main.rand.Next(-260, 260), p.Center.Y + Main.rand.Next(-260, -20));
                         if (Collision.CanHit(spawnLoc, 1, 1, spawnLoc, 1, 1))

@@ -1,4 +1,5 @@
-﻿using RealmOne.RealmPlayer;
+﻿using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.RealmPlayer;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -29,6 +30,15 @@ namespace RealmOne.Armor.Goretooth
                 player.GetDamage(DamageClass.Melee) += 0.08f;
                 player.GetArmorPenetration(DamageClass.Melee) += 0.05f;
             }
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<ScathedFlesh>(), 8)
+
+            .AddTile(TileID.Anvils)
+            .Register();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

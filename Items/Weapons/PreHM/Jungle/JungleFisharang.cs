@@ -14,7 +14,7 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
     {
         public override void SetStaticDefaults()
         {
-            ItemGlowy.AddItemGlowMask(Item.type, Texture + "_Glow");
+            ItemGlowy.AddGlowMask(Item.type, Texture + "_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }

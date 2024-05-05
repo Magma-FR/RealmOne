@@ -22,8 +22,6 @@ namespace RealmOne.NPCs.Critters.Rain
             Main.npcCatchable[NPC.type] = true;
 
             NPCID.Sets.CountsAsCritter[Type] = true;
-
-            glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -72,7 +70,7 @@ namespace RealmOne.NPCs.Critters.Rain
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Critters/Rain/AquaSwishSnail_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Critters/Rain/AquaSwishSnail_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {

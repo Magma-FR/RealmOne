@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="..\tModLoader.targets" />
 
 	<PropertyGroup>
 		<AssemblyName>RealmOne</AssemblyName>
-		<TargetFramework>net6.0</TargetFramework>
-		<PlatformTarget>AnyCPU</PlatformTarget>
 		<LangVersion>10</LangVersion>
 	</PropertyGroup>
 
@@ -68,7 +66,6 @@
     </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
 	</ItemGroup>
 
 	<ItemGroup>

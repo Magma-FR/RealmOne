@@ -128,7 +128,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
               return false;
           }*/
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color color) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color color) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

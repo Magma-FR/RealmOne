@@ -22,10 +22,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
     {
         public override void SetStaticDefaults()
         {
-
             Item.ResearchUnlockCount = 1;
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactBoomerang_Glow");
-
+            //    ItemGlowy.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -48,6 +46,22 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.shootSpeed = 14f;
+        }
+
+        /* public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+         {
+             if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
+             {
+                 return;
+             }
+
+             damage *= 1.5f;
+         }
+        */
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override bool CanUseItem(Player player)
@@ -85,14 +99,14 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 0f
             );
         }
-
-
     }
+
     internal class ImpactBoomerangProj : ModProjectile
     {
-        bool goingToLoc = false;
-        int hits = 0;
-        bool hitGround = false;
+        private bool goingToLoc = false;
+        private int hits = 0;
+        private bool hitGround = false;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 16;
@@ -115,6 +129,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Projectile.penetrate = -1;
             Projectile.timeLeft = 600;
         }
+
         /*public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(rorAudio.SawbladeRev, Projectile.position);
@@ -128,12 +143,11 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
             return false;
         }*/
+
         public override void AI()
         {
-
             Main.player[Projectile.owner].itemTime = 12;
             Main.player[Projectile.owner].itemAnimation = 12;
             Projectile.timeLeft = 20;
@@ -163,7 +177,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                         {
                             Projectile.velocity = (OnTop - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
                         }
-                        
+
                         if (Vector2.Distance(OnTop, Projectile.Center) < 10 && goingToLoc == false)
                         {
                             goingToLoc = true;
@@ -175,10 +189,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                             Projectile.velocity = (npc.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
                         }
                     }
-
-
-
-                    
                 }
                 else if (hits >= 3)
                 {
@@ -189,7 +199,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                         Projectile.Kill();
                         hits = 0;
                     }
-
                 }
             }
             else
@@ -202,8 +211,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     hits = 0;
                 }
             }
-
-
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -254,7 +261,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     ApplyShock(Main.npc[i], 90);
                 }
             }
-
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -336,4 +342,3 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         }
     }
 }
-

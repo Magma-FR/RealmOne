@@ -20,7 +20,7 @@ namespace RealmOne.Items.Tools.Pick
             DisplayName.SetDefault("Impact Pickaxe"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("'Shoots out thunder zaps randomly'");
 
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Tools/Pick/ImpactPickaxe_Glow");
+            ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Tools/Pick/ImpactPickaxe_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -77,7 +77,7 @@ namespace RealmOne.Items.Tools.Pick
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = Request<Texture2D>("RealmOne/Items/Tools/ImpactPickaxe_Glow", AssetRequestMode.ImmediateLoad).Value;
+            Texture2D texture = Request<Texture2D>("RealmOne/Items/Tools/Pick/ImpactPickaxe_Glow", AssetRequestMode.ImmediateLoad).Value;
             spriteBatch.Draw
             (
                 texture,

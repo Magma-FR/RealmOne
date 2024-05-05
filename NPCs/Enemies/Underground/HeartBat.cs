@@ -13,7 +13,6 @@ namespace RealmOne.NPCs.Enemies.Underground
 {
     public class HeartBat : ModNPC
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heartbat");
@@ -61,7 +60,7 @@ namespace RealmOne.NPCs.Enemies.Underground
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Underground/HeartBat_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Underground/HeartBat_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void HitEffect(NPC.HitInfo hit)
         {

@@ -15,9 +15,8 @@ namespace RealmOne.Items.Weapons.PreHM.Jungle
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            ItemGlowy.AddItemGlowMask(Item.type, Texture + ("_Glow"));
+            // ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Jungle/RainforestBow_Glow");
         }
 
         public override void SetDefaults()

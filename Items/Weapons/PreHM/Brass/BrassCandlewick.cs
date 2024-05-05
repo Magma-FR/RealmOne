@@ -18,7 +18,7 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Tooltip.SetDefault("Hold an antique and powerful candle that shoots out burning wax in a diversed and wide spread");
             DisplayName.SetDefault("Brass Candlewick");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Brass/BrassCandlewick_Glow");
+            //  ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Brass/BrassCandlewick_Glow");
         }
 
         public override void SetDefaults()
@@ -44,6 +44,11 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Item.value = Item.buyPrice(gold: 3, silver: 20);
 
             Item.shoot = ProjectileID.MolotovFire;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

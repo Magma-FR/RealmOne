@@ -68,7 +68,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Impact/ImpactDrone_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Impact/ImpactDrone_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void AI()
         {

@@ -4,6 +4,8 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using RealmOne.RealmPlayer;
 using Terraria.ID;
+using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Common.Core.ParticleContent;
 
 namespace RealmOne.Buffs.Debuffs
 {
@@ -22,18 +24,22 @@ namespace RealmOne.Buffs.Debuffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            int d = Dust.NewDust(npc.position, npc.width, npc.height, DustID.GreenTorch, Scale: 2.5f);
-            Main.dust[d].noGravity = true;
-
-            npc.velocity /= 1.1f;
-            npc.color = Color.LightGreen;
-
-            if (npc.buffTime[buffIndex] < 1)
+            if (!npc.townNPC && !npc.friendly)
             {
-                npc.color = Color.White;
+                //   int d = Dust.NewDust(npc.position, npc.width, npc.height, DustID.GreenTorch, Scale: 0.5f);
+                //  Main.dust[d].noGravity = true;
+                GenericGlowParticle particle = new(new Vector2(npc.Center.X + Main.rand.Next(-2, 3), npc.Center.Y), new Vector2(0, -Main.rand.NextFloat(0.2f, 3f)), Color.LightGreen, 0.15f, 50);
+                ParticleSystem.GenerateParticle(particle);
+
+                npc.velocity /= 1.6f;
+                npc.color = Color.LightGreen;
+
+                if (npc.buffTime[buffIndex] < 1)
+                {
+                    npc.color = Color.White;
+                }
+                { }
             }
         }
     }
-
-
 }

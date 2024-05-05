@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Sets.OrchidSet;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,6 +30,15 @@ namespace RealmOne.Armor.Goretooth
         {
             player.maxMinions++;
             player.GetDamage(DamageClass.Summon) += 0.04f;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<ScathedFlesh>(), 10)
+
+            .AddTile(TileID.Anvils)
+            .Register();
         }
     }
 }

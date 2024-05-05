@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Common.Core
 {
-    public class GlowMaskSystem
+    public class GlowmMaskSystem
     {
         //## ALL CREDIT TO SPIRIT MOD GLOWMASK
 

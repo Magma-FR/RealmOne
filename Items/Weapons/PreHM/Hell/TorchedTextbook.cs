@@ -22,7 +22,7 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
             Tooltip.SetDefault("Conjure a wisp of hell born spells. Mixture of homing lashes, bats and firebeams");
             DisplayName.SetDefault("Torched Textbook");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Hell/TorchedTextbook_Glow");
+            //   ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Hell/TorchedTextbook_Glow");
         }
 
         public override void SetDefaults()
@@ -52,6 +52,11 @@ namespace RealmOne.Items.Weapons.PreHM.Hell
         {
             SoundEngine.PlaySound(SoundID.Item73);
             return true;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

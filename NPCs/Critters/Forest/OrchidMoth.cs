@@ -37,12 +37,13 @@ namespace RealmOne.NPCs.Critters.Forest
             NPC.npcSlots = 0;
             NPC.noGravity = true;
             AIType = NPCID.Firefly;
-
         }
+
         public override void AI()
         {
             NPC.spriteDirection = NPC.direction;
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -51,7 +52,8 @@ namespace RealmOne.NPCs.Critters.Forest
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.16f;
@@ -59,7 +61,6 @@ namespace RealmOne.NPCs.Critters.Forest
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
-
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

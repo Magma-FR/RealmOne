@@ -74,6 +74,8 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.MiningPotion, 1, 5, 5));
             itemLoot.Add(ItemDropRule.Common(ItemID.Bomb, 1, 15, 15));
             itemLoot.Add(ItemDropRule.Common(ItemID.SpelunkerPotion, 1, 5, 5));
+            itemLoot.Add(ItemDropRule.Common(ItemID.ManaCrystal, 1, 2, 2));
+
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DualWieldCrossbows>(), 1, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GildedGladius>(), 1, 1, 1));
 

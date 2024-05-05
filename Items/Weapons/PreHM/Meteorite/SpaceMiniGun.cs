@@ -55,15 +55,6 @@ namespace RealmOne.Items.Weapons.PreHM.Meteorite
                 Projectile.NewProjectileDirect(source, position, newVelocity, type, damage, knockback, player.whoAmI);
             }
 
-            for (int i = 0; i < 80; i++)
-            {
-                Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
-                var d = Dust.NewDustPerfect(Main.LocalPlayer.Center, 74, speed * 5, Scale: 1f);
-                ;
-                d.noGravity = true;
-                d.noLight = false;
-            }
-
             return true;
         }
 

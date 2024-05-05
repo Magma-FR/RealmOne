@@ -2254,6 +2254,16 @@ Mods: {
 				DisplayName: Cactus Cannon
 				Tooltip: ""
 			}
+
+			OrchidSpear: {
+				DisplayName: Orchid Spear
+				Tooltip: ""
+			}
+
+			SunflowerWreath: {
+				DisplayName: Sunflower Wreath
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2662,6 +2672,7 @@ Mods: {
 			OrchidArrow.DisplayName: Orchid Arrow
 			SpecialDynamiteProj.DisplayName: Special Dynamite Proj
 			CactusCannonProj.DisplayName: Cactus Cannon Proj
+			OrchidSpearProj.DisplayName: Orchid Spear Proj
 		}
 
 		NPCs: {

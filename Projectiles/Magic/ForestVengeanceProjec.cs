@@ -10,23 +10,22 @@ namespace RealmOne.Projectiles.Magic
 {
     public class ForestVengeanceProjec : ModProjectile
     {
-        bool pulse;
-        int cd = 100;
+        private bool pulse;
+        private int cd = 100;
 
-        int maxPulse = 225;
-        int minPulse = 25;
+        private int maxPulse = 225;
+        private int minPulse = 25;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Forest Spirit");
         }
-
 
         public override void SetDefaults()
         {
             Projectile.width = 2;
             Projectile.height = 2;
 
-           
             Projectile.friendly = false;
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Magic;
@@ -40,9 +39,7 @@ namespace RealmOne.Projectiles.Magic
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, 0f, 1f, 0f);
-
-            var d = Dust.NewDustPerfect(Projectile.Center, DustID.ChlorophyteWeapon, new Vector2(0, 0), Scale: 1.2f);
+            var d = Dust.NewDustPerfect(Projectile.Center, DustID.ChlorophyteWeapon, new Vector2(0, 0), Scale: 1f);
             d.noGravity = true;
 
             if (cd > 0)
@@ -59,8 +56,6 @@ namespace RealmOne.Projectiles.Magic
                 Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 3f;
                 Projectile.friendly = true;
             }
-
-
         }
 
         public NPC FindClosestNPC(float maxDetectDistance)

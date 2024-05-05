@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using RealmOne.Items.Food;
+using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Weapons.PreHM.BloodMoon;
+using RealmOne.Items.Weapons.PreHM.Throwing;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -112,6 +114,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 7, 1, 2));
+
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshToothSMG>(), 16));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 12));
         }

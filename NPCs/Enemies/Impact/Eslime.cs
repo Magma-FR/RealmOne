@@ -62,7 +62,6 @@ namespace RealmOne.NPCs.Enemies.Impact
             Lighting.AddLight(NPC.position, r: 0.1f, g: 0.2f, b: 1.1f);
         }
 
-
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
@@ -74,9 +73,9 @@ namespace RealmOne.NPCs.Enemies.Impact
 
                 // Sets the description of this NPC that is listed in the bestiary.
                 new FlavorTextBestiaryInfoElement("Purged and paralyzed, this slime is nothing but artificial plasma.")
-
             });
         }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             var effects = NPC.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -84,7 +83,8 @@ namespace RealmOne.NPCs.Enemies.Impact
             spriteBatch.Draw(TextureAssets.Npc[NPC.type].Value, pos, NPC.frame, NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, NPC.frame.Size() / 2, NPC.scale, effects, 0);
             return false;
         }
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
+
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void HitEffect(NPC.HitInfo hit)
         {

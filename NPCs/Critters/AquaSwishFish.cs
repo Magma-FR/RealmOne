@@ -13,8 +13,6 @@ namespace RealmOne.NPCs.Critters
 {
     public class AquaSwishFish : ModNPC
     {
-        private static Asset<Texture2D> glowmask;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("AquaSwish Fish");
@@ -22,8 +20,6 @@ namespace RealmOne.NPCs.Critters
             Main.npcCatchable[NPC.type] = true;
 
             NPCID.Sets.CountsAsCritter[Type] = true;
-
-            glowmask = ModContent.Request<Texture2D>(Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -82,7 +78,7 @@ namespace RealmOne.NPCs.Critters
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>(Texture + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void FindFrame(int frameHeight)
         {

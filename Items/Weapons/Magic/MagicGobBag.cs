@@ -21,7 +21,7 @@ namespace RealmOne.Items.Weapons.Magic
             Tooltip.SetDefault("Conjures a rift that sucks in nearby enemies.");
             DisplayName.SetDefault("Sorcerer's Rift Pouch");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/Magic/MagicGobBag_Glow");
+            //   ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/Magic/MagicGobBag_Glow");
         }
 
         public override void SetDefaults()
@@ -51,6 +51,11 @@ namespace RealmOne.Items.Weapons.Magic
         {
             SoundEngine.PlaySound(SoundID.Item130);
             return true;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override bool CanUseItem(Player player)

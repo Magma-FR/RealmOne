@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Weapons.Magic;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -61,6 +64,13 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
                 NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, NPCID.DemonEye, ai3: 1).scale = 1f;
             }
             return true;
+        }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 7, 1, 2));
+
+            npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 8, 1, 1);
         }
 
         public override void HitEffect(NPC.HitInfo hit)

@@ -22,7 +22,7 @@ namespace RealmOne.Items.Fishing
                 "On right click you can explode the bobber into slow moving electric sparks"
                 + "\n'Somewhat vulnerable to water!'");
             ItemID.Sets.CanFishInLava[Item.type] = false;
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Fishing/ProtonPole_Glow");
+            ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Fishing/ProtonPole_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -131,7 +131,7 @@ namespace RealmOne.Items.Fishing
             Projectile.damage = 10;
         }
 
-        public override void ModifyFishingLine(ref Vector2 lineOriginOffset, ref Color lineColor)
+        public override void ModifyFishingLine(ref Vector2 lineOriginOffset, ref Color lineColor)/* tModPorter Note: Removed. Use ModItem.ModifyFishingLine */
         {
             lineOriginOffset = new Vector2(26, -20);
             // Sets the fishing line's color. Note that this will be overridden by the colored string accessories.

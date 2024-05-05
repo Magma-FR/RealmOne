@@ -26,7 +26,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 + "\nThe lasers depend on the mouse position when firing"
                 + "\n'No WIFI password required'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactInterceptor_Glow");
+            //  ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactInterceptor_Glow");
         }
 
         public override void SetDefaults()
@@ -57,6 +57,22 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         {
             var offset = new Vector2(1, 0);
             return offset;
+        }
+
+        /*  public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+          {
+              if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
+              {
+                  return;
+              }
+
+              damage *= 1.5f;
+          }
+        */
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -102,8 +118,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
     {
         public override string Texture => Helper.Empty;
 
-        int size;
-        bool fadeIN = false;
+        private int size;
+        private bool fadeIN = false;
 
         public override void SetDefaults()
         {
@@ -138,7 +154,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Main.player[Projectile.owner].Center, new Vector2(0, 0), ModContent.ProjectileType<ImpactLesserSonarShot>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
             }
 
-
             /*if (fadeIN == false)
             {
                 if (Projectile.ai[1] < 0.6f)
@@ -149,11 +164,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 {
                     fadeIN = true;
                 }
-
             }
             else
             {
-                
             }*/
 
             for (int i = 0; i < Main.maxNPCs; i++)
@@ -197,11 +210,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     Projectile.ai[1] -= 0.02f;
                     Projectile.ai[2] -= 0.02f;
                 }
-
             }
-
-
-
         }
 
         public override void PostAI()
@@ -212,7 +221,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
         public override bool PreDraw(ref Color lightColor)
         {
-
             Texture2D tex = Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.alpha);
@@ -232,8 +240,8 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
     {
         public override string Texture => Helper.Empty;
 
-        int size;
-        bool fadeIN = false;
+        private int size;
+        private bool fadeIN = false;
 
         public override void SetDefaults()
         {
@@ -269,11 +277,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 {
                     fadeIN = true;
                 }
-
             }
             else
             {
-                
             }*/
 
             for (int i = 0; i < Main.maxNPCs; i++)
@@ -317,11 +323,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     Projectile.ai[1] -= 0.02f;
                     Projectile.ai[2] -= 0.02f;
                 }
-
             }
-
-
-
         }
 
         public override void PostAI()
@@ -332,7 +334,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
         public override bool PreDraw(ref Color lightColor)
         {
-
             Texture2D tex = Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.alpha);
@@ -342,22 +343,19 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); return false;
         }
 
-
         public override bool ShouldUpdatePosition()
         {
             return false;
         }
-
-
     }
 
     public class ImpactEvenLesserSonarShot : ModProjectile
     {
         public override string Texture => Helper.Empty;
 
-        int size;
-        float g;
-        bool fadeIN = false;
+        private int size;
+        private float g;
+        private bool fadeIN = false;
 
         public override void SetDefaults()
         {
@@ -394,11 +392,9 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 {
                     fadeIN = true;
                 }
-
             }
             else
             {
-
             }*/
 
             for (int i = 0; i < Main.maxNPCs; i++)
@@ -435,11 +431,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                     Projectile.ai[2] -= 0.02f;
                     g -= 0.01f;
                 }
-
             }
-
-
-
         }
 
         public override void PostAI()
@@ -450,7 +442,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 
         public override bool PreDraw(ref Color lightColor)
         {
-
             Texture2D tex = Request<Texture2D>("RealmOne/Assets/Effects/Pulsee").Value;
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.GameViewMatrix.ZoomMatrix); float alpha = MathHelper.Lerp(4, 0, Projectile.alpha);

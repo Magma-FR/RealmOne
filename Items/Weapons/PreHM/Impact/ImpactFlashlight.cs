@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Projectiles.Bullet;
 using Terraria;
@@ -11,8 +11,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
 {
     public class ImpactFlashlight : ModItem
     {
-
-
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -164,4 +162,4 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Player.heldProj = Projectile.whoAmI;
         }
     }
-}
+}*/

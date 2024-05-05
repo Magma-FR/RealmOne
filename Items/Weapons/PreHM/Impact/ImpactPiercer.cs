@@ -26,7 +26,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                 + "\nThe first of the 2 circuit arrows is a arrow that has a 100% crit chance"
                 + "\nThe last circuit arrow is a slow use arrow that deals 7x the damage"
             + "\n'Xeonically Charged!!'");
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactPiercer_Glow");
+            //    ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/Impact/ImpactPiercer_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -51,6 +51,22 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.noMelee = true;
             Item.crit = 1;
         }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
+
+        /*  public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+          {
+              if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
+              {
+                  return;
+              }
+
+              damage *= 1.5f;
+          }
+        */
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

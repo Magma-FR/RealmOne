@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Weapons.PreHM.Impact;
+using RealmOne.RealmPlayer;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
@@ -38,25 +39,18 @@ namespace RealmOne.Items.Accessories
             Item.accessory = true;
         }
 
-        public override void UpdateAccessory(Player player, bool hideVisual)
-        {
-            player.buffImmune[BuffID.Electrified] = true;
-            {
-                bool holdingWeapon1 = player.HeldItem.type == ItemType<ImpactPiercer>();
-                bool holdingWeapon2 = player.HeldItem.type == ItemType<ImpactInterceptor>();
-                bool holdingWeapon3 = player.HeldItem.type == ItemType<ImpactPulsa>();
-                bool holdingWeapon4 = player.HeldItem.type == ItemType<ImpactBoomerang>();
+        /*  public override void UpdateAccessory(Player player, bool hideVisual)
+          {
+              player.buffImmune[BuffID.Electrified] = true;
 
-                if (holdingWeapon1 || holdingWeapon2 || holdingWeapon3 || holdingWeapon4)
-                {
-                    // Increase damage by 10%
-                    player.GetDamage(DamageClass.Melee) *= 1.10f;
-                    player.GetDamage(DamageClass.Ranged) *= 1.10f;
-                    player.GetDamage(DamageClass.Magic) *= 1.10f;
-                    player.GetDamage(DamageClass.Summon) *= 1.10f;
-                }
-            }
-        }
+              if (!player.TryGetModPlayer(out RealmModPlayer modPlayer))
+              {
+                  return;
+              }
+
+              modPlayer.Static = true;
+          }
+        */
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

@@ -16,7 +16,7 @@ namespace RealmOne.Items.Weapons.PreHM.Ice
         {
             DisplayName.SetDefault("Gushing Frost Minnow"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("'A rare fish of the snow that has been frozen over time, filled with icy water'");
-            ItemGlowy.AddItemGlowMask(Item.type, Texture + ("_Glow"));
+            ItemGlowy.AddGlowMask(Item.type, Texture + ("_Glow"));
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }

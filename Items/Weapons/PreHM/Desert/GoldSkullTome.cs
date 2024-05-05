@@ -15,9 +15,9 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
     {
         public override void SetStaticDefaults()
         {
-            ItemGlowy.AddItemGlowMask(Item.type, Texture + "_Glow");
-
+            ItemGlowy.AddGlowMask(Item.type, Texture + "_Glow");
         }
+
         public override void SetDefaults()
         {
             Item.width = 32;
@@ -34,19 +34,12 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 1f;
             Item.shoot = ModContent.ProjectileType<DesertHands>();
-
-
         }
-
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
-
-
             type = ModContent.ProjectileType<DesertHands>();
             float angle = Main.rand.NextFloat(MathHelper.PiOver4, -MathHelper.Pi * MathHelper.PiOver4);
-
 
             Vector2 spawnPlace = (type == ModContent.ProjectileType<DesertHands>()) ? Vector2.Normalize(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle))) * 65f : Vector2.Zero;
             if (Collision.CanHit(position, 0, 0, position + spawnPlace, 0, 0))
@@ -72,6 +65,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
         }
     }
 }
+
 /* public class GoldSkullTomeHeld : ModProjectile
  {
      public override string Texture => "RealmOne/Items/Weapons/PreHM/Desert/GoldenSkullTome";
@@ -142,8 +136,6 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
          SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
          type = ProjectileID.FlamingArrow;
        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12, type, damage, 1, Projectile.owner, 0, 0);
-
-
      }
 
      private void ShootWoodenSkull()
@@ -157,7 +149,4 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
          SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
 
          Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12, type, damage, 1, Projectile.owner, 0, 0);
-
-
      }*/
-

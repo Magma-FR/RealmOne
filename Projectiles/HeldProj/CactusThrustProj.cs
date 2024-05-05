@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using RealmOne.Projectiles.Bullet;
 using RealmOne.Projectiles.Other;
 using Terraria;
 using Terraria.ID;
@@ -73,14 +74,9 @@ namespace RealmOne.Projectiles.HeldProj
             if (!Main.dedServ)
             {
                 // These dusts are added later, for the 'ExampleMod' effect
-                if (Main.rand.NextBool(3))
-                {
-                    Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.t_Cactus, Projectile.velocity.X * 2f, Projectile.velocity.Y * 2f, Alpha: 128, Scale: 1.2f);
-                }
-
                 if (Main.rand.NextBool(4))
                 {
-                    Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.t_Cactus, Alpha: 128, Scale: 0.3f);
+                    Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.t_Cactus, Projectile.velocity.X * 2f, Projectile.velocity.Y * 2f, Alpha: 128, Scale: 1.2f);
                 }
             }
 

@@ -21,7 +21,7 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
         {
             DisplayName.SetDefault("Antiquity Revolver");
             Tooltip.SetDefault("'An antique and pristine revolver!'");
-            ItemGlowy.AddItemGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/OldGold/Oldy_Glow");
+            //   ItemGlowy.AddGlowMask(Item.type, "RealmOne/Items/Weapons/PreHM/OldGold/Oldy_Glow");
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -60,6 +60,11 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             .AddIngredient(Mod, "OldGoldBar", 6)
             .AddTile(TileID.Anvils)
             .Register();
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

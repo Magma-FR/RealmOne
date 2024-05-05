@@ -84,7 +84,7 @@ namespace RealmOne.NPCs.Enemies.Lightbulb
             return false;
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Lightbulb/LightbulbBouncer_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => GlowmMaskSystem.DrawNPCGlowMask(spriteBatch, NPC, ModContent.Request<Texture2D>("RealmOne/NPCs/Enemies/Lightbulb/LightbulbBouncer_Glow", AssetRequestMode.ImmediateLoad).Value, screenPos);
 
         public override void HitEffect(NPC.HitInfo hit)
         {
