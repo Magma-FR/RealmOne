@@ -70,7 +70,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 7, 1, 2));
 
-            npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 8, 1, 1);
+            npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 8, 1, 1));
         }
 
         public override void HitEffect(NPC.HitInfo hit)
