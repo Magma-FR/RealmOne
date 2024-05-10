@@ -1,5 +1,7 @@
 Mods: {
 	RealmOne: {
+		// Messages.ButcherRat: "[i:1825] The dreaded frenzying rodent has been slaughtered, the curse has awoken the neverending plague of rats [i:3098]"
+
 		GameTips: {
 			// ExampleTip0: The Archeologist is a wise but lost man, find him in snowbanks!
 			// ExampleTip1: Cthulhu in Ohio

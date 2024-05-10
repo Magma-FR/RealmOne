@@ -2,118 +2,155 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
-namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat
+namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
+
+public class ButcherRatMachete : ModProjectile
 {
-    public class ButcherRatMachete : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
+    /// <summary>
+    ///     Represents whether the projectile is sticking to a tile or not.
+    /// </summary>
+    public bool Sticking {
+        get => Projectile.ai[0] == 1f;
+        set => Projectile.ai[0] = value ? 1f : 0f;
+    }
+    
+    /// <summary>
+    ///     Represents a timer which is used for general behavior of the projectile.
+    /// </summary>
+    public ref float Timer => ref Projectile.ai[1];
 
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
-        }
-        public ref float Timer => ref Projectile.ai[0];
+    /// <summary>
+    ///     Represents the index of the Projectile's parent.
+    ///     Normally, this will be used to identify 'Butcher Rat' spawns.
+    /// </summary>
+    public ref float Index => ref Projectile.ai[2];
+    
+    private NPC Parent => Main.npc[(int)Index];
 
-        public bool StickingToTile
-        {
-            get => Projectile.ai[1] == 1f;
-            set => Projectile.ai[1] = value ? 1f : 0f;
-        }
+    public override void SetDefaults() {
+        Projectile.ignoreWater = true;
+        Projectile.hostile = true;
 
-        public override void SetDefaults()
-        {
-            Projectile.ignoreWater = true;
-            Projectile.hostile = true;
+        Projectile.width = 20;
+        Projectile.height = 20;
 
-            Projectile.width = 20;
-            Projectile.height = 20;
+        Projectile.aiStyle = -1;
+        AIType = -1;
 
-            Projectile.aiStyle = -1;
-            AIType = -1;
+        Projectile.penetrate = 1;
+        Projectile.timeLeft = 180;
+    }
 
-            Projectile.penetrate = 1;
-            Projectile.timeLeft = 180;
-        }
-        public override bool PreDraw(ref Color lightColor)
-        {
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
+    public override void AI() {
+        const float MinimumTime = 10f;
 
-            Main.instance.LoadProjectile(Projectile.type);
-            Texture2D texture = Request<Texture2D>("RealmOne/Assets/Effects/GlowLight").Value;
-            for (int k = 0; k < Projectile.oldPos.Length; k++)
-            {
-                var offset = new Vector2(Projectile.width / 2f, Projectile.height / 2f);
-                var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
-                Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + offset;
-                float sizec = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 1.1f);
-                Color color = new Color(255, 32, 99) * (1f - Projectile.alpha) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-                Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.oldRot[k], frame.Size() / 2f, sizec, SpriteEffects.None, 0);
-            }
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
-
-            return true;
-        }
-        public override void AI()
-        {
-            const float MinimumTime = 10f;
-
-            if (Projectile.timeLeft < 255 / 25)
-            {
-                Projectile.alpha += 25;
-            }
-
-            UpdateTileStick();
-
-            if (StickingToTile)
-            {
-                return;
-            }
-
-            Projectile.spriteDirection = Projectile.direction;
-            Projectile.rotation += Projectile.velocity.X * 0.05f;
-
-            Dust.NewDust(Projectile.Center, 0, 0, DustID.Blood);
-
-            if (Timer++ < MinimumTime)
-            {
-                return;
-            }
-
-            Projectile.velocity.Y += 0.2f;
+        if (Projectile.timeLeft < 255 / 25) {
+            Projectile.alpha += 25;
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            if (StickingToTile)
-            {
-                return false;
-            }
+        UpdateTileStick();
 
-            SoundEngine.PlaySound(in SoundID.Dig, Projectile.Center);
-            Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
+        if (Sticking) {
+            return;
+        }
 
-            StickingToTile = true;
+        Projectile.spriteDirection = Projectile.direction;
+        
+        Projectile.rotation += Projectile.velocity.X * 0.05f;
 
-            NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.whoAmI);
+        if (Main.rand.NextBool(5)) {
+            Dust.NewDust(
+                Projectile.Center, 
+                Projectile.width, 
+                Projectile.height, 
+                ModContent.DustType<ButcherDust>()
+            );
+        }
+        
+        Timer++;
+        
+        if (Timer < MinimumTime) {
+            return;
+        }
 
+        Projectile.velocity.Y += 0.2f;
+    }
+
+    public override bool PreDraw(ref Color lightColor) {
+        var texture = ModContent.Request<Texture2D>(Texture).Value;
+        
+        var drawPosition = Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+
+        Main.EntitySpriteDraw(
+            texture, 
+            drawPosition, 
+            null,
+            Projectile.GetAlpha(lightColor),
+            Projectile.rotation, 
+            texture.Size() / 2f, 
+            Projectile.scale,
+            SpriteEffects.None
+        );
+        
+        if (Parent == null || !Parent.active || Parent.ModNPC is not ButcherRat butcher) {
             return false;
         }
+        
+        var glow = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
 
-        private void UpdateTileStick()
-        {
-            if (!StickingToTile)
-            {
-                return;
-            }
-
-            Projectile.velocity *= 0.5f;
+        Main.EntitySpriteDraw(
+            glow, 
+            drawPosition, 
+            null,
+            Projectile.GetAlpha(Color.White) * butcher.FrenzyOpacity,
+            Projectile.rotation, 
+            glow.Size() / 2f, 
+            Projectile.scale,
+            SpriteEffects.None
+        );
+        
+        return false;
+    }
+    
+    public override bool OnTileCollide(Vector2 oldVelocity) {
+        if (Sticking) {
+            return false;
+        }
+        
+        var amount = 5;
+        
+        for (var i = 0; i < amount; i++) {
+            var rotation = i * MathHelper.TwoPi / amount;
+            var velocity = rotation.ToRotationVector2();
+                
+            Dust.NewDustDirect(
+                Projectile.position,
+                Projectile.width,
+                Projectile.height,
+                ModContent.DustType<ButcherDust>(),
+                velocity.X,
+                velocity.Y
+            );
         }
 
+        Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
+       
+        SoundEngine.PlaySound(in SoundID.Dig, Projectile.Center);
+        
+        Sticking = true;
+
+        return false;
+    }
+    
+    private void UpdateTileStick() {
+        if (!Sticking) {
+            return;
+        }
+
+        Projectile.velocity *= 0.5f;
     }
 }
