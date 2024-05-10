@@ -2133,7 +2133,7 @@ Mods: {
 
 			BloodDrill: {
 				// DisplayName: Blood Drill
-				// Tooltip: ""
+				// Tooltip: Dig deeper in flesh
 			}
 
 			PlayerBannerTen: {
@@ -2159,7 +2159,7 @@ Mods: {
 
 			OrchidEssence: {
 				// DisplayName: Orchid Essence
-				// Tooltip: ""
+				// Tooltip: A beautiful seed dropped from an Orchid Tree
 			}
 
 			SuperSunflowerBow: {
@@ -2194,12 +2194,20 @@ Mods: {
 
 			GoldSkullTome: {
 				// DisplayName: Ankh Skull Tome
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Conjures golden skulls
+					Shoots out from random directions
+					''' */
 			}
 
 			SunflowerCharm: {
 				// DisplayName: Sunflower Charm
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					3+ Life Regen
+					Shines a yellow glow off the pendant!
+					''' */
 			}
 
 			Ratty: {
@@ -2209,11 +2217,15 @@ Mods: {
 
 			SafeHook: {
 				// DisplayName: Critter Harpoon Gun
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Shoots a grapple hook that grabs critters and puts them in your inventory
+					Only if this works for enemies...
+					''' */
 			}
 
 			JungleFisharang: {
-				// Tooltip: ""
+				// Tooltip: Throws a colourful and fishy boomerang that changes colour frequently.
 				// DisplayName: Jungle Fisharang
 			}
 
@@ -2243,28 +2255,45 @@ Mods: {
 			}
 
 			OrchidBow: {
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Shoots a triple burst of orchid arrows
+					Has a chance to shoot out a Orchid Gem Cross that heals the player
+					''' */
 				// DisplayName: Orchid Bow
 			}
 
 			SpecialDynamite: {
-				// DisplayName: Special Dynamite
-				// Tooltip: ""
+				// DisplayName: Archeologist's Dynamite
+				/* Tooltip:
+					'''
+					Throws a unique dynamite that never runs out
+					Explodes on enemy and tile contact
+					Doesn't damage the user
+					''' */
 			}
 
 			CactusCannon: {
 				// DisplayName: Cactus Cannon
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Shoots out Bouncing Cactus Boulders that bounce in the same position 
+					Penetrates enemies
+					''' */
 			}
 
 			OrchidSpear: {
 				// DisplayName: Orchid Spear
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Thrust a pretty spear that shoots a green and pink leaf that inflict poison
+					Has a chance to shoot out a Orchid Gem Cross that heals the player
+					''' */
 			}
 
 			SunflowerWreath: {
 				// DisplayName: Sunflower Wreath
-				// Tooltip: ""
+				// Tooltip: Gives the Happy Buff when in Sunlight
 			}
 		}
 

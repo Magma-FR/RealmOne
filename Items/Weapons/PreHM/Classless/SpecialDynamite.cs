@@ -33,7 +33,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Item.knockBack = 1f;
             Item.value = Item.buyPrice(0, 5, 0, 0);
             Item.UseSound = SoundID.Item1;
-            Item.rare = ModContent.RarityType<ModRarities>();
+            Item.rare = ItemRarityID.Orange;
 
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<SpecialDynamiteProj>();
@@ -98,14 +98,14 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             // The projectile is in the midst of exploding during the last 3 updates.
             if (Projectile.owner == Main.myPlayer && Projectile.timeLeft <= 3)
             {
-                Projectile.tileCollide = false;
+                Projectile.tileCollide = true;
                 // Set to transparent. This projectile technically lives as transparent for about 3 frames
                 Projectile.alpha = 255;
 
                 // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
                 Projectile.Resize(ExplosionWidthHeight, ExplosionWidthHeight);
-                Projectile.hostile = true;
-                Projectile.friendly = true;
+                Projectile.hostile = false;
+                Projectile.friendly = false;
                 Projectile.damage = 250;
                 Projectile.knockBack = 10f;
             }
@@ -170,6 +170,10 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
             Player player = Main.player[Projectile.owner];
             player.GetModPlayer<Screenshake>().SmallScreenshake = true;
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+            Projectile.hostile = false;
+            Projectile.friendly = false;
+            Projectile.damage = 250;
+            Projectile.knockBack = 10f;
             // Smoke Dust spawn
             for (int i = 0; i < 50; i++)
             {

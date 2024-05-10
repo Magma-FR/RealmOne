@@ -23,7 +23,7 @@ namespace RealmOne.Items.Sets.OrchidSet
         {
             Item.width = 24;
             Item.height = 44;
-            Item.damage = 11;
+            Item.damage = 7;
             Item.useAnimation = 24;
             Item.useTime = 8;
             Item.reuseDelay = 12;

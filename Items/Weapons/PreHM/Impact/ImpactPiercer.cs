@@ -50,6 +50,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.shootSpeed = 27f;
             Item.noMelee = true;
             Item.crit = 1;
+            Item.scale = 1.3f;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -57,16 +58,15 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             return Color.White;
         }
 
-        /*  public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-          {
-              if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
-              {
-                  return;
-              }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
+            {
+                return;
+            }
 
-              damage *= 1.5f;
-          }
-        */
+            damage *= 1.5f;
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

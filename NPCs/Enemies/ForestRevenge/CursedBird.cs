@@ -16,6 +16,9 @@ using ReLogic.Content;
 using Terraria.GameContent;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.Utilities;
+using RealmOne.Items.Sets.ForestRevengeSet;
+using Terraria.GameContent.ItemDropRules;
+using RealmOne.Items.Weapons.PreHM.Classless;
 
 namespace RealmOne.NPCs.Enemies.ForestRevenge
 {
@@ -90,6 +93,11 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
             }
+        }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 25));
         }
 
         private float alphaCounter;

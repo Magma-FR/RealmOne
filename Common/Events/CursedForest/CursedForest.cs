@@ -90,9 +90,9 @@ namespace RealmOne.Common.Events.CursedForest
 
             if (!CursedForest && !testedEvents && !Main.bloodMoon && !Main.dayTime && WorldGen.spawnHardBoss == 0)
             {
-                if ((Main.rand.NextBool(8) && !downedCursedForest) || (Main.rand.NextBool(16) && downedCursedForest))
+                if ((Main.rand.NextBool(35) && !downedCursedForest) || (Main.rand.NextBool(40) && downedCursedForest))
                 {
-                    player.aggro += 100;
+                    player.aggro += 200;
                     string status = "The forest has been cursed into a detrimental state";
                     if (Main.netMode == NetmodeID.Server)
                         ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(status), new Color(200, 0, 50));
@@ -117,6 +117,7 @@ namespace RealmOne.Common.Events.CursedForest
 
                 CursedForest = false;
                 testedEvents = false;
+                int zoologistNpc = NPC.FindFirstNPC(NPCID.BestiaryGirl);
 
                 if (Main.netMode == NetmodeID.Server)
                     NetMessage.SendData(MessageID.WorldData);

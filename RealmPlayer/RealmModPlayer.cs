@@ -274,7 +274,7 @@ namespace RealmOne.RealmPlayer
     public class RealmModPlayer : ModPlayer
     {
         public bool marbleJustJumped;
-
+        public bool Static = false;
         public bool BrassSetBonus = false;
         public bool MaxTeeth = false;
         public int BrassCD = 0;
@@ -300,6 +300,7 @@ namespace RealmOne.RealmPlayer
         public int DMGPor = 0;
         public int PigSwings = 0;
         public int cd;
+        public bool brassSet = false;
 
         private int coinFall = 0;
         private int coinFallAmount = 0;
@@ -316,8 +317,10 @@ namespace RealmOne.RealmPlayer
             OrchidBonus = false;
             Overseer = false;
             Rusty = false;
+            Static = false;
             GreenNeck = false;
             marbleJustJumped = false;
+            brassSet = false;
 
             FallSpeed = false;
             PiggySet = false;
@@ -353,16 +356,16 @@ namespace RealmOne.RealmPlayer
             }
         }
 
-        /*public void DoubleTapEffects(int keyDir)
-		{
-			if (keyDir == (Main.ReversedUpDownArmorSetBonuses ? 1 : 0))
-			{
-				if( brassSet && !Player.HasBuff(ModContent.BuffType<BrassMight>()))
-				{
+        public void DoubleTapEffects(int keyDir)
+        {
+            if (keyDir == (Main.ReversedUpDownArmorSetBonuses ? 1 : 0))
+            {
+                if (brassSet && !Player.HasBuff(ModContent.BuffType<BrassMight>()))
+                {
                     Player.AddBuff(ModContent.BuffType<BrassMight>(), 500);
                 }
             }
-		}*/
+        }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

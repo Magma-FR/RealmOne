@@ -23,6 +23,7 @@ namespace RealmOne.Items.Accessories
             Item.value = 10000;
             Item.rare = ItemRarityID.Green;
             Item.accessory = true;
+            Item.defense += 2;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -31,10 +32,6 @@ namespace RealmOne.Items.Accessories
             {
                 // Apply the 'Happy' buff
                 player.AddBuff(BuffID.Sunflower, 1); // Buff lasts for 5 in-game hours (5 minutes)
-            }
-            if (!Main.dayTime)
-            {
-                Lighting.AddLight(player.Center, Color.Yellow.ToVector3() / 1.5f);
             }
         }
 

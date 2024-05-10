@@ -39,18 +39,17 @@ namespace RealmOne.Items.Accessories
             Item.accessory = true;
         }
 
-        /*  public override void UpdateAccessory(Player player, bool hideVisual)
-          {
-              player.buffImmune[BuffID.Electrified] = true;
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.buffImmune[BuffID.Electrified] = true;
 
-              if (!player.TryGetModPlayer(out RealmModPlayer modPlayer))
-              {
-                  return;
-              }
+            if (!player.TryGetModPlayer(out RealmModPlayer modPlayer))
+            {
+                return;
+            }
 
-              modPlayer.Static = true;
-          }
-        */
+            modPlayer.Static = true;
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
