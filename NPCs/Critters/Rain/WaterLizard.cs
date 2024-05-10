@@ -11,15 +11,8 @@ namespace RealmOne.NPCs.Critters.Rain
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Water Lizard");
-            Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.GoldfishWalker];
+            Main.npcFrameCount[NPC.type] = 6;
             Main.npcCatchable[NPC.type] = true;
-
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
-            {
-                Velocity = 1f
-            };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
             NPCID.Sets.CountsAsCritter[Type] = true;
         }
 
@@ -31,16 +24,16 @@ namespace RealmOne.NPCs.Critters.Rain
             NPC.dontCountMe = true;
 
             NPC.defense = 0;
-            NPC.lifeMax = 75;
+            NPC.lifeMax = 5;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
 
             NPC.knockBackResist = 0.34f;
             NPC.dontTakeDamageFromHostiles = true;
+            NPC.aiStyle = 7;
 
             NPC.npcSlots = 0;
-            NPC.aiStyle = NPCAIStyleID.Passive;
-            AnimationType = NPCID.GoldfishWalker;
+            AIType = NPCID.Bunny;
         }
 
         public override void HitEffect(NPC.HitInfo hit)
@@ -55,6 +48,22 @@ namespace RealmOne.NPCs.Critters.Rain
             for (int k = 0; k < 20; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Water, 2.5f * hit.HitDirection, -2.5f, 0, Color.White, 0.7f);
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (NPC.velocity != Vector2.Zero || NPC.IsABestiaryIconDummy)
+            {
+                NPC.frameCounter += 0.16f;
+                NPC.frameCounter %= Main.npcFrameCount[NPC.type];
+                int frame = (int)NPC.frameCounter;
+                NPC.frame.Y = frame * frameHeight;
+            }
+            else
+            {
+                int frame = (int)NPC.frameCounter;
+                NPC.frame.Y = frame * 0;
             }
         }
 

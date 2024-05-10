@@ -13,8 +13,6 @@ namespace RealmOne.NPCs.Critters.Rain
 {
     public class AquaSwishSnail : ModNPC
     {
-        private static Asset<Texture2D> glowmask;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("AquaSwish Snail");
