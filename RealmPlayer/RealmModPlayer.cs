@@ -371,7 +371,7 @@ namespace RealmOne.RealmPlayer
         {
             Player p = Main.LocalPlayer;
 
-            if (KeybindSystem.BrassActivation.JustPressed && !p.HasBuff<BrassMightCD>() && !p.HasBuff<BrassMight>())
+            if (KeybindSystem.BrassActivation != null && KeybindSystem.BrassActivation.JustPressed && !p.HasBuff<BrassMightCD>() && !p.HasBuff<BrassMight>() && BrassSetBonus)
             {
                 for (int i = 0; i < 90; i++)
                 {
