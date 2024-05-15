@@ -77,48 +77,47 @@ namespace RealmOne.Common.Systems
         {
             // Place some additional items in Frozen Chests:
             // These are the 3 new items we will place.
-            int[] itemsToPlaceInWoodChests = { ItemType<MinersPouch>(), ItemType<MinersPouch>(), ItemType<MinersPouch>() };
+            int[] itemsToPlaceInWoodChests1 = { ItemType<MinersPouch>(), ItemType<MinersPouch>(), ItemType<MinersPouch>() };
             // This variable will help cycle through the items so that different Frozen Chests get different items
-            int itemsToPlaceInWoodChestsChoice = 0;
+            int itemsToPlaceInWoodChestsChoice1 = 0;
             // Rather than place items in each chest, we'll place up to 6 items (2 of each).
-            int itemsPlaced = 0;
-            int maxItems = 20;
+            int itemsPlaced1 = 0;
+            int maxItems1 = 40;
             // Loop over all the chests
-            for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
+            for (int chestIndex1 = 0; chestIndex1 < Main.maxChests; chestIndex1++)
             {
-                Chest chest = Main.chest[chestIndex];
-                if (chest == null)
+                Chest chest1 = Main.chest[chestIndex1];
+                if (chest1 == null)
                 {
                     continue;
                 }
-                Tile chestTile = Main.tile[chest.x, chest.y];
+                Tile chestTile1 = Main.tile[chest1.x, chest1.y];
                 // We need to check if the current chest is the Frozen Chest. We need to check that it exists and has the TileType and TileFrameX values corresponding to the Frozen Chest.
                 // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Frozen Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. An alternate approach is to check the wiki and looking for the "Internal Tile ID" section in the infobox: https://terraria.wiki.gg/wiki/Frozen_Chest
-                if (chestTile.TileType == TileID.Containers && chestTile.TileFrameX == 17 * 36)
+                if (chestTile1.TileType == TileID.Containers && chestTile1.TileFrameX == 1 * 36)
                 {
                     // We have found a Frozen Chest
                     // If we don't want to add one of the items to every Frozen Chest, we can randomly skip this chest with a 33% chance.
-                    if (WorldGen.genRand.NextBool(3))
+                    if (WorldGen.genRand.NextBool(2))
                         continue;
                     // Next we need to find the first empty slot for our item
-                    for (int inventoryIndex = 0; inventoryIndex < Chest.maxItems; inventoryIndex++)
+                    for (int inventoryIndex1 = 0; inventoryIndex1 < Chest.maxItems; inventoryIndex1++)
                     {
-                        if (chest.item[inventoryIndex].type == ItemID.None)
+                        if (chest1.item[inventoryIndex1].type == ItemID.None)
                         {
                             // Place the item
-                            chest.item[inventoryIndex].SetDefaults(itemsToPlaceInWoodChests[itemsToPlaceInWoodChestsChoice]);
+                            chest1.item[inventoryIndex1].SetDefaults(itemsToPlaceInWoodChests1[itemsToPlaceInWoodChestsChoice1]);
                             // Decide on the next item that will be placed.
-                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 1);
 
-                            itemsToPlaceInWoodChestsChoice = (itemsToPlaceInWoodChestsChoice + 1) % itemsToPlaceInWoodChests.Length;
+                            itemsToPlaceInWoodChestsChoice1 = (itemsToPlaceInWoodChestsChoice1 + 1) % itemsToPlaceInWoodChests1.Length;
                             // Alternate approach: Random instead of cyclical: chest.item[inventoryIndex].SetDefaults(WorldGen.genRand.Next(itemsToPlaceInFrozenChests));
-                            itemsPlaced++;
+                            itemsPlaced1++;
                             break;
                         }
                     }
                 }
                 // Once we've placed as many items as we wanted, break out of the loop
-                if (itemsPlaced >= maxItems)
+                if (itemsPlaced1 >= maxItems1)
                 {
                     break;
                 }
