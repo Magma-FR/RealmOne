@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,8 +13,8 @@ namespace RealmOne.Projectiles.Throwing
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vampire Dagger");
-
-            ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
         public override void SetDefaults()
@@ -29,7 +31,7 @@ namespace RealmOne.Projectiles.Throwing
             Projectile.tileCollide = false;
             Projectile.timeLeft = 380;
 
-            Projectile.penetrate = 4;
+            Projectile.penetrate = 2;
             AIType = ProjectileID.ThrowingKnife;
         }
 
@@ -44,6 +46,18 @@ namespace RealmOne.Projectiles.Throwing
             SoundEngine.PlaySound(SoundID.Item39, Projectile.position);
         }
 
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, Projectile.height * 0.5f);
+            for (int k = 0; k < Projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
+            }
+            return false;
+        }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 
         {
@@ -56,7 +70,7 @@ namespace RealmOne.Projectiles.Throwing
 
         public override void AI()
         {
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.VampireHeal, Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, Scale: 0.5f);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Blood, Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, Scale: 0.8f);
         }
     }
 }

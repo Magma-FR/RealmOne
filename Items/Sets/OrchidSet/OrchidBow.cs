@@ -26,7 +26,7 @@ namespace RealmOne.Items.Sets.OrchidSet
             Item.damage = 7;
             Item.useAnimation = 24;
             Item.useTime = 8;
-            Item.reuseDelay = 12;
+            Item.reuseDelay = 20;
             Item.autoReuse = true;
             Item.useTurn = true;
 

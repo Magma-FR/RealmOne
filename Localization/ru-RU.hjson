@@ -2112,8 +2112,8 @@ Mods: {
 			}
 
 			ForestTea: {
-				// DisplayName: Forest Tea
-				// Tooltip: ""
+				// DisplayName: Forest Coffee
+				// Tooltip: "'H.P Lovecraft's essential morning breverage.'"
 			}
 
 			VerminhideBody: {
@@ -2164,7 +2164,11 @@ Mods: {
 
 			SuperSunflowerBow: {
 				// DisplayName: Super Sunflower Bow
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					A special bow that shoots powerful fast moving petal arrows that glow
+					Also shoots wind effected sunflower petals that are shot out randomly
+					''' */
 			}
 
 			CursedForestItem: {
@@ -2172,7 +2176,7 @@ Mods: {
 				/* Tooltip:
 					'''
 					A strange and demonic crucifix, looks like its been used before 
-					Use the Crucifix to start the Forest's Revenge
+					Use the Crucifix to start the [c/FA325C:Forest's Revenge]
 					Only useable at Nightime
 					''' */
 			}
@@ -2241,7 +2245,7 @@ Mods: {
 
 			GrislyHide: {
 				// DisplayName: Grisly Hide
-				// Tooltip: ""
+				// Tooltip: Dropped from vanquishing a demonic plague starter.
 			}
 
 			ForestVengeance: {
@@ -2294,6 +2298,32 @@ Mods: {
 			SunflowerWreath: {
 				// DisplayName: Sunflower Wreath
 				// Tooltip: Gives the Happy Buff when in Sunlight
+			}
+
+			SeekingOwlGlove: {
+				// DisplayName: Seeking Owl Glove
+				/* Tooltip:
+					'''
+					Send out an aggressive Cursed Owl that has	 be-friended you (because you have food)
+					The Cursed Owl will follow your cursor until its tired and dissappears.
+					Homes onto enemies when nearby enemies.
+					''' */
+			}
+
+			BunnyBlade: {
+				// DisplayName: Bunny Blade
+				/* Tooltip:
+					'''
+					Swing a large bunny ear with a blade sticking out of it
+					Hitting a crit will provide the player with the Bunny Buff
+					Bunny Buff: Greatl increases Jump Speed, Negates some fall damage
+					Increased Movement Speed and Jump Height
+					''' */
+			}
+
+			KingSlimePaper: {
+				// DisplayName: King Slime Paper
+				// Tooltip: ""
 			}
 		}
 
@@ -2514,6 +2544,11 @@ Mods: {
 				// Description: Hey, atleast you're not on twitter
 				// DisplayName: Cancelled
 			}
+
+			BunnyBuff: {
+				// DisplayName: Bunny Buff
+				// Description: Mods.RealmOne.Buffs.BunnyBuff.Description
+			}
 		}
 
 		Projectiles: {
@@ -2704,6 +2739,7 @@ Mods: {
 			// SpecialDynamiteProj.DisplayName: Special Dynamite Proj
 			// CactusCannonProj.DisplayName: Cactus Cannon Proj
 			// OrchidSpearProj.DisplayName: Orchid Spear Proj
+			// SeekingOwlProj.DisplayName: Seeking Owl Proj
 		}
 
 		NPCs: {
@@ -2882,6 +2918,7 @@ Mods: {
 			// CursedFirefly.DisplayName: Cursed Firefly
 			// CursedBunny.DisplayName: Cursed Bunny
 			// CursedSquirrel.DisplayName: Cursed Squirrel
+			// UndeadHand.DisplayName: Undead Hand
 		}
 
 		Dialogue: {

@@ -24,7 +24,7 @@ namespace RealmOne.NPCs.Critters.Rain
             NPC.dontCountMe = true;
 
             NPC.defense = 0;
-            NPC.lifeMax = 5;
+            NPC.lifeMax = 75;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
 

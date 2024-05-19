@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
+using RealmOne.Items.Opens;
 using RealmOne.Projectiles.Throwing;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace RealmOne.Items.Weapons.PreHM.Classless
 {
@@ -66,31 +68,31 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
                 Item.UseSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/LightbulbShine");
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.Ironskin, 240);
+                    player.AddBuff(BuffID.Ironskin, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.Swiftness, 240);
+                    player.AddBuff(BuffID.Swiftness, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.Regeneration, 240);
+                    player.AddBuff(BuffID.Regeneration, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.Endurance, 240);
+                    player.AddBuff(BuffID.Endurance, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.ManaRegeneration, 240);
+                    player.AddBuff(BuffID.ManaRegeneration, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.MagicPower, 240);
+                    player.AddBuff(BuffID.MagicPower, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.Spelunker, 240);
+                    player.AddBuff(BuffID.Spelunker, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.Shine, 240);
+                    player.AddBuff(BuffID.Shine, 800);
 
                 if (Main.rand.NextBool(5))
-                    player.AddBuff(BuffID.NightOwl, 240);
+                    player.AddBuff(BuffID.NightOwl, 800);
             }
             else
             {
@@ -151,6 +153,61 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
                 dustleft.noGravity = true;
                 dustleft.noLight = false;
                 dustleft.alpha = 0;
+            }
+        }
+    }
+
+    internal class StackLoot : ModSystem
+    {
+        public override void PostWorldGen()
+        {
+            // Place some additional items in Frozen Chests:
+            // These are the 3 new items we will place.
+            int[] itemsToPlaceInWoodChests1 = { ItemType<StackPotions>(), ItemType<StackPotions>(), ItemType<StackPotions>() };
+            // This variable will help cycle through the items so that different Frozen Chests get different items
+            int itemsToPlaceInWoodChestsChoice1 = 0;
+            // Rather than place items in each chest, we'll place up to 6 items (2 of each).
+            int itemsPlaced1 = 0;
+            int maxItems1 = 40;
+            // Loop over all the chests
+            for (int chestIndex1 = 0; chestIndex1 < Main.maxChests; chestIndex1++)
+            {
+                Chest chest1 = Main.chest[chestIndex1];
+                if (chest1 == null)
+                {
+                    continue;
+                }
+                Tile chestTile1 = Main.tile[chest1.x, chest1.y];
+                // We need to check if the current chest is the Frozen Chest. We need to check that it exists and has the TileType and TileFrameX values corresponding to the Frozen Chest.
+                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Frozen Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. An alternate approach is to check the wiki and looking for the "Internal Tile ID" section in the infobox: https://terraria.wiki.gg/wiki/Frozen_Chest
+                if (chestTile1.TileType == TileID.Containers && chestTile1.TileFrameX == 1 * 36)
+                {
+                    // We have found a Frozen Chest
+                    // If we don't want to add one of the items to every Frozen Chest, we can randomly skip this chest with a 33% chance.
+                    if (WorldGen.genRand.NextBool(2))
+                        continue;
+                    // Next we need to find the first empty slot for our item
+                    for (int inventoryIndex1 = 0; inventoryIndex1 < Chest.maxItems; inventoryIndex1++)
+                    {
+                        if (chest1.item[inventoryIndex1].type == ItemID.None)
+                        {
+                            // Place the item
+                            chest1.item[inventoryIndex1].SetDefaults(itemsToPlaceInWoodChests1[itemsToPlaceInWoodChestsChoice1]);
+                            // Decide on the next item that will be placed.
+                            chest1.item[inventoryIndex1].stack = WorldGen.genRand.Next(10, 18);
+
+                            itemsToPlaceInWoodChestsChoice1 = (itemsToPlaceInWoodChestsChoice1 + 1) % itemsToPlaceInWoodChests1.Length;
+                            // Alternate approach: Random instead of cyclical: chest.item[inventoryIndex].SetDefaults(WorldGen.genRand.Next(itemsToPlaceInFrozenChests));
+                            itemsPlaced1++;
+                            break;
+                        }
+                    }
+                }
+                // Once we've placed as many items as we wanted, break out of the loop
+                if (itemsPlaced1 >= maxItems1)
+                {
+                    break;
+                }
             }
         }
     }

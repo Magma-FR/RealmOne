@@ -32,7 +32,7 @@ namespace RealmOne.Common.Systems
             int itemsToPlaceInWoodChestsChoice = 0;
             // Rather than place items in each chest, we'll place up to 6 items (2 of each).
             int itemsPlaced = 0;
-            int maxItems = 20;
+            int maxItems = 40;
             // Loop over all the chests
             for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
             {
@@ -46,7 +46,7 @@ namespace RealmOne.Common.Systems
                 {
                     // We have found a Frozen Chest
                     // If we don't want to add one of the items to every Frozen Chest, we can randomly skip this chest with a 33% chance.
-                    if (WorldGen.genRand.NextBool(3))
+                    if (WorldGen.genRand.NextBool(2))
                         continue;
                     // Next we need to find the first empty slot for our istem
                     for (int inventoryIndex = 0; inventoryIndex < Chest.maxItems; inventoryIndex++)
