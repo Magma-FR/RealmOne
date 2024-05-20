@@ -20,7 +20,7 @@ namespace RealmOne.Armor.Orchid
             Item.width = 18;
             Item.height = 18;
             Item.value = Item.sellPrice(gold: 0, silver: 57, copper: 80);
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.defense = 1; //
         }
 

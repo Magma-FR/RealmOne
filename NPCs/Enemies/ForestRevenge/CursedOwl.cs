@@ -81,8 +81,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 25));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 18));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 35));
         }
 
         public override void HitEffect(NPC.HitInfo hit)

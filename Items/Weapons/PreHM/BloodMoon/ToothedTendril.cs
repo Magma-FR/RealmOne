@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Items.Misc.EnemyDrops;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -27,6 +28,16 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.channel = true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient(ModContent.ItemType<ScathedFlesh>(), 8)
+                .AddIngredient(ItemID.BlandWhip, 1)
+
+                .AddTile(TileID.Anvils)
+                .Register();
         }
 
         public override bool MeleePrefix()

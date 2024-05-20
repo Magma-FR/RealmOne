@@ -4,6 +4,7 @@ using RealmOne.Items.Accessories;
 using RealmOne.Items.Ammo;
 using RealmOne.Items.Weapons.Melee;
 using RealmOne.Items.Weapons.PreHM.Crossbows;
+using RealmOne.Items.Weapons.PreHM.Forest;
 using RealmOne.RealmPlayer;
 using System.Collections.Generic;
 using Terraria;
@@ -77,6 +78,8 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.ManaCrystal, 1, 2, 2));
 
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DualWieldCrossbows>(), 1, 1, 1));
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AcornWand>(), 1, 1, 1));
+
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GildedGladius>(), 1, 1, 1));
 
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmptyLocket>(), 1, 1, 1));

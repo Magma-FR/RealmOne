@@ -18,7 +18,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
 
         public override void SetDefaults()
         {
-            Item.damage = 9;
+            Item.damage = 12;
             Item.DamageType = DamageClass.Magic;
             Item.width = 24;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -29,7 +29,6 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Item.shootSpeed = 11f;
             Item.noMelee = true;
             Item.mana = 40;
-            Item.damage = 20;
         }
 
         public override bool CanUseItem(Player player)

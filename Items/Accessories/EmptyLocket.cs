@@ -34,23 +34,9 @@ namespace RealmOne.Items.Accessories
             return true;
         }
 
-        public override void ModifyItemLoot(ItemLoot itemLoot)
-        {
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EntropyMedallion>(), 1, 1, 1));
-        }
-
         public override void UpdateEquip(Player player)
         {
             Lighting.AddLight(player.position, r: 0.6f, 0.3f, b: 1f);
-        }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-
-            recipe.AddIngredient(ModContent.ItemType<EntropyMedallion>(), 1);
-
-            recipe.Register();
         }
     }
 }

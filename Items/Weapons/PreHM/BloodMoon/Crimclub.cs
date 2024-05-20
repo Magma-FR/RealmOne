@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.Items.Misc.Bars;
+using RealmOne.Items.Misc.EnemyDrops;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -34,6 +36,16 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
 
             Item.shootSpeed = 1f;
             Item.shoot = ModContent.ProjectileType<CrimClubSwing>();
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient(ModContent.ItemType<ScathedFlesh>(), 12)
+                .AddIngredient(ItemID.WoodenHammer, 1)
+
+                .AddTile(TileID.Anvils)
+                .Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

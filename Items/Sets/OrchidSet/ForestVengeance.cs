@@ -30,7 +30,7 @@ namespace RealmOne.Items.Sets.OrchidSet
             Item.useTime = 115;
             Item.useAnimation = 115;
             Item.mana = 12;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.autoReuse = true;
             Item.value = Item.sellPrice(0, 0, 57, 35);
             Item.DamageType = DamageClass.Magic;

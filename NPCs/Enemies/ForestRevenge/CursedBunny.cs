@@ -95,8 +95,8 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 25));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BunnyBlade>(), 16));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 35));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BunnyBlade>(), 20));
         }
 
         private float alphaCounter;

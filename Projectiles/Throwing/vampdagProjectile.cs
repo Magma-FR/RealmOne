@@ -27,8 +27,7 @@ namespace RealmOne.Projectiles.Throwing
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.ignoreWater = true;
-            Projectile.light = 0.5f;
-            Projectile.tileCollide = false;
+            Projectile.tileCollide = true;
             Projectile.timeLeft = 380;
 
             Projectile.penetrate = 2;

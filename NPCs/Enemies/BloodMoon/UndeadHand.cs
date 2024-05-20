@@ -79,10 +79,10 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         {
             if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
             {
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadHeadGore1").Type, 1f);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadHeadGore2").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadHandGore1").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadHandGore2").Type, 1f);
 
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadHeadGore3").Type, 1f);
+                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("UndeadHandGore3").Type, 1f);
             }
 
             for (int k = 0; k < 10; k++)

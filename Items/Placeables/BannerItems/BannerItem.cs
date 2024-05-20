@@ -1,4 +1,4 @@
-using RealmOne.Tiles.Banners;
+/*using RealmOne.Tiles.Banners;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
@@ -71,4 +71,4 @@ namespace RealmOne.Items.Placeables.BannerItems
             }
         }
     }
-}
+}*/

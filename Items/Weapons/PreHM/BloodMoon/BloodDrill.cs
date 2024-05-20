@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Items.Misc.Bars;
+using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Placeables.FarmStuff;
 using ReLogic.Content;
 using Terraria;
 using Terraria.ID;
@@ -36,6 +39,16 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.shoot = ProjectileType<BloodDrillProj>();
         }
 
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient(ModContent.ItemType<ScathedFlesh>(), 10)
+                .AddIngredient(ItemType<BrassIngot>(), 5)
+
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = Request<Texture2D>(Texture + "_Glow", AssetRequestMode.ImmediateLoad).Value;
@@ -63,8 +76,8 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
-
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 28;

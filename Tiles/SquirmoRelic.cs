@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Placeables.Furniture.BossThing;
 using ReLogic.Content;
@@ -187,8 +187,4 @@ namespace RealmOne.Tiles
 			Item.NewItem(i * 16, j * 16, 32, 32, ModContent.ItemType<Items.Placeable.Furniture.MyBossRelic>());
 		}
 	}
-	*/
-
-    // Your item code would then just use the MyBossRelic tile type, and keep placeStyle on 0
-    // The textures for MyBossRelic item/tile have to be supplied separately
-}
+}*/

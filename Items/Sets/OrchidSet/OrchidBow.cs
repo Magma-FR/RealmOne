@@ -34,7 +34,7 @@ namespace RealmOne.Items.Sets.OrchidSet
 
             Item.knockBack = 1f;
             Item.noMelee = true;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.consumeAmmoOnLastShotOnly = true;
             Item.UseSound = SoundID.Item5;
             Item.useStyle = ItemUseStyleID.Shoot;
