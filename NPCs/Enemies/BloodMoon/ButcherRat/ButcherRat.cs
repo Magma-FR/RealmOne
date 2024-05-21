@@ -19,9 +19,9 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
 [AutoloadBossHead]
 public sealed class ButcherRat : ModNPC
 {
-    private static readonly SoundStyle FrenzySound = new($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatFrenzy");
+    public static readonly SoundStyle FrenzySound = new($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatFrenzy");
    
-    private static readonly SoundStyle SlamSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatSlam") with {
+    public static readonly SoundStyle SlamSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatSlam") with {
         Volume = 0.8f, 
         PitchVariance = 0.2f
     };

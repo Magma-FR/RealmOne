@@ -2266,6 +2266,11 @@ Mods: {
 				// DisplayName: Sunflower Wreath
 				// Tooltip: ""
 			}
+
+			BloodthirstyVerminsaw: {
+				// DisplayName: Bloodthirsty Verminsaw
+				// Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2675,6 +2680,7 @@ Mods: {
 			// SpecialDynamiteProj.DisplayName: Special Dynamite Proj
 			// CactusCannonProj.DisplayName: Cactus Cannon Proj
 			// OrchidSpearProj.DisplayName: Orchid Spear Proj
+			// BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
 		}
 
 		NPCs: {
