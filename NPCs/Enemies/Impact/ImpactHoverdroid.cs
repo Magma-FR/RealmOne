@@ -49,7 +49,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.noGravity = true;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.11f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.117f : 0f;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {

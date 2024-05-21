@@ -499,12 +499,12 @@ namespace RealmOne.RealmPlayer
             {
                 if (Player.ZoneSkyHeight)
                 {
-                    Player.AddBuff(BuffID.Suffocation, 20);
+                    Player.AddBuff(BuffID.Suffocation, 15);
                 }
 
                 if (Player.HasBuff(BuffID.Suffocation))
                 {
-                    CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height), new Color(80, 150, 240, 140), "You're losing air!!", false, false);
+                    //        CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height), new Color(80, 150, 240, 140), "You're losing air!!", false, false);
                 }
             }
         }

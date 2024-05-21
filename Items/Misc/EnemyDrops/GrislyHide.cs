@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,4 +21,4 @@ namespace RealmOne.Items.Misc.EnemyDrops
             Item.value = Item.buyPrice(silver: 45);
         }
     }
-}
+}*/

@@ -2033,8 +2033,8 @@ Mods: {
 				DisplayName: Goretooth Teethplate
 				Tooltip:
 					'''
-					1+ Increased Minion
-					4% increased Summon Damage
+					3+ Melee Crit Chance
+					5% increased Melee Damage
 					'''
 			}
 
@@ -2042,8 +2042,8 @@ Mods: {
 				DisplayName: Goretooth Eyemask
 				Tooltip:
 					'''
-					5% Increased Summon Damage
-					1+ Max Minion
+					8% Increased Melee Damage
+					5% Increased Armour Penetration
 					'''
 			}
 

@@ -580,7 +580,6 @@ public sealed class ButcherRat : ModNPC
     {
         npcLoot.Add(ItemDropRule.Common(ItemID.RatCage, 5));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoreshankShotgun>()));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrislyHide>(), 1, 5, 8));
     }
 
     public override void OnKill()

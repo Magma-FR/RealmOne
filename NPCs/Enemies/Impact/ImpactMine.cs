@@ -41,7 +41,7 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.aiStyle = NPCAIStyleID.Unicorn;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.12f : 0f;
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.SpawnTileY < Main.rockLayer && !CursedForestEvent.CursedForest && !Main.bloodMoon ? SpawnCondition.OverworldNightMonster.Chance * 0.121f : 0f;
 
         public override void AI()
         {

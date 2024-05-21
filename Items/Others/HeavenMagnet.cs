@@ -178,7 +178,7 @@ namespace RealmOne.Items.Others
         {
             // Place some additional items in Frozen Chests:
             // These are the 3 new items we will place.
-            int[] itemsToPlaceInWoodChests1 = { ItemType<StackPotions>(), ItemType<StackPotions>(), ItemType<StackPotions>() };
+            int[] itemsToPlaceInWoodChests1 = { ItemType<HeavenMagnet>(), ItemType<HeavenMagnet>(), ItemType<HeavenMagnet>() };
             // This variable will help cycle through the items so that different Frozen Chests get different items
             int itemsToPlaceInWoodChestsChoice1 = 0;
             // Rather than place items in each chest, we'll place up to 6 items (2 of each).

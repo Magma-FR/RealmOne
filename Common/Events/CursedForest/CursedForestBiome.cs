@@ -60,7 +60,6 @@ namespace RealmOne.Common.Events.CursedForest
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                player.AddBuff(ModContent.BuffType<CursedBuff>(), 10000);
             }
         }
     }
