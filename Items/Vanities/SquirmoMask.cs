@@ -1,4 +1,4 @@
-﻿using Terraria;
+﻿/*using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,11 +31,5 @@ namespace RealmOne.Items.Vanities
             Item.rare = ItemRarityID.Blue; // The rarity of the item
             Item.vanity = true;
         }
-
-        // IsArmorSet determines what armor pieces are needed for the setbonus to take effect
-        /*	public override bool IsArmorSet(Item head, Item body, Item legs)
-            {
-                return body.type == ModContent.ItemType<BrassBody>() && legs.type == ModContent.ItemType<BrassLegs>();
-            }*/
     }
-}
+}*/

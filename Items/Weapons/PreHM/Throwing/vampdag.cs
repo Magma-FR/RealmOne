@@ -19,26 +19,25 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
 
         public override void SetDefaults()
         {
-            Item.damage = 61;
+            Item.damage = 14;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 15;
             Item.height = 28;
-            Item.useTime = 13;
-            Item.useAnimation = 13;
+            Item.useTime = 17;
+            Item.useAnimation = 17;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.knockBack = 2;
-            Item.value = 90000;
-            Item.rare = ItemRarityID.LightPurple;
+            Item.knockBack = 1f;
+            Item.value = Item.buyPrice(0, 0, 0, 30);
+            Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.maxStack = 999;
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<vampdagProjectile>();
-            Item.shootSpeed = 21f;
+            Item.shootSpeed = 15f;
             Item.channel = true;
             Item.noUseGraphic = true;
             Item.consumable = true;
-            Item.crit = 6;
         }
     }
 }

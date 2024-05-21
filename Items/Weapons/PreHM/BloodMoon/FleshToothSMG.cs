@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using RealmOne.Common.Systems;
+using RealmOne.Items.Misc.EnemyDrops;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -40,6 +41,16 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.consumeAmmoOnLastShotOnly = true;
 
             Item.shoot = ModContent.ProjectileType<BloodToothProj>();
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient(ModContent.ItemType<ScathedFlesh>(), 7)
+                .AddIngredient(ItemID.IllegalGunParts, 1)
+
+                .AddTile(TileID.Anvils)
+                .Register();
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

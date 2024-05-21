@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.Bullet;
 using RealmOne.RealmPlayer;
 using System.Collections.Generic;
@@ -13,7 +13,6 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
 {
     public class PumpShotgun : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Pump-action Shotgun"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -107,4 +106,4 @@ namespace RealmOne.Items.Weapons.PreHM.Shotguns
             return offset;
         }
     }
-}
+}*/

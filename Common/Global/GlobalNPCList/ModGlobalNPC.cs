@@ -1,5 +1,6 @@
 ﻿using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Opens;
+using RealmOne.Items.Placeables;
 using RealmOne.Items.Placeables.Furniture.Paintings;
 using RealmOne.Items.Tools.Pick;
 using RealmOne.Items.Weapons.Magic;
@@ -18,24 +19,24 @@ namespace RealmOne.Common.Global.GlobalNPCList
         public override void ModifyShop(NPCShop shop)
         {
             if (shop.NpcType == NPCID.Merchant)
-
             {
-                // Adding an item to a vanilla NPC is easy:
-                // This item sells for the normal price.
                 shop.Add<IllicitStash>();
             }
-
-            if (shop.NpcType == NPCID.Merchant)
-
+            if (shop.NpcType == NPCID.Demolitionist)
             {
                 shop.Add<SpecialDynamite>();
             }
-            if (shop.NpcType == NPCID.Clothier)
+            if (shop.NpcType == NPCID.Dryad)
+            {
+                shop.Add<DepthsPNT>();
+            }
+            if (shop.NpcType == NPCID.Merchant)
             {
                 shop.Add<NothingPNT>();
-                shop.Add<DepthsPNT>();
-                //Like i'm sorry, idk if i have to do more??:sob: -Zero
-                //Such an insult that you gave me smth so shrimple:sob::sob:sob:
+            }
+            if (shop.NpcType == NPCID.GoblinTinkerer)
+            {
+                shop.Add<NewtonCradleItem>();
             }
         }
 

@@ -23,10 +23,10 @@ namespace RealmOne.Items.Sets.OrchidSet
         {
             Item.width = 24;
             Item.height = 44;
-            Item.damage = 11;
+            Item.damage = 7;
             Item.useAnimation = 24;
             Item.useTime = 8;
-            Item.reuseDelay = 12;
+            Item.reuseDelay = 20;
             Item.autoReuse = true;
             Item.useTurn = true;
 
@@ -34,7 +34,7 @@ namespace RealmOne.Items.Sets.OrchidSet
 
             Item.knockBack = 1f;
             Item.noMelee = true;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.consumeAmmoOnLastShotOnly = true;
             Item.UseSound = SoundID.Item5;
             Item.useStyle = ItemUseStyleID.Shoot;

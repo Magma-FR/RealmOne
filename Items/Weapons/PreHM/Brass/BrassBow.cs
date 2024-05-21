@@ -23,8 +23,8 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Item.noMelee = true;
             Item.DamageType = DamageClass.Ranged;
             Item.useAmmo = AmmoID.Arrow;
-            Item.useTime = 9;
-            Item.useAnimation = 9;
+            Item.useTime = 13;
+            Item.useAnimation = 13;
             Item.value = Item.buyPrice(copper: 80, silver: 5);
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item5;

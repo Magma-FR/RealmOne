@@ -59,16 +59,15 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             return offset;
         }
 
-        /*  public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-          {
-              if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
-              {
-                  return;
-              }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
+            {
+                return;
+            }
 
-              damage *= 1.5f;
-          }
-        */
+            damage *= 1.5f;
+        }
 
         public override Color? GetAlpha(Color lightColor)
         {

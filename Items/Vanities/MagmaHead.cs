@@ -1,4 +1,4 @@
-﻿using Terraria;
+﻿/*using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,18 +32,12 @@ namespace RealmOne.Items.Vanities
             Item.defense = 1; // The amount of defense the item will give when equipped
         }
 
-        // IsArmorSet determines what armor pieces are needed for the setbonus to take effect
-        /*	public override bool IsArmorSet(Item head, Item body, Item legs)
-            {
-                return body.type == ModContent.ItemType<BrassBody>() && legs.type == ModContent.ItemType<BrassLegs>();
-            }*/
+        /
 
         private int Watertimer = 0;
 
         public override void UpdateArmorSet(Player player)
         {
-            //	player.setBonus = "2+ defense" + "\nDouble tap down to gain 'Brass's Might which increases the players defense by 10+ but 15% decreased movement & running speed " + "\n10 second cooldown"; // This is the setbonus tooltip
-
             Watertimer++;
 
             if (Watertimer == 20)
@@ -58,14 +52,5 @@ namespace RealmOne.Items.Vanities
 
             player.statDefense += 2;
         }
-
-        /* public override void AddRecipes()
-         {
-             CreateRecipe()
-
-             .AddIngredient(Mod, "BrassIngot", 4)
-             .AddTile(TileID.Furnaces)
-             .Register();
-         }*/
     }
-}
+}*/

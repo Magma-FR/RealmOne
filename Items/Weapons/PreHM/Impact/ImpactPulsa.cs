@@ -30,17 +30,6 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
-        /*   public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-           {
-               if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
-               {
-                   return;
-               }
-
-               damage *= 1.5f;
-           }
-        */
-
         public override void SetDefaults()
         {
             Item.damage = 14;
@@ -50,14 +39,14 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
             Item.useTime = 12;
             Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.knockBack = 3f;
+            Item.knockBack = 2f;
             Item.value = 30000;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item158;
             Item.autoReuse = true;
             Item.useAmmo = AmmoID.None;
             Item.shoot = ProjectileType<PulsaShot>();
-            Item.shootSpeed = 60f;
+            Item.shootSpeed = 40f;
             Item.noMelee = true;
             Item.crit = 2;
         }
@@ -65,6 +54,16 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
+        }
+
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (!player.TryGetModPlayer(out RealmModPlayer modPlayer) || !modPlayer.Static)
+            {
+                return;
+            }
+
+            damage *= 1.5f;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

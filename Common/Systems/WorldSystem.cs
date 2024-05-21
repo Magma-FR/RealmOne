@@ -173,50 +173,6 @@ namespace RealmOne.Common.Systems
 
         public override void PostWorldGen()
         {
-            int[] goldenchest = { ItemType<MinersPouch>() };
-            int goldenchestchoice = 0;
-
-            for (int gchestIndex = 0; gchestIndex < 1000; gchestIndex++)
-            {
-                Chest gchest = Main.chest[gchestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding.
-                if (gchest != null && Main.tile[gchest.x, gchest.y].TileType == TileID.Containers && Main.tile[gchest.x, gchest.y].TileFrameX == 1 * 36)
-                {
-                    for (int ginventoryIndex = 0; ginventoryIndex < 40; ginventoryIndex++)
-                    {
-                        if (gchest.item[ginventoryIndex].type == ItemID.None)
-                        {
-                            gchest.item[ginventoryIndex].SetDefaults(goldenchest[goldenchestchoice]);
-                            goldenchestchoice = (goldenchestchoice + 1) % goldenchest.Length;
-                            // Alternate approach: Random instead of cyclical: chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInIceChests));
-                            break;
-                        }
-                    }
-                }
-            }
-            int[] acornchest = { ItemType<AcornGrenade>() };
-            int acornchestchoice = 0;
-
-            for (int acornchestIndex = 0; acornchestIndex < 1000; acornchestIndex++)
-            {
-                Chest acChest = Main.chest[acornchestIndex];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding.
-                if (acChest != null && Main.tile[acChest.x, acChest.y].TileType == TileID.Containers && Main.tile[acChest.x, acChest.y].TileFrameX == 1 * 36)
-                {
-                    for (int acorninventory = 0; acorninventory < 40; acorninventory++)
-                    {
-                        if (acChest.item[acorninventory].type == ItemID.None)
-                        {
-                            acChest.item[acorninventory].SetDefaults(acornchest[acornchestchoice]);
-                            acChest.item[acorninventory].stack = WorldGen.genRand.Next(10, 18);
-
-                            acornchestchoice = (acornchestchoice + 1) % acornchest.Length;
-                            // Alternate approach: Random instead of cyclical: chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInIceChests));
-                            break;
-                        }
-                    }
-                }
-            }
             int[] waterchest = { ItemType<EleJelly>() };
             int waterchestchoice = 0;
             for (int WchestIndex = 0; WchestIndex < 1000; WchestIndex++)
@@ -231,55 +187,10 @@ namespace RealmOne.Common.Systems
                         {
                             Wchest.item[WinventoryIndex].SetDefaults(waterchest[waterchestchoice]);
 
-                            Wchest.item[WinventoryIndex].stack = WorldGen.genRand.Next(20, 30);
+                            Wchest.item[WinventoryIndex].stack = WorldGen.genRand.Next(15, 25);
 
                             waterchestchoice = (waterchestchoice + 1) % waterchest.Length;
                             //Wchest.item[WinventoryIndex].SetDefaults(Main.rand.Next(WinventoryIndex));
-                            break;
-                        }
-                    }
-                }
-            }
-
-            int[] pot = { ItemType<StackPotions>() };
-            int potchoice = 0;
-            for (int PchestIndex = 0; PchestIndex < 1000; PchestIndex++)
-
-            {
-                Chest Pchest = Main.chest[PchestIndex];
-                if (Pchest != null && Main.tile[Pchest.x, Pchest.y].TileType == TileID.Containers && Main.tile[Pchest.x, Pchest.y].TileFrameX == 1 * 36)
-                {
-                    for (int PinventoryIndex = 0; PinventoryIndex < 40; PinventoryIndex++)
-                    {
-                        if (Pchest.item[PinventoryIndex].type == ItemID.None)
-                        {
-                            Pchest.item[PinventoryIndex].SetDefaults(pot[potchoice]);
-
-                            Pchest.item[PinventoryIndex].stack = WorldGen.genRand.Next(2, 5);
-
-                            potchoice = (potchoice + 1) % pot.Length;
-                            //chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInIceChests;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            int[] itemsToPlaceInIceChests1 = { ItemType<MinersPouch>() };
-            int itemsToPlaceInIceChestsChoice1 = 0;
-            for (int chestIndex1 = 0; chestIndex1 < 1000; chestIndex1++)
-            {
-                Chest chest1 = Main.chest[chestIndex1];
-                // If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding.
-                if (chest1 != null && Main.tile[chest1.x, chest1.y].TileType == TileID.Containers && Main.tile[chest1.x, chest1.y].TileFrameX == 11 * 36)
-                {
-                    for (int inventoryIndex1 = 0; inventoryIndex1 < 40; inventoryIndex1++)
-                    {
-                        if (chest1.item[inventoryIndex1].type == ItemID.None)
-                        {
-                            chest1.item[inventoryIndex1].SetDefaults(Main.rand.Next(itemsToPlaceInIceChests1));
-                            itemsToPlaceInIceChestsChoice1 = (itemsToPlaceInIceChestsChoice1 + 1) % itemsToPlaceInIceChests1.Length;
-                            //Alternate approach: Random instead of cyclical: chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInIceChests));
                             break;
                         }
                     }

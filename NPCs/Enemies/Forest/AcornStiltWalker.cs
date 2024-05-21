@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*using Microsoft.Xna.Framework;
 using RealmOne.Items.Food;
 using RealmOne.Items.Placeables.BannerItems;
 using RealmOne.Items.Weapons.PreHM.Throwing;
@@ -88,4 +88,4 @@ namespace RealmOne.NPCs.Enemies.Forest
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonPrickles>(), 13, 5, 8));
         }
     }
-}
+}*/

@@ -20,7 +20,7 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
             Item.value = 10000;
-            Item.rare = ItemRarityID.Blue;
+            Item.rare = ItemRarityID.White;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = false;
             Item.maxStack = 9999;

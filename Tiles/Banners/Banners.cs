@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Placeables.BannerItems;
 using RealmOne.NPCs.Enemies.Forest;
@@ -109,4 +109,4 @@ namespace RealmOne.Tiles.Banners
             }
         }
     }
-}
+}*/

@@ -23,6 +23,7 @@ using RealmOne.Items.Weapons.PreHM.Throwing;
 using Terraria.GameContent.ItemDropRules;
 using RealmOne.Items.Sets.ForestRevengeSet;
 using Terraria.ModLoader.Utilities;
+using RealmOne.Items.Weapons.PreHM.Classless;
 
 namespace RealmOne.NPCs.Enemies.ForestRevenge
 {
@@ -70,6 +71,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FireflyJar>(), 2, 5, 10));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 35));
         }
 
         public override void FindFrame(int frameHeight)

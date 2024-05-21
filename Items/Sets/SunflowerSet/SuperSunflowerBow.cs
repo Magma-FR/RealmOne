@@ -16,14 +16,14 @@ namespace RealmOne.Items.Sets.SunflowerSet
         {
             Item.ResearchUnlockCount = 1;
         }
+
         public override void SetDefaults()
         {
             Item.width = 24;
             Item.height = 44;
-            Item.damage = 11;
-            Item.useTime = 16;
-            Item.useAnimation = 16;
-
+            Item.damage = 6;
+            Item.useTime = 21;
+            Item.useAnimation = 21;
 
             Item.autoReuse = true;
             Item.useTurn = true;
@@ -42,6 +42,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Item.shootSpeed = 20f;
             Item.useAmmo = AmmoID.Arrow;
         }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (type == ProjectileID.WoodenArrowFriendly)
@@ -51,6 +52,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 type = ModContent.ProjectileType<SunPetal>();
             }
         }
+
         public override Vector2? HoldoutOffset() => new Vector2(-6, 0);
 
         public override void AddRecipes()
@@ -64,18 +66,20 @@ namespace RealmOne.Items.Sets.SunflowerSet
             .Register();
         }
     }
+
     public class SunflowerArrow : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 13;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 14;
@@ -86,6 +90,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
             Projectile.timeLeft = 600;
             Projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
         }
+
         public override void OnKill(int timLeft)
         {
             SoundEngine.PlaySound(SoundID.NPCHit3, Projectile.Center);
@@ -99,6 +104,7 @@ namespace RealmOne.Items.Sets.SunflowerSet
                 d1.shader = GameShaders.Armor.GetSecondaryShader(100, Main.LocalPlayer);
             }
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();

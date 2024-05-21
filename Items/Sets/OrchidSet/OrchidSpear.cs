@@ -19,7 +19,7 @@ namespace RealmOne.Items.Sets.OrchidSet
 
         public override void SetDefaults()
         {
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.value = Item.sellPrice(silver: 95);
 
             Item.useStyle = ItemUseStyleID.Shoot;

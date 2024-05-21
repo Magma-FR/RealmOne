@@ -10,22 +10,21 @@ namespace RealmOne.Projectiles.Magic
 {
     public class ForestVengeanceProj : ModProjectile
     {
-        bool pulse;
-        int cd = 50;
+        private bool pulse;
+        private int cd = 50;
 
-        int maxPulse = 225;
-        int minPulse = 25;
+        private int maxPulse = 225;
+        private int minPulse = 25;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Forest Spirit");
         }
 
-
         public override void SetDefaults()
         {
             Projectile.width = 16;
             Projectile.height = 16;
-
 
             Projectile.friendly = true;
             Projectile.hostile = false;
@@ -68,7 +67,6 @@ namespace RealmOne.Projectiles.Magic
                 {
                     Projectile.alpha++;
                 }
-
             }
             if (Projectile.alpha == maxPulse && pulse == false)
             {
@@ -80,17 +78,20 @@ namespace RealmOne.Projectiles.Magic
                 {
                     Projectile.alpha--;
                 }
-
             }
             if (Projectile.alpha == minPulse)
             {
                 pulse = false;
             }
-
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            SoundEngine.PlaySound(SoundID.NPCDeath6, Projectile.position);
+            Player p = Main.player[Projectile.owner];
+            int healingAmount = damageDone / 3; //decrease the value 30 to increase heal, increase value to decrease. Or you can just replace damage/x with a set value to heal, instead of making it based on damage.
+            p.statLife += healingAmount;
+            p.HealEffect(healingAmount, true);
             if (target.collideY == true && target.boss == false) // ground
             {
                 CombatText.NewText(target.getRect(), Color.DarkRed, "!");

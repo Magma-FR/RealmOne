@@ -31,7 +31,7 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item64;
             Item.autoReuse = true;
-            Item.useAmmo = ItemID.Cactus;
+            Item.useAmmo = AmmoID.Dart;
             Item.noMelee = true;
             Item.shootSpeed = 36f;
             Item.shoot = ModContent.ProjectileType<BloodBlowerProj>();

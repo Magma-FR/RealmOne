@@ -40,7 +40,6 @@ namespace RealmOne.NPCs.Critters
             NPC.dontTakeDamageFromHostiles = true;
 
             NPC.npcSlots = 0;
-            NPC.aiStyle = NPCAIStyleID.Passive;
             AIType = NPCID.Scorpion;
             AnimationType = NPCID.Scorpion;
         }

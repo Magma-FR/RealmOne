@@ -62,6 +62,22 @@ namespace RealmOne.RealmPlayer
         }
     }
 
+    public class ScrollySlime : ModPlayer
+
+    {
+        public bool ShowSlime = false;
+
+        public override void PostUpdate()
+        {
+            if (ShowSlime == true)
+            {
+                Player target = Main.LocalPlayer;
+            }
+
+            base.PostUpdate();
+        }
+    }
+
     //ALL THIS CODE UP TO THE # IS SPIRIT MOD'S GITHUB CODE, ALL CREDIT GOES TO THEM.
     public class ItemGlowy : ModPlayer
     {
@@ -274,11 +290,12 @@ namespace RealmOne.RealmPlayer
     public class RealmModPlayer : ModPlayer
     {
         public bool marbleJustJumped;
-
+        public bool Static = false;
         public bool BrassSetBonus = false;
         public bool MaxTeeth = false;
         public int BrassCD = 0;
         public int BrassShineCD = 0;
+        public bool Bunny = false;
 
         public bool GoreToothBonus = false;
         public int GoreToothCD = 0;
@@ -300,6 +317,7 @@ namespace RealmOne.RealmPlayer
         public int DMGPor = 0;
         public int PigSwings = 0;
         public int cd;
+        public bool brassSet = false;
 
         private int coinFall = 0;
         private int coinFallAmount = 0;
@@ -316,12 +334,15 @@ namespace RealmOne.RealmPlayer
             OrchidBonus = false;
             Overseer = false;
             Rusty = false;
+            Static = false;
             GreenNeck = false;
             marbleJustJumped = false;
+            brassSet = false;
 
             FallSpeed = false;
             PiggySet = false;
             hasStriken = false;
+            Bunny = false;
         }
 
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
@@ -353,22 +374,22 @@ namespace RealmOne.RealmPlayer
             }
         }
 
-        /*public void DoubleTapEffects(int keyDir)
-		{
-			if (keyDir == (Main.ReversedUpDownArmorSetBonuses ? 1 : 0))
-			{
-				if( brassSet && !Player.HasBuff(ModContent.BuffType<BrassMight>()))
-				{
+        public void DoubleTapEffects(int keyDir)
+        {
+            if (keyDir == (Main.ReversedUpDownArmorSetBonuses ? 1 : 0))
+            {
+                if (brassSet && !Player.HasBuff(ModContent.BuffType<BrassMight>()))
+                {
                     Player.AddBuff(ModContent.BuffType<BrassMight>(), 500);
                 }
             }
-		}*/
+        }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             Player p = Main.LocalPlayer;
 
-            if (KeybindSystem.BrassActivation.JustPressed && !p.HasBuff<BrassMightCD>() && !p.HasBuff<BrassMight>())
+            if (KeybindSystem.BrassActivation != null && KeybindSystem.BrassActivation.JustPressed && !p.HasBuff<BrassMightCD>() && !p.HasBuff<BrassMight>() && BrassSetBonus)
             {
                 for (int i = 0; i < 90; i++)
                 {
@@ -394,6 +415,7 @@ namespace RealmOne.RealmPlayer
         public override void PostUpdateMiscEffects()
         {
             Player.ManageSpecialBiomeVisuals("RealmOne:BloodSky", Main.bloodMoon);
+            OtherBuffs();
         }
 
         public override bool CanConsumeAmmo(Item weapon, Item ammo)
@@ -433,6 +455,18 @@ namespace RealmOne.RealmPlayer
             if (Overseer && Main.rand.NextBool(3) && hit.Crit && !target.friendly && target.lifeMax > 10 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
             {
                 Player.AddBuff(ModContent.BuffType<OverseerBuff>(), 400);
+            }
+        }
+
+        private void OtherBuffs()
+        {
+            if (Bunny)
+            {
+                Player.moveSpeed += 0.50f;
+                Player.accRunSpeed += 0.25f;
+                Player.jumpSpeedBoost += 0.25f;
+                Player.jumpHeight += 10;
+                Player.extraFall += 25;
             }
         }
 

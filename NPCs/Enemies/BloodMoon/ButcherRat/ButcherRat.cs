@@ -19,23 +19,31 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
 [AutoloadBossHead]
 public sealed class ButcherRat : ModNPC
 {
+<<<<<<< HEAD
     public static readonly SoundStyle FrenzySound = new($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatFrenzy");
    
     public static readonly SoundStyle SlamSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatSlam") with {
         Volume = 0.8f, 
+=======
+    private static readonly SoundStyle FrenzySound = new($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatFrenzy");
+
+    private static readonly SoundStyle SlamSound = new SoundStyle($"{nameof(RealmOne)}/Assets/Soundss/ButcherRatSlam") with
+    {
+        Volume = 0.8f,
+>>>>>>> f822304aabdeeae12a350cc80118cbc02b807403
         PitchVariance = 0.2f
     };
-   
+
     /// <summary>
     ///     Represents the 'Idle' state of the boss.
     /// </summary>
     public const float Idle = 0f;
-    
+
     /// <summary>
     ///     Represents the 'Slamming' state of the boss.
     /// </summary>
     public const float Slamming = 1f;
-    
+
     /// <summary>
     ///     Represents the 'Frenzy' state of the boss.
     /// </summary>
@@ -45,7 +53,7 @@ public sealed class ButcherRat : ModNPC
     ///     Represents which state the boss currently is in.
     /// </summary>
     public ref float State => ref NPC.ai[0];
-    
+
     /// <summary>
     ///     Represents a timer which is used for general behavior of the boss.
     /// </summary>
@@ -60,27 +68,28 @@ public sealed class ButcherRat : ModNPC
     ///     Represents whether the boss can perform a slam or not.
     /// </summary>
     public bool CanSlam { get; private set; } = true;
-    
+
     /// <summary>
     ///     Represents the initial center from where the 'Frenzy' state started.
     /// </summary>
     public Vector2 FrenzyStart { get; private set; }
-    
+
     /// <summary>
     ///     Represents the opacity used for 'Frenzy' visual effects.
     /// </summary>
     /// <remarks>This property is not synced, for its use is purely visual.</remarks>
     public float FrenzyOpacity { get; private set; }
-    
+
     /// <summary>
     ///     Represents the scale used for 'Frenzy' angry visual effect.
     /// </summary>
     /// <remarks>This property is not synced, for its use is purely visual.</remarks>
     public float AngryScale { get; private set; }
-    
+
     private Player Target => Main.player[NPC.target];
 
-    public override void SetStaticDefaults() {
+    public override void SetStaticDefaults()
+    {
         DisplayName.SetDefault("Butcher Rat");
 
         Main.npcFrameCount[NPC.type] = 7;
@@ -90,14 +99,16 @@ public sealed class ButcherRat : ModNPC
         NPCID.Sets.TrailCacheLength[NPC.type] = 10;
         NPCID.Sets.TrailingMode[NPC.type] = 2;
 
-        var value = new NPCID.Sets.NPCBestiaryDrawModifiers {
+        var value = new NPCID.Sets.NPCBestiaryDrawModifiers
+        {
             Velocity = 1f
         };
 
         NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
     }
 
-    public override void SetDefaults() {
+    public override void SetDefaults()
+    {
         NPC.noGravity = false;
         NPC.boss = true;
 
@@ -121,100 +132,116 @@ public sealed class ButcherRat : ModNPC
         SceneEffectPriority = SceneEffectPriority.BossHigh;
     }
 
-    public override void FindFrame(int frameHeight) {
+    public override void FindFrame(int frameHeight)
+    {
         NPC.spriteDirection = NPC.direction;
 
         // Visually, states are more than just a flag.
         // This is only verified this way to ensure it does not look weird in-game.
         var chasing = NPC.velocity.X != 0f;
         var throwing = NPC.velocity.X < 3f && NPC.frame.Y != 0;
-        
+
         var frameRate = State == Frenzy ? 2.5f : 5f;
 
         NPC.frameCounter++;
-        
-        if (NPC.frameCounter < frameRate || !(chasing || throwing)) {
+
+        if (NPC.frameCounter < frameRate || !(chasing || throwing))
+        {
             return;
         }
 
         NPC.frame.Y += frameHeight;
         NPC.frameCounter = 0f;
 
-        if (NPC.frame.Y < Main.npcFrameCount[Type] * frameHeight) {
+        if (NPC.frame.Y < Main.npcFrameCount[Type] * frameHeight)
+        {
             return;
         }
-        
+
         NPC.frame.Y = 0;
     }
-    
-    public override void SendExtraAI(BinaryWriter writer) {
+
+    public override void SendExtraAI(BinaryWriter writer)
+    {
         writer.Write(CanSlam);
     }
 
-    public override void ReceiveExtraAI(BinaryReader reader) {
+    public override void ReceiveExtraAI(BinaryReader reader)
+    {
         CanSlam = reader.ReadBoolean();
     }
 
-    public override void AI() {
+    public override void AI()
+    {
         NPC.TargetClosest();
 
-        if (!Target.active || Target.dead || Target.ghost) {
+        if (!Target.active || Target.dead || Target.ghost)
+        {
             UpdateDespawn();
             return;
         }
 
-        switch (State) {
+        switch (State)
+        {
             case Idle:
                 UpdateIdle();
                 UpdateThrow();
                 UpdateState();
                 break;
+
             case Slamming:
                 UpdateSlam();
                 break;
+
             case Frenzy:
                 UpdateFrenzy();
                 break;
         }
-        
+
         UpdateCollision();
     }
 
-    private void UpdateDespawn() {
+    private void UpdateDespawn()
+    {
         NPC.velocity.X *= 0.95f;
 
-        if (NPC.velocity.X != 0f) {
+        if (NPC.velocity.X != 0f)
+        {
             return;
         }
 
         NPC.alpha += 5;
 
-        if (NPC.alpha < 255) {
+        if (NPC.alpha < 255)
+        {
             return;
         }
 
         NPC.active = false;
     }
 
-    private void UpdateState() {
+    private void UpdateState()
+    {
         const float MinimumDistance = 8f * 16f;
-        
-        if (NPC.velocity.Y == 0f && Main.rand.NextBool(200)) {
+
+        if (NPC.velocity.Y == 0f && Main.rand.NextBool(200))
+        {
             FrenzyStart = NPC.Center;
-            
+
             State = Frenzy;
 
             Timer = 0f;
 
             CanSlam = false;
-            
+
             NPC.velocity.Y = -2f;
-            
+
             NPC.netUpdate = true;
-            
+
             var amount = 10;
-        
-            for (var i = 0; i < 20; i++) {
+
+            for (var i = 0; i < 20; i++)
+            {
                 Dust.NewDust(
                     NPC.position,
                     NPC.width,
@@ -225,30 +252,33 @@ public sealed class ButcherRat : ModNPC
 
             SoundEngine.PlaySound(in FrenzySound, NPC.Center);
         }
-            
-        if (!CanSlam) {
+
+        if (!CanSlam)
+        {
             return;
         }
 
         var targetDisance = Target.DistanceSQ(NPC.Center);
         var targetNearby = targetDisance < MinimumDistance * MinimumDistance;
 
-        if (!targetNearby) {
+        if (!targetNearby)
+        {
             return;
         }
 
         State = Slamming;
-        
+
         Timer = 0f;
 
         CanSlam = true;
 
         NPC.netUpdate = true;
-        
+
         SoundEngine.PlaySound(in SlamSound, NPC.Center);
     }
 
-    private void UpdateIdle() {
+    private void UpdateIdle()
+    {
         const float MinimumDistance = 10f * 16f;
         const float MaximumDistance = 20f * 16f;
 
@@ -257,7 +287,8 @@ public sealed class ButcherRat : ModNPC
         var targetDistance = MathF.Abs(Target.Center.X - NPC.Center.X);
         var targetWithinRange = targetDistance > MinimumDistance && targetDistance < MaximumDistance;
 
-        if (targetWithinRange) {
+        if (targetWithinRange)
+        {
             NPC.velocity.X *= 0.5f;
             return;
         }
@@ -265,29 +296,34 @@ public sealed class ButcherRat : ModNPC
         NPC.velocity.X = MathHelper.SmoothStep(NPC.velocity.X, MaximumSpeed * NPC.direction, 0.1f);
     }
 
-    private void UpdateThrow() {
+    private void UpdateThrow()
+    {
         const float Interval = 60f;
 
         var targetDistance = MathF.Abs(Target.Center.X - NPC.Center.X);
         var canHitTarget = Terraria.Collision.CanHit(NPC, Target);
 
-        if (!canHitTarget) {
+        if (!canHitTarget)
+        {
             return;
         }
-        
+
         Timer++;
-        
-        if (Timer % Interval != 0f) {
+
+        if (Timer % Interval != 0f)
+        {
             return;
         }
 
         var direction = MathF.Sign(Target.Center.X - NPC.Center.X);
         var prediction = new Vector2(Target.velocity.X, Target.velocity.Y < 0f ? Target.velocity.Y : 0f);
 
-        if (direction == -1) {
+        if (direction == -1)
+        {
             prediction.X = MathHelper.Clamp(prediction.X, -Target.velocity.X, 0f);
         }
-        else {
+        else
+        {
             prediction.X = MathHelper.Clamp(prediction.X, 0f, Target.velocity.X);
         }
 
@@ -308,11 +344,13 @@ public sealed class ButcherRat : ModNPC
 
         projectile.direction = NPC.direction;
     }
-    
-    private void UpdateSlam() {
+
+    private void UpdateSlam()
+    {
         var amount = Main.rand.Next(3, 7);
 
-        for (var i = 0; i < amount; i++) {
+        for (var i = 0; i < amount; i++)
+        {
             var rat = NPC.NewNPCDirect(
                 new EntitySource_Parent(NPC),
                 (int)NPC.Center.X,
@@ -331,9 +369,10 @@ public sealed class ButcherRat : ModNPC
         NPC.netUpdate = true;
     }
 
-    private void UpdateFrenzy() {
+    private void UpdateFrenzy()
+    {
         const float Distance = 16f;
-        
+
         const float Charge = 60f;
         const float Duration = Charge + 180f;
 
@@ -341,76 +380,88 @@ public sealed class ButcherRat : ModNPC
 
         Timer++;
 
-        if (Timer < Charge) {
+        if (Timer < Charge)
+        {
             NPC.Center = new Vector2(
                 FrenzyStart.X + Main.rand.NextFloat(-2f, 4f),
                 NPC.Center.Y
             );
-            
+
             return;
         }
 
         var targetDistance = MathF.Abs(Target.Center.X - NPC.Center.X);
         var targetWithinRange = targetDistance < Distance;
 
-        if (targetWithinRange) {
+        if (targetWithinRange)
+        {
             NPC.velocity.X *= 0.9f;
             return;
         }
 
         NPC.velocity.X = MathHelper.SmoothStep(NPC.velocity.X, MaximumSpeed * NPC.direction, 0.1f);
 
-        if (Timer < Duration) {
+        if (Timer < Duration)
+        {
             return;
         }
-        
+
         State = Idle;
 
         Timer = 0f;
 
         CanSlam = true;
-            
+
         NPC.netUpdate = true;
     }
 
-    private void UpdateCollision() {
+    private void UpdateCollision()
+    {
         const float Interval = 60f;
 
-        if (NPC.wet) {
-            if (NPC.collideY) {
+        if (NPC.wet)
+        {
+            if (NPC.collideY)
+            {
                 NPC.velocity.Y = -2f;
             }
 
-            if (NPC.velocity.Y > 2f) {
+            if (NPC.velocity.Y > 2f)
+            {
                 NPC.velocity.Y *= 0.9f;
             }
-            else if (NPC.directionY < 0) {
+            else if (NPC.directionY < 0)
+            {
                 NPC.velocity.Y -= 0.8f;
             }
-            
+
             NPC.velocity.Y -= 0.5f;
-            
-            if (NPC.velocity.Y < -4f) {
+
+            if (NPC.velocity.Y < -4f)
+            {
                 NPC.velocity.Y = -4f;
             }
             return;
         }
-        
+
         Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
-        
+
         var tileWidth = (int)Math.Round(NPC.width / 16f);
 
         var tileX = (int)(NPC.Center.X / 16f) - tileWidth;
         var tileY = (int)((NPC.position.Y + NPC.height) / 16f);
 
-        if (NPC.velocity.X > 0f) {
+        if (NPC.velocity.X > 0f)
+        {
             tileX += tileWidth;
         }
 
         var holeBelow = true;
 
-        for (var j = tileY; j < tileY + 2; j++) {
-            for (var i = tileX; i < tileX + tileWidth; i++) {
+        for (var j = tileY; j < tileY + 2; j++)
+        {
+            for (var i = tileX; i < tileX + tileWidth; i++)
+            {
                 holeBelow &= !Framing.GetTileSafely(i, j).HasTile;
             }
         }
@@ -418,11 +469,13 @@ public sealed class ButcherRat : ModNPC
         var stuck = NPC.collideX && NPC.position.X == NPC.oldPosition.X;
         var belowTarget = Target.Center.Y < NPC.Center.Y;
 
-        if (NPC.velocity.Y == 0f) {
+        if (NPC.velocity.Y == 0f)
+        {
             Ground++;
         }
 
-        if (Ground < Interval || !(holeBelow || stuck || belowTarget)) {
+        if (Ground < Interval || !(holeBelow || stuck || belowTarget))
+        {
             return;
         }
 
@@ -431,12 +484,13 @@ public sealed class ButcherRat : ModNPC
         NPC.velocity.Y = -Main.rand.NextFloat(8f, 12f);
     }
 
-    public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) {
+    public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+    {
         var texture = ModContent.Request<Texture2D>(Texture).Value;
-        
+
         var position = NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY);
         var effects = NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-        
+
         Main.EntitySpriteDraw(
             texture,
             position,
@@ -447,11 +501,11 @@ public sealed class ButcherRat : ModNPC
             NPC.scale,
             effects
         );
-        
+
         var frenzy = State == Frenzy;
 
         FrenzyOpacity = MathHelper.Lerp(FrenzyOpacity, frenzy ? 1f : 0f, 0.1f);
-        
+
         AngryScale = MathHelper.Lerp(
             AngryScale,
             frenzy ? NPC.scale + MathF.Sin(Main.GameUpdateCount * 0.1f) * 0.25f : 0f,
@@ -470,9 +524,9 @@ public sealed class ButcherRat : ModNPC
             AngryScale,
             SpriteEffects.None
         );
-        
+
         var outline = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-        
+
         Main.EntitySpriteDraw(
             outline,
             position,
@@ -486,9 +540,13 @@ public sealed class ButcherRat : ModNPC
 
         return false;
     }
-    
-    public override void HitEffect(NPC.HitInfo hit) {
-        for (var i = 0; i < 20; i++) {
+
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => !NPC.AnyNPCs(Type) && Main.bloodMoon && spawnInfo.Player.Center.Y / 16f < Main.worldSurface ? 0.021f : 0f;
+
+    public override void HitEffect(NPC.HitInfo hit)
+    {
+        for (var i = 0; i < 20; i++)
+        {
             Dust.NewDust(
                 NPC.position,
                 NPC.width,
@@ -497,30 +555,36 @@ public sealed class ButcherRat : ModNPC
             );
         }
 
-        if (NPC.life > 0) {
+        if (NPC.life > 0)
+        {
             return;
         }
 
-        for (var i = 1; i <= 3; i++) {
+        for (var i = 1; i <= 3; i++)
+        {
             Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("RatGore" + i).Type);
         }
     }
 
-    public override void OnHitNPC(NPC target, NPC.HitInfo hit) {
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit)
+    {
         target.AddBuff(BuffID.Bleeding, 20 * 60);
     }
 
-    public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo) {
+    public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+    {
         target.AddBuff(BuffID.Bleeding, 20 * 60);
     }
 
-    public override void ModifyNPCLoot(NPCLoot npcLoot) {
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
+    {
         npcLoot.Add(ItemDropRule.Common(ItemID.RatCage, 5));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoreshankShotgun>()));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrislyHide>(), 1, 5, 8));
     }
 
-    public override void OnKill() {
+    public override void OnKill()
+    {
         ChatHelper.BroadcastChatMessage(
             NetworkText.FromKey($"Mods.{nameof(RealmOne)}.Messages.ButcherRat"),
             new Color(249, 45, 99)
@@ -531,19 +595,22 @@ public sealed class ButcherRat : ModNPC
         NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<BloodRat>());
     }
 
-    public override void BossLoot(ref string name, ref int potionType) {
+    public override void BossLoot(ref string name, ref int potionType)
+    {
         potionType = ItemID.None;
 
         NPCLoader.blockLoot.Add(ItemID.Heart);
     }
 
-    public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) {
+    public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+    {
         scale = 1.5f;
 
         return null;
     }
 
-    public override bool CanHitPlayer(Player target, ref int cooldownSlot) {
+    public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+    {
         cooldownSlot = ImmunityCooldownID.Bosses;
 
         return true;
