@@ -2327,8 +2327,8 @@ Mods: {
 			}
 
 			BloodthirstyVerminsaw: {
-				// DisplayName: Bloodthirsty Verminsaw
 				// Tooltip: ""
+				// DisplayName: Bloodthirsty Verminsaw
 			}
 		}
 
@@ -2744,11 +2744,8 @@ Mods: {
 			// SpecialDynamiteProj.DisplayName: Special Dynamite Proj
 			// CactusCannonProj.DisplayName: Cactus Cannon Proj
 			// OrchidSpearProj.DisplayName: Orchid Spear Proj
-<<<<<<< HEAD
-			// BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
-=======
 			// SeekingOwlProj.DisplayName: Seeking Owl Proj
->>>>>>> f822304aabdeeae12a350cc80118cbc02b807403
+			// BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
 		}
 
 		NPCs: {

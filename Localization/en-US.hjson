@@ -2325,6 +2325,11 @@ Mods: {
 				DisplayName: King Slime Paper
 				Tooltip: ""
 			}
+
+			BloodthirstyVerminsaw: {
+				Tooltip: ""
+				DisplayName: Bloodthirsty Verminsaw
+			}
 		}
 
 		Buffs: {
@@ -2740,6 +2745,7 @@ Mods: {
 			CactusCannonProj.DisplayName: Cactus Cannon Proj
 			OrchidSpearProj.DisplayName: Orchid Spear Proj
 			SeekingOwlProj.DisplayName: Seeking Owl Proj
+			BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
 		}
 
 		NPCs: {
