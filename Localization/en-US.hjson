@@ -2321,14 +2321,16 @@ Mods: {
 					'''
 			}
 
-			KingSlimePaper: {
-				DisplayName: King Slime Paper
-				Tooltip: ""
-			}
-
 			BloodthirstyVerminsaw: {
-				Tooltip: ""
-				DisplayName: Bloodthirsty Verminsaw
+				Tooltip:
+					'''
+					Rev up a gorey chainsaw that chops up enemies
+					Use it for too long and it activates Frenzy Saw mode
+					Frenzy Saw increases player's agility and movement speed greatly
+					Increases damage of the chainsaw
+					However, the chainsaw burns you dealing high damage to the player.
+					'''
+				DisplayName: Vermingore Ragesaw
 			}
 		}
 
@@ -2553,6 +2555,11 @@ Mods: {
 			BunnyBuff: {
 				DisplayName: Bunny Buff
 				Description: Mods.RealmOne.Buffs.BunnyBuff.Description
+			}
+
+			SawBuff: {
+				DisplayName: Saw Buff
+				Description: Mods.RealmOne.Buffs.SawBuff.Description
 			}
 		}
 
@@ -2936,6 +2943,14 @@ Mods: {
 				CommonDialogue: Howdy partner, whats on the agenda for you today?
 				RareDialogue: It was his fault, everything you see is cursed.
 				TalkALot: I'm getting kinda old man, I have to go.
+			}
+
+			FarmerSlime: {
+				First: *Glorp Glorp* *Glub Glub* *Blub Blub*
+				Second: Just kidding, I can talk kid, that always tricks them ahaha!
+				Third: Take care of this barn, it's been around for a while, keeping all the passive critters content.
+				Forth: Everyday, i keep seeing a new species of spider... I hate those things!
+				RareDialogue: He's always watching...
 			}
 		}
 

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Systems;
 using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Weapons.Melee;
 using RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops;
 using Terraria;
 using Terraria.Audio;
@@ -573,6 +574,7 @@ public sealed class ButcherRat : ModNPC
     {
         npcLoot.Add(ItemDropRule.Common(ItemID.RatCage, 5));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoreshankShotgun>()));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BloodthirstyVerminsaw>()));
     }
 
     public override void OnKill()

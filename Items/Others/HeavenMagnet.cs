@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Items.Weapons.PreHM.Classless;
 using RealmOne.Projectiles.Other;
 using System;
@@ -26,7 +28,7 @@ namespace RealmOne.Items.Others
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
         }
 
-        private int cooldownTime = 900; // 30 seconds in frames (1 second = 60 frames)
+        private int cooldownTime = 18000; // 30 seconds in frames (1 second = 60 frames)
         private int cooldownTimer = 0;
 
         public override void SetDefaults()
@@ -60,7 +62,15 @@ namespace RealmOne.Items.Others
 
         public override bool? UseItem(Player player)
         {
-            player.AddBuff(ModContent.BuffType<MagnetBuff>(), 900);
+            for (int i = 0; i < 5; i++)
+            {
+                GenericGlowParticle particle = new(new Vector2(player.Center.X + Main.rand.Next(-30, 30), player.Center.Y), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), Color.NavajoWhite, 0.5f, 120);
+                SparkleParticle sparkle = new(Color.LightYellow, 1, new Vector2(player.Center.X + Main.rand.Next(-30, 30), player.Center.Y), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
+
+                ParticleSystem.GenerateParticle(sparkle);
+                ParticleSystem.GenerateParticle(particle);
+            }
+            player.AddBuff(ModContent.BuffType<MagnetBuff>(), 18000);
 
             // Start the cooldown
             cooldownTimer = cooldownTime;

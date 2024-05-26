@@ -5,34 +5,37 @@ Realm of R'lyeh is a mod that focuses on the theme of Lovecraftian Mythos. Furth
 -------------------------------------------------------------------------------------------------------------------------------------------------
 The world has been enchanted into a cursed, and transcendental timeline, with creatures, items, bosses and hidden unknown mysteries.
 
-[c/E12C00:Current Items]
+CURRENT CONTENT
 
-1 BRAND NEW BIOME: THE ABANDONED FARM BIOME: EXPLORE THE ABANDONED BARN THAT AWAITS LOOT!!
+1 BRAND NEW BIOME: THE ABANDONED FARM BIOME: EXPLORE THE ABANDONED BARN THAT AWAITS LOOT AND UNIQUE NPCS
 
-- 1 NEW WORK IN PROGRESS BOSS - SQUIRMO (before King Slime)
-- 2 NEW CLASSES (DEMOLITIONIST AND FIGHTER) (Demolitionist is the only class started, WIP)
-- 1 New Mini Boss - Possessed Piggy Bank
--Around 200 new Items
--More than 50 New Weapons!!
--20 Accessories
--35 New enemies and critters
--2 New Ores to be found underground!!!
--5 Armour Sets
+- 2 Bosses - Possessed Piggy Bank. With plenty of magical attacks that for sure will get you bank rupt!
+- The Abandoned Farm Biome. With a HUGE abandoned barn with plenty of loot and treasure!
+- An Early Pre-Hardmode Event: Forest's Revenge. A rare crucifix has been placed around the world by a higher being to shift all forest critters evil and gorey!
+- A HUGE rework to the Blood Moon Event!  Including the Butcher Rat a gruesome and aggressive mini boss that charges at you with its chainsaws and machetes
+- Kill Count System! You get rewarded for every 10th Death!
+
+- Around 200 new Items
+- More than 50 New Weapons!!
+- 20 Accessories
+- 50 New enemies and critters
+- Tons of loot to be found around the world
+- 2 New Ores to be found underground!!!
+- 5 Armour Sets
 - 4 Vanities
--Plenty of Vanilla Changes including unique ones!!
--Tons of Lore!
--Buffed/Nerfed tons of items!
--Plenty Vanilla recipe add ons.
-- 2 new Pylons
+- Plenty of Vanilla Changes including unique ones!!
+- Tons of Lore!
+- Buffed/Nerfed tons of items!
+- Plenty Vanilla recipe add ons.
 
-[c/2BCD49:Current Developers]
-[c/58D68D:Owner:] Magma!!
-[c/58D68D:Head Dev:] scoutfrost
-[c/58D68D:Coders:]Quarzz, Magma, scoutfrost
-[c/58D68D:Spriters:] scoutfrost, Magma, The Possum, kogagagachan-san, Lostariake, Mr Liquid, Tendan, Yhantares
-[c/58D68D:Musicians:]: Elosir, Mr Liquid, The Possum, Mumb
-[c/58D68D:Contributors]: DvlSide, Zero, jarix
-[c/58D68D:Ideas Man]: Rzulf, Zero, jarix
+[Current Developers]
+[Owner] MAGMA
+[Head Dev] scoutfrost
+[Community Managers] Saturn, KureiRei
+[Coders] naka, Quarzz, MAGMA, scoutfrost, Nurby, Zemmie
+[Spriters] Dominick, SirSparky, Thyreo, scoutfrost, MAGMA, Raddize, The Possum, kogagagachan-san,Jub, Mr Liquid, Tendan, sweetberries, scarcede
+[Musicians]: Zemmie, Elosir, Mr Liquid, The Possum
+[Contributors] DvlSide
 
 
 This mod will take around 4-5 years to finish, we are aiming for 26 bosses.

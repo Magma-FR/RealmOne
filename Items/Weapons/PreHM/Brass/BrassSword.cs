@@ -27,7 +27,7 @@ namespace RealmOne.Items.Weapons.PreHM.Brass
             Item.useTime = 21;
             Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.knockBack = 2f;
+            Item.knockBack = 3f;
             Item.value = 10000;
             Item.rare = ItemRarityID.Blue;
             Item.useTurn = true;

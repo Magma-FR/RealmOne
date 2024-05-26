@@ -82,11 +82,15 @@ namespace RealmOne.NPCs.TownNPC
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             // These are things that the NPC has a chance of telling you when you talk to it.
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.LostTalk"));
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.TalkALot"));
+
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue1"));
+
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue2"));
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue3"));
-            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.CommonDialogue"));
-            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.RareDialogue"), 0.3);
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.CommonDialogue"), 1.5f);
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.RareDialogue"), 0.3f);
 
             return chat; // chat is implicitly cast to a string.
         }

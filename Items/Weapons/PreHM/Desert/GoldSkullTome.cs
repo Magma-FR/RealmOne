@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Items.Misc;
 using RealmOne.Items.Placeables.FarmStuff;
 using RealmOne.Projectiles.Magic;
 using RealmOne.RealmPlayer;
@@ -41,7 +42,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.Book, 1)
+                .AddIngredient(ModContent.ItemType<Parchment>(), 10)
                                 .AddIngredient(ItemID.SandstoneBrick, 15)
                                 .AddIngredient(ItemID.Cactus, 25)
                                 .AddIngredient(ItemID.GoldBar, 10)
@@ -50,8 +51,8 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
                 .Register();
 
             CreateRecipe()
-              .AddIngredient(ItemID.Book, 1)
-              .AddIngredient(ItemID.SandstoneBrick, 15)
+                .AddIngredient(ModContent.ItemType<Parchment>(), 10)
+                  .AddIngredient(ItemID.SandstoneBrick, 15)
               .AddIngredient(ItemID.Cactus, 25)
               .AddIngredient(ItemID.PlatinumBar, 10)
 

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Items.Misc;
 using RealmOne.Projectiles.Magic;
 using RealmOne.Projectiles.Piggy;
 using RealmOne.RealmPlayer;
@@ -48,6 +49,17 @@ namespace RealmOne.Items.Sets.OrchidSet
             Vector2 hold = new Vector2(-2, 0);
 
             return hold;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<OrchidEssence>(), 10)
+                 .AddIngredient(ModContent.ItemType<Parchment>(), 12)
+                                  .AddIngredient(ItemID.Acorn, 1)
+
+                 .AddTile(TileID.Anvils)
+            .Register();
         }
 
         public override bool? UseItem(Player player)

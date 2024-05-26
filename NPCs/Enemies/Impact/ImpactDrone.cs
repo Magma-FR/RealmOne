@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
 using RealmOne.Common.Events.CursedForest;
@@ -143,4 +143,4 @@ namespace RealmOne.NPCs.Enemies.Impact
             NPC.frame.Y = frame * frameHeight;
         }
     }
-}
+}*/

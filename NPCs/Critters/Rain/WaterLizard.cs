@@ -68,12 +68,13 @@ namespace RealmOne.NPCs.Critters.Rain
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
-            => spawnInfo.Player.ZoneForest && Main.raining ? 0.4f : 0f;
+            => spawnInfo.Player.ZoneForest && Main.raining ? 0.2f : 0f;
 
         private int Watertimer = 0;
 
         public override void AI()
         {
+            NPC.spriteDirection = NPC.direction;
             Lighting.AddLight(NPC.position, r: 0.02f, g: 0.7f, b: 1.1f);
             Watertimer++;
 

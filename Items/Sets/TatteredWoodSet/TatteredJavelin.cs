@@ -32,8 +32,8 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
 
         public override void AddRecipes()
         {
-            CreateRecipe()
-                .AddIngredient(ModContent.ItemType<TatteredWood>(), 10)
+            CreateRecipe(50)
+                .AddIngredient(ModContent.ItemType<TatteredWood>(), 5)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

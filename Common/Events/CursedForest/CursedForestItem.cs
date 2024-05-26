@@ -9,6 +9,8 @@ using Terraria.ModLoader;
 using RealmOne.Common.Core;
 using RealmOne.Items.Weapons.PreHM.Classless;
 using static Terraria.ModLoader.ModContent;
+using RealmOne.Items.Misc;
+using RealmOne.Items.Misc.EnemyDrops;
 
 namespace RealmOne.Common.Events.CursedForest
 {
@@ -44,6 +46,18 @@ namespace RealmOne.Common.Events.CursedForest
                 return false;
 
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.Bunny, 1)
+                                .AddIngredient(ItemID.Wood, 25)
+                                .AddIngredient(ItemID.Deathweed, 2)
+                                .AddIngredient(ModContent.ItemType<GoopyGrass>(), 10)
+
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
 
         public override bool? UseItem(Player player)

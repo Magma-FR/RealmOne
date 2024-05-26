@@ -576,12 +576,12 @@ namespace RealmOne.RealmPlayer
                 BrassShineCD--;
             }
 
-            if (BrassSetBonus && BrassShineCD == 0)
-            {
-                BrassShineCD = 60;
-                SparkleParticle sparkle = new(Color.White, 1, new Vector2(p.Center.X + Main.rand.Next(-50, 50), p.Center.Y + Main.rand.Next(-50, 50)), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
-                ParticleSystem.GenerateParticle(sparkle);
-            }
+            //   if (BrassSetBonus && BrassShineCD == 0)
+            //  {
+            //      BrassShineCD = 60;
+            //      SparkleParticle sparkle = new(Color.White, 1, new Vector2(p.Center.X + Main.rand.Next(-50, 50), p.Center.Y + Main.rand.Next(-50, 50)), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
+            //      ParticleSystem.GenerateParticle(sparkle);
+            //   }
 
             if (BrassSetBonus && BrassCD == 0 && !p.HasBuff<BrassMight>())
             {

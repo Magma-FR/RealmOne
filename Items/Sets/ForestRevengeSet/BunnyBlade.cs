@@ -24,7 +24,7 @@ namespace RealmOne.Items.Sets.ForestRevengeSet
             Item.useTime = 21;
             Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.knockBack = 1.5f;
+            Item.knockBack = 3f;
             Item.value = Item.buyPrice(0, 0, 50, 0);
             Item.rare = ItemRarityID.Blue;
             Item.useTurn = true;

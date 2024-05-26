@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*using Microsoft.Xna.Framework;
 using RealmOne.Common.Systems;
 using Terraria;
 using Terraria.Audio;
@@ -50,3 +50,4 @@ public class Ratty : ModItem
         return true;
     }
 }
+*/

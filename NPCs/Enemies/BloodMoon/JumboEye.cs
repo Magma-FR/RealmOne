@@ -46,6 +46,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorneaScepter>(), 16));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 7, 1, 2));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 12));
 
             npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 8, 1, 3));
         }
