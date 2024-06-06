@@ -2332,6 +2332,11 @@ Mods: {
 					'''
 				DisplayName: Vermingore Ragesaw
 			}
+
+			KingSlimePaper: {
+				DisplayName: King Slime Paper
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {

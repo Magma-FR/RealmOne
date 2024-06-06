@@ -1,4 +1,4 @@
-﻿/*using RealmOne.Common.Systems;
+﻿using RealmOne.Common.Systems;
 using RealmOne.Items.Misc;
 using RealmOne.Rarities;
 using RealmOne.RealmPlayer;
@@ -12,9 +12,9 @@ namespace RealmOne.Items.PaperUI
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The World we live in - H.P Lovecraft"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            DisplayName.SetDefault("Lore Scroll (King Slime) - H.P Lovecraft"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
 
-            Tooltip.SetDefault("Open a scroll of Lovecraft's Ancient Scripts.");
+            Tooltip.SetDefault("Open a scroll of the secrets of the slimes");
         }
 
         public override void SetDefaults()
@@ -44,16 +44,16 @@ namespace RealmOne.Items.PaperUI
 
         public override bool? UseItem(Player player)
         {
-            if (player.GetModPlayer<ScrollySlime>().ScrollContext != 1)
+            if (player.GetModPlayer<Scroll>().ScrollContext != 1)
             {
-                player.GetModPlayer<ScrollySlime>().ScrollContext = 1;
+                player.GetModPlayer<Scroll>().ScrollContext = 1;
             }
             else
             {
-                player.GetModPlayer<ScrollySlime>().ScrollContext = 0;
+                player.GetModPlayer<Scroll>().ScrollContext = 0;
             }
 
             return base.UseItem(player);
         }
     }
-}*/
+}

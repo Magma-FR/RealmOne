@@ -1,4 +1,4 @@
-/*using RealmOne.Common.Systems;
+using RealmOne.Common.Systems;
 using RealmOne.Rarities;
 using RealmOne.RealmPlayer;
 using Terraria;
@@ -34,13 +34,13 @@ namespace RealmOne.Items.PaperUI
 
         public override bool? UseItem(Player player)
         {
-            if (player.GetModPlayer<ScrollySlime>().ScrollContext != 3)
+            if (player.GetModPlayer<Scroll>().ScrollContext != 3)
             {
-                player.GetModPlayer<ScrollySlime>().ScrollContext = 3;
+                player.GetModPlayer<Scroll>().ScrollContext = 3;
             }
             else
             {
-                player.GetModPlayer<ScrollySlime>().ScrollContext = 0;
+                player.GetModPlayer<Scroll>().ScrollContext = 0;
             }
 
             return base.UseItem(player);
@@ -52,8 +52,8 @@ namespace RealmOne.Items.PaperUI
             recipe.AddIngredient(Mod, "Parchment", 5);
             recipe.AddIngredient(ItemID.Worm, 5);
 
-            recipe.AddTile(Mod, "SquirmoRelic");
+            //recipe.AddTile(Mod, "SquirmoRelic");
             recipe.Register();
         }
     }
-}*/
+}

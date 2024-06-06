@@ -33,7 +33,7 @@ namespace RealmOne.RealmPlayer
 
     public class Scroll : ModPlayer
     {
-        public bool ScrollContext = 0;
+        public int ScrollContext = 0;
 
     }
 
