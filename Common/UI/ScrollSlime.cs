@@ -11,6 +11,7 @@ namespace RealmOne.Common.UI
 {
     internal class ScrollSlime : UIState
     {
+
         private UIElement area;
         private UIImage barFrame;
 
@@ -46,9 +47,11 @@ namespace RealmOne.Common.UI
 
     internal class UISystemSlime : ModSystem
     {
+        public int UIContext = 1;
+
         public UserInterface ScrollInterface;
 
-        internal ScrollUI Scroll;
+        internal ScrollSlime Scroll;
 
         public override void Load()
         {
@@ -72,7 +75,7 @@ namespace RealmOne.Common.UI
             {
                 var player = Main.LocalPlayer;
 
-                if (player.GetModPlayer<Scrolly>().ShowScroll == true)
+                if (player.GetModPlayer<Scroll>().ScrollContext == UIContext)
                 {
                     layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
                         "Realm Of R'lyeh: ScrollSlime",

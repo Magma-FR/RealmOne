@@ -1,4 +1,5 @@
 ﻿using RealmOne.Common.Systems;
+using RealmOne.Common.UI;
 using RealmOne.Items.Misc;
 using RealmOne.Rarities;
 using RealmOne.RealmPlayer;
@@ -43,13 +44,13 @@ namespace RealmOne.Items.PaperUI
 
         public override bool? UseItem(Player player)
         {
-            if (player.GetModPlayer<Scrolly>().ShowScroll == false)
+            if (player.GetModPlayer<ScrollySlime>().ScrollContext != 2)
             {
-                player.GetModPlayer<Scrolly>().ShowScroll = true;
+                player.GetModPlayer<ScrollySlime>().ScrollContext = 2;
             }
             else
             {
-                player.GetModPlayer<Scrolly>().ShowScroll = false;
+                player.GetModPlayer<ScrollySlime>().ScrollContext = 0;
             }
 
             return base.UseItem(player);

@@ -44,8 +44,10 @@ namespace RealmOne.Common.UI
         }
     }
 
-    internal class UISystem : ModSystem
+    internal class UISystemScroll : ModSystem
     {
+        public int UIContext = 2;
+
         public UserInterface ScrollInterface;
 
         internal ScrollUI Scroll;
@@ -72,7 +74,7 @@ namespace RealmOne.Common.UI
             {
                 var player = Main.LocalPlayer;
 
-                if (player.GetModPlayer<Scrolly>().ShowScroll == true)
+                if (player.GetModPlayer<Scroll>().ScrollContext == UIContext)
                 {
                     layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
                         "Realm Of R'lyeh: ScrollUI",

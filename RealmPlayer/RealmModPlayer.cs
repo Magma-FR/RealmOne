@@ -31,51 +31,10 @@ namespace RealmOne.RealmPlayer
         public static bool ZoneFarmy(this Player player) => player.InModBiome<Biomes.Farm.FarmSurface>();
     }
 
-    public class Scrolly : ModPlayer
+    public class Scroll : ModPlayer
     {
-        public bool ShowScroll = false;
+        public bool ScrollContext = 0;
 
-        public override void PostUpdate()
-        {
-            if (ShowScroll == true)
-            {
-                Player target = Main.LocalPlayer;
-            }
-
-            base.PostUpdate();
-        }
-    }
-
-    public class ScrollyWorm : ModPlayer
-
-    {
-        public bool ShowWorm1 = false;
-
-        public override void PostUpdate()
-        {
-            if (ShowWorm1 == true)
-            {
-                Player target = Main.LocalPlayer;
-            }
-
-            base.PostUpdate();
-        }
-    }
-
-    public class ScrollySlime : ModPlayer
-
-    {
-        public bool ShowSlime = false;
-
-        public override void PostUpdate()
-        {
-            if (ShowSlime == true)
-            {
-                Player target = Main.LocalPlayer;
-            }
-
-            base.PostUpdate();
-        }
     }
 
     //ALL THIS CODE UP TO THE # IS SPIRIT MOD'S GITHUB CODE, ALL CREDIT GOES TO THEM.

@@ -11,6 +11,8 @@ namespace RealmOne.Common.UI
 {
     internal class ScrollWormPage1 : UIState
     {
+
+
         private UIElement area;
         private UIImage barFrame;
 
@@ -47,6 +49,8 @@ namespace RealmOne.Common.UI
 
     internal class UISystemWorm1 : ModSystem
     {
+        public int UIContext = 3;
+
         public UserInterface ScrollInterface;
 
         internal ScrollWormPage1 Scroll;
@@ -73,7 +77,7 @@ namespace RealmOne.Common.UI
             {
                 var player = Main.LocalPlayer;
 
-                if (player.GetModPlayer<ScrollyWorm>().ShowWorm1 == true)
+                if (player.GetModPlayer<Scroll>().ScrollContext == UIContext)
                 {
                     layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
                         "Realm Of R'lyeh: ScrollWormPage1",

@@ -44,15 +44,13 @@ namespace RealmOne.Items.PaperUI
 
         public override bool? UseItem(Player player)
         {
-            if (player.GetModPlayer<ScrollySlime>().ShowSlime == false)
+            if (player.GetModPlayer<ScrollySlime>().ScrollContext != 1)
             {
-                player.GetModPlayer<ScrollySlime>().ShowSlime = true;
-                player.GetModPlayer<Scrolly>().ShowScroll = false;
-                player.GetModPlayer<ScrollyWorm>().ShowWorm1 = false;
+                player.GetModPlayer<ScrollySlime>().ScrollContext = 1;
             }
             else
             {
-                player.GetModPlayer<ScrollySlime>().ShowSlime = false;
+                player.GetModPlayer<ScrollySlime>().ScrollContext = 0;
             }
 
             return base.UseItem(player);
