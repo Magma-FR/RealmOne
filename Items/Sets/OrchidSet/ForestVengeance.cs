@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Items.Misc;
 using RealmOne.Projectiles.Magic;
 using RealmOne.Projectiles.Piggy;
 using RealmOne.RealmPlayer;
@@ -26,16 +27,16 @@ namespace RealmOne.Items.Sets.OrchidSet
             Item.width = 34;
             Item.height = 40;
             Item.useTurn = false;
-            Item.damage = 18;
+            Item.damage = 28;
             Item.useTime = 115;
             Item.useAnimation = 115;
             Item.mana = 12;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.autoReuse = true;
             Item.value = Item.sellPrice(0, 0, 57, 35);
             Item.DamageType = DamageClass.Magic;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.knockBack = 0f;
+            Item.knockBack = 3f;
         }
 
         public override bool? CanHitNPC(Player player, NPC target)
@@ -48,6 +49,17 @@ namespace RealmOne.Items.Sets.OrchidSet
             Vector2 hold = new Vector2(-2, 0);
 
             return hold;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<OrchidEssence>(), 10)
+                 .AddIngredient(ModContent.ItemType<Parchment>(), 12)
+                                  .AddIngredient(ItemID.Acorn, 1)
+
+                 .AddTile(TileID.Anvils)
+            .Register();
         }
 
         public override bool? UseItem(Player player)

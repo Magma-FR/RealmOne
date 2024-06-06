@@ -19,16 +19,16 @@ namespace RealmOne.Items.Sets.OrchidSet
 
         public override void SetDefaults()
         {
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
             Item.value = Item.sellPrice(silver: 95);
 
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
+            Item.useAnimation = 27;
+            Item.useTime = 27;
             Item.UseSound = SoundID.DD2_GoblinBomberThrow;
             Item.autoReuse = true;
 
-            Item.damage = 14;
+            Item.damage = 12;
             Item.knockBack = 1f;
             Item.noUseGraphic = true;
             Item.DamageType = DamageClass.Melee;

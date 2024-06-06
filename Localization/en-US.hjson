@@ -2033,8 +2033,8 @@ Mods: {
 				DisplayName: Goretooth Teethplate
 				Tooltip:
 					'''
-					1+ Increased Minion
-					4% increased Summon Damage
+					3+ Melee Crit Chance
+					5% increased Melee Damage
 					'''
 			}
 
@@ -2042,8 +2042,8 @@ Mods: {
 				DisplayName: Goretooth Eyemask
 				Tooltip:
 					'''
-					5% Increased Summon Damage
-					1+ Max Minion
+					8% Increased Melee Damage
+					5% Increased Armour Penetration
 					'''
 			}
 
@@ -2112,8 +2112,8 @@ Mods: {
 			}
 
 			ForestTea: {
-				DisplayName: Forest Tea
-				Tooltip: ""
+				DisplayName: Forest Coffee
+				Tooltip: "'H.P Lovecraft's essential morning breverage.'"
 			}
 
 			VerminhideBody: {
@@ -2164,7 +2164,11 @@ Mods: {
 
 			SuperSunflowerBow: {
 				DisplayName: Super Sunflower Bow
-				Tooltip: ""
+				Tooltip:
+					'''
+					A special bow that shoots powerful fast moving petal arrows that glow
+					Also shoots wind effected sunflower petals that are shot out randomly
+					'''
 			}
 
 			CursedForestItem: {
@@ -2172,7 +2176,7 @@ Mods: {
 				Tooltip:
 					'''
 					A strange and demonic crucifix, looks like its been used before 
-					Use the Crucifix to start the Forest's Revenge
+					Use the Crucifix to start the [c/FA325C:Forest's Revenge]
 					Only useable at Nightime
 					'''
 			}
@@ -2241,7 +2245,7 @@ Mods: {
 
 			GrislyHide: {
 				DisplayName: Grisly Hide
-				Tooltip: ""
+				Tooltip: Dropped from vanquishing a demonic plague starter.
 			}
 
 			ForestVengeance: {
@@ -2294,6 +2298,39 @@ Mods: {
 			SunflowerWreath: {
 				DisplayName: Sunflower Wreath
 				Tooltip: Gives the Happy Buff when in Sunlight
+			}
+
+			SeekingOwlGlove: {
+				DisplayName: Seeking Owl Glove
+				Tooltip:
+					'''
+					Send out an aggressive Cursed Owl that has	 be-friended you (because you have food)
+					The Cursed Owl will follow your cursor until its tired and dissappears.
+					Homes onto enemies when nearby enemies.
+					'''
+			}
+
+			BunnyBlade: {
+				DisplayName: Bunny Blade
+				Tooltip:
+					'''
+					Swing a large bunny ear with a blade sticking out of it
+					Hitting a crit will provide the player with the Bunny Buff
+					Bunny Buff: Greatl increases Jump Speed, Negates some fall damage
+					Increased Movement Speed and Jump Height
+					'''
+			}
+
+			BloodthirstyVerminsaw: {
+				Tooltip:
+					'''
+					Rev up a gorey chainsaw that chops up enemies
+					Use it for too long and it activates Frenzy Saw mode
+					Frenzy Saw increases player's agility and movement speed greatly
+					Increases damage of the chainsaw
+					However, the chainsaw burns you dealing high damage to the player.
+					'''
+				DisplayName: Vermingore Ragesaw
 			}
 		}
 
@@ -2514,6 +2551,16 @@ Mods: {
 				Description: Hey, atleast you're not on twitter
 				DisplayName: Cancelled
 			}
+
+			BunnyBuff: {
+				DisplayName: Bunny Buff
+				Description: Mods.RealmOne.Buffs.BunnyBuff.Description
+			}
+
+			SawBuff: {
+				DisplayName: Saw Buff
+				Description: Mods.RealmOne.Buffs.SawBuff.Description
+			}
 		}
 
 		Projectiles: {
@@ -2704,6 +2751,8 @@ Mods: {
 			SpecialDynamiteProj.DisplayName: Special Dynamite Proj
 			CactusCannonProj.DisplayName: Cactus Cannon Proj
 			OrchidSpearProj.DisplayName: Orchid Spear Proj
+			SeekingOwlProj.DisplayName: Seeking Owl Proj
+			BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
 		}
 
 		NPCs: {
@@ -2882,6 +2931,7 @@ Mods: {
 			CursedFirefly.DisplayName: Cursed Firefly
 			CursedBunny.DisplayName: Cursed Bunny
 			CursedSquirrel.DisplayName: Cursed Squirrel
+			UndeadHand.DisplayName: Undead Hand
 		}
 
 		Dialogue: {
@@ -2893,6 +2943,14 @@ Mods: {
 				CommonDialogue: Howdy partner, whats on the agenda for you today?
 				RareDialogue: It was his fault, everything you see is cursed.
 				TalkALot: I'm getting kinda old man, I have to go.
+			}
+
+			FarmerSlime: {
+				First: *Glorp Glorp* *Glub Glub* *Blub Blub*
+				Second: Just kidding, I can talk kid, that always tricks them ahaha!
+				Third: Take care of this barn, it's been around for a while, keeping all the passive critters content.
+				Forth: Everyday, i keep seeing a new species of spider... I hate those things!
+				RareDialogue: He's always watching...
 			}
 		}
 

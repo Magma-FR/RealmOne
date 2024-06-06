@@ -20,7 +20,7 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
             Item.value = 10000;
-            Item.rare = ItemRarityID.Blue;
+            Item.rare = ItemRarityID.White;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = false;
             Item.maxStack = 9999;
@@ -32,8 +32,8 @@ namespace RealmOne.Items.Sets.TatteredWoodSet
 
         public override void AddRecipes()
         {
-            CreateRecipe()
-                .AddIngredient(ModContent.ItemType<TatteredWood>(), 10)
+            CreateRecipe(50)
+                .AddIngredient(ModContent.ItemType<TatteredWood>(), 5)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

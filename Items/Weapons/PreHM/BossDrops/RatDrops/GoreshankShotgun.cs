@@ -44,10 +44,9 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
         {
             SoundEngine.PlaySound(SoundID.Item38 with { Volume = 0.5f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
             SoundEngine.PlaySound(SoundID.Item149 with { Volume = 0.7f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
-            if (Main.rand.NextBool(6))
-            {
-                player.GetModPlayer<Screenshake>().SmallScreenshake = true;
-            }
+
+            player.GetModPlayer<Screenshake>().SmallScreenshake = true;
+
             return true;
         }
 

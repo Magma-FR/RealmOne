@@ -1,4 +1,4 @@
-﻿using RealmOne.Tiles.Furniture.MusicBoxx;
+﻿/*using RealmOne.Tiles.Furniture.MusicBoxx;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,4 +18,4 @@ namespace RealmOne.Items.Misc
             Item.DefaultToMusicBox(ModContent.TileType<SquirmoMusic>(), 0);
         }
     }
-}
+}*/

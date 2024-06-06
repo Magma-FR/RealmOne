@@ -1,0 +1,13 @@
+StackPotionsLoot: {
+    ChestLoot: {
+        ItemPath: "RealmOne/StackPotions"
+        TilePath: "Terraria/Containers"
+        Chance: 3
+        MinStack: 8
+        MaxStack: 18
+        Frames: [17]
+    }
+}
+
+
+

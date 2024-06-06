@@ -16,6 +16,8 @@ using ReLogic.Content;
 using Terraria.GameContent;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.Utilities;
+using RealmOne.Items.Weapons.PreHM.Classless;
+using Terraria.GameContent.ItemDropRules;
 
 namespace RealmOne.NPCs.Enemies.ForestRevenge
 {
@@ -72,6 +74,11 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
         {
             NPC.TargetClosest();
             NPC.spriteDirection = NPC.direction;
+        }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 35));
         }
 
         public override void HitEffect(NPC.HitInfo hit)

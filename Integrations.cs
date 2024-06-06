@@ -50,11 +50,11 @@ namespace RealmOne
                     ["collectibles"] = collectibles,
 
                     //  ["customPortrait"] = customPortrait
-                    // Other optional arguments as needed are inferred from the wiki
+                    // Other optional arguments as needed are inferred from the wiki`
                 }
             );
-            string internalName2 = "Butcher Rat";
-            float weight2 = 2.2f;
+            string internalName2 = "ButcherRat";
+            float weight2 = 2.3f;
             Func<bool> downed2 = () => DownedBossSystem.downedRat;
             int bossType2 = ModContent.NPCType<ButcherRat>();
             List<int> collectibles2 = new List<int>()

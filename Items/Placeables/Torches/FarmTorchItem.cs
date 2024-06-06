@@ -12,7 +12,6 @@ namespace RealmOne.Items.Placeables.Torches
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Farm Torch");
-            Tooltip.SetDefault("Surprised its still flamable!");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
         }
 
@@ -66,7 +65,7 @@ namespace RealmOne.Items.Placeables.Torches
         {
             CreateRecipe(3)
                 .AddIngredient(ModContent.ItemType<TatteredWood>(), 1)
-                                .AddIngredient(ItemID.Gel, 2)
+                .AddIngredient(ItemID.Gel, 2)
 
                 .AddTile(TileID.WorkBenches)
                 .Register();

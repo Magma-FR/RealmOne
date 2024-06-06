@@ -1,4 +1,4 @@
-﻿using RealmOne.Items.Misc.EnemyDrops;
+﻿/*using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Sets.OrchidSet;
 using Terraria;
 using Terraria.GameContent.Creative;
@@ -40,4 +40,4 @@ namespace RealmOne.Armor.Verminhide
             player.moveSpeed += 0.08f;
         }
     }
-}
+}*/

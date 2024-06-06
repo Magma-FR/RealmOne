@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Common.Core.ParticleContent;
 using RealmOne.Common.Core.ParticleContent.Particles;
+using RealmOne.Items.Misc;
+using RealmOne.Items.Placeables.FarmStuff;
 using RealmOne.Projectiles.Magic;
 using RealmOne.RealmPlayer;
 using System;
@@ -15,7 +17,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
     {
         public override void SetStaticDefaults()
         {
-            ItemGlowy.AddGlowMask(Item.type, Texture + "_Glow");
+            //        ItemGlowy.AddGlowMask(Item.type, Texture + "_Glow");
         }
 
         public override void SetDefaults()
@@ -26,6 +28,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             Item.damage = 11;
             Item.useTime = 20;
             Item.useAnimation = 20;
+            Item.rare = ItemRarityID.Blue;
             Item.mana = 6;
             Item.autoReuse = true;
             Item.shootSpeed = 12f;
@@ -34,6 +37,27 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 1f;
             Item.shoot = ModContent.ProjectileType<DesertHands>();
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<Parchment>(), 10)
+                                .AddIngredient(ItemID.SandstoneBrick, 15)
+                                .AddIngredient(ItemID.Cactus, 25)
+                                .AddIngredient(ItemID.GoldBar, 10)
+
+                .AddTile(TileID.WorkBenches)
+                .Register();
+
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<Parchment>(), 10)
+                  .AddIngredient(ItemID.SandstoneBrick, 15)
+              .AddIngredient(ItemID.Cactus, 25)
+              .AddIngredient(ItemID.PlatinumBar, 10)
+
+              .AddTile(TileID.WorkBenches)
+              .Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -65,88 +89,3 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
         }
     }
 }
-
-/* public class GoldSkullTomeHeld : ModProjectile
- {
-     public override string Texture => "RealmOne/Items/Weapons/PreHM/Desert/GoldenSkullTome";
-
-     public override void SetDefaults()
-     {
-         Projectile.DamageType = DamageClass.Magic;
-         Projectile.width = 32;
-         Projectile.height = 32;
-         Projectile.aiStyle = -1;
-         Projectile.friendly = true;
-         Projectile.hostile = false;
-         Projectile.ignoreWater = true;
-         Projectile.tileCollide = false;
-     }
-             private bool rightClicked;
-
-     private Player player => Main.player[Projectile.owner];
-     public override bool? CanDamage() => false;
-
-     public override void AI()
-     {
-         int frameDelay = (int)(rightClicked? 20 * player.GetAttackSpeed(DamageClass.Magic) : 8 * player.GetAttackSpeed(DamageClass.Magic));
-
-         player.heldProj = Projectile.whoAmI;
-         if (Main.myPlayer == Projectile.owner)
-         {
-             Projectile.direction = player.direction;
-             Projectile.spriteDirection = Projectile.direction;
-             player.direction = Math.Sign(player.DirectionTo(Main.MouseWorld).X);
-             player.heldProj = Projectile.whoAmI;
-             player.itemTime = 2;
-             player.itemAnimation = 2;
-             Projectile.rotation = player.Center.DirectionTo(Main.MouseWorld).ToRotation();
-             Projectile.Center = player.Center + player.Center.DirectionTo(Main.MouseWorld).ToRotation().ToRotationVector2() * 10;
-             Projectile.netUpdate = true;
-             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
-
-             if (!player.channel)
-             {
-                 Projectile.Kill();
-             }
-             Projectile.frameCounter++;
-
-             if (Projectile.frameCounter % frameDelay == 0)
-             {
-                 Projectile.frame++;
-             }
-             if (Projectile.frame == 3)
-             {
-                 ShootGoldenSkull();
-             }
-
-             if (Projectile.frame == 6)
-             {
-                ShootWoodenSkull();
-             }
-         }
-     }
-     private void ShootGoldenSkull()
-     {
-         if (!player.PickAmmo(player.HeldItem, out int type, out float speed, out int damage, out float knockBack, out int ammoItemID, false))
-         {
-             Projectile.Kill();
-             Projectile.active = false;
-         }
-
-         SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
-         type = ProjectileID.FlamingArrow;
-       Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12, type, damage, 1, Projectile.owner, 0, 0);
-     }
-
-     private void ShootWoodenSkull()
-     {
-         if (!player.PickAmmo(player.HeldItem, out int type, out float speed, out int damage, out float knockBack, out int ammoItemID, false))
-         {
-             Projectile.Kill();
-             Projectile.active = false;
-         }
-         type = ProjectileID.GoldenBullet;
-         SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
-
-         Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12, type, damage, 1, Projectile.owner, 0, 0);
-     }*/

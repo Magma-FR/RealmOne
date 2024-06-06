@@ -62,6 +62,22 @@ namespace RealmOne.RealmPlayer
         }
     }
 
+    public class ScrollySlime : ModPlayer
+
+    {
+        public bool ShowSlime = false;
+
+        public override void PostUpdate()
+        {
+            if (ShowSlime == true)
+            {
+                Player target = Main.LocalPlayer;
+            }
+
+            base.PostUpdate();
+        }
+    }
+
     //ALL THIS CODE UP TO THE # IS SPIRIT MOD'S GITHUB CODE, ALL CREDIT GOES TO THEM.
     public class ItemGlowy : ModPlayer
     {
@@ -279,6 +295,7 @@ namespace RealmOne.RealmPlayer
         public bool MaxTeeth = false;
         public int BrassCD = 0;
         public int BrassShineCD = 0;
+        public bool Bunny = false;
 
         public bool GoreToothBonus = false;
         public int GoreToothCD = 0;
@@ -325,6 +342,7 @@ namespace RealmOne.RealmPlayer
             FallSpeed = false;
             PiggySet = false;
             hasStriken = false;
+            Bunny = false;
         }
 
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
@@ -397,6 +415,7 @@ namespace RealmOne.RealmPlayer
         public override void PostUpdateMiscEffects()
         {
             Player.ManageSpecialBiomeVisuals("RealmOne:BloodSky", Main.bloodMoon);
+            OtherBuffs();
         }
 
         public override bool CanConsumeAmmo(Item weapon, Item ammo)
@@ -439,6 +458,18 @@ namespace RealmOne.RealmPlayer
             }
         }
 
+        private void OtherBuffs()
+        {
+            if (Bunny)
+            {
+                Player.moveSpeed += 0.50f;
+                Player.accRunSpeed += 0.25f;
+                Player.jumpSpeedBoost += 0.25f;
+                Player.jumpHeight += 10;
+                Player.extraFall += 25;
+            }
+        }
+
         public class BrightProjectilePlayer : ModPlayer
         {
             public bool brightProjectiles = false;
@@ -468,12 +499,12 @@ namespace RealmOne.RealmPlayer
             {
                 if (Player.ZoneSkyHeight)
                 {
-                    Player.AddBuff(BuffID.Suffocation, 20);
+                    Player.AddBuff(BuffID.Suffocation, 15);
                 }
 
                 if (Player.HasBuff(BuffID.Suffocation))
                 {
-                    CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height), new Color(80, 150, 240, 140), "You're losing air!!", false, false);
+                    //        CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height), new Color(80, 150, 240, 140), "You're losing air!!", false, false);
                 }
             }
         }
@@ -545,12 +576,12 @@ namespace RealmOne.RealmPlayer
                 BrassShineCD--;
             }
 
-            if (BrassSetBonus && BrassShineCD == 0)
-            {
-                BrassShineCD = 60;
-                SparkleParticle sparkle = new(Color.White, 1, new Vector2(p.Center.X + Main.rand.Next(-50, 50), p.Center.Y + Main.rand.Next(-50, 50)), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
-                ParticleSystem.GenerateParticle(sparkle);
-            }
+            //   if (BrassSetBonus && BrassShineCD == 0)
+            //  {
+            //      BrassShineCD = 60;
+            //      SparkleParticle sparkle = new(Color.White, 1, new Vector2(p.Center.X + Main.rand.Next(-50, 50), p.Center.Y + Main.rand.Next(-50, 50)), new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)), 120);
+            //      ParticleSystem.GenerateParticle(sparkle);
+            //   }
 
             if (BrassSetBonus && BrassCD == 0 && !p.HasBuff<BrassMight>())
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Weapons.PreHM.BloodMoon;
+using RealmOne.Items.Weapons.PreHM.Throwing;
 using System.IO;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -145,7 +146,8 @@ namespace RealmOne.NPCs.Enemies.BloodMoon.ToothSerpent
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 7, 1, 2));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 7, 2, 3));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vampdag>(), 4, 4, 6));
 
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ToothedTendril>(), 20, 1, 1));
         }

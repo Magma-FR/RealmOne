@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Assets\Effects\GradientCirc.png" />
       <None Remove="Assets\Textures\Cancelled.png" />
       <None Remove="Assets\Textures\NoConnection.png" />
       <None Remove="Buffs\BrassMightCD.png" />
@@ -75,6 +76,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Items\Loot\" />
 	  <Folder Include="Items\Weapons\PreHM\Forest\CursedFort\" />
 	</ItemGroup>
 </Project>

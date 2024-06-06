@@ -3,7 +3,8 @@ using RealmOne.Biomes.Farm;
 using RealmOne.Items.Accessories;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Others;
-using RealmOne.Items.Vanities;
+using RealmOne.Items.Sets.ForestRevengeSet;
+using RealmOne.Items.Weapons.PreHM.Classless;
 using RealmOne.Items.Weapons.Ranged;
 using RealmOne.Projectiles.Throwing;
 using System.Collections.Generic;
@@ -81,11 +82,15 @@ namespace RealmOne.NPCs.TownNPC
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             // These are things that the NPC has a chance of telling you when you talk to it.
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.LostTalk"));
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.TalkALot"));
+
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue1"));
+
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue2"));
             chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.StandardDialogue3"));
-            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.CommonDialogue"));
-            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.RareDialogue"), 0.3);
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.CommonDialogue"), 1.5f);
+            chat.Add(Language.GetTextValue("Mods.RealmOne.Dialogue.LostFarmer.RareDialogue"), 0.3f);
 
             return chat; // chat is implicitly cast to a string.
         }
@@ -173,7 +178,7 @@ namespace RealmOne.NPCs.TownNPC
 
                 .Add(new Item(ModContent.ItemType<AntiVenomVial>()) { shopCustomPrice = Item.buyPrice(gold: 2) })
 
-                                .Add(new Item(ModContent.ItemType<SunHat>()) { shopCustomPrice = Item.buyPrice(gold: 2, silver: 25) })
+                                .Add(new Item(ModContent.ItemType<CartonBeer>()) { shopCustomPrice = Item.buyPrice(copper: 80) })
 
                 .Add(new Item(ModContent.ItemType<Wheat>()) { shopCustomPrice = Item.buyPrice(silver: 2) })
                  .Add(new Item(ItemID.Hay) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -190,7 +195,7 @@ namespace RealmOne.NPCs.TownNPC
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SunHat>()));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Wheat>(), 2, 5, 10));
         }
 
         public override void FindFrame(int frameHeight)

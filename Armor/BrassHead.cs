@@ -50,7 +50,6 @@ namespace RealmOne.Armor
             else
             {
                 player.setBonus = $"+2 Defense\nEnemies that collide with you have a chance to get [c/C87C00:Copperized]" + $"\nPressing [c/C1C1C1:Unbinded] causes you to encase yourself in another layer of brass that gives:" + $"\n[c/9BFF01:+4 life regen]\n[c/9BFF01:+20 max health]\n[c/9BFF01:+8 defense]\n[c/F00000:-50% movement speed]\nWhen pressed, also conjure a [c/C87C00:Brass Missile] that seeks out for your cursor\nUpon reaching your cursor or running out of time, it drops down like a bomb and explodes upon any impact\nUpon exploding, it inflicts [c/C87C00:Copperized] to all hit enemies\n[c/C87C00:Copperized]:\nEnemies get turned into copper for a short while\nWhile [c/C87C00:Copperized], enemies conduct electricity better\nThis causes [c/A6FEFF:Impact Weapons] to gain a special effect against [c/C87C00:Copperized] enemies";
-
             }
 
             // change X to whatever hotkey the player has set it to

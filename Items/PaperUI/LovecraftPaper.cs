@@ -46,7 +46,6 @@ namespace RealmOne.Items.PaperUI
             if (player.GetModPlayer<Scrolly>().ShowScroll == false)
             {
                 player.GetModPlayer<Scrolly>().ShowScroll = true;
-                player.GetModPlayer<ScrollyWorm>().ShowWorm1 = false;
             }
             else
             {

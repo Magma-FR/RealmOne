@@ -28,8 +28,8 @@ namespace RealmOne.Armor.Goretooth
 
         public override void UpdateEquip(Player player)
         {
-            player.maxMinions++;
-            player.GetDamage(DamageClass.Summon) += 0.04f;
+            player.GetCritChance(DamageClass.Melee) += 3;
+            player.GetDamage(DamageClass.Melee) += 0.06f;
         }
 
         public override void AddRecipes()

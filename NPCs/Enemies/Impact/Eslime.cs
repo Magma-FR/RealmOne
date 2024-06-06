@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
 using RealmOne.Items.Misc.EnemyDrops;
-using RealmOne.Items.Placeables.BannerItems;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
@@ -44,7 +43,6 @@ namespace RealmOne.NPCs.Enemies.Impact
             AIType = NPCID.JungleSlime;
             AnimationType = NPCID.GreenSlime;
             Banner = Type;
-            BannerItem = ModContent.ItemType<BannerItem.EslimeB>();
         }
 
         public override void FindFrame(int frameHeight)

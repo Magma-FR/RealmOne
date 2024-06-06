@@ -1,4 +1,4 @@
-using RealmOne.Tiles.Furniture.BossTrophy;
+/*using RealmOne.Tiles.Furniture.BossTrophy;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -26,4 +26,4 @@ namespace RealmOne.Items.Placeables.Furniture.BossThing
             Item.value = Item.buyPrice(0, 1);
         }
     }
-}
+}*/

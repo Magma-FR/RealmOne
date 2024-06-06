@@ -100,7 +100,7 @@ namespace RealmOne.NPCs.Enemies.BloodMoon
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeballSoup>(), 11));
-            npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 8, 1, 2));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 7, 1, 2));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 7, 1, 2));
         }
 
