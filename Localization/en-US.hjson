@@ -2333,19 +2333,20 @@ Mods: {
 				DisplayName: Vermingore Ragesaw
 			}
 
-<<<<<<< Updated upstream
 			KingSlimePaper: {
 				DisplayName: King Slime Paper
-=======
-			MagicTwig: {
-				DisplayName: Magic Twig
-				Tooltip: ""
-			}
+				Tooltip: "Tells the tale of a slime reign"
+				
+			
 
 			ExampleSimpleMinionItem: {
-				DisplayName: Example Simple Minion Item
->>>>>>> Stashed changes
-				Tooltip: ""
+				DisplayName: Lightbulb Box
+				Tooltip: 
+				'''
+				Throw a box loaded with lightbulbs that instantly target enemies.
+				The lightbulbs shatter instantly on contact with enemies
+				Each Lightbulb costs half a minion slot
+				'''
 			}
 		}
 

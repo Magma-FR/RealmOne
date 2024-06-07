@@ -8,7 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace RealmOne.Items.Weapons.Summoner
+namespace RealmOne.Items.Sets.LightbulbSet
 {
     // This file contains all the code necessary for a minion
     // - ModItem - the weapon which you use to summon the minion with
@@ -30,10 +30,8 @@ namespace RealmOne.Items.Weapons.Summoner
         public override void Update(Player player, ref int buffIndex)
         {
             // If the minions exist reset the buff time, otherwise remove the buff from the player
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<ExampleSimpleMinion>()] > 0)
-            {
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<LightbulbMinion>()] > 0)
                 player.buffTime[buffIndex] = 28000;
-            }
             else
             {
                 player.DelBuff(buffIndex);
@@ -42,7 +40,7 @@ namespace RealmOne.Items.Weapons.Summoner
         }
     }
 
-    public class ExampleSimpleMinionItem : ModItem
+    public class LightbulbMinionItem : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -71,7 +69,7 @@ namespace RealmOne.Items.Weapons.Summoner
             Item.DamageType = DamageClass.Summon; // Makes the damage register as summon. If your item does not have any damage type, it becomes true damage (which means that damage scalars will not affect it). Be sure to have a damage type
             Item.buffType = ModContent.BuffType<ExampleSimpleMinionBuff>();
             // No buffTime because otherwise the item tooltip would say something like "1 minute duration"
-            Item.shoot = ModContent.ProjectileType<ExampleSimpleMinion>(); // This item creates the minion projectile
+            Item.shoot = ModContent.ProjectileType<LightbulbMinion>(); // This item creates the minion projectile
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -100,7 +98,7 @@ namespace RealmOne.Items.Weapons.Summoner
     // Its attack pattern is simple: If an enemy is in range of 43 tiles, it will fly to it and deal contact damage
     // If the player targets a certain NPC with right-click, it will fly through tiles to it
     // If it isn't attacking, it will float near the player with minimal movement
-    public class ExampleSimpleMinion : ModProjectile
+    public class LightbulbMinion : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -165,9 +163,7 @@ namespace RealmOne.Items.Weapons.Summoner
             Player owner = Main.player[Projectile.owner];
 
             if (!CheckActive(owner))
-            {
                 return;
-            }
 
             GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
@@ -186,9 +182,7 @@ namespace RealmOne.Items.Weapons.Summoner
             }
 
             if (owner.HasBuff(ModContent.BuffType<ExampleSimpleMinionBuff>()))
-            {
                 Projectile.timeLeft = 2;
-            }
 
             return true;
         }
@@ -223,28 +217,18 @@ namespace RealmOne.Items.Weapons.Summoner
 
             // Fix overlap with other minions
             foreach (var other in Main.ActiveProjectiles)
-            {
                 if (other.whoAmI != Projectile.whoAmI && other.owner == Projectile.owner && Math.Abs(Projectile.position.X - other.position.X) + Math.Abs(Projectile.position.Y - other.position.Y) < Projectile.width)
                 {
                     if (Projectile.position.X < other.position.X)
-                    {
                         Projectile.velocity.X -= overlapVelocity;
-                    }
                     else
-                    {
                         Projectile.velocity.X += overlapVelocity;
-                    }
 
                     if (Projectile.position.Y < other.position.Y)
-                    {
                         Projectile.velocity.Y -= overlapVelocity;
-                    }
                     else
-                    {
                         Projectile.velocity.Y += overlapVelocity;
-                    }
                 }
-            }
         }
 
         private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter)
@@ -270,10 +254,8 @@ namespace RealmOne.Items.Weapons.Summoner
             }
 
             if (!foundTarget)
-            {
                 // This code is required either way, used for finding a target
                 foreach (var npc in Main.ActiveNPCs)
-                {
                     if (npc.CanBeChasedBy())
                     {
                         float between = Vector2.Distance(npc.Center, Projectile.Center);
@@ -284,15 +266,13 @@ namespace RealmOne.Items.Weapons.Summoner
                         // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
                         bool closeThroughWall = between < 100f;
 
-                        if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
+                        if ((closest && inRange || !foundTarget) && (lineOfSight || closeThroughWall))
                         {
                             distanceFromTarget = between;
                             targetCenter = npc.Center;
                             foundTarget = true;
                         }
                     }
-                }
-            }
 
             // friendly needs to be set to true so the minion can deal contact damage
             // friendly needs to be set to false so it doesn't damage things like target dummies while idling
@@ -308,7 +288,6 @@ namespace RealmOne.Items.Weapons.Summoner
             float inertia = 20f;
 
             if (foundTarget)
-            {
                 // Minion has a target: attack (here, fly towards the enemy)
                 if (distanceFromTarget > 40f)
                 {
@@ -319,39 +298,38 @@ namespace RealmOne.Items.Weapons.Summoner
 
                     Projectile.velocity = (Projectile.velocity * (inertia - 1) + direction) / inertia;
                 }
-            }
-            else
-            {
-                // Minion doesn't have a target: return to player and idle
-                if (distanceToIdlePosition > 600f)
-                {
-                    // Speed up the minion if it's away from the player
-                    speed = 12f;
-                    inertia = 60f;
-                }
                 else
                 {
-                    // Slow down the minion if closer to the player
-                    speed = 4f;
-                    inertia = 80f;
-                }
+                    // Minion doesn't have a target: return to player and idle
+                    if (distanceToIdlePosition > 600f)
+                    {
+                        // Speed up the minion if it's away from the player
+                        speed = 12f;
+                        inertia = 60f;
+                    }
+                    else
+                    {
+                        // Slow down the minion if closer to the player
+                        speed = 4f;
+                        inertia = 80f;
+                    }
 
-                if (distanceToIdlePosition > 20f)
-                {
-                    // The immediate range around the player (when it passively floats about)
+                    if (distanceToIdlePosition > 20f)
+                    {
+                        // The immediate range around the player (when it passively floats about)
 
-                    // This is a simple movement formula using the two parameters and its desired direction to create a "homing" movement
-                    vectorToIdlePosition.Normalize();
-                    vectorToIdlePosition *= speed;
-                    Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
+                        // This is a simple movement formula using the two parameters and its desired direction to create a "homing" movement
+                        vectorToIdlePosition.Normalize();
+                        vectorToIdlePosition *= speed;
+                        Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
+                    }
+                    else if (Projectile.velocity == Vector2.Zero)
+                    {
+                        // If there is a case where it's not moving at all, give it a little "poke"
+                        Projectile.velocity.X = -0.15f;
+                        Projectile.velocity.Y = -0.05f;
+                    }
                 }
-                else if (Projectile.velocity == Vector2.Zero)
-                {
-                    // If there is a case where it's not moving at all, give it a little "poke"
-                    Projectile.velocity.X = -0.15f;
-                    Projectile.velocity.Y = -0.05f;
-                }
-            }
         }
 
         private void Visuals()
@@ -370,9 +348,7 @@ namespace RealmOne.Items.Weapons.Summoner
                 Projectile.frame++;
 
                 if (Projectile.frame >= Main.projFrames[Projectile.type])
-                {
                     Projectile.frame = 0;
-                }
             }
 
             // Some visuals here
