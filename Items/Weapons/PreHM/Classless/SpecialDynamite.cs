@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using RealmOne.RealmPlayer;
+using RealmOne.Projectiles.Other;
 
 namespace RealmOne.Items.Weapons.PreHM.Classless
 {

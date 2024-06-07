@@ -38,7 +38,7 @@ namespace RealmOne.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item1;
             Item.rare = ModContent.RarityType<ModRarities>();
             Item.autoReuse = true;
-            Item.useAmmo = ModContent.ItemType<RustedBullets>();
+            Item.useAmmo = AmmoID.Bullet;
             Item.noMelee = true;
             Item.shootSpeed = 70f;
             Item.shoot = ModContent.ProjectileType<WagonWheel>();
@@ -54,6 +54,7 @@ namespace RealmOne.Items.Weapons.Ranged
                 Item.noUseGraphic = true;
                 Item.UseSound = SoundID.Item1;
                 Item.autoReuse = false;
+                Item.useAmmo = AmmoID.None;
                 if (cooldown > 0)
                     return false;
             }
@@ -118,10 +119,7 @@ namespace RealmOne.Items.Weapons.Ranged
 
     public class WagonWheel : ModProjectile
     {
-
         private Player Owner => Main.player[Projectile.owner];
-
-
 
         public override void SetStaticDefaults()
         {

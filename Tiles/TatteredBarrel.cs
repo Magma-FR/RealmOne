@@ -75,22 +75,26 @@ namespace RealmOne.Tiles
 
         public override bool CanDrop(int i, int j)
         {
-            if (Main.rand.NextBool(2))
+            if (Main.rand.NextBool(1))
             {
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(2, 6));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.IronBar, Main.rand.Next(2, 4));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.LeadBar, Main.rand.Next(2, 4));
+
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<Wheat>(), Main.rand.Next(1, 3));
             }
-
+            if (Main.rand.NextBool(2))
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.MusketBall, Main.rand.Next(15, 22));
+            }
             if (Main.rand.NextBool(4))
             {
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<CartonBeer>(), Main.rand.Next(10, 14));
             }
             if (Main.rand.NextBool(15))
             {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(2, 6));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(1, 1));
             }
             // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<FarmKey>(), Main.rand.Next(1, 1), Main.rand.NextBool(60));
             // Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Wheat>(), Main.rand.Next(3, 12), Main.rand.NextBool(2));

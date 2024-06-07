@@ -2333,8 +2333,18 @@ Mods: {
 				DisplayName: Vermingore Ragesaw
 			}
 
+<<<<<<< Updated upstream
 			KingSlimePaper: {
 				DisplayName: King Slime Paper
+=======
+			MagicTwig: {
+				DisplayName: Magic Twig
+				Tooltip: ""
+			}
+
+			ExampleSimpleMinionItem: {
+				DisplayName: Example Simple Minion Item
+>>>>>>> Stashed changes
 				Tooltip: ""
 			}
 		}
@@ -2566,6 +2576,11 @@ Mods: {
 				DisplayName: Saw Buff
 				Description: Mods.RealmOne.Buffs.SawBuff.Description
 			}
+
+			ExampleSimpleMinionBuff: {
+				DisplayName: Example Simple Minion Buff
+				Description: Mods.RealmOne.Buffs.ExampleSimpleMinionBuff.Description
+			}
 		}
 
 		Projectiles: {
@@ -2758,6 +2773,7 @@ Mods: {
 			OrchidSpearProj.DisplayName: Orchid Spear Proj
 			SeekingOwlProj.DisplayName: Seeking Owl Proj
 			BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
+			ExampleSimpleMinion.DisplayName: Example Simple Minion
 		}
 
 		NPCs: {
