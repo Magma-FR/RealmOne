@@ -85,7 +85,7 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmptyLocket>(), 1, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.ForestTea>(), 1, 1, 1));
 
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<RustedBullets>(), 1, 50, 50));
+            itemLoot.Add(ItemDropRule.Common(ItemID.MusketBall, 1, 50, 50));
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
