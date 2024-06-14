@@ -2352,6 +2352,16 @@ Mods: {
 				DisplayName: Vulture Wand
 				Tooltip: ""
 			}
+
+			MagicTwig: {
+				DisplayName: Magic Twig
+				Tooltip: ""
+			}
+
+			LightbulbMinionItem: {
+				DisplayName: Lightbulb Minion Item
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2603,8 +2613,13 @@ Mods: {
 			}
 
 			BabyVultures: {
-				DisplayName: Baby Vultures
-				Description: Mods.RealmOne.Buffs.BabyVultures.Description
+				DisplayName: Baby Vulture
+				Description: A baby vulture protects you!
+			}
+
+			ExampleSimpleMinionBuff: {
+				DisplayName: Example Simple Minion Buff
+				Description: Mods.RealmOne.Buffs.ExampleSimpleMinionBuff.Description
 			}
 		}
 
@@ -2806,6 +2821,8 @@ Mods: {
 			OrchidPetal.DisplayName: Orchid Petal
 			OrchidBloom.DisplayName: Orchid Bloom
 			BabyVulture.DisplayName: Baby Vulture
+			LightbulbMinion.DisplayName: Lightbulb Minion
+			VultureBaby.DisplayName: Vulture Baby
 		}
 
 		NPCs: {

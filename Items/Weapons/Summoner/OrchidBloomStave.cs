@@ -50,7 +50,7 @@ namespace RealmOne.Items.Weapons.Summoner
 
         public override void SetDefaults()
         {
-            Item.damage = 33;
+            Item.damage = 18;
             Item.width = 26;
             Item.height = 34;
             Item.useTime = 40;

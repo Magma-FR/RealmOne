@@ -82,7 +82,7 @@ namespace RealmOne.Projectiles.Summon
                         {
                             if (Main.projectile[c].type == ModContent.ProjectileType<OrchidBloom>() && Main.projectile[c].whoAmI != Projectile.whoAmI && Main.projectile[c].owner == p.whoAmI) //First, from all the projs it checks all orchid flowers. Then it checks the one that isnt the just spawned one, which means that is our flower. Then we make sure to check that the owner is us so in multiplayer this wont break
                             {
-                                Main.projectile[c].minionSlots = 3f; //Increase the slot weight of the main flower depending on upgrade
+                                Main.projectile[c].minionSlots = 2f; //Increase the slot weight of the main flower depending on upgrade
                                 if (theItem.GetGlobalItem<GlobalItemList>().BloomStack < 2) //SFX change depending on phase
                                 {
                                     SoundEngine.PlaySound(SoundID.Item29, Main.projectile[c].Center);
@@ -153,11 +153,11 @@ namespace RealmOne.Projectiles.Summon
                             {
                                 if (theItem.GetGlobalItem<GlobalItemList>().BloomStack == 2)
                                 {
-                                    Main.projectile[c].minionSlots = 4f; //Increase the slot weight of the main flower depending on upgrade
+                                    Main.projectile[c].minionSlots = 3f; //Increase the slot weight of the main flower depending on upgrade
                                 }
                                 if (theItem.GetGlobalItem<GlobalItemList>().BloomStack == 3)
                                 {
-                                    Main.projectile[c].minionSlots = 5f;
+                                    Main.projectile[c].minionSlots = 4f;
                                 }
                                 for (int i = 0; i < 50; i++)
                                 {
@@ -216,15 +216,15 @@ namespace RealmOne.Projectiles.Summon
         {
             if (theItem.GetGlobalItem<GlobalItemList>().BloomStack == 3)
             {
-                return new Color(252, 55, 255, 25);
+                return new Color(161, 0, 164, 255);
             }
             if (theItem.GetGlobalItem<GlobalItemList>().BloomStack == 2)
             {
-                return new Color(252, 55, 255, 155);
+                return new Color(204, 0, 207, 255);
             }
             if (theItem.GetGlobalItem<GlobalItemList>().BloomStack == 1)
             {
-                return new Color(252, 55, 255, 255);
+                return new Color(251, 0, 255, 255);
             }
 
             return base.GetAlpha(lightColor);
