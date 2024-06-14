@@ -22,14 +22,15 @@ namespace RealmOne.Projectiles.Piggy
             Projectile.hostile = false;
             Projectile.tileCollide = true;
             Projectile.timeLeft = 480;
-            Projectile.aiStyle = 1;
+            Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 1;
         }
 
         public override void AI()
         {
-            Projectile.rotation += 0.4f * Projectile.direction;
+            Projectile.velocity.Y += 0.5f;
+            Projectile.rotation += 0.1f * Projectile.direction;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

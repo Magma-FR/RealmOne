@@ -174,6 +174,7 @@ namespace RealmOne.Items.Weapons.PreHM.Impact
                         Vector2 direction = (Projectile.Center - OnTop).SafeNormalize(Vector2.UnitX);
                         if (goingToLoc == false)
                         {
+
                             Projectile.velocity = (OnTop - Projectile.Center).SafeNormalize(Vector2.Zero) * 14f;
                         }
 

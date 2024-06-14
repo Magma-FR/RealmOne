@@ -23,6 +23,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using RealmOne.Projectiles.Summon;
 
 namespace RealmOne.RealmPlayer
 {
@@ -286,6 +287,8 @@ namespace RealmOne.RealmPlayer
 
         public float marbleJump = 0f;
 
+        public int ButterflySpawned = 0;
+
         public override void ResetEffects()
         {
             GoreToothBonus = false;
@@ -465,6 +468,16 @@ namespace RealmOne.RealmPlayer
                 {
                     //        CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height), new Color(80, 150, 240, 140), "You're losing air!!", false, false);
                 }
+            }
+        }
+
+        public override void UpdateLifeRegen()
+        {
+            Player p = Main.LocalPlayer;
+            if (p.ownedProjectileCounts[ModContent.ProjectileType<PinkButterfly>()] > 0)
+            {
+                int amount = p.ownedProjectileCounts[ModContent.ProjectileType<PinkButterfly>()];
+                p.lifeRegen += amount;
             }
         }
 

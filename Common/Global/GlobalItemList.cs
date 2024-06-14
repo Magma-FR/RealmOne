@@ -13,6 +13,11 @@ namespace RealmOne.Common.Global
         //remove the tooltip
         //   tooltips.RemoveAll(x => x.Name == "Tooltip0" && x.mod == "Terraria");
         //actually, the hood's old statics is increased damage and crit chance by 10%.
+
+        public override bool InstancePerEntity => true;
+
+        public int BloomStack = 0;
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ItemID.TitanPotion)

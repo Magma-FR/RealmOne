@@ -2337,6 +2337,21 @@ Mods: {
 				DisplayName: King Slime Paper
 				Tooltip: ""
 			}
+
+			FlutterflyStaff: {
+				DisplayName: Flutterfly Staff
+				Tooltip: ""
+			}
+
+			OrchidBloomStave: {
+				DisplayName: Orchid Bloomstave
+				Tooltip: ""
+			}
+
+			VultureWand: {
+				DisplayName: Vulture Wand
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2566,6 +2581,31 @@ Mods: {
 				DisplayName: Saw Buff
 				Description: Mods.RealmOne.Buffs.SawBuff.Description
 			}
+
+			Butterflies: {
+				DisplayName: Butterflies
+				Description: Butterflies flutter around you!
+			}
+
+			ButterflyDefensiveBuff: {
+				DisplayName: Defended
+				Description: Increased defense by 8
+			}
+
+			PetalDefensiveBuff: {
+				DisplayName: Flower's Blessing
+				Description: Increased defense by 8
+			}
+
+			OrchidFlower: {
+				DisplayName: Orchid Flower
+				Description: A beatiful orchid flower follows you!
+			}
+
+			BabyVultures: {
+				DisplayName: Baby Vultures
+				Description: Mods.RealmOne.Buffs.BabyVultures.Description
+			}
 		}
 
 		Projectiles: {
@@ -2758,6 +2798,14 @@ Mods: {
 			OrchidSpearProj.DisplayName: Orchid Spear Proj
 			SeekingOwlProj.DisplayName: Seeking Owl Proj
 			BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
+			Butterfly.DisplayName: Butterfly
+			BlueButterfly.DisplayName: Blue Butterfly
+			GreenButterfly.DisplayName: Green Butterfly
+			PinkButterfly.DisplayName: Pink Butterfly
+			YellowButterfly.DisplayName: Yellow Butterfly
+			OrchidPetal.DisplayName: Orchid Petal
+			OrchidBloom.DisplayName: Orchid Bloom
+			BabyVulture.DisplayName: Baby Vulture
 		}
 
 		NPCs: {

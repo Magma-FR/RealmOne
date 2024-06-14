@@ -15,6 +15,7 @@
 
     <PropertyGroup>
         <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -29,6 +30,7 @@
       <None Remove="Assets\Textures\Cancelled.png" />
       <None Remove="Assets\Textures\NoConnection.png" />
       <None Remove="Buffs\BrassMightCD.png" />
+      <None Remove="Buffs\ButterflyDefensiveBuff.png" />
       <None Remove="Buffs\Copperized.png" />
       <None Remove="Buffs\Debuffs\Cancelled.png" />
       <None Remove="Buffs\Debuffs\NoConnect.png" />
@@ -49,9 +51,17 @@
       <None Remove="Buffs\Debuffs\SlowLeaf.png" />
       <None Remove="Buffs\Debuffs\TreePoisoning.png" />
       <None Remove="Buffs\OrchidBonus.png" />
+      <None Remove="Buffs\PetalDefensiveBuff.png" />
+      <None Remove="Buffs\Summons\BabyVultures.png" />
+      <None Remove="Buffs\Summons\OrchidFlower.png" />
       <None Remove="Common\Core\ParticleContent\Particles\GenericGlowParticle.png" />
       <None Remove="Common\Core\ParticleContent\Particles\SparkleParticle.png" />
       <None Remove="Items\Weapons\PreHM\Forest\ForestVengeance.png" />
+      <None Remove="Items\Weapons\Summoner\Butterflies.png" />
+      <None Remove="Items\Weapons\Summoner\Butterfly.png" />
+      <None Remove="Items\Weapons\Summoner\FlutterflyStaff.png" />
+      <None Remove="Items\Weapons\Summoner\OrchidBloomStave.png" />
+      <None Remove="Items\Weapons\Summoner\VultureWand.png" />
       <None Remove="Projectiles\Bullet\BrassExplosion.png" />
       <None Remove="Projectiles\Bullet\BrassMissile.png" />
       <None Remove="Projectiles\Magic\ForestSpirit.png" />
@@ -64,10 +74,14 @@
       <None Remove="Projectiles\Magic\TreeBush2.png" />
       <None Remove="Projectiles\Magic\TreeBush3.png" />
       <None Remove="Projectiles\Other\GoretoothTooth.png" />
+      <None Remove="Projectiles\Other\OrchidPetal.png" />
+      <None Remove="Projectiles\Summon\BabyVulture.png" />
+      <None Remove="Projectiles\Summon\BlueButterfly.png" />
+      <None Remove="Projectiles\Summon\GreenButterfly.png" />
+      <None Remove="Projectiles\Summon\OrchidBloom.png" />
+      <None Remove="Projectiles\Summon\PinkButterfly.png" />
+      <None Remove="Projectiles\Summon\YellowButterfly.png" />
     </ItemGroup>
-
-	<ItemGroup>
-	</ItemGroup>
 
 	<ItemGroup>
 	  <Reference Include="StructureHelper">

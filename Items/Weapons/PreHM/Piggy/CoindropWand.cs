@@ -24,7 +24,7 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
 
         public override void SetDefaults()
         {
-            Item.damage = 14;
+            Item.damage = 18;
             Item.DamageType = DamageClass.Magic;
             Item.width = 32;
             Item.height = 36;
@@ -53,7 +53,7 @@ namespace RealmOne.Items.Weapons.PreHM.Piggy
                 set = true;
                 mouse = Main.MouseWorld;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 12; i++)
             {
                 if (coin == 0)
                 {
