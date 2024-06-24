@@ -54,14 +54,14 @@ namespace RealmOne.Items.Sets.LightbulbSet
         {
             Item.damage = 30;
             Item.knockBack = 3f;
-            Item.mana = 10; // mana cost
+            Item.mana = 3; // mana cost
             Item.width = 32;
             Item.height = 32;
             Item.useTime = 36;
             Item.useAnimation = 36;
-            Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
+            Item.useStyle = ItemUseStyleID.HoldUp; // how the player's arm moves when using the item
             Item.value = Item.sellPrice(gold: 30);
-            Item.rare = ItemRarityID.Cyan;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item44; // What sound should play when using the item
 
             // These below are needed for a minion weapon
@@ -190,11 +190,11 @@ namespace RealmOne.Items.Sets.LightbulbSet
         private void GeneralBehavior(Player owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition)
         {
             Vector2 idlePosition = owner.Center;
-            idlePosition.Y -= 20f; // Go up 48 coordinates (three tiles from the center of the player)
+            idlePosition.Y -= 48f; // Go up 48 coordinates (three tiles from the center of the player)
 
             // If your minion doesn't aimlessly move around when it's idle, you need to "put" it into the line of other summoned minions
             // The index is projectile.minionPos
-            float minionPositionOffsetX = (10 + Projectile.minionPos * 30) * -owner.direction;
+            float minionPositionOffsetX = (10 + Projectile.minionPos * 40) * -owner.direction;
             idlePosition.X += minionPositionOffsetX; // Go behind the player
 
             // All of this code below this line is adapted from Spazmamini code (ID 388, aiStyle 66)
