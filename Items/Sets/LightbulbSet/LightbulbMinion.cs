@@ -216,7 +216,7 @@ namespace RealmOne.Items.Sets.LightbulbSet
             float overlapVelocity = 0.04f;
 
             // Fix overlap with other minions
-            foreach (var other in Main.ActiveProjectiles)
+            foreach (var other in Terraria.Main.ActiveProjectiles)
                 if (other.whoAmI != Projectile.whoAmI && other.owner == Projectile.owner && Math.Abs(Projectile.position.X - other.position.X) + Math.Abs(Projectile.position.Y - other.position.Y) < Projectile.width)
                 {
                     if (Projectile.position.X < other.position.X)
@@ -255,7 +255,7 @@ namespace RealmOne.Items.Sets.LightbulbSet
 
             if (!foundTarget)
                 // This code is required either way, used for finding a target
-                foreach (var npc in Main.ActiveNPCs)
+                foreach (var npc in Terraria.Main.ActiveNPCs)
                     if (npc.CanBeChasedBy())
                     {
                         float between = Vector2.Distance(npc.Center, Projectile.Center);
@@ -269,7 +269,7 @@ namespace RealmOne.Items.Sets.LightbulbSet
                         if ((closest && inRange || !foundTarget) && (lineOfSight || closeThroughWall))
                         {
                             distanceFromTarget = between;
-                            targetCenter = npc.Center;
+                            targetCenter = npc.Center; //honestly fuck off cunt fucking end your life you worthless piece of shit lmoa i give up on coding like i dont find this shit fun
                             foundTarget = true;
                         }
                     }

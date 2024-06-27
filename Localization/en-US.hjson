@@ -2335,7 +2335,6 @@ Mods: {
 
 			KingSlimePaper: {
 				DisplayName: King Slime Paper
-<<<<<<< Updated upstream
 				Tooltip: ""
 			}
 
@@ -2351,8 +2350,6 @@ Mods: {
 
 			VultureWand: {
 				DisplayName: Vulture Wand
-				Tooltip: ""
-=======
 				Tooltip: Tells the tale of a slime reign
 			}
 
@@ -2364,7 +2361,6 @@ Mods: {
 					The lightbulbs shatter instantly on contact with enemies
 					Each Lightbulb costs half a minion slot
 					'''
->>>>>>> Stashed changes
 			}
 
 			MagicTwig: {
@@ -2827,7 +2823,6 @@ Mods: {
 			OrchidSpearProj.DisplayName: Orchid Spear Proj
 			SeekingOwlProj.DisplayName: Seeking Owl Proj
 			BloodthirstyVerminsaw.DisplayName: Bloodthirsty Verminsaw
-<<<<<<< Updated upstream
 			Butterfly.DisplayName: Butterfly
 			BlueButterfly.DisplayName: Blue Butterfly
 			GreenButterfly.DisplayName: Green Butterfly
@@ -2838,10 +2833,7 @@ Mods: {
 			BabyVulture.DisplayName: Baby Vulture
 			LightbulbMinion.DisplayName: Lightbulb Minion
 			VultureBaby.DisplayName: Vulture Baby
-=======
 			ExampleSimpleMinion.DisplayName: Example Simple Minion
-			LightbulbMinion.DisplayName: Lightbulb Minion
->>>>>>> Stashed changes
 		}
 
 		NPCs: {
