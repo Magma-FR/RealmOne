@@ -2350,7 +2350,17 @@ Mods: {
 
 			VultureWand: {
 				DisplayName: Vulture Wand
-				Tooltip: ""
+				Tooltip: Tells the tale of a slime reign
+			}
+
+			ExampleSimpleMinionItem: {
+				DisplayName: Lightbulb Box
+				Tooltip:
+					'''
+					Throw a box loaded with lightbulbs that instantly target enemies.
+					The lightbulbs shatter instantly on contact with enemies
+					Each Lightbulb costs half a minion slot
+					'''
 			}
 
 			MagicTwig: {
@@ -2823,6 +2833,7 @@ Mods: {
 			BabyVulture.DisplayName: Baby Vulture
 			LightbulbMinion.DisplayName: Lightbulb Minion
 			VultureBaby.DisplayName: Vulture Baby
+			ExampleSimpleMinion.DisplayName: Example Simple Minion
 		}
 
 		NPCs: {

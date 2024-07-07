@@ -54,14 +54,14 @@ namespace RealmOne.Items.Sets.LightbulbSet
         {
             Item.damage = 30;
             Item.knockBack = 3f;
-            Item.mana = 10; // mana cost
+            Item.mana = 3; // mana cost
             Item.width = 32;
             Item.height = 32;
             Item.useTime = 36;
             Item.useAnimation = 36;
-            Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
+            Item.useStyle = ItemUseStyleID.HoldUp; // how the player's arm moves when using the item
             Item.value = Item.sellPrice(gold: 30);
-            Item.rare = ItemRarityID.Cyan;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item44; // What sound should play when using the item
 
             // These below are needed for a minion weapon
@@ -190,11 +190,11 @@ namespace RealmOne.Items.Sets.LightbulbSet
         private void GeneralBehavior(Player owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition)
         {
             Vector2 idlePosition = owner.Center;
-            idlePosition.Y -= 20f; // Go up 48 coordinates (three tiles from the center of the player)
+            idlePosition.Y -= 48f; // Go up 48 coordinates (three tiles from the center of the player)
 
             // If your minion doesn't aimlessly move around when it's idle, you need to "put" it into the line of other summoned minions
             // The index is projectile.minionPos
-            float minionPositionOffsetX = (10 + Projectile.minionPos * 30) * -owner.direction;
+            float minionPositionOffsetX = (10 + Projectile.minionPos * 40) * -owner.direction;
             idlePosition.X += minionPositionOffsetX; // Go behind the player
 
             // All of this code below this line is adapted from Spazmamini code (ID 388, aiStyle 66)
@@ -216,7 +216,7 @@ namespace RealmOne.Items.Sets.LightbulbSet
             float overlapVelocity = 0.04f;
 
             // Fix overlap with other minions
-            foreach (var other in Main.ActiveProjectiles)
+            foreach (var other in Terraria.Main.ActiveProjectiles)
                 if (other.whoAmI != Projectile.whoAmI && other.owner == Projectile.owner && Math.Abs(Projectile.position.X - other.position.X) + Math.Abs(Projectile.position.Y - other.position.Y) < Projectile.width)
                 {
                     if (Projectile.position.X < other.position.X)
@@ -255,7 +255,7 @@ namespace RealmOne.Items.Sets.LightbulbSet
 
             if (!foundTarget)
                 // This code is required either way, used for finding a target
-                foreach (var npc in Main.ActiveNPCs)
+                foreach (var npc in Terraria.Main.ActiveNPCs)
                     if (npc.CanBeChasedBy())
                     {
                         float between = Vector2.Distance(npc.Center, Projectile.Center);
@@ -269,7 +269,7 @@ namespace RealmOne.Items.Sets.LightbulbSet
                         if ((closest && inRange || !foundTarget) && (lineOfSight || closeThroughWall))
                         {
                             distanceFromTarget = between;
-                            targetCenter = npc.Center;
+                            targetCenter = npc.Center; //honestly fuck off cunt fucking end your life you worthless piece of shit lmoa i give up on coding like i dont find this shit fun
                             foundTarget = true;
                         }
                     }
