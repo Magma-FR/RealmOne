@@ -24,6 +24,8 @@ using Terraria.ModLoader;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using RealmOne.Projectiles.Summon;
+using Terraria.GameContent.ItemDropRules;
+
 
 namespace RealmOne.RealmPlayer
 {
@@ -256,6 +258,7 @@ namespace RealmOne.RealmPlayer
         public int BrassCD = 0;
         public int BrassShineCD = 0;
         public bool Bunny = false;
+        public bool FoodAccess = false;
 
         public bool GoreToothBonus = false;
         public int GoreToothCD = 0;
@@ -305,10 +308,14 @@ namespace RealmOne.RealmPlayer
             PiggySet = false;
             hasStriken = false;
             Bunny = false;
+            FoodAccess = false;
         }
+
 
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
+
+
             if (BrassSetBonus)
             {
                 if (Main.rand.Next(101) < 20)
@@ -317,6 +324,7 @@ namespace RealmOne.RealmPlayer
                 }
             }
         }
+
 
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
@@ -404,17 +412,56 @@ namespace RealmOne.RealmPlayer
             }
         }
 
-        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
+        public void FoodAccessStuff(NPC npc)
         {
-            if (Overseer && Main.rand.NextBool(3) && !target.friendly && hit.Crit && target.lifeMax > 10 && target.type != NPCID.TargetDummy)
+            if (npc.life <= 0)
+            {
+                bool once = false;
+                for (int i = 0; i < ItemLoader.ItemCount; i++)
+                {
+                    Item item = ContentSamples.ItemsByType[i];
+                    if (ItemID.Sets.IsFood[item.type] && !once)
+                    {
+                        if (Main.rand.Next(100) < 1)
+                        {
+                            once = true;
+                            Item.NewItem(npc.GetSource_FromThis(), npc.Center, item.type, 1);
+                        }
+                    }
+                }
+                /*int r = Main.rand.Next(1, 3);
+                if (r == 1)
+                {
+                    Item.NewItem(npc.GetSource_FromThis(), npc.Center, ItemDropRule.Food);
+                }
+                else
+                {
+
+                }*/
+            }
+        }
+
+        public override void OnHitNPCWithItem(Item item, NPC npc, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
+        {
+            if (FoodAccess)
+            {
+                FoodAccessStuff(npc);
+            }
+
+            if (Overseer && Main.rand.NextBool(3) && !npc.friendly && hit.Crit && npc.lifeMax > 10 && npc.type != NPCID.TargetDummy)
             {
                 Player.AddBuff(ModContent.BuffType<OverseerBuff>(), 400);
             }
         }
 
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
+        public override void OnHitNPCWithProj(Projectile proj, NPC npc, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
-            if (Overseer && Main.rand.NextBool(3) && hit.Crit && !target.friendly && target.lifeMax > 10 && !target.SpawnedFromStatue && target.type != NPCID.TargetDummy)
+            if (FoodAccess)
+            {
+                FoodAccessStuff(npc);
+            }
+
+            if (Overseer && Main.rand.NextBool(3) && hit.Crit && !npc.friendly && npc.lifeMax > 10 && !npc.SpawnedFromStatue && npc.type != NPCID.TargetDummy)
             {
                 Player.AddBuff(ModContent.BuffType<OverseerBuff>(), 400);
             }

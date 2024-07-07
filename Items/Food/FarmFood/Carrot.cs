@@ -9,6 +9,8 @@ namespace RealmOne.Items.Food.FarmFood
 {
     public class Carrot : ModItem
     {
+        public bool IsFood = true;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Carrot");

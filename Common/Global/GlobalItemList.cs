@@ -1,4 +1,5 @@
-﻿using RealmOne.Items.Misc.Bars;
+﻿using RealmOne.Items.Food.FarmFood;
+using RealmOne.Items.Misc.Bars;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -43,6 +44,7 @@ namespace RealmOne.Common.Global
 
         public override void SetDefaults(Item item)
         {
+
             if (item.type == ItemID.CobaltShield) item.defense = 3;
             if (item.type == ItemID.ObsidianShield) item.defense = 5;
             if (item.type == ItemID.AnkhShield) item.defense = 8;

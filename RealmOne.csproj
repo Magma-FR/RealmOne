@@ -56,6 +56,7 @@
       <None Remove="Buffs\Summons\OrchidFlower.png" />
       <None Remove="Common\Core\ParticleContent\Particles\GenericGlowParticle.png" />
       <None Remove="Common\Core\ParticleContent\Particles\SparkleParticle.png" />
+      <None Remove="Items\Accessories\FoodAccessory.png" />
       <None Remove="Items\Weapons\PreHM\Forest\ForestVengeance.png" />
       <None Remove="Items\Weapons\Summoner\Butterflies.png" />
       <None Remove="Items\Weapons\Summoner\Butterfly.png" />

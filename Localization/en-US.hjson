@@ -2372,6 +2372,11 @@ Mods: {
 				DisplayName: Lightbulb Minion Item
 				Tooltip: ""
 			}
+
+			FoodAccessory: {
+				DisplayName: Dock
+				Tooltip: Praise the Dock. Enjoy the Dock. The Dock shall reward you.
+			}
 		}
 
 		Buffs: {
