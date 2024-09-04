@@ -37,7 +37,6 @@ namespace RealmOne.RealmPlayer
     public class Scroll : ModPlayer
     {
         public int ScrollContext = 0;
-
     }
 
     //ALL THIS CODE UP TO THE # IS SPIRIT MOD'S GITHUB CODE, ALL CREDIT GOES TO THEM.
@@ -502,19 +501,6 @@ namespace RealmOne.RealmPlayer
             if (player.GetModPlayer<RealmModPlayer>().cd > 1)
             {
                 player.GetModPlayer<RealmModPlayer>().cd--;
-            }
-
-            if (Main.GameModeInfo.IsMasterMode)
-            {
-                if (Player.ZoneSkyHeight)
-                {
-                    Player.AddBuff(BuffID.Suffocation, 15);
-                }
-
-                if (Player.HasBuff(BuffID.Suffocation))
-                {
-                    //        CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height), new Color(80, 150, 240, 140), "You're losing air!!", false, false);
-                }
             }
         }
 

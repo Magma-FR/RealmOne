@@ -23,7 +23,7 @@ namespace RealmOne.Items.Weapons.PreHM.Classless
         public override void SetDefaults()
         {
             Item.damage = 1;
-            Item.DamageType = DamageClass.Ranged;
+            Item.DamageType = DamageClass.Generic;
             Item.width = 32;
             Item.height = 32;
             Item.useTime = 50;

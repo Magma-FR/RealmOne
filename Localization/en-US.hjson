@@ -2373,9 +2373,15 @@ Mods: {
 				Tooltip: ""
 			}
 
+<<<<<<< Updated upstream
 			FoodAccessory: {
 				DisplayName: Dock
 				Tooltip: Praise the Dock. Enjoy the Dock. The Dock shall reward you.
+=======
+			SandBomb: {
+				DisplayName: Sand Bomb
+				Tooltip: ""
+>>>>>>> Stashed changes
 			}
 		}
 
@@ -2839,6 +2845,8 @@ Mods: {
 			LightbulbMinion.DisplayName: Lightbulb Minion
 			VultureBaby.DisplayName: Vulture Baby
 			ExampleSimpleMinion.DisplayName: Example Simple Minion
+			SandBombNado.DisplayName: Sand Bomb Nado
+			SandBombProj.DisplayName: Sand Bomb Proj
 		}
 
 		NPCs: {
@@ -2972,6 +2980,8 @@ Mods: {
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			LostFarmerTied.DisplayName: Tangled Lost Farmer
@@ -2991,6 +3001,8 @@ Mods: {
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			ArteryCarrion.DisplayName: Artery Carrion

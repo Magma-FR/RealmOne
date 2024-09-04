@@ -54,7 +54,6 @@ namespace RealmOne.Items.Weapons.Ranged
                 Item.noUseGraphic = true;
                 Item.UseSound = SoundID.Item1;
                 Item.autoReuse = false;
-                Item.useAmmo = AmmoID.None;
                 if (cooldown > 0)
                     return false;
             }
