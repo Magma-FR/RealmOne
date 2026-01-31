@@ -67,8 +67,8 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddRecipeGroup("Wood", 10);
-            recipe.AddIngredient(Mod, "GoopyGrass", 6);
+            recipe.AddRecipeGroup("Wood", 15);
+            recipe.AddIngredient(ItemID.Torch, 20);
             recipe.AddIngredient(ModContent.ItemType<CrushedAcorns>(), 25);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

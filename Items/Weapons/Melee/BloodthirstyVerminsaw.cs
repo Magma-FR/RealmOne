@@ -27,8 +27,8 @@ public class BloodthirstyVerminsaw : ModItem
         Item.noMelee = true;
         Item.channel = true;
 
-        Item.crit = 2;
-        Item.damage = 18;
+        Item.crit = 4;
+        Item.damage = 25;
         Item.knockBack = 4f;
 
         Item.width = 78;
@@ -39,7 +39,7 @@ public class BloodthirstyVerminsaw : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.UseSound = ButcherRat.FrenzySound;
 
-        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.BloodthirstyVerminsaw>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.BloodthirstyVerminsawProj>();
 
         Item.rare = ItemRarityID.Orange;
     }

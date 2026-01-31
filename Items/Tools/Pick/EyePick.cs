@@ -12,10 +12,6 @@ namespace RealmOne.Items.Tools.Pick
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Eye Pick"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("'It stares at you while you dig, weird.'"
-             + $"\nCapable of mining Old Gold! [i:{ModContent.ItemType<OldGoldOre>()}]");
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

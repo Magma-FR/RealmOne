@@ -26,7 +26,6 @@ using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using RealmOne.Projectiles.Summon;
 using Terraria.GameContent.ItemDropRules;
 
-
 namespace RealmOne.RealmPlayer
 {
     public static class Zones
@@ -310,11 +309,8 @@ namespace RealmOne.RealmPlayer
             FoodAccess = false;
         }
 
-
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
-
-
             if (BrassSetBonus)
             {
                 if (Main.rand.Next(101) < 20)
@@ -323,7 +319,6 @@ namespace RealmOne.RealmPlayer
                 }
             }
         }
-
 
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
@@ -435,7 +430,6 @@ namespace RealmOne.RealmPlayer
                 }
                 else
                 {
-
                 }*/
             }
         }

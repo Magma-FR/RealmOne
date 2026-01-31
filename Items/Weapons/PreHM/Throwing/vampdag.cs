@@ -20,7 +20,7 @@ namespace RealmOne.Items.Weapons.PreHM.Throwing
         public override void SetDefaults()
         {
             Item.damage = 14;
-            Item.DamageType = DamageClass.Ranged;
+            Item.DamageType = DamageClass.Melee;
             Item.width = 15;
             Item.height = 28;
             Item.useTime = 17;

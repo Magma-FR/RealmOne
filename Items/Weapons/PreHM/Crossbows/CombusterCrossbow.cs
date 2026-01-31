@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using RealmOne.Projectiles.HeldProj;
 using Terraria;
 using Terraria.Audio;
@@ -52,7 +52,7 @@ namespace RealmOne.Items.Weapons.PreHM.Crossbows
                 player.scope = true;
 
             return base.CanUseItem(player);
-        }*/
+        }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -83,4 +83,4 @@ namespace RealmOne.Items.Weapons.PreHM.Crossbows
             recipe.Register();
         }
     }
-}
+}*/

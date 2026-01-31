@@ -18,7 +18,7 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Projectiles.Melee;
 
-public class BloodthirstyVerminsaw : ModProjectile
+public class BloodthirstyVerminsawProj : ModProjectile
 {
     private sealed class VerminsawLoopAudioManager : ModSystem
     {

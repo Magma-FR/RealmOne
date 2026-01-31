@@ -1,4 +1,4 @@
-using RealmOne.Items.Misc.Bars;
+/*using RealmOne.Items.Misc.Bars;
 using RealmOne.Projectiles.HeldProj;
 using System;
 using Terraria;
@@ -79,4 +79,4 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             .Register();
         }
     }
-}
+}*/

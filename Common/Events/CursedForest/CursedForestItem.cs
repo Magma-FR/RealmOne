@@ -53,8 +53,8 @@ namespace RealmOne.Common.Events.CursedForest
             CreateRecipe()
                 .AddIngredient(ItemID.Bunny, 1)
                                 .AddIngredient(ItemID.Wood, 25)
-                                .AddIngredient(ItemID.Deathweed, 2)
-                                .AddIngredient(ModContent.ItemType<GoopyGrass>(), 10)
+                                .AddIngredient(ItemID.Deathweed, 1)
+                                .AddIngredient(ItemID.Shuriken, 50)
 
                 .AddTile(TileID.WorkBenches)
                 .Register();

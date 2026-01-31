@@ -62,7 +62,7 @@ namespace RealmOne.Projectiles.Throwing
         {
             SoundEngine.PlaySound(SoundID.NPCDeath6, Projectile.position);
             Player p = Main.player[Projectile.owner];
-            int healingAmount = damageDone / 16; //decrease the value 30 to increase heal, increase value to decrease. Or you can just replace damage/x with a set value to heal, instead of making it based on damage.
+            int healingAmount = damageDone / 10; //decrease the value 30 to increase heal, increase value to decrease. Or you can just replace damage/x with a set value to heal, instead of making it based on damage.
             p.statLife += healingAmount;
             p.HealEffect(healingAmount, true);
         }

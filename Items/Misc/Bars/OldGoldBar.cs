@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Tiles.Blocks;
 using System.Collections.Generic;
@@ -14,8 +14,6 @@ namespace RealmOne.Items.Misc.Bars
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Old Gold Bar"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("'An aged but pristine ingot crafted from the gold of the underground'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
         }
 
@@ -95,3 +93,4 @@ namespace RealmOne.Items.Misc.Bars
         }
     }
 }
+*/

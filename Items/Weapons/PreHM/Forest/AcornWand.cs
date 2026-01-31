@@ -17,12 +17,13 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
             Tooltip.SetDefault("Shoots out an acorn from the staff and the sky"
                 + "\nThese snowflakes can pierce up to 3 enemies!'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            Item.staff[Item.type] = true;
         }
 
         public override void SetDefaults()
         {
-            Item.width = 40;
-            Item.height = 40;
+            Item.width = 34;
+            Item.height = 34;
 
             Item.autoReuse = true;
             Item.useTurn = true;
@@ -108,7 +109,7 @@ namespace RealmOne.Items.Weapons.PreHM.Forest
 
         public override Vector2? HoldoutOffset()
         {
-            var offset = new Vector2(2, 0);
+            var offset = new Vector2(8, 0);
             return offset;
         }
     }

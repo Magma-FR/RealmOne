@@ -77,7 +77,7 @@ namespace RealmOne.Tiles
         {
             if (Main.rand.NextBool(1))
             {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
+                //  Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(2, 6));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.IronBar, Main.rand.Next(2, 4));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.LeadBar, Main.rand.Next(2, 4));
@@ -171,7 +171,7 @@ namespace RealmOne.Tiles
                 player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Tattered Barrel";
                 if (player.cursorItemIconText == "Fr")
                 {
-                    player.cursorItemIconID = CursorOverrideID.FavoriteStar;
+                    //           player.cursorItemIconID = CursorOverrideID.FavoriteStar;
                     player.cursorItemIconText = "What's This?";
                 }
             }

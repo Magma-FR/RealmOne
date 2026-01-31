@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Misc.Bars;
 using RealmOne.Items.Misc.EnemyDrops;
@@ -101,4 +101,4 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             return true;
         }
     }
-}
+}*/

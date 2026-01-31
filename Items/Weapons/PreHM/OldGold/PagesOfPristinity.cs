@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.Bars;
@@ -166,4 +166,4 @@ namespace RealmOne.Items.Weapons.PreHM.OldGold
             .Register();
         }
     }
-}
+}*/

@@ -1196,7 +1196,7 @@ Mods: {
 					2+ Base Damage on all weapons
 					You are poisoned when equipping this, I mean cmon you're carrying around Poisonous Bindis!?
 					'''
-				DisplayName: Verdant Bindis
+				DisplayName: Sticky Bindis
 			}
 
 			TheOutcastsOverseer: {
@@ -2373,15 +2373,19 @@ Mods: {
 				Tooltip: ""
 			}
 
-<<<<<<< Updated upstream
 			FoodAccessory: {
 				DisplayName: Dock
 				Tooltip: Praise the Dock. Enjoy the Dock. The Dock shall reward you.
-=======
+			}
+
 			SandBomb: {
-				DisplayName: Sand Bomb
+				DisplayName: Sand Cyclone Bomb
 				Tooltip: ""
->>>>>>> Stashed changes
+			}
+
+			IgniteAK: {
+				DisplayName: Ignite A K
+				Tooltip: ""
 			}
 		}
 
@@ -2847,6 +2851,8 @@ Mods: {
 			ExampleSimpleMinion.DisplayName: Example Simple Minion
 			SandBombNado.DisplayName: Sand Bomb Nado
 			SandBombProj.DisplayName: Sand Bomb Proj
+			IgniteProj.DisplayName: Ignite Proj
+			BloodthirstyVerminsawProj.DisplayName: Bloodthirsty Verminsaw Proj
 		}
 
 		NPCs: {

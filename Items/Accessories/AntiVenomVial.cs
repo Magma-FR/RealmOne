@@ -1,3 +1,4 @@
+using RealmOne.Items.Sets.OrchidSet;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -34,8 +35,8 @@ namespace RealmOne.Items.Accessories
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.BottledWater, 1);
-            recipe.AddIngredient(ItemID.Stinger, 3);
-            recipe.AddIngredient(Mod, "GoopyGrass", 2);
+            recipe.AddIngredient(ItemID.Stinger, 1);
+            recipe.AddIngredient(ModContent.ItemType<OrchidEssence>());
             recipe.AddTile(TileID.Bottles);
             recipe.Register();
         }

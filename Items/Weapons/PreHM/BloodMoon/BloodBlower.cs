@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
@@ -304,6 +304,5 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
           }
 
           // Change this number if you want to alter how the alpha changes
-      */
     }
-}
+}*/

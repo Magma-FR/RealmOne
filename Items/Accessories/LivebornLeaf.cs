@@ -1,4 +1,5 @@
 using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.Items.Sets.OrchidSet;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -34,7 +35,7 @@ namespace RealmOne.Items.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<GoopyGrass>(), 4);
+            recipe.AddIngredient(ModContent.ItemType<OrchidEssence>(), 4);
             recipe.AddIngredient(ItemID.Wood, 6);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();

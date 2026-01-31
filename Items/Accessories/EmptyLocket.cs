@@ -1,4 +1,4 @@
-using RealmOne.Items.Others;
+/*using RealmOne.Items.Others;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.GameContent.ItemDropRules;
@@ -39,4 +39,4 @@ namespace RealmOne.Items.Accessories
             Lighting.AddLight(player.position, r: 0.6f, 0.3f, b: 1f);
         }
     }
-}
+}*/

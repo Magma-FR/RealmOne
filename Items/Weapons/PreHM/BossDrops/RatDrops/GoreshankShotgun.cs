@@ -22,7 +22,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
 
         public override void SetDefaults()
         {
-            Item.damage = 10;
+            Item.damage = 13;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 34;
             Item.height = 25;
@@ -32,7 +32,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             Item.knockBack = 2;
             Item.rare = ItemRarityID.Orange;
             Item.autoReuse = true;
-            Item.shootSpeed = 70f;
+            Item.shootSpeed = 75f;
             Item.shoot = ModContent.ProjectileType<GoreshankShot>();
             Item.noMelee = true; // The projectile will do the damage and not the item
             Item.value = Item.buyPrice(gold: 5, silver: 3);

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Creative;
@@ -11,7 +11,7 @@ namespace RealmOne.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Verdant Bindis");
+            DisplayName.SetDefault("Sticky Bindis");
             Tooltip.SetDefault("2+ Base Damage on all weapons"
                  + "\nYou are poisoned when equipping this, I mean you're carrying around Poisonous Bindis? :skull:");
 
@@ -54,4 +54,4 @@ namespace RealmOne.Items.Accessories
             recipe.Register();
         }
     }
-}
+}*/

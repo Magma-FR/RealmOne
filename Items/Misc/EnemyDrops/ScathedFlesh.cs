@@ -9,8 +9,6 @@ namespace RealmOne.Items.Misc.EnemyDrops
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Scathed Flesh");
-            Tooltip.SetDefault("'Scarred, bloody flesh off a hungry vertabrae of the crimson'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
         }
 

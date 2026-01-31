@@ -18,6 +18,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.Utilities;
 using RealmOne.Items.Weapons.PreHM.Classless;
 using Terraria.GameContent.ItemDropRules;
+using RealmOne.Items.Sets.ForestRevengeSet;
 
 namespace RealmOne.NPCs.Enemies.ForestRevenge
 {
@@ -81,7 +82,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SafeHook>(), 35));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SeekingOwlGlove>(), 33));
         }
 
         public override void HitEffect(NPC.HitInfo hit)

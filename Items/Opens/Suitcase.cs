@@ -26,7 +26,7 @@ namespace RealmOne.Items.Opens
                 + "\nBelow are the Weapons you get from it!(You also get other necessities!)"
 
              + $"\n[i:{ModContent.ItemType<DualWieldCrossbows>()}]"
-                          + $"\n[i:{ModContent.ItemType<GildedGladius>()}][i:{ModContent.ItemType<EmptyLocket>()}]");
+                          + $"\n[i:{ModContent.ItemType<GildedGladius>()}]");
         }
 
         public override void SetDefaults()
@@ -78,11 +78,10 @@ namespace RealmOne.Items.Opens
             itemLoot.Add(ItemDropRule.Common(ItemID.ManaCrystal, 1, 2, 2));
 
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DualWieldCrossbows>(), 1, 1, 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AcornWand>(), 1, 1, 1));
+            // itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AcornWand>(), 1, 1, 1));
 
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GildedGladius>(), 1, 1, 1));
 
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmptyLocket>(), 1, 1, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Food.ForestTea>(), 1, 1, 1));
 
             itemLoot.Add(ItemDropRule.Common(ItemID.MusketBall, 1, 50, 50));

@@ -81,45 +81,6 @@ namespace RealmOne.Common.Global.GlobalNPCList
 
             //Evil Biome drops
 
-            if (npc.type == NPCID.EaterofSouls)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedViscus>(), 4, 1, 2));
-
-            if (npc.type == NPCID.DevourerHead)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedViscus>(), 4, 1, 2));
-
-            if (npc.type == NPCID.EaterofWorldsHead)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedViscus>(), 1, 1, 15));
-
-            if (npc.type == NPCID.Corruptor)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedViscus>(), 4, 1, 3));
-            if (npc.type == NPCID.SeekerHead)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedViscus>(), 4, 1, 3));
-
-            if (npc.type == NPCID.Crimera)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 4, 1, 2));
-
-            if (npc.type == NPCID.FaceMonster)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 4, 1, 2));
-
-            if (npc.type == NPCID.BloodCrawler)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 4, 1, 2));
-
-            if (npc.type == NPCID.BloodCrawlerWall)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 4, 1, 2));
-
-            if (npc.type == NPCID.Herpling)
-
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScathedFlesh>(), 4, 1, 3));
-
             //Hell Drops
             /*     if (npc.type == NPCID.Demon)
                  {

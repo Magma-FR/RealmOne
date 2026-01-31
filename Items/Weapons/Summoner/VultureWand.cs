@@ -19,10 +19,10 @@ using Terraria.ModLoader;
 
 namespace RealmOne.Items.Weapons.Summoner
 {
-
     public class VultureWand : ModItem
     {
-        bool used = false;
+        private bool used = false;
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             var line = new TooltipLine(Mod, "", "");
@@ -54,7 +54,7 @@ namespace RealmOne.Items.Weapons.Summoner
             Item.ArmorPenetration = 999999;
             Item.knockBack = 6f;
             Item.value = 30000;
-            Item.rare = ItemRarityID.Gray;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item44;
             Item.autoReuse = true;
             Item.noMelee = true;
@@ -101,8 +101,5 @@ namespace RealmOne.Items.Weapons.Summoner
         {
             return new Vector2(-1, -10);
         }
-
     }
-
-
 }

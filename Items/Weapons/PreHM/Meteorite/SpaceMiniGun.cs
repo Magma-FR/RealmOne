@@ -23,7 +23,7 @@ namespace RealmOne.Items.Weapons.PreHM.Meteorite
         public override void SetDefaults()
         {
             Item.damage = 14;
-            Item.DamageType = DamageClass.Ranged;
+            Item.DamageType = DamageClass.Magic;
             Item.width = 40;
             Item.height = 40;
             Item.useTime = 9;
