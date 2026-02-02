@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.Localization;
@@ -62,19 +64,22 @@ namespace RealmOne.Common.Systems.DeathCountSystemF
         }
     }
 
-    public class BannerTenTile : ModTile
+    public class BannerTenTiles : ModTile
     {
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
-            Main.tileLavaDeath[Type] = true;
-            TileID.Sets.FramesOnKillWall[Type] = true;
+            Main.tileSolid[Type] = false;
+            Main.tileNoAttach[Type] = true;
+            Main.tileLavaDeath[Type] = false;
 
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
+            TileObjectData.newTile.Width = 2;
+            TileObjectData.newTile.Height = 4;
+            TileObjectData.newTile.Origin = new Point16(0, 3);
+            TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
             TileObjectData.addTile(Type);
-            LocalizedText name = CreateMapEntryName();
-            DustType = 7;
-            AddMapEntry(new Color(200, 200, 200), name);
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
@@ -97,7 +102,7 @@ namespace RealmOne.Common.Systems.DeathCountSystemF
 
         public override void SetDefaults()
         {
-            Item.DefaultToPlaceableTile(ModContent.TileType<BannerTenTile>(), 0);
+            Item.DefaultToPlaceableTile(ModContent.TileType<BannerTenTiles>(), 0);
         }
     }
 

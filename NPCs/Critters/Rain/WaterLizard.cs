@@ -68,7 +68,7 @@ namespace RealmOne.NPCs.Critters.Rain
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
-            => spawnInfo.Player.ZoneForest && Main.raining ? 0.2f : 0f;
+            => spawnInfo.Player.ZoneForest && Main.raining ? 0.12f : 0f;
 
         private int Watertimer = 0;
 

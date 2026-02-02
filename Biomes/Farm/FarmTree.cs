@@ -104,10 +104,6 @@ namespace RealmOne.Biomes.Farm
                 for (int i = 0; i < repeats; ++i)
                 {
                     Vector2 offset = this.GetRandomTreePosition(Main.tile[x, y]);
-                    Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, fruit ? ModContent.ItemType<PumpkinSoup>() : ModContent.ItemType<Carrot>(), 1);
-
-                    Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, fruit ? ModContent.ItemType<ToastedNutBar>() : ModContent.ItemType<FloralDelight>(), 1);
-
                     Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16 + offset, fruit ? ModContent.ItemType<FloralDelight>() : ModContent.ItemType<Carrot>(), 1);
                 }
             }

@@ -20,7 +20,7 @@ using Terraria.Utilities;
 namespace RealmOne.NPCs.TownNPC
 {
     [AutoloadHead]
-    public class LostFarmer : ModNPC
+    public class dLostFarmer : ModNPC
     {
         public const string ShopName = "Shop";
 

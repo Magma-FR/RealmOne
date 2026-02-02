@@ -95,9 +95,9 @@ namespace RealmOne.NPCs.TownNPC
             // We also make sure not spawn the bound NPC if it has already spawned or if the NPC has already been rescued.
             if (player.ZoneFarmy() && spawnInfo.Player.ZoneOverworldHeight && !NPCsync.rescuedFarmer && !NPC.AnyNPCs(ModContent.NPCType<LostFarmerTied>()) && !NPC.AnyNPCs(ModContent.NPCType<LostFarmer>()))
             {
-                if (spawnInfo.SpawnTileType == ModContent.TileType<FarmSoil>() || spawnInfo.SpawnTileType == TileID.Dirt || spawnInfo.SpawnTileType == TileID.WoodBlock)
+                if (spawnInfo.SpawnTileType == ModContent.TileType<FarmSoil>() || spawnInfo.SpawnTileType == TileID.Dirt || spawnInfo.SpawnTileType == TileID.WoodBlock || spawnInfo.SpawnTileType == TileID.RichMahogany || spawnInfo.SpawnTileType == TileID.SpookyWood || spawnInfo.SpawnTileType == TileID.HayBlock)
                 {
-                    return 1.1f;
+                    return 1.8f;
                 }
             }
             return 0f;

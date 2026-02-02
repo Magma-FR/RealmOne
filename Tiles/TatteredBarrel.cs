@@ -3,6 +3,7 @@ using RealmOne.Common.Systems;
 using RealmOne.Items.Misc;
 using RealmOne.Items.Misc.EnemyDrops;
 using RealmOne.Items.Others;
+using RealmOne.Items.Placeables.FarmStuff;
 using RealmOne.Items.Weapons.PreHM.Classless;
 using Steamworks;
 using Terraria;
@@ -75,16 +76,16 @@ namespace RealmOne.Tiles
 
         public override bool CanDrop(int i, int j)
         {
-            if (Main.rand.NextBool(1))
+            if (Main.rand.NextBool(3))
             {
                 //  Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<GoopyGrass>(), Main.rand.Next(2, 6));
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.Wood, Main.rand.Next(2, 6));
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<TatteredWood>(), Main.rand.Next(4, 6));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.IronBar, Main.rand.Next(2, 4));
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.LeadBar, Main.rand.Next(2, 4));
 
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemType<Wheat>(), Main.rand.Next(1, 3));
             }
-            if (Main.rand.NextBool(2))
+            if (Main.rand.NextBool(4))
             {
                 Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 64, 32, ItemID.MusketBall, Main.rand.Next(15, 22));
             }

@@ -29,7 +29,7 @@ namespace RealmOne.NPCs.Critters.Forest
             NPC.dontCountMe = true;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
-            NPC.catchItem = (short)ModContent.ItemType<OrchidMothItem>();
+            NPC.catchItem = (short)ModContent.ItemType<OrchidSluggyItem>();
             NPC.knockBackResist = .35f;
             NPC.chaseable = false;
 

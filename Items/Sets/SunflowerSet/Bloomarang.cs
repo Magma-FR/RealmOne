@@ -45,7 +45,6 @@ namespace RealmOne.Items.Sets.SunflowerSet
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<SunflowerPetal>(), 12)
                 .AddIngredient(ItemID.WoodenBoomerang, 1)
-                .AddIngredient(ItemID.FallenStar, 1)
 
                 .AddTile(TileID.WorkBenches)
                 .Register();
