@@ -31,14 +31,13 @@ The world has been enchanted into a cursed, and transcendental timeline, with cr
 [Current Developers]
 [Owner] MAGMA
 [Head Dev] scoutfrost
-[Community Managers] Saturn, KureiRei
+[Community Managers] Saturn, MAGMA
 [Coders] naka, Quarzz, MAGMA, scoutfrost, Nurby, Zemmie
-[Spriters] Dominick, SirSparky, Thyreo, scoutfrost, MAGMA, Raddize, The Possum, kogagagachan-san,Jub, Mr Liquid, Tendan, sweetberries, scarcede
+[Spriters] Dominick, Thyreo, scoutfrost, MAGMA, Raddize, The Possum, Mr Liquid, Tendan, scarcede
 [Musicians]: Zemmie, Elosir, Mr Liquid, The Possum
 [Contributors] DvlSide
 
 
-This mod will take around 4-5 years to finish, we are aiming for 26 bosses.
 
 
 
