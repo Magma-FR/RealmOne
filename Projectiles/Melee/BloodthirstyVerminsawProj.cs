@@ -166,7 +166,7 @@ public class BloodthirstyVerminsawProj : ModProjectile
         {
             Projectile.damage = 35;
             player.AddBuff(ModContent.BuffType<SawBuff>(), 10);
-            player.velocity *= 1.0015f;
+            player.velocity *= 1.0018f;
         }
 
         Projectile.Center = Owner.MountedCenter;

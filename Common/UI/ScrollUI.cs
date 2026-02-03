@@ -37,10 +37,10 @@ namespace RealmOne.Common.UI
             base.DrawSelf(spriteBatch);
 
             Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
-            hitbox.X += 12;
+            hitbox.X -= 12;
             hitbox.Width -= 24;
             hitbox.Y += 8;
-            hitbox.Height -= 16;
+            hitbox.Height -= 24;
         }
     }
 

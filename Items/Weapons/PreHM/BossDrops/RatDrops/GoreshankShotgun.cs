@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
+using RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
 using RealmOne.RealmPlayer;
 using Terraria;
 using Terraria.Audio;
@@ -40,6 +41,12 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
             Item.useAmmo = AmmoID.Bullet;
         }
 
+        public override Vector2? HoldoutOffset()
+        {
+            var offset = new Vector2(-4, 0);
+            return offset;
+        }
+
         public override bool? UseItem(Player player)
         {
             SoundEngine.PlaySound(SoundID.Item38 with { Volume = 0.5f, PitchVariance = 0.5f, MaxInstances = 3 }, player.Center);
@@ -75,7 +82,7 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
         public override string Texture
             => Helper.Empty;
 
-        private const int timeLeftMax = 18;
+        private const int timeLeftMax = 22;
         private Vector2 origin;
 
         public override void SetDefaults()
@@ -107,10 +114,10 @@ namespace RealmOne.Items.Weapons.PreHM.BossDrops.RatDrops
                 return;
             }
 
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < 8; i++)
             {
-                Dust dust = Dust.NewDustPerfect(Projectile.Center, Main.rand.NextBool(2) ? DustID.Blood
-              : DustID.t_Flesh, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.7f, 1.0f));
+                Dust dust = Dust.NewDustPerfect(Projectile.Center, Main.rand.NextBool(2) ? ModContent.DustType<ButcherDust>()
+              : DustID.t_Flesh, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.3f, 0.8f));
                 dust.velocity = -(Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(0.8f);
                 dust.noGravity = true;
             }

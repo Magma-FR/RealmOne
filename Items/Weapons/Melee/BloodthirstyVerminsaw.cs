@@ -68,10 +68,10 @@ public class SawBuff : ModBuff
         player.GetModPlayer<SawPlay>().flamed = true;
 
         if (player.lifeRegen > 0)
-            player.lifeRegen -= 55;
+            player.lifeRegen -= 30;
 
         if (player.statLife <= player.statLife / 1)
-            player.lifeRegen -= 55;
+            player.lifeRegen -= 30;
 
         GenericGlowParticle particle = new(new Vector2(player.Center.X + Main.rand.Next(-2, 3), player.Center.Y), new Vector2(0, -Main.rand.NextFloat(0.2f, 3f)), Color.OrangeRed, 0.15f, 50);
         ParticleSystem.GenerateParticle(particle);

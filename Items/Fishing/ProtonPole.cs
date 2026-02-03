@@ -37,12 +37,12 @@ namespace RealmOne.Items.Fishing
 
         public override void SetDefaults()
         {
-            Item.rare = ItemRarityID.Blue;
-            Item.CloneDefaults(ItemID.ReinforcedFishingPole);
+            Item.CloneDefaults(ItemID.FisherofSouls);
             Item.damage = 10;
             Item.fishingPole = 18; // Sets the poles fishing power
             Item.shootSpeed = 15f; // Sets the speed in which the bobbers are launched. Wooden Fishing Pole is 9f and Golden Fishing Rod is 17f.
             Item.shoot = ModContent.ProjectileType<ProtonBobber>(); // The Bobber projectile.
+            Item.rare = ItemRarityID.Blue;
         }
 
         // NOTE: Only triggers through the hotbar, not if you hold the item by hand outside of the inventory.
@@ -72,7 +72,7 @@ namespace RealmOne.Items.Fishing
     {
         public static readonly Color[] PossibleLineColors = new Color[2] {
             new Color(110, 200, 252), // A white color
-			new Color(40, 40, 218) // A blue color
+			new Color(66, 149, 227) // A blue color
 		};
 
         // This holds the index of the fishing line color in the PossibleLineColors array.
@@ -123,11 +123,11 @@ namespace RealmOne.Items.Fishing
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("ProtonBobberGore1").Type, 1f);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, Mod.Find<ModGore>("ProtonBobberGore2").Type, 1f);
             SoundEngine.PlaySound(rorAudio.Proton);
-            for (float i = 0; i <= 3f; i += Main.rand.NextFloat(0.5f, 3))
+            for (float i = 0; i <= 5f; i += Main.rand.NextFloat(1f, 3f))
                 Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, i.ToRotationVector2() * Main.rand.NextFloat(), ProjectileID.ThunderStaffShot,
 
-                    (int)(Projectile.damage * 1.5f), Projectile.knockBack, Projectile.owner);
-            Projectile.velocity *= 5;
+                    (int)(Projectile.damage * 1.8f), Projectile.knockBack, Projectile.owner);
+            Projectile.velocity *= 1.8f;
             Projectile.damage = 10;
         }
 

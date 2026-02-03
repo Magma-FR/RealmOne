@@ -28,7 +28,7 @@ namespace RealmOne.Items.Weapons.PreHM.Desert
             Item.autoReuse = true;
 
             Item.damage = 14;
-            Item.knockBack = 1f;
+            Item.knockBack = 5f;
             Item.noUseGraphic = true;
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
