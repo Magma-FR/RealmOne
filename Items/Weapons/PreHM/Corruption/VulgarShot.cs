@@ -58,16 +58,6 @@ namespace RealmOne.Items.Weapons.PreHM.Corruption
             return true;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DemoniteBar, 10);
-
-            recipe.AddIngredient(ModContent.ItemType<InfectedViscus>(), 10);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-        }
-
         public override Vector2? HoldoutOffset()
         {
             var offset = new Vector2(3, 0);

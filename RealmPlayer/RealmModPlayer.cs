@@ -25,6 +25,7 @@ using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using RealmOne.Projectiles.Summon;
 using Terraria.GameContent.ItemDropRules;
+using RealmOne.NPCs.Enemies.MiniBoss;
 
 namespace RealmOne.RealmPlayer
 {
@@ -249,6 +250,13 @@ namespace RealmOne.RealmPlayer
 
     public class RealmModPlayer : ModPlayer
     {
+        private static readonly string[] PiggyTaunts =
+{
+    "stop trying brokie *oink*",
+    "*oink* try harder *oink*",
+    "wrap it up *oink*"
+};
+
         public bool marbleJustJumped;
         public bool Static = false;
         public bool BrassSetBonus = false;
@@ -289,6 +297,8 @@ namespace RealmOne.RealmPlayer
         public float marbleJump = 0f;
 
         public int ButterflySpawned = 0;
+        private bool spawnedPiggyThisTick;
+        private int goldRejectCount;
 
         public override void ResetEffects()
         {
@@ -307,6 +317,7 @@ namespace RealmOne.RealmPlayer
             hasStriken = false;
             Bunny = false;
             FoodAccess = false;
+            spawnedPiggyThisTick = false;
         }
 
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
@@ -508,8 +519,81 @@ namespace RealmOne.RealmPlayer
             }
         }
 
+        private void TrySpawnPossessedPiggy()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                return;
+
+            Vector2 spawnPos = Player.Center + new Vector2(0f, -40f);
+
+            NPC.NewNPC(
+                Player.GetSource_FromThis(),
+                (int)spawnPos.X,
+                (int)spawnPos.Y,
+                ModContent.NPCType<NPCs.Enemies.MiniBoss.PossessedPiggy>()
+            );
+
+            SoundEngine.PlaySound(SoundID.Roar, Player.Center);
+        }
+
+        private void RejectGoldCoin(Item item)
+        {
+            Player.QuickSpawnItem(
+                Player.GetSource_FromThis(),
+                ItemID.GoldCoin,
+                item.stack
+            );
+
+            if (goldRejectCount == 1)
+            {
+                // 2nd attempt
+                CombatText.NewText(
+                    Player.getRect(),
+                    Color.White,
+                    "huh?"
+                );
+            }
+            else
+            {
+                // normal piggy taunts
+                string text = PiggyTaunts[Main.rand.Next(PiggyTaunts.Length)];
+
+                CombatText.NewText(
+                    Player.getRect(),
+                    Color.Gold,
+                    text
+                );
+            }
+
+            goldRejectCount++;
+            piggyTauntCooldown = 90;
+        }
+
+        private int piggyTauntCooldown;
+
         public override void PostUpdate()
         {
+            if (DownedBossSystem.downedPiggy)
+                return;
+
+            Item[] piggy = Player.bank.item;
+
+            for (int i = 0; i < piggy.Length; i++)
+            {
+                Item item = piggy[i];
+
+                if (item == null || item.IsAir)
+                    continue;
+
+                if (item.type == ItemID.GoldCoin)
+                {
+                    RejectGoldCoin(item);
+                    item.TurnToAir();
+                }
+            }
+            if (piggyTauntCooldown > 0)
+                piggyTauntCooldown--;
+
             Player p = Main.LocalPlayer;
 
             if (GoreToothBonus)
@@ -617,10 +701,10 @@ namespace RealmOne.RealmPlayer
                     cdOrchid--;
                 }
 
-                if (Main.rand.Next(200) < 3)
+                if (Main.rand.Next(300) < 3)
                 {
                     Vector2 spawnLoc = new Vector2(p.Center.X + Main.rand.Next(-260, 260), p.Center.Y + Main.rand.Next(-260, -20));
-                    Projectile.NewProjectile(p.GetSource_FromThis(), p.Center, new Vector2(Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f)), ModContent.ProjectileType<ForestVengeanceProjec>(), 11, 5f, Main.myPlayer);
+                    Projectile.NewProjectile(p.GetSource_FromThis(), p.Center, new Vector2(Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f)), ModContent.ProjectileType<ForestVengeanceProjec>(), 6, 3f, Main.myPlayer);
                 }
 
                 if (cdOrchid == 0)
@@ -642,16 +726,16 @@ namespace RealmOne.RealmPlayer
                     Projectile.NewProjectile(p.GetSource_FromThis(), p.Center, new Vector2(0, 0), ModContent.ProjectileType<OrchidRingRing>(), 0, 0f, Main.myPlayer);
                 }
 
-                for (int i = 0; i < Main.maxNPCs; i++)
-                {
-                    if (Vector2.Distance(p.Center, Main.npc[i].Center) < 300)
-                    {
-                        if (Main.npc[i].boss == false)
-                        {
-                            Main.npc[i].AddBuff(ModContent.BuffType<SlowLeaf>(), 5);
-                        }
-                    }
-                }
+                //   for (int i = 0; i < Main.maxNPCs; i++)
+                //    {
+                //        if (Vector2.Distance(p.Center, Main.npc[i].Center) < 300)
+                //       {
+                //          if (Main.npc[i].boss == false)
+                //          {
+                //              Main.npc[i].AddBuff(ModContent.BuffType<SlowLeaf>(), 5);
+                //         }
+                //       }
+                //   }
 
                 for (int i = 0; i < Main.maxItems; i++)
                 {
@@ -718,6 +802,27 @@ namespace RealmOne.RealmPlayer
                     {
                         hasStriken = false;
                     }
+                }
+            }
+            if (spawnedPiggyThisTick)
+                return;
+
+            Item[] piggyb = Player.bank.item;
+
+            for (int i = 0; i < piggyb.Length; i++)
+            {
+                Item item = piggyb[i];
+
+                if (item == null || item.IsAir)
+                    continue;
+
+                // 🔑 replace with YOUR item
+                if (item.type == ModContent.ItemType<Items.Misc.EnemyDrops.ScathedFlesh>())
+                {
+                    TrySpawnPossessedPiggy();
+                    item.TurnToAir();
+                    spawnedPiggyThisTick = true;
+                    break;
                 }
             }
         }

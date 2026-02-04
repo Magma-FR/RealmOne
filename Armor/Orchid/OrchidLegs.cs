@@ -25,7 +25,6 @@ namespace RealmOne.Armor.Orchid
 
         public override void UpdateEquip(Player player)
         {
-            player.runAcceleration += 0.05f;
             player.moveSpeed += 0.05f;
         }
 

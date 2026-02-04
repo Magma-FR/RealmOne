@@ -27,7 +27,7 @@ namespace RealmOne.Armor.Orchid
         public override void UpdateEquip(Player player)
         {
             {
-                player.GetCritChance(DamageClass.Generic) += 5f;
+                player.GetCritChance(DamageClass.Generic) += 4f;
             }
         }
 
@@ -49,12 +49,12 @@ namespace RealmOne.Armor.Orchid
         public override void UpdateArmorSet(Player player)
         {
             //      string tapDir = Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN");
-            player.setBonus = "Conjures a leafy aura from nearby spirits that increases health- and mana regen.\nRandomly conjures homing forest spirits \nMana and heart drops inside the aura will be carried by leaves to you \nEnemies inside the aura get slowed down significantly";
+            player.setBonus = "Conjures a leafy aura from nearby spirits that increases health- and mana regen.\nRandomly conjures homing forest spirits \nMana and heart drops inside the aura will be carried by leaves to you";
             //        player.GetModPlayer<>().SpecialSetBonus = true;
 
             player.GetModPlayer<RealmModPlayer>().OrchidBonus = true;
-            player.lifeRegen += 4;
-            player.manaRegen += 4;
+            player.lifeRegen += 2;
+            player.manaRegen += 2;
         }
     }
 }

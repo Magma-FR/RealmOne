@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Core;
 using RealmOne.Items.Misc.Bars;
 using RealmOne.Items.Misc.EnemyDrops;
+using RealmOne.NPCs.Enemies.BloodMoon.ButcherRat;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -196,6 +197,17 @@ namespace RealmOne.Items.Weapons.PreHM.BloodMoon
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Main.GameViewMatrix.ZoomMatrix);
 
             return true;
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                Dust dust = Dust.NewDustPerfect(Projectile.Center, Main.rand.NextBool(2) ? ModContent.DustType<ButcherDust>()
+              : DustID.t_Flesh, Vector2.Zero, 0, Color.White, Main.rand.NextFloat(0.3f, 0.8f));
+                dust.velocity = -(Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(0.8f);
+                dust.noGravity = true;
+            }
         }
 
         public override void AI()

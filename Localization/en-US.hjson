@@ -1866,7 +1866,7 @@ Mods: {
 			}
 
 			Goreberry: {
-				DisplayName: Goreberry
+				DisplayName: Crimson Pineapple
 				Tooltip: Dangerously sweet, increases your heart rate'
 			}
 
@@ -2057,12 +2057,12 @@ Mods: {
 			}
 
 			SanguineSlugItem: {
-				DisplayName: Sanguine Slug Item
+				DisplayName: Sanguine Slug
 				Tooltip: ""
 			}
 
 			EyeJellyItem: {
-				DisplayName: Eye Jelly Item
+				DisplayName: Eye Jelly
 				Tooltip: ""
 			}
 
@@ -2097,7 +2097,7 @@ Mods: {
 			}
 
 			CartonBeer: {
-				DisplayName: Carton Beer
+				DisplayName: Carton of Beer
 				Tooltip:
 					'''
 					'Fosters. Good call.'
@@ -2175,7 +2175,7 @@ Mods: {
 				DisplayName: Cursed Forest Crucifix
 				Tooltip:
 					'''
-					A strange and demonic crucifix, looks like its been used before 
+					'A strange and demonic crucifix, looks like its been used before'
 					Use the Crucifix to start the [c/FA325C:Forest's Revenge]
 					Only useable at Nightime
 					'''
@@ -2183,17 +2183,17 @@ Mods: {
 
 			OrchidBody: {
 				DisplayName: Orchid Leafplate
-				Tooltip: ""
+				Tooltip: 5% increased damage
 			}
 
 			OrchidHead: {
 				DisplayName: Orchid Leafhat
-				Tooltip: ""
+				Tooltip: 5% increased crit chance
 			}
 
 			OrchidLegs: {
 				DisplayName: Orchid Leaflegs
-				Tooltip: ""
+				Tooltip: 5% increased movement speed
 			}
 
 			GoldSkullTome: {
@@ -2330,7 +2330,7 @@ Mods: {
 					Increases damage of the chainsaw
 					However, the chainsaw burns you dealing high damage to the player.
 					'''
-				DisplayName: Vermingore Ragesaw
+				DisplayName: Verminsaw
 			}
 
 			KingSlimePaper: {

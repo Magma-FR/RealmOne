@@ -30,7 +30,7 @@ namespace RealmOne.Projectiles.Magic
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 600;
+            Projectile.timeLeft = 500;
             AIType = ProjectileID.Bullet;
             Projectile.extraUpdates = 1;
             Projectile.tileCollide = false;

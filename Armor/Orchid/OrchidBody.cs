@@ -28,8 +28,8 @@ namespace RealmOne.Armor.Orchid
 
         public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.Generic) += 0.03f;
-            player.maxMinions += 1;
+            player.GetDamage(DamageClass.Generic) += 0.05f;
+            ///    player.maxMinions += 1;
         }
 
         public override void AddRecipes()
