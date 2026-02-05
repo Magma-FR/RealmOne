@@ -4,7 +4,7 @@
 
 	<PropertyGroup>
 		<AssemblyName>RealmOne</AssemblyName>
-		<LangVersion>10</LangVersion>
+		<LangVersion>12.0</LangVersion>
 	</PropertyGroup>
 
     <PropertyGroup>
@@ -15,7 +15,6 @@
 
     <PropertyGroup>
         <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>

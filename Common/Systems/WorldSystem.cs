@@ -171,6 +171,51 @@ namespace RealmOne.Common.Systems
             }
         }
 
+        public override void PostAddRecipes()
+        {
+            RemoveSpookyArmorRecipes();
+            AddModifiedSpookyArmorRecipes();
+        }
+
+        private void RemoveSpookyArmorRecipes()
+        {
+            for (int i = Recipe.numRecipes - 1; i >= 0; i--)
+            {
+                Recipe recipe = Main.recipe[i];
+
+                if (recipe.createItem.type == ItemID.SpookyHelmet ||
+                    recipe.createItem.type == ItemID.SpookyBreastplate ||
+                    recipe.createItem.type == ItemID.SpookyLeggings)
+                {
+                    recipe.DisableRecipe();
+                }
+            }
+        }
+
+        private static void AddModifiedSpookyArmorRecipes()
+        {
+            // Helmet
+            Recipe.Create(ItemID.SpookyHelmet)
+                .AddIngredient(ItemID.SpookyWood, 150)
+                .AddIngredient(ItemID.Ectoplasm, 5)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
+
+            // Breastplate
+            Recipe.Create(ItemID.SpookyBreastplate)
+                .AddIngredient(ItemID.SpookyWood, 250)
+                .AddIngredient(ItemID.Ectoplasm, 10)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
+
+            // Leggings
+            Recipe.Create(ItemID.SpookyLeggings)
+                .AddIngredient(ItemID.SpookyWood, 200)
+                .AddIngredient(ItemID.Ectoplasm, 8)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
+        }
+
         public override void PostWorldGen()
         {
             int[] waterchest = { ItemType<EleJelly>() };

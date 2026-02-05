@@ -17,20 +17,18 @@ namespace RealmOne
         {
             Instance = this;
         }
+
         public const string AssetPath = $"{nameof(RealmOne)}/Assets/";
         public static float ModTime { get; internal set; }
         public static object MessageType { get; internal set; }
 
-
         public override void Unload()
         {
             ParticleSystem.Unload();
-
         }
 
         public override void Load()
         {
-
             Instance = this;
 
             if (!Main.dedServ)
@@ -61,8 +59,4 @@ namespace RealmOne
             return Main.bloodMoon;
         }
     }
-
-
 }
-
-

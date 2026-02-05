@@ -741,7 +741,7 @@ namespace RealmOne.NPCs.Enemies.MiniBoss
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PiggyPorcelain>(), 1, 5, 7));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PiggyPorcelain>(), 1, 6, 8));
             npcLoot.Add(ItemDropRule.Common(ItemID.PiggyBank, 20, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.MoneyTrough, 30, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 1, 3, 6));

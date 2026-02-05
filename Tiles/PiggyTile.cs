@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using RealmOne.Common.Systems;
 using RealmOne.Items.BossSummons;
 using RealmOne.NPCs.Enemies.MiniBoss;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -30,22 +32,16 @@ namespace RealmOne.Tiles
             MineResist = 3f;
             MinPick = 20;
             HitSound = rorAudio.OldGoldTink;
-            TileObjectData.newTile.Origin = new Point16(0, 1);
 
             DustType = DustID.DungeonPink;
             TileID.Sets.DisableSmartCursor[Type] = true;
 
-            // Names
-
-            LocalizedText name = CreateMapEntryName();
-            name.SetDefault("Piggy Vase");
-            AddMapEntry(new Color(200, 200, 200), name);
-
-            // Placement
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+            //   TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 
             TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock };
+            TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
             TileObjectData.addTile(Type);
@@ -64,6 +60,100 @@ namespace RealmOne.Tiles
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 1;
+        }
+
+        private Vector2 EldritchWobble(int i, int j)
+        {
+            if (DownedBossSystem.downedPiggy)
+                return Vector2.Zero;
+
+            Player player = Main.LocalPlayer;
+            Vector2 tileWorldPos = new Vector2(i * 16, j * 16);
+
+            float distance = Vector2.Distance(player.Center, tileWorldPos);
+            if (distance > 160f)
+                return Vector2.Zero;
+            float time = Main.GlobalTimeWrappedHourly;
+
+            // base agitation
+            float baseX = (float)Math.Sin(time * 12.3f) * 1.2f;
+            float baseY = (float)Math.Sin(time * 15.7f) * 1.2f;
+
+            // slam trigger
+            float slamTrigger = (float)Math.Sin(time * 3.1f);
+
+            // choose direction using DIFFERENT phases
+            float dirX = Math.Sign(Math.Sin(time * 5.37f));
+            float dirY = Math.Sign(Math.Sin(time * 7.91f));
+
+            if (dirX == 0) dirX = 1;
+            if (dirY == 0) dirY = 1;
+
+            float slamStrength = slamTrigger > 0.96f ? 10f : 0f;
+
+            Vector2 slam = new Vector2(
+                slamStrength * dirX,
+                slamStrength * dirY
+            );
+
+            return new Vector2(baseX, baseY) + slam;
+        }
+
+        public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
+        {
+            Tile tile = Framing.GetTileSafely(i, j);
+
+            Texture2D texture = ModContent.Request<Texture2D>(
+                Texture,
+                ReLogic.Content.AssetRequestMode.ImmediateLoad
+            ).Value;
+
+            Vector2 offScreen = Main.drawToScreen
+                ? Vector2.Zero
+                : new Vector2(Main.offScreenRange);
+
+            Vector2 drawPos =
+                new Vector2(i * 16, j * 16)
+                - Main.screenPosition
+                + offScreen
+                + EldritchWobble(i, j);
+
+            spriteBatch.Draw(
+                texture,
+                drawPos,
+                new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16),
+                Lighting.GetColor(i, j)
+            );
+
+            Tile tile1 = Framing.GetTileSafely(i, j);
+
+            Rectangle frame = new Rectangle(
+                tile1.TileFrameX,
+                tile1.TileFrameY,
+                16,
+                16
+            );
+
+            float pulse = (float)Math.Sin(Main.GlobalTimeWrappedHourly * 6f) * 0.5f + 0.5f;
+            Color auraColor = new Color(180, 160, 130, 60) * pulse;
+
+            for (int x = -1; x <= 1; x++)
+            {
+                for (int y = -1; y <= 1; y++)
+                {
+                    if (x == 0 && y == 0) continue;
+
+                    spriteBatch.Draw(
+                        texture,
+                        drawPos + new Vector2(x, y),
+                        frame,
+                        auraColor
+                    );
+                }
+            }
+
+            // 🔑 prevent vanilla draw
+            return false;
         }
 
         public override bool CanDrop(int i, int j)

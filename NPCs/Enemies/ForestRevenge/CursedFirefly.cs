@@ -47,7 +47,7 @@ namespace RealmOne.NPCs.Enemies.ForestRevenge
             NPC.height = 9;
             NPC.noGravity = true;
             NPC.damage = 15;
-            NPC.lifeMax = 26;
+            NPC.lifeMax = 24;
             AIType = NPCID.NebulaBrain;
 
             NPC.value = Item.buyPrice(0, 0, 0, 80);
